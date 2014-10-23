@@ -1,0 +1,27 @@
+RewriteBase /registro
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^pagina/([\d]+)/?$ php/pagina$1.php [L]
+RewriteRule ^cedula/([\d]+)/?$ php/pagina$1.php [L]
+RewriteRule ^cedula/?$ php/resumen.php [L]
+
+RewriteRule ^pagina/(autocompletetextbox.php*) php/$1 [L]
+RewriteRule ^cedula/(autocompletetextbox.php*) php/$1 [L]
+
+RewriteRule ^ingreso/?$ php/registracion.php  [L]
+RewriteRule ^ingreso/2$ php/registracion2.php  [L]
+
+
+#hay rutas relativas hardcodeadas
+RewriteRule ^pagina(.*)\.js?$ php/pagina$1.js [L]
+
+RewriteRule ^localizacion/([\d]+)/?([\d]+)?/?$ ?controller=localizacion&action=view&id=$1&id2=$2 [L]
+
+RewriteRule ^([\w]+)/?$ ?controller=$1 [L]
+RewriteRule ^([\w]+)/([\d]+)?/?$ ?controller=$1&id=$2 [L]
+RewriteRule ^([\w]+)/([\w]+)?/?$ ?controller=$1&action=$2 [L]
+RewriteRule ^([\w]+)/([\w]+)/([\d]+)?/?([\d]+)?/?$ ?controller=$1&action=$2&id=$3&id2=$4 [L]
+
+ErrorDocument 404 error/notfound
+ErrorDocument 403 error/forbidden

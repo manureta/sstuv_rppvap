@@ -1,0 +1,39 @@
+/*general bloques*/
+
+
+/*bloques*/
+
+/*bloque 1*/
+#bloque1 label{
+	width:400px;
+}
+
+#bloque1 .pure-g{
+	margin-bottom:10px;
+}
+
+/*bloque 2*/
+#bloque2 label{
+	width:350px;
+}
+
+#bloque2 .pure-table td{
+	width:350px;
+}
+
+#bloque2 .pure-table tr{
+	height:40px;
+}
+
+#bloque2 .pure-g{
+	margin-bottom:10px;
+}
+
+/*bloque 3*/
+#bloque3 label{
+	width:443px;
+}
+
+#bloque3 .pure-u-1{
+	margin-bottom:10px;
+}

@@ -1,0 +1,628 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    background-image:url(../images/fnd_pix_body.jpg);
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-repeat:repeat-x;
+    background-position:top;
+    margin:0;
+    padding:0;
+    background-color:#E6F1F7;
+}
+
+h1 {
+    font-size:30px;
+    color:#333;
+    font-weight:normal;
+    margin:0;
+}
+
+h2 {
+    font-size:18px;
+    color:#333;
+    font-weight:normal;
+    margin-bottom:0;
+    margin-top:0;
+}
+
+h3 {
+    font-family:inherit;
+    font-size:18px;
+    color:#0770AE;
+    font-weight:normal;
+}
+
+p, label {
+    font-size:12px;
+    color:#333;
+}
+
+a {
+    color:#F90;
+    font-weight:bold;
+}
+
+.VersionNombre{
+    font-family:inherit;
+    font-size:15px;
+    color:#333;
+}
+.VersionDescripcion{
+    font-family:inherit;
+    font-size:10px;
+    color:#333;
+}
+
+#main {
+    margin: 0 auto;
+    width: 98%;
+}
+
+#header_logos {
+    width: 100%;
+    background-image:url(../images/banner_pix_sup.jpg);
+    background-repeat:repeat-x;
+    background-position:top;
+    height:55px;
+    overflow: hidden;
+}
+#header_logos div {
+    height:75px;
+}
+div#header_logos_left{
+    background-image:url(../images/banner_logos_sup_izq.jpg);
+    background-repeat:no-repeat;
+    background-position:top left;
+    width: 291px;
+    float: left;
+}
+div#header_logos_center {
+    float: left;
+}
+div#header_logos_center h2 {
+    padding-top: 20px;
+    padding-left: 20px;    
+}
+div#header_logos_right{
+    background-image:url(../images/banner_titulo_inf_der.jpg);
+    background-repeat:no-repeat;
+    background-position:top right;
+    width: 242px;
+    float: right;
+}
+
+#header_menu {
+    background-color: #EDEDED;
+    width: 100%;
+    float: left;
+}
+
+#header_union  {
+    width: 100%;
+    height:25px;
+    clear: both;
+    background-image:url(../images/union_ban_base_sprite.gif);
+    background-position:left top;
+    background-repeat:repeat-x;
+}
+#header_union div {
+    width: 15px;
+    height:25px;
+    background-repeat:no-repeat;
+}
+div#union_left {
+    background-image:url(../images/union_ban_base_sprite.gif);
+    background-position:  left bottom;
+    float: left;
+}
+
+div#union_right {
+    background-image:url(../images/union_ban_base_sprite.gif);
+    background-position: right bottom;
+    float: right;
+}
+
+/*****************************************
+* Css estilos para QBreadCrumb
+*****************************************/
+#header_breadcrumb {
+    font-size: 9px;
+    background-color: #FFFFFF;
+    float: left;
+    width: 100%;
+}
+#header_breadcrumb span {
+    float: left;
+    padding-left: 20px;
+    
+}
+ul#qbreadcrumb {
+    float: left;
+    list-style: none outside none;
+    margin: 0 0 0 0;
+    padding: 4px 20px 0 0;
+}
+ul#qbreadcrumb li {
+    float: left;
+    margin-top: -5px;
+    padding-left: 5px;
+}
+
+#contenido {
+    margin-left: 20px;margin-right: 20px;
+}
+
+#cuerpo {
+    background-color:#FFF;
+    text-align: left;
+    vertical-align: text-top;
+    min-height:400px;
+    clear: both;
+    float: left;
+    width: 100%
+}
+.FilterListPanel h2 {
+    float:left;
+    margin-top:5px;
+}
+*+html .FilterListPanel h2 {
+    margin-top: 0;
+}
+.FilterListPanel hr {
+    margin-bottom: 3px;
+    margin-top: 0;
+    clear:both;
+}
+*+html .FilterListPanel hr { margin-top: -10px; margin-bottom: -3px;}
+/***** footer ********/
+
+#footer {
+    height:20px;
+    background-color:#FFF;
+    width: 100%;
+    clear: both;
+    margin-bottom: 10px;
+}
+#footer div {
+    height:20px;
+}
+div#footer_left {
+    background-image:url(../images/base_inf_izq.jpg);
+    background-repeat:no-repeat;
+    background-position: left bottom;
+    width: 15px;
+    float: left;
+}
+div#footer_center {
+    float: left;
+}
+div#footer_right {
+    background-image:url(../images/base_inf_der.jpg);
+    background-repeat:no-repeat;
+    background-position: right bottom;
+    width: 15px;
+    float: right;
+}
+
+/*********** TABLAS ******************/
+
+
+.par {
+    background-color:#B0D0E7;
+    color:#666;
+}
+
+.impar {
+    background-color:#CCC;
+    color:#666;
+}
+.tablaHover {
+    background-color:#4F96C5;
+    color:#FFF;
+}
+
+.inline {
+    float:left;
+    width:30%;
+    display:block;
+    cursor:pointer;
+}
+.clearover {
+    clear:both;
+    height:30px;
+    cursor:pointer;
+    background-color: silver;
+    font-family: Arial,Helvetica,sans-serif;
+}
+.space_left {
+    margin-left: 5px;
+}
+.clear {
+    clear:both;
+    height:30px;
+    cursor:pointer;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+.tinyfont {
+    font-size: 9px;
+}
+
+.allwidth {
+    clear: both;
+}
+
+/* css para minidatagrid */
+
+.minidatagrid tr td .clear {
+    cursor: pointer;
+    display:table;
+    width:100%;
+}
+
+.minidatagrid tr td .clear:hover {
+    background-color: silver;
+}
+
+.remove {
+    font-size: 2em;
+    color: red;
+    text-decoration: none;
+}
+
+/*****************************************
+* Css estilos para los QFilterList
+*****************************************/
+/*
+.sidebar-left, .sidebar-right {
+    float:left;
+    width: 300px;
+}
+.sidebar-left, .sidebar-left2 {
+	display:inline;
+	right:21px;
+	float:left;
+	width:184px;
+	position:absolute;
+	background-color:#EEEEEE;
+	border:1px solid #999;
+	top:22px;
+	padding:2px;
+}
+*/
+.removebutton {
+    border: 1px solid gray;
+    background-color:#F0F0F0;
+    color: #000000;
+}
+.removebutton:hover {
+    background-color:#0F0F0F;
+    color: #FFFFFF;
+}
+.red {
+    background-color:red;
+}
+.domicilios-datagrid {
+    display: block;
+    clear: both;
+    width: 100%;
+}
+.floatRight .filtros {
+  margin-bottom:20px;
+  display:block;
+  border:0px solid red;
+  position: absolute;
+}
+.floatRight .filtros .filtro {
+  width: 150px;
+  margin: 3px;
+  display:inline;
+}
+.floatRight .filtros .filtro input {
+}
+.floatRight {
+    float:right;
+    width: 220px;
+}
+
+.floatRight .filtros .filtrobotones input {
+    padding: 0px;
+    width: 100%;
+}
+.floatRight .filtros .filtrobotones{
+    background-color:#E6F1F7;
+    border:1px solid #595E60;
+    margin-right:5px;
+    width:200px;
+}
+.floatRight .titulofiltros {
+    max-width: 200px;
+    text-align: center;
+}
+.floatRight .titulofiltros a {
+    color: red;
+}
+.aplicaButton {
+    width: 184px;
+    background-color: white !important;
+    color:  #0071BC !important;
+    text-transform: uppercase;
+    border: 1px solid  #999 !important;
+	text-align:center !important;
+	position:relative;
+	top:292px;
+}
+.aplicaButton:hover {
+    background-color: #E6F1F7 !important;
+}
+
+.filtrosActivos {
+    display:block;
+    clear:both;
+}
+.filtroBox {
+    font-size:10px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#666;
+    padding:5px;
+    border:1px solid #CCC;
+    background-color:#FFF;
+    float:left;
+    margin-right:3px;
+}
+/**/
+
+.filtroBox span input {
+    background-image:url(../images/cruz_sprite.png);
+    background-repeat:no-repeat;
+    background-position: left bottom;
+    width:10px;
+    font-size: 8px;
+    color: white;
+    height:12px;
+    margin-left:5px;
+    border:1px solid #CCC;
+    padding-left: 0;
+    margin-top: 3px;
+  vertical-align: bottom;
+}
+*+html .filtroBox span input {
+    
+}
+
+.filtroBox span input:hover {
+    background-position: -10px bottom;
+}
+
+.filtroBox div{
+    float:left;
+}
+
+.QFLandOrCondition {
+    float:left;
+    clear: left
+}
+.lstAndOrCondition label {
+    font-size: 7px;
+    font-size: 10px;
+    vertical-align: 25%;
+    white-space: nowrap;
+}
+.QFLFiltros{
+    float:left;
+}
+input[disabled="disabled"] {
+    color: gray;
+}
+
+input[type="text"], input[type="password"], textarea {
+    width: 20em;
+}
+
+textarea, .textarea {
+    max-height: 6em;
+    width: 35em;
+}
+.textarea {overflow:auto;}
+.QFLDatagrid{
+    width: 100%;
+    /*overflow: scroll;*/
+    min-height: 300px;
+    border-top:1px solid #666;
+    margin-top: 5px;
+    float: left;
+}
+#QFLControl {
+}
+#QFLSelector {
+    position: relative;
+    float: right;
+    text-align:left;
+    width:184px;
+    top: 0;
+}
+
+#QFLButtons span a {
+    color:#333;
+    font-size:10px;
+    text-decoration:none;
+    padding-left:10px;
+    padding-top: 3px;
+    float:left;
+    height:18px;
+    width:80px;
+    background-color:#EEEEEE;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCCCCC;
+    background-image: url("../images/arrow.png");
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+}
+
+#QFLButtons span a:hover {
+    background-color:#BEBEBE;
+    border:1px solid #999;
+    color:#FFFFFF;
+}
+#QFLPanels {
+    background-color: #EEEEEE;
+    float: left;
+    position: absolute;
+    top: 23px;
+    width: 184px;
+    right:0px;/* esto hace que el panel no se vaya a la derecha en IE7*/
+}
+
+.QFLpnlFilters{
+    border:1px solid #999;
+    -moz-box-shadow:0 4px 10px #8B8B8B;
+    max-height: 260px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.QFLFilterButton {
+  color: #333333;
+    font-family:  "Lucida Sans Unicode","Lucida Grande",sans-serif;
+    border-style: none;
+    padding-left: 10px;
+    background-color: #EEEEEE;
+    font-size: 12px;
+    text-align: left;
+    width: 100%;
+}
+*+html .QFLFilterButton {
+    width: 90%;
+}
+.QFLFilterButton:hover {
+    background-color: #CCCCCC;
+}
+.QFLpnlColumns {
+    border:1px solid #999;
+    -moz-box-shadow:0 4px 10px #8B8B8B;
+    width: 100%;
+    text-align: center;
+}
+.QFLpnlColumnsList {
+    max-height: 240px;
+    overflow-y: scroll;
+    text-align: left;
+}
+input.QFLbtnAplicar {
+    left: 50%;
+    background-position: 2px 50%;
+    padding-left: 18px;
+    background-image: url("../images/icons/accept.png");
+    background-repeat: no-repeat;
+    background-color: #E0E0E0;
+    margin: 2px;
+}
+.QFLlstColumns {
+    overflow-y: scroll;
+    text-align: left;
+}
+/*
+.filtrar div {
+    float:left;
+}
+.filtrobotones{
+    float:left;
+    width:178px;
+    position:absolute;
+    background-color:#EEEEEE;
+    border:1px solid #999;
+    top:22px;
+    padding:2px;
+}*/
+input.button.excelbuttonM {
+    font-size: 9px;
+}
+.qpbar_name {
+    width:10em;
+}
+
+input.CodArea{
+    width:4em;
+}
+input.telefono{
+    width:10em;
+}
+
+
+/*****************************************
+* Css estilos para QInfoMessages
+*****************************************/
+
+#mensajes {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:#FFF;
+    text-align: right;
+    vertical-align: text-top;
+}
+
+
+.qmsg_table {
+    padding-top: 20px;
+    width: 100%;
+}
+
+.alternativeRow {
+    background-color: #eee !important;
+}
+
+.alternativeRow:hover{
+    background-color: #ccc !important;
+}
+
+.Row:hover{
+    background-color: #ccc !important;
+}
+/*
+table.datagrid tr:hover{
+    background-color: #ccc !important;
+}
+*/
+.btnCreateNew {
+    float:right;
+    margin-bottom:5px;
+}
+*+html .btnCreateNew {
+    margin-bottom: 0;
+}
+
+.itempanel {
+    padding: 4px;
+
+}
+
+.QLoadingPanel {
+    background-image:url(../images/transparent.png);
+}
+
+body form div.dialogbox { border: 4px solid #333; background-color: #fff; padding: 20px; min-width: 500px; max-width: 700px; max-height: 100%; overflow: auto;}
+
+div.dialogbox div.renderWithName { font-size: 90%; padding: 2px 10px 2px; border:white solid medium; background-color: #F8F8F8; clear: both }
+div.dialogbox div.renderWithName div.left { font-size: 90%; float: left; width: 189px; margin-right: 25px; }
+div.dialogbox div.renderWithName div.required { font-size: 90%; font-weight: bold; }
+div.dialogbox div.renderWithName div.left span.instructions { font: 90% 'Verdana', 'Arial', 'Helvetica'; color: #999; font-style: italic; text-transform: none;}
+
+div.dialogbox div.renderWithName div.right { font-size: 90%; }
+div.dialogbox div.renderWithName div.right span.error { font-size: 90%; margin-left: 15px; font: 10px 'Verdana', 'Arial', 'Helvetica'; color: #600; overflow: hidden;}
+div.dialogbox div.renderWithName table {font-size: 12px;}
+div.dialogbox div.renderWithNam input[type="checkbox"]  {width: 11px; height: 11px; margin-right:5px;}
+
+body .ac_results {
+    z-index: 10000;
+}
+
+.align-top {
+    vertical-align: top;
+}
+.title_cue {
+    font-weight: bold;
+    clear: both;
+    display: block;
+}

@@ -1,0 +1,8 @@
+2014-10-21 18:07:29 ERROR:  column t0.id_personal does not exist
+LINE 13:     "t0"."id_personal" AS "a11"
+             ^
+2014-10-21 18:07:38 ERROR:  column t0.id_personal does not exist
+LINE 13:     "t0"."id_personal" AS "a11"
+             ^
+2014-10-21 18:18:54 Undefined GET property or variable in 'Usuario' class: IdPersonal
+2014-10-21 18:21:53 Undefined GET property or variable in 'Usuario' class: IdPersonal

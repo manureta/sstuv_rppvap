@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Configuracion>
+   <Process>2</Process>
+    <Path/>
+    <DbConn>
+        <Adapter>PostgreSqlPdo</Adapter>
+        <Server>localhost</Server>
+        <Port>5432</Port>
+        <Database>sstuv_app</Database>
+        <Username>sstuv_app</Username>
+        <Password>fede</Password>
+        <Profiling>false</Profiling>
+        <Inicializada>1</Inicializada>
+    </DbConn>
+   <DbConnProc>
+        <Adapter>PostgreSqlPdo</Adapter>
+        <Server>localhost</Server>
+        <Port>5432</Port>
+        <Database>cenpeproc</Database>
+        <Username>redfie</Username>
+        <Password>redfie11</Password>
+        <Profiling>false</Profiling>
+        <Inicializada>1</Inicializada>
+    </DbConnProc>
+   <Provincia>
+        <Codigo>99</Codigo>
+        <Nombre>Cualquiera</Nombre>
+    </Provincia>
+    <ServerInstance/>
+    <Email>
+        <Enabled>true</Enabled>
+        <Smtp>cenpemail.cenpe.gob.ar</Smtp>
+        <From><![CDATA["DINIECE CENPE" <soporte@cenpe.gob.ar>]]></From>
+        <To/>
+        <UserName>soporte@cenpe.gob.ar</UserName>
+        <UserPassword>soporte1234</UserPassword>
+        <Port>25</Port>
+        <AuthPlain>false</AuthPlain>
+        <AuthLogin>true</AuthLogin>
+    </Email>
+    <WebServicePadron>
+        <Uri>diniece.me.gov.ar/padronnacional/ws.php</Uri>
+        <!--Uri>localhost/padron/WebService.php</Uri-->
+    </WebServicePadron>
+    <AuthMe>
+        <AuthmeUri/>
+        <UseAuthMe>false</UseAuthMe>
+        <AdminEmail/>
+    </AuthMe>
+<FechaUltimaArticulacion>2014-09-23 21:04:33</FechaUltimaArticulacion>
+</Configuracion>

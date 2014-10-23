@@ -1,0 +1,387 @@
+.icon-loading{
+    background-image: url('../images/loading.gif') !important;
+    background-repeat: no-repeat !important;
+    margin: none !important;
+    padding: none !important;
+    border: none !important;
+    height: 15px !important;
+    width: 15px !important;
+}
+.btn_add {
+    margin: none !important;
+    padding: none !important;
+    border: none !important;
+    height: 15px !important;
+    width: 15px !important;
+    background-color: transparent !important;
+    background-position: 0 -97px !important;
+    background-repeat: no-repeat !important;
+    background-image: url('../images/glyphicons-halflings.png') !important;
+}
+.btn_add:hover {
+    background-color: transparent !important;
+}
+.btn_add:focus {
+    background-color: transparent !important;
+}
+.has-error.form-control,
+.has-error .form-control,
+.has-error input.typeahead ,
+.has-error input.date-picker ,
+.has-error .listbox {
+    border-color: #B94A48;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    background-color: #FFF7F7;
+}
+.has-warning.form-control,
+.has-warning .form-control,
+.has-warning input.typeahead ,
+.has-warning .listbox {
+    border-color: #C09853;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    background-color: #FFFDEE;
+}
+/*
+.danger-textbox{
+    border-color: red !important; 
+    border-width: 2px !important;
+}*/
+.top-line {
+	border-top: 1px solid #CCCCCC;
+}
+body {
+    background-color: white;
+    clear: both;
+}
+#menu-usuario {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+div#menu-usuario >div>div>span>button {
+    height: 39px;
+    line-height: 17px;
+    margin: 4px 4px 4px 0;
+}
+#help-button {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+#help-button button {
+    border:0;
+    padding: 7px;
+}
+#cargando { 
+    padding-top: 230px;
+    text-align: center;
+    vertical-align: middle;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2147483647;
+    cursor: wait;
+    background-color: transparent;
+    background-image: url('../images/transparent.png');
+}
+
+.dropdown-navbar {
+    width: 300px;
+}
+.dropdown-navbar .msg-body {
+    max-width: 1000px;
+    width: auto;
+}
+.login-layout {
+    background-color: white;
+}
+.login-layout .widget-box {
+    margin-top: 20px;
+    padding: 1px;
+}
+.login-container {
+    height: 320px;
+    width: 450px;
+}
+.login-container div.toolbar a {
+    padding: 10px;
+    color: whitesmoke;
+}
+.bootbox.modal{
+    z-index: 50000000;
+    overflow: hidden;
+}
+.front {
+    z-index: 10000;
+}
+.modal-dialog {
+    margin-top: 50px;
+    width: 95%;
+}
+.fondo_row1 {
+    background-color: #fafafa;
+}
+.fondo_row2 {
+    background-color: #e1e5e8;
+}
+
+.tabbable {
+/*    float: left;*/
+    width: 100%;
+}
+.tabbable .tab-content{
+    min-height: 300px;
+    padding-bottom: 50px;
+}
+.tabbable ul li,
+.qfiltereddatagrid-sortable {
+    cursor: pointer;
+}
+.botones-form, 
+.botones-modal {
+    float: right;
+}
+.botones-form span, 
+.botones-modal span {
+    float: left;
+    padding: 5px;
+}
+
+.table thead > tr > th, 
+.table tbody > tr > th, 
+.table tfoot > tr > th, 
+.table thead > tr > td, 
+.table tbody > tr > td, 
+.table tfoot > tr > td {
+    padding: 4px;
+}
+.table tbody > tr > td {
+    padding: 2px;
+    height: 15px;
+    line-height: 15px;
+}
+
+/*
+div.form-horizontal div div {
+    padding: 3px;
+}
+
+.page-content label {
+    text-align: right;
+    padding: 3px;
+}
+
+.page-content .textbox,
+.page-content .listbox {
+    padding-bottom: 5px;
+}*/
+div.row.paginator {
+    margin-bottom: 10px;
+    height: 45px;
+}
+.paginator span {
+    padding: 3px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.required label {
+    font-weight: bold !important;
+}
+.gritter-item {
+    font-family: 'open sans';
+    font-size: small;
+}
+ul.typeahead.dropdown-menu{
+    width:400px; 
+    max-height: 140px !important; 
+    overflow-y: auto !important;
+    z-index: 2147483646;
+}
+.renderWithName {
+    clear: both;
+    min-height: 40px;
+    margin-bottom: 5px;
+}
+/*
+.renderWithName label{
+    margin-bottom: 8px;
+    clear: both;
+}
+*/
+
+.renderWithName .left {
+    float: left;
+    min-height: 40px;
+    width: 38%;
+    text-align: right;
+    padding-right: 5px;
+}
+.renderWithName .left label {
+    vertical-align: middle;
+    line-height: 1.3;
+    min-height: 40px;
+    margin-bottom: 8px;
+}
+.renderWithName .right {
+    width: 62%;
+    float: left;
+}
+.renderWithName .right label {
+    width: 80%;
+}
+
+.renderWithName .right span,
+.renderWithName .right input{
+    float: left;
+    text-align: left;
+    width: 100%;
+}
+.btn-margin {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-create-clear {
+    clear:both;
+    display: block;
+}
+.btn-create-indexpanel {
+    float: left;
+}
+.btn-volver-pivotepadre {
+    margin-top: 10px;
+    float: left;
+    clear: both;
+}
+.qlistpanel {
+    margin-left: 8%;
+    width: 83%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.qlistpanel-btn {
+    width: 70px;
+}
+.qlistpanel-btn span button {
+    border-width: 1px;
+    margin-left: 3px; 
+}
+span.nombre-usuario {
+    color: #2679B5;
+    float: left;
+    font-size: 16px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 0;
+}
+span.nombre-usuario p {
+    color: black;
+    margin: 0;
+}
+hr.footrow {
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+.lblreferencia {
+    display: block;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+tr.qfiltereddatagrid-filterrow > th {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 1px !important;
+}
+tr.qfiltereddatagrid-filterrow > th>span > span,
+tr.qfiltereddatagrid-filterrow > th>span > span > label {
+    width: 100%;
+    margin: 0 !important;
+    font-size: 12px;
+}
+tr.qfiltereddatagrid-filterrow>th>span>span>label>span>input,
+tr.qfiltereddatagrid-filterrow>th>span>span>select {
+    margin: 0 !important;
+    border: 0;
+    cursor: pointer;
+    background-color: transparent;
+    height: 22px;
+    display: block;
+    padding: 1px !important;
+}
+tr.qfiltereddatagrid-filterrow>th>span>span>select {
+    border: 0 !important;  /*Removes border*/
+    -webkit-appearance: none;  /*Removes default chrome and safari style*/
+    -moz-appearance: none;  /*Removes default style Firefox*/
+    appearance: none;
+    text-indent: 0.01px; /* Removes default arrow from firefox*/
+    text-overflow: "";  /*Removes default arrow from firefox*/
+    width: 100%;
+}
+tr.qfiltereddatagrid-filterrow>th>span>i.icon-search {
+    top: -2px;
+    padding: 0;
+}
+td.datagrid-acciones > span {
+    padding-right: 3px;
+}
+.qceditpanel {
+    /*height: 1000px;*/
+}
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+.consistencia-error {
+    border: 1px solid red;
+    background-color: rgb(255, 229, 229);
+    color: red;
+    padding: 2px;
+    margin: 5px 0px;
+    display: table;
+}
+
+/** Preguntas y bloques de etapa 2 **/
+
+.bloque {
+
+}
+
+.pregunta {
+    display: block; 
+    width : 100%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.pregunta label {
+    position: relative;
+    width:30%;
+}
+.pregunta input {
+    position: relative;
+}
+.pregunta input[type="text"] {
+    width:20%;
+}
+
+.designacion {
+    margin: 2px;
+    border: 1px solid green;
+}
+
+#accordion .btn {
+    float:right;
+}
+.ui-autocomplete.ui-front {
+    max-height: 220px;
+    overflow: scroll;
+    z-index: 60000000;
+}
