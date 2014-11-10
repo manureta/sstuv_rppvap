@@ -12,7 +12,6 @@ class EstadoProcesoModalPanelGen extends EditPanelBase {
     public static $strControlsArray = array(
         'lblId' => false,
         'txtDescripcion' => true,
-        'lstRegularizacionAs' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objEstadoProceso = null, $strControlId = null) {
@@ -47,8 +46,6 @@ class EstadoProcesoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lblId'] = $this->mctEstadoProceso->lblId_Create();
         if (in_array('txtDescripcion',$strControlsArray)) 
             $this->objControlsArray['txtDescripcion'] = $this->mctEstadoProceso->txtDescripcion_Create();
-        if (in_array('lstRegularizacionAs',$strControlsArray))
-            $this->objControlsArray['lstRegularizacionAs'] = $this->mctEstadoProceso->lstRegularizacionAs_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

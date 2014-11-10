@@ -16,11 +16,10 @@
  * @package Relevamiento Anual
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $Id the value for intId (Read-Only PK)
-	 * @property integer $CodPartido the value for intCodPartido 
+	 * @property integer $IdPartido the value for intIdPartido 
 	 * @property integer $Num the value for intNum 
 	 * @property string $Anio the value for strAnio 
-	 * @property-read Regularizacion $RegularizacionAs the value for the private _objRegularizacionAs (Read-Only) if set due to an expansion on the regularizacion._aprobacion_geodesia reverse relationship
-	 * @property-read Regularizacion[] $RegularizacionAsArray the value for the private _objRegularizacionAsArray (Read-Only) if set due to an ExpandAsArray on the regularizacion._aprobacion_geodesia reverse relationship
+	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class AprobacionGeodesiaGen extends QBaseClass {
@@ -49,11 +48,11 @@ class AprobacionGeodesiaGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column aprobacion_geodesia.cod_partido
-     * @var integer intCodPartido
+     * Protected member variable that maps to the database column aprobacion_geodesia.id_partido
+     * @var integer intIdPartido
      */
-    protected $intCodPartido;
-    const CodPartidoDefault = null;
+    protected $intIdPartido;
+    const IdPartidoDefault = null;
 
 
     /**
@@ -72,22 +71,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
     const AnioMaxLength = 4;
     const AnioDefault = null;
 
-
-    /**
-     * Private member variable that stores a reference to a single RegularizacionAs object
-     * (of type Regularizacion), if this AprobacionGeodesia object was restored with
-     * an expansion on the regularizacion association table.
-     * @var Regularizacion _objRegularizacionAs;
-     */
-    protected $objRegularizacionAs;
-
-    /**
-     * Private member variable that stores a reference to an array of RegularizacionAs objects
-     * (of type Regularizacion[]), if this AprobacionGeodesia object was restored with
-     * an ExpandAsArray on the regularizacion association table.
-     * @var Regularizacion[] _objRegularizacionAsArray;
-     */
-    protected $objRegularizacionAsArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -109,6 +92,16 @@ class AprobacionGeodesiaGen extends QBaseClass {
 ///////////////////////////////
 		// PROTECTED MEMBER OBJECTS
 		///////////////////////////////
+
+		/**
+		 * Protected member variable that contains the object pointed by the reference
+		 * in the database column aprobacion_geodesia.id_partido.
+		 *
+		 * NOTE: Always use the IdPartidoObject property getter to correctly retrieve this Partido object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var Partido objIdPartidoObject
+		 */
+		protected $objIdPartidoObject;
 
 
 
@@ -428,7 +421,7 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			}
 
 			$objBuilder->AddSelectItem($strTableName, 'id', $strAliasPrefix . 'id');
-			$objBuilder->AddSelectItem($strTableName, 'cod_partido', $strAliasPrefix . 'cod_partido');
+			$objBuilder->AddSelectItem($strTableName, 'id_partido', $strAliasPrefix . 'id_partido');
 			$objBuilder->AddSelectItem($strTableName, 'num', $strAliasPrefix . 'num');
 			$objBuilder->AddSelectItem($strTableName, 'anio', $strAliasPrefix . 'anio');
 		}
@@ -455,44 +448,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			if (!$objDbRow) {
 				return null;
 			}
-			// See if we're doing an array expansion on the previous item
-			$strAlias = $strAliasPrefix . 'id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (($strExpandAsArrayNodes) && is_array($arrPreviousItems) && count($arrPreviousItems)) {
-				foreach ($arrPreviousItems as $objPreviousItem) {            
-					if ($objPreviousItem->intId == $objDbRow->GetColumn($strAliasName, 'Integer')) {        
-						// We are.  Now, prepare to check for ExpandAsArray clauses
-						$blnExpandedViaArray = false;
-						if (!$strAliasPrefix)
-							$strAliasPrefix = 'aprobacion_geodesia__';
-
-
-						// Expanding reverse references: RegularizacionAs
-						$strAlias = $strAliasPrefix . 'regularizacionas__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objRegularizacionAsArray)) {
-								$objPreviousChildItems = $objPreviousItem->objRegularizacionAsArray;
-								$objChildItem = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objRegularizacionAsArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objRegularizacionAsArray[] = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Either return false to signal array expansion, or check-to-reset the Alias prefix and move on
-						if ($blnExpandedViaArray) {
-							return false;
-						} else if ($strAliasPrefix == 'aprobacion_geodesia__') {
-							$strAliasPrefix = null;
-						}
-					}
-				}
-			}
 
 			// Create a new instance of the AprobacionGeodesia object
 			$objToReturn = new AprobacionGeodesia();
@@ -500,8 +455,8 @@ class AprobacionGeodesiaGen extends QBaseClass {
 
 			$strAliasName = array_key_exists($strAliasPrefix . 'id', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id'] : $strAliasPrefix . 'id';
 			$objToReturn->intId = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . 'cod_partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'cod_partido'] : $strAliasPrefix . 'cod_partido';
-			$objToReturn->intCodPartido = $objDbRow->GetColumn($strAliasName, 'Integer');
+			$strAliasName = array_key_exists($strAliasPrefix . 'id_partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_partido'] : $strAliasPrefix . 'id_partido';
+			$objToReturn->intIdPartido = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'num', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'num'] : $strAliasPrefix . 'num';
 			$objToReturn->intNum = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'anio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'anio'] : $strAliasPrefix . 'anio';
@@ -510,9 +465,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objRegularizacionAsArray, $objToReturn->objRegularizacionAsArray) != null) {
 						continue;
 					}
 
@@ -533,18 +485,14 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			if (!$strAliasPrefix)
 				$strAliasPrefix = 'aprobacion_geodesia__';
 
-
-
-
-			// Check for RegularizacionAs Virtual Binding
-			$strAlias = $strAliasPrefix . 'regularizacionas__id';
+			// Check for IdPartidoObject Early Binding
+			$strAlias = $strAliasPrefix . 'id_partido__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objRegularizacionAsArray[] = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objRegularizacionAs = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
+			if (!is_null($objDbRow->GetColumn($strAliasName)))
+				$objToReturn->objIdPartidoObject = Partido::InstantiateDbRow($objDbRow, $strAliasPrefix . 'id_partido__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+
+
+
 
 			return $objToReturn;
 		}
@@ -603,6 +551,38 @@ class AprobacionGeodesiaGen extends QBaseClass {
 				$objOptionalClauses
 			);
 		}
+			
+		/**
+		 * Load an array of AprobacionGeodesia objects,
+		 * by IdPartido Index(es)
+		 * @param integer $intIdPartido
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return AprobacionGeodesia[]
+		*/
+		public static function LoadArrayByIdPartido($intIdPartido, $objOptionalClauses = null) {
+			// Call AprobacionGeodesia::QueryArray to perform the LoadArrayByIdPartido query
+			try {
+				return AprobacionGeodesia::QueryArray(
+					QQ::Equal(QQN::AprobacionGeodesia()->IdPartido, $intIdPartido),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count AprobacionGeodesias
+		 * by IdPartido Index(es)
+		 * @param integer $intIdPartido
+		 * @return int
+		*/
+		public static function CountByIdPartido($intIdPartido) {
+			// Call AprobacionGeodesia::QueryCount to perform the CountByIdPartido query
+			return AprobacionGeodesia::QueryCount(
+				QQ::Equal(QQN::AprobacionGeodesia()->IdPartido, $intIdPartido)
+			);
+		}
 
 
 
@@ -632,12 +612,26 @@ class AprobacionGeodesiaGen extends QBaseClass {
             //Ver si Los Padres estan Guardados
             ///////////////////////////////////
             //Antes de guardar me fijo que los Padres tengan ID.
+            // ver si objIdPartidoObject esta Guardado
+            if(is_null($this->intIdPartido)){
+                //Si el objeto esta seteado lo grabo sino no hago NADA.
+                if(!is_null($this->IdPartidoObject))
+                try{
+                    if(!is_null($this->IdPartidoObject->IdPartido))
+                        $this->intIdPartido = $this->IdPartidoObject->IdPartido;
+                    else
+                        $this->intIdPartido = $this->IdPartidoObject->Save();
+                }catch(Exception $objExc){
+                    	$objExc->IncrementOffset();
+			throw $objExc;
+                }
+            }
 
                     if ($this->intId && ($this->intId > QDatabaseNumberFieldMax::Integer || $this->intId < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intId', QDatabaseFieldType::Integer);
                     }
-                    if ($this->intCodPartido && ($this->intCodPartido > QDatabaseNumberFieldMax::Integer || $this->intCodPartido < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intCodPartido', QDatabaseFieldType::Integer);
+                    if ($this->intIdPartido && ($this->intIdPartido > QDatabaseNumberFieldMax::Integer || $this->intIdPartido < QDatabaseNumberFieldMin::Integer)) {
+                        throw new NumberOutOfRangeException('intIdPartido', QDatabaseFieldType::Integer);
                     }
                     if ($this->intNum && ($this->intNum > QDatabaseNumberFieldMax::Integer || $this->intNum < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intNum', QDatabaseFieldType::Integer);
@@ -648,11 +642,11 @@ class AprobacionGeodesiaGen extends QBaseClass {
                     // Perform an INSERT query
                     $objDatabase->NonQuery('
                         INSERT INTO "aprobacion_geodesia" (
-                            "cod_partido",
+                            "id_partido",
                             "num",
                             "anio"
                         ) VALUES (
-                            ' . $objDatabase->SqlVariable($this->intCodPartido) . ',
+                            ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
                             ' . $objDatabase->SqlVariable($this->intNum) . ',
                             ' . $objDatabase->SqlVariable($this->strAnio) . '
                         )
@@ -670,7 +664,7 @@ class AprobacionGeodesiaGen extends QBaseClass {
                         UPDATE
                             "aprobacion_geodesia"
                         SET
-                            "cod_partido" = ' . $objDatabase->SqlVariable($this->intCodPartido) . ',
+                            "id_partido" = ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
                             "num" = ' . $objDatabase->SqlVariable($this->intNum) . ',
                             "anio" = ' . $objDatabase->SqlVariable($this->strAnio) . '
                         WHERE
@@ -756,7 +750,7 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			$objReloaded = AprobacionGeodesia::Load($this->intId, null, true);
 
 			// Update $this's local variables to match
-			$this->intCodPartido = $objReloaded->intCodPartido;
+			$this->IdPartido = $objReloaded->IdPartido;
 			$this->intNum = $objReloaded->intNum;
 			$this->strAnio = $objReloaded->strAnio;
 		}
@@ -787,12 +781,12 @@ class AprobacionGeodesiaGen extends QBaseClass {
                  */
                 return $this->intId;
 
-            case 'CodPartido':
+            case 'IdPartido':
                 /**
-                 * Gets the value for intCodPartido 
+                 * Gets the value for intIdPartido 
                  * @return integer
                  */
-                return $this->intCodPartido;
+                return $this->intIdPartido;
 
             case 'Num':
                 /**
@@ -812,29 +806,25 @@ class AprobacionGeodesiaGen extends QBaseClass {
             ///////////////////
             // Member Objects
             ///////////////////
+            case 'IdPartidoObject':
+                /**
+                 * Gets the value for the Partido object referenced by intIdPartido 
+                 * @return Partido
+                 */
+                try {
+                    if ((!$this->objIdPartidoObject) && (!is_null($this->intIdPartido)))
+                        $this->objIdPartidoObject = Partido::Load($this->intIdPartido);
+                    return $this->objIdPartidoObject;
+                } catch (QCallerException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
+
 
             ////////////////////////////
             // Virtual Object References (Many to Many and Reverse References)
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
-
-            case 'RegularizacionAs':
-                /**
-                 * Gets the value for the private _objRegularizacionAs (Read-Only)
-                 * if set due to an expansion on the regularizacion._aprobacion_geodesia reverse relationship
-                 * @return Regularizacion
-                 */
-                return $this->objRegularizacionAs;
-
-            case 'RegularizacionAsArray':
-                /**
-                 * Gets the value for the private _objRegularizacionAsArray (Read-Only)
-                 * if set due to an ExpandAsArray on the regularizacion._aprobacion_geodesia reverse relationship
-                 * @return Regularizacion[]
-                 */
-                if(is_null($this->objRegularizacionAsArray))
-                    $this->objRegularizacionAsArray = $this->GetRegularizacionAsArray();
-                return (array) $this->objRegularizacionAsArray;
 
 
             case '__Restored':
@@ -863,16 +853,17 @@ class AprobacionGeodesiaGen extends QBaseClass {
 				///////////////////
 				// Member Variables
 				///////////////////
-				case 'CodPartido':
+				case 'IdPartido':
 					/**
-					 * Sets the value for intCodPartido 
+					 * Sets the value for intIdPartido 
 					 * @param integer $mixValue
 					 * @return integer
 					 */
 					try {
+						$this->objIdPartidoObject = null;
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intCodPartido = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intCodPartido = $mixValue);
+                                                //return ($this->intIdPartido = QType::Cast($mixValue, QType::Integer));
+                                                return ($this->intIdPartido = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -912,6 +903,39 @@ class AprobacionGeodesiaGen extends QBaseClass {
 				///////////////////
 				// Member Objects
 				///////////////////
+				case 'IdPartidoObject':
+					/**
+					 * Sets the value for the Partido object referenced by intIdPartido 
+					 * @param Partido $mixValue
+					 * @return Partido
+					 */
+					if (is_null($mixValue)) {
+						$this->intIdPartido = null;
+						$this->objIdPartidoObject = null;
+						return null;
+					} else {
+						// Make sure $mixValue actually is a Partido object
+						//try {
+						//	$mixValue = QType::Cast($mixValue, 'Partido');
+						//} catch (QInvalidCastException $objExc) {
+						//	$objExc->IncrementOffset();
+						//	throw $objExc;
+						//}
+
+						// DEPRECATED
+                                                // Make sure $mixValue is a SAVED Partido object
+						//if (is_null($mixValue->Id))
+						//	throw new QCallerException('Unable to set an unsaved IdPartidoObject for this AprobacionGeodesia');
+
+						// Update Local Member Variables
+						$this->objIdPartidoObject = $mixValue;
+						$this->intIdPartido = $mixValue->Id;
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
 				default:
 					try {
 						return parent::__set($strName, $mixValue);
@@ -941,201 +965,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
-			
-		
-		// Related Objects' Methods for RegularizacionAs
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _RegularizacionAsArray
-                /**
-                * Add a Item to the _RegularizacionAsArray
-                * @param Regularizacion $objItem
-                * @return Regularizacion[]
-                */
-                public function AddRegularizacionAs(Regularizacion $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->AprobacionGeodesiaObject = $this;
-                    $this->objRegularizacionAsArray = $this->RegularizacionAsArray;
-                    $this->objRegularizacionAsArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateRegularizacionAs($objItem);
-
-                    return $this->RegularizacionAsArray;
-                }
-
-                /**
-                * Remove a Item to the _RegularizacionAsArray
-                * @param Regularizacion $objItem
-                * @return Regularizacion[]
-                */
-                public function RemoveRegularizacionAs(Regularizacion $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objRegularizacionAsArray;
-                    $this->objRegularizacionAsArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objRegularizacionAsArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->AprobacionGeodesiaObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedRegularizacionAs($objItem);
-                        }
-
-                    return $this->objRegularizacionAsArray;
-                }
-
-		/**
-		 * Gets all associated RegularizacionesAs as an array of Regularizacion objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Regularizacion[]
-		*/ 
-		public function GetRegularizacionAsArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Regularizacion::LoadArrayByAprobacionGeodesia($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated RegularizacionesAs
-		 * @return int
-		*/ 
-		public function CountRegularizacionesAs() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Regularizacion::CountByAprobacionGeodesia($this->intId);
-		}
-
-		/**
-		 * Associates a RegularizacionAs
-		 * @param Regularizacion $objRegularizacion
-		 * @return void
-		*/ 
-		public function AssociateRegularizacionAs(Regularizacion $objRegularizacion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateRegularizacionAs on this unsaved AprobacionGeodesia.');
-			if ((is_null($objRegularizacion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateRegularizacionAs on this AprobacionGeodesia with an unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"regularizacion"
-				SET
-					"_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegularizacion->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a RegularizacionAs
-		 * @param Regularizacion $objRegularizacion
-		 * @return void
-		*/ 
-		public function UnassociateRegularizacionAs(Regularizacion $objRegularizacion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved AprobacionGeodesia.');
-			if ((is_null($objRegularizacion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this AprobacionGeodesia with an unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"regularizacion"
-				SET
-					"_aprobacion_geodesia" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegularizacion->Id) . ' AND
-					"_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all RegularizacionesAs
-		 * @return void
-		*/ 
-		public function UnassociateAllRegularizacionesAs() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved AprobacionGeodesia.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"regularizacion"
-				SET
-					"_aprobacion_geodesia" = null
-				WHERE
-					"_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated RegularizacionAs
-		 * @param Regularizacion $objRegularizacion
-		 * @return void
-		*/ 
-		public function DeleteAssociatedRegularizacionAs(Regularizacion $objRegularizacion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved AprobacionGeodesia.');
-			if ((is_null($objRegularizacion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this AprobacionGeodesia with an unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"regularizacion"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegularizacion->Id) . ' AND
-					"_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated RegularizacionesAs
-		 * @return void
-		*/ 
-		public function DeleteAllRegularizacionesAs() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved AprobacionGeodesia.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"regularizacion"
-				WHERE
-					"_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
 
 
 
@@ -1147,7 +976,7 @@ class AprobacionGeodesiaGen extends QBaseClass {
 		public static function GetSoapComplexTypeXml() {
 			$strToReturn = '<complexType name="AprobacionGeodesia"><sequence>';
 			$strToReturn .= '<element name="Id" type="xsd:int"/>';
-			$strToReturn .= '<element name="CodPartido" type="xsd:int"/>';
+			$strToReturn .= '<element name="IdPartidoObject" type="xsd1:Partido"/>';
 			$strToReturn .= '<element name="Num" type="xsd:int"/>';
 			$strToReturn .= '<element name="Anio" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
@@ -1158,6 +987,7 @@ class AprobacionGeodesiaGen extends QBaseClass {
 		public static function AlterSoapComplexTypeArray(&$strComplexTypeArray) {
 			if (!array_key_exists('AprobacionGeodesia', $strComplexTypeArray)) {
 				$strComplexTypeArray['AprobacionGeodesia'] = AprobacionGeodesia::GetSoapComplexTypeXml();
+				$strComplexTypeArray = Partido::AlterSoapComplexTypeArray($strComplexTypeArray);
 			}
             return $strComplexTypeArray;
 		}
@@ -1176,9 +1006,9 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Id')) {
 				$objToReturn->intId = $objSoapObject->Id;
             }
-			if (property_exists($objSoapObject, 'CodPartido')) {
-				$objToReturn->intCodPartido = $objSoapObject->CodPartido;
-            }
+			if ((property_exists($objSoapObject, 'IdPartidoObject')) &&
+				($objSoapObject->IdPartidoObject))
+				$objToReturn->IdPartidoObject = Partido::GetObjectFromSoapObject($objSoapObject->IdPartidoObject);
 			if (property_exists($objSoapObject, 'Num')) {
 				$objToReturn->intNum = $objSoapObject->Num;
             }
@@ -1203,6 +1033,10 @@ class AprobacionGeodesiaGen extends QBaseClass {
 		}
 
 		public static function GetSoapObjectFromObject($objObject, $blnBindRelatedObjects) {
+			if ($objObject->objIdPartidoObject)
+				$objObject->objIdPartidoObject = Partido::GetSoapObjectFromObject($objObject->objIdPartidoObject, false);
+			else if (!$blnBindRelatedObjects)
+				$objObject->intIdPartido = null;
 			return $objObject;
 		}
 

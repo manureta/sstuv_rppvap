@@ -11,9 +11,10 @@ class FolioModalPanelGen extends EditPanelBase {
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
+        'txtCodFolio' => true,
         'lstIdPartidoObject' => true,
         'lstIdLocalidadObject' => true,
-        'txtIdMatricula' => true,
+        'txtMatricula' => true,
         'calFecha' => true,
         'txtEncargado' => true,
         'txtNombreBarrioOficial' => true,
@@ -26,12 +27,10 @@ class FolioModalPanelGen extends EditPanelBase {
         'txtObservacionCasoDudoso' => true,
         'txtJudicializado' => true,
         'txtDireccion' => true,
-        'txtMapeoPreliminar' => true,
-        'txtResolucionInscripcionProvisoria' => true,
-        'txtResolucionInscripcionDefinitiva' => true,
         'txtNumExpedientes' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
+        'lstUsoInterno' => true,
         'lstNomenclaturaAsId' => false,
     );
     
@@ -65,12 +64,14 @@ class FolioModalPanelGen extends EditPanelBase {
         // Call MetaControl's methods to create qcontrols based on Folio's data fields
         if (in_array('lblId',$strControlsArray)) 
             $this->objControlsArray['lblId'] = $this->mctFolio->lblId_Create();
+        if (in_array('txtCodFolio',$strControlsArray)) 
+            $this->objControlsArray['txtCodFolio'] = $this->mctFolio->txtCodFolio_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctFolio->lstIdPartidoObject_Create();
         if (in_array('lstIdLocalidadObject',$strControlsArray)) 
             $this->objControlsArray['lstIdLocalidadObject'] = $this->mctFolio->lstIdLocalidadObject_Create();
-        if (in_array('txtIdMatricula',$strControlsArray)) 
-            $this->objControlsArray['txtIdMatricula'] = $this->mctFolio->txtIdMatricula_Create();
+        if (in_array('txtMatricula',$strControlsArray)) 
+            $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
             $this->objControlsArray['calFecha'] = $this->mctFolio->calFecha_Create();
         if (in_array('txtEncargado',$strControlsArray)) 
@@ -95,18 +96,14 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
-        if (in_array('txtMapeoPreliminar',$strControlsArray)) 
-            $this->objControlsArray['txtMapeoPreliminar'] = $this->mctFolio->txtMapeoPreliminar_Create();
-        if (in_array('txtResolucionInscripcionProvisoria',$strControlsArray)) 
-            $this->objControlsArray['txtResolucionInscripcionProvisoria'] = $this->mctFolio->txtResolucionInscripcionProvisoria_Create();
-        if (in_array('txtResolucionInscripcionDefinitiva',$strControlsArray)) 
-            $this->objControlsArray['txtResolucionInscripcionDefinitiva'] = $this->mctFolio->txtResolucionInscripcionDefinitiva_Create();
         if (in_array('txtNumExpedientes',$strControlsArray)) 
             $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 
             $this->objControlsArray['lstRegularizacionAsId'] = $this->mctFolio->lstRegularizacionAsId_Create();
+        if (in_array('lstUsoInterno',$strControlsArray)) 
+            $this->objControlsArray['lstUsoInterno'] = $this->mctFolio->lstUsoInterno_Create();
         if (in_array('lstNomenclaturaAsId',$strControlsArray))
             $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
 

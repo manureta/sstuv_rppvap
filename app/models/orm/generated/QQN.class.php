@@ -127,6 +127,12 @@
 			return new QQNodeTransporte('transporte', null, null);
 		}
 		/**
+		 * @return QQNodeUsoInterno
+		 */
+		static public function UsoInterno() {
+			return new QQNodeUsoInterno('uso_interno', null, null);
+		}
+		/**
 		 * @return QQNodeUsuario
 		 */
 		static public function Usuario() {

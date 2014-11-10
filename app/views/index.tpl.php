@@ -136,6 +136,33 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
 
         <!-- ace scripts -->
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/myace.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/mapa.js"></script>
+
+        <div id="MapaModal" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Mapa</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="modal-body" id="map"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">OK</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <link rel="stylesheet" href="/registro/assets/leaflet/leaflet.css" />
+        <link rel="stylesheet" href="/registro/assets/leaflet/leaflet.draw.css" />
+        <script src="/registro/assets/leaflet/leaflet.js"></script>
+        <script src="/registro/assets/leaflet/leaflet.draw.js"></script>
+        <style>
+        #map {
+          min-height: 500px;
+        }
+        </style>
 
         <?php $this->RenderEnd(); ?>
         <?php if (QApplication::$Database[1] && QApplication::$Database[1]->EnableProfiling) QApplication::$Database[1]->OutputProfiling(); ?>

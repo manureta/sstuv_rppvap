@@ -26,7 +26,6 @@ class CondicionesSocioUrbanisticasDataGridGen extends QFilteredDataGrid {
         'PresenciaOrgSociales' => true,
         'NombreRefernte' => true,
         'TelefonoReferente' => true,
-        'InformeUrbanisticoFecha' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -65,7 +64,6 @@ class CondicionesSocioUrbanisticasDataGridGen extends QFilteredDataGrid {
         if (CondicionesSocioUrbanisticasDataGrid::$strColumnsArray['PresenciaOrgSociales']) $this->MetaAddColumn('PresenciaOrgSociales')->Title = QApplication::Translate('PresenciaOrgSociales');
         if (CondicionesSocioUrbanisticasDataGrid::$strColumnsArray['NombreRefernte']) $this->MetaAddColumn('NombreRefernte')->Title = QApplication::Translate('NombreRefernte');
         if (CondicionesSocioUrbanisticasDataGrid::$strColumnsArray['TelefonoReferente']) $this->MetaAddColumn('TelefonoReferente')->Title = QApplication::Translate('TelefonoReferente');
-        if (CondicionesSocioUrbanisticasDataGrid::$strColumnsArray['InformeUrbanisticoFecha']) $this->MetaAddColumn('InformeUrbanisticoFecha')->Title = QApplication::Translate('InformeUrbanisticoFecha');
     }
 
 /**
@@ -220,7 +218,6 @@ class CondicionesSocioUrbanisticasDataGridGen extends QFilteredDataGrid {
 				case 'PresenciaOrgSociales': return QQN::CondicionesSocioUrbanisticas()->PresenciaOrgSociales;
 				case 'NombreRefernte': return QQN::CondicionesSocioUrbanisticas()->NombreRefernte;
 				case 'TelefonoReferente': return QQN::CondicionesSocioUrbanisticas()->TelefonoReferente;
-				case 'InformeUrbanisticoFecha': return QQN::CondicionesSocioUrbanisticas()->InformeUrbanisticoFecha;
 				default: throw new QCallerException('Simple Property not found in CondicionesSocioUrbanisticasDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

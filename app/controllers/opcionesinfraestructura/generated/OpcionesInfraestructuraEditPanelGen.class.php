@@ -10,18 +10,18 @@ class OpcionesInfraestructuraEditPanelGen extends EditPanelBase {
     public static $strControlsArray = array(
         'lblId' => false,
         'txtOpcion' => true,
-        'lstInfraestructuraAsEnergiaElectricaMedidorIndividual' => false,
-        'lstInfraestructuraAsEnergiaElectricaMedidorColectivo' => false,
-        'lstInfraestructuraAsAlumbradoPublico' => false,
         'lstInfraestructuraAsAguaCorriente' => false,
         'lstInfraestructuraAsAguaPotable' => false,
-        'lstInfraestructuraAsRedCloacal' => false,
-        'lstInfraestructuraAsSistAlternativoEliminacionExcretas' => false,
-        'lstInfraestructuraAsRedGas' => false,
-        'lstInfraestructuraAsPavimento' => false,
+        'lstInfraestructuraAsAlumbradoPublico' => false,
         'lstInfraestructuraAsCordonCuneta' => false,
         'lstInfraestructuraAsDesaguesPluviales' => false,
+        'lstInfraestructuraAsEnergiaElectricaMedidorColectivo' => false,
+        'lstInfraestructuraAsEnergiaElectricaMedidorIndividual' => false,
+        'lstInfraestructuraAsPavimento' => false,
         'lstInfraestructuraAsRecoleccionResiduos' => false,
+        'lstInfraestructuraAsRedCloacal' => false,
+        'lstInfraestructuraAsRedGas' => false,
+        'lstInfraestructuraAsSistAlternativoEliminacionExcretas' => false,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -53,30 +53,30 @@ class OpcionesInfraestructuraEditPanelGen extends EditPanelBase {
             $this->objControlsArray['lblId'] = $this->mctOpcionesInfraestructura->lblId_Create();
         if (in_array('txtOpcion',$strControlsArray)) 
             $this->objControlsArray['txtOpcion'] = $this->mctOpcionesInfraestructura->txtOpcion_Create();
-        if (in_array('lstInfraestructuraAsEnergiaElectricaMedidorIndividual',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsEnergiaElectricaMedidorIndividual'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Create();
-        if (in_array('lstInfraestructuraAsEnergiaElectricaMedidorColectivo',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsEnergiaElectricaMedidorColectivo'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Create();
-        if (in_array('lstInfraestructuraAsAlumbradoPublico',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsAlumbradoPublico'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsAlumbradoPublico_Create();
         if (in_array('lstInfraestructuraAsAguaCorriente',$strControlsArray))
             $this->objControlsArray['lstInfraestructuraAsAguaCorriente'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsAguaCorriente_Create();
         if (in_array('lstInfraestructuraAsAguaPotable',$strControlsArray))
             $this->objControlsArray['lstInfraestructuraAsAguaPotable'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsAguaPotable_Create();
-        if (in_array('lstInfraestructuraAsRedCloacal',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsRedCloacal'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsRedCloacal_Create();
-        if (in_array('lstInfraestructuraAsSistAlternativoEliminacionExcretas',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsSistAlternativoEliminacionExcretas'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsSistAlternativoEliminacionExcretas_Create();
-        if (in_array('lstInfraestructuraAsRedGas',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsRedGas'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsRedGas_Create();
-        if (in_array('lstInfraestructuraAsPavimento',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsPavimento'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsPavimento_Create();
+        if (in_array('lstInfraestructuraAsAlumbradoPublico',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsAlumbradoPublico'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsAlumbradoPublico_Create();
         if (in_array('lstInfraestructuraAsCordonCuneta',$strControlsArray))
             $this->objControlsArray['lstInfraestructuraAsCordonCuneta'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsCordonCuneta_Create();
         if (in_array('lstInfraestructuraAsDesaguesPluviales',$strControlsArray))
             $this->objControlsArray['lstInfraestructuraAsDesaguesPluviales'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsDesaguesPluviales_Create();
+        if (in_array('lstInfraestructuraAsEnergiaElectricaMedidorColectivo',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsEnergiaElectricaMedidorColectivo'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Create();
+        if (in_array('lstInfraestructuraAsEnergiaElectricaMedidorIndividual',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsEnergiaElectricaMedidorIndividual'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Create();
+        if (in_array('lstInfraestructuraAsPavimento',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsPavimento'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsPavimento_Create();
         if (in_array('lstInfraestructuraAsRecoleccionResiduos',$strControlsArray))
             $this->objControlsArray['lstInfraestructuraAsRecoleccionResiduos'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsRecoleccionResiduos_Create();
+        if (in_array('lstInfraestructuraAsRedCloacal',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsRedCloacal'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsRedCloacal_Create();
+        if (in_array('lstInfraestructuraAsRedGas',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsRedGas'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsRedGas_Create();
+        if (in_array('lstInfraestructuraAsSistAlternativoEliminacionExcretas',$strControlsArray))
+            $this->objControlsArray['lstInfraestructuraAsSistAlternativoEliminacionExcretas'] = $this->mctOpcionesInfraestructura->lstInfraestructuraAsSistAlternativoEliminacionExcretas_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

@@ -55,7 +55,7 @@ class UsuarioEditPanelGen extends EditPanelBase {
         if (in_array('chkSuperAdmin',$strControlsArray)) 
             $this->objControlsArray['chkSuperAdmin'] = $this->mctUsuario->chkSuperAdmin_Create();
         if (in_array('calFechaActivacion',$strControlsArray)) 
-            //$this->objControlsArray['calFechaActivacion'] = QDateTime::Now();
+            $this->objControlsArray['calFechaActivacion'] = $this->mctUsuario->calFechaActivacion_Create();
         if (in_array('txtNombre',$strControlsArray)) 
             $this->objControlsArray['txtNombre'] = $this->mctUsuario->txtNombre_Create();
         if (in_array('lstIdPerfilObject',$strControlsArray)) 

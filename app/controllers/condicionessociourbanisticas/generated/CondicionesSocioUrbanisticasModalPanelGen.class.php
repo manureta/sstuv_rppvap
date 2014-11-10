@@ -17,7 +17,6 @@ class CondicionesSocioUrbanisticasModalPanelGen extends EditPanelBase {
         'txtPresenciaOrgSociales' => true,
         'txtNombreRefernte' => true,
         'txtTelefonoReferente' => true,
-        'txtInformeUrbanisticoFecha' => true,
         'lstEquipamientoAsIdFolio' => false,
         'lstInfraestructuraAsIdFolio' => false,
         'lstSituacionAmbientalAsIdFolio' => false,
@@ -65,8 +64,6 @@ class CondicionesSocioUrbanisticasModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombreRefernte'] = $this->mctCondicionesSocioUrbanisticas->txtNombreRefernte_Create();
         if (in_array('txtTelefonoReferente',$strControlsArray)) 
             $this->objControlsArray['txtTelefonoReferente'] = $this->mctCondicionesSocioUrbanisticas->txtTelefonoReferente_Create();
-        if (in_array('txtInformeUrbanisticoFecha',$strControlsArray)) 
-            $this->objControlsArray['txtInformeUrbanisticoFecha'] = $this->mctCondicionesSocioUrbanisticas->txtInformeUrbanisticoFecha_Create();
         if (in_array('lstEquipamientoAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstEquipamientoAsIdFolio_Create();
         if (in_array('lstInfraestructuraAsIdFolio',$strControlsArray))

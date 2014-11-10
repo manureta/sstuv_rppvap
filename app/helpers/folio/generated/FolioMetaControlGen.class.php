@@ -18,12 +18,14 @@
      * property-read Folio $Folio the actual Folio data class being edited
      * property QLabel $IdControl
      * property-read QLabel $IdLabel
+     * property QTextBox $CodFolioControl
+     * property-read QLabel $CodFolioLabel
      * property QListBox $IdPartidoControl
      * property-read QLabel $IdPartidoLabel
      * property QListBox $IdLocalidadControl
      * property-read QLabel $IdLocalidadLabel
-     * property QIntegerTextBox $IdMatriculaControl
-     * property-read QLabel $IdMatriculaLabel
+     * property QTextBox $MatriculaControl
+     * property-read QLabel $MatriculaLabel
      * property QDateTimePicker $FechaControl
      * property-read QLabel $FechaLabel
      * property QTextBox $EncargadoControl
@@ -48,18 +50,14 @@
      * property-read QLabel $JudicializadoLabel
      * property QTextBox $DireccionControl
      * property-read QLabel $DireccionLabel
-     * property QIntegerTextBox $MapeoPreliminarControl
-     * property-read QLabel $MapeoPreliminarLabel
-     * property QTextBox $ResolucionInscripcionProvisoriaControl
-     * property-read QLabel $ResolucionInscripcionProvisoriaLabel
-     * property QTextBox $ResolucionInscripcionDefinitivaControl
-     * property-read QLabel $ResolucionInscripcionDefinitivaLabel
      * property QTextBox $NumExpedientesControl
      * property-read QLabel $NumExpedientesLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
      * property-read QLabel $RegularizacionAsIdLabel
+     * property QListBox $UsoInternoControl
+     * property-read QLabel $UsoInternoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -77,9 +75,10 @@
 
         // Controls that allow the editing of Folio's individual data fields
         protected $lblId;
+        protected $txtCodFolio;
         protected $lstIdPartidoObject;
         protected $lstIdLocalidadObject;
-        protected $txtIdMatricula;
+        protected $txtMatricula;
         protected $calFecha;
         protected $txtEncargado;
         protected $txtNombreBarrioOficial;
@@ -92,15 +91,13 @@
         protected $txtObservacionCasoDudoso;
         protected $txtJudicializado;
         protected $txtDireccion;
-        protected $txtMapeoPreliminar;
-        protected $txtResolucionInscripcionProvisoria;
-        protected $txtResolucionInscripcionDefinitiva;
         protected $txtNumExpedientes;
 
         // Controls that allow the viewing of Folio's individual data fields
+        protected $lblCodFolio;
         protected $lblIdPartido;
         protected $lblIdLocalidad;
-        protected $lblIdMatricula;
+        protected $lblMatricula;
         protected $lblFecha;
         protected $lblEncargado;
         protected $lblNombreBarrioOficial;
@@ -113,18 +110,17 @@
         protected $lblObservacionCasoDudoso;
         protected $lblJudicializado;
         protected $lblDireccion;
-        protected $lblMapeoPreliminar;
-        protected $lblResolucionInscripcionProvisoria;
-        protected $lblResolucionInscripcionDefinitiva;
         protected $lblNumExpedientes;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
         protected $lstRegularizacionAsId;
+        protected $lstUsoInterno;
 
         // QLabel Controls (if applicable) to view Unique ReverseReferences and ManyToMany References
         protected $lblCondicionesSocioUrbanisticasAsId;
         protected $lblRegularizacionAsId;
+        protected $lblUsoInterno;
 
 
         /**
@@ -235,6 +231,34 @@
         }
 
         /**
+         * Create and setup QTextBox txtCodFolio
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtCodFolio_Create($strControlId = null) {
+            $this->txtCodFolio = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtCodFolio->Name = QApplication::Translate('CodFolio');
+            $this->txtCodFolio->Text = $this->objFolio->CodFolio;
+            $this->txtCodFolio->Required = true;
+            $this->txtCodFolio->MaxLength = Folio::CodFolioMaxLength;
+            
+            return $this->txtCodFolio;
+        }
+
+        /**
+         * Create and setup QLabel lblCodFolio
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblCodFolio_Create($strControlId = null) {
+            $this->lblCodFolio = new QLabel($this->objParentObject, $strControlId);
+            $this->lblCodFolio->Name = QApplication::Translate('CodFolio');
+            $this->lblCodFolio->Text = $this->objFolio->CodFolio;
+            $this->lblCodFolio->Required = true;
+            return $this->lblCodFolio;
+        }
+
+        /**
          * Create and setup QAjaxAutoCompleteEntidadTextBox lstIdPartidoObject
          * @param string $strControlId optional ControlId to use
          * @return QAjaxAutoCompleteEntidadTextBox
@@ -291,31 +315,31 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtIdMatricula
+         * Create and setup QTextBox txtMatricula
          * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
+         * @return QTextBox
          */
-        public function txtIdMatricula_Create($strControlId = null) {
-            $this->txtIdMatricula = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtIdMatricula->Name = QApplication::Translate('IdMatricula');
-            $this->txtIdMatricula->Text = $this->objFolio->IdMatricula;
-                        $this->txtIdMatricula->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtIdMatricula->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtIdMatricula;
+        public function txtMatricula_Create($strControlId = null) {
+            $this->txtMatricula = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtMatricula->Name = QApplication::Translate('Matricula');
+            $this->txtMatricula->Text = $this->objFolio->Matricula;
+            $this->txtMatricula->Required = true;
+            $this->txtMatricula->MaxLength = Folio::MatriculaMaxLength;
+            
+            return $this->txtMatricula;
         }
 
         /**
-         * Create and setup QLabel lblIdMatricula
+         * Create and setup QLabel lblMatricula
          * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
          * @return QLabel
          */
-        public function lblIdMatricula_Create($strControlId = null, $strFormat = null) {
-            $this->lblIdMatricula = new QLabel($this->objParentObject, $strControlId);
-            $this->lblIdMatricula->Name = QApplication::Translate('IdMatricula');
-            $this->lblIdMatricula->Text = $this->objFolio->IdMatricula;
-            $this->lblIdMatricula->Format = $strFormat;
-            return $this->lblIdMatricula;
+        public function lblMatricula_Create($strControlId = null) {
+            $this->lblMatricula = new QLabel($this->objParentObject, $strControlId);
+            $this->lblMatricula->Name = QApplication::Translate('Matricula');
+            $this->lblMatricula->Text = $this->objFolio->Matricula;
+            $this->lblMatricula->Required = true;
+            return $this->lblMatricula;
         }
 
         /**
@@ -641,86 +665,6 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtMapeoPreliminar
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtMapeoPreliminar_Create($strControlId = null) {
-            $this->txtMapeoPreliminar = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtMapeoPreliminar->Name = QApplication::Translate('MapeoPreliminar');
-            $this->txtMapeoPreliminar->Text = $this->objFolio->MapeoPreliminar;
-                        $this->txtMapeoPreliminar->Maximum = QDatabaseNumberFieldMax::Smallint;
-                        $this->txtMapeoPreliminar->Minimum = QDatabaseNumberFieldMin::Smallint;
-            return $this->txtMapeoPreliminar;
-        }
-
-        /**
-         * Create and setup QLabel lblMapeoPreliminar
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblMapeoPreliminar_Create($strControlId = null, $strFormat = null) {
-            $this->lblMapeoPreliminar = new QLabel($this->objParentObject, $strControlId);
-            $this->lblMapeoPreliminar->Name = QApplication::Translate('MapeoPreliminar');
-            $this->lblMapeoPreliminar->Text = $this->objFolio->MapeoPreliminar;
-            $this->lblMapeoPreliminar->Format = $strFormat;
-            return $this->lblMapeoPreliminar;
-        }
-
-        /**
-         * Create and setup QTextBox txtResolucionInscripcionProvisoria
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtResolucionInscripcionProvisoria_Create($strControlId = null) {
-            $this->txtResolucionInscripcionProvisoria = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtResolucionInscripcionProvisoria->Name = QApplication::Translate('ResolucionInscripcionProvisoria');
-            $this->txtResolucionInscripcionProvisoria->Text = $this->objFolio->ResolucionInscripcionProvisoria;
-            $this->txtResolucionInscripcionProvisoria->MaxLength = Folio::ResolucionInscripcionProvisoriaMaxLength;
-            
-            return $this->txtResolucionInscripcionProvisoria;
-        }
-
-        /**
-         * Create and setup QLabel lblResolucionInscripcionProvisoria
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblResolucionInscripcionProvisoria_Create($strControlId = null) {
-            $this->lblResolucionInscripcionProvisoria = new QLabel($this->objParentObject, $strControlId);
-            $this->lblResolucionInscripcionProvisoria->Name = QApplication::Translate('ResolucionInscripcionProvisoria');
-            $this->lblResolucionInscripcionProvisoria->Text = $this->objFolio->ResolucionInscripcionProvisoria;
-            return $this->lblResolucionInscripcionProvisoria;
-        }
-
-        /**
-         * Create and setup QTextBox txtResolucionInscripcionDefinitiva
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtResolucionInscripcionDefinitiva_Create($strControlId = null) {
-            $this->txtResolucionInscripcionDefinitiva = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtResolucionInscripcionDefinitiva->Name = QApplication::Translate('ResolucionInscripcionDefinitiva');
-            $this->txtResolucionInscripcionDefinitiva->Text = $this->objFolio->ResolucionInscripcionDefinitiva;
-            $this->txtResolucionInscripcionDefinitiva->MaxLength = Folio::ResolucionInscripcionDefinitivaMaxLength;
-            
-            return $this->txtResolucionInscripcionDefinitiva;
-        }
-
-        /**
-         * Create and setup QLabel lblResolucionInscripcionDefinitiva
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblResolucionInscripcionDefinitiva_Create($strControlId = null) {
-            $this->lblResolucionInscripcionDefinitiva = new QLabel($this->objParentObject, $strControlId);
-            $this->lblResolucionInscripcionDefinitiva->Name = QApplication::Translate('ResolucionInscripcionDefinitiva');
-            $this->lblResolucionInscripcionDefinitiva->Text = $this->objFolio->ResolucionInscripcionDefinitiva;
-            return $this->lblResolucionInscripcionDefinitiva;
-        }
-
-        /**
          * Create and setup QTextBox txtNumExpedientes
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
@@ -811,6 +755,40 @@
             return $this->lblRegularizacionAsId;
         }
 
+        /**
+         * Create and setup QListBox lstUsoInterno ES ACA?
+         * @param string $strControlId optional ControlId to use
+         * @return QListBox
+         */
+        public function lstUsoInterno_Create($strControlId = null) {
+            $this->lstUsoInterno = new QListBox($this->objParentObject, $strControlId);
+            $this->lstUsoInterno->Name = QApplication::Translate('UsoInterno');
+                $this->lstUsoInterno->AddItem(QApplication::Translate('- Select One -'), null);
+                $objUsoInternoArray = UsoInterno::LoadAll();
+                if ($objUsoInternoArray) foreach ($objUsoInternoArray as $objUsoInterno) {
+                    $objListItem = new QListItem($objUsoInterno->__toString(), $objUsoInterno->IdFolio);
+                    if ($objUsoInterno->IdFolio == $this->objFolio->Id)
+                        $objListItem->Selected = true;
+                    $this->lstUsoInterno->AddItem($objListItem);
+                }
+                // Because UsoInterno's UsoInterno is not null, if a value is already selected, it cannot be changed.
+                if ($this->lstUsoInterno->SelectedValue)
+                    $this->lstUsoInterno->Enabled = false;
+            return $this->lstUsoInterno;
+        }
+
+        /**
+         * Create and setup QLabel lblUsoInterno
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblUsoInterno_Create($strControlId = null) {
+            $this->lblUsoInterno = new QLabel($this->objParentObject, $strControlId);
+            $this->lblUsoInterno->Name = QApplication::Translate('UsoInterno');
+            $this->lblUsoInterno->Text = ($this->objFolio->UsoInterno) ? $this->objFolio->UsoInterno->__toString() : null;
+            return $this->lblUsoInterno;
+        }
+
 
 
     public $lstNomenclaturaAsId;
@@ -878,6 +856,9 @@
 
             if ($this->lblId) if ($this->blnEditMode) $this->lblId->Text = $this->objFolio->Id;
 
+            if ($this->txtCodFolio) $this->txtCodFolio->Text = $this->objFolio->CodFolio;
+            if ($this->lblCodFolio) $this->lblCodFolio->Text = $this->objFolio->CodFolio;
+
             if ($this->lstIdPartidoObject) {
                 if($this->objFolio->IdPartidoObject){
                     $this->lstIdPartidoObject->Text = $this->objFolio->IdPartidoObject->__toString();
@@ -894,8 +875,8 @@
             }
             if ($this->lblIdLocalidad) $this->lblIdLocalidad->Text = ($this->objFolio->IdLocalidadObject) ? $this->objFolio->IdLocalidadObject->__toString() : null;
 
-            if ($this->txtIdMatricula) $this->txtIdMatricula->Text = $this->objFolio->IdMatricula;
-            if ($this->lblIdMatricula) $this->lblIdMatricula->Text = $this->objFolio->IdMatricula;
+            if ($this->txtMatricula) $this->txtMatricula->Text = $this->objFolio->Matricula;
+            if ($this->lblMatricula) $this->lblMatricula->Text = $this->objFolio->Matricula;
 
             if ($this->calFecha) $this->calFecha->DateTime = $this->objFolio->Fecha;
             if ($this->lblFecha) $this->lblFecha->Text = sprintf($this->objFolio->Fecha) ? $this->objFolio->Fecha->__toString($this->strFechaDateTimeFormat) : null;
@@ -938,15 +919,6 @@
             if ($this->txtDireccion) $this->txtDireccion->Text = $this->objFolio->Direccion;
             if ($this->lblDireccion) $this->lblDireccion->Text = $this->objFolio->Direccion;
 
-            if ($this->txtMapeoPreliminar) $this->txtMapeoPreliminar->Text = $this->objFolio->MapeoPreliminar;
-            if ($this->lblMapeoPreliminar) $this->lblMapeoPreliminar->Text = $this->objFolio->MapeoPreliminar;
-
-            if ($this->txtResolucionInscripcionProvisoria) $this->txtResolucionInscripcionProvisoria->Text = $this->objFolio->ResolucionInscripcionProvisoria;
-            if ($this->lblResolucionInscripcionProvisoria) $this->lblResolucionInscripcionProvisoria->Text = $this->objFolio->ResolucionInscripcionProvisoria;
-
-            if ($this->txtResolucionInscripcionDefinitiva) $this->txtResolucionInscripcionDefinitiva->Text = $this->objFolio->ResolucionInscripcionDefinitiva;
-            if ($this->lblResolucionInscripcionDefinitiva) $this->lblResolucionInscripcionDefinitiva->Text = $this->objFolio->ResolucionInscripcionDefinitiva;
-
             if ($this->txtNumExpedientes) $this->txtNumExpedientes->Text = $this->objFolio->NumExpedientes;
             if ($this->lblNumExpedientes) $this->lblNumExpedientes->Text = $this->objFolio->NumExpedientes;
 
@@ -981,6 +953,24 @@
             }
             if ($this->lblRegularizacionAsId) $this->lblRegularizacionAsId->Text = ($this->objFolio->RegularizacionAsId) ? $this->objFolio->RegularizacionAsId->__toString() : null;
 
+            if ($this->lstUsoInterno) {
+                $this->lstUsoInterno->RemoveAllItems();
+                $this->lstUsoInterno->AddItem(QApplication::Translate('- Select One -'), null);
+                $objUsoInternoArray = UsoInterno::LoadAll();
+                if ($objUsoInternoArray) foreach ($objUsoInternoArray as $objUsoInterno) {
+                    $objListItem = new QListItem($objUsoInterno->__toString(), $objUsoInterno->IdFolio);
+                    if ($objUsoInterno->IdFolio == $this->objFolio->Id)
+                        $objListItem->Selected = true;
+                    $this->lstUsoInterno->AddItem($objListItem);
+                }
+                // Because UsoInterno's UsoInterno is not null, if a value is already selected, it cannot be changed.
+                if ($this->lstUsoInterno->SelectedValue)
+                    $this->lstUsoInterno->Enabled = false;
+                else
+                    $this->lstUsoInterno->Enabled = true;
+            }
+            if ($this->lblUsoInterno) $this->lblUsoInterno->Text = ($this->objFolio->UsoInterno) ? $this->objFolio->UsoInterno->__toString() : null;
+
         }
 
 
@@ -999,9 +989,10 @@
 
         public function Bind(){
                 // Update any fields for controls that have been created
+                if ($this->txtCodFolio) $this->objFolio->CodFolio = $this->txtCodFolio->Text;
                 if ($this->lstIdPartidoObject) $this->objFolio->IdPartido = $this->lstIdPartidoObject->SelectedValue;
                 if ($this->lstIdLocalidadObject) $this->objFolio->IdLocalidad = $this->lstIdLocalidadObject->SelectedValue;
-                if ($this->txtIdMatricula) $this->objFolio->IdMatricula = $this->txtIdMatricula->Text;
+                if ($this->txtMatricula) $this->objFolio->Matricula = $this->txtMatricula->Text;
                 if ($this->calFecha) $this->objFolio->Fecha = $this->calFecha->DateTime;
                 if ($this->txtEncargado) $this->objFolio->Encargado = $this->txtEncargado->Text;
                 if ($this->txtNombreBarrioOficial) $this->objFolio->NombreBarrioOficial = $this->txtNombreBarrioOficial->Text;
@@ -1014,9 +1005,6 @@
                 if ($this->txtObservacionCasoDudoso) $this->objFolio->ObservacionCasoDudoso = $this->txtObservacionCasoDudoso->Text;
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
                 if ($this->txtDireccion) $this->objFolio->Direccion = $this->txtDireccion->Text;
-                if ($this->txtMapeoPreliminar) $this->objFolio->MapeoPreliminar = $this->txtMapeoPreliminar->Text;
-                if ($this->txtResolucionInscripcionProvisoria) $this->objFolio->ResolucionInscripcionProvisoria = $this->txtResolucionInscripcionProvisoria->Text;
-                if ($this->txtResolucionInscripcionDefinitiva) $this->objFolio->ResolucionInscripcionDefinitiva = $this->txtResolucionInscripcionDefinitiva->Text;
                 if ($this->txtNumExpedientes) $this->objFolio->NumExpedientes = $this->txtNumExpedientes->Text;
 
 
@@ -1035,6 +1023,7 @@
                 // Update any UniqueReverseReferences (if any) for controls that have been created for it
                 if ($this->lstCondicionesSocioUrbanisticasAsId) $this->objFolio->CondicionesSocioUrbanisticasAsId = CondicionesSocioUrbanisticas::Load($this->lstCondicionesSocioUrbanisticasAsId->SelectedValue);
                 if ($this->lstRegularizacionAsId) $this->objFolio->RegularizacionAsId = Regularizacion::Load($this->lstRegularizacionAsId->SelectedValue);
+                if ($this->lstUsoInterno) $this->objFolio->UsoInterno = UsoInterno::Load($this->lstUsoInterno->SelectedValue);
 
                 // Save the Folio object
                 $idReturn = $this->objFolio->Save();
@@ -1082,6 +1071,12 @@
                 case 'IdLabel':
                     if (!$this->lblId) return $this->lblId_Create();
                     return $this->lblId;
+                case 'CodFolioControl':
+                    if (!$this->txtCodFolio) return $this->txtCodFolio_Create();
+                    return $this->txtCodFolio;
+                case 'CodFolioLabel':
+                    if (!$this->lblCodFolio) return $this->lblCodFolio_Create();
+                    return $this->lblCodFolio;
                 case 'IdPartidoControl':
                     if (!$this->lstIdPartidoObject) return $this->lstIdPartidoObject_Create();
                     return $this->lstIdPartidoObject;
@@ -1094,12 +1089,12 @@
                 case 'IdLocalidadLabel':
                     if (!$this->lblIdLocalidad) return $this->lblIdLocalidad_Create();
                     return $this->lblIdLocalidad;
-                case 'IdMatriculaControl':
-                    if (!$this->txtIdMatricula) return $this->txtIdMatricula_Create();
-                    return $this->txtIdMatricula;
-                case 'IdMatriculaLabel':
-                    if (!$this->lblIdMatricula) return $this->lblIdMatricula_Create();
-                    return $this->lblIdMatricula;
+                case 'MatriculaControl':
+                    if (!$this->txtMatricula) return $this->txtMatricula_Create();
+                    return $this->txtMatricula;
+                case 'MatriculaLabel':
+                    if (!$this->lblMatricula) return $this->lblMatricula_Create();
+                    return $this->lblMatricula;
                 case 'FechaControl':
                     if (!$this->calFecha) return $this->calFecha_Create();
                     return $this->calFecha;
@@ -1172,24 +1167,6 @@
                 case 'DireccionLabel':
                     if (!$this->lblDireccion) return $this->lblDireccion_Create();
                     return $this->lblDireccion;
-                case 'MapeoPreliminarControl':
-                    if (!$this->txtMapeoPreliminar) return $this->txtMapeoPreliminar_Create();
-                    return $this->txtMapeoPreliminar;
-                case 'MapeoPreliminarLabel':
-                    if (!$this->lblMapeoPreliminar) return $this->lblMapeoPreliminar_Create();
-                    return $this->lblMapeoPreliminar;
-                case 'ResolucionInscripcionProvisoriaControl':
-                    if (!$this->txtResolucionInscripcionProvisoria) return $this->txtResolucionInscripcionProvisoria_Create();
-                    return $this->txtResolucionInscripcionProvisoria;
-                case 'ResolucionInscripcionProvisoriaLabel':
-                    if (!$this->lblResolucionInscripcionProvisoria) return $this->lblResolucionInscripcionProvisoria_Create();
-                    return $this->lblResolucionInscripcionProvisoria;
-                case 'ResolucionInscripcionDefinitivaControl':
-                    if (!$this->txtResolucionInscripcionDefinitiva) return $this->txtResolucionInscripcionDefinitiva_Create();
-                    return $this->txtResolucionInscripcionDefinitiva;
-                case 'ResolucionInscripcionDefinitivaLabel':
-                    if (!$this->lblResolucionInscripcionDefinitiva) return $this->lblResolucionInscripcionDefinitiva_Create();
-                    return $this->lblResolucionInscripcionDefinitiva;
                 case 'NumExpedientesControl':
                     if (!$this->txtNumExpedientes) return $this->txtNumExpedientes_Create();
                     return $this->txtNumExpedientes;
@@ -1208,6 +1185,12 @@
                 case 'RegularizacionAsIdLabel':
                     if (!$this->lblRegularizacionAsId) return $this->lblRegularizacionAsId_Create();
                     return $this->lblRegularizacionAsId;
+                case 'UsoInternoControl':
+                    if (!$this->lstUsoInterno) return $this->lstUsoInterno_Create();
+                    return $this->lstUsoInterno;
+                case 'UsoInternoLabel':
+                    if (!$this->lblUsoInterno) return $this->lblUsoInterno_Create();
+                    return $this->lblUsoInterno;
                 default:
                     try {
                         return parent::__get($strName);
@@ -1232,12 +1215,14 @@
                     // Controls that point to Folio fields
                     case 'IdControl':
                         return ($this->lblId = QType::Cast($mixValue, 'QControl'));
+                    case 'CodFolioControl':
+                        return ($this->txtCodFolio = QType::Cast($mixValue, 'QControl'));
                     case 'IdPartidoControl':
                         return ($this->lstIdPartidoObject = QType::Cast($mixValue, 'QControl'));
                     case 'IdLocalidadControl':
                         return ($this->lstIdLocalidadObject = QType::Cast($mixValue, 'QControl'));
-                    case 'IdMatriculaControl':
-                        return ($this->txtIdMatricula = QType::Cast($mixValue, 'QControl'));
+                    case 'MatriculaControl':
+                        return ($this->txtMatricula = QType::Cast($mixValue, 'QControl'));
                     case 'FechaControl':
                         return ($this->calFecha = QType::Cast($mixValue, 'QControl'));
                     case 'EncargadoControl':
@@ -1262,18 +1247,14 @@
                         return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
                     case 'DireccionControl':
                         return ($this->txtDireccion = QType::Cast($mixValue, 'QControl'));
-                    case 'MapeoPreliminarControl':
-                        return ($this->txtMapeoPreliminar = QType::Cast($mixValue, 'QControl'));
-                    case 'ResolucionInscripcionProvisoriaControl':
-                        return ($this->txtResolucionInscripcionProvisoria = QType::Cast($mixValue, 'QControl'));
-                    case 'ResolucionInscripcionDefinitivaControl':
-                        return ($this->txtResolucionInscripcionDefinitiva = QType::Cast($mixValue, 'QControl'));
                     case 'NumExpedientesControl':
                         return ($this->txtNumExpedientes = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':
                         return ($this->lstRegularizacionAsId = QType::Cast($mixValue, 'QControl'));
+                    case 'UsoInternoControl':
+                        return ($this->lstUsoInterno = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

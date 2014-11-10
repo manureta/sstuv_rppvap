@@ -7,12 +7,6 @@
 		<?php $_CONTROL->lblId->RenderWithName(); ?>
 		<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
 		<?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
-		<?php $_CONTROL->calFechaInicio->RenderWithName(); ?>
-		<?php $_CONTROL->chkTienePlano->RenderWithName(); ?>
-		<?php $_CONTROL->chkCircular10Catastro->RenderWithName(); ?>
-		<?php $_CONTROL->lstAprobacionGeodesiaObject->RenderWithName(); ?>
-		<?php $_CONTROL->txtRegistracion->RenderWithName(); ?>
-		<?php $_CONTROL->lstEstadoProcesoObject->RenderWithName(); ?>
 		<?php $_CONTROL->lstAntecedentesAsIdFolio->RenderWithName(); ?>
 
 

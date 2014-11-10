@@ -12,7 +12,14 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         }
 
     }
-
+    // Control AjaxAction Event Handlers
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the NomenclaturaMetaControl
+        $this->mctNomenclatura->Save();
+        QApplication::DisplayNotification('Los datos se guardaron correctamente');
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctNomenclatura->Nomenclatura->IdFolio) ; 
+    }
 
 }
 ?>

@@ -1,32 +1,19 @@
 <?php
+/**
+ * Este es un panel índice que hereda de RegistracionIndexPanelGen
+ * Puede sobreescribir los métodos de su padre para utilizar funcionalidad propia.
+ * 
+ */
+class RegistracionIndexPanel extends RegistracionIndexPanelGen {
 
-class RegistracionIndexPanel extends QPanel {
-    public function __construct($objParentObject, $strClosePanelMethod = null, $strControlId = null, $a = null, $intCuit = null) {
+    public $strTitulo = 'Registracion';
+    public $strSubtitulo = '';
 
-        // Call the Parent
-        try {
-            parent::__construct($objParentObject, $strClosePanelMethod, $strControlId);
-        } catch (QCallerException $objExc) {
-            $objExc->IncrementOffset();
-            throw $objExc;
-        }
-        $blnEnBuenosAires = false;
-        
-        if (!$blnEnBuenosAires) {
-            if (defined('FECHA_FIN_ETAPA_UNO') && FECHA_FIN_ETAPA_UNO > date('Y-m-d')) {
-                QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/registracion/personal');
-            } else {
-                QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/registracion/director');
-            }
-        } else {
-            if (defined('FECHA_FIN_ETAPA_UNO_BSAS') && FECHA_FIN_ETAPA_UNO_BSAS > date('Y-m-d')) {
-                QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/registracion/personal');
-            } else {
-                QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/registracion/director');
-            }
-
-        }
+    public function GetBreadCrumb() {
+        return array(
+                'Registracion'
+            );
     }
-}
 
+}
 ?>

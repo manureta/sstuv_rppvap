@@ -22,24 +22,20 @@
         <Profiling>false</Profiling>
         <Inicializada>1</Inicializada>
     </DbConnProc>
-   <Provincia>
-        <Codigo>99</Codigo>
-        <Nombre>Cualquiera</Nombre>
-    </Provincia>
     <ServerInstance/>
     <Email>
-        <Enabled>true</Enabled>
-        <Smtp>cenpemail.cenpe.gob.ar</Smtp>
-        <From><![CDATA["DINIECE CENPE" <soporte@cenpe.gob.ar>]]></From>
+        <Enabled>false</Enabled>
+        <Smtp></Smtp>
+        <From></From>
         <To/>
-        <UserName>soporte@cenpe.gob.ar</UserName>
-        <UserPassword>soporte1234</UserPassword>
+        <UserName></UserName>
+        <UserPassword></UserPassword>
         <Port>25</Port>
         <AuthPlain>false</AuthPlain>
         <AuthLogin>true</AuthLogin>
     </Email>
     <WebServicePadron>
-        <Uri>diniece.me.gov.ar/padronnacional/ws.php</Uri>
+        <Uri></Uri>
         <!--Uri>localhost/padron/WebService.php</Uri-->
     </WebServicePadron>
     <AuthMe>

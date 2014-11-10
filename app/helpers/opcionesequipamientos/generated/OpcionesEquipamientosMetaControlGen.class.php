@@ -184,102 +184,102 @@
 
 
 
-    public $lstEquipamientoAsUnidadSanitaria;
+    public $lstEquipamientoAsCentroIntegracionComunitaria;
     /**
-     * Gets all associated EquipamientosAsUnidadSanitaria as an array of Equipamiento objects
+     * Gets all associated EquipamientosAsCentroIntegracionComunitaria as an array of Equipamiento objects
      * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
      * @return Equipamiento[]
     */ 
-    public function lstEquipamientoAsUnidadSanitaria_Create($strControlId = null) {
+    public function lstEquipamientoAsCentroIntegracionComunitaria_Create($strControlId = null) {
 
         $strConfigArray = array();
         $strConfigArray['strEntity'] = 'Equipamiento';
-        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsUnidadSanitariaArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'UnidadSanitaria';
+        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsCentroIntegracionComunitariaArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'CentroIntegracionComunitaria';
         $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsUnidadSanitaria';
-        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsUnidadSanitaria';
+        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsCentroIntegracionComunitaria';
+        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsCentroIntegracionComunitaria';
         $strConfigArray['Columns'] = array();
         $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['UnidadSanitariaObject'] = QApplication::Translate('UnidadSanitariaObject');
         $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
         $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
-        $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
-        $this->lstEquipamientoAsUnidadSanitaria = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
-        $this->lstEquipamientoAsUnidadSanitaria->Name = Equipamiento::Noun();
-        $this->lstEquipamientoAsUnidadSanitaria->SetNewMethod($this, "lstEquipamientoAsUnidadSanitaria_New");
-        $this->lstEquipamientoAsUnidadSanitaria->SetEditMethod($this, "lstEquipamientoAsUnidadSanitaria_Edit");
-        return $this->lstEquipamientoAsUnidadSanitaria;
+        $this->lstEquipamientoAsCentroIntegracionComunitaria = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->Name = Equipamiento::Noun();
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->SetNewMethod($this, "lstEquipamientoAsCentroIntegracionComunitaria_New");
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->SetEditMethod($this, "lstEquipamientoAsCentroIntegracionComunitaria_Edit");
+        return $this->lstEquipamientoAsCentroIntegracionComunitaria;
     }
 
-    public function lstEquipamientoAsUnidadSanitaria_New() {
-        EquipamientoModalPanel::$strControlsArray['lstUnidadSanitariaObject'] = false;
+    public function lstEquipamientoAsCentroIntegracionComunitaria_New() {
+        EquipamientoModalPanel::$strControlsArray['lstCentroIntegracionComunitariaObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsUnidadSanitaria;
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsCentroIntegracionComunitaria;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
-    public function lstEquipamientoAsUnidadSanitaria_Edit($intKey) {
-        EquipamientoModalPanel::$strControlsArray['lstUnidadSanitariaObject'] = false;
+    public function lstEquipamientoAsCentroIntegracionComunitaria_Edit($intKey) {
+        EquipamientoModalPanel::$strControlsArray['lstCentroIntegracionComunitariaObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesEquipamientos->EquipamientoAsUnidadSanitariaArray[$intKey];
-        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsUnidadSanitaria;
+        $obj = $this->objOpcionesEquipamientos->EquipamientoAsCentroIntegracionComunitariaArray[$intKey];
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsCentroIntegracionComunitaria;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
 
-    public $lstEquipamientoAsJardinInfantes;
+    public $lstEquipamientoAsComedor;
     /**
-     * Gets all associated EquipamientosAsJardinInfantes as an array of Equipamiento objects
+     * Gets all associated EquipamientosAsComedor as an array of Equipamiento objects
      * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
      * @return Equipamiento[]
     */ 
-    public function lstEquipamientoAsJardinInfantes_Create($strControlId = null) {
+    public function lstEquipamientoAsComedor_Create($strControlId = null) {
 
         $strConfigArray = array();
         $strConfigArray['strEntity'] = 'Equipamiento';
-        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsJardinInfantesArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'JardinInfantes';
+        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsComedorArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'Comedor';
         $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsJardinInfantes';
-        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsJardinInfantes';
+        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsComedor';
+        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsComedor';
         $strConfigArray['Columns'] = array();
         $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
         $strConfigArray['Columns']['UnidadSanitariaObject'] = QApplication::Translate('UnidadSanitariaObject');
+        $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
-        $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
         $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
-        $this->lstEquipamientoAsJardinInfantes = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
-        $this->lstEquipamientoAsJardinInfantes->Name = Equipamiento::Noun();
-        $this->lstEquipamientoAsJardinInfantes->SetNewMethod($this, "lstEquipamientoAsJardinInfantes_New");
-        $this->lstEquipamientoAsJardinInfantes->SetEditMethod($this, "lstEquipamientoAsJardinInfantes_Edit");
-        return $this->lstEquipamientoAsJardinInfantes;
+        $this->lstEquipamientoAsComedor = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
+        $this->lstEquipamientoAsComedor->Name = Equipamiento::Noun();
+        $this->lstEquipamientoAsComedor->SetNewMethod($this, "lstEquipamientoAsComedor_New");
+        $this->lstEquipamientoAsComedor->SetEditMethod($this, "lstEquipamientoAsComedor_Edit");
+        return $this->lstEquipamientoAsComedor;
     }
 
-    public function lstEquipamientoAsJardinInfantes_New() {
-        EquipamientoModalPanel::$strControlsArray['lstJardinInfantesObject'] = false;
+    public function lstEquipamientoAsComedor_New() {
+        EquipamientoModalPanel::$strControlsArray['lstComedorObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $this->lstEquipamientoAsJardinInfantes->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstEquipamientoAsJardinInfantes->ModalPanel->objCallerControl = $this->lstEquipamientoAsJardinInfantes;
+        $this->lstEquipamientoAsComedor->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstEquipamientoAsComedor->ModalPanel->objCallerControl = $this->lstEquipamientoAsComedor;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
-    public function lstEquipamientoAsJardinInfantes_Edit($intKey) {
-        EquipamientoModalPanel::$strControlsArray['lstJardinInfantesObject'] = false;
+    public function lstEquipamientoAsComedor_Edit($intKey) {
+        EquipamientoModalPanel::$strControlsArray['lstComedorObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesEquipamientos->EquipamientoAsJardinInfantesArray[$intKey];
-        $this->lstEquipamientoAsJardinInfantes->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstEquipamientoAsJardinInfantes->ModalPanel->objCallerControl = $this->lstEquipamientoAsJardinInfantes;
+        $obj = $this->objOpcionesEquipamientos->EquipamientoAsComedorArray[$intKey];
+        $this->lstEquipamientoAsComedor->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstEquipamientoAsComedor->ModalPanel->objCallerControl = $this->lstEquipamientoAsComedor;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
@@ -384,52 +384,52 @@
     }
 
 
-    public $lstEquipamientoAsComedor;
+    public $lstEquipamientoAsJardinInfantes;
     /**
-     * Gets all associated EquipamientosAsComedor as an array of Equipamiento objects
+     * Gets all associated EquipamientosAsJardinInfantes as an array of Equipamiento objects
      * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
      * @return Equipamiento[]
     */ 
-    public function lstEquipamientoAsComedor_Create($strControlId = null) {
+    public function lstEquipamientoAsJardinInfantes_Create($strControlId = null) {
 
         $strConfigArray = array();
         $strConfigArray['strEntity'] = 'Equipamiento';
-        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsComedorArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'Comedor';
+        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsJardinInfantesArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'JardinInfantes';
         $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsComedor';
-        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsComedor';
+        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsJardinInfantes';
+        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsJardinInfantes';
         $strConfigArray['Columns'] = array();
         $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
         $strConfigArray['Columns']['UnidadSanitariaObject'] = QApplication::Translate('UnidadSanitariaObject');
-        $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
+        $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
         $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
-        $this->lstEquipamientoAsComedor = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
-        $this->lstEquipamientoAsComedor->Name = Equipamiento::Noun();
-        $this->lstEquipamientoAsComedor->SetNewMethod($this, "lstEquipamientoAsComedor_New");
-        $this->lstEquipamientoAsComedor->SetEditMethod($this, "lstEquipamientoAsComedor_Edit");
-        return $this->lstEquipamientoAsComedor;
+        $this->lstEquipamientoAsJardinInfantes = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
+        $this->lstEquipamientoAsJardinInfantes->Name = Equipamiento::Noun();
+        $this->lstEquipamientoAsJardinInfantes->SetNewMethod($this, "lstEquipamientoAsJardinInfantes_New");
+        $this->lstEquipamientoAsJardinInfantes->SetEditMethod($this, "lstEquipamientoAsJardinInfantes_Edit");
+        return $this->lstEquipamientoAsJardinInfantes;
     }
 
-    public function lstEquipamientoAsComedor_New() {
-        EquipamientoModalPanel::$strControlsArray['lstComedorObject'] = false;
+    public function lstEquipamientoAsJardinInfantes_New() {
+        EquipamientoModalPanel::$strControlsArray['lstJardinInfantesObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $this->lstEquipamientoAsComedor->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstEquipamientoAsComedor->ModalPanel->objCallerControl = $this->lstEquipamientoAsComedor;
+        $this->lstEquipamientoAsJardinInfantes->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstEquipamientoAsJardinInfantes->ModalPanel->objCallerControl = $this->lstEquipamientoAsJardinInfantes;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
-    public function lstEquipamientoAsComedor_Edit($intKey) {
-        EquipamientoModalPanel::$strControlsArray['lstComedorObject'] = false;
+    public function lstEquipamientoAsJardinInfantes_Edit($intKey) {
+        EquipamientoModalPanel::$strControlsArray['lstJardinInfantesObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesEquipamientos->EquipamientoAsComedorArray[$intKey];
-        $this->lstEquipamientoAsComedor->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstEquipamientoAsComedor->ModalPanel->objCallerControl = $this->lstEquipamientoAsComedor;
+        $obj = $this->objOpcionesEquipamientos->EquipamientoAsJardinInfantesArray[$intKey];
+        $this->lstEquipamientoAsJardinInfantes->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstEquipamientoAsJardinInfantes->ModalPanel->objCallerControl = $this->lstEquipamientoAsJardinInfantes;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
@@ -484,52 +484,52 @@
     }
 
 
-    public $lstEquipamientoAsCentroIntegracionComunitaria;
+    public $lstEquipamientoAsUnidadSanitaria;
     /**
-     * Gets all associated EquipamientosAsCentroIntegracionComunitaria as an array of Equipamiento objects
+     * Gets all associated EquipamientosAsUnidadSanitaria as an array of Equipamiento objects
      * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
      * @return Equipamiento[]
     */ 
-    public function lstEquipamientoAsCentroIntegracionComunitaria_Create($strControlId = null) {
+    public function lstEquipamientoAsUnidadSanitaria_Create($strControlId = null) {
 
         $strConfigArray = array();
         $strConfigArray['strEntity'] = 'Equipamiento';
-        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsCentroIntegracionComunitariaArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'CentroIntegracionComunitaria';
+        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsUnidadSanitariaArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'UnidadSanitaria';
         $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsCentroIntegracionComunitaria';
-        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsCentroIntegracionComunitaria';
+        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsUnidadSanitaria';
+        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsUnidadSanitaria';
         $strConfigArray['Columns'] = array();
         $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['UnidadSanitariaObject'] = QApplication::Translate('UnidadSanitariaObject');
         $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
         $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
+        $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
-        $this->lstEquipamientoAsCentroIntegracionComunitaria = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->Name = Equipamiento::Noun();
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->SetNewMethod($this, "lstEquipamientoAsCentroIntegracionComunitaria_New");
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->SetEditMethod($this, "lstEquipamientoAsCentroIntegracionComunitaria_Edit");
-        return $this->lstEquipamientoAsCentroIntegracionComunitaria;
+        $this->lstEquipamientoAsUnidadSanitaria = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
+        $this->lstEquipamientoAsUnidadSanitaria->Name = Equipamiento::Noun();
+        $this->lstEquipamientoAsUnidadSanitaria->SetNewMethod($this, "lstEquipamientoAsUnidadSanitaria_New");
+        $this->lstEquipamientoAsUnidadSanitaria->SetEditMethod($this, "lstEquipamientoAsUnidadSanitaria_Edit");
+        return $this->lstEquipamientoAsUnidadSanitaria;
     }
 
-    public function lstEquipamientoAsCentroIntegracionComunitaria_New() {
-        EquipamientoModalPanel::$strControlsArray['lstCentroIntegracionComunitariaObject'] = false;
+    public function lstEquipamientoAsUnidadSanitaria_New() {
+        EquipamientoModalPanel::$strControlsArray['lstUnidadSanitariaObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsCentroIntegracionComunitaria;
+        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsUnidadSanitaria;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
-    public function lstEquipamientoAsCentroIntegracionComunitaria_Edit($intKey) {
-        EquipamientoModalPanel::$strControlsArray['lstCentroIntegracionComunitariaObject'] = false;
+    public function lstEquipamientoAsUnidadSanitaria_Edit($intKey) {
+        EquipamientoModalPanel::$strControlsArray['lstUnidadSanitariaObject'] = false;
         $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesEquipamientos->EquipamientoAsCentroIntegracionComunitariaArray[$intKey];
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstEquipamientoAsCentroIntegracionComunitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsCentroIntegracionComunitaria;
+        $obj = $this->objOpcionesEquipamientos->EquipamientoAsUnidadSanitariaArray[$intKey];
+        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstEquipamientoAsUnidadSanitaria->ModalPanel->objCallerControl = $this->lstEquipamientoAsUnidadSanitaria;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 

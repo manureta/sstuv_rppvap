@@ -11,10 +11,9 @@ class AprobacionGeodesiaModalPanelGen extends EditPanelBase {
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
-        'txtCodPartido' => true,
+        'lstIdPartidoObject' => true,
         'txtNum' => true,
         'txtAnio' => true,
-        'lstRegularizacionAs' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objAprobacionGeodesia = null, $strControlId = null) {
@@ -47,14 +46,12 @@ class AprobacionGeodesiaModalPanelGen extends EditPanelBase {
         // Call MetaControl's methods to create qcontrols based on AprobacionGeodesia's data fields
         if (in_array('lblId',$strControlsArray)) 
             $this->objControlsArray['lblId'] = $this->mctAprobacionGeodesia->lblId_Create();
-        if (in_array('txtCodPartido',$strControlsArray)) 
-            $this->objControlsArray['txtCodPartido'] = $this->mctAprobacionGeodesia->txtCodPartido_Create();
+        if (in_array('lstIdPartidoObject',$strControlsArray)) 
+            $this->objControlsArray['lstIdPartidoObject'] = $this->mctAprobacionGeodesia->lstIdPartidoObject_Create();
         if (in_array('txtNum',$strControlsArray)) 
             $this->objControlsArray['txtNum'] = $this->mctAprobacionGeodesia->txtNum_Create();
         if (in_array('txtAnio',$strControlsArray)) 
             $this->objControlsArray['txtAnio'] = $this->mctAprobacionGeodesia->txtAnio_Create();
-        if (in_array('lstRegularizacionAs',$strControlsArray))
-            $this->objControlsArray['lstRegularizacionAs'] = $this->mctAprobacionGeodesia->lstRegularizacionAs_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

@@ -28,8 +28,6 @@
      * property-read QLabel $NombreRefernteLabel
      * property QTextBox $TelefonoReferenteControl
      * property-read QLabel $TelefonoReferenteLabel
-     * property QTextBox $InformeUrbanisticoFechaControl
-     * property-read QLabel $InformeUrbanisticoFechaLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -52,7 +50,6 @@
         protected $txtPresenciaOrgSociales;
         protected $txtNombreRefernte;
         protected $txtTelefonoReferente;
-        protected $txtInformeUrbanisticoFecha;
 
         // Controls that allow the viewing of CondicionesSocioUrbanisticas's individual data fields
         protected $lblIdFolio;
@@ -60,7 +57,6 @@
         protected $lblPresenciaOrgSociales;
         protected $lblNombreRefernte;
         protected $lblTelefonoReferente;
-        protected $lblInformeUrbanisticoFecha;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -308,32 +304,6 @@
             return $this->lblTelefonoReferente;
         }
 
-        /**
-         * Create and setup QTextBox txtInformeUrbanisticoFecha
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtInformeUrbanisticoFecha_Create($strControlId = null) {
-            $this->txtInformeUrbanisticoFecha = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtInformeUrbanisticoFecha->Name = QApplication::Translate('InformeUrbanisticoFecha');
-            $this->txtInformeUrbanisticoFecha->Text = $this->objCondicionesSocioUrbanisticas->InformeUrbanisticoFecha;
-            $this->txtInformeUrbanisticoFecha->MaxLength = CondicionesSocioUrbanisticas::InformeUrbanisticoFechaMaxLength;
-            
-            return $this->txtInformeUrbanisticoFecha;
-        }
-
-        /**
-         * Create and setup QLabel lblInformeUrbanisticoFecha
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblInformeUrbanisticoFecha_Create($strControlId = null) {
-            $this->lblInformeUrbanisticoFecha = new QLabel($this->objParentObject, $strControlId);
-            $this->lblInformeUrbanisticoFecha->Name = QApplication::Translate('InformeUrbanisticoFecha');
-            $this->lblInformeUrbanisticoFecha->Text = $this->objCondicionesSocioUrbanisticas->InformeUrbanisticoFecha;
-            return $this->lblInformeUrbanisticoFecha;
-        }
-
 
 
     public $lstEquipamientoAsIdFolio;
@@ -568,9 +538,6 @@
             if ($this->txtTelefonoReferente) $this->txtTelefonoReferente->Text = $this->objCondicionesSocioUrbanisticas->TelefonoReferente;
             if ($this->lblTelefonoReferente) $this->lblTelefonoReferente->Text = $this->objCondicionesSocioUrbanisticas->TelefonoReferente;
 
-            if ($this->txtInformeUrbanisticoFecha) $this->txtInformeUrbanisticoFecha->Text = $this->objCondicionesSocioUrbanisticas->InformeUrbanisticoFecha;
-            if ($this->lblInformeUrbanisticoFecha) $this->lblInformeUrbanisticoFecha->Text = $this->objCondicionesSocioUrbanisticas->InformeUrbanisticoFecha;
-
         }
 
 
@@ -594,7 +561,6 @@
                 if ($this->txtPresenciaOrgSociales) $this->objCondicionesSocioUrbanisticas->PresenciaOrgSociales = $this->txtPresenciaOrgSociales->Text;
                 if ($this->txtNombreRefernte) $this->objCondicionesSocioUrbanisticas->NombreRefernte = $this->txtNombreRefernte->Text;
                 if ($this->txtTelefonoReferente) $this->objCondicionesSocioUrbanisticas->TelefonoReferente = $this->txtTelefonoReferente->Text;
-                if ($this->txtInformeUrbanisticoFecha) $this->objCondicionesSocioUrbanisticas->InformeUrbanisticoFecha = $this->txtInformeUrbanisticoFecha->Text;
 
 
         }
@@ -687,12 +653,6 @@
                 case 'TelefonoReferenteLabel':
                     if (!$this->lblTelefonoReferente) return $this->lblTelefonoReferente_Create();
                     return $this->lblTelefonoReferente;
-                case 'InformeUrbanisticoFechaControl':
-                    if (!$this->txtInformeUrbanisticoFecha) return $this->txtInformeUrbanisticoFecha_Create();
-                    return $this->txtInformeUrbanisticoFecha;
-                case 'InformeUrbanisticoFechaLabel':
-                    if (!$this->lblInformeUrbanisticoFecha) return $this->lblInformeUrbanisticoFecha_Create();
-                    return $this->lblInformeUrbanisticoFecha;
                 default:
                     try {
                         return parent::__get($strName);
@@ -727,8 +687,6 @@
                         return ($this->txtNombreRefernte = QType::Cast($mixValue, 'QControl'));
                     case 'TelefonoReferenteControl':
                         return ($this->txtTelefonoReferente = QType::Cast($mixValue, 'QControl'));
-                    case 'InformeUrbanisticoFechaControl':
-                        return ($this->txtInformeUrbanisticoFecha = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

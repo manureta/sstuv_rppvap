@@ -5,7 +5,7 @@
 	// code re-generations do not overwrite your changes.
 ?>
 		<?php $_CONTROL->lblId->RenderWithName(); ?>
-		<?php $_CONTROL->txtCodPartido->RenderWithName(); ?>
+		<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
 		<?php $_CONTROL->txtNum->RenderWithName(); ?>
 		<?php $_CONTROL->txtAnio->RenderWithName(); ?>
 

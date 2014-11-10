@@ -26,18 +26,6 @@ class RegularizacionDataGridGen extends QFilteredDataGrid {
         'AntecedentesAsIdFolio' => true,
         'ProcesoIniciado' => true,
         'AntecedentesAsIdFolio' => true,
-        'FechaInicio' => true,
-        'AntecedentesAsIdFolio' => true,
-        'TienePlano' => true,
-        'AntecedentesAsIdFolio' => true,
-        'Circular10Catastro' => true,
-        'AntecedentesAsIdFolio' => true,
-        'AprobacionGeodesiaObject' => true,
-        'AntecedentesAsIdFolio' => true,
-        'Registracion' => true,
-        'AntecedentesAsIdFolio' => true,
-        'EstadoProcesoObject' => true,
-        'AntecedentesAsIdFolio' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -73,12 +61,6 @@ class RegularizacionDataGridGen extends QFilteredDataGrid {
         if (RegularizacionDataGrid::$strColumnsArray['Id']) $this->MetaAddColumn('Id')->Title = QApplication::Translate('Id');
         if (RegularizacionDataGrid::$strColumnsArray['IdFolioObject']) $this->MetaAddColumn(QQN::Regularizacion()->IdFolioObject)->Title = QApplication::Translate('IdFolioObject');
         if (RegularizacionDataGrid::$strColumnsArray['ProcesoIniciado']) $this->MetaAddColumn('ProcesoIniciado')->Title = QApplication::Translate('ProcesoIniciado');
-        if (RegularizacionDataGrid::$strColumnsArray['FechaInicio']) $this->MetaAddColumn('FechaInicio')->Title = QApplication::Translate('FechaInicio');
-        if (RegularizacionDataGrid::$strColumnsArray['TienePlano']) $this->MetaAddColumn('TienePlano')->Title = QApplication::Translate('TienePlano');
-        if (RegularizacionDataGrid::$strColumnsArray['Circular10Catastro']) $this->MetaAddColumn('Circular10Catastro')->Title = QApplication::Translate('Circular10Catastro');
-        if (RegularizacionDataGrid::$strColumnsArray['AprobacionGeodesiaObject']) $this->MetaAddColumn(QQN::Regularizacion()->AprobacionGeodesiaObject)->Title = QApplication::Translate('AprobacionGeodesiaObject');
-        if (RegularizacionDataGrid::$strColumnsArray['Registracion']) $this->MetaAddColumn('Registracion')->Title = QApplication::Translate('Registracion');
-        if (RegularizacionDataGrid::$strColumnsArray['EstadoProcesoObject']) $this->MetaAddColumn(QQN::Regularizacion()->EstadoProcesoObject)->Title = QApplication::Translate('EstadoProcesoObject');
         if (RegularizacionDataGrid::$strColumnsArray['AntecedentesAsIdFolio']) $this->MetaAddColumn(QQN::Regularizacion()->AntecedentesAsIdFolio)->Title = QApplication::Translate('AntecedentesAsIdFolio');
     }
 
@@ -230,14 +212,6 @@ class RegularizacionDataGridGen extends QFilteredDataGrid {
 				case 'IdFolio': return QQN::Regularizacion()->IdFolio;
 				case 'IdFolioObject': return QQN::Regularizacion()->IdFolioObject;
 				case 'ProcesoIniciado': return QQN::Regularizacion()->ProcesoIniciado;
-				case 'FechaInicio': return QQN::Regularizacion()->FechaInicio;
-				case 'TienePlano': return QQN::Regularizacion()->TienePlano;
-				case 'Circular10Catastro': return QQN::Regularizacion()->Circular10Catastro;
-				case 'AprobacionGeodesia': return QQN::Regularizacion()->AprobacionGeodesia;
-				case 'AprobacionGeodesiaObject': return QQN::Regularizacion()->AprobacionGeodesiaObject;
-				case 'Registracion': return QQN::Regularizacion()->Registracion;
-				case 'EstadoProceso': return QQN::Regularizacion()->EstadoProceso;
-				case 'EstadoProcesoObject': return QQN::Regularizacion()->EstadoProcesoObject;
 				case 'AntecedentesAsIdFolio': return QQN::Regularizacion()->AntecedentesAsIdFolio;
 
 				default: throw new QCallerException('Simple Property not found in RegularizacionDataGrid content: ' . $mixContent);

@@ -7,7 +7,12 @@ class Folio extends FolioGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('Folio %s',  $this->intId);
+        return sprintf('%s',  $this->strCodFolio);
+    }
+
+    public function Save($blnForceInsert = false, $blnForceUpdate = false){
+    	$this->strCodFolio = sprintf("%s%s",$this->IdPartidoObject->CodPartido , $this->strMatricula);
+    	parent::Save();
     }
 
 }

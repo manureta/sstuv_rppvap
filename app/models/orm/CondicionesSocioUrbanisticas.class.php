@@ -7,7 +7,7 @@ class CondicionesSocioUrbanisticas extends CondicionesSocioUrbanisticasGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('CondicionesSocioUrbanisticas %s - %s',  $this->intId,  $this->intIdFolio);
+        return sprintf('CondicionesSocioUrbanisticas %s - %s',  $this->intId,  $this->strIdFolio);
     }
 
 }

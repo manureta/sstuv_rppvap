@@ -18,15 +18,7 @@
 	 * @property-read integer $Id the value for intId (Read-Only PK)
 	 * @property integer $IdFolio the value for intIdFolio (Unique)
 	 * @property boolean $ProcesoIniciado the value for blnProcesoIniciado 
-	 * @property QDateTime $FechaInicio the value for dttFechaInicio 
-	 * @property boolean $TienePlano the value for blnTienePlano 
-	 * @property boolean $Circular10Catastro the value for blnCircular10Catastro 
-	 * @property integer $AprobacionGeodesia the value for intAprobacionGeodesia 
-	 * @property integer $Registracion the value for intRegistracion 
-	 * @property integer $EstadoProceso the value for intEstadoProceso 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (Unique)
-	 * @property AprobacionGeodesia $AprobacionGeodesiaObject the value for the AprobacionGeodesia object referenced by intAprobacionGeodesia 
-	 * @property EstadoProceso $EstadoProcesoObject the value for the EstadoProceso object referenced by intEstadoProceso 
 	 * @property Antecedentes $AntecedentesAsIdFolio the value for the Antecedentes object that uniquely references this Regularizacion
 	 * @property-read EncuadreLegal $EncuadreLegalAsIdFolio the value for the private _objEncuadreLegalAsIdFolio (Read-Only) if set due to an expansion on the encuadre_legal.id_folio reverse relationship
 	 * @property-read EncuadreLegal[] $EncuadreLegalAsIdFolioArray the value for the private _objEncuadreLegalAsIdFolioArray (Read-Only) if set due to an ExpandAsArray on the encuadre_legal.id_folio reverse relationship
@@ -73,54 +65,6 @@ class RegularizacionGen extends QBaseClass {
      */
     protected $blnProcesoIniciado;
     const ProcesoIniciadoDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column regularizacion._fecha_inicio
-     * @var QDateTime dttFechaInicio
-     */
-    protected $dttFechaInicio;
-    const FechaInicioDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column regularizacion._tiene_plano
-     * @var boolean blnTienePlano
-     */
-    protected $blnTienePlano;
-    const TienePlanoDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column regularizacion._circular_10_catastro
-     * @var boolean blnCircular10Catastro
-     */
-    protected $blnCircular10Catastro;
-    const Circular10CatastroDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column regularizacion._aprobacion_geodesia
-     * @var integer intAprobacionGeodesia
-     */
-    protected $intAprobacionGeodesia;
-    const AprobacionGeodesiaDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column regularizacion._registracion
-     * @var integer intRegistracion
-     */
-    protected $intRegistracion;
-    const RegistracionDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column regularizacion._estado_proceso
-     * @var integer intEstadoProceso
-     */
-    protected $intEstadoProceso;
-    const EstadoProcesoDefault = null;
 
 
     /**
@@ -185,26 +129,6 @@ class RegularizacionGen extends QBaseClass {
 		 * @var Folio objIdFolioObject
 		 */
 		protected $objIdFolioObject;
-
-		/**
-		 * Protected member variable that contains the object pointed by the reference
-		 * in the database column regularizacion._aprobacion_geodesia.
-		 *
-		 * NOTE: Always use the AprobacionGeodesiaObject property getter to correctly retrieve this AprobacionGeodesia object.
-		 * (Because this class implements late binding, this variable reference MAY be null.)
-		 * @var AprobacionGeodesia objAprobacionGeodesiaObject
-		 */
-		protected $objAprobacionGeodesiaObject;
-
-		/**
-		 * Protected member variable that contains the object pointed by the reference
-		 * in the database column regularizacion._estado_proceso.
-		 *
-		 * NOTE: Always use the EstadoProcesoObject property getter to correctly retrieve this EstadoProceso object.
-		 * (Because this class implements late binding, this variable reference MAY be null.)
-		 * @var EstadoProceso objEstadoProcesoObject
-		 */
-		protected $objEstadoProcesoObject;
 
 		/**
 		 * Protected member variable that contains the object which points to
@@ -544,12 +468,6 @@ class RegularizacionGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'id', $strAliasPrefix . 'id');
 			$objBuilder->AddSelectItem($strTableName, 'id_folio', $strAliasPrefix . 'id_folio');
 			$objBuilder->AddSelectItem($strTableName, 'proceso_iniciado', $strAliasPrefix . 'proceso_iniciado');
-			$objBuilder->AddSelectItem($strTableName, '_fecha_inicio', $strAliasPrefix . '_fecha_inicio');
-			$objBuilder->AddSelectItem($strTableName, '_tiene_plano', $strAliasPrefix . '_tiene_plano');
-			$objBuilder->AddSelectItem($strTableName, '_circular_10_catastro', $strAliasPrefix . '_circular_10_catastro');
-			$objBuilder->AddSelectItem($strTableName, '_aprobacion_geodesia', $strAliasPrefix . '_aprobacion_geodesia');
-			$objBuilder->AddSelectItem($strTableName, '_registracion', $strAliasPrefix . '_registracion');
-			$objBuilder->AddSelectItem($strTableName, '_estado_proceso', $strAliasPrefix . '_estado_proceso');
 		}
 
 //instantiation_methods
@@ -640,18 +558,6 @@ class RegularizacionGen extends QBaseClass {
 			$objToReturn->intIdFolio = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'proceso_iniciado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'proceso_iniciado'] : $strAliasPrefix . 'proceso_iniciado';
 			$objToReturn->blnProcesoIniciado = $objDbRow->GetColumn($strAliasName, 'Bit');
-			$strAliasName = array_key_exists($strAliasPrefix . '_fecha_inicio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_fecha_inicio'] : $strAliasPrefix . '_fecha_inicio';
-			$objToReturn->dttFechaInicio = $objDbRow->GetColumn($strAliasName, 'Date');
-			$strAliasName = array_key_exists($strAliasPrefix . '_tiene_plano', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_tiene_plano'] : $strAliasPrefix . '_tiene_plano';
-			$objToReturn->blnTienePlano = $objDbRow->GetColumn($strAliasName, 'Bit');
-			$strAliasName = array_key_exists($strAliasPrefix . '_circular_10_catastro', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_circular_10_catastro'] : $strAliasPrefix . '_circular_10_catastro';
-			$objToReturn->blnCircular10Catastro = $objDbRow->GetColumn($strAliasName, 'Bit');
-			$strAliasName = array_key_exists($strAliasPrefix . '_aprobacion_geodesia', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_aprobacion_geodesia'] : $strAliasPrefix . '_aprobacion_geodesia';
-			$objToReturn->intAprobacionGeodesia = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . '_registracion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_registracion'] : $strAliasPrefix . '_registracion';
-			$objToReturn->intRegistracion = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . '_estado_proceso', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_estado_proceso'] : $strAliasPrefix . '_estado_proceso';
-			$objToReturn->intEstadoProceso = $objDbRow->GetColumn($strAliasName, 'Integer');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -690,18 +596,6 @@ class RegularizacionGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName)))
 				$objToReturn->objIdFolioObject = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'id_folio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-
-			// Check for AprobacionGeodesiaObject Early Binding
-			$strAlias = $strAliasPrefix . '_aprobacion_geodesia__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName)))
-				$objToReturn->objAprobacionGeodesiaObject = AprobacionGeodesia::InstantiateDbRow($objDbRow, $strAliasPrefix . '_aprobacion_geodesia__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-
-			// Check for EstadoProcesoObject Early Binding
-			$strAlias = $strAliasPrefix . '_estado_proceso__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName)))
-				$objToReturn->objEstadoProcesoObject = EstadoProceso::InstantiateDbRow($objDbRow, $strAliasPrefix . '_estado_proceso__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 
 
 			// Check for AntecedentesAsIdFolio Unique ReverseReference Binding
@@ -811,70 +705,6 @@ class RegularizacionGen extends QBaseClass {
 				$objOptionalClauses
 			);
 		}
-			
-		/**
-		 * Load an array of Regularizacion objects,
-		 * by AprobacionGeodesia Index(es)
-		 * @param integer $intAprobacionGeodesia
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Regularizacion[]
-		*/
-		public static function LoadArrayByAprobacionGeodesia($intAprobacionGeodesia, $objOptionalClauses = null) {
-			// Call Regularizacion::QueryArray to perform the LoadArrayByAprobacionGeodesia query
-			try {
-				return Regularizacion::QueryArray(
-					QQ::Equal(QQN::Regularizacion()->AprobacionGeodesia, $intAprobacionGeodesia),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Regularizaciones
-		 * by AprobacionGeodesia Index(es)
-		 * @param integer $intAprobacionGeodesia
-		 * @return int
-		*/
-		public static function CountByAprobacionGeodesia($intAprobacionGeodesia) {
-			// Call Regularizacion::QueryCount to perform the CountByAprobacionGeodesia query
-			return Regularizacion::QueryCount(
-				QQ::Equal(QQN::Regularizacion()->AprobacionGeodesia, $intAprobacionGeodesia)
-			);
-		}
-			
-		/**
-		 * Load an array of Regularizacion objects,
-		 * by EstadoProceso Index(es)
-		 * @param integer $intEstadoProceso
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Regularizacion[]
-		*/
-		public static function LoadArrayByEstadoProceso($intEstadoProceso, $objOptionalClauses = null) {
-			// Call Regularizacion::QueryArray to perform the LoadArrayByEstadoProceso query
-			try {
-				return Regularizacion::QueryArray(
-					QQ::Equal(QQN::Regularizacion()->EstadoProceso, $intEstadoProceso),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Regularizaciones
-		 * by EstadoProceso Index(es)
-		 * @param integer $intEstadoProceso
-		 * @return int
-		*/
-		public static function CountByEstadoProceso($intEstadoProceso) {
-			// Call Regularizacion::QueryCount to perform the CountByEstadoProceso query
-			return Regularizacion::QueryCount(
-				QQ::Equal(QQN::Regularizacion()->EstadoProceso, $intEstadoProceso)
-			);
-		}
 
 
 
@@ -918,49 +748,12 @@ class RegularizacionGen extends QBaseClass {
 			throw $objExc;
                 }
             }
-            // ver si objAprobacionGeodesiaObject esta Guardado
-            if(is_null($this->intAprobacionGeodesia)){
-                //Si el objeto esta seteado lo grabo sino no hago NADA.
-                if(!is_null($this->AprobacionGeodesiaObject))
-                try{
-                    if(!is_null($this->AprobacionGeodesiaObject->AprobacionGeodesia))
-                        $this->intAprobacionGeodesia = $this->AprobacionGeodesiaObject->AprobacionGeodesia;
-                    else
-                        $this->intAprobacionGeodesia = $this->AprobacionGeodesiaObject->Save();
-                }catch(Exception $objExc){
-                    	$objExc->IncrementOffset();
-			throw $objExc;
-                }
-            }
-            // ver si objEstadoProcesoObject esta Guardado
-            if(is_null($this->intEstadoProceso)){
-                //Si el objeto esta seteado lo grabo sino no hago NADA.
-                if(!is_null($this->EstadoProcesoObject))
-                try{
-                    if(!is_null($this->EstadoProcesoObject->EstadoProceso))
-                        $this->intEstadoProceso = $this->EstadoProcesoObject->EstadoProceso;
-                    else
-                        $this->intEstadoProceso = $this->EstadoProcesoObject->Save();
-                }catch(Exception $objExc){
-                    	$objExc->IncrementOffset();
-			throw $objExc;
-                }
-            }
 
                     if ($this->intId && ($this->intId > QDatabaseNumberFieldMax::Integer || $this->intId < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intId', QDatabaseFieldType::Integer);
                     }
                     if ($this->intIdFolio && ($this->intIdFolio > QDatabaseNumberFieldMax::Integer || $this->intIdFolio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intIdFolio', QDatabaseFieldType::Integer);
-                    }
-                    if ($this->intAprobacionGeodesia && ($this->intAprobacionGeodesia > QDatabaseNumberFieldMax::Integer || $this->intAprobacionGeodesia < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intAprobacionGeodesia', QDatabaseFieldType::Integer);
-                    }
-                    if ($this->intRegistracion && ($this->intRegistracion > QDatabaseNumberFieldMax::Integer || $this->intRegistracion < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intRegistracion', QDatabaseFieldType::Integer);
-                    }
-                    if ($this->intEstadoProceso && ($this->intEstadoProceso > QDatabaseNumberFieldMax::Integer || $this->intEstadoProceso < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intEstadoProceso', QDatabaseFieldType::Integer);
                     }
 
             try {
@@ -969,22 +762,10 @@ class RegularizacionGen extends QBaseClass {
                     $objDatabase->NonQuery('
                         INSERT INTO "regularizacion" (
                             "id_folio",
-                            "proceso_iniciado",
-                            "_fecha_inicio",
-                            "_tiene_plano",
-                            "_circular_10_catastro",
-                            "_aprobacion_geodesia",
-                            "_registracion",
-                            "_estado_proceso"
+                            "proceso_iniciado"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
-                            ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . ',
-                            ' . $objDatabase->SqlVariable($this->dttFechaInicio) . ',
-                            ' . $objDatabase->SqlVariable($this->blnTienePlano) . ',
-                            ' . $objDatabase->SqlVariable($this->blnCircular10Catastro) . ',
-                            ' . $objDatabase->SqlVariable($this->intAprobacionGeodesia) . ',
-                            ' . $objDatabase->SqlVariable($this->intRegistracion) . ',
-                            ' . $objDatabase->SqlVariable($this->intEstadoProceso) . '
+                            ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . '
                         )
                     ');
 
@@ -1001,13 +782,7 @@ class RegularizacionGen extends QBaseClass {
                             "regularizacion"
                         SET
                             "id_folio" = ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
-                            "proceso_iniciado" = ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . ',
-                            "_fecha_inicio" = ' . $objDatabase->SqlVariable($this->dttFechaInicio) . ',
-                            "_tiene_plano" = ' . $objDatabase->SqlVariable($this->blnTienePlano) . ',
-                            "_circular_10_catastro" = ' . $objDatabase->SqlVariable($this->blnCircular10Catastro) . ',
-                            "_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intAprobacionGeodesia) . ',
-                            "_registracion" = ' . $objDatabase->SqlVariable($this->intRegistracion) . ',
-                            "_estado_proceso" = ' . $objDatabase->SqlVariable($this->intEstadoProceso) . '
+                            "proceso_iniciado" = ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -1123,12 +898,6 @@ class RegularizacionGen extends QBaseClass {
 			// Update $this's local variables to match
 			$this->IdFolio = $objReloaded->IdFolio;
 			$this->blnProcesoIniciado = $objReloaded->blnProcesoIniciado;
-			$this->dttFechaInicio = $objReloaded->dttFechaInicio;
-			$this->blnTienePlano = $objReloaded->blnTienePlano;
-			$this->blnCircular10Catastro = $objReloaded->blnCircular10Catastro;
-			$this->AprobacionGeodesia = $objReloaded->AprobacionGeodesia;
-			$this->intRegistracion = $objReloaded->intRegistracion;
-			$this->EstadoProceso = $objReloaded->EstadoProceso;
 		}
 
 
@@ -1171,48 +940,6 @@ class RegularizacionGen extends QBaseClass {
                  */
                 return $this->blnProcesoIniciado;
 
-            case 'FechaInicio':
-                /**
-                 * Gets the value for dttFechaInicio 
-                 * @return QDateTime
-                 */
-                return $this->dttFechaInicio;
-
-            case 'TienePlano':
-                /**
-                 * Gets the value for blnTienePlano 
-                 * @return boolean
-                 */
-                return $this->blnTienePlano;
-
-            case 'Circular10Catastro':
-                /**
-                 * Gets the value for blnCircular10Catastro 
-                 * @return boolean
-                 */
-                return $this->blnCircular10Catastro;
-
-            case 'AprobacionGeodesia':
-                /**
-                 * Gets the value for intAprobacionGeodesia 
-                 * @return integer
-                 */
-                return $this->intAprobacionGeodesia;
-
-            case 'Registracion':
-                /**
-                 * Gets the value for intRegistracion 
-                 * @return integer
-                 */
-                return $this->intRegistracion;
-
-            case 'EstadoProceso':
-                /**
-                 * Gets the value for intEstadoProceso 
-                 * @return integer
-                 */
-                return $this->intEstadoProceso;
-
 
             ///////////////////
             // Member Objects
@@ -1226,34 +953,6 @@ class RegularizacionGen extends QBaseClass {
                     if ((!$this->objIdFolioObject) && (!is_null($this->intIdFolio)))
                         $this->objIdFolioObject = Folio::Load($this->intIdFolio);
                     return $this->objIdFolioObject;
-                } catch (QCallerException $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-
-            case 'AprobacionGeodesiaObject':
-                /**
-                 * Gets the value for the AprobacionGeodesia object referenced by intAprobacionGeodesia 
-                 * @return AprobacionGeodesia
-                 */
-                try {
-                    if ((!$this->objAprobacionGeodesiaObject) && (!is_null($this->intAprobacionGeodesia)))
-                        $this->objAprobacionGeodesiaObject = AprobacionGeodesia::Load($this->intAprobacionGeodesia);
-                    return $this->objAprobacionGeodesiaObject;
-                } catch (QCallerException $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-
-            case 'EstadoProcesoObject':
-                /**
-                 * Gets the value for the EstadoProceso object referenced by intEstadoProceso 
-                 * @return EstadoProceso
-                 */
-                try {
-                    if ((!$this->objEstadoProcesoObject) && (!is_null($this->intEstadoProceso)))
-                        $this->objEstadoProcesoObject = EstadoProceso::Load($this->intEstadoProceso);
-                    return $this->objEstadoProcesoObject;
                 } catch (QCallerException $objExc) {
                     $objExc->IncrementOffset();
                     throw $objExc;
@@ -1379,98 +1078,6 @@ class RegularizacionGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'FechaInicio':
-					/**
-					 * Sets the value for dttFechaInicio 
-					 * @param QDateTime $mixValue
-					 * @return QDateTime
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->dttFechaInicio = QType::Cast($mixValue, QType::DateTime));
-                                                return ($this->dttFechaInicio = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'TienePlano':
-					/**
-					 * Sets the value for blnTienePlano 
-					 * @param boolean $mixValue
-					 * @return boolean
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->blnTienePlano = QType::Cast($mixValue, QType::Boolean));
-                                                return ($this->blnTienePlano = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'Circular10Catastro':
-					/**
-					 * Sets the value for blnCircular10Catastro 
-					 * @param boolean $mixValue
-					 * @return boolean
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->blnCircular10Catastro = QType::Cast($mixValue, QType::Boolean));
-                                                return ($this->blnCircular10Catastro = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'AprobacionGeodesia':
-					/**
-					 * Sets the value for intAprobacionGeodesia 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						$this->objAprobacionGeodesiaObject = null;
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intAprobacionGeodesia = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intAprobacionGeodesia = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'Registracion':
-					/**
-					 * Sets the value for intRegistracion 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intRegistracion = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intRegistracion = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'EstadoProceso':
-					/**
-					 * Sets the value for intEstadoProceso 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						$this->objEstadoProcesoObject = null;
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intEstadoProceso = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intEstadoProceso = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 
 				///////////////////
 				// Member Objects
@@ -1502,72 +1109,6 @@ class RegularizacionGen extends QBaseClass {
 						// Update Local Member Variables
 						$this->objIdFolioObject = $mixValue;
 						$this->intIdFolio = $mixValue->Id;
-
-						// Return $mixValue
-						return $mixValue;
-					}
-					break;
-
-				case 'AprobacionGeodesiaObject':
-					/**
-					 * Sets the value for the AprobacionGeodesia object referenced by intAprobacionGeodesia 
-					 * @param AprobacionGeodesia $mixValue
-					 * @return AprobacionGeodesia
-					 */
-					if (is_null($mixValue)) {
-						$this->intAprobacionGeodesia = null;
-						$this->objAprobacionGeodesiaObject = null;
-						return null;
-					} else {
-						// Make sure $mixValue actually is a AprobacionGeodesia object
-						//try {
-						//	$mixValue = QType::Cast($mixValue, 'AprobacionGeodesia');
-						//} catch (QInvalidCastException $objExc) {
-						//	$objExc->IncrementOffset();
-						//	throw $objExc;
-						//}
-
-						// DEPRECATED
-                                                // Make sure $mixValue is a SAVED AprobacionGeodesia object
-						//if (is_null($mixValue->Id))
-						//	throw new QCallerException('Unable to set an unsaved AprobacionGeodesiaObject for this Regularizacion');
-
-						// Update Local Member Variables
-						$this->objAprobacionGeodesiaObject = $mixValue;
-						$this->intAprobacionGeodesia = $mixValue->Id;
-
-						// Return $mixValue
-						return $mixValue;
-					}
-					break;
-
-				case 'EstadoProcesoObject':
-					/**
-					 * Sets the value for the EstadoProceso object referenced by intEstadoProceso 
-					 * @param EstadoProceso $mixValue
-					 * @return EstadoProceso
-					 */
-					if (is_null($mixValue)) {
-						$this->intEstadoProceso = null;
-						$this->objEstadoProcesoObject = null;
-						return null;
-					} else {
-						// Make sure $mixValue actually is a EstadoProceso object
-						//try {
-						//	$mixValue = QType::Cast($mixValue, 'EstadoProceso');
-						//} catch (QInvalidCastException $objExc) {
-						//	$objExc->IncrementOffset();
-						//	throw $objExc;
-						//}
-
-						// DEPRECATED
-                                                // Make sure $mixValue is a SAVED EstadoProceso object
-						//if (is_null($mixValue->Id))
-						//	throw new QCallerException('Unable to set an unsaved EstadoProcesoObject for this Regularizacion');
-
-						// Update Local Member Variables
-						$this->objEstadoProcesoObject = $mixValue;
-						$this->intEstadoProceso = $mixValue->Id;
 
 						// Return $mixValue
 						return $mixValue;
@@ -2045,12 +1586,6 @@ class RegularizacionGen extends QBaseClass {
 			$strToReturn .= '<element name="Id" type="xsd:int"/>';
 			$strToReturn .= '<element name="IdFolioObject" type="xsd1:Folio"/>';
 			$strToReturn .= '<element name="ProcesoIniciado" type="xsd:boolean"/>';
-			$strToReturn .= '<element name="FechaInicio" type="xsd:dateTime"/>';
-			$strToReturn .= '<element name="TienePlano" type="xsd:boolean"/>';
-			$strToReturn .= '<element name="Circular10Catastro" type="xsd:boolean"/>';
-			$strToReturn .= '<element name="AprobacionGeodesiaObject" type="xsd1:AprobacionGeodesia"/>';
-			$strToReturn .= '<element name="Registracion" type="xsd:int"/>';
-			$strToReturn .= '<element name="EstadoProcesoObject" type="xsd1:EstadoProceso"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2060,8 +1595,6 @@ class RegularizacionGen extends QBaseClass {
 			if (!array_key_exists('Regularizacion', $strComplexTypeArray)) {
 				$strComplexTypeArray['Regularizacion'] = Regularizacion::GetSoapComplexTypeXml();
 				$strComplexTypeArray = Folio::AlterSoapComplexTypeArray($strComplexTypeArray);
-				$strComplexTypeArray = AprobacionGeodesia::AlterSoapComplexTypeArray($strComplexTypeArray);
-				$strComplexTypeArray = EstadoProceso::AlterSoapComplexTypeArray($strComplexTypeArray);
 			}
             return $strComplexTypeArray;
 		}
@@ -2086,24 +1619,6 @@ class RegularizacionGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'ProcesoIniciado')) {
 				$objToReturn->blnProcesoIniciado = $objSoapObject->ProcesoIniciado;
             }
-			if (property_exists($objSoapObject, 'FechaInicio')) {
-				$objToReturn->dttFechaInicio = new QDateTime($objSoapObject->FechaInicio);
-            }
-			if (property_exists($objSoapObject, 'TienePlano')) {
-				$objToReturn->blnTienePlano = $objSoapObject->TienePlano;
-            }
-			if (property_exists($objSoapObject, 'Circular10Catastro')) {
-				$objToReturn->blnCircular10Catastro = $objSoapObject->Circular10Catastro;
-            }
-			if ((property_exists($objSoapObject, 'AprobacionGeodesiaObject')) &&
-				($objSoapObject->AprobacionGeodesiaObject))
-				$objToReturn->AprobacionGeodesiaObject = AprobacionGeodesia::GetObjectFromSoapObject($objSoapObject->AprobacionGeodesiaObject);
-			if (property_exists($objSoapObject, 'Registracion')) {
-				$objToReturn->intRegistracion = $objSoapObject->Registracion;
-            }
-			if ((property_exists($objSoapObject, 'EstadoProcesoObject')) &&
-				($objSoapObject->EstadoProcesoObject))
-				$objToReturn->EstadoProcesoObject = EstadoProceso::GetObjectFromSoapObject($objSoapObject->EstadoProcesoObject);
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
 			return $objToReturn;
@@ -2126,16 +1641,6 @@ class RegularizacionGen extends QBaseClass {
 				$objObject->objIdFolioObject = Folio::GetSoapObjectFromObject($objObject->objIdFolioObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intIdFolio = null;
-			if ($objObject->dttFechaInicio)
-				$objObject->dttFechaInicio = $objObject->dttFechaInicio->__toString(QDateTime::FormatSoap);
-			if ($objObject->objAprobacionGeodesiaObject)
-				$objObject->objAprobacionGeodesiaObject = AprobacionGeodesia::GetSoapObjectFromObject($objObject->objAprobacionGeodesiaObject, false);
-			else if (!$blnBindRelatedObjects)
-				$objObject->intAprobacionGeodesia = null;
-			if ($objObject->objEstadoProcesoObject)
-				$objObject->objEstadoProcesoObject = EstadoProceso::GetSoapObjectFromObject($objObject->objEstadoProcesoObject, false);
-			else if (!$blnBindRelatedObjects)
-				$objObject->intEstadoProceso = null;
 			return $objObject;
 		}
 

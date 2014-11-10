@@ -17,6 +17,9 @@
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $Id the value for intId (Read-Only PK)
 	 * @property string $Nombre the value for strNombre (Not Null)
+	 * @property string $CodPartido the value for strCodPartido (Unique)
+	 * @property-read AprobacionGeodesia $AprobacionGeodesiaAsId the value for the private _objAprobacionGeodesiaAsId (Read-Only) if set due to an expansion on the aprobacion_geodesia.id_partido reverse relationship
+	 * @property-read AprobacionGeodesia[] $AprobacionGeodesiaAsIdArray the value for the private _objAprobacionGeodesiaAsIdArray (Read-Only) if set due to an ExpandAsArray on the aprobacion_geodesia.id_partido reverse relationship
 	 * @property-read Folio $FolioAsId the value for the private _objFolioAsId (Read-Only) if set due to an expansion on the folio.id_partido reverse relationship
 	 * @property-read Folio[] $FolioAsIdArray the value for the private _objFolioAsIdArray (Read-Only) if set due to an ExpandAsArray on the folio.id_partido reverse relationship
 	 * @property-read Localidad $LocalidadAsId the value for the private _objLocalidadAsId (Read-Only) if set due to an expansion on the localidad.id_partido reverse relationship
@@ -56,6 +59,31 @@ class PartidoGen extends QBaseClass {
     const NombreMaxLength = 45;
     const NombreDefault = null;
 
+
+    /**
+     * Protected member variable that maps to the database column partido.cod_partido
+     * @var string strCodPartido
+     */
+    protected $strCodPartido;
+    const CodPartidoMaxLength = 3;
+    const CodPartidoDefault = null;
+
+
+    /**
+     * Private member variable that stores a reference to a single AprobacionGeodesiaAsId object
+     * (of type AprobacionGeodesia), if this Partido object was restored with
+     * an expansion on the aprobacion_geodesia association table.
+     * @var AprobacionGeodesia _objAprobacionGeodesiaAsId;
+     */
+    protected $objAprobacionGeodesiaAsId;
+
+    /**
+     * Private member variable that stores a reference to an array of AprobacionGeodesiaAsId objects
+     * (of type AprobacionGeodesia[]), if this Partido object was restored with
+     * an ExpandAsArray on the aprobacion_geodesia association table.
+     * @var AprobacionGeodesia[] _objAprobacionGeodesiaAsIdArray;
+     */
+    protected $objAprobacionGeodesiaAsIdArray;
 
     /**
      * Private member variable that stores a reference to a single FolioAsId object
@@ -195,6 +223,7 @@ class PartidoGen extends QBaseClass {
 
 //class_query_method
     protected static $arrQueryTextFields = array(
+        array("name"=>"CodPartido","type"=>"string"),
     );
 
     public static function GetQueryTextConditions($strParameter){
@@ -429,6 +458,7 @@ class PartidoGen extends QBaseClass {
 
 			$objBuilder->AddSelectItem($strTableName, 'id', $strAliasPrefix . 'id');
 			$objBuilder->AddSelectItem($strTableName, 'nombre', $strAliasPrefix . 'nombre');
+			$objBuilder->AddSelectItem($strTableName, 'cod_partido', $strAliasPrefix . 'cod_partido');
 		}
 
 //instantiation_methods
@@ -464,6 +494,23 @@ class PartidoGen extends QBaseClass {
 						if (!$strAliasPrefix)
 							$strAliasPrefix = 'partido__';
 
+
+						// Expanding reverse references: AprobacionGeodesiaAsId
+						$strAlias = $strAliasPrefix . 'aprobaciongeodesiaasid__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objAprobacionGeodesiaAsIdArray)) {
+								$objPreviousChildItems = $objPreviousItem->objAprobacionGeodesiaAsIdArray;
+								$objChildItem = AprobacionGeodesia::InstantiateDbRow($objDbRow, $strAliasPrefix . 'aprobaciongeodesiaasid__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objAprobacionGeodesiaAsIdArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objAprobacionGeodesiaAsIdArray[] = AprobacionGeodesia::InstantiateDbRow($objDbRow, $strAliasPrefix . 'aprobaciongeodesiaasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
 
 						// Expanding reverse references: FolioAsId
 						$strAlias = $strAliasPrefix . 'folioasid__id';
@@ -517,10 +564,15 @@ class PartidoGen extends QBaseClass {
 			$objToReturn->intId = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'nombre', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nombre'] : $strAliasPrefix . 'nombre';
 			$objToReturn->strNombre = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'cod_partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'cod_partido'] : $strAliasPrefix . 'cod_partido';
+			$objToReturn->strCodPartido = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objAprobacionGeodesiaAsIdArray, $objToReturn->objAprobacionGeodesiaAsIdArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objFolioAsIdArray, $objToReturn->objFolioAsIdArray) != null) {
@@ -549,6 +601,16 @@ class PartidoGen extends QBaseClass {
 
 
 
+
+			// Check for AprobacionGeodesiaAsId Virtual Binding
+			$strAlias = $strAliasPrefix . 'aprobaciongeodesiaasid__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objAprobacionGeodesiaAsIdArray[] = AprobacionGeodesia::InstantiateDbRow($objDbRow, $strAliasPrefix . 'aprobaciongeodesiaasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objAprobacionGeodesiaAsId = AprobacionGeodesia::InstantiateDbRow($objDbRow, $strAliasPrefix . 'aprobaciongeodesiaasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
 
 			// Check for FolioAsId Virtual Binding
 			$strAlias = $strAliasPrefix . 'folioasid__id';
@@ -627,6 +689,22 @@ class PartidoGen extends QBaseClass {
 				$objOptionalClauses
 			);
 		}
+			
+		/**
+		 * Load a single Partido object,
+		 * by CodPartido Index(es)
+		 * @param string $strCodPartido
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Partido
+		*/
+		public static function LoadByCodPartido($strCodPartido, $objOptionalClauses = null) {
+			return Partido::QuerySingle(
+				QQ::AndCondition(
+					QQ::Equal(QQN::Partido()->CodPartido, $strCodPartido)
+				),
+				$objOptionalClauses
+			);
+		}
 
 
 
@@ -666,9 +744,11 @@ class PartidoGen extends QBaseClass {
                     // Perform an INSERT query
                     $objDatabase->NonQuery('
                         INSERT INTO "partido" (
-                            "nombre"
+                            "nombre",
+                            "cod_partido"
                         ) VALUES (
-                            ' . $objDatabase->SqlVariable($this->strNombre) . '
+                            ' . $objDatabase->SqlVariable($this->strNombre) . ',
+                            ' . $objDatabase->SqlVariable($this->strCodPartido) . '
                         )
                     ');
 
@@ -684,7 +764,8 @@ class PartidoGen extends QBaseClass {
                         UPDATE
                             "partido"
                         SET
-                            "nombre" = ' . $objDatabase->SqlVariable($this->strNombre) . '
+                            "nombre" = ' . $objDatabase->SqlVariable($this->strNombre) . ',
+                            "cod_partido" = ' . $objDatabase->SqlVariable($this->strCodPartido) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -769,6 +850,7 @@ class PartidoGen extends QBaseClass {
 
 			// Update $this's local variables to match
 			$this->strNombre = $objReloaded->strNombre;
+			$this->strCodPartido = $objReloaded->strCodPartido;
 		}
 
 
@@ -804,6 +886,13 @@ class PartidoGen extends QBaseClass {
                  */
                 return $this->strNombre;
 
+            case 'CodPartido':
+                /**
+                 * Gets the value for strCodPartido (Unique)
+                 * @return string
+                 */
+                return $this->strCodPartido;
+
 
             ///////////////////
             // Member Objects
@@ -813,6 +902,24 @@ class PartidoGen extends QBaseClass {
             // Virtual Object References (Many to Many and Reverse References)
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
+
+            case 'AprobacionGeodesiaAsId':
+                /**
+                 * Gets the value for the private _objAprobacionGeodesiaAsId (Read-Only)
+                 * if set due to an expansion on the aprobacion_geodesia.id_partido reverse relationship
+                 * @return AprobacionGeodesia
+                 */
+                return $this->objAprobacionGeodesiaAsId;
+
+            case 'AprobacionGeodesiaAsIdArray':
+                /**
+                 * Gets the value for the private _objAprobacionGeodesiaAsIdArray (Read-Only)
+                 * if set due to an ExpandAsArray on the aprobacion_geodesia.id_partido reverse relationship
+                 * @return AprobacionGeodesia[]
+                 */
+                if(is_null($this->objAprobacionGeodesiaAsIdArray))
+                    $this->objAprobacionGeodesiaAsIdArray = $this->GetAprobacionGeodesiaAsIdArray();
+                return (array) $this->objAprobacionGeodesiaAsIdArray;
 
             case 'FolioAsId':
                 /**
@@ -892,6 +999,21 @@ class PartidoGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'CodPartido':
+					/**
+					 * Sets the value for strCodPartido (Unique)
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strCodPartido = QType::Cast($mixValue, QType::String));
+                                                return ($this->strCodPartido = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -925,6 +1047,201 @@ class PartidoGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
+			
+		
+		// Related Objects' Methods for AprobacionGeodesiaAsId
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _AprobacionGeodesiaAsIdArray
+                /**
+                * Add a Item to the _AprobacionGeodesiaAsIdArray
+                * @param AprobacionGeodesia $objItem
+                * @return AprobacionGeodesia[]
+                */
+                public function AddAprobacionGeodesiaAsId(AprobacionGeodesia $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->IdPartidoObject = $this;
+                    $this->objAprobacionGeodesiaAsIdArray = $this->AprobacionGeodesiaAsIdArray;
+                    $this->objAprobacionGeodesiaAsIdArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateAprobacionGeodesiaAsId($objItem);
+
+                    return $this->AprobacionGeodesiaAsIdArray;
+                }
+
+                /**
+                * Remove a Item to the _AprobacionGeodesiaAsIdArray
+                * @param AprobacionGeodesia $objItem
+                * @return AprobacionGeodesia[]
+                */
+                public function RemoveAprobacionGeodesiaAsId(AprobacionGeodesia $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objAprobacionGeodesiaAsIdArray;
+                    $this->objAprobacionGeodesiaAsIdArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objAprobacionGeodesiaAsIdArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->IdPartidoObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedAprobacionGeodesiaAsId($objItem);
+                        }
+
+                    return $this->objAprobacionGeodesiaAsIdArray;
+                }
+
+		/**
+		 * Gets all associated AprobacionGeodesiasAsId as an array of AprobacionGeodesia objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return AprobacionGeodesia[]
+		*/ 
+		public function GetAprobacionGeodesiaAsIdArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return AprobacionGeodesia::LoadArrayByIdPartido($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated AprobacionGeodesiasAsId
+		 * @return int
+		*/ 
+		public function CountAprobacionGeodesiasAsId() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return AprobacionGeodesia::CountByIdPartido($this->intId);
+		}
+
+		/**
+		 * Associates a AprobacionGeodesiaAsId
+		 * @param AprobacionGeodesia $objAprobacionGeodesia
+		 * @return void
+		*/ 
+		public function AssociateAprobacionGeodesiaAsId(AprobacionGeodesia $objAprobacionGeodesia) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateAprobacionGeodesiaAsId on this unsaved Partido.');
+			if ((is_null($objAprobacionGeodesia->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateAprobacionGeodesiaAsId on this Partido with an unsaved AprobacionGeodesia.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Partido::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"aprobacion_geodesia"
+				SET
+					"id_partido" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objAprobacionGeodesia->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a AprobacionGeodesiaAsId
+		 * @param AprobacionGeodesia $objAprobacionGeodesia
+		 * @return void
+		*/ 
+		public function UnassociateAprobacionGeodesiaAsId(AprobacionGeodesia $objAprobacionGeodesia) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateAprobacionGeodesiaAsId on this unsaved Partido.');
+			if ((is_null($objAprobacionGeodesia->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateAprobacionGeodesiaAsId on this Partido with an unsaved AprobacionGeodesia.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Partido::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"aprobacion_geodesia"
+				SET
+					"id_partido" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objAprobacionGeodesia->Id) . ' AND
+					"id_partido" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all AprobacionGeodesiasAsId
+		 * @return void
+		*/ 
+		public function UnassociateAllAprobacionGeodesiasAsId() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateAprobacionGeodesiaAsId on this unsaved Partido.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Partido::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"aprobacion_geodesia"
+				SET
+					"id_partido" = null
+				WHERE
+					"id_partido" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated AprobacionGeodesiaAsId
+		 * @param AprobacionGeodesia $objAprobacionGeodesia
+		 * @return void
+		*/ 
+		public function DeleteAssociatedAprobacionGeodesiaAsId(AprobacionGeodesia $objAprobacionGeodesia) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateAprobacionGeodesiaAsId on this unsaved Partido.');
+			if ((is_null($objAprobacionGeodesia->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateAprobacionGeodesiaAsId on this Partido with an unsaved AprobacionGeodesia.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Partido::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"aprobacion_geodesia"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objAprobacionGeodesia->Id) . ' AND
+					"id_partido" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated AprobacionGeodesiasAsId
+		 * @return void
+		*/ 
+		public function DeleteAllAprobacionGeodesiasAsId() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateAprobacionGeodesiaAsId on this unsaved Partido.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Partido::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"aprobacion_geodesia"
+				WHERE
+					"id_partido" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
 			
 		
 		// Related Objects' Methods for FolioAsId
@@ -1327,6 +1644,7 @@ class PartidoGen extends QBaseClass {
 			$strToReturn = '<complexType name="Partido"><sequence>';
 			$strToReturn .= '<element name="Id" type="xsd:int"/>';
 			$strToReturn .= '<element name="Nombre" type="xsd:string"/>';
+			$strToReturn .= '<element name="CodPartido" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1355,6 +1673,9 @@ class PartidoGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Nombre')) {
 				$objToReturn->strNombre = $objSoapObject->Nombre;
+            }
+			if (property_exists($objSoapObject, 'CodPartido')) {
+				$objToReturn->strCodPartido = $objSoapObject->CodPartido;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

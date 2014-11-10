@@ -7,7 +7,7 @@ class Partido extends PartidoGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('Partido %s',  $this->intId);
+        return sprintf('%s - %s',  $this->strCodPartido, $this->strNombre);
     }
 
 }

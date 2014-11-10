@@ -17,8 +17,6 @@
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $Id the value for intId (Read-Only PK)
 	 * @property string $Descripcion the value for strDescripcion 
-	 * @property-read Regularizacion $RegularizacionAs the value for the private _objRegularizacionAs (Read-Only) if set due to an expansion on the regularizacion._estado_proceso reverse relationship
-	 * @property-read Regularizacion[] $RegularizacionAsArray the value for the private _objRegularizacionAsArray (Read-Only) if set due to an ExpandAsArray on the regularizacion._estado_proceso reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class EstadoProcesoGen extends QBaseClass {
@@ -54,22 +52,6 @@ class EstadoProcesoGen extends QBaseClass {
     const DescripcionMaxLength = 45;
     const DescripcionDefault = null;
 
-
-    /**
-     * Private member variable that stores a reference to a single RegularizacionAs object
-     * (of type Regularizacion), if this EstadoProceso object was restored with
-     * an expansion on the regularizacion association table.
-     * @var Regularizacion _objRegularizacionAs;
-     */
-    protected $objRegularizacionAs;
-
-    /**
-     * Private member variable that stores a reference to an array of RegularizacionAs objects
-     * (of type Regularizacion[]), if this EstadoProceso object was restored with
-     * an ExpandAsArray on the regularizacion association table.
-     * @var Regularizacion[] _objRegularizacionAsArray;
-     */
-    protected $objRegularizacionAsArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -435,44 +417,6 @@ class EstadoProcesoGen extends QBaseClass {
 			if (!$objDbRow) {
 				return null;
 			}
-			// See if we're doing an array expansion on the previous item
-			$strAlias = $strAliasPrefix . 'id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (($strExpandAsArrayNodes) && is_array($arrPreviousItems) && count($arrPreviousItems)) {
-				foreach ($arrPreviousItems as $objPreviousItem) {            
-					if ($objPreviousItem->intId == $objDbRow->GetColumn($strAliasName, 'Integer')) {        
-						// We are.  Now, prepare to check for ExpandAsArray clauses
-						$blnExpandedViaArray = false;
-						if (!$strAliasPrefix)
-							$strAliasPrefix = 'estado_proceso__';
-
-
-						// Expanding reverse references: RegularizacionAs
-						$strAlias = $strAliasPrefix . 'regularizacionas__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objRegularizacionAsArray)) {
-								$objPreviousChildItems = $objPreviousItem->objRegularizacionAsArray;
-								$objChildItem = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objRegularizacionAsArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objRegularizacionAsArray[] = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Either return false to signal array expansion, or check-to-reset the Alias prefix and move on
-						if ($blnExpandedViaArray) {
-							return false;
-						} else if ($strAliasPrefix == 'estado_proceso__') {
-							$strAliasPrefix = null;
-						}
-					}
-				}
-			}
 
 			// Create a new instance of the EstadoProceso object
 			$objToReturn = new EstadoProceso();
@@ -486,9 +430,6 @@ class EstadoProcesoGen extends QBaseClass {
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objRegularizacionAsArray, $objToReturn->objRegularizacionAsArray) != null) {
 						continue;
 					}
 
@@ -511,16 +452,6 @@ class EstadoProcesoGen extends QBaseClass {
 
 
 
-
-			// Check for RegularizacionAs Virtual Binding
-			$strAlias = $strAliasPrefix . 'regularizacionas__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objRegularizacionAsArray[] = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objRegularizacionAs = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacionas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
 
 			return $objToReturn;
 		}
@@ -766,24 +697,6 @@ class EstadoProcesoGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
-            case 'RegularizacionAs':
-                /**
-                 * Gets the value for the private _objRegularizacionAs (Read-Only)
-                 * if set due to an expansion on the regularizacion._estado_proceso reverse relationship
-                 * @return Regularizacion
-                 */
-                return $this->objRegularizacionAs;
-
-            case 'RegularizacionAsArray':
-                /**
-                 * Gets the value for the private _objRegularizacionAsArray (Read-Only)
-                 * if set due to an ExpandAsArray on the regularizacion._estado_proceso reverse relationship
-                 * @return Regularizacion[]
-                 */
-                if(is_null($this->objRegularizacionAsArray))
-                    $this->objRegularizacionAsArray = $this->GetRegularizacionAsArray();
-                return (array) $this->objRegularizacionAsArray;
-
 
             case '__Restored':
                 return $this->__blnRestored;
@@ -859,201 +772,6 @@ class EstadoProcesoGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
-			
-		
-		// Related Objects' Methods for RegularizacionAs
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _RegularizacionAsArray
-                /**
-                * Add a Item to the _RegularizacionAsArray
-                * @param Regularizacion $objItem
-                * @return Regularizacion[]
-                */
-                public function AddRegularizacionAs(Regularizacion $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->EstadoProcesoObject = $this;
-                    $this->objRegularizacionAsArray = $this->RegularizacionAsArray;
-                    $this->objRegularizacionAsArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateRegularizacionAs($objItem);
-
-                    return $this->RegularizacionAsArray;
-                }
-
-                /**
-                * Remove a Item to the _RegularizacionAsArray
-                * @param Regularizacion $objItem
-                * @return Regularizacion[]
-                */
-                public function RemoveRegularizacionAs(Regularizacion $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objRegularizacionAsArray;
-                    $this->objRegularizacionAsArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objRegularizacionAsArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->EstadoProcesoObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedRegularizacionAs($objItem);
-                        }
-
-                    return $this->objRegularizacionAsArray;
-                }
-
-		/**
-		 * Gets all associated RegularizacionesAs as an array of Regularizacion objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Regularizacion[]
-		*/ 
-		public function GetRegularizacionAsArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Regularizacion::LoadArrayByEstadoProceso($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated RegularizacionesAs
-		 * @return int
-		*/ 
-		public function CountRegularizacionesAs() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Regularizacion::CountByEstadoProceso($this->intId);
-		}
-
-		/**
-		 * Associates a RegularizacionAs
-		 * @param Regularizacion $objRegularizacion
-		 * @return void
-		*/ 
-		public function AssociateRegularizacionAs(Regularizacion $objRegularizacion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateRegularizacionAs on this unsaved EstadoProceso.');
-			if ((is_null($objRegularizacion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateRegularizacionAs on this EstadoProceso with an unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = EstadoProceso::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"regularizacion"
-				SET
-					"_estado_proceso" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegularizacion->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a RegularizacionAs
-		 * @param Regularizacion $objRegularizacion
-		 * @return void
-		*/ 
-		public function UnassociateRegularizacionAs(Regularizacion $objRegularizacion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved EstadoProceso.');
-			if ((is_null($objRegularizacion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this EstadoProceso with an unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = EstadoProceso::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"regularizacion"
-				SET
-					"_estado_proceso" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegularizacion->Id) . ' AND
-					"_estado_proceso" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all RegularizacionesAs
-		 * @return void
-		*/ 
-		public function UnassociateAllRegularizacionesAs() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved EstadoProceso.');
-
-			// Get the Database Object for this Class
-			$objDatabase = EstadoProceso::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"regularizacion"
-				SET
-					"_estado_proceso" = null
-				WHERE
-					"_estado_proceso" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated RegularizacionAs
-		 * @param Regularizacion $objRegularizacion
-		 * @return void
-		*/ 
-		public function DeleteAssociatedRegularizacionAs(Regularizacion $objRegularizacion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved EstadoProceso.');
-			if ((is_null($objRegularizacion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this EstadoProceso with an unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = EstadoProceso::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"regularizacion"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegularizacion->Id) . ' AND
-					"_estado_proceso" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated RegularizacionesAs
-		 * @return void
-		*/ 
-		public function DeleteAllRegularizacionesAs() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegularizacionAs on this unsaved EstadoProceso.');
-
-			// Get the Database Object for this Class
-			$objDatabase = EstadoProceso::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"regularizacion"
-				WHERE
-					"_estado_proceso" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
 
 
 

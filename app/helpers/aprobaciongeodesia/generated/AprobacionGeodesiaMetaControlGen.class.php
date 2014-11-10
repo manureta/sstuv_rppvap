@@ -18,8 +18,8 @@
      * property-read AprobacionGeodesia $AprobacionGeodesia the actual AprobacionGeodesia data class being edited
      * property QLabel $IdControl
      * property-read QLabel $IdLabel
-     * property QIntegerTextBox $CodPartidoControl
-     * property-read QLabel $CodPartidoLabel
+     * property QListBox $IdPartidoControl
+     * property-read QLabel $IdPartidoLabel
      * property QIntegerTextBox $NumControl
      * property-read QLabel $NumLabel
      * property QTextBox $AnioControl
@@ -41,12 +41,12 @@
 
         // Controls that allow the editing of AprobacionGeodesia's individual data fields
         protected $lblId;
-        protected $txtCodPartido;
+        protected $lstIdPartidoObject;
         protected $txtNum;
         protected $txtAnio;
 
         // Controls that allow the viewing of AprobacionGeodesia's individual data fields
-        protected $lblCodPartido;
+        protected $lblIdPartido;
         protected $lblNum;
         protected $lblAnio;
 
@@ -163,31 +163,30 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtCodPartido
+         * Create and setup QAjaxAutoCompleteEntidadTextBox lstIdPartidoObject
          * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
+         * @return QAjaxAutoCompleteEntidadTextBox
          */
-        public function txtCodPartido_Create($strControlId = null) {
-            $this->txtCodPartido = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtCodPartido->Name = QApplication::Translate('CodPartido');
-            $this->txtCodPartido->Text = $this->objAprobacionGeodesia->CodPartido;
-                        $this->txtCodPartido->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtCodPartido->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtCodPartido;
+        public function lstIdPartidoObject_Create($strControlId = null) {
+            $this->lstIdPartidoObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'Partido', 'Id' , $strControlId);
+            if($this->objAprobacionGeodesia->IdPartidoObject){
+                $this->lstIdPartidoObject->Text = $this->objAprobacionGeodesia->IdPartidoObject->__toString();
+                $this->lstIdPartidoObject->Value = $this->objAprobacionGeodesia->IdPartidoObject->Id;
+            }
+            $this->lstIdPartidoObject->Name = QApplication::Translate('IdPartidoObject');
+            return $this->lstIdPartidoObject;
         }
 
         /**
-         * Create and setup QLabel lblCodPartido
+         * Create and setup QLabel lblIdPartido
          * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
          * @return QLabel
          */
-        public function lblCodPartido_Create($strControlId = null, $strFormat = null) {
-            $this->lblCodPartido = new QLabel($this->objParentObject, $strControlId);
-            $this->lblCodPartido->Name = QApplication::Translate('CodPartido');
-            $this->lblCodPartido->Text = $this->objAprobacionGeodesia->CodPartido;
-            $this->lblCodPartido->Format = $strFormat;
-            return $this->lblCodPartido;
+        public function lblIdPartido_Create($strControlId = null) {
+            $this->lblIdPartido = new QLabel($this->objParentObject, $strControlId);
+            $this->lblIdPartido->Name = QApplication::Translate('IdPartidoObject');
+            $this->lblIdPartido->Text = ($this->objAprobacionGeodesia->IdPartidoObject) ? $this->objAprobacionGeodesia->IdPartidoObject->__toString() : null;
+            return $this->lblIdPartido;
         }
 
         /**
@@ -246,55 +245,6 @@
 
 
 
-    public $lstRegularizacionAs;
-    /**
-     * Gets all associated RegularizacionesAs as an array of Regularizacion objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Regularizacion[]
-    */ 
-    public function lstRegularizacionAs_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Regularizacion';
-        $strConfigArray['strRefreshMethod'] = 'RegularizacionAsArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'AprobacionGeodesia';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddRegularizacionAs';
-        $strConfigArray['strRemoveMethod'] = 'RemoveRegularizacionAs';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['ProcesoIniciado'] = QApplication::Translate('ProcesoIniciado');
-        $strConfigArray['Columns']['FechaInicio'] = QApplication::Translate('FechaInicio');
-        $strConfigArray['Columns']['TienePlano'] = QApplication::Translate('TienePlano');
-        $strConfigArray['Columns']['Circular10Catastro'] = QApplication::Translate('Circular10Catastro');
-        $strConfigArray['Columns']['Registracion'] = QApplication::Translate('Registracion');
-        $strConfigArray['Columns']['EstadoProcesoObject'] = QApplication::Translate('EstadoProcesoObject');
-
-        $this->lstRegularizacionAs = new QListPanel($this->objParentObject, $this->objAprobacionGeodesia, $strConfigArray, $strControlId);
-        $this->lstRegularizacionAs->Name = Regularizacion::Noun();
-        $this->lstRegularizacionAs->SetNewMethod($this, "lstRegularizacionAs_New");
-        $this->lstRegularizacionAs->SetEditMethod($this, "lstRegularizacionAs_Edit");
-        return $this->lstRegularizacionAs;
-    }
-
-    public function lstRegularizacionAs_New() {
-        RegularizacionModalPanel::$strControlsArray['lstAprobacionGeodesiaObject'] = false;
-        $strControlsArray = array_keys(RegularizacionModalPanel::$strControlsArray, true);
-        $this->lstRegularizacionAs->ModalPanel = new RegularizacionModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstRegularizacionAs->ModalPanel->objCallerControl = $this->lstRegularizacionAs;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstRegularizacionAs_Edit($intKey) {
-        RegularizacionModalPanel::$strControlsArray['lstAprobacionGeodesiaObject'] = false;
-        $strControlsArray = array_keys(RegularizacionModalPanel::$strControlsArray, true);
-        $obj = $this->objAprobacionGeodesia->RegularizacionAsArray[$intKey];
-        $this->lstRegularizacionAs->ModalPanel = new RegularizacionModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstRegularizacionAs->ModalPanel->objCallerControl = $this->lstRegularizacionAs;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
 
 
         /**
@@ -308,8 +258,13 @@
 
             if ($this->lblId) if ($this->blnEditMode) $this->lblId->Text = $this->objAprobacionGeodesia->Id;
 
-            if ($this->txtCodPartido) $this->txtCodPartido->Text = $this->objAprobacionGeodesia->CodPartido;
-            if ($this->lblCodPartido) $this->lblCodPartido->Text = $this->objAprobacionGeodesia->CodPartido;
+            if ($this->lstIdPartidoObject) {
+                if($this->objAprobacionGeodesia->IdPartidoObject){
+                    $this->lstIdPartidoObject->Text = $this->objAprobacionGeodesia->IdPartidoObject->__toString();
+                    $this->lstIdPartidoObject->Value = $this->objAprobacionGeodesia->IdPartido->Id;
+                }                
+            }
+            if ($this->lblIdPartido) $this->lblIdPartido->Text = ($this->objAprobacionGeodesia->IdPartidoObject) ? $this->objAprobacionGeodesia->IdPartidoObject->__toString() : null;
 
             if ($this->txtNum) $this->txtNum->Text = $this->objAprobacionGeodesia->Num;
             if ($this->lblNum) $this->lblNum->Text = $this->objAprobacionGeodesia->Num;
@@ -335,7 +290,7 @@
 
         public function Bind(){
                 // Update any fields for controls that have been created
-                if ($this->txtCodPartido) $this->objAprobacionGeodesia->CodPartido = $this->txtCodPartido->Text;
+                if ($this->lstIdPartidoObject) $this->objAprobacionGeodesia->IdPartido = $this->lstIdPartidoObject->SelectedValue;
                 if ($this->txtNum) $this->objAprobacionGeodesia->Num = $this->txtNum->Text;
                 if ($this->txtAnio) $this->objAprobacionGeodesia->Anio = $this->txtAnio->Text;
 
@@ -400,12 +355,12 @@
                 case 'IdLabel':
                     if (!$this->lblId) return $this->lblId_Create();
                     return $this->lblId;
-                case 'CodPartidoControl':
-                    if (!$this->txtCodPartido) return $this->txtCodPartido_Create();
-                    return $this->txtCodPartido;
-                case 'CodPartidoLabel':
-                    if (!$this->lblCodPartido) return $this->lblCodPartido_Create();
-                    return $this->lblCodPartido;
+                case 'IdPartidoControl':
+                    if (!$this->lstIdPartidoObject) return $this->lstIdPartidoObject_Create();
+                    return $this->lstIdPartidoObject;
+                case 'IdPartidoLabel':
+                    if (!$this->lblIdPartido) return $this->lblIdPartido_Create();
+                    return $this->lblIdPartido;
                 case 'NumControl':
                     if (!$this->txtNum) return $this->txtNum_Create();
                     return $this->txtNum;
@@ -442,8 +397,8 @@
                     // Controls that point to AprobacionGeodesia fields
                     case 'IdControl':
                         return ($this->lblId = QType::Cast($mixValue, 'QControl'));
-                    case 'CodPartidoControl':
-                        return ($this->txtCodPartido = QType::Cast($mixValue, 'QControl'));
+                    case 'IdPartidoControl':
+                        return ($this->lstIdPartidoObject = QType::Cast($mixValue, 'QControl'));
                     case 'NumControl':
                         return ($this->txtNum = QType::Cast($mixValue, 'QControl'));
                     case 'AnioControl':

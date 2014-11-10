@@ -616,38 +616,6 @@ class TransporteGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Transporte objects,
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Transporte[]
-		*/
-		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
-			// Call Transporte::QueryArray to perform the LoadArrayByIdFolio query
-			try {
-				return Transporte::QueryArray(
-					QQ::Equal(QQN::Transporte()->IdFolio, $intIdFolio),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Transportes
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @return int
-		*/
-		public static function CountByIdFolio($intIdFolio) {
-			// Call Transporte::QueryCount to perform the CountByIdFolio query
-			return Transporte::QueryCount(
-				QQ::Equal(QQN::Transporte()->IdFolio, $intIdFolio)
-			);
-		}
-			
-		/**
-		 * Load an array of Transporte objects,
 		 * by Colectivos Index(es)
 		 * @param integer $intColectivos
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -707,6 +675,38 @@ class TransporteGen extends QBaseClass {
 			// Call Transporte::QueryCount to perform the CountByFerrocarril query
 			return Transporte::QueryCount(
 				QQ::Equal(QQN::Transporte()->Ferrocarril, $intFerrocarril)
+			);
+		}
+			
+		/**
+		 * Load an array of Transporte objects,
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Transporte[]
+		*/
+		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
+			// Call Transporte::QueryArray to perform the LoadArrayByIdFolio query
+			try {
+				return Transporte::QueryArray(
+					QQ::Equal(QQN::Transporte()->IdFolio, $intIdFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Transportes
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @return int
+		*/
+		public static function CountByIdFolio($intIdFolio) {
+			// Call Transporte::QueryCount to perform the CountByIdFolio query
+			return Transporte::QueryCount(
+				QQ::Equal(QQN::Transporte()->IdFolio, $intIdFolio)
 			);
 		}
 			

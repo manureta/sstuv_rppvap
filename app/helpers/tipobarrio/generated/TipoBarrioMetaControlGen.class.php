@@ -200,9 +200,10 @@
         $strConfigArray['strAddMethod'] = 'AddFolio';
         $strConfigArray['strRemoveMethod'] = 'RemoveFolio';
         $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['CodFolio'] = QApplication::Translate('CodFolio');
         $strConfigArray['Columns']['IdPartidoObject'] = QApplication::Translate('IdPartidoObject');
         $strConfigArray['Columns']['IdLocalidadObject'] = QApplication::Translate('IdLocalidadObject');
-        $strConfigArray['Columns']['IdMatricula'] = QApplication::Translate('IdMatricula');
+        $strConfigArray['Columns']['Matricula'] = QApplication::Translate('Matricula');
         $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
         $strConfigArray['Columns']['Encargado'] = QApplication::Translate('Encargado');
         $strConfigArray['Columns']['NombreBarrioOficial'] = QApplication::Translate('NombreBarrioOficial');
@@ -214,9 +215,6 @@
         $strConfigArray['Columns']['ObservacionCasoDudoso'] = QApplication::Translate('ObservacionCasoDudoso');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
-        $strConfigArray['Columns']['MapeoPreliminar'] = QApplication::Translate('MapeoPreliminar');
-        $strConfigArray['Columns']['ResolucionInscripcionProvisoria'] = QApplication::Translate('ResolucionInscripcionProvisoria');
-        $strConfigArray['Columns']['ResolucionInscripcionDefinitiva'] = QApplication::Translate('ResolucionInscripcionDefinitiva');
         $strConfigArray['Columns']['NumExpedientes'] = QApplication::Translate('NumExpedientes');
 
         $this->lstFolio = new QListPanel($this->objParentObject, $this->objTipoBarrio, $strConfigArray, $strControlId);

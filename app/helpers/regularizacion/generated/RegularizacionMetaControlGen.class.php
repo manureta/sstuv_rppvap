@@ -22,18 +22,6 @@
      * property-read QLabel $IdFolioLabel
      * property QCheckBox $ProcesoIniciadoControl
      * property-read QLabel $ProcesoIniciadoLabel
-     * property QDateTimePicker $FechaInicioControl
-     * property-read QLabel $FechaInicioLabel
-     * property QCheckBox $TienePlanoControl
-     * property-read QLabel $TienePlanoLabel
-     * property QCheckBox $Circular10CatastroControl
-     * property-read QLabel $Circular10CatastroLabel
-     * property QListBox $AprobacionGeodesiaControl
-     * property-read QLabel $AprobacionGeodesiaLabel
-     * property QIntegerTextBox $RegistracionControl
-     * property-read QLabel $RegistracionLabel
-     * property QListBox $EstadoProcesoControl
-     * property-read QLabel $EstadoProcesoLabel
      * property QListBox $AntecedentesAsIdFolioControl
      * property-read QLabel $AntecedentesAsIdFolioLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
@@ -55,22 +43,10 @@
         protected $lblId;
         protected $lstIdFolioObject;
         protected $chkProcesoIniciado;
-        protected $calFechaInicio;
-        protected $chkTienePlano;
-        protected $chkCircular10Catastro;
-        protected $lstAprobacionGeodesiaObject;
-        protected $txtRegistracion;
-        protected $lstEstadoProcesoObject;
 
         // Controls that allow the viewing of Regularizacion's individual data fields
         protected $lblIdFolio;
         protected $lblProcesoIniciado;
-        protected $lblFechaInicio;
-        protected $lblTienePlano;
-        protected $lblCircular10Catastro;
-        protected $lblAprobacionGeodesia;
-        protected $lblRegistracion;
-        protected $lblEstadoProceso;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstAntecedentesAsIdFolio;
@@ -238,167 +214,6 @@
         }
 
         /**
-         * Create and setup QDateTimePicker calFechaInicio
-         * @param string $strControlId optional ControlId to use
-         * @return QDateTimePicker
-         */
-        public function calFechaInicio_Create($strControlId = null) {
-            $this->calFechaInicio = new QDateTimePicker($this->objParentObject, $strControlId);
-            $this->calFechaInicio->Name = QApplication::Translate('FechaInicio');
-            $this->calFechaInicio->DateTime = $this->objRegularizacion->FechaInicio;
-            $this->calFechaInicio->DateTimePickerType = QDateTimePickerType::Date;
-            
-            return $this->calFechaInicio;
-        }
-
-        /**
-         * Create and setup QLabel lblFechaInicio
-         * @param string $strControlId optional ControlId to use
-         * @param string $strDateTimeFormat optional DateTimeFormat to use
-         * @return QLabel
-         */
-        public function lblFechaInicio_Create($strControlId = null, $strDateTimeFormat = null) {
-            $this->lblFechaInicio = new QLabel($this->objParentObject, $strControlId);
-            $this->lblFechaInicio->Name = QApplication::Translate('FechaInicio');
-            $this->strFechaInicioDateTimeFormat = $strDateTimeFormat;
-            $this->lblFechaInicio->Text = sprintf($this->objRegularizacion->FechaInicio) ? $this->objRegularizacion->FechaInicio->__toString($this->strFechaInicioDateTimeFormat) : null;
-            return $this->lblFechaInicio;
-        }
-
-        protected $strFechaInicioDateTimeFormat;
-
-
-        /**
-         * Create and setup QCheckBox chkTienePlano
-         * @param string $strControlId optional ControlId to use
-         * @return QCheckBox
-         */
-        public function chkTienePlano_Create($strControlId = null) {
-            $this->chkTienePlano = new QCheckBox($this->objParentObject, $strControlId);
-            $this->chkTienePlano->Name = QApplication::Translate('TienePlano');
-            $this->chkTienePlano->Checked = $this->objRegularizacion->TienePlano;
-                        return $this->chkTienePlano;
-        }
-
-        /**
-         * Create and setup QLabel lblTienePlano
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblTienePlano_Create($strControlId = null) {
-            $this->lblTienePlano = new QLabel($this->objParentObject, $strControlId);
-            $this->lblTienePlano->Name = QApplication::Translate('TienePlano');
-            $this->lblTienePlano->Text = ($this->objRegularizacion->TienePlano) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-            return $this->lblTienePlano;
-        }
-
-        /**
-         * Create and setup QCheckBox chkCircular10Catastro
-         * @param string $strControlId optional ControlId to use
-         * @return QCheckBox
-         */
-        public function chkCircular10Catastro_Create($strControlId = null) {
-            $this->chkCircular10Catastro = new QCheckBox($this->objParentObject, $strControlId);
-            $this->chkCircular10Catastro->Name = QApplication::Translate('Circular10Catastro');
-            $this->chkCircular10Catastro->Checked = $this->objRegularizacion->Circular10Catastro;
-                        return $this->chkCircular10Catastro;
-        }
-
-        /**
-         * Create and setup QLabel lblCircular10Catastro
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblCircular10Catastro_Create($strControlId = null) {
-            $this->lblCircular10Catastro = new QLabel($this->objParentObject, $strControlId);
-            $this->lblCircular10Catastro->Name = QApplication::Translate('Circular10Catastro');
-            $this->lblCircular10Catastro->Text = ($this->objRegularizacion->Circular10Catastro) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-            return $this->lblCircular10Catastro;
-        }
-
-        /**
-         * Create and setup QAjaxAutoCompleteEntidadTextBox lstAprobacionGeodesiaObject
-         * @param string $strControlId optional ControlId to use
-         * @return QAjaxAutoCompleteEntidadTextBox
-         */
-        public function lstAprobacionGeodesiaObject_Create($strControlId = null) {
-            $this->lstAprobacionGeodesiaObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'AprobacionGeodesia', 'Id' , $strControlId);
-            if($this->objRegularizacion->AprobacionGeodesiaObject){
-                $this->lstAprobacionGeodesiaObject->Text = $this->objRegularizacion->AprobacionGeodesiaObject->__toString();
-                $this->lstAprobacionGeodesiaObject->Value = $this->objRegularizacion->AprobacionGeodesiaObject->Id;
-            }
-            $this->lstAprobacionGeodesiaObject->Name = QApplication::Translate('AprobacionGeodesiaObject');
-            return $this->lstAprobacionGeodesiaObject;
-        }
-
-        /**
-         * Create and setup QLabel lblAprobacionGeodesia
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblAprobacionGeodesia_Create($strControlId = null) {
-            $this->lblAprobacionGeodesia = new QLabel($this->objParentObject, $strControlId);
-            $this->lblAprobacionGeodesia->Name = QApplication::Translate('AprobacionGeodesiaObject');
-            $this->lblAprobacionGeodesia->Text = ($this->objRegularizacion->AprobacionGeodesiaObject) ? $this->objRegularizacion->AprobacionGeodesiaObject->__toString() : null;
-            return $this->lblAprobacionGeodesia;
-        }
-
-        /**
-         * Create and setup QIntegerTextBox txtRegistracion
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtRegistracion_Create($strControlId = null) {
-            $this->txtRegistracion = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegistracion->Name = QApplication::Translate('Registracion');
-            $this->txtRegistracion->Text = $this->objRegularizacion->Registracion;
-                        $this->txtRegistracion->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegistracion->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegistracion;
-        }
-
-        /**
-         * Create and setup QLabel lblRegistracion
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblRegistracion_Create($strControlId = null, $strFormat = null) {
-            $this->lblRegistracion = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegistracion->Name = QApplication::Translate('Registracion');
-            $this->lblRegistracion->Text = $this->objRegularizacion->Registracion;
-            $this->lblRegistracion->Format = $strFormat;
-            return $this->lblRegistracion;
-        }
-
-        /**
-         * Create and setup QAjaxAutoCompleteEntidadTextBox lstEstadoProcesoObject
-         * @param string $strControlId optional ControlId to use
-         * @return QAjaxAutoCompleteEntidadTextBox
-         */
-        public function lstEstadoProcesoObject_Create($strControlId = null) {
-            $this->lstEstadoProcesoObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'EstadoProceso', 'Id' , $strControlId);
-            if($this->objRegularizacion->EstadoProcesoObject){
-                $this->lstEstadoProcesoObject->Text = $this->objRegularizacion->EstadoProcesoObject->__toString();
-                $this->lstEstadoProcesoObject->Value = $this->objRegularizacion->EstadoProcesoObject->Id;
-            }
-            $this->lstEstadoProcesoObject->Name = QApplication::Translate('EstadoProcesoObject');
-            return $this->lstEstadoProcesoObject;
-        }
-
-        /**
-         * Create and setup QLabel lblEstadoProceso
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblEstadoProceso_Create($strControlId = null) {
-            $this->lblEstadoProceso = new QLabel($this->objParentObject, $strControlId);
-            $this->lblEstadoProceso->Name = QApplication::Translate('EstadoProcesoObject');
-            $this->lblEstadoProceso->Text = ($this->objRegularizacion->EstadoProcesoObject) ? $this->objRegularizacion->EstadoProcesoObject->__toString() : null;
-            return $this->lblEstadoProceso;
-        }
-
-        /**
          * Create and setup QListBox lstAntecedentesAsIdFolio ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -549,34 +364,6 @@
             if ($this->chkProcesoIniciado) $this->chkProcesoIniciado->Checked = $this->objRegularizacion->ProcesoIniciado;
             if ($this->lblProcesoIniciado) $this->lblProcesoIniciado->Text = ($this->objRegularizacion->ProcesoIniciado) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
-            if ($this->calFechaInicio) $this->calFechaInicio->DateTime = $this->objRegularizacion->FechaInicio;
-            if ($this->lblFechaInicio) $this->lblFechaInicio->Text = sprintf($this->objRegularizacion->FechaInicio) ? $this->objRegularizacion->FechaInicio->__toString($this->strFechaInicioDateTimeFormat) : null;
-
-            if ($this->chkTienePlano) $this->chkTienePlano->Checked = $this->objRegularizacion->TienePlano;
-            if ($this->lblTienePlano) $this->lblTienePlano->Text = ($this->objRegularizacion->TienePlano) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-
-            if ($this->chkCircular10Catastro) $this->chkCircular10Catastro->Checked = $this->objRegularizacion->Circular10Catastro;
-            if ($this->lblCircular10Catastro) $this->lblCircular10Catastro->Text = ($this->objRegularizacion->Circular10Catastro) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-
-            if ($this->lstAprobacionGeodesiaObject) {
-                if($this->objRegularizacion->AprobacionGeodesiaObject){
-                    $this->lstAprobacionGeodesiaObject->Text = $this->objRegularizacion->AprobacionGeodesiaObject->__toString();
-                    $this->lstAprobacionGeodesiaObject->Value = $this->objRegularizacion->AprobacionGeodesia->Id;
-                }                
-            }
-            if ($this->lblAprobacionGeodesia) $this->lblAprobacionGeodesia->Text = ($this->objRegularizacion->AprobacionGeodesiaObject) ? $this->objRegularizacion->AprobacionGeodesiaObject->__toString() : null;
-
-            if ($this->txtRegistracion) $this->txtRegistracion->Text = $this->objRegularizacion->Registracion;
-            if ($this->lblRegistracion) $this->lblRegistracion->Text = $this->objRegularizacion->Registracion;
-
-            if ($this->lstEstadoProcesoObject) {
-                if($this->objRegularizacion->EstadoProcesoObject){
-                    $this->lstEstadoProcesoObject->Text = $this->objRegularizacion->EstadoProcesoObject->__toString();
-                    $this->lstEstadoProcesoObject->Value = $this->objRegularizacion->EstadoProceso->Id;
-                }                
-            }
-            if ($this->lblEstadoProceso) $this->lblEstadoProceso->Text = ($this->objRegularizacion->EstadoProcesoObject) ? $this->objRegularizacion->EstadoProcesoObject->__toString() : null;
-
             if ($this->lstAntecedentesAsIdFolio) {
                 $this->lstAntecedentesAsIdFolio->RemoveAllItems();
                 $this->lstAntecedentesAsIdFolio->AddItem(QApplication::Translate('- Select One -'), null);
@@ -610,12 +397,6 @@
                 // Update any fields for controls that have been created
                 if ($this->lstIdFolioObject) $this->objRegularizacion->IdFolio = $this->lstIdFolioObject->SelectedValue;
                 if ($this->chkProcesoIniciado) $this->objRegularizacion->ProcesoIniciado = $this->chkProcesoIniciado->Checked;
-                if ($this->calFechaInicio) $this->objRegularizacion->FechaInicio = $this->calFechaInicio->DateTime;
-                if ($this->chkTienePlano) $this->objRegularizacion->TienePlano = $this->chkTienePlano->Checked;
-                if ($this->chkCircular10Catastro) $this->objRegularizacion->Circular10Catastro = $this->chkCircular10Catastro->Checked;
-                if ($this->lstAprobacionGeodesiaObject) $this->objRegularizacion->AprobacionGeodesia = $this->lstAprobacionGeodesiaObject->SelectedValue;
-                if ($this->txtRegistracion) $this->objRegularizacion->Registracion = $this->txtRegistracion->Text;
-                if ($this->lstEstadoProcesoObject) $this->objRegularizacion->EstadoProceso = $this->lstEstadoProcesoObject->SelectedValue;
 
 
         }
@@ -691,42 +472,6 @@
                 case 'ProcesoIniciadoLabel':
                     if (!$this->lblProcesoIniciado) return $this->lblProcesoIniciado_Create();
                     return $this->lblProcesoIniciado;
-                case 'FechaInicioControl':
-                    if (!$this->calFechaInicio) return $this->calFechaInicio_Create();
-                    return $this->calFechaInicio;
-                case 'FechaInicioLabel':
-                    if (!$this->lblFechaInicio) return $this->lblFechaInicio_Create();
-                    return $this->lblFechaInicio;
-                case 'TienePlanoControl':
-                    if (!$this->chkTienePlano) return $this->chkTienePlano_Create();
-                    return $this->chkTienePlano;
-                case 'TienePlanoLabel':
-                    if (!$this->lblTienePlano) return $this->lblTienePlano_Create();
-                    return $this->lblTienePlano;
-                case 'Circular10CatastroControl':
-                    if (!$this->chkCircular10Catastro) return $this->chkCircular10Catastro_Create();
-                    return $this->chkCircular10Catastro;
-                case 'Circular10CatastroLabel':
-                    if (!$this->lblCircular10Catastro) return $this->lblCircular10Catastro_Create();
-                    return $this->lblCircular10Catastro;
-                case 'AprobacionGeodesiaControl':
-                    if (!$this->lstAprobacionGeodesiaObject) return $this->lstAprobacionGeodesiaObject_Create();
-                    return $this->lstAprobacionGeodesiaObject;
-                case 'AprobacionGeodesiaLabel':
-                    if (!$this->lblAprobacionGeodesia) return $this->lblAprobacionGeodesia_Create();
-                    return $this->lblAprobacionGeodesia;
-                case 'RegistracionControl':
-                    if (!$this->txtRegistracion) return $this->txtRegistracion_Create();
-                    return $this->txtRegistracion;
-                case 'RegistracionLabel':
-                    if (!$this->lblRegistracion) return $this->lblRegistracion_Create();
-                    return $this->lblRegistracion;
-                case 'EstadoProcesoControl':
-                    if (!$this->lstEstadoProcesoObject) return $this->lstEstadoProcesoObject_Create();
-                    return $this->lstEstadoProcesoObject;
-                case 'EstadoProcesoLabel':
-                    if (!$this->lblEstadoProceso) return $this->lblEstadoProceso_Create();
-                    return $this->lblEstadoProceso;
                 case 'AntecedentesAsIdFolioControl':
                     if (!$this->lstAntecedentesAsIdFolio) return $this->lstAntecedentesAsIdFolio_Create();
                     return $this->lstAntecedentesAsIdFolio;
@@ -761,18 +506,6 @@
                         return ($this->lstIdFolioObject = QType::Cast($mixValue, 'QControl'));
                     case 'ProcesoIniciadoControl':
                         return ($this->chkProcesoIniciado = QType::Cast($mixValue, 'QControl'));
-                    case 'FechaInicioControl':
-                        return ($this->calFechaInicio = QType::Cast($mixValue, 'QControl'));
-                    case 'TienePlanoControl':
-                        return ($this->chkTienePlano = QType::Cast($mixValue, 'QControl'));
-                    case 'Circular10CatastroControl':
-                        return ($this->chkCircular10Catastro = QType::Cast($mixValue, 'QControl'));
-                    case 'AprobacionGeodesiaControl':
-                        return ($this->lstAprobacionGeodesiaObject = QType::Cast($mixValue, 'QControl'));
-                    case 'RegistracionControl':
-                        return ($this->txtRegistracion = QType::Cast($mixValue, 'QControl'));
-                    case 'EstadoProcesoControl':
-                        return ($this->lstEstadoProcesoObject = QType::Cast($mixValue, 'QControl'));
                     case 'AntecedentesAsIdFolioControl':
                         return ($this->lstAntecedentesAsIdFolio = QType::Cast($mixValue, 'QControl'));
                     default:

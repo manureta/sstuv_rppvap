@@ -10,7 +10,6 @@
 		<?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombreRefernte->RenderWithName(); ?>
 		<?php $_CONTROL->txtTelefonoReferente->RenderWithName(); ?>
-		<?php $_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

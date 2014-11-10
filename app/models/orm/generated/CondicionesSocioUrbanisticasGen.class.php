@@ -21,7 +21,6 @@
 	 * @property string $PresenciaOrgSociales the value for strPresenciaOrgSociales 
 	 * @property string $NombreRefernte the value for strNombreRefernte 
 	 * @property string $TelefonoReferente the value for strTelefonoReferente 
-	 * @property string $InformeUrbanisticoFecha the value for strInformeUrbanisticoFecha 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (PK)
 	 * @property-read Equipamiento $EquipamientoAsIdFolio the value for the private _objEquipamientoAsIdFolio (Read-Only) if set due to an expansion on the equipamiento.id_folio reverse relationship
 	 * @property-read Equipamiento[] $EquipamientoAsIdFolioArray the value for the private _objEquipamientoAsIdFolioArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.id_folio reverse relationship
@@ -106,15 +105,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
     protected $strTelefonoReferente;
     const TelefonoReferenteMaxLength = 45;
     const TelefonoReferenteDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column condiciones_socio_urbanisticas._informe_urbanistico_fecha
-     * @var string strInformeUrbanisticoFecha
-     */
-    protected $strInformeUrbanisticoFecha;
-    const InformeUrbanisticoFechaMaxLength = 45;
-    const InformeUrbanisticoFechaDefault = null;
 
 
     /**
@@ -538,7 +528,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'presencia_org_sociales', $strAliasPrefix . 'presencia_org_sociales');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_refernte', $strAliasPrefix . 'nombre_refernte');
 			$objBuilder->AddSelectItem($strTableName, 'telefono_referente', $strAliasPrefix . 'telefono_referente');
-			$objBuilder->AddSelectItem($strTableName, '_informe_urbanistico_fecha', $strAliasPrefix . '_informe_urbanistico_fecha');
 		}
 
 //instantiation_methods
@@ -581,8 +570,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
 			$objToReturn->strNombreRefernte = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'telefono_referente', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'telefono_referente'] : $strAliasPrefix . 'telefono_referente';
 			$objToReturn->strTelefonoReferente = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . '_informe_urbanistico_fecha', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_informe_urbanistico_fecha'] : $strAliasPrefix . '_informe_urbanistico_fecha';
-			$objToReturn->strInformeUrbanisticoFecha = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -834,15 +821,13 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
                             "espacio_libre_comun",
                             "presencia_org_sociales",
                             "nombre_refernte",
-                            "telefono_referente",
-                            "_informe_urbanistico_fecha"
+                            "telefono_referente"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->blnEspacioLibreComun) . ',
                             ' . $objDatabase->SqlVariable($this->strPresenciaOrgSociales) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreRefernte) . ',
-                            ' . $objDatabase->SqlVariable($this->strTelefonoReferente) . ',
-                            ' . $objDatabase->SqlVariable($this->strInformeUrbanisticoFecha) . '
+                            ' . $objDatabase->SqlVariable($this->strTelefonoReferente) . '
                         )
                     ');
 
@@ -862,8 +847,7 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
                             "espacio_libre_comun" = ' . $objDatabase->SqlVariable($this->blnEspacioLibreComun) . ',
                             "presencia_org_sociales" = ' . $objDatabase->SqlVariable($this->strPresenciaOrgSociales) . ',
                             "nombre_refernte" = ' . $objDatabase->SqlVariable($this->strNombreRefernte) . ',
-                            "telefono_referente" = ' . $objDatabase->SqlVariable($this->strTelefonoReferente) . ',
-                            "_informe_urbanistico_fecha" = ' . $objDatabase->SqlVariable($this->strInformeUrbanisticoFecha) . '
+                            "telefono_referente" = ' . $objDatabase->SqlVariable($this->strTelefonoReferente) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . ' AND
                             "id_folio" = ' . $objDatabase->SqlVariable($this->__intIdFolio) . '
@@ -956,7 +940,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
 			$this->strPresenciaOrgSociales = $objReloaded->strPresenciaOrgSociales;
 			$this->strNombreRefernte = $objReloaded->strNombreRefernte;
 			$this->strTelefonoReferente = $objReloaded->strTelefonoReferente;
-			$this->strInformeUrbanisticoFecha = $objReloaded->strInformeUrbanisticoFecha;
 		}
 
 
@@ -1019,13 +1002,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strTelefonoReferente;
-
-            case 'InformeUrbanisticoFecha':
-                /**
-                 * Gets the value for strInformeUrbanisticoFecha 
-                 * @return string
-                 */
-                return $this->strInformeUrbanisticoFecha;
 
 
             ///////////////////
@@ -1221,21 +1197,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strTelefonoReferente = QType::Cast($mixValue, QType::String));
                                                 return ($this->strTelefonoReferente = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'InformeUrbanisticoFecha':
-					/**
-					 * Sets the value for strInformeUrbanisticoFecha 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strInformeUrbanisticoFecha = QType::Cast($mixValue, QType::String));
-                                                return ($this->strInformeUrbanisticoFecha = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2103,7 +2064,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
 			$strToReturn .= '<element name="PresenciaOrgSociales" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreRefernte" type="xsd:string"/>';
 			$strToReturn .= '<element name="TelefonoReferente" type="xsd:string"/>';
-			$strToReturn .= '<element name="InformeUrbanisticoFecha" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2145,9 +2105,6 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'TelefonoReferente')) {
 				$objToReturn->strTelefonoReferente = $objSoapObject->TelefonoReferente;
-            }
-			if (property_exists($objSoapObject, 'InformeUrbanisticoFecha')) {
-				$objToReturn->strInformeUrbanisticoFecha = $objSoapObject->InformeUrbanisticoFecha;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

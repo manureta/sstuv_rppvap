@@ -86,7 +86,10 @@ ALTER TABLE usuario CLUSTER ON usuario_id_usuario_idx;
 
 
 
+insert into perfil (nombre, descripcion) values ('administrador','administrador');
+insert into perfil (nombre, descripcion) values ('editor','editor');
 
+insert into usuario (password, nombre, email, id_perfil,fecha_activacion) values (md5('admin'), 'admin', 'UsuarioPrueba', 1, now());
 -- -----------------------------------------------------
 -- Table partido
 -- -----------------------------------------------------

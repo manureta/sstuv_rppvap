@@ -16,9 +16,10 @@
  * @package Relevamiento Anual
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $Id the value for intId (Read-Only PK)
+	 * @property string $CodFolio the value for strCodFolio (Unique)
 	 * @property integer $IdPartido the value for intIdPartido (Not Null)
 	 * @property integer $IdLocalidad the value for intIdLocalidad 
-	 * @property integer $IdMatricula the value for intIdMatricula 
+	 * @property string $Matricula the value for strMatricula (Not Null)
 	 * @property QDateTime $Fecha the value for dttFecha 
 	 * @property string $Encargado the value for strEncargado 
 	 * @property string $NombreBarrioOficial the value for strNombreBarrioOficial 
@@ -31,15 +32,13 @@
 	 * @property string $ObservacionCasoDudoso the value for strObservacionCasoDudoso 
 	 * @property integer $Judicializado the value for intJudicializado 
 	 * @property string $Direccion the value for strDireccion 
-	 * @property integer $MapeoPreliminar the value for intMapeoPreliminar 
-	 * @property string $ResolucionInscripcionProvisoria the value for strResolucionInscripcionProvisoria 
-	 * @property string $ResolucionInscripcionDefinitiva the value for strResolucionInscripcionDefinitiva 
 	 * @property string $NumExpedientes the value for strNumExpedientes 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property Localidad $IdLocalidadObject the value for the Localidad object referenced by intIdLocalidad 
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio 
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
+	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
 	 * @property-read Nomenclatura $NomenclaturaAsId the value for the private _objNomenclaturaAsId (Read-Only) if set due to an expansion on the nomenclatura.id_folio reverse relationship
 	 * @property-read Nomenclatura[] $NomenclaturaAsIdArray the value for the private _objNomenclaturaAsIdArray (Read-Only) if set due to an ExpandAsArray on the nomenclatura.id_folio reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
@@ -70,6 +69,15 @@ class FolioGen extends QBaseClass {
 
 
     /**
+     * Protected member variable that maps to the database column folio.cod_folio
+     * @var string strCodFolio
+     */
+    protected $strCodFolio;
+    const CodFolioMaxLength = 6;
+    const CodFolioDefault = null;
+
+
+    /**
      * Protected member variable that maps to the database column folio.id_partido
      * @var integer intIdPartido
      */
@@ -86,11 +94,12 @@ class FolioGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column folio.id_matricula
-     * @var integer intIdMatricula
+     * Protected member variable that maps to the database column folio.matricula
+     * @var string strMatricula
      */
-    protected $intIdMatricula;
-    const IdMatriculaDefault = null;
+    protected $strMatricula;
+    const MatriculaMaxLength = 3;
+    const MatriculaDefault = null;
 
 
     /**
@@ -195,32 +204,6 @@ class FolioGen extends QBaseClass {
     protected $strDireccion;
     const DireccionMaxLength = 45;
     const DireccionDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column folio._mapeo_preliminar
-     * @var integer intMapeoPreliminar
-     */
-    protected $intMapeoPreliminar;
-    const MapeoPreliminarDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column folio._resolucion_inscripcion_provisoria
-     * @var string strResolucionInscripcionProvisoria
-     */
-    protected $strResolucionInscripcionProvisoria;
-    const ResolucionInscripcionProvisoriaMaxLength = 45;
-    const ResolucionInscripcionProvisoriaDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column folio._resolucion_inscripcion_definitiva
-     * @var string strResolucionInscripcionDefinitiva
-     */
-    protected $strResolucionInscripcionDefinitiva;
-    const ResolucionInscripcionDefinitivaMaxLength = 45;
-    const ResolucionInscripcionDefinitivaDefault = null;
 
 
     /**
@@ -335,6 +318,24 @@ class FolioGen extends QBaseClass {
 		 */
 		protected $blnDirtyRegularizacionAsId;
 
+		/**
+		 * Protected member variable that contains the object which points to
+		 * this object by the reference in the unique database column uso_interno.id_folio.
+		 *
+		 * NOTE: Always use the UsoInterno property getter to correctly retrieve this UsoInterno object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var UsoInterno objUsoInterno
+		 */
+		protected $objUsoInterno;
+		
+		/**
+		 * Used internally to manage whether the adjoined UsoInterno object
+		 * needs to be updated on save.
+		 * 
+		 * NOTE: Do not manually update this value 
+		 */
+		protected $blnDirtyUsoInterno;
+
 
 
 //class_load_and_count_methods
@@ -420,6 +421,7 @@ class FolioGen extends QBaseClass {
 
 //class_query_method
     protected static $arrQueryTextFields = array(
+        array("name"=>"CodFolio","type"=>"string"),
     );
 
     public static function GetQueryTextConditions($strParameter){
@@ -653,9 +655,10 @@ class FolioGen extends QBaseClass {
 			}
 
 			$objBuilder->AddSelectItem($strTableName, 'id', $strAliasPrefix . 'id');
+			$objBuilder->AddSelectItem($strTableName, 'cod_folio', $strAliasPrefix . 'cod_folio');
 			$objBuilder->AddSelectItem($strTableName, 'id_partido', $strAliasPrefix . 'id_partido');
 			$objBuilder->AddSelectItem($strTableName, 'id_localidad', $strAliasPrefix . 'id_localidad');
-			$objBuilder->AddSelectItem($strTableName, 'id_matricula', $strAliasPrefix . 'id_matricula');
+			$objBuilder->AddSelectItem($strTableName, 'matricula', $strAliasPrefix . 'matricula');
 			$objBuilder->AddSelectItem($strTableName, 'fecha', $strAliasPrefix . 'fecha');
 			$objBuilder->AddSelectItem($strTableName, 'encargado', $strAliasPrefix . 'encargado');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_barrio_oficial', $strAliasPrefix . 'nombre_barrio_oficial');
@@ -668,9 +671,6 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'observacion_caso_dudoso', $strAliasPrefix . 'observacion_caso_dudoso');
 			$objBuilder->AddSelectItem($strTableName, 'judicializado', $strAliasPrefix . 'judicializado');
 			$objBuilder->AddSelectItem($strTableName, 'direccion', $strAliasPrefix . 'direccion');
-			$objBuilder->AddSelectItem($strTableName, '_mapeo_preliminar', $strAliasPrefix . '_mapeo_preliminar');
-			$objBuilder->AddSelectItem($strTableName, '_resolucion_inscripcion_provisoria', $strAliasPrefix . '_resolucion_inscripcion_provisoria');
-			$objBuilder->AddSelectItem($strTableName, '_resolucion_inscripcion_definitiva', $strAliasPrefix . '_resolucion_inscripcion_definitiva');
 			$objBuilder->AddSelectItem($strTableName, 'num_expedientes', $strAliasPrefix . 'num_expedientes');
 		}
 
@@ -741,12 +741,14 @@ class FolioGen extends QBaseClass {
 
 			$strAliasName = array_key_exists($strAliasPrefix . 'id', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id'] : $strAliasPrefix . 'id';
 			$objToReturn->intId = $objDbRow->GetColumn($strAliasName, 'Integer');
+			$strAliasName = array_key_exists($strAliasPrefix . 'cod_folio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'cod_folio'] : $strAliasPrefix . 'cod_folio';
+			$objToReturn->strCodFolio = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'id_partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_partido'] : $strAliasPrefix . 'id_partido';
 			$objToReturn->intIdPartido = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'id_localidad', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_localidad'] : $strAliasPrefix . 'id_localidad';
 			$objToReturn->intIdLocalidad = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . 'id_matricula', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_matricula'] : $strAliasPrefix . 'id_matricula';
-			$objToReturn->intIdMatricula = $objDbRow->GetColumn($strAliasName, 'Integer');
+			$strAliasName = array_key_exists($strAliasPrefix . 'matricula', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'matricula'] : $strAliasPrefix . 'matricula';
+			$objToReturn->strMatricula = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha'] : $strAliasPrefix . 'fecha';
 			$objToReturn->dttFecha = $objDbRow->GetColumn($strAliasName, 'Date');
 			$strAliasName = array_key_exists($strAliasPrefix . 'encargado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'encargado'] : $strAliasPrefix . 'encargado';
@@ -771,12 +773,6 @@ class FolioGen extends QBaseClass {
 			$objToReturn->intJudicializado = $objDbRow->GetColumn($strAliasName, 'Smallint');
 			$strAliasName = array_key_exists($strAliasPrefix . 'direccion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'direccion'] : $strAliasPrefix . 'direccion';
 			$objToReturn->strDireccion = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . '_mapeo_preliminar', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_mapeo_preliminar'] : $strAliasPrefix . '_mapeo_preliminar';
-			$objToReturn->intMapeoPreliminar = $objDbRow->GetColumn($strAliasName, 'Smallint');
-			$strAliasName = array_key_exists($strAliasPrefix . '_resolucion_inscripcion_provisoria', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_resolucion_inscripcion_provisoria'] : $strAliasPrefix . '_resolucion_inscripcion_provisoria';
-			$objToReturn->strResolucionInscripcionProvisoria = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . '_resolucion_inscripcion_definitiva', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_resolucion_inscripcion_definitiva'] : $strAliasPrefix . '_resolucion_inscripcion_definitiva';
-			$objToReturn->strResolucionInscripcionDefinitiva = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'num_expedientes', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'num_expedientes'] : $strAliasPrefix . 'num_expedientes';
 			$objToReturn->strNumExpedientes = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
@@ -792,6 +788,9 @@ class FolioGen extends QBaseClass {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objRegularizacionAsIdArray, $objToReturn->objRegularizacionAsIdArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objUsoInternoArray, $objToReturn->objUsoInternoArray) != null) {
 						continue;
 					}
 
@@ -853,6 +852,18 @@ class FolioGen extends QBaseClass {
 					// We ATTEMPTED to do an Early Bind but the Object Doesn't Exist
 					// Let's set to FALSE so that the object knows not to try and re-query again
 					$objToReturn->objRegularizacionAsId = false;
+			}
+
+			// Check for UsoInterno Unique ReverseReference Binding
+			$strAlias = $strAliasPrefix . 'usointerno__id_folio';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if ($objDbRow->ColumnExists($strAliasName)) {
+				if (!is_null($objDbRow->GetColumn($strAliasName)))
+					$objToReturn->objUsoInterno = UsoInterno::InstantiateDbRow($objDbRow, $strAliasPrefix . 'usointerno__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					// We ATTEMPTED to do an Early Bind but the Object Doesn't Exist
+					// Let's set to FALSE so that the object knows not to try and re-query again
+					$objToReturn->objUsoInterno = false;
 			}
 
 
@@ -926,34 +937,18 @@ class FolioGen extends QBaseClass {
 		}
 			
 		/**
-		 * Load an array of Folio objects,
-		 * by IdPartido Index(es)
-		 * @param integer $intIdPartido
+		 * Load a single Folio object,
+		 * by CodFolio Index(es)
+		 * @param string $strCodFolio
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Folio[]
+		 * @return Folio
 		*/
-		public static function LoadArrayByIdPartido($intIdPartido, $objOptionalClauses = null) {
-			// Call Folio::QueryArray to perform the LoadArrayByIdPartido query
-			try {
-				return Folio::QueryArray(
-					QQ::Equal(QQN::Folio()->IdPartido, $intIdPartido),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Folios
-		 * by IdPartido Index(es)
-		 * @param integer $intIdPartido
-		 * @return int
-		*/
-		public static function CountByIdPartido($intIdPartido) {
-			// Call Folio::QueryCount to perform the CountByIdPartido query
-			return Folio::QueryCount(
-				QQ::Equal(QQN::Folio()->IdPartido, $intIdPartido)
+		public static function LoadByCodFolio($strCodFolio, $objOptionalClauses = null) {
+			return Folio::QuerySingle(
+				QQ::AndCondition(
+					QQ::Equal(QQN::Folio()->CodFolio, $strCodFolio)
+				),
+				$objOptionalClauses
 			);
 		}
 			
@@ -986,6 +981,38 @@ class FolioGen extends QBaseClass {
 			// Call Folio::QueryCount to perform the CountByIdLocalidad query
 			return Folio::QueryCount(
 				QQ::Equal(QQN::Folio()->IdLocalidad, $intIdLocalidad)
+			);
+		}
+			
+		/**
+		 * Load an array of Folio objects,
+		 * by IdPartido Index(es)
+		 * @param integer $intIdPartido
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Folio[]
+		*/
+		public static function LoadArrayByIdPartido($intIdPartido, $objOptionalClauses = null) {
+			// Call Folio::QueryArray to perform the LoadArrayByIdPartido query
+			try {
+				return Folio::QueryArray(
+					QQ::Equal(QQN::Folio()->IdPartido, $intIdPartido),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Folios
+		 * by IdPartido Index(es)
+		 * @param integer $intIdPartido
+		 * @return int
+		*/
+		public static function CountByIdPartido($intIdPartido) {
+			// Call Folio::QueryCount to perform the CountByIdPartido query
+			return Folio::QueryCount(
+				QQ::Equal(QQN::Folio()->IdPartido, $intIdPartido)
 			);
 		}
 			
@@ -1101,9 +1128,6 @@ class FolioGen extends QBaseClass {
                     if ($this->intIdLocalidad && ($this->intIdLocalidad > QDatabaseNumberFieldMax::Integer || $this->intIdLocalidad < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intIdLocalidad', QDatabaseFieldType::Integer);
                     }
-                    if ($this->intIdMatricula && ($this->intIdMatricula > QDatabaseNumberFieldMax::Integer || $this->intIdMatricula < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intIdMatricula', QDatabaseFieldType::Integer);
-                    }
                     if ($this->intCantidadFamilias && ($this->intCantidadFamilias > QDatabaseNumberFieldMax::Integer || $this->intCantidadFamilias < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intCantidadFamilias', QDatabaseFieldType::Integer);
                     }
@@ -1113,18 +1137,16 @@ class FolioGen extends QBaseClass {
                     if ($this->intJudicializado && ($this->intJudicializado > QDatabaseNumberFieldMax::Smallint || $this->intJudicializado < QDatabaseNumberFieldMin::Smallint)) {
                         throw new NumberOutOfRangeException('intJudicializado', QDatabaseFieldType::Smallint);
                     }
-                    if ($this->intMapeoPreliminar && ($this->intMapeoPreliminar > QDatabaseNumberFieldMax::Smallint || $this->intMapeoPreliminar < QDatabaseNumberFieldMin::Smallint)) {
-                        throw new NumberOutOfRangeException('intMapeoPreliminar', QDatabaseFieldType::Smallint);
-                    }
 
             try {
                 if (((!$this->__blnRestored) && (!$blnForceUpdate)) || ($blnForceInsert)) {
                     // Perform an INSERT query
                     $objDatabase->NonQuery('
                         INSERT INTO "folio" (
+                            "cod_folio",
                             "id_partido",
                             "id_localidad",
-                            "id_matricula",
+                            "matricula",
                             "fecha",
                             "encargado",
                             "nombre_barrio_oficial",
@@ -1137,14 +1159,12 @@ class FolioGen extends QBaseClass {
                             "observacion_caso_dudoso",
                             "judicializado",
                             "direccion",
-                            "_mapeo_preliminar",
-                            "_resolucion_inscripcion_provisoria",
-                            "_resolucion_inscripcion_definitiva",
                             "num_expedientes"
                         ) VALUES (
+                            ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
                             ' . $objDatabase->SqlVariable($this->intIdLocalidad) . ',
-                            ' . $objDatabase->SqlVariable($this->intIdMatricula) . ',
+                            ' . $objDatabase->SqlVariable($this->strMatricula) . ',
                             ' . $objDatabase->SqlVariable($this->dttFecha) . ',
                             ' . $objDatabase->SqlVariable($this->strEncargado) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreBarrioOficial) . ',
@@ -1157,9 +1177,6 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
                             ' . $objDatabase->SqlVariable($this->intJudicializado) . ',
                             ' . $objDatabase->SqlVariable($this->strDireccion) . ',
-                            ' . $objDatabase->SqlVariable($this->intMapeoPreliminar) . ',
-                            ' . $objDatabase->SqlVariable($this->strResolucionInscripcionProvisoria) . ',
-                            ' . $objDatabase->SqlVariable($this->strResolucionInscripcionDefinitiva) . ',
                             ' . $objDatabase->SqlVariable($this->strNumExpedientes) . '
                         )
                     ');
@@ -1176,9 +1193,10 @@ class FolioGen extends QBaseClass {
                         UPDATE
                             "folio"
                         SET
+                            "cod_folio" = ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             "id_partido" = ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
                             "id_localidad" = ' . $objDatabase->SqlVariable($this->intIdLocalidad) . ',
-                            "id_matricula" = ' . $objDatabase->SqlVariable($this->intIdMatricula) . ',
+                            "matricula" = ' . $objDatabase->SqlVariable($this->strMatricula) . ',
                             "fecha" = ' . $objDatabase->SqlVariable($this->dttFecha) . ',
                             "encargado" = ' . $objDatabase->SqlVariable($this->strEncargado) . ',
                             "nombre_barrio_oficial" = ' . $objDatabase->SqlVariable($this->strNombreBarrioOficial) . ',
@@ -1191,9 +1209,6 @@ class FolioGen extends QBaseClass {
                             "observacion_caso_dudoso" = ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
                             "judicializado" = ' . $objDatabase->SqlVariable($this->intJudicializado) . ',
                             "direccion" = ' . $objDatabase->SqlVariable($this->strDireccion) . ',
-                            "_mapeo_preliminar" = ' . $objDatabase->SqlVariable($this->intMapeoPreliminar) . ',
-                            "_resolucion_inscripcion_provisoria" = ' . $objDatabase->SqlVariable($this->strResolucionInscripcionProvisoria) . ',
-                            "_resolucion_inscripcion_definitiva" = ' . $objDatabase->SqlVariable($this->strResolucionInscripcionDefinitiva) . ',
                             "num_expedientes" = ' . $objDatabase->SqlVariable($this->strNumExpedientes) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
@@ -1239,6 +1254,26 @@ class FolioGen extends QBaseClass {
 
                     // Reset the "Dirty" flag
                     $this->blnDirtyRegularizacionAsId = false;
+                }
+        
+        
+                // Update the adjoined UsoInterno object (if applicable)
+                // TODO: Make this into hard-coded SQL queries
+                if ($this->blnDirtyUsoInterno) {
+                    // Unassociate the old one (if applicable)
+                    if ($objAssociated = UsoInterno::LoadByIdFolio($this->intId)) {
+                        $objAssociated->IdFolio = null;
+                        $objAssociated->Save();
+                    }
+
+                    // Associate the new one (if applicable)
+                    if ($this->objUsoInterno) {
+                        $this->objUsoInterno->IdFolio = $this->intId;
+                        $this->objUsoInterno->Save();
+                    }
+
+                    // Reset the "Dirty" flag
+                    $this->blnDirtyUsoInterno = false;
                 }
             } catch (QCallerException $objExc) {
                 $objExc->IncrementOffset();
@@ -1287,6 +1322,15 @@ class FolioGen extends QBaseClass {
 			if ($objAssociated = Regularizacion::LoadByIdFolio($this->intId)) {
 				$objAssociated->IdFolio = null;
 				$objAssociated->Save();
+			}
+			
+			
+			// Update the adjoined UsoInterno object (if applicable) and perform a delete
+
+			// Optional -- if you **KNOW** that you do not want to EVER run any level of business logic on the disassocation,
+			// you *could* override Delete() so that this step can be a single hard coded query to optimize performance.
+			if ($objAssociated = UsoInterno::LoadByIdFolio($this->intId)) {
+				$objAssociated->Delete();
 			}
 
 			// Perform the SQL Query
@@ -1337,9 +1381,10 @@ class FolioGen extends QBaseClass {
 			$objReloaded = Folio::Load($this->intId, null, true);
 
 			// Update $this's local variables to match
+			$this->strCodFolio = $objReloaded->strCodFolio;
 			$this->IdPartido = $objReloaded->IdPartido;
 			$this->IdLocalidad = $objReloaded->IdLocalidad;
-			$this->intIdMatricula = $objReloaded->intIdMatricula;
+			$this->strMatricula = $objReloaded->strMatricula;
 			$this->dttFecha = $objReloaded->dttFecha;
 			$this->strEncargado = $objReloaded->strEncargado;
 			$this->strNombreBarrioOficial = $objReloaded->strNombreBarrioOficial;
@@ -1352,9 +1397,6 @@ class FolioGen extends QBaseClass {
 			$this->strObservacionCasoDudoso = $objReloaded->strObservacionCasoDudoso;
 			$this->intJudicializado = $objReloaded->intJudicializado;
 			$this->strDireccion = $objReloaded->strDireccion;
-			$this->intMapeoPreliminar = $objReloaded->intMapeoPreliminar;
-			$this->strResolucionInscripcionProvisoria = $objReloaded->strResolucionInscripcionProvisoria;
-			$this->strResolucionInscripcionDefinitiva = $objReloaded->strResolucionInscripcionDefinitiva;
 			$this->strNumExpedientes = $objReloaded->strNumExpedientes;
 		}
 
@@ -1384,6 +1426,13 @@ class FolioGen extends QBaseClass {
                  */
                 return $this->intId;
 
+            case 'CodFolio':
+                /**
+                 * Gets the value for strCodFolio (Unique)
+                 * @return string
+                 */
+                return $this->strCodFolio;
+
             case 'IdPartido':
                 /**
                  * Gets the value for intIdPartido (Not Null)
@@ -1398,12 +1447,12 @@ class FolioGen extends QBaseClass {
                  */
                 return $this->intIdLocalidad;
 
-            case 'IdMatricula':
+            case 'Matricula':
                 /**
-                 * Gets the value for intIdMatricula 
-                 * @return integer
+                 * Gets the value for strMatricula (Not Null)
+                 * @return string
                  */
-                return $this->intIdMatricula;
+                return $this->strMatricula;
 
             case 'Fecha':
                 /**
@@ -1488,27 +1537,6 @@ class FolioGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strDireccion;
-
-            case 'MapeoPreliminar':
-                /**
-                 * Gets the value for intMapeoPreliminar 
-                 * @return integer
-                 */
-                return $this->intMapeoPreliminar;
-
-            case 'ResolucionInscripcionProvisoria':
-                /**
-                 * Gets the value for strResolucionInscripcionProvisoria 
-                 * @return string
-                 */
-                return $this->strResolucionInscripcionProvisoria;
-
-            case 'ResolucionInscripcionDefinitiva':
-                /**
-                 * Gets the value for strResolucionInscripcionDefinitiva 
-                 * @return string
-                 */
-                return $this->strResolucionInscripcionDefinitiva;
 
             case 'NumExpedientes':
                 /**
@@ -1603,6 +1631,26 @@ class FolioGen extends QBaseClass {
                     throw $objExc;
                 }
 
+    
+    
+            case 'UsoInterno':
+                /**
+                 * Gets the value for the UsoInterno object that uniquely references this Folio
+                 * by objUsoInterno (Unique)
+                 * @return UsoInterno
+                 */
+                try {
+                    if ($this->objUsoInterno === false)
+                        // We've attempted early binding -- and the reverse reference object does not exist
+                        return null;
+                    if (!$this->objUsoInterno)
+                        $this->objUsoInterno = UsoInterno::LoadByIdFolio($this->intId);
+                    return $this->objUsoInterno;
+                } catch (QCallerException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
+
 
             ////////////////////////////
             // Virtual Object References (Many to Many and Reverse References)
@@ -1654,6 +1702,21 @@ class FolioGen extends QBaseClass {
 				///////////////////
 				// Member Variables
 				///////////////////
+				case 'CodFolio':
+					/**
+					 * Sets the value for strCodFolio (Unique)
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strCodFolio = QType::Cast($mixValue, QType::String));
+                                                return ($this->strCodFolio = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 				case 'IdPartido':
 					/**
 					 * Sets the value for intIdPartido (Not Null)
@@ -1686,16 +1749,16 @@ class FolioGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'IdMatricula':
+				case 'Matricula':
 					/**
-					 * Sets the value for intIdMatricula 
-					 * @param integer $mixValue
-					 * @return integer
+					 * Sets the value for strMatricula (Not Null)
+					 * @param string $mixValue
+					 * @return string
 					 */
 					try {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intIdMatricula = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intIdMatricula = $mixValue);
+                                                //return ($this->strMatricula = QType::Cast($mixValue, QType::String));
+                                                return ($this->strMatricula = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1877,51 +1940,6 @@ class FolioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strDireccion = QType::Cast($mixValue, QType::String));
                                                 return ($this->strDireccion = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'MapeoPreliminar':
-					/**
-					 * Sets the value for intMapeoPreliminar 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intMapeoPreliminar = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intMapeoPreliminar = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'ResolucionInscripcionProvisoria':
-					/**
-					 * Sets the value for strResolucionInscripcionProvisoria 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strResolucionInscripcionProvisoria = QType::Cast($mixValue, QType::String));
-                                                return ($this->strResolucionInscripcionProvisoria = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'ResolucionInscripcionDefinitiva':
-					/**
-					 * Sets the value for strResolucionInscripcionDefinitiva 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strResolucionInscripcionDefinitiva = QType::Cast($mixValue, QType::String));
-                                                return ($this->strResolucionInscripcionDefinitiva = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2114,6 +2132,45 @@ class FolioGen extends QBaseClass {
 
 							// Update Local Member Variable
 							$this->objRegularizacionAsId = $mixValue;
+						} else {
+							// Nope -- therefore, make no changes
+						}
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
+				case 'UsoInterno':
+					/**
+					 * Sets the value for the UsoInterno object referenced by objUsoInterno (Unique)
+					 * @param UsoInterno $mixValue
+					 * @return UsoInterno
+					 */
+					if (is_null($mixValue)) {
+						$this->objUsoInterno = null;
+
+						// Make sure we update the adjoined UsoInterno object the next time we call Save()
+						$this->blnDirtyUsoInterno = true;
+
+						return null;
+					} else {
+						// Make sure $mixValue actually is a UsoInterno object
+						try {
+							$mixValue = QType::Cast($mixValue, 'UsoInterno');
+						} catch (QInvalidCastException $objExc) {
+							$objExc->IncrementOffset();
+							throw $objExc;
+						}
+
+						// Are we setting objUsoInterno to a DIFFERENT $mixValue?
+						if ((!$this->UsoInterno) || ($this->UsoInterno->IdFolio != $mixValue->IdFolio)) {
+							// Yes -- therefore, set the "Dirty" flag to true
+							// to make sure we update the adjoined UsoInterno object the next time we call Save()
+							$this->blnDirtyUsoInterno = true;
+
+							// Update Local Member Variable
+							$this->objUsoInterno = $mixValue;
 						} else {
 							// Nope -- therefore, make no changes
 						}
@@ -2358,9 +2415,10 @@ class FolioGen extends QBaseClass {
 		public static function GetSoapComplexTypeXml() {
 			$strToReturn = '<complexType name="Folio"><sequence>';
 			$strToReturn .= '<element name="Id" type="xsd:int"/>';
+			$strToReturn .= '<element name="CodFolio" type="xsd:string"/>';
 			$strToReturn .= '<element name="IdPartidoObject" type="xsd1:Partido"/>';
 			$strToReturn .= '<element name="IdLocalidadObject" type="xsd1:Localidad"/>';
-			$strToReturn .= '<element name="IdMatricula" type="xsd:int"/>';
+			$strToReturn .= '<element name="Matricula" type="xsd:string"/>';
 			$strToReturn .= '<element name="Fecha" type="xsd:dateTime"/>';
 			$strToReturn .= '<element name="Encargado" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreBarrioOficial" type="xsd:string"/>';
@@ -2373,9 +2431,6 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="ObservacionCasoDudoso" type="xsd:string"/>';
 			$strToReturn .= '<element name="Judicializado" type="xsd:int"/>';
 			$strToReturn .= '<element name="Direccion" type="xsd:string"/>';
-			$strToReturn .= '<element name="MapeoPreliminar" type="xsd:int"/>';
-			$strToReturn .= '<element name="ResolucionInscripcionProvisoria" type="xsd:string"/>';
-			$strToReturn .= '<element name="ResolucionInscripcionDefinitiva" type="xsd:string"/>';
 			$strToReturn .= '<element name="NumExpedientes" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
@@ -2406,14 +2461,17 @@ class FolioGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Id')) {
 				$objToReturn->intId = $objSoapObject->Id;
             }
+			if (property_exists($objSoapObject, 'CodFolio')) {
+				$objToReturn->strCodFolio = $objSoapObject->CodFolio;
+            }
 			if ((property_exists($objSoapObject, 'IdPartidoObject')) &&
 				($objSoapObject->IdPartidoObject))
 				$objToReturn->IdPartidoObject = Partido::GetObjectFromSoapObject($objSoapObject->IdPartidoObject);
 			if ((property_exists($objSoapObject, 'IdLocalidadObject')) &&
 				($objSoapObject->IdLocalidadObject))
 				$objToReturn->IdLocalidadObject = Localidad::GetObjectFromSoapObject($objSoapObject->IdLocalidadObject);
-			if (property_exists($objSoapObject, 'IdMatricula')) {
-				$objToReturn->intIdMatricula = $objSoapObject->IdMatricula;
+			if (property_exists($objSoapObject, 'Matricula')) {
+				$objToReturn->strMatricula = $objSoapObject->Matricula;
             }
 			if (property_exists($objSoapObject, 'Fecha')) {
 				$objToReturn->dttFecha = new QDateTime($objSoapObject->Fecha);
@@ -2450,15 +2508,6 @@ class FolioGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Direccion')) {
 				$objToReturn->strDireccion = $objSoapObject->Direccion;
-            }
-			if (property_exists($objSoapObject, 'MapeoPreliminar')) {
-				$objToReturn->intMapeoPreliminar = $objSoapObject->MapeoPreliminar;
-            }
-			if (property_exists($objSoapObject, 'ResolucionInscripcionProvisoria')) {
-				$objToReturn->strResolucionInscripcionProvisoria = $objSoapObject->ResolucionInscripcionProvisoria;
-            }
-			if (property_exists($objSoapObject, 'ResolucionInscripcionDefinitiva')) {
-				$objToReturn->strResolucionInscripcionDefinitiva = $objSoapObject->ResolucionInscripcionDefinitiva;
             }
 			if (property_exists($objSoapObject, 'NumExpedientes')) {
 				$objToReturn->strNumExpedientes = $objSoapObject->NumExpedientes;

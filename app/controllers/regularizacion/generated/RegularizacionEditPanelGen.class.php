@@ -11,12 +11,6 @@ class RegularizacionEditPanelGen extends EditPanelBase {
         'lblId' => false,
         'lstIdFolioObject' => true,
         'chkProcesoIniciado' => true,
-        'calFechaInicio' => true,
-        'chkTienePlano' => true,
-        'chkCircular10Catastro' => true,
-        'lstAprobacionGeodesiaObject' => true,
-        'txtRegistracion' => true,
-        'lstEstadoProcesoObject' => true,
         'lstAntecedentesAsIdFolio' => true,
         'lstEncuadreLegalAsIdFolio' => false,
         'lstRegistracionAsIdFolio' => false,
@@ -53,18 +47,6 @@ class RegularizacionEditPanelGen extends EditPanelBase {
             $this->objControlsArray['lstIdFolioObject'] = $this->mctRegularizacion->lstIdFolioObject_Create();
         if (in_array('chkProcesoIniciado',$strControlsArray)) 
             $this->objControlsArray['chkProcesoIniciado'] = $this->mctRegularizacion->chkProcesoIniciado_Create();
-        if (in_array('calFechaInicio',$strControlsArray)) 
-            $this->objControlsArray['calFechaInicio'] = $this->mctRegularizacion->calFechaInicio_Create();
-        if (in_array('chkTienePlano',$strControlsArray)) 
-            $this->objControlsArray['chkTienePlano'] = $this->mctRegularizacion->chkTienePlano_Create();
-        if (in_array('chkCircular10Catastro',$strControlsArray)) 
-            $this->objControlsArray['chkCircular10Catastro'] = $this->mctRegularizacion->chkCircular10Catastro_Create();
-        if (in_array('lstAprobacionGeodesiaObject',$strControlsArray)) 
-            $this->objControlsArray['lstAprobacionGeodesiaObject'] = $this->mctRegularizacion->lstAprobacionGeodesiaObject_Create();
-        if (in_array('txtRegistracion',$strControlsArray)) 
-            $this->objControlsArray['txtRegistracion'] = $this->mctRegularizacion->txtRegistracion_Create();
-        if (in_array('lstEstadoProcesoObject',$strControlsArray)) 
-            $this->objControlsArray['lstEstadoProcesoObject'] = $this->mctRegularizacion->lstEstadoProcesoObject_Create();
         if (in_array('lstAntecedentesAsIdFolio',$strControlsArray)) 
             $this->objControlsArray['lstAntecedentesAsIdFolio'] = $this->mctRegularizacion->lstAntecedentesAsIdFolio_Create();
         if (in_array('lstEncuadreLegalAsIdFolio',$strControlsArray))

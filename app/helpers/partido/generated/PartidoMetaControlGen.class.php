@@ -20,6 +20,8 @@
      * property-read QLabel $IdLabel
      * property QTextBox $NombreControl
      * property-read QLabel $NombreLabel
+     * property QTextBox $CodPartidoControl
+     * property-read QLabel $CodPartidoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -38,9 +40,11 @@
         // Controls that allow the editing of Partido's individual data fields
         protected $lblId;
         protected $txtNombre;
+        protected $txtCodPartido;
 
         // Controls that allow the viewing of Partido's individual data fields
         protected $lblNombre;
+        protected $lblCodPartido;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -182,6 +186,76 @@
             return $this->lblNombre;
         }
 
+        /**
+         * Create and setup QTextBox txtCodPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtCodPartido_Create($strControlId = null) {
+            $this->txtCodPartido = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtCodPartido->Name = QApplication::Translate('CodPartido');
+            $this->txtCodPartido->Text = $this->objPartido->CodPartido;
+            $this->txtCodPartido->MaxLength = Partido::CodPartidoMaxLength;
+            
+            return $this->txtCodPartido;
+        }
+
+        /**
+         * Create and setup QLabel lblCodPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblCodPartido_Create($strControlId = null) {
+            $this->lblCodPartido = new QLabel($this->objParentObject, $strControlId);
+            $this->lblCodPartido->Name = QApplication::Translate('CodPartido');
+            $this->lblCodPartido->Text = $this->objPartido->CodPartido;
+            return $this->lblCodPartido;
+        }
+
+
+
+    public $lstAprobacionGeodesiaAsId;
+    /**
+     * Gets all associated AprobacionGeodesiasAsId as an array of AprobacionGeodesia objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return AprobacionGeodesia[]
+    */ 
+    public function lstAprobacionGeodesiaAsId_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'AprobacionGeodesia';
+        $strConfigArray['strRefreshMethod'] = 'AprobacionGeodesiaAsIdArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'IdPartido';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddAprobacionGeodesiaAsId';
+        $strConfigArray['strRemoveMethod'] = 'RemoveAprobacionGeodesiaAsId';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['Num'] = QApplication::Translate('Num');
+        $strConfigArray['Columns']['Anio'] = QApplication::Translate('Anio');
+
+        $this->lstAprobacionGeodesiaAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
+        $this->lstAprobacionGeodesiaAsId->Name = AprobacionGeodesia::Noun();
+        $this->lstAprobacionGeodesiaAsId->SetNewMethod($this, "lstAprobacionGeodesiaAsId_New");
+        $this->lstAprobacionGeodesiaAsId->SetEditMethod($this, "lstAprobacionGeodesiaAsId_Edit");
+        return $this->lstAprobacionGeodesiaAsId;
+    }
+
+    public function lstAprobacionGeodesiaAsId_New() {
+        AprobacionGeodesiaModalPanel::$strControlsArray['lstIdPartidoObject'] = false;
+        $strControlsArray = array_keys(AprobacionGeodesiaModalPanel::$strControlsArray, true);
+        $this->lstAprobacionGeodesiaAsId->ModalPanel = new AprobacionGeodesiaModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstAprobacionGeodesiaAsId->ModalPanel->objCallerControl = $this->lstAprobacionGeodesiaAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstAprobacionGeodesiaAsId_Edit($intKey) {
+        AprobacionGeodesiaModalPanel::$strControlsArray['lstIdPartidoObject'] = false;
+        $strControlsArray = array_keys(AprobacionGeodesiaModalPanel::$strControlsArray, true);
+        $obj = $this->objPartido->AprobacionGeodesiaAsIdArray[$intKey];
+        $this->lstAprobacionGeodesiaAsId->ModalPanel = new AprobacionGeodesiaModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstAprobacionGeodesiaAsId->ModalPanel->objCallerControl = $this->lstAprobacionGeodesiaAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
 
 
     public $lstFolioAsId;
@@ -200,8 +274,9 @@
         $strConfigArray['strAddMethod'] = 'AddFolioAsId';
         $strConfigArray['strRemoveMethod'] = 'RemoveFolioAsId';
         $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['CodFolio'] = QApplication::Translate('CodFolio');
         $strConfigArray['Columns']['IdLocalidadObject'] = QApplication::Translate('IdLocalidadObject');
-        $strConfigArray['Columns']['IdMatricula'] = QApplication::Translate('IdMatricula');
+        $strConfigArray['Columns']['Matricula'] = QApplication::Translate('Matricula');
         $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
         $strConfigArray['Columns']['Encargado'] = QApplication::Translate('Encargado');
         $strConfigArray['Columns']['NombreBarrioOficial'] = QApplication::Translate('NombreBarrioOficial');
@@ -214,9 +289,6 @@
         $strConfigArray['Columns']['ObservacionCasoDudoso'] = QApplication::Translate('ObservacionCasoDudoso');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
-        $strConfigArray['Columns']['MapeoPreliminar'] = QApplication::Translate('MapeoPreliminar');
-        $strConfigArray['Columns']['ResolucionInscripcionProvisoria'] = QApplication::Translate('ResolucionInscripcionProvisoria');
-        $strConfigArray['Columns']['ResolucionInscripcionDefinitiva'] = QApplication::Translate('ResolucionInscripcionDefinitiva');
         $strConfigArray['Columns']['NumExpedientes'] = QApplication::Translate('NumExpedientes');
 
         $this->lstFolioAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
@@ -303,6 +375,9 @@
             if ($this->txtNombre) $this->txtNombre->Text = $this->objPartido->Nombre;
             if ($this->lblNombre) $this->lblNombre->Text = $this->objPartido->Nombre;
 
+            if ($this->txtCodPartido) $this->txtCodPartido->Text = $this->objPartido->CodPartido;
+            if ($this->lblCodPartido) $this->lblCodPartido->Text = $this->objPartido->CodPartido;
+
         }
 
 
@@ -322,6 +397,7 @@
         public function Bind(){
                 // Update any fields for controls that have been created
                 if ($this->txtNombre) $this->objPartido->Nombre = $this->txtNombre->Text;
+                if ($this->txtCodPartido) $this->objPartido->CodPartido = $this->txtCodPartido->Text;
 
 
         }
@@ -390,6 +466,12 @@
                 case 'NombreLabel':
                     if (!$this->lblNombre) return $this->lblNombre_Create();
                     return $this->lblNombre;
+                case 'CodPartidoControl':
+                    if (!$this->txtCodPartido) return $this->txtCodPartido_Create();
+                    return $this->txtCodPartido;
+                case 'CodPartidoLabel':
+                    if (!$this->lblCodPartido) return $this->lblCodPartido_Create();
+                    return $this->lblCodPartido;
                 default:
                     try {
                         return parent::__get($strName);
@@ -416,6 +498,8 @@
                         return ($this->lblId = QType::Cast($mixValue, 'QControl'));
                     case 'NombreControl':
                         return ($this->txtNombre = QType::Cast($mixValue, 'QControl'));
+                    case 'CodPartidoControl':
+                        return ($this->txtCodPartido = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

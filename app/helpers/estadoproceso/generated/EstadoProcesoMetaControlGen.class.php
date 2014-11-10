@@ -182,55 +182,6 @@
 
 
 
-    public $lstRegularizacionAs;
-    /**
-     * Gets all associated RegularizacionesAs as an array of Regularizacion objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Regularizacion[]
-    */ 
-    public function lstRegularizacionAs_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Regularizacion';
-        $strConfigArray['strRefreshMethod'] = 'RegularizacionAsArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'EstadoProceso';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddRegularizacionAs';
-        $strConfigArray['strRemoveMethod'] = 'RemoveRegularizacionAs';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['ProcesoIniciado'] = QApplication::Translate('ProcesoIniciado');
-        $strConfigArray['Columns']['FechaInicio'] = QApplication::Translate('FechaInicio');
-        $strConfigArray['Columns']['TienePlano'] = QApplication::Translate('TienePlano');
-        $strConfigArray['Columns']['Circular10Catastro'] = QApplication::Translate('Circular10Catastro');
-        $strConfigArray['Columns']['AprobacionGeodesiaObject'] = QApplication::Translate('AprobacionGeodesiaObject');
-        $strConfigArray['Columns']['Registracion'] = QApplication::Translate('Registracion');
-
-        $this->lstRegularizacionAs = new QListPanel($this->objParentObject, $this->objEstadoProceso, $strConfigArray, $strControlId);
-        $this->lstRegularizacionAs->Name = Regularizacion::Noun();
-        $this->lstRegularizacionAs->SetNewMethod($this, "lstRegularizacionAs_New");
-        $this->lstRegularizacionAs->SetEditMethod($this, "lstRegularizacionAs_Edit");
-        return $this->lstRegularizacionAs;
-    }
-
-    public function lstRegularizacionAs_New() {
-        RegularizacionModalPanel::$strControlsArray['lstEstadoProcesoObject'] = false;
-        $strControlsArray = array_keys(RegularizacionModalPanel::$strControlsArray, true);
-        $this->lstRegularizacionAs->ModalPanel = new RegularizacionModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstRegularizacionAs->ModalPanel->objCallerControl = $this->lstRegularizacionAs;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstRegularizacionAs_Edit($intKey) {
-        RegularizacionModalPanel::$strControlsArray['lstEstadoProcesoObject'] = false;
-        $strControlsArray = array_keys(RegularizacionModalPanel::$strControlsArray, true);
-        $obj = $this->objEstadoProceso->RegularizacionAsArray[$intKey];
-        $this->lstRegularizacionAs->ModalPanel = new RegularizacionModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstRegularizacionAs->ModalPanel->objCallerControl = $this->lstRegularizacionAs;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
 
 
         /**

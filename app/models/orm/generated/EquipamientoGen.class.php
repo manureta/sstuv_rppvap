@@ -744,16 +744,16 @@ class EquipamientoGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Equipamiento objects,
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
+		 * by CentroIntegracionComunitaria Index(es)
+		 * @param integer $intCentroIntegracionComunitaria
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/
-		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
-			// Call Equipamiento::QueryArray to perform the LoadArrayByIdFolio query
+		public static function LoadArrayByCentroIntegracionComunitaria($intCentroIntegracionComunitaria, $objOptionalClauses = null) {
+			// Call Equipamiento::QueryArray to perform the LoadArrayByCentroIntegracionComunitaria query
 			try {
 				return Equipamiento::QueryArray(
-					QQ::Equal(QQN::Equipamiento()->IdFolio, $intIdFolio),
+					QQ::Equal(QQN::Equipamiento()->CentroIntegracionComunitaria, $intCentroIntegracionComunitaria),
 					$objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
@@ -763,29 +763,29 @@ class EquipamientoGen extends QBaseClass {
 
 		/**
 		 * Count Equipamientos
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
+		 * by CentroIntegracionComunitaria Index(es)
+		 * @param integer $intCentroIntegracionComunitaria
 		 * @return int
 		*/
-		public static function CountByIdFolio($intIdFolio) {
-			// Call Equipamiento::QueryCount to perform the CountByIdFolio query
+		public static function CountByCentroIntegracionComunitaria($intCentroIntegracionComunitaria) {
+			// Call Equipamiento::QueryCount to perform the CountByCentroIntegracionComunitaria query
 			return Equipamiento::QueryCount(
-				QQ::Equal(QQN::Equipamiento()->IdFolio, $intIdFolio)
+				QQ::Equal(QQN::Equipamiento()->CentroIntegracionComunitaria, $intCentroIntegracionComunitaria)
 			);
 		}
 			
 		/**
 		 * Load an array of Equipamiento objects,
-		 * by UnidadSanitaria Index(es)
-		 * @param integer $intUnidadSanitaria
+		 * by Comedor Index(es)
+		 * @param integer $intComedor
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/
-		public static function LoadArrayByUnidadSanitaria($intUnidadSanitaria, $objOptionalClauses = null) {
-			// Call Equipamiento::QueryArray to perform the LoadArrayByUnidadSanitaria query
+		public static function LoadArrayByComedor($intComedor, $objOptionalClauses = null) {
+			// Call Equipamiento::QueryArray to perform the LoadArrayByComedor query
 			try {
 				return Equipamiento::QueryArray(
-					QQ::Equal(QQN::Equipamiento()->UnidadSanitaria, $intUnidadSanitaria),
+					QQ::Equal(QQN::Equipamiento()->Comedor, $intComedor),
 					$objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
@@ -795,46 +795,14 @@ class EquipamientoGen extends QBaseClass {
 
 		/**
 		 * Count Equipamientos
-		 * by UnidadSanitaria Index(es)
-		 * @param integer $intUnidadSanitaria
+		 * by Comedor Index(es)
+		 * @param integer $intComedor
 		 * @return int
 		*/
-		public static function CountByUnidadSanitaria($intUnidadSanitaria) {
-			// Call Equipamiento::QueryCount to perform the CountByUnidadSanitaria query
+		public static function CountByComedor($intComedor) {
+			// Call Equipamiento::QueryCount to perform the CountByComedor query
 			return Equipamiento::QueryCount(
-				QQ::Equal(QQN::Equipamiento()->UnidadSanitaria, $intUnidadSanitaria)
-			);
-		}
-			
-		/**
-		 * Load an array of Equipamiento objects,
-		 * by JardinInfantes Index(es)
-		 * @param integer $intJardinInfantes
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Equipamiento[]
-		*/
-		public static function LoadArrayByJardinInfantes($intJardinInfantes, $objOptionalClauses = null) {
-			// Call Equipamiento::QueryArray to perform the LoadArrayByJardinInfantes query
-			try {
-				return Equipamiento::QueryArray(
-					QQ::Equal(QQN::Equipamiento()->JardinInfantes, $intJardinInfantes),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Equipamientos
-		 * by JardinInfantes Index(es)
-		 * @param integer $intJardinInfantes
-		 * @return int
-		*/
-		public static function CountByJardinInfantes($intJardinInfantes) {
-			// Call Equipamiento::QueryCount to perform the CountByJardinInfantes query
-			return Equipamiento::QueryCount(
-				QQ::Equal(QQN::Equipamiento()->JardinInfantes, $intJardinInfantes)
+				QQ::Equal(QQN::Equipamiento()->Comedor, $intComedor)
 			);
 		}
 			
@@ -904,16 +872,16 @@ class EquipamientoGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Equipamiento objects,
-		 * by Comedor Index(es)
-		 * @param integer $intComedor
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/
-		public static function LoadArrayByComedor($intComedor, $objOptionalClauses = null) {
-			// Call Equipamiento::QueryArray to perform the LoadArrayByComedor query
+		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
+			// Call Equipamiento::QueryArray to perform the LoadArrayByIdFolio query
 			try {
 				return Equipamiento::QueryArray(
-					QQ::Equal(QQN::Equipamiento()->Comedor, $intComedor),
+					QQ::Equal(QQN::Equipamiento()->IdFolio, $intIdFolio),
 					$objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
@@ -923,14 +891,46 @@ class EquipamientoGen extends QBaseClass {
 
 		/**
 		 * Count Equipamientos
-		 * by Comedor Index(es)
-		 * @param integer $intComedor
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
 		 * @return int
 		*/
-		public static function CountByComedor($intComedor) {
-			// Call Equipamiento::QueryCount to perform the CountByComedor query
+		public static function CountByIdFolio($intIdFolio) {
+			// Call Equipamiento::QueryCount to perform the CountByIdFolio query
 			return Equipamiento::QueryCount(
-				QQ::Equal(QQN::Equipamiento()->Comedor, $intComedor)
+				QQ::Equal(QQN::Equipamiento()->IdFolio, $intIdFolio)
+			);
+		}
+			
+		/**
+		 * Load an array of Equipamiento objects,
+		 * by JardinInfantes Index(es)
+		 * @param integer $intJardinInfantes
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Equipamiento[]
+		*/
+		public static function LoadArrayByJardinInfantes($intJardinInfantes, $objOptionalClauses = null) {
+			// Call Equipamiento::QueryArray to perform the LoadArrayByJardinInfantes query
+			try {
+				return Equipamiento::QueryArray(
+					QQ::Equal(QQN::Equipamiento()->JardinInfantes, $intJardinInfantes),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Equipamientos
+		 * by JardinInfantes Index(es)
+		 * @param integer $intJardinInfantes
+		 * @return int
+		*/
+		public static function CountByJardinInfantes($intJardinInfantes) {
+			// Call Equipamiento::QueryCount to perform the CountByJardinInfantes query
+			return Equipamiento::QueryCount(
+				QQ::Equal(QQN::Equipamiento()->JardinInfantes, $intJardinInfantes)
 			);
 		}
 			
@@ -968,16 +968,16 @@ class EquipamientoGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Equipamiento objects,
-		 * by CentroIntegracionComunitaria Index(es)
-		 * @param integer $intCentroIntegracionComunitaria
+		 * by UnidadSanitaria Index(es)
+		 * @param integer $intUnidadSanitaria
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/
-		public static function LoadArrayByCentroIntegracionComunitaria($intCentroIntegracionComunitaria, $objOptionalClauses = null) {
-			// Call Equipamiento::QueryArray to perform the LoadArrayByCentroIntegracionComunitaria query
+		public static function LoadArrayByUnidadSanitaria($intUnidadSanitaria, $objOptionalClauses = null) {
+			// Call Equipamiento::QueryArray to perform the LoadArrayByUnidadSanitaria query
 			try {
 				return Equipamiento::QueryArray(
-					QQ::Equal(QQN::Equipamiento()->CentroIntegracionComunitaria, $intCentroIntegracionComunitaria),
+					QQ::Equal(QQN::Equipamiento()->UnidadSanitaria, $intUnidadSanitaria),
 					$objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
@@ -987,14 +987,14 @@ class EquipamientoGen extends QBaseClass {
 
 		/**
 		 * Count Equipamientos
-		 * by CentroIntegracionComunitaria Index(es)
-		 * @param integer $intCentroIntegracionComunitaria
+		 * by UnidadSanitaria Index(es)
+		 * @param integer $intUnidadSanitaria
 		 * @return int
 		*/
-		public static function CountByCentroIntegracionComunitaria($intCentroIntegracionComunitaria) {
-			// Call Equipamiento::QueryCount to perform the CountByCentroIntegracionComunitaria query
+		public static function CountByUnidadSanitaria($intUnidadSanitaria) {
+			// Call Equipamiento::QueryCount to perform the CountByUnidadSanitaria query
 			return Equipamiento::QueryCount(
-				QQ::Equal(QQN::Equipamiento()->CentroIntegracionComunitaria, $intCentroIntegracionComunitaria)
+				QQ::Equal(QQN::Equipamiento()->UnidadSanitaria, $intUnidadSanitaria)
 			);
 		}
 

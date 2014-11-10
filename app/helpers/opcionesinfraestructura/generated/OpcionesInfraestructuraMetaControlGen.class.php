@@ -182,168 +182,6 @@
 
 
 
-    public $lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
-    /**
-     * Gets all associated InfraestructurasAsEnergiaElectricaMedidorIndividual as an array of Infraestructura objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Infraestructura[]
-    */ 
-    public function lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsEnergiaElectricaMedidorIndividualArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'EnergiaElectricaMedidorIndividual';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsEnergiaElectricaMedidorIndividual';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsEnergiaElectricaMedidorIndividual';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
-        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
-        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
-        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
-        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
-        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
-        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
-        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
-        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
-        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
-        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
-
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->SetNewMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorIndividual_New");
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->SetEditMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Edit");
-        return $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
-    }
-
-    public function lstInfraestructuraAsEnergiaElectricaMedidorIndividual_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorIndividualObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorIndividualObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsEnergiaElectricaMedidorIndividualArray[$intKey];
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
-    public $lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
-    /**
-     * Gets all associated InfraestructurasAsEnergiaElectricaMedidorColectivo as an array of Infraestructura objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Infraestructura[]
-    */ 
-    public function lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsEnergiaElectricaMedidorColectivoArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'EnergiaElectricaMedidorColectivo';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsEnergiaElectricaMedidorColectivo';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsEnergiaElectricaMedidorColectivo';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
-        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
-        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
-        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
-        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
-        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
-        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
-        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
-        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
-        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
-        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
-
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->SetNewMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorColectivo_New");
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->SetEditMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Edit");
-        return $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
-    }
-
-    public function lstInfraestructuraAsEnergiaElectricaMedidorColectivo_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorColectivoObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorColectivoObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsEnergiaElectricaMedidorColectivoArray[$intKey];
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
-    public $lstInfraestructuraAsAlumbradoPublico;
-    /**
-     * Gets all associated InfraestructurasAsAlumbradoPublico as an array of Infraestructura objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Infraestructura[]
-    */ 
-    public function lstInfraestructuraAsAlumbradoPublico_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsAlumbradoPublicoArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'AlumbradoPublico';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsAlumbradoPublico';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsAlumbradoPublico';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
-        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
-        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
-        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
-        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
-        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
-        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
-        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
-        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
-        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
-
-        $this->lstInfraestructuraAsAlumbradoPublico = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsAlumbradoPublico->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsAlumbradoPublico->SetNewMethod($this, "lstInfraestructuraAsAlumbradoPublico_New");
-        $this->lstInfraestructuraAsAlumbradoPublico->SetEditMethod($this, "lstInfraestructuraAsAlumbradoPublico_Edit");
-        return $this->lstInfraestructuraAsAlumbradoPublico;
-    }
-
-    public function lstInfraestructuraAsAlumbradoPublico_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstAlumbradoPublicoObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel->objCallerControl = $this->lstInfraestructuraAsAlumbradoPublico;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstInfraestructuraAsAlumbradoPublico_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstAlumbradoPublicoObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsAlumbradoPublicoArray[$intKey];
-        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel->objCallerControl = $this->lstInfraestructuraAsAlumbradoPublico;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
     public $lstInfraestructuraAsAguaCorriente;
     /**
      * Gets all associated InfraestructurasAsAguaCorriente as an array of Infraestructura objects
@@ -452,28 +290,28 @@
     }
 
 
-    public $lstInfraestructuraAsRedCloacal;
+    public $lstInfraestructuraAsAlumbradoPublico;
     /**
-     * Gets all associated InfraestructurasAsRedCloacal as an array of Infraestructura objects
+     * Gets all associated InfraestructurasAsAlumbradoPublico as an array of Infraestructura objects
      * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
      * @return Infraestructura[]
     */ 
-    public function lstInfraestructuraAsRedCloacal_Create($strControlId = null) {
+    public function lstInfraestructuraAsAlumbradoPublico_Create($strControlId = null) {
 
         $strConfigArray = array();
         $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsRedCloacalArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'RedCloacal';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsAlumbradoPublicoArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'AlumbradoPublico';
         $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsRedCloacal';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsRedCloacal';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsAlumbradoPublico';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsAlumbradoPublico';
         $strConfigArray['Columns'] = array();
         $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
         $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
         $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
-        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
         $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
         $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
         $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
         $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
         $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
@@ -481,189 +319,27 @@
         $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
         $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
 
-        $this->lstInfraestructuraAsRedCloacal = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsRedCloacal->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsRedCloacal->SetNewMethod($this, "lstInfraestructuraAsRedCloacal_New");
-        $this->lstInfraestructuraAsRedCloacal->SetEditMethod($this, "lstInfraestructuraAsRedCloacal_Edit");
-        return $this->lstInfraestructuraAsRedCloacal;
+        $this->lstInfraestructuraAsAlumbradoPublico = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsAlumbradoPublico->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsAlumbradoPublico->SetNewMethod($this, "lstInfraestructuraAsAlumbradoPublico_New");
+        $this->lstInfraestructuraAsAlumbradoPublico->SetEditMethod($this, "lstInfraestructuraAsAlumbradoPublico_Edit");
+        return $this->lstInfraestructuraAsAlumbradoPublico;
     }
 
-    public function lstInfraestructuraAsRedCloacal_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstRedCloacalObject'] = false;
+    public function lstInfraestructuraAsAlumbradoPublico_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstAlumbradoPublicoObject'] = false;
         $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsRedCloacal->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsRedCloacal->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedCloacal;
+        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel->objCallerControl = $this->lstInfraestructuraAsAlumbradoPublico;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
-    public function lstInfraestructuraAsRedCloacal_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstRedCloacalObject'] = false;
+    public function lstInfraestructuraAsAlumbradoPublico_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstAlumbradoPublicoObject'] = false;
         $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsRedCloacalArray[$intKey];
-        $this->lstInfraestructuraAsRedCloacal->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsRedCloacal->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedCloacal;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
-    public $lstInfraestructuraAsSistAlternativoEliminacionExcretas;
-    /**
-     * Gets all associated InfraestructurasAsSistAlternativoEliminacionExcretas as an array of Infraestructura objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Infraestructura[]
-    */ 
-    public function lstInfraestructuraAsSistAlternativoEliminacionExcretas_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsSistAlternativoEliminacionExcretasArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'SistAlternativoEliminacionExcretas';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsSistAlternativoEliminacionExcretas';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsSistAlternativoEliminacionExcretas';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
-        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
-        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
-        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
-        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
-        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
-        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
-        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
-        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
-        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
-
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->SetNewMethod($this, "lstInfraestructuraAsSistAlternativoEliminacionExcretas_New");
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->SetEditMethod($this, "lstInfraestructuraAsSistAlternativoEliminacionExcretas_Edit");
-        return $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas;
-    }
-
-    public function lstInfraestructuraAsSistAlternativoEliminacionExcretas_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstSistAlternativoEliminacionExcretasObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstInfraestructuraAsSistAlternativoEliminacionExcretas_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstSistAlternativoEliminacionExcretasObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsSistAlternativoEliminacionExcretasArray[$intKey];
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
-    public $lstInfraestructuraAsRedGas;
-    /**
-     * Gets all associated InfraestructurasAsRedGas as an array of Infraestructura objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Infraestructura[]
-    */ 
-    public function lstInfraestructuraAsRedGas_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsRedGasArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'RedGas';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsRedGas';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsRedGas';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
-        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
-        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
-        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
-        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
-        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
-        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
-        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
-        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
-        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
-
-        $this->lstInfraestructuraAsRedGas = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsRedGas->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsRedGas->SetNewMethod($this, "lstInfraestructuraAsRedGas_New");
-        $this->lstInfraestructuraAsRedGas->SetEditMethod($this, "lstInfraestructuraAsRedGas_Edit");
-        return $this->lstInfraestructuraAsRedGas;
-    }
-
-    public function lstInfraestructuraAsRedGas_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstRedGasObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsRedGas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsRedGas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedGas;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstInfraestructuraAsRedGas_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstRedGasObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsRedGasArray[$intKey];
-        $this->lstInfraestructuraAsRedGas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsRedGas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedGas;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
-    public $lstInfraestructuraAsPavimento;
-    /**
-     * Gets all associated InfraestructurasAsPavimento as an array of Infraestructura objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Infraestructura[]
-    */ 
-    public function lstInfraestructuraAsPavimento_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Infraestructura';
-        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsPavimentoArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'Pavimento';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsPavimento';
-        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsPavimento';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
-        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
-        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
-        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
-        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
-        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
-        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
-        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
-        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
-        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
-        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
-
-        $this->lstInfraestructuraAsPavimento = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
-        $this->lstInfraestructuraAsPavimento->Name = Infraestructura::Noun();
-        $this->lstInfraestructuraAsPavimento->SetNewMethod($this, "lstInfraestructuraAsPavimento_New");
-        $this->lstInfraestructuraAsPavimento->SetEditMethod($this, "lstInfraestructuraAsPavimento_Edit");
-        return $this->lstInfraestructuraAsPavimento;
-    }
-
-    public function lstInfraestructuraAsPavimento_New() {
-        InfraestructuraModalPanel::$strControlsArray['lstPavimentoObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $this->lstInfraestructuraAsPavimento->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstInfraestructuraAsPavimento->ModalPanel->objCallerControl = $this->lstInfraestructuraAsPavimento;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstInfraestructuraAsPavimento_Edit($intKey) {
-        InfraestructuraModalPanel::$strControlsArray['lstPavimentoObject'] = false;
-        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsPavimentoArray[$intKey];
-        $this->lstInfraestructuraAsPavimento->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstInfraestructuraAsPavimento->ModalPanel->objCallerControl = $this->lstInfraestructuraAsPavimento;
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsAlumbradoPublicoArray[$intKey];
+        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsAlumbradoPublico->ModalPanel->objCallerControl = $this->lstInfraestructuraAsAlumbradoPublico;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
@@ -776,6 +452,168 @@
     }
 
 
+    public $lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
+    /**
+     * Gets all associated InfraestructurasAsEnergiaElectricaMedidorColectivo as an array of Infraestructura objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Infraestructura[]
+    */ 
+    public function lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Infraestructura';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsEnergiaElectricaMedidorColectivoArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'EnergiaElectricaMedidorColectivo';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsEnergiaElectricaMedidorColectivo';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsEnergiaElectricaMedidorColectivo';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
+        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
+        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
+        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
+        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
+        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
+        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
+        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
+        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
+        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
+
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->SetNewMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorColectivo_New");
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->SetEditMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Edit");
+        return $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
+    }
+
+    public function lstInfraestructuraAsEnergiaElectricaMedidorColectivo_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorColectivoObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstInfraestructuraAsEnergiaElectricaMedidorColectivo_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorColectivoObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsEnergiaElectricaMedidorColectivoArray[$intKey];
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorColectivo;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
+    public $lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
+    /**
+     * Gets all associated InfraestructurasAsEnergiaElectricaMedidorIndividual as an array of Infraestructura objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Infraestructura[]
+    */ 
+    public function lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Infraestructura';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsEnergiaElectricaMedidorIndividualArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'EnergiaElectricaMedidorIndividual';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsEnergiaElectricaMedidorIndividual';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsEnergiaElectricaMedidorIndividual';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
+        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
+        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
+        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
+        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
+        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
+        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
+        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
+        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
+        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
+
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->SetNewMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorIndividual_New");
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->SetEditMethod($this, "lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Edit");
+        return $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
+    }
+
+    public function lstInfraestructuraAsEnergiaElectricaMedidorIndividual_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorIndividualObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstInfraestructuraAsEnergiaElectricaMedidorIndividual_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstEnergiaElectricaMedidorIndividualObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsEnergiaElectricaMedidorIndividualArray[$intKey];
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual->ModalPanel->objCallerControl = $this->lstInfraestructuraAsEnergiaElectricaMedidorIndividual;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
+    public $lstInfraestructuraAsPavimento;
+    /**
+     * Gets all associated InfraestructurasAsPavimento as an array of Infraestructura objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Infraestructura[]
+    */ 
+    public function lstInfraestructuraAsPavimento_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Infraestructura';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsPavimentoArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'Pavimento';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsPavimento';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsPavimento';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
+        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
+        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
+        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
+        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
+        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
+        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
+        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
+        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
+
+        $this->lstInfraestructuraAsPavimento = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsPavimento->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsPavimento->SetNewMethod($this, "lstInfraestructuraAsPavimento_New");
+        $this->lstInfraestructuraAsPavimento->SetEditMethod($this, "lstInfraestructuraAsPavimento_Edit");
+        return $this->lstInfraestructuraAsPavimento;
+    }
+
+    public function lstInfraestructuraAsPavimento_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstPavimentoObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $this->lstInfraestructuraAsPavimento->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsPavimento->ModalPanel->objCallerControl = $this->lstInfraestructuraAsPavimento;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstInfraestructuraAsPavimento_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstPavimentoObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsPavimentoArray[$intKey];
+        $this->lstInfraestructuraAsPavimento->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsPavimento->ModalPanel->objCallerControl = $this->lstInfraestructuraAsPavimento;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
     public $lstInfraestructuraAsRecoleccionResiduos;
     /**
      * Gets all associated InfraestructurasAsRecoleccionResiduos as an array of Infraestructura objects
@@ -826,6 +664,168 @@
         $obj = $this->objOpcionesInfraestructura->InfraestructuraAsRecoleccionResiduosArray[$intKey];
         $this->lstInfraestructuraAsRecoleccionResiduos->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
         $this->lstInfraestructuraAsRecoleccionResiduos->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRecoleccionResiduos;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
+    public $lstInfraestructuraAsRedCloacal;
+    /**
+     * Gets all associated InfraestructurasAsRedCloacal as an array of Infraestructura objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Infraestructura[]
+    */ 
+    public function lstInfraestructuraAsRedCloacal_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Infraestructura';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsRedCloacalArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'RedCloacal';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsRedCloacal';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsRedCloacal';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
+        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
+        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
+        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
+        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
+        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
+        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
+        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
+        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
+
+        $this->lstInfraestructuraAsRedCloacal = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsRedCloacal->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsRedCloacal->SetNewMethod($this, "lstInfraestructuraAsRedCloacal_New");
+        $this->lstInfraestructuraAsRedCloacal->SetEditMethod($this, "lstInfraestructuraAsRedCloacal_Edit");
+        return $this->lstInfraestructuraAsRedCloacal;
+    }
+
+    public function lstInfraestructuraAsRedCloacal_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstRedCloacalObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $this->lstInfraestructuraAsRedCloacal->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsRedCloacal->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedCloacal;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstInfraestructuraAsRedCloacal_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstRedCloacalObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsRedCloacalArray[$intKey];
+        $this->lstInfraestructuraAsRedCloacal->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsRedCloacal->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedCloacal;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
+    public $lstInfraestructuraAsRedGas;
+    /**
+     * Gets all associated InfraestructurasAsRedGas as an array of Infraestructura objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Infraestructura[]
+    */ 
+    public function lstInfraestructuraAsRedGas_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Infraestructura';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsRedGasArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'RedGas';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsRedGas';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsRedGas';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
+        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
+        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
+        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
+        $strConfigArray['Columns']['SistAlternativoEliminacionExcretasObject'] = QApplication::Translate('SistAlternativoEliminacionExcretasObject');
+        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
+        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
+        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
+        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
+
+        $this->lstInfraestructuraAsRedGas = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsRedGas->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsRedGas->SetNewMethod($this, "lstInfraestructuraAsRedGas_New");
+        $this->lstInfraestructuraAsRedGas->SetEditMethod($this, "lstInfraestructuraAsRedGas_Edit");
+        return $this->lstInfraestructuraAsRedGas;
+    }
+
+    public function lstInfraestructuraAsRedGas_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstRedGasObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $this->lstInfraestructuraAsRedGas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsRedGas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedGas;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstInfraestructuraAsRedGas_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstRedGasObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsRedGasArray[$intKey];
+        $this->lstInfraestructuraAsRedGas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsRedGas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsRedGas;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
+    public $lstInfraestructuraAsSistAlternativoEliminacionExcretas;
+    /**
+     * Gets all associated InfraestructurasAsSistAlternativoEliminacionExcretas as an array of Infraestructura objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Infraestructura[]
+    */ 
+    public function lstInfraestructuraAsSistAlternativoEliminacionExcretas_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Infraestructura';
+        $strConfigArray['strRefreshMethod'] = 'InfraestructuraAsSistAlternativoEliminacionExcretasArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'SistAlternativoEliminacionExcretas';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddInfraestructuraAsSistAlternativoEliminacionExcretas';
+        $strConfigArray['strRemoveMethod'] = 'RemoveInfraestructuraAsSistAlternativoEliminacionExcretas';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorIndividualObject'] = QApplication::Translate('EnergiaElectricaMedidorIndividualObject');
+        $strConfigArray['Columns']['EnergiaElectricaMedidorColectivoObject'] = QApplication::Translate('EnergiaElectricaMedidorColectivoObject');
+        $strConfigArray['Columns']['AlumbradoPublicoObject'] = QApplication::Translate('AlumbradoPublicoObject');
+        $strConfigArray['Columns']['AguaCorrienteObject'] = QApplication::Translate('AguaCorrienteObject');
+        $strConfigArray['Columns']['AguaPotableObject'] = QApplication::Translate('AguaPotableObject');
+        $strConfigArray['Columns']['RedCloacalObject'] = QApplication::Translate('RedCloacalObject');
+        $strConfigArray['Columns']['RedGasObject'] = QApplication::Translate('RedGasObject');
+        $strConfigArray['Columns']['PavimentoObject'] = QApplication::Translate('PavimentoObject');
+        $strConfigArray['Columns']['CordonCunetaObject'] = QApplication::Translate('CordonCunetaObject');
+        $strConfigArray['Columns']['DesaguesPluvialesObject'] = QApplication::Translate('DesaguesPluvialesObject');
+        $strConfigArray['Columns']['RecoleccionResiduosObject'] = QApplication::Translate('RecoleccionResiduosObject');
+
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas = new QListPanel($this->objParentObject, $this->objOpcionesInfraestructura, $strConfigArray, $strControlId);
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->Name = Infraestructura::Noun();
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->SetNewMethod($this, "lstInfraestructuraAsSistAlternativoEliminacionExcretas_New");
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->SetEditMethod($this, "lstInfraestructuraAsSistAlternativoEliminacionExcretas_Edit");
+        return $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas;
+    }
+
+    public function lstInfraestructuraAsSistAlternativoEliminacionExcretas_New() {
+        InfraestructuraModalPanel::$strControlsArray['lstSistAlternativoEliminacionExcretasObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstInfraestructuraAsSistAlternativoEliminacionExcretas_Edit($intKey) {
+        InfraestructuraModalPanel::$strControlsArray['lstSistAlternativoEliminacionExcretasObject'] = false;
+        $strControlsArray = array_keys(InfraestructuraModalPanel::$strControlsArray, true);
+        $obj = $this->objOpcionesInfraestructura->InfraestructuraAsSistAlternativoEliminacionExcretasArray[$intKey];
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel = new InfraestructuraModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas->ModalPanel->objCallerControl = $this->lstInfraestructuraAsSistAlternativoEliminacionExcretas;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 

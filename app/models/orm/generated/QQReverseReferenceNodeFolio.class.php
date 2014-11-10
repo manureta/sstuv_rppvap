@@ -7,6 +7,8 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 			switch ($strName) {
 				case 'Id':
 					return new QQNode('id', 'Id', 'integer', $this);
+				case 'CodFolio':
+					return new QQNode('cod_folio', 'CodFolio', 'string', $this);
 				case 'IdPartido':
 					return new QQNode('id_partido', 'IdPartido', 'integer', $this);
 				case 'IdPartidoObject':
@@ -15,8 +17,8 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('id_localidad', 'IdLocalidad', 'integer', $this);
 				case 'IdLocalidadObject':
 					return new QQNodeLocalidad('id_localidad', 'IdLocalidadObject', 'integer', $this);
-				case 'IdMatricula':
-					return new QQNode('id_matricula', 'IdMatricula', 'integer', $this);
+				case 'Matricula':
+					return new QQNode('matricula', 'Matricula', 'string', $this);
 				case 'Fecha':
 					return new QQNode('fecha', 'Fecha', 'QDateTime', $this);
 				case 'Encargado':
@@ -43,12 +45,6 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('judicializado', 'Judicializado', 'integer', $this);
 				case 'Direccion':
 					return new QQNode('direccion', 'Direccion', 'string', $this);
-				case 'MapeoPreliminar':
-					return new QQNode('_mapeo_preliminar', 'MapeoPreliminar', 'integer', $this);
-				case 'ResolucionInscripcionProvisoria':
-					return new QQNode('_resolucion_inscripcion_provisoria', 'ResolucionInscripcionProvisoria', 'string', $this);
-				case 'ResolucionInscripcionDefinitiva':
-					return new QQNode('_resolucion_inscripcion_definitiva', 'ResolucionInscripcionDefinitiva', 'string', $this);
 				case 'NumExpedientes':
 					return new QQNode('num_expedientes', 'NumExpedientes', 'string', $this);
 				case 'CondicionesSocioUrbanisticasAsId':
@@ -57,6 +53,8 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQReverseReferenceNodeNomenclatura($this, 'nomenclaturaasid', 'reverse_reference', 'id_folio');
 				case 'RegularizacionAsId':
 					return new QQReverseReferenceNodeRegularizacion($this, 'regularizacionasid', 'reverse_reference', 'id_folio', 'RegularizacionAsId');
+				case 'UsoInterno':
+					return new QQReverseReferenceNodeUsoInterno($this, 'usointerno', 'reverse_reference', 'id_folio', 'UsoInterno');
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

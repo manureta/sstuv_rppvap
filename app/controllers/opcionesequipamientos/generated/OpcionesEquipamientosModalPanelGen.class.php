@@ -12,13 +12,13 @@ class OpcionesEquipamientosModalPanelGen extends EditPanelBase {
     public static $strControlsArray = array(
         'lblId' => false,
         'txtOpcion' => true,
-        'lstEquipamientoAsUnidadSanitaria' => false,
-        'lstEquipamientoAsJardinInfantes' => false,
+        'lstEquipamientoAsCentroIntegracionComunitaria' => false,
+        'lstEquipamientoAsComedor' => false,
         'lstEquipamientoAsEscuelaPrimaria' => false,
         'lstEquipamientoAsEscuelaSecundaria' => false,
-        'lstEquipamientoAsComedor' => false,
+        'lstEquipamientoAsJardinInfantes' => false,
         'lstEquipamientoAsSalonUsosMultiples' => false,
-        'lstEquipamientoAsCentroIntegracionComunitaria' => false,
+        'lstEquipamientoAsUnidadSanitaria' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objOpcionesEquipamientos = null, $strControlId = null) {
@@ -53,20 +53,20 @@ class OpcionesEquipamientosModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lblId'] = $this->mctOpcionesEquipamientos->lblId_Create();
         if (in_array('txtOpcion',$strControlsArray)) 
             $this->objControlsArray['txtOpcion'] = $this->mctOpcionesEquipamientos->txtOpcion_Create();
-        if (in_array('lstEquipamientoAsUnidadSanitaria',$strControlsArray))
-            $this->objControlsArray['lstEquipamientoAsUnidadSanitaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsUnidadSanitaria_Create();
-        if (in_array('lstEquipamientoAsJardinInfantes',$strControlsArray))
-            $this->objControlsArray['lstEquipamientoAsJardinInfantes'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsJardinInfantes_Create();
+        if (in_array('lstEquipamientoAsCentroIntegracionComunitaria',$strControlsArray))
+            $this->objControlsArray['lstEquipamientoAsCentroIntegracionComunitaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsCentroIntegracionComunitaria_Create();
+        if (in_array('lstEquipamientoAsComedor',$strControlsArray))
+            $this->objControlsArray['lstEquipamientoAsComedor'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsComedor_Create();
         if (in_array('lstEquipamientoAsEscuelaPrimaria',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsEscuelaPrimaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsEscuelaPrimaria_Create();
         if (in_array('lstEquipamientoAsEscuelaSecundaria',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsEscuelaSecundaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsEscuelaSecundaria_Create();
-        if (in_array('lstEquipamientoAsComedor',$strControlsArray))
-            $this->objControlsArray['lstEquipamientoAsComedor'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsComedor_Create();
+        if (in_array('lstEquipamientoAsJardinInfantes',$strControlsArray))
+            $this->objControlsArray['lstEquipamientoAsJardinInfantes'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsJardinInfantes_Create();
         if (in_array('lstEquipamientoAsSalonUsosMultiples',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsSalonUsosMultiples'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsSalonUsosMultiples_Create();
-        if (in_array('lstEquipamientoAsCentroIntegracionComunitaria',$strControlsArray))
-            $this->objControlsArray['lstEquipamientoAsCentroIntegracionComunitaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsCentroIntegracionComunitaria_Create();
+        if (in_array('lstEquipamientoAsUnidadSanitaria',$strControlsArray))
+            $this->objControlsArray['lstEquipamientoAsUnidadSanitaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsUnidadSanitaria_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

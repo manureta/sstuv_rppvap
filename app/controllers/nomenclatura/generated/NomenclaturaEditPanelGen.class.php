@@ -36,7 +36,13 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
 
         $this->intId = $intId;
         $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab(Nomenclatura::Noun());
+        
+        
+        //$this->pnlTabs->AddTab(Nomenclatura::Noun());
+        $this->pnlTabs->AddTab("Nomenclatura Catastral");
+        $this->pnlTabs->AddTab("Cond. Socio-Urbanistas");
+        $this->pnlTabs->AddTab("Integracion Socio-Urbana");
+        
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
     }
@@ -72,7 +78,10 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
         if (in_array('txtDatoVerificadoRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['txtDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->txtDatoVerificadoRegPropiedad_Create();
 
+        
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        //$this->pnlTabs->SelectTab(1);
+        
     }
     
     protected function buttons_Create($blnDelete = true) {

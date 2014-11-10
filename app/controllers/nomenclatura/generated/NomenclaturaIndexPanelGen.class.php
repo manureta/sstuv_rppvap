@@ -53,9 +53,9 @@ class NomenclaturaIndexPanelGen extends QPanel {
         $this->strColumnsArray = is_null($strColumnsArray) ? NomenclaturaDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(NomenclaturaEditPanel::$strControlsArray, true) : $strControlsArray;
 
-        //Creo el datagrid
+        //Creo el datagrid()
         $this->dtgNomenclatura_Create();
-
+        //$this->dtgNomenclaturas->AddCondition(QQ::Equal(QQN::Nomenclatura()->IdFolio,1));
         //Botón de creación
         $this->btnCreateNew_Create();
 

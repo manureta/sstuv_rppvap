@@ -442,6 +442,27 @@
     QApplication::$ClassFile['qqreversereferencenodetransporte'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeTransporte.class.php';
 
 
+    // ClassPaths for the UsoInterno class
+    QApplication::$ClassFile['usointernoindexpanelgen'] = __CONTROLLER_DIR__.'/usointerno/generated/UsoInternoIndexPanelGen.class.php';
+    QApplication::$ClassFile['usointernoeditpanelgen'] = __CONTROLLER_DIR__.'/usointerno/generated/UsoInternoEditPanelGen.class.php';
+
+    QApplication::$ClassFile['usointernoindexpanel'] = __CONTROLLER_DIR__.'/usointerno/UsoInternoIndexPanel.class.php';
+    QApplication::$ClassFile['usointernoeditpanel'] = __CONTROLLER_DIR__.'/usointerno/UsoInternoEditPanel.class.php';
+
+    QApplication::$ClassFile['usointernomodalpanel'] = __CONTROLLER_DIR__.'/usointerno/UsoInternoModalPanel.class.php';
+    QApplication::$ClassFile['usointernomodalpanelgen'] = __CONTROLLER_DIR__.'/usointerno/generated/UsoInternoModalPanelGen.class.php';
+
+    QApplication::$ClassFile['usointernodatagridgen'] = __HELPER_DIR__.'/usointerno/generated/UsoInternoDataGridGen.class.php';
+    QApplication::$ClassFile['usointernometacontrolgen'] = __HELPER_DIR__.'/usointerno/generated/UsoInternoMetaControlGen.class.php';
+    QApplication::$ClassFile['usointernodatagrid'] = __HELPER_DIR__.'/usointerno/UsoInternoDataGrid.class.php';
+    QApplication::$ClassFile['usointernometacontrol'] = __HELPER_DIR__.'/usointerno/UsoInternoMetaControl.class.php';
+
+    QApplication::$ClassFile['usointernogen'] = __MODEL_DIR__.'/orm/generated/UsoInternoGen.class.php';
+    QApplication::$ClassFile['usointerno'] = __MODEL_DIR__.'/orm/UsoInterno.class.php';
+    QApplication::$ClassFile['qqnodeusointerno'] = __MODEL_DIR__.'/orm/generated/QQNodeUsoInterno.class.php';
+    QApplication::$ClassFile['qqreversereferencenodeusointerno'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeUsoInterno.class.php';
+
+
     // ClassPaths for the Usuario class
     QApplication::$ClassFile['usuarioindexpanelgen'] = __CONTROLLER_DIR__.'/usuario/generated/UsuarioIndexPanelGen.class.php';
     QApplication::$ClassFile['usuarioeditpanelgen'] = __CONTROLLER_DIR__.'/usuario/generated/UsuarioEditPanelGen.class.php';

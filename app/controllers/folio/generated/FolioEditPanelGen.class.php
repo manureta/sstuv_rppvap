@@ -9,9 +9,10 @@ class FolioEditPanelGen extends EditPanelBase {
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
+        'txtCodFolio' => true,
         'lstIdPartidoObject' => true,
         'lstIdLocalidadObject' => true,
-        'txtIdMatricula' => true,
+        'txtMatricula' => true,
         'calFecha' => true,
         'txtEncargado' => true,
         'txtNombreBarrioOficial' => true,
@@ -24,33 +25,13 @@ class FolioEditPanelGen extends EditPanelBase {
         'txtObservacionCasoDudoso' => true,
         'txtJudicializado' => true,
         'txtDireccion' => true,
-        'txtMapeoPreliminar' => true,
-        'txtResolucionInscripcionProvisoria' => true,
-        'txtResolucionInscripcionDefinitiva' => true,
         'txtNumExpedientes' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
+        'lstUsoInterno' => true,
         'lstNomenclaturaAsId' => false,
     );
 
-    public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
-
-        $strControlsArray = empty($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
-
-        // Call the Parent
-        try {
-            parent::__construct($objParentObject, $strControlId);
-        } catch (QCallerException $objExc) {
-            $objExc->IncrementOffset();
-            throw $objExc;
-        }
-
-        $this->intId = $intId;
-        $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab(Folio::Noun());
-        $this->metaControl_Create($strControlsArray);
-        $this->buttons_Create();
-    }
 
     protected function metaControl_Create($strControlsArray){
         // Construct the FolioMetaControl
@@ -60,12 +41,14 @@ class FolioEditPanelGen extends EditPanelBase {
         // Call MetaControl's methods to create qcontrols based on Folio's data fields
         if (in_array('lblId',$strControlsArray)) 
             $this->objControlsArray['lblId'] = $this->mctFolio->lblId_Create();
+        if (in_array('txtCodFolio',$strControlsArray)) 
+            $this->objControlsArray['txtCodFolio'] = $this->mctFolio->txtCodFolio_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctFolio->lstIdPartidoObject_Create();
         if (in_array('lstIdLocalidadObject',$strControlsArray)) 
             $this->objControlsArray['lstIdLocalidadObject'] = $this->mctFolio->lstIdLocalidadObject_Create();
-        if (in_array('txtIdMatricula',$strControlsArray)) 
-            $this->objControlsArray['txtIdMatricula'] = $this->mctFolio->txtIdMatricula_Create();
+        if (in_array('txtMatricula',$strControlsArray)) 
+            $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
             $this->objControlsArray['calFecha'] = $this->mctFolio->calFecha_Create();
         if (in_array('txtEncargado',$strControlsArray)) 
@@ -90,20 +73,16 @@ class FolioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
-        if (in_array('txtMapeoPreliminar',$strControlsArray)) 
-            $this->objControlsArray['txtMapeoPreliminar'] = $this->mctFolio->txtMapeoPreliminar_Create();
-        if (in_array('txtResolucionInscripcionProvisoria',$strControlsArray)) 
-            $this->objControlsArray['txtResolucionInscripcionProvisoria'] = $this->mctFolio->txtResolucionInscripcionProvisoria_Create();
-        if (in_array('txtResolucionInscripcionDefinitiva',$strControlsArray)) 
-            $this->objControlsArray['txtResolucionInscripcionDefinitiva'] = $this->mctFolio->txtResolucionInscripcionDefinitiva_Create();
         if (in_array('txtNumExpedientes',$strControlsArray)) 
             $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 
             $this->objControlsArray['lstRegularizacionAsId'] = $this->mctFolio->lstRegularizacionAsId_Create();
+        if (in_array('lstUsoInterno',$strControlsArray)) 
+            $this->objControlsArray['lstUsoInterno'] = $this->mctFolio->lstUsoInterno_Create();
         if (in_array('lstNomenclaturaAsId',$strControlsArray))
-            $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
+            $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();        
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
@@ -117,17 +96,7 @@ class FolioEditPanelGen extends EditPanelBase {
         }
     }
 
-    // Control AjaxAction Event Handlers
-    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
-        // Delegate "Save" processing to the FolioMetaControl
-        $this->mctFolio->Save();
-        foreach ($this->objModifiedChildsArray as $obj) {
-            $obj->Save();
-        }
-        $this->objModifiedChildsArray = array();
-        QApplication::DisplayNotification('Los datos se guardaron correctamente');
-    }
+    
 
     public function btnDelete_Click($strFormId, $strControlId, $strParameter) {
         // Delegate "Delete" processing to the FolioMetaControl

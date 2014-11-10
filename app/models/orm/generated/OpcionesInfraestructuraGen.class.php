@@ -17,30 +17,30 @@
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $Id the value for intId (Read-Only PK)
 	 * @property string $Opcion the value for strOpcion 
-	 * @property-read Infraestructura $InfraestructuraAsEnergiaElectricaMedidorIndividual the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividual (Read-Only) if set due to an expansion on the infraestructura.energia_electrica_medidor_individual reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsEnergiaElectricaMedidorIndividualArray the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividualArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_individual reverse relationship
-	 * @property-read Infraestructura $InfraestructuraAsEnergiaElectricaMedidorColectivo the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivo (Read-Only) if set due to an expansion on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsEnergiaElectricaMedidorColectivoArray the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivoArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
-	 * @property-read Infraestructura $InfraestructuraAsAlumbradoPublico the value for the private _objInfraestructuraAsAlumbradoPublico (Read-Only) if set due to an expansion on the infraestructura.alumbrado_publico reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsAlumbradoPublicoArray the value for the private _objInfraestructuraAsAlumbradoPublicoArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.alumbrado_publico reverse relationship
 	 * @property-read Infraestructura $InfraestructuraAsAguaCorriente the value for the private _objInfraestructuraAsAguaCorriente (Read-Only) if set due to an expansion on the infraestructura.agua_corriente reverse relationship
 	 * @property-read Infraestructura[] $InfraestructuraAsAguaCorrienteArray the value for the private _objInfraestructuraAsAguaCorrienteArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.agua_corriente reverse relationship
 	 * @property-read Infraestructura $InfraestructuraAsAguaPotable the value for the private _objInfraestructuraAsAguaPotable (Read-Only) if set due to an expansion on the infraestructura.agua_potable reverse relationship
 	 * @property-read Infraestructura[] $InfraestructuraAsAguaPotableArray the value for the private _objInfraestructuraAsAguaPotableArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.agua_potable reverse relationship
-	 * @property-read Infraestructura $InfraestructuraAsRedCloacal the value for the private _objInfraestructuraAsRedCloacal (Read-Only) if set due to an expansion on the infraestructura.red_cloacal reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsRedCloacalArray the value for the private _objInfraestructuraAsRedCloacalArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.red_cloacal reverse relationship
-	 * @property-read Infraestructura $InfraestructuraAsSistAlternativoEliminacionExcretas the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretas (Read-Only) if set due to an expansion on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsSistAlternativoEliminacionExcretasArray the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretasArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
-	 * @property-read Infraestructura $InfraestructuraAsRedGas the value for the private _objInfraestructuraAsRedGas (Read-Only) if set due to an expansion on the infraestructura.red_gas reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsRedGasArray the value for the private _objInfraestructuraAsRedGasArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.red_gas reverse relationship
-	 * @property-read Infraestructura $InfraestructuraAsPavimento the value for the private _objInfraestructuraAsPavimento (Read-Only) if set due to an expansion on the infraestructura.pavimento reverse relationship
-	 * @property-read Infraestructura[] $InfraestructuraAsPavimentoArray the value for the private _objInfraestructuraAsPavimentoArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.pavimento reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsAlumbradoPublico the value for the private _objInfraestructuraAsAlumbradoPublico (Read-Only) if set due to an expansion on the infraestructura.alumbrado_publico reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsAlumbradoPublicoArray the value for the private _objInfraestructuraAsAlumbradoPublicoArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.alumbrado_publico reverse relationship
 	 * @property-read Infraestructura $InfraestructuraAsCordonCuneta the value for the private _objInfraestructuraAsCordonCuneta (Read-Only) if set due to an expansion on the infraestructura.cordon_cuneta reverse relationship
 	 * @property-read Infraestructura[] $InfraestructuraAsCordonCunetaArray the value for the private _objInfraestructuraAsCordonCunetaArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.cordon_cuneta reverse relationship
 	 * @property-read Infraestructura $InfraestructuraAsDesaguesPluviales the value for the private _objInfraestructuraAsDesaguesPluviales (Read-Only) if set due to an expansion on the infraestructura.desagues_pluviales reverse relationship
 	 * @property-read Infraestructura[] $InfraestructuraAsDesaguesPluvialesArray the value for the private _objInfraestructuraAsDesaguesPluvialesArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.desagues_pluviales reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsEnergiaElectricaMedidorColectivo the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivo (Read-Only) if set due to an expansion on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsEnergiaElectricaMedidorColectivoArray the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivoArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsEnergiaElectricaMedidorIndividual the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividual (Read-Only) if set due to an expansion on the infraestructura.energia_electrica_medidor_individual reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsEnergiaElectricaMedidorIndividualArray the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividualArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_individual reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsPavimento the value for the private _objInfraestructuraAsPavimento (Read-Only) if set due to an expansion on the infraestructura.pavimento reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsPavimentoArray the value for the private _objInfraestructuraAsPavimentoArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.pavimento reverse relationship
 	 * @property-read Infraestructura $InfraestructuraAsRecoleccionResiduos the value for the private _objInfraestructuraAsRecoleccionResiduos (Read-Only) if set due to an expansion on the infraestructura.recoleccion_residuos reverse relationship
 	 * @property-read Infraestructura[] $InfraestructuraAsRecoleccionResiduosArray the value for the private _objInfraestructuraAsRecoleccionResiduosArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.recoleccion_residuos reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsRedCloacal the value for the private _objInfraestructuraAsRedCloacal (Read-Only) if set due to an expansion on the infraestructura.red_cloacal reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsRedCloacalArray the value for the private _objInfraestructuraAsRedCloacalArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.red_cloacal reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsRedGas the value for the private _objInfraestructuraAsRedGas (Read-Only) if set due to an expansion on the infraestructura.red_gas reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsRedGasArray the value for the private _objInfraestructuraAsRedGasArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.red_gas reverse relationship
+	 * @property-read Infraestructura $InfraestructuraAsSistAlternativoEliminacionExcretas the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretas (Read-Only) if set due to an expansion on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
+	 * @property-read Infraestructura[] $InfraestructuraAsSistAlternativoEliminacionExcretasArray the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretasArray (Read-Only) if set due to an ExpandAsArray on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class OpcionesInfraestructuraGen extends QBaseClass {
@@ -78,54 +78,6 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 
 
     /**
-     * Private member variable that stores a reference to a single InfraestructuraAsEnergiaElectricaMedidorIndividual object
-     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
-     * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsEnergiaElectricaMedidorIndividual;
-     */
-    protected $objInfraestructuraAsEnergiaElectricaMedidorIndividual;
-
-    /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsEnergiaElectricaMedidorIndividual objects
-     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
-     * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-     */
-    protected $objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-
-    /**
-     * Private member variable that stores a reference to a single InfraestructuraAsEnergiaElectricaMedidorColectivo object
-     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
-     * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsEnergiaElectricaMedidorColectivo;
-     */
-    protected $objInfraestructuraAsEnergiaElectricaMedidorColectivo;
-
-    /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsEnergiaElectricaMedidorColectivo objects
-     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
-     * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-     */
-    protected $objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-
-    /**
-     * Private member variable that stores a reference to a single InfraestructuraAsAlumbradoPublico object
-     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
-     * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsAlumbradoPublico;
-     */
-    protected $objInfraestructuraAsAlumbradoPublico;
-
-    /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsAlumbradoPublico objects
-     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
-     * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsAlumbradoPublicoArray;
-     */
-    protected $objInfraestructuraAsAlumbradoPublicoArray;
-
-    /**
      * Private member variable that stores a reference to a single InfraestructuraAsAguaCorriente object
      * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
      * an expansion on the infraestructura association table.
@@ -158,68 +110,20 @@ class OpcionesInfraestructuraGen extends QBaseClass {
     protected $objInfraestructuraAsAguaPotableArray;
 
     /**
-     * Private member variable that stores a reference to a single InfraestructuraAsRedCloacal object
+     * Private member variable that stores a reference to a single InfraestructuraAsAlumbradoPublico object
      * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
      * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsRedCloacal;
+     * @var Infraestructura _objInfraestructuraAsAlumbradoPublico;
      */
-    protected $objInfraestructuraAsRedCloacal;
+    protected $objInfraestructuraAsAlumbradoPublico;
 
     /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsRedCloacal objects
+     * Private member variable that stores a reference to an array of InfraestructuraAsAlumbradoPublico objects
      * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
      * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsRedCloacalArray;
+     * @var Infraestructura[] _objInfraestructuraAsAlumbradoPublicoArray;
      */
-    protected $objInfraestructuraAsRedCloacalArray;
-
-    /**
-     * Private member variable that stores a reference to a single InfraestructuraAsSistAlternativoEliminacionExcretas object
-     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
-     * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsSistAlternativoEliminacionExcretas;
-     */
-    protected $objInfraestructuraAsSistAlternativoEliminacionExcretas;
-
-    /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsSistAlternativoEliminacionExcretas objects
-     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
-     * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
-     */
-    protected $objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
-
-    /**
-     * Private member variable that stores a reference to a single InfraestructuraAsRedGas object
-     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
-     * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsRedGas;
-     */
-    protected $objInfraestructuraAsRedGas;
-
-    /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsRedGas objects
-     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
-     * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsRedGasArray;
-     */
-    protected $objInfraestructuraAsRedGasArray;
-
-    /**
-     * Private member variable that stores a reference to a single InfraestructuraAsPavimento object
-     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
-     * an expansion on the infraestructura association table.
-     * @var Infraestructura _objInfraestructuraAsPavimento;
-     */
-    protected $objInfraestructuraAsPavimento;
-
-    /**
-     * Private member variable that stores a reference to an array of InfraestructuraAsPavimento objects
-     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
-     * an ExpandAsArray on the infraestructura association table.
-     * @var Infraestructura[] _objInfraestructuraAsPavimentoArray;
-     */
-    protected $objInfraestructuraAsPavimentoArray;
+    protected $objInfraestructuraAsAlumbradoPublicoArray;
 
     /**
      * Private member variable that stores a reference to a single InfraestructuraAsCordonCuneta object
@@ -254,6 +158,54 @@ class OpcionesInfraestructuraGen extends QBaseClass {
     protected $objInfraestructuraAsDesaguesPluvialesArray;
 
     /**
+     * Private member variable that stores a reference to a single InfraestructuraAsEnergiaElectricaMedidorColectivo object
+     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
+     * an expansion on the infraestructura association table.
+     * @var Infraestructura _objInfraestructuraAsEnergiaElectricaMedidorColectivo;
+     */
+    protected $objInfraestructuraAsEnergiaElectricaMedidorColectivo;
+
+    /**
+     * Private member variable that stores a reference to an array of InfraestructuraAsEnergiaElectricaMedidorColectivo objects
+     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
+     * an ExpandAsArray on the infraestructura association table.
+     * @var Infraestructura[] _objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+     */
+    protected $objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+
+    /**
+     * Private member variable that stores a reference to a single InfraestructuraAsEnergiaElectricaMedidorIndividual object
+     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
+     * an expansion on the infraestructura association table.
+     * @var Infraestructura _objInfraestructuraAsEnergiaElectricaMedidorIndividual;
+     */
+    protected $objInfraestructuraAsEnergiaElectricaMedidorIndividual;
+
+    /**
+     * Private member variable that stores a reference to an array of InfraestructuraAsEnergiaElectricaMedidorIndividual objects
+     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
+     * an ExpandAsArray on the infraestructura association table.
+     * @var Infraestructura[] _objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+     */
+    protected $objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+
+    /**
+     * Private member variable that stores a reference to a single InfraestructuraAsPavimento object
+     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
+     * an expansion on the infraestructura association table.
+     * @var Infraestructura _objInfraestructuraAsPavimento;
+     */
+    protected $objInfraestructuraAsPavimento;
+
+    /**
+     * Private member variable that stores a reference to an array of InfraestructuraAsPavimento objects
+     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
+     * an ExpandAsArray on the infraestructura association table.
+     * @var Infraestructura[] _objInfraestructuraAsPavimentoArray;
+     */
+    protected $objInfraestructuraAsPavimentoArray;
+
+    /**
      * Private member variable that stores a reference to a single InfraestructuraAsRecoleccionResiduos object
      * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
      * an expansion on the infraestructura association table.
@@ -268,6 +220,54 @@ class OpcionesInfraestructuraGen extends QBaseClass {
      * @var Infraestructura[] _objInfraestructuraAsRecoleccionResiduosArray;
      */
     protected $objInfraestructuraAsRecoleccionResiduosArray;
+
+    /**
+     * Private member variable that stores a reference to a single InfraestructuraAsRedCloacal object
+     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
+     * an expansion on the infraestructura association table.
+     * @var Infraestructura _objInfraestructuraAsRedCloacal;
+     */
+    protected $objInfraestructuraAsRedCloacal;
+
+    /**
+     * Private member variable that stores a reference to an array of InfraestructuraAsRedCloacal objects
+     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
+     * an ExpandAsArray on the infraestructura association table.
+     * @var Infraestructura[] _objInfraestructuraAsRedCloacalArray;
+     */
+    protected $objInfraestructuraAsRedCloacalArray;
+
+    /**
+     * Private member variable that stores a reference to a single InfraestructuraAsRedGas object
+     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
+     * an expansion on the infraestructura association table.
+     * @var Infraestructura _objInfraestructuraAsRedGas;
+     */
+    protected $objInfraestructuraAsRedGas;
+
+    /**
+     * Private member variable that stores a reference to an array of InfraestructuraAsRedGas objects
+     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
+     * an ExpandAsArray on the infraestructura association table.
+     * @var Infraestructura[] _objInfraestructuraAsRedGasArray;
+     */
+    protected $objInfraestructuraAsRedGasArray;
+
+    /**
+     * Private member variable that stores a reference to a single InfraestructuraAsSistAlternativoEliminacionExcretas object
+     * (of type Infraestructura), if this OpcionesInfraestructura object was restored with
+     * an expansion on the infraestructura association table.
+     * @var Infraestructura _objInfraestructuraAsSistAlternativoEliminacionExcretas;
+     */
+    protected $objInfraestructuraAsSistAlternativoEliminacionExcretas;
+
+    /**
+     * Private member variable that stores a reference to an array of InfraestructuraAsSistAlternativoEliminacionExcretas objects
+     * (of type Infraestructura[]), if this OpcionesInfraestructura object was restored with
+     * an ExpandAsArray on the infraestructura association table.
+     * @var Infraestructura[] _objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
+     */
+    protected $objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -645,57 +645,6 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 							$strAliasPrefix = 'opciones_infraestructura__';
 
 
-						// Expanding reverse references: InfraestructuraAsEnergiaElectricaMedidorIndividual
-						$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Expanding reverse references: InfraestructuraAsEnergiaElectricaMedidorColectivo
-						$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Expanding reverse references: InfraestructuraAsAlumbradoPublico
-						$strAlias = $strAliasPrefix . 'infraestructuraasalumbradopublico__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
 						// Expanding reverse references: InfraestructuraAsAguaCorriente
 						$strAlias = $strAliasPrefix . 'infraestructuraasaguacorriente__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
@@ -730,70 +679,19 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 							$blnExpandedViaArray = true;
 						}
 
-						// Expanding reverse references: InfraestructuraAsRedCloacal
-						$strAlias = $strAliasPrefix . 'infraestructuraasredcloacal__id';
+						// Expanding reverse references: InfraestructuraAsAlumbradoPublico
+						$strAlias = $strAliasPrefix . 'infraestructuraasalumbradopublico__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
 							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsRedCloacalArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsRedCloacalArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
 								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsRedCloacalArray[] = $objChildItem;
+									$objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray[] = $objChildItem;
 								}
 							} else {
-								$objPreviousItem->objInfraestructuraAsRedCloacalArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Expanding reverse references: InfraestructuraAsSistAlternativoEliminacionExcretas
-						$strAlias = $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Expanding reverse references: InfraestructuraAsRedGas
-						$strAlias = $strAliasPrefix . 'infraestructuraasredgas__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsRedGasArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsRedGasArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsRedGasArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objInfraestructuraAsRedGasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Expanding reverse references: InfraestructuraAsPavimento
-						$strAlias = $strAliasPrefix . 'infraestructuraaspavimento__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsPavimentoArray)) {
-								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsPavimentoArray;
-								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objInfraestructuraAsPavimentoArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objInfraestructuraAsPavimentoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+								$objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
@@ -832,6 +730,57 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 							$blnExpandedViaArray = true;
 						}
 
+						// Expanding reverse references: InfraestructuraAsEnergiaElectricaMedidorColectivo
+						$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
+						// Expanding reverse references: InfraestructuraAsEnergiaElectricaMedidorIndividual
+						$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
+						// Expanding reverse references: InfraestructuraAsPavimento
+						$strAlias = $strAliasPrefix . 'infraestructuraaspavimento__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsPavimentoArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsPavimentoArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objInfraestructuraAsPavimentoArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objInfraestructuraAsPavimentoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
 						// Expanding reverse references: InfraestructuraAsRecoleccionResiduos
 						$strAlias = $strAliasPrefix . 'infraestructuraasrecoleccionresiduos__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
@@ -845,6 +794,57 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 								}
 							} else {
 								$objPreviousItem->objInfraestructuraAsRecoleccionResiduosArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasrecoleccionresiduos__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
+						// Expanding reverse references: InfraestructuraAsRedCloacal
+						$strAlias = $strAliasPrefix . 'infraestructuraasredcloacal__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsRedCloacalArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsRedCloacalArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objInfraestructuraAsRedCloacalArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objInfraestructuraAsRedCloacalArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
+						// Expanding reverse references: InfraestructuraAsRedGas
+						$strAlias = $strAliasPrefix . 'infraestructuraasredgas__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsRedGasArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsRedGasArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objInfraestructuraAsRedGasArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objInfraestructuraAsRedGasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
+						// Expanding reverse references: InfraestructuraAsSistAlternativoEliminacionExcretas
+						$strAlias = $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray)) {
+								$objPreviousChildItems = $objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
+								$objChildItem = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
@@ -873,31 +873,13 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray, $objToReturn->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray) != null) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray, $objToReturn->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray) != null) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray, $objToReturn->objInfraestructuraAsAlumbradoPublicoArray) != null) {
-						continue;
-					}
 					if (array_diff($objPreviousItem->objInfraestructuraAsAguaCorrienteArray, $objToReturn->objInfraestructuraAsAguaCorrienteArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objInfraestructuraAsAguaPotableArray, $objToReturn->objInfraestructuraAsAguaPotableArray) != null) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsRedCloacalArray, $objToReturn->objInfraestructuraAsRedCloacalArray) != null) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray, $objToReturn->objInfraestructuraAsSistAlternativoEliminacionExcretasArray) != null) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsRedGasArray, $objToReturn->objInfraestructuraAsRedGasArray) != null) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objInfraestructuraAsPavimentoArray, $objToReturn->objInfraestructuraAsPavimentoArray) != null) {
+					if (array_diff($objPreviousItem->objInfraestructuraAsAlumbradoPublicoArray, $objToReturn->objInfraestructuraAsAlumbradoPublicoArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objInfraestructuraAsCordonCunetaArray, $objToReturn->objInfraestructuraAsCordonCunetaArray) != null) {
@@ -906,7 +888,25 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					if (array_diff($objPreviousItem->objInfraestructuraAsDesaguesPluvialesArray, $objToReturn->objInfraestructuraAsDesaguesPluvialesArray) != null) {
 						continue;
 					}
+					if (array_diff($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray, $objToReturn->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray, $objToReturn->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objInfraestructuraAsPavimentoArray, $objToReturn->objInfraestructuraAsPavimentoArray) != null) {
+						continue;
+					}
 					if (array_diff($objPreviousItem->objInfraestructuraAsRecoleccionResiduosArray, $objToReturn->objInfraestructuraAsRecoleccionResiduosArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objInfraestructuraAsRedCloacalArray, $objToReturn->objInfraestructuraAsRedCloacalArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objInfraestructuraAsRedGasArray, $objToReturn->objInfraestructuraAsRedGasArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objInfraestructuraAsSistAlternativoEliminacionExcretasArray, $objToReturn->objInfraestructuraAsSistAlternativoEliminacionExcretasArray) != null) {
 						continue;
 					}
 
@@ -930,36 +930,6 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 
 
 
-			// Check for InfraestructuraAsEnergiaElectricaMedidorIndividual Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorIndividual = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
-			// Check for InfraestructuraAsEnergiaElectricaMedidorColectivo Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorColectivo = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
-			// Check for InfraestructuraAsAlumbradoPublico Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraasalumbradopublico__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsAlumbradoPublicoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objInfraestructuraAsAlumbradoPublico = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
 			// Check for InfraestructuraAsAguaCorriente Virtual Binding
 			$strAlias = $strAliasPrefix . 'infraestructuraasaguacorriente__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
@@ -980,44 +950,14 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					$objToReturn->objInfraestructuraAsAguaPotable = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasaguapotable__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
-			// Check for InfraestructuraAsRedCloacal Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraasredcloacal__id';
+			// Check for InfraestructuraAsAlumbradoPublico Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraasalumbradopublico__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName))) {
 				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsRedCloacalArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objInfraestructuraAsAlumbradoPublicoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
-					$objToReturn->objInfraestructuraAsRedCloacal = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
-			// Check for InfraestructuraAsSistAlternativoEliminacionExcretas Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objInfraestructuraAsSistAlternativoEliminacionExcretas = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
-			// Check for InfraestructuraAsRedGas Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraasredgas__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsRedGasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objInfraestructuraAsRedGas = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
-			// Check for InfraestructuraAsPavimento Virtual Binding
-			$strAlias = $strAliasPrefix . 'infraestructuraaspavimento__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objInfraestructuraAsPavimentoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objInfraestructuraAsPavimento = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objInfraestructuraAsAlumbradoPublico = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasalumbradopublico__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			// Check for InfraestructuraAsCordonCuneta Virtual Binding
@@ -1040,6 +980,36 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					$objToReturn->objInfraestructuraAsDesaguesPluviales = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasdesaguespluviales__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
+			// Check for InfraestructuraAsEnergiaElectricaMedidorColectivo Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorColectivo = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorcolectivo__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
+			// Check for InfraestructuraAsEnergiaElectricaMedidorIndividual Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objInfraestructuraAsEnergiaElectricaMedidorIndividual = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasenergiaelectricamedidorindividual__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
+			// Check for InfraestructuraAsPavimento Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraaspavimento__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objInfraestructuraAsPavimentoArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objInfraestructuraAsPavimento = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraaspavimento__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
 			// Check for InfraestructuraAsRecoleccionResiduos Virtual Binding
 			$strAlias = $strAliasPrefix . 'infraestructuraasrecoleccionresiduos__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
@@ -1048,6 +1018,36 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					$objToReturn->objInfraestructuraAsRecoleccionResiduosArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasrecoleccionresiduos__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
 					$objToReturn->objInfraestructuraAsRecoleccionResiduos = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasrecoleccionresiduos__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
+			// Check for InfraestructuraAsRedCloacal Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraasredcloacal__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objInfraestructuraAsRedCloacalArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objInfraestructuraAsRedCloacal = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredcloacal__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
+			// Check for InfraestructuraAsRedGas Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraasredgas__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objInfraestructuraAsRedGasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objInfraestructuraAsRedGas = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraasredgas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
+			// Check for InfraestructuraAsSistAlternativoEliminacionExcretas Virtual Binding
+			$strAlias = $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objInfraestructuraAsSistAlternativoEliminacionExcretas = Infraestructura::InstantiateDbRow($objDbRow, $strAliasPrefix . 'infraestructuraassistalternativoeliminacionexcretas__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			return $objToReturn;
@@ -1294,60 +1294,6 @@ class OpcionesInfraestructuraGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
-            case 'InfraestructuraAsEnergiaElectricaMedidorIndividual':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividual (Read-Only)
-                 * if set due to an expansion on the infraestructura.energia_electrica_medidor_individual reverse relationship
-                 * @return Infraestructura
-                 */
-                return $this->objInfraestructuraAsEnergiaElectricaMedidorIndividual;
-
-            case 'InfraestructuraAsEnergiaElectricaMedidorIndividualArray':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividualArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_individual reverse relationship
-                 * @return Infraestructura[]
-                 */
-                if(is_null($this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray))
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray = $this->GetInfraestructuraAsEnergiaElectricaMedidorIndividualArray();
-                return (array) $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-
-            case 'InfraestructuraAsEnergiaElectricaMedidorColectivo':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivo (Read-Only)
-                 * if set due to an expansion on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
-                 * @return Infraestructura
-                 */
-                return $this->objInfraestructuraAsEnergiaElectricaMedidorColectivo;
-
-            case 'InfraestructuraAsEnergiaElectricaMedidorColectivoArray':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivoArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
-                 * @return Infraestructura[]
-                 */
-                if(is_null($this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray))
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray = $this->GetInfraestructuraAsEnergiaElectricaMedidorColectivoArray();
-                return (array) $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-
-            case 'InfraestructuraAsAlumbradoPublico':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsAlumbradoPublico (Read-Only)
-                 * if set due to an expansion on the infraestructura.alumbrado_publico reverse relationship
-                 * @return Infraestructura
-                 */
-                return $this->objInfraestructuraAsAlumbradoPublico;
-
-            case 'InfraestructuraAsAlumbradoPublicoArray':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsAlumbradoPublicoArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.alumbrado_publico reverse relationship
-                 * @return Infraestructura[]
-                 */
-                if(is_null($this->objInfraestructuraAsAlumbradoPublicoArray))
-                    $this->objInfraestructuraAsAlumbradoPublicoArray = $this->GetInfraestructuraAsAlumbradoPublicoArray();
-                return (array) $this->objInfraestructuraAsAlumbradoPublicoArray;
-
             case 'InfraestructuraAsAguaCorriente':
                 /**
                  * Gets the value for the private _objInfraestructuraAsAguaCorriente (Read-Only)
@@ -1384,77 +1330,23 @@ class OpcionesInfraestructuraGen extends QBaseClass {
                     $this->objInfraestructuraAsAguaPotableArray = $this->GetInfraestructuraAsAguaPotableArray();
                 return (array) $this->objInfraestructuraAsAguaPotableArray;
 
-            case 'InfraestructuraAsRedCloacal':
+            case 'InfraestructuraAsAlumbradoPublico':
                 /**
-                 * Gets the value for the private _objInfraestructuraAsRedCloacal (Read-Only)
-                 * if set due to an expansion on the infraestructura.red_cloacal reverse relationship
+                 * Gets the value for the private _objInfraestructuraAsAlumbradoPublico (Read-Only)
+                 * if set due to an expansion on the infraestructura.alumbrado_publico reverse relationship
                  * @return Infraestructura
                  */
-                return $this->objInfraestructuraAsRedCloacal;
+                return $this->objInfraestructuraAsAlumbradoPublico;
 
-            case 'InfraestructuraAsRedCloacalArray':
+            case 'InfraestructuraAsAlumbradoPublicoArray':
                 /**
-                 * Gets the value for the private _objInfraestructuraAsRedCloacalArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.red_cloacal reverse relationship
+                 * Gets the value for the private _objInfraestructuraAsAlumbradoPublicoArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.alumbrado_publico reverse relationship
                  * @return Infraestructura[]
                  */
-                if(is_null($this->objInfraestructuraAsRedCloacalArray))
-                    $this->objInfraestructuraAsRedCloacalArray = $this->GetInfraestructuraAsRedCloacalArray();
-                return (array) $this->objInfraestructuraAsRedCloacalArray;
-
-            case 'InfraestructuraAsSistAlternativoEliminacionExcretas':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretas (Read-Only)
-                 * if set due to an expansion on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
-                 * @return Infraestructura
-                 */
-                return $this->objInfraestructuraAsSistAlternativoEliminacionExcretas;
-
-            case 'InfraestructuraAsSistAlternativoEliminacionExcretasArray':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretasArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
-                 * @return Infraestructura[]
-                 */
-                if(is_null($this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray))
-                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray = $this->GetInfraestructuraAsSistAlternativoEliminacionExcretasArray();
-                return (array) $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
-
-            case 'InfraestructuraAsRedGas':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsRedGas (Read-Only)
-                 * if set due to an expansion on the infraestructura.red_gas reverse relationship
-                 * @return Infraestructura
-                 */
-                return $this->objInfraestructuraAsRedGas;
-
-            case 'InfraestructuraAsRedGasArray':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsRedGasArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.red_gas reverse relationship
-                 * @return Infraestructura[]
-                 */
-                if(is_null($this->objInfraestructuraAsRedGasArray))
-                    $this->objInfraestructuraAsRedGasArray = $this->GetInfraestructuraAsRedGasArray();
-                return (array) $this->objInfraestructuraAsRedGasArray;
-
-            case 'InfraestructuraAsPavimento':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsPavimento (Read-Only)
-                 * if set due to an expansion on the infraestructura.pavimento reverse relationship
-                 * @return Infraestructura
-                 */
-                return $this->objInfraestructuraAsPavimento;
-
-            case 'InfraestructuraAsPavimentoArray':
-                /**
-                 * Gets the value for the private _objInfraestructuraAsPavimentoArray (Read-Only)
-                 * if set due to an ExpandAsArray on the infraestructura.pavimento reverse relationship
-                 * @return Infraestructura[]
-                 */
-                if(is_null($this->objInfraestructuraAsPavimentoArray))
-                    $this->objInfraestructuraAsPavimentoArray = $this->GetInfraestructuraAsPavimentoArray();
-                return (array) $this->objInfraestructuraAsPavimentoArray;
+                if(is_null($this->objInfraestructuraAsAlumbradoPublicoArray))
+                    $this->objInfraestructuraAsAlumbradoPublicoArray = $this->GetInfraestructuraAsAlumbradoPublicoArray();
+                return (array) $this->objInfraestructuraAsAlumbradoPublicoArray;
 
             case 'InfraestructuraAsCordonCuneta':
                 /**
@@ -1492,6 +1384,60 @@ class OpcionesInfraestructuraGen extends QBaseClass {
                     $this->objInfraestructuraAsDesaguesPluvialesArray = $this->GetInfraestructuraAsDesaguesPluvialesArray();
                 return (array) $this->objInfraestructuraAsDesaguesPluvialesArray;
 
+            case 'InfraestructuraAsEnergiaElectricaMedidorColectivo':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivo (Read-Only)
+                 * if set due to an expansion on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
+                 * @return Infraestructura
+                 */
+                return $this->objInfraestructuraAsEnergiaElectricaMedidorColectivo;
+
+            case 'InfraestructuraAsEnergiaElectricaMedidorColectivoArray':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorColectivoArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_colectivo reverse relationship
+                 * @return Infraestructura[]
+                 */
+                if(is_null($this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray))
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray = $this->GetInfraestructuraAsEnergiaElectricaMedidorColectivoArray();
+                return (array) $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+
+            case 'InfraestructuraAsEnergiaElectricaMedidorIndividual':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividual (Read-Only)
+                 * if set due to an expansion on the infraestructura.energia_electrica_medidor_individual reverse relationship
+                 * @return Infraestructura
+                 */
+                return $this->objInfraestructuraAsEnergiaElectricaMedidorIndividual;
+
+            case 'InfraestructuraAsEnergiaElectricaMedidorIndividualArray':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsEnergiaElectricaMedidorIndividualArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.energia_electrica_medidor_individual reverse relationship
+                 * @return Infraestructura[]
+                 */
+                if(is_null($this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray))
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray = $this->GetInfraestructuraAsEnergiaElectricaMedidorIndividualArray();
+                return (array) $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+
+            case 'InfraestructuraAsPavimento':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsPavimento (Read-Only)
+                 * if set due to an expansion on the infraestructura.pavimento reverse relationship
+                 * @return Infraestructura
+                 */
+                return $this->objInfraestructuraAsPavimento;
+
+            case 'InfraestructuraAsPavimentoArray':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsPavimentoArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.pavimento reverse relationship
+                 * @return Infraestructura[]
+                 */
+                if(is_null($this->objInfraestructuraAsPavimentoArray))
+                    $this->objInfraestructuraAsPavimentoArray = $this->GetInfraestructuraAsPavimentoArray();
+                return (array) $this->objInfraestructuraAsPavimentoArray;
+
             case 'InfraestructuraAsRecoleccionResiduos':
                 /**
                  * Gets the value for the private _objInfraestructuraAsRecoleccionResiduos (Read-Only)
@@ -1509,6 +1455,60 @@ class OpcionesInfraestructuraGen extends QBaseClass {
                 if(is_null($this->objInfraestructuraAsRecoleccionResiduosArray))
                     $this->objInfraestructuraAsRecoleccionResiduosArray = $this->GetInfraestructuraAsRecoleccionResiduosArray();
                 return (array) $this->objInfraestructuraAsRecoleccionResiduosArray;
+
+            case 'InfraestructuraAsRedCloacal':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsRedCloacal (Read-Only)
+                 * if set due to an expansion on the infraestructura.red_cloacal reverse relationship
+                 * @return Infraestructura
+                 */
+                return $this->objInfraestructuraAsRedCloacal;
+
+            case 'InfraestructuraAsRedCloacalArray':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsRedCloacalArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.red_cloacal reverse relationship
+                 * @return Infraestructura[]
+                 */
+                if(is_null($this->objInfraestructuraAsRedCloacalArray))
+                    $this->objInfraestructuraAsRedCloacalArray = $this->GetInfraestructuraAsRedCloacalArray();
+                return (array) $this->objInfraestructuraAsRedCloacalArray;
+
+            case 'InfraestructuraAsRedGas':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsRedGas (Read-Only)
+                 * if set due to an expansion on the infraestructura.red_gas reverse relationship
+                 * @return Infraestructura
+                 */
+                return $this->objInfraestructuraAsRedGas;
+
+            case 'InfraestructuraAsRedGasArray':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsRedGasArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.red_gas reverse relationship
+                 * @return Infraestructura[]
+                 */
+                if(is_null($this->objInfraestructuraAsRedGasArray))
+                    $this->objInfraestructuraAsRedGasArray = $this->GetInfraestructuraAsRedGasArray();
+                return (array) $this->objInfraestructuraAsRedGasArray;
+
+            case 'InfraestructuraAsSistAlternativoEliminacionExcretas':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretas (Read-Only)
+                 * if set due to an expansion on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
+                 * @return Infraestructura
+                 */
+                return $this->objInfraestructuraAsSistAlternativoEliminacionExcretas;
+
+            case 'InfraestructuraAsSistAlternativoEliminacionExcretasArray':
+                /**
+                 * Gets the value for the private _objInfraestructuraAsSistAlternativoEliminacionExcretasArray (Read-Only)
+                 * if set due to an ExpandAsArray on the infraestructura.sist_alternativo_eliminacion_excretas reverse relationship
+                 * @return Infraestructura[]
+                 */
+                if(is_null($this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray))
+                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray = $this->GetInfraestructuraAsSistAlternativoEliminacionExcretasArray();
+                return (array) $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
 
 
             case '__Restored':
@@ -1585,591 +1585,6 @@ class OpcionesInfraestructuraGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
-			
-		
-		// Related Objects' Methods for InfraestructuraAsEnergiaElectricaMedidorIndividual
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _InfraestructuraAsEnergiaElectricaMedidorIndividualArray
-                /**
-                * Add a Item to the _InfraestructuraAsEnergiaElectricaMedidorIndividualArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function AddInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->EnergiaElectricaMedidorIndividualObject = $this;
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray = $this->InfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual($objItem);
-
-                    return $this->InfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-                }
-
-                /**
-                * Remove a Item to the _InfraestructuraAsEnergiaElectricaMedidorIndividualArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function RemoveInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->EnergiaElectricaMedidorIndividualObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorIndividual($objItem);
-                        }
-
-                    return $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
-                }
-
-		/**
-		 * Gets all associated InfraestructurasAsEnergiaElectricaMedidorIndividual as an array of Infraestructura objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/ 
-		public function GetInfraestructuraAsEnergiaElectricaMedidorIndividualArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Infraestructura::LoadArrayByEnergiaElectricaMedidorIndividual($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated InfraestructurasAsEnergiaElectricaMedidorIndividual
-		 * @return int
-		*/ 
-		public function CountInfraestructurasAsEnergiaElectricaMedidorIndividual() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Infraestructura::CountByEnergiaElectricaMedidorIndividual($this->intId);
-		}
-
-		/**
-		 * Associates a InfraestructuraAsEnergiaElectricaMedidorIndividual
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a InfraestructuraAsEnergiaElectricaMedidorIndividual
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"energia_electrica_medidor_individual" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all InfraestructurasAsEnergiaElectricaMedidorIndividual
-		 * @return void
-		*/ 
-		public function UnassociateAllInfraestructurasAsEnergiaElectricaMedidorIndividual() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"energia_electrica_medidor_individual" = null
-				WHERE
-					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated InfraestructuraAsEnergiaElectricaMedidorIndividual
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated InfraestructurasAsEnergiaElectricaMedidorIndividual
-		 * @return void
-		*/ 
-		public function DeleteAllInfraestructurasAsEnergiaElectricaMedidorIndividual() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-			
-		
-		// Related Objects' Methods for InfraestructuraAsEnergiaElectricaMedidorColectivo
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _InfraestructuraAsEnergiaElectricaMedidorColectivoArray
-                /**
-                * Add a Item to the _InfraestructuraAsEnergiaElectricaMedidorColectivoArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function AddInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->EnergiaElectricaMedidorColectivoObject = $this;
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray = $this->InfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo($objItem);
-
-                    return $this->InfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-                }
-
-                /**
-                * Remove a Item to the _InfraestructuraAsEnergiaElectricaMedidorColectivoArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function RemoveInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->EnergiaElectricaMedidorColectivoObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorColectivo($objItem);
-                        }
-
-                    return $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
-                }
-
-		/**
-		 * Gets all associated InfraestructurasAsEnergiaElectricaMedidorColectivo as an array of Infraestructura objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/ 
-		public function GetInfraestructuraAsEnergiaElectricaMedidorColectivoArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Infraestructura::LoadArrayByEnergiaElectricaMedidorColectivo($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated InfraestructurasAsEnergiaElectricaMedidorColectivo
-		 * @return int
-		*/ 
-		public function CountInfraestructurasAsEnergiaElectricaMedidorColectivo() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Infraestructura::CountByEnergiaElectricaMedidorColectivo($this->intId);
-		}
-
-		/**
-		 * Associates a InfraestructuraAsEnergiaElectricaMedidorColectivo
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a InfraestructuraAsEnergiaElectricaMedidorColectivo
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"energia_electrica_medidor_colectivo" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all InfraestructurasAsEnergiaElectricaMedidorColectivo
-		 * @return void
-		*/ 
-		public function UnassociateAllInfraestructurasAsEnergiaElectricaMedidorColectivo() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"energia_electrica_medidor_colectivo" = null
-				WHERE
-					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated InfraestructuraAsEnergiaElectricaMedidorColectivo
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated InfraestructurasAsEnergiaElectricaMedidorColectivo
-		 * @return void
-		*/ 
-		public function DeleteAllInfraestructurasAsEnergiaElectricaMedidorColectivo() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-			
-		
-		// Related Objects' Methods for InfraestructuraAsAlumbradoPublico
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _InfraestructuraAsAlumbradoPublicoArray
-                /**
-                * Add a Item to the _InfraestructuraAsAlumbradoPublicoArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function AddInfraestructuraAsAlumbradoPublico(Infraestructura $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->AlumbradoPublicoObject = $this;
-                    $this->objInfraestructuraAsAlumbradoPublicoArray = $this->InfraestructuraAsAlumbradoPublicoArray;
-                    $this->objInfraestructuraAsAlumbradoPublicoArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsAlumbradoPublico($objItem);
-
-                    return $this->InfraestructuraAsAlumbradoPublicoArray;
-                }
-
-                /**
-                * Remove a Item to the _InfraestructuraAsAlumbradoPublicoArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function RemoveInfraestructuraAsAlumbradoPublico(Infraestructura $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsAlumbradoPublicoArray;
-                    $this->objInfraestructuraAsAlumbradoPublicoArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsAlumbradoPublicoArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->AlumbradoPublicoObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsAlumbradoPublico($objItem);
-                        }
-
-                    return $this->objInfraestructuraAsAlumbradoPublicoArray;
-                }
-
-		/**
-		 * Gets all associated InfraestructurasAsAlumbradoPublico as an array of Infraestructura objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/ 
-		public function GetInfraestructuraAsAlumbradoPublicoArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Infraestructura::LoadArrayByAlumbradoPublico($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated InfraestructurasAsAlumbradoPublico
-		 * @return int
-		*/ 
-		public function CountInfraestructurasAsAlumbradoPublico() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Infraestructura::CountByAlumbradoPublico($this->intId);
-		}
-
-		/**
-		 * Associates a InfraestructuraAsAlumbradoPublico
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function AssociateInfraestructuraAsAlumbradoPublico(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsAlumbradoPublico on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a InfraestructuraAsAlumbradoPublico
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function UnassociateInfraestructuraAsAlumbradoPublico(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"alumbrado_publico" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all InfraestructurasAsAlumbradoPublico
-		 * @return void
-		*/ 
-		public function UnassociateAllInfraestructurasAsAlumbradoPublico() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"alumbrado_publico" = null
-				WHERE
-					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated InfraestructuraAsAlumbradoPublico
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function DeleteAssociatedInfraestructuraAsAlumbradoPublico(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated InfraestructurasAsAlumbradoPublico
-		 * @return void
-		*/ 
-		public function DeleteAllInfraestructurasAsAlumbradoPublico() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
 			
 		
 		// Related Objects' Methods for InfraestructuraAsAguaCorriente
@@ -2562,65 +1977,65 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 
 			
 		
-		// Related Objects' Methods for InfraestructuraAsRedCloacal
+		// Related Objects' Methods for InfraestructuraAsAlumbradoPublico
 		//-------------------------------------------------------------------
 
-                //Public Model methods for add and remove Items from the _InfraestructuraAsRedCloacalArray
+                //Public Model methods for add and remove Items from the _InfraestructuraAsAlumbradoPublicoArray
                 /**
-                * Add a Item to the _InfraestructuraAsRedCloacalArray
+                * Add a Item to the _InfraestructuraAsAlumbradoPublicoArray
                 * @param Infraestructura $objItem
                 * @return Infraestructura[]
                 */
-                public function AddInfraestructuraAsRedCloacal(Infraestructura $objItem){
+                public function AddInfraestructuraAsAlumbradoPublico(Infraestructura $objItem){
                    //add to the collection and add me as a parent
-                    $objItem->RedCloacalObject = $this;
-                    $this->objInfraestructuraAsRedCloacalArray = $this->InfraestructuraAsRedCloacalArray;
-                    $this->objInfraestructuraAsRedCloacalArray[] = $objItem;
+                    $objItem->AlumbradoPublicoObject = $this;
+                    $this->objInfraestructuraAsAlumbradoPublicoArray = $this->InfraestructuraAsAlumbradoPublicoArray;
+                    $this->objInfraestructuraAsAlumbradoPublicoArray[] = $objItem;
 
                     if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
                     
                     //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsRedCloacal($objItem);
+                    //$this->AssociateInfraestructuraAsAlumbradoPublico($objItem);
 
-                    return $this->InfraestructuraAsRedCloacalArray;
+                    return $this->InfraestructuraAsAlumbradoPublicoArray;
                 }
 
                 /**
-                * Remove a Item to the _InfraestructuraAsRedCloacalArray
+                * Remove a Item to the _InfraestructuraAsAlumbradoPublicoArray
                 * @param Infraestructura $objItem
                 * @return Infraestructura[]
                 */
-                public function RemoveInfraestructuraAsRedCloacal(Infraestructura $objItem){
+                public function RemoveInfraestructuraAsAlumbradoPublico(Infraestructura $objItem){
                     //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsRedCloacalArray;
-                    $this->objInfraestructuraAsRedCloacalArray = array();
+                    $arrAux = $this->objInfraestructuraAsAlumbradoPublicoArray;
+                    $this->objInfraestructuraAsAlumbradoPublicoArray = array();
                     foreach ($arrAux as $obj) {
                         if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsRedCloacalArray,$obj);
+                            array_push($this->objInfraestructuraAsAlumbradoPublicoArray,$obj);
                     }
                     //automatic persistence to de DB if necesary
                     if(!is_null($objItem->Id))
                         try{
-                            $objItem->RedCloacalObject = null;
+                            $objItem->AlumbradoPublicoObject = null;
                             $objItem->Save();
                         }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsRedCloacal($objItem);
+                            $this->DeleteAssociatedInfraestructuraAsAlumbradoPublico($objItem);
                         }
 
-                    return $this->objInfraestructuraAsRedCloacalArray;
+                    return $this->objInfraestructuraAsAlumbradoPublicoArray;
                 }
 
 		/**
-		 * Gets all associated InfraestructurasAsRedCloacal as an array of Infraestructura objects
+		 * Gets all associated InfraestructurasAsAlumbradoPublico as an array of Infraestructura objects
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Infraestructura[]
 		*/ 
-		public function GetInfraestructuraAsRedCloacalArray($objOptionalClauses = null) {
+		public function GetInfraestructuraAsAlumbradoPublicoArray($objOptionalClauses = null) {
 			if ((is_null($this->intId)))
 				return array();
 
 			try {
-				return Infraestructura::LoadArrayByRedCloacal($this->intId, $objOptionalClauses);
+				return Infraestructura::LoadArrayByAlumbradoPublico($this->intId, $objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
 				throw $objExc;
@@ -2628,26 +2043,26 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 		}
 
 		/**
-		 * Counts all associated InfraestructurasAsRedCloacal
+		 * Counts all associated InfraestructurasAsAlumbradoPublico
 		 * @return int
 		*/ 
-		public function CountInfraestructurasAsRedCloacal() {
+		public function CountInfraestructurasAsAlumbradoPublico() {
 			if ((is_null($this->intId)))
 				return 0;
 
-			return Infraestructura::CountByRedCloacal($this->intId);
+			return Infraestructura::CountByAlumbradoPublico($this->intId);
 		}
 
 		/**
-		 * Associates a InfraestructuraAsRedCloacal
+		 * Associates a InfraestructuraAsAlumbradoPublico
 		 * @param Infraestructura $objInfraestructura
 		 * @return void
 		*/ 
-		public function AssociateInfraestructuraAsRedCloacal(Infraestructura $objInfraestructura) {
+		public function AssociateInfraestructuraAsAlumbradoPublico(Infraestructura $objInfraestructura) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
 			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedCloacal on this OpcionesInfraestructura with an unsaved Infraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsAlumbradoPublico on this OpcionesInfraestructura with an unsaved Infraestructura.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesInfraestructura::GetDatabase();
@@ -2657,22 +2072,22 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 				UPDATE
 					"infraestructura"
 				SET
-					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
 			');
 		}
 
 		/**
-		 * Unassociates a InfraestructuraAsRedCloacal
+		 * Unassociates a InfraestructuraAsAlumbradoPublico
 		 * @param Infraestructura $objInfraestructura
 		 * @return void
 		*/ 
-		public function UnassociateInfraestructuraAsRedCloacal(Infraestructura $objInfraestructura) {
+		public function UnassociateInfraestructuraAsAlumbradoPublico(Infraestructura $objInfraestructura) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
 			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this OpcionesInfraestructura with an unsaved Infraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this OpcionesInfraestructura with an unsaved Infraestructura.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesInfraestructura::GetDatabase();
@@ -2682,20 +2097,20 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 				UPDATE
 					"infraestructura"
 				SET
-					"red_cloacal" = null
+					"alumbrado_publico" = null
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Unassociates all InfraestructurasAsRedCloacal
+		 * Unassociates all InfraestructurasAsAlumbradoPublico
 		 * @return void
 		*/ 
-		public function UnassociateAllInfraestructurasAsRedCloacal() {
+		public function UnassociateAllInfraestructurasAsAlumbradoPublico() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesInfraestructura::GetDatabase();
@@ -2705,22 +2120,22 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 				UPDATE
 					"infraestructura"
 				SET
-					"red_cloacal" = null
+					"alumbrado_publico" = null
 				WHERE
-					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes an associated InfraestructuraAsRedCloacal
+		 * Deletes an associated InfraestructuraAsAlumbradoPublico
 		 * @param Infraestructura $objInfraestructura
 		 * @return void
 		*/ 
-		public function DeleteAssociatedInfraestructuraAsRedCloacal(Infraestructura $objInfraestructura) {
+		public function DeleteAssociatedInfraestructuraAsAlumbradoPublico(Infraestructura $objInfraestructura) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
 			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this OpcionesInfraestructura with an unsaved Infraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this OpcionesInfraestructura with an unsaved Infraestructura.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesInfraestructura::GetDatabase();
@@ -2731,17 +2146,17 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					"infraestructura"
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes all associated InfraestructurasAsRedCloacal
+		 * Deletes all associated InfraestructurasAsAlumbradoPublico
 		 * @return void
 		*/ 
-		public function DeleteAllInfraestructurasAsRedCloacal() {
+		public function DeleteAllInfraestructurasAsAlumbradoPublico() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsAlumbradoPublico on this unsaved OpcionesInfraestructura.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesInfraestructura::GetDatabase();
@@ -2751,592 +2166,7 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 				DELETE FROM
 					"infraestructura"
 				WHERE
-					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-			
-		
-		// Related Objects' Methods for InfraestructuraAsSistAlternativoEliminacionExcretas
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _InfraestructuraAsSistAlternativoEliminacionExcretasArray
-                /**
-                * Add a Item to the _InfraestructuraAsSistAlternativoEliminacionExcretasArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function AddInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->SistAlternativoEliminacionExcretasObject = $this;
-                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray = $this->InfraestructuraAsSistAlternativoEliminacionExcretasArray;
-                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsSistAlternativoEliminacionExcretas($objItem);
-
-                    return $this->InfraestructuraAsSistAlternativoEliminacionExcretasArray;
-                }
-
-                /**
-                * Remove a Item to the _InfraestructuraAsSistAlternativoEliminacionExcretasArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function RemoveInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
-                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->SistAlternativoEliminacionExcretasObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsSistAlternativoEliminacionExcretas($objItem);
-                        }
-
-                    return $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
-                }
-
-		/**
-		 * Gets all associated InfraestructurasAsSistAlternativoEliminacionExcretas as an array of Infraestructura objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/ 
-		public function GetInfraestructuraAsSistAlternativoEliminacionExcretasArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Infraestructura::LoadArrayBySistAlternativoEliminacionExcretas($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated InfraestructurasAsSistAlternativoEliminacionExcretas
-		 * @return int
-		*/ 
-		public function CountInfraestructurasAsSistAlternativoEliminacionExcretas() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Infraestructura::CountBySistAlternativoEliminacionExcretas($this->intId);
-		}
-
-		/**
-		 * Associates a InfraestructuraAsSistAlternativoEliminacionExcretas
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function AssociateInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsSistAlternativoEliminacionExcretas on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a InfraestructuraAsSistAlternativoEliminacionExcretas
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"sist_alternativo_eliminacion_excretas" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all InfraestructurasAsSistAlternativoEliminacionExcretas
-		 * @return void
-		*/ 
-		public function UnassociateAllInfraestructurasAsSistAlternativoEliminacionExcretas() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"sist_alternativo_eliminacion_excretas" = null
-				WHERE
-					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated InfraestructuraAsSistAlternativoEliminacionExcretas
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function DeleteAssociatedInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated InfraestructurasAsSistAlternativoEliminacionExcretas
-		 * @return void
-		*/ 
-		public function DeleteAllInfraestructurasAsSistAlternativoEliminacionExcretas() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-			
-		
-		// Related Objects' Methods for InfraestructuraAsRedGas
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _InfraestructuraAsRedGasArray
-                /**
-                * Add a Item to the _InfraestructuraAsRedGasArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function AddInfraestructuraAsRedGas(Infraestructura $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->RedGasObject = $this;
-                    $this->objInfraestructuraAsRedGasArray = $this->InfraestructuraAsRedGasArray;
-                    $this->objInfraestructuraAsRedGasArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsRedGas($objItem);
-
-                    return $this->InfraestructuraAsRedGasArray;
-                }
-
-                /**
-                * Remove a Item to the _InfraestructuraAsRedGasArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function RemoveInfraestructuraAsRedGas(Infraestructura $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsRedGasArray;
-                    $this->objInfraestructuraAsRedGasArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsRedGasArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->RedGasObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsRedGas($objItem);
-                        }
-
-                    return $this->objInfraestructuraAsRedGasArray;
-                }
-
-		/**
-		 * Gets all associated InfraestructurasAsRedGas as an array of Infraestructura objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/ 
-		public function GetInfraestructuraAsRedGasArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Infraestructura::LoadArrayByRedGas($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated InfraestructurasAsRedGas
-		 * @return int
-		*/ 
-		public function CountInfraestructurasAsRedGas() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Infraestructura::CountByRedGas($this->intId);
-		}
-
-		/**
-		 * Associates a InfraestructuraAsRedGas
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function AssociateInfraestructuraAsRedGas(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedGas on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a InfraestructuraAsRedGas
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function UnassociateInfraestructuraAsRedGas(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"red_gas" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all InfraestructurasAsRedGas
-		 * @return void
-		*/ 
-		public function UnassociateAllInfraestructurasAsRedGas() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"red_gas" = null
-				WHERE
-					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated InfraestructuraAsRedGas
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function DeleteAssociatedInfraestructuraAsRedGas(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated InfraestructurasAsRedGas
-		 * @return void
-		*/ 
-		public function DeleteAllInfraestructurasAsRedGas() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-			
-		
-		// Related Objects' Methods for InfraestructuraAsPavimento
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _InfraestructuraAsPavimentoArray
-                /**
-                * Add a Item to the _InfraestructuraAsPavimentoArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function AddInfraestructuraAsPavimento(Infraestructura $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->PavimentoObject = $this;
-                    $this->objInfraestructuraAsPavimentoArray = $this->InfraestructuraAsPavimentoArray;
-                    $this->objInfraestructuraAsPavimentoArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateInfraestructuraAsPavimento($objItem);
-
-                    return $this->InfraestructuraAsPavimentoArray;
-                }
-
-                /**
-                * Remove a Item to the _InfraestructuraAsPavimentoArray
-                * @param Infraestructura $objItem
-                * @return Infraestructura[]
-                */
-                public function RemoveInfraestructuraAsPavimento(Infraestructura $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objInfraestructuraAsPavimentoArray;
-                    $this->objInfraestructuraAsPavimentoArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objInfraestructuraAsPavimentoArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->PavimentoObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedInfraestructuraAsPavimento($objItem);
-                        }
-
-                    return $this->objInfraestructuraAsPavimentoArray;
-                }
-
-		/**
-		 * Gets all associated InfraestructurasAsPavimento as an array of Infraestructura objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/ 
-		public function GetInfraestructuraAsPavimentoArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Infraestructura::LoadArrayByPavimento($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated InfraestructurasAsPavimento
-		 * @return int
-		*/ 
-		public function CountInfraestructurasAsPavimento() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Infraestructura::CountByPavimento($this->intId);
-		}
-
-		/**
-		 * Associates a InfraestructuraAsPavimento
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function AssociateInfraestructuraAsPavimento(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsPavimento on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a InfraestructuraAsPavimento
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function UnassociateInfraestructuraAsPavimento(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"pavimento" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all InfraestructurasAsPavimento
-		 * @return void
-		*/ 
-		public function UnassociateAllInfraestructurasAsPavimento() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"infraestructura"
-				SET
-					"pavimento" = null
-				WHERE
-					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated InfraestructuraAsPavimento
-		 * @param Infraestructura $objInfraestructura
-		 * @return void
-		*/ 
-		public function DeleteAssociatedInfraestructuraAsPavimento(Infraestructura $objInfraestructura) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
-			if ((is_null($objInfraestructura->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this OpcionesInfraestructura with an unsaved Infraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
-					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated InfraestructurasAsPavimento
-		 * @return void
-		*/ 
-		public function DeleteAllInfraestructurasAsPavimento() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
-
-			// Get the Database Object for this Class
-			$objDatabase = OpcionesInfraestructura::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"infraestructura"
-				WHERE
-					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"alumbrado_publico" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
@@ -3732,6 +2562,591 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 
 			
 		
+		// Related Objects' Methods for InfraestructuraAsEnergiaElectricaMedidorColectivo
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _InfraestructuraAsEnergiaElectricaMedidorColectivoArray
+                /**
+                * Add a Item to the _InfraestructuraAsEnergiaElectricaMedidorColectivoArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function AddInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->EnergiaElectricaMedidorColectivoObject = $this;
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray = $this->InfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo($objItem);
+
+                    return $this->InfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+                }
+
+                /**
+                * Remove a Item to the _InfraestructuraAsEnergiaElectricaMedidorColectivoArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function RemoveInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->EnergiaElectricaMedidorColectivoObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorColectivo($objItem);
+                        }
+
+                    return $this->objInfraestructuraAsEnergiaElectricaMedidorColectivoArray;
+                }
+
+		/**
+		 * Gets all associated InfraestructurasAsEnergiaElectricaMedidorColectivo as an array of Infraestructura objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/ 
+		public function GetInfraestructuraAsEnergiaElectricaMedidorColectivoArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Infraestructura::LoadArrayByEnergiaElectricaMedidorColectivo($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated InfraestructurasAsEnergiaElectricaMedidorColectivo
+		 * @return int
+		*/ 
+		public function CountInfraestructurasAsEnergiaElectricaMedidorColectivo() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Infraestructura::CountByEnergiaElectricaMedidorColectivo($this->intId);
+		}
+
+		/**
+		 * Associates a InfraestructuraAsEnergiaElectricaMedidorColectivo
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a InfraestructuraAsEnergiaElectricaMedidorColectivo
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"energia_electrica_medidor_colectivo" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all InfraestructurasAsEnergiaElectricaMedidorColectivo
+		 * @return void
+		*/ 
+		public function UnassociateAllInfraestructurasAsEnergiaElectricaMedidorColectivo() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"energia_electrica_medidor_colectivo" = null
+				WHERE
+					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated InfraestructuraAsEnergiaElectricaMedidorColectivo
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorColectivo(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated InfraestructurasAsEnergiaElectricaMedidorColectivo
+		 * @return void
+		*/ 
+		public function DeleteAllInfraestructurasAsEnergiaElectricaMedidorColectivo() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorColectivo on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"energia_electrica_medidor_colectivo" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
+		// Related Objects' Methods for InfraestructuraAsEnergiaElectricaMedidorIndividual
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _InfraestructuraAsEnergiaElectricaMedidorIndividualArray
+                /**
+                * Add a Item to the _InfraestructuraAsEnergiaElectricaMedidorIndividualArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function AddInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->EnergiaElectricaMedidorIndividualObject = $this;
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray = $this->InfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual($objItem);
+
+                    return $this->InfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+                }
+
+                /**
+                * Remove a Item to the _InfraestructuraAsEnergiaElectricaMedidorIndividualArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function RemoveInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+                    $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->EnergiaElectricaMedidorIndividualObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorIndividual($objItem);
+                        }
+
+                    return $this->objInfraestructuraAsEnergiaElectricaMedidorIndividualArray;
+                }
+
+		/**
+		 * Gets all associated InfraestructurasAsEnergiaElectricaMedidorIndividual as an array of Infraestructura objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/ 
+		public function GetInfraestructuraAsEnergiaElectricaMedidorIndividualArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Infraestructura::LoadArrayByEnergiaElectricaMedidorIndividual($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated InfraestructurasAsEnergiaElectricaMedidorIndividual
+		 * @return int
+		*/ 
+		public function CountInfraestructurasAsEnergiaElectricaMedidorIndividual() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Infraestructura::CountByEnergiaElectricaMedidorIndividual($this->intId);
+		}
+
+		/**
+		 * Associates a InfraestructuraAsEnergiaElectricaMedidorIndividual
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a InfraestructuraAsEnergiaElectricaMedidorIndividual
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"energia_electrica_medidor_individual" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all InfraestructurasAsEnergiaElectricaMedidorIndividual
+		 * @return void
+		*/ 
+		public function UnassociateAllInfraestructurasAsEnergiaElectricaMedidorIndividual() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"energia_electrica_medidor_individual" = null
+				WHERE
+					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated InfraestructuraAsEnergiaElectricaMedidorIndividual
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function DeleteAssociatedInfraestructuraAsEnergiaElectricaMedidorIndividual(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated InfraestructurasAsEnergiaElectricaMedidorIndividual
+		 * @return void
+		*/ 
+		public function DeleteAllInfraestructurasAsEnergiaElectricaMedidorIndividual() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsEnergiaElectricaMedidorIndividual on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"energia_electrica_medidor_individual" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
+		// Related Objects' Methods for InfraestructuraAsPavimento
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _InfraestructuraAsPavimentoArray
+                /**
+                * Add a Item to the _InfraestructuraAsPavimentoArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function AddInfraestructuraAsPavimento(Infraestructura $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->PavimentoObject = $this;
+                    $this->objInfraestructuraAsPavimentoArray = $this->InfraestructuraAsPavimentoArray;
+                    $this->objInfraestructuraAsPavimentoArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateInfraestructuraAsPavimento($objItem);
+
+                    return $this->InfraestructuraAsPavimentoArray;
+                }
+
+                /**
+                * Remove a Item to the _InfraestructuraAsPavimentoArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function RemoveInfraestructuraAsPavimento(Infraestructura $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objInfraestructuraAsPavimentoArray;
+                    $this->objInfraestructuraAsPavimentoArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objInfraestructuraAsPavimentoArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->PavimentoObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedInfraestructuraAsPavimento($objItem);
+                        }
+
+                    return $this->objInfraestructuraAsPavimentoArray;
+                }
+
+		/**
+		 * Gets all associated InfraestructurasAsPavimento as an array of Infraestructura objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/ 
+		public function GetInfraestructuraAsPavimentoArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Infraestructura::LoadArrayByPavimento($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated InfraestructurasAsPavimento
+		 * @return int
+		*/ 
+		public function CountInfraestructurasAsPavimento() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Infraestructura::CountByPavimento($this->intId);
+		}
+
+		/**
+		 * Associates a InfraestructuraAsPavimento
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function AssociateInfraestructuraAsPavimento(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsPavimento on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a InfraestructuraAsPavimento
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function UnassociateInfraestructuraAsPavimento(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"pavimento" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all InfraestructurasAsPavimento
+		 * @return void
+		*/ 
+		public function UnassociateAllInfraestructurasAsPavimento() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"pavimento" = null
+				WHERE
+					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated InfraestructuraAsPavimento
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function DeleteAssociatedInfraestructuraAsPavimento(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated InfraestructurasAsPavimento
+		 * @return void
+		*/ 
+		public function DeleteAllInfraestructurasAsPavimento() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsPavimento on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"pavimento" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
 		// Related Objects' Methods for InfraestructuraAsRecoleccionResiduos
 		//-------------------------------------------------------------------
 
@@ -3922,6 +3337,591 @@ class OpcionesInfraestructuraGen extends QBaseClass {
 					"infraestructura"
 				WHERE
 					"recoleccion_residuos" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
+		// Related Objects' Methods for InfraestructuraAsRedCloacal
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _InfraestructuraAsRedCloacalArray
+                /**
+                * Add a Item to the _InfraestructuraAsRedCloacalArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function AddInfraestructuraAsRedCloacal(Infraestructura $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->RedCloacalObject = $this;
+                    $this->objInfraestructuraAsRedCloacalArray = $this->InfraestructuraAsRedCloacalArray;
+                    $this->objInfraestructuraAsRedCloacalArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateInfraestructuraAsRedCloacal($objItem);
+
+                    return $this->InfraestructuraAsRedCloacalArray;
+                }
+
+                /**
+                * Remove a Item to the _InfraestructuraAsRedCloacalArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function RemoveInfraestructuraAsRedCloacal(Infraestructura $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objInfraestructuraAsRedCloacalArray;
+                    $this->objInfraestructuraAsRedCloacalArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objInfraestructuraAsRedCloacalArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->RedCloacalObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedInfraestructuraAsRedCloacal($objItem);
+                        }
+
+                    return $this->objInfraestructuraAsRedCloacalArray;
+                }
+
+		/**
+		 * Gets all associated InfraestructurasAsRedCloacal as an array of Infraestructura objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/ 
+		public function GetInfraestructuraAsRedCloacalArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Infraestructura::LoadArrayByRedCloacal($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated InfraestructurasAsRedCloacal
+		 * @return int
+		*/ 
+		public function CountInfraestructurasAsRedCloacal() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Infraestructura::CountByRedCloacal($this->intId);
+		}
+
+		/**
+		 * Associates a InfraestructuraAsRedCloacal
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function AssociateInfraestructuraAsRedCloacal(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedCloacal on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a InfraestructuraAsRedCloacal
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function UnassociateInfraestructuraAsRedCloacal(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"red_cloacal" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all InfraestructurasAsRedCloacal
+		 * @return void
+		*/ 
+		public function UnassociateAllInfraestructurasAsRedCloacal() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"red_cloacal" = null
+				WHERE
+					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated InfraestructuraAsRedCloacal
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function DeleteAssociatedInfraestructuraAsRedCloacal(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated InfraestructurasAsRedCloacal
+		 * @return void
+		*/ 
+		public function DeleteAllInfraestructurasAsRedCloacal() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedCloacal on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"red_cloacal" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
+		// Related Objects' Methods for InfraestructuraAsRedGas
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _InfraestructuraAsRedGasArray
+                /**
+                * Add a Item to the _InfraestructuraAsRedGasArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function AddInfraestructuraAsRedGas(Infraestructura $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->RedGasObject = $this;
+                    $this->objInfraestructuraAsRedGasArray = $this->InfraestructuraAsRedGasArray;
+                    $this->objInfraestructuraAsRedGasArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateInfraestructuraAsRedGas($objItem);
+
+                    return $this->InfraestructuraAsRedGasArray;
+                }
+
+                /**
+                * Remove a Item to the _InfraestructuraAsRedGasArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function RemoveInfraestructuraAsRedGas(Infraestructura $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objInfraestructuraAsRedGasArray;
+                    $this->objInfraestructuraAsRedGasArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objInfraestructuraAsRedGasArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->RedGasObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedInfraestructuraAsRedGas($objItem);
+                        }
+
+                    return $this->objInfraestructuraAsRedGasArray;
+                }
+
+		/**
+		 * Gets all associated InfraestructurasAsRedGas as an array of Infraestructura objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/ 
+		public function GetInfraestructuraAsRedGasArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Infraestructura::LoadArrayByRedGas($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated InfraestructurasAsRedGas
+		 * @return int
+		*/ 
+		public function CountInfraestructurasAsRedGas() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Infraestructura::CountByRedGas($this->intId);
+		}
+
+		/**
+		 * Associates a InfraestructuraAsRedGas
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function AssociateInfraestructuraAsRedGas(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsRedGas on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a InfraestructuraAsRedGas
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function UnassociateInfraestructuraAsRedGas(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"red_gas" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all InfraestructurasAsRedGas
+		 * @return void
+		*/ 
+		public function UnassociateAllInfraestructurasAsRedGas() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"red_gas" = null
+				WHERE
+					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated InfraestructuraAsRedGas
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function DeleteAssociatedInfraestructuraAsRedGas(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated InfraestructurasAsRedGas
+		 * @return void
+		*/ 
+		public function DeleteAllInfraestructurasAsRedGas() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsRedGas on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"red_gas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
+		// Related Objects' Methods for InfraestructuraAsSistAlternativoEliminacionExcretas
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _InfraestructuraAsSistAlternativoEliminacionExcretasArray
+                /**
+                * Add a Item to the _InfraestructuraAsSistAlternativoEliminacionExcretasArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function AddInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->SistAlternativoEliminacionExcretasObject = $this;
+                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray = $this->InfraestructuraAsSistAlternativoEliminacionExcretasArray;
+                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateInfraestructuraAsSistAlternativoEliminacionExcretas($objItem);
+
+                    return $this->InfraestructuraAsSistAlternativoEliminacionExcretasArray;
+                }
+
+                /**
+                * Remove a Item to the _InfraestructuraAsSistAlternativoEliminacionExcretasArray
+                * @param Infraestructura $objItem
+                * @return Infraestructura[]
+                */
+                public function RemoveInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
+                    $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->SistAlternativoEliminacionExcretasObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedInfraestructuraAsSistAlternativoEliminacionExcretas($objItem);
+                        }
+
+                    return $this->objInfraestructuraAsSistAlternativoEliminacionExcretasArray;
+                }
+
+		/**
+		 * Gets all associated InfraestructurasAsSistAlternativoEliminacionExcretas as an array of Infraestructura objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/ 
+		public function GetInfraestructuraAsSistAlternativoEliminacionExcretasArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Infraestructura::LoadArrayBySistAlternativoEliminacionExcretas($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated InfraestructurasAsSistAlternativoEliminacionExcretas
+		 * @return int
+		*/ 
+		public function CountInfraestructurasAsSistAlternativoEliminacionExcretas() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Infraestructura::CountBySistAlternativoEliminacionExcretas($this->intId);
+		}
+
+		/**
+		 * Associates a InfraestructuraAsSistAlternativoEliminacionExcretas
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function AssociateInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateInfraestructuraAsSistAlternativoEliminacionExcretas on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a InfraestructuraAsSistAlternativoEliminacionExcretas
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"sist_alternativo_eliminacion_excretas" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all InfraestructurasAsSistAlternativoEliminacionExcretas
+		 * @return void
+		*/ 
+		public function UnassociateAllInfraestructurasAsSistAlternativoEliminacionExcretas() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"infraestructura"
+				SET
+					"sist_alternativo_eliminacion_excretas" = null
+				WHERE
+					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated InfraestructuraAsSistAlternativoEliminacionExcretas
+		 * @param Infraestructura $objInfraestructura
+		 * @return void
+		*/ 
+		public function DeleteAssociatedInfraestructuraAsSistAlternativoEliminacionExcretas(Infraestructura $objInfraestructura) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
+			if ((is_null($objInfraestructura->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this OpcionesInfraestructura with an unsaved Infraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objInfraestructura->Id) . ' AND
+					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated InfraestructurasAsSistAlternativoEliminacionExcretas
+		 * @return void
+		*/ 
+		public function DeleteAllInfraestructurasAsSistAlternativoEliminacionExcretas() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateInfraestructuraAsSistAlternativoEliminacionExcretas on this unsaved OpcionesInfraestructura.');
+
+			// Get the Database Object for this Class
+			$objDatabase = OpcionesInfraestructura::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"infraestructura"
+				WHERE
+					"sist_alternativo_eliminacion_excretas" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 

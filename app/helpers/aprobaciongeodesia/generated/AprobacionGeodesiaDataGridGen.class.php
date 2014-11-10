@@ -21,7 +21,7 @@ class AprobacionGeodesiaDataGridGen extends QFilteredDataGrid {
     //array de controles para omitir antes del construct
     public static $strColumnsArray = array(
         'Id' => false,
-        'CodPartido' => true,
+        'IdPartidoObject' => true,
         'Num' => true,
         'Anio' => true,
     );
@@ -57,7 +57,7 @@ class AprobacionGeodesiaDataGridGen extends QFilteredDataGrid {
         // Create the Columns (note that you can use strings for aprobacion_geodesia's properties, or you
         // can traverse down QQN::aprobacion_geodesia() to display fields that are down the hierarchy)
         if (AprobacionGeodesiaDataGrid::$strColumnsArray['Id']) $this->MetaAddColumn('Id')->Title = QApplication::Translate('Id');
-        if (AprobacionGeodesiaDataGrid::$strColumnsArray['CodPartido']) $this->MetaAddColumn('CodPartido')->Title = QApplication::Translate('CodPartido');
+        if (AprobacionGeodesiaDataGrid::$strColumnsArray['IdPartidoObject']) $this->MetaAddColumn(QQN::AprobacionGeodesia()->IdPartidoObject)->Title = QApplication::Translate('IdPartidoObject');
         if (AprobacionGeodesiaDataGrid::$strColumnsArray['Num']) $this->MetaAddColumn('Num')->Title = QApplication::Translate('Num');
         if (AprobacionGeodesiaDataGrid::$strColumnsArray['Anio']) $this->MetaAddColumn('Anio')->Title = QApplication::Translate('Anio');
     }
@@ -207,7 +207,8 @@ class AprobacionGeodesiaDataGridGen extends QFilteredDataGrid {
 					throw new QCallerException('Content QQNode has a root table of "' . $mixContent->_RootTableName . '". Must be a root of "aprobacion_geodesia".');
 			} else if (is_string($mixContent)) switch ($mixContent) {
 				case 'Id': return QQN::AprobacionGeodesia()->Id;
-				case 'CodPartido': return QQN::AprobacionGeodesia()->CodPartido;
+				case 'IdPartido': return QQN::AprobacionGeodesia()->IdPartido;
+				case 'IdPartidoObject': return QQN::AprobacionGeodesia()->IdPartidoObject;
 				case 'Num': return QQN::AprobacionGeodesia()->Num;
 				case 'Anio': return QQN::AprobacionGeodesia()->Anio;
 				default: throw new QCallerException('Simple Property not found in AprobacionGeodesiaDataGrid content: ' . $mixContent);

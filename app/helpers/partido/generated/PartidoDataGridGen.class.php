@@ -22,6 +22,7 @@ class PartidoDataGridGen extends QFilteredDataGrid {
     public static $strColumnsArray = array(
         'Id' => false,
         'Nombre' => true,
+        'CodPartido' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -56,6 +57,7 @@ class PartidoDataGridGen extends QFilteredDataGrid {
         // can traverse down QQN::partido() to display fields that are down the hierarchy)
         if (PartidoDataGrid::$strColumnsArray['Id']) $this->MetaAddColumn('Id')->Title = QApplication::Translate('Id');
         if (PartidoDataGrid::$strColumnsArray['Nombre']) $this->MetaAddColumn('Nombre')->Title = QApplication::Translate('Nombre');
+        if (PartidoDataGrid::$strColumnsArray['CodPartido']) $this->MetaAddColumn('CodPartido')->Title = QApplication::Translate('CodPartido');
     }
 
 /**
@@ -204,6 +206,7 @@ class PartidoDataGridGen extends QFilteredDataGrid {
 			} else if (is_string($mixContent)) switch ($mixContent) {
 				case 'Id': return QQN::Partido()->Id;
 				case 'Nombre': return QQN::Partido()->Nombre;
+				case 'CodPartido': return QQN::Partido()->CodPartido;
 				default: throw new QCallerException('Simple Property not found in PartidoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

@@ -211,6 +211,8 @@ msgid "Unset"
 msgstr "No Definido"
 
 
+msgid "CondicionesSocioUrbanisticasAsId"
+msgstr "Condiciones Socio Urbanisticas"
 
 
 

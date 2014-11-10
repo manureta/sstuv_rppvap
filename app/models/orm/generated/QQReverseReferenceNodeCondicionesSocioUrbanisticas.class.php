@@ -19,8 +19,6 @@ class QQReverseReferenceNodeCondicionesSocioUrbanisticas extends QQReverseRefere
 					return new QQNode('nombre_refernte', 'NombreRefernte', 'string', $this);
 				case 'TelefonoReferente':
 					return new QQNode('telefono_referente', 'TelefonoReferente', 'string', $this);
-				case 'InformeUrbanisticoFecha':
-					return new QQNode('_informe_urbanistico_fecha', 'InformeUrbanisticoFecha', 'string', $this);
 				case 'EquipamientoAsIdFolio':
 					return new QQReverseReferenceNodeEquipamiento($this, 'equipamientoasidfolio', 'reverse_reference', 'id_folio');
 				case 'InfraestructuraAsIdFolio':

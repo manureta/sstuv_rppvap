@@ -6,6 +6,7 @@
 ?>
 		<?php $_CONTROL->lblId->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombre->RenderWithName(); ?>
+		<?php $_CONTROL->txtCodPartido->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

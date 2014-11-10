@@ -23,63 +23,75 @@ class FolioDataGridGen extends QFilteredDataGrid {
         'Id' => false,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
+        'CodFolio' => true,
+        'CondicionesSocioUrbanisticasAsId' => true,
+        'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'IdPartidoObject' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'IdLocalidadObject' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
-        'IdMatricula' => true,
+        'UsoInterno' => true,
+        'Matricula' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'Fecha' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'Encargado' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'NombreBarrioOficial' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'NombreBarrioAlternativo1' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'NombreBarrioAlternativo2' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'AnioOrigen' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'Superficie' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'CantidadFamilias' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'TipoBarrioObject' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'ObservacionCasoDudoso' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'Judicializado' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'Direccion' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
-        'MapeoPreliminar' => true,
-        'CondicionesSocioUrbanisticasAsId' => true,
-        'RegularizacionAsId' => true,
-        'ResolucionInscripcionProvisoria' => true,
-        'CondicionesSocioUrbanisticasAsId' => true,
-        'RegularizacionAsId' => true,
-        'ResolucionInscripcionDefinitiva' => true,
-        'CondicionesSocioUrbanisticasAsId' => true,
-        'RegularizacionAsId' => true,
+        'UsoInterno' => true,
         'NumExpedientes' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
+        'UsoInterno' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -113,9 +125,10 @@ class FolioDataGridGen extends QFilteredDataGrid {
         // Create the Columns (note that you can use strings for folio's properties, or you
         // can traverse down QQN::folio() to display fields that are down the hierarchy)
         if (FolioDataGrid::$strColumnsArray['Id']) $this->MetaAddColumn('Id')->Title = QApplication::Translate('Id');
+        if (FolioDataGrid::$strColumnsArray['CodFolio']) $this->MetaAddColumn('CodFolio')->Title = QApplication::Translate('CodFolio');
         if (FolioDataGrid::$strColumnsArray['IdPartidoObject']) $this->MetaAddColumn(QQN::Folio()->IdPartidoObject)->Title = QApplication::Translate('IdPartidoObject');
         if (FolioDataGrid::$strColumnsArray['IdLocalidadObject']) $this->MetaAddColumn(QQN::Folio()->IdLocalidadObject)->Title = QApplication::Translate('IdLocalidadObject');
-        if (FolioDataGrid::$strColumnsArray['IdMatricula']) $this->MetaAddColumn('IdMatricula')->Title = QApplication::Translate('IdMatricula');
+        if (FolioDataGrid::$strColumnsArray['Matricula']) $this->MetaAddColumn('Matricula')->Title = QApplication::Translate('Matricula');
         if (FolioDataGrid::$strColumnsArray['Fecha']) $this->MetaAddColumn('Fecha')->Title = QApplication::Translate('Fecha');
         if (FolioDataGrid::$strColumnsArray['Encargado']) $this->MetaAddColumn('Encargado')->Title = QApplication::Translate('Encargado');
         if (FolioDataGrid::$strColumnsArray['NombreBarrioOficial']) $this->MetaAddColumn('NombreBarrioOficial')->Title = QApplication::Translate('NombreBarrioOficial');
@@ -128,12 +141,10 @@ class FolioDataGridGen extends QFilteredDataGrid {
         if (FolioDataGrid::$strColumnsArray['ObservacionCasoDudoso']) $this->MetaAddColumn('ObservacionCasoDudoso')->Title = QApplication::Translate('ObservacionCasoDudoso');
         if (FolioDataGrid::$strColumnsArray['Judicializado']) $this->MetaAddColumn('Judicializado')->Title = QApplication::Translate('Judicializado');
         if (FolioDataGrid::$strColumnsArray['Direccion']) $this->MetaAddColumn('Direccion')->Title = QApplication::Translate('Direccion');
-        if (FolioDataGrid::$strColumnsArray['MapeoPreliminar']) $this->MetaAddColumn('MapeoPreliminar')->Title = QApplication::Translate('MapeoPreliminar');
-        if (FolioDataGrid::$strColumnsArray['ResolucionInscripcionProvisoria']) $this->MetaAddColumn('ResolucionInscripcionProvisoria')->Title = QApplication::Translate('ResolucionInscripcionProvisoria');
-        if (FolioDataGrid::$strColumnsArray['ResolucionInscripcionDefinitiva']) $this->MetaAddColumn('ResolucionInscripcionDefinitiva')->Title = QApplication::Translate('ResolucionInscripcionDefinitiva');
         if (FolioDataGrid::$strColumnsArray['NumExpedientes']) $this->MetaAddColumn('NumExpedientes')->Title = QApplication::Translate('NumExpedientes');
         if (FolioDataGrid::$strColumnsArray['CondicionesSocioUrbanisticasAsId']) $this->MetaAddColumn(QQN::Folio()->CondicionesSocioUrbanisticasAsId)->Title = QApplication::Translate('CondicionesSocioUrbanisticasAsId');
         if (FolioDataGrid::$strColumnsArray['RegularizacionAsId']) $this->MetaAddColumn(QQN::Folio()->RegularizacionAsId)->Title = QApplication::Translate('RegularizacionAsId');
+        if (FolioDataGrid::$strColumnsArray['UsoInterno']) $this->MetaAddColumn(QQN::Folio()->UsoInterno)->Title = QApplication::Translate('UsoInterno');
     }
 
 /**
@@ -281,11 +292,12 @@ class FolioDataGridGen extends QFilteredDataGrid {
 					throw new QCallerException('Content QQNode has a root table of "' . $mixContent->_RootTableName . '". Must be a root of "folio".');
 			} else if (is_string($mixContent)) switch ($mixContent) {
 				case 'Id': return QQN::Folio()->Id;
+				case 'CodFolio': return QQN::Folio()->CodFolio;
 				case 'IdPartido': return QQN::Folio()->IdPartido;
 				case 'IdPartidoObject': return QQN::Folio()->IdPartidoObject;
 				case 'IdLocalidad': return QQN::Folio()->IdLocalidad;
 				case 'IdLocalidadObject': return QQN::Folio()->IdLocalidadObject;
-				case 'IdMatricula': return QQN::Folio()->IdMatricula;
+				case 'Matricula': return QQN::Folio()->Matricula;
 				case 'Fecha': return QQN::Folio()->Fecha;
 				case 'Encargado': return QQN::Folio()->Encargado;
 				case 'NombreBarrioOficial': return QQN::Folio()->NombreBarrioOficial;
@@ -299,13 +311,12 @@ class FolioDataGridGen extends QFilteredDataGrid {
 				case 'ObservacionCasoDudoso': return QQN::Folio()->ObservacionCasoDudoso;
 				case 'Judicializado': return QQN::Folio()->Judicializado;
 				case 'Direccion': return QQN::Folio()->Direccion;
-				case 'MapeoPreliminar': return QQN::Folio()->MapeoPreliminar;
-				case 'ResolucionInscripcionProvisoria': return QQN::Folio()->ResolucionInscripcionProvisoria;
-				case 'ResolucionInscripcionDefinitiva': return QQN::Folio()->ResolucionInscripcionDefinitiva;
 				case 'NumExpedientes': return QQN::Folio()->NumExpedientes;
 				case 'CondicionesSocioUrbanisticasAsId': return QQN::Folio()->CondicionesSocioUrbanisticasAsId;
 
 				case 'RegularizacionAsId': return QQN::Folio()->RegularizacionAsId;
+
+				case 'UsoInterno': return QQN::Folio()->UsoInterno;
 
 				default: throw new QCallerException('Simple Property not found in FolioDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)

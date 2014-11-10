@@ -7,7 +7,7 @@ class TipoBarrio extends TipoBarrioGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('TipoBarrio %s',  $this->intId);
+        return sprintf('%s',  $this->strTipo);
     }
 
 }

@@ -7,14 +7,14 @@ class QQReverseReferenceNodeAprobacionGeodesia extends QQReverseReferenceNode {
 			switch ($strName) {
 				case 'Id':
 					return new QQNode('id', 'Id', 'integer', $this);
-				case 'CodPartido':
-					return new QQNode('cod_partido', 'CodPartido', 'integer', $this);
+				case 'IdPartido':
+					return new QQNode('id_partido', 'IdPartido', 'integer', $this);
+				case 'IdPartidoObject':
+					return new QQNodePartido('id_partido', 'IdPartidoObject', 'integer', $this);
 				case 'Num':
 					return new QQNode('num', 'Num', 'integer', $this);
 				case 'Anio':
 					return new QQNode('anio', 'Anio', 'string', $this);
-				case 'RegularizacionAs':
-					return new QQReverseReferenceNodeRegularizacion($this, 'regularizacionas', 'reverse_reference', '_aprobacion_geodesia');
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

@@ -877,134 +877,6 @@ class InfraestructuraGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Infraestructura objects,
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByIdFolio query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->IdFolio, $intIdFolio),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @return int
-		*/
-		public static function CountByIdFolio($intIdFolio) {
-			// Call Infraestructura::QueryCount to perform the CountByIdFolio query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->IdFolio, $intIdFolio)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
-		 * by EnergiaElectricaMedidorIndividual Index(es)
-		 * @param integer $intEnergiaElectricaMedidorIndividual
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayByEnergiaElectricaMedidorIndividual($intEnergiaElectricaMedidorIndividual, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByEnergiaElectricaMedidorIndividual query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorIndividual, $intEnergiaElectricaMedidorIndividual),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by EnergiaElectricaMedidorIndividual Index(es)
-		 * @param integer $intEnergiaElectricaMedidorIndividual
-		 * @return int
-		*/
-		public static function CountByEnergiaElectricaMedidorIndividual($intEnergiaElectricaMedidorIndividual) {
-			// Call Infraestructura::QueryCount to perform the CountByEnergiaElectricaMedidorIndividual query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorIndividual, $intEnergiaElectricaMedidorIndividual)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
-		 * by EnergiaElectricaMedidorColectivo Index(es)
-		 * @param integer $intEnergiaElectricaMedidorColectivo
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayByEnergiaElectricaMedidorColectivo($intEnergiaElectricaMedidorColectivo, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByEnergiaElectricaMedidorColectivo query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorColectivo, $intEnergiaElectricaMedidorColectivo),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by EnergiaElectricaMedidorColectivo Index(es)
-		 * @param integer $intEnergiaElectricaMedidorColectivo
-		 * @return int
-		*/
-		public static function CountByEnergiaElectricaMedidorColectivo($intEnergiaElectricaMedidorColectivo) {
-			// Call Infraestructura::QueryCount to perform the CountByEnergiaElectricaMedidorColectivo query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorColectivo, $intEnergiaElectricaMedidorColectivo)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
-		 * by AlumbradoPublico Index(es)
-		 * @param integer $intAlumbradoPublico
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayByAlumbradoPublico($intAlumbradoPublico, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByAlumbradoPublico query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->AlumbradoPublico, $intAlumbradoPublico),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by AlumbradoPublico Index(es)
-		 * @param integer $intAlumbradoPublico
-		 * @return int
-		*/
-		public static function CountByAlumbradoPublico($intAlumbradoPublico) {
-			// Call Infraestructura::QueryCount to perform the CountByAlumbradoPublico query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->AlumbradoPublico, $intAlumbradoPublico)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
 		 * by AguaCorriente Index(es)
 		 * @param integer $intAguaCorriente
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -1069,16 +941,16 @@ class InfraestructuraGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Infraestructura objects,
-		 * by RedCloacal Index(es)
-		 * @param integer $intRedCloacal
+		 * by AlumbradoPublico Index(es)
+		 * @param integer $intAlumbradoPublico
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Infraestructura[]
 		*/
-		public static function LoadArrayByRedCloacal($intRedCloacal, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByRedCloacal query
+		public static function LoadArrayByAlumbradoPublico($intAlumbradoPublico, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByAlumbradoPublico query
 			try {
 				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->RedCloacal, $intRedCloacal),
+					QQ::Equal(QQN::Infraestructura()->AlumbradoPublico, $intAlumbradoPublico),
 					$objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
@@ -1088,110 +960,14 @@ class InfraestructuraGen extends QBaseClass {
 
 		/**
 		 * Count Infraestructuras
-		 * by RedCloacal Index(es)
-		 * @param integer $intRedCloacal
+		 * by AlumbradoPublico Index(es)
+		 * @param integer $intAlumbradoPublico
 		 * @return int
 		*/
-		public static function CountByRedCloacal($intRedCloacal) {
-			// Call Infraestructura::QueryCount to perform the CountByRedCloacal query
+		public static function CountByAlumbradoPublico($intAlumbradoPublico) {
+			// Call Infraestructura::QueryCount to perform the CountByAlumbradoPublico query
 			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->RedCloacal, $intRedCloacal)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
-		 * by SistAlternativoEliminacionExcretas Index(es)
-		 * @param integer $intSistAlternativoEliminacionExcretas
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayBySistAlternativoEliminacionExcretas($intSistAlternativoEliminacionExcretas, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayBySistAlternativoEliminacionExcretas query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->SistAlternativoEliminacionExcretas, $intSistAlternativoEliminacionExcretas),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by SistAlternativoEliminacionExcretas Index(es)
-		 * @param integer $intSistAlternativoEliminacionExcretas
-		 * @return int
-		*/
-		public static function CountBySistAlternativoEliminacionExcretas($intSistAlternativoEliminacionExcretas) {
-			// Call Infraestructura::QueryCount to perform the CountBySistAlternativoEliminacionExcretas query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->SistAlternativoEliminacionExcretas, $intSistAlternativoEliminacionExcretas)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
-		 * by RedGas Index(es)
-		 * @param integer $intRedGas
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayByRedGas($intRedGas, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByRedGas query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->RedGas, $intRedGas),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by RedGas Index(es)
-		 * @param integer $intRedGas
-		 * @return int
-		*/
-		public static function CountByRedGas($intRedGas) {
-			// Call Infraestructura::QueryCount to perform the CountByRedGas query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->RedGas, $intRedGas)
-			);
-		}
-			
-		/**
-		 * Load an array of Infraestructura objects,
-		 * by Pavimento Index(es)
-		 * @param integer $intPavimento
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Infraestructura[]
-		*/
-		public static function LoadArrayByPavimento($intPavimento, $objOptionalClauses = null) {
-			// Call Infraestructura::QueryArray to perform the LoadArrayByPavimento query
-			try {
-				return Infraestructura::QueryArray(
-					QQ::Equal(QQN::Infraestructura()->Pavimento, $intPavimento),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Infraestructuras
-		 * by Pavimento Index(es)
-		 * @param integer $intPavimento
-		 * @return int
-		*/
-		public static function CountByPavimento($intPavimento) {
-			// Call Infraestructura::QueryCount to perform the CountByPavimento query
-			return Infraestructura::QueryCount(
-				QQ::Equal(QQN::Infraestructura()->Pavimento, $intPavimento)
+				QQ::Equal(QQN::Infraestructura()->AlumbradoPublico, $intAlumbradoPublico)
 			);
 		}
 			
@@ -1261,6 +1037,134 @@ class InfraestructuraGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Infraestructura objects,
+		 * by EnergiaElectricaMedidorColectivo Index(es)
+		 * @param integer $intEnergiaElectricaMedidorColectivo
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayByEnergiaElectricaMedidorColectivo($intEnergiaElectricaMedidorColectivo, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByEnergiaElectricaMedidorColectivo query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorColectivo, $intEnergiaElectricaMedidorColectivo),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by EnergiaElectricaMedidorColectivo Index(es)
+		 * @param integer $intEnergiaElectricaMedidorColectivo
+		 * @return int
+		*/
+		public static function CountByEnergiaElectricaMedidorColectivo($intEnergiaElectricaMedidorColectivo) {
+			// Call Infraestructura::QueryCount to perform the CountByEnergiaElectricaMedidorColectivo query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorColectivo, $intEnergiaElectricaMedidorColectivo)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
+		 * by EnergiaElectricaMedidorIndividual Index(es)
+		 * @param integer $intEnergiaElectricaMedidorIndividual
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayByEnergiaElectricaMedidorIndividual($intEnergiaElectricaMedidorIndividual, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByEnergiaElectricaMedidorIndividual query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorIndividual, $intEnergiaElectricaMedidorIndividual),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by EnergiaElectricaMedidorIndividual Index(es)
+		 * @param integer $intEnergiaElectricaMedidorIndividual
+		 * @return int
+		*/
+		public static function CountByEnergiaElectricaMedidorIndividual($intEnergiaElectricaMedidorIndividual) {
+			// Call Infraestructura::QueryCount to perform the CountByEnergiaElectricaMedidorIndividual query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->EnergiaElectricaMedidorIndividual, $intEnergiaElectricaMedidorIndividual)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByIdFolio query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->IdFolio, $intIdFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @return int
+		*/
+		public static function CountByIdFolio($intIdFolio) {
+			// Call Infraestructura::QueryCount to perform the CountByIdFolio query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->IdFolio, $intIdFolio)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
+		 * by Pavimento Index(es)
+		 * @param integer $intPavimento
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayByPavimento($intPavimento, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByPavimento query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->Pavimento, $intPavimento),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by Pavimento Index(es)
+		 * @param integer $intPavimento
+		 * @return int
+		*/
+		public static function CountByPavimento($intPavimento) {
+			// Call Infraestructura::QueryCount to perform the CountByPavimento query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->Pavimento, $intPavimento)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
 		 * by RecoleccionResiduos Index(es)
 		 * @param integer $intRecoleccionResiduos
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -1288,6 +1192,102 @@ class InfraestructuraGen extends QBaseClass {
 			// Call Infraestructura::QueryCount to perform the CountByRecoleccionResiduos query
 			return Infraestructura::QueryCount(
 				QQ::Equal(QQN::Infraestructura()->RecoleccionResiduos, $intRecoleccionResiduos)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
+		 * by RedCloacal Index(es)
+		 * @param integer $intRedCloacal
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayByRedCloacal($intRedCloacal, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByRedCloacal query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->RedCloacal, $intRedCloacal),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by RedCloacal Index(es)
+		 * @param integer $intRedCloacal
+		 * @return int
+		*/
+		public static function CountByRedCloacal($intRedCloacal) {
+			// Call Infraestructura::QueryCount to perform the CountByRedCloacal query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->RedCloacal, $intRedCloacal)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
+		 * by RedGas Index(es)
+		 * @param integer $intRedGas
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayByRedGas($intRedGas, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayByRedGas query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->RedGas, $intRedGas),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by RedGas Index(es)
+		 * @param integer $intRedGas
+		 * @return int
+		*/
+		public static function CountByRedGas($intRedGas) {
+			// Call Infraestructura::QueryCount to perform the CountByRedGas query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->RedGas, $intRedGas)
+			);
+		}
+			
+		/**
+		 * Load an array of Infraestructura objects,
+		 * by SistAlternativoEliminacionExcretas Index(es)
+		 * @param integer $intSistAlternativoEliminacionExcretas
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Infraestructura[]
+		*/
+		public static function LoadArrayBySistAlternativoEliminacionExcretas($intSistAlternativoEliminacionExcretas, $objOptionalClauses = null) {
+			// Call Infraestructura::QueryArray to perform the LoadArrayBySistAlternativoEliminacionExcretas query
+			try {
+				return Infraestructura::QueryArray(
+					QQ::Equal(QQN::Infraestructura()->SistAlternativoEliminacionExcretas, $intSistAlternativoEliminacionExcretas),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Infraestructuras
+		 * by SistAlternativoEliminacionExcretas Index(es)
+		 * @param integer $intSistAlternativoEliminacionExcretas
+		 * @return int
+		*/
+		public static function CountBySistAlternativoEliminacionExcretas($intSistAlternativoEliminacionExcretas) {
+			// Call Infraestructura::QueryCount to perform the CountBySistAlternativoEliminacionExcretas query
+			return Infraestructura::QueryCount(
+				QQ::Equal(QQN::Infraestructura()->SistAlternativoEliminacionExcretas, $intSistAlternativoEliminacionExcretas)
 			);
 		}
 

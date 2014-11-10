@@ -17,20 +17,20 @@
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $Id the value for intId (Read-Only PK)
 	 * @property string $Opcion the value for strOpcion (Not Null)
-	 * @property-read Equipamiento $EquipamientoAsUnidadSanitaria the value for the private _objEquipamientoAsUnidadSanitaria (Read-Only) if set due to an expansion on the equipamiento.unidad_sanitaria reverse relationship
-	 * @property-read Equipamiento[] $EquipamientoAsUnidadSanitariaArray the value for the private _objEquipamientoAsUnidadSanitariaArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.unidad_sanitaria reverse relationship
-	 * @property-read Equipamiento $EquipamientoAsJardinInfantes the value for the private _objEquipamientoAsJardinInfantes (Read-Only) if set due to an expansion on the equipamiento.jardin_infantes reverse relationship
-	 * @property-read Equipamiento[] $EquipamientoAsJardinInfantesArray the value for the private _objEquipamientoAsJardinInfantesArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.jardin_infantes reverse relationship
+	 * @property-read Equipamiento $EquipamientoAsCentroIntegracionComunitaria the value for the private _objEquipamientoAsCentroIntegracionComunitaria (Read-Only) if set due to an expansion on the equipamiento.centro_integracion_comunitaria reverse relationship
+	 * @property-read Equipamiento[] $EquipamientoAsCentroIntegracionComunitariaArray the value for the private _objEquipamientoAsCentroIntegracionComunitariaArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.centro_integracion_comunitaria reverse relationship
+	 * @property-read Equipamiento $EquipamientoAsComedor the value for the private _objEquipamientoAsComedor (Read-Only) if set due to an expansion on the equipamiento.comedor reverse relationship
+	 * @property-read Equipamiento[] $EquipamientoAsComedorArray the value for the private _objEquipamientoAsComedorArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.comedor reverse relationship
 	 * @property-read Equipamiento $EquipamientoAsEscuelaPrimaria the value for the private _objEquipamientoAsEscuelaPrimaria (Read-Only) if set due to an expansion on the equipamiento.escuela_primaria reverse relationship
 	 * @property-read Equipamiento[] $EquipamientoAsEscuelaPrimariaArray the value for the private _objEquipamientoAsEscuelaPrimariaArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.escuela_primaria reverse relationship
 	 * @property-read Equipamiento $EquipamientoAsEscuelaSecundaria the value for the private _objEquipamientoAsEscuelaSecundaria (Read-Only) if set due to an expansion on the equipamiento.escuela_secundaria reverse relationship
 	 * @property-read Equipamiento[] $EquipamientoAsEscuelaSecundariaArray the value for the private _objEquipamientoAsEscuelaSecundariaArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.escuela_secundaria reverse relationship
-	 * @property-read Equipamiento $EquipamientoAsComedor the value for the private _objEquipamientoAsComedor (Read-Only) if set due to an expansion on the equipamiento.comedor reverse relationship
-	 * @property-read Equipamiento[] $EquipamientoAsComedorArray the value for the private _objEquipamientoAsComedorArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.comedor reverse relationship
+	 * @property-read Equipamiento $EquipamientoAsJardinInfantes the value for the private _objEquipamientoAsJardinInfantes (Read-Only) if set due to an expansion on the equipamiento.jardin_infantes reverse relationship
+	 * @property-read Equipamiento[] $EquipamientoAsJardinInfantesArray the value for the private _objEquipamientoAsJardinInfantesArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.jardin_infantes reverse relationship
 	 * @property-read Equipamiento $EquipamientoAsSalonUsosMultiples the value for the private _objEquipamientoAsSalonUsosMultiples (Read-Only) if set due to an expansion on the equipamiento.salon_usos_multiples reverse relationship
 	 * @property-read Equipamiento[] $EquipamientoAsSalonUsosMultiplesArray the value for the private _objEquipamientoAsSalonUsosMultiplesArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.salon_usos_multiples reverse relationship
-	 * @property-read Equipamiento $EquipamientoAsCentroIntegracionComunitaria the value for the private _objEquipamientoAsCentroIntegracionComunitaria (Read-Only) if set due to an expansion on the equipamiento.centro_integracion_comunitaria reverse relationship
-	 * @property-read Equipamiento[] $EquipamientoAsCentroIntegracionComunitariaArray the value for the private _objEquipamientoAsCentroIntegracionComunitariaArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.centro_integracion_comunitaria reverse relationship
+	 * @property-read Equipamiento $EquipamientoAsUnidadSanitaria the value for the private _objEquipamientoAsUnidadSanitaria (Read-Only) if set due to an expansion on the equipamiento.unidad_sanitaria reverse relationship
+	 * @property-read Equipamiento[] $EquipamientoAsUnidadSanitariaArray the value for the private _objEquipamientoAsUnidadSanitariaArray (Read-Only) if set due to an ExpandAsArray on the equipamiento.unidad_sanitaria reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class OpcionesEquipamientosGen extends QBaseClass {
@@ -68,36 +68,36 @@ class OpcionesEquipamientosGen extends QBaseClass {
 
 
     /**
-     * Private member variable that stores a reference to a single EquipamientoAsUnidadSanitaria object
+     * Private member variable that stores a reference to a single EquipamientoAsCentroIntegracionComunitaria object
      * (of type Equipamiento), if this OpcionesEquipamientos object was restored with
      * an expansion on the equipamiento association table.
-     * @var Equipamiento _objEquipamientoAsUnidadSanitaria;
+     * @var Equipamiento _objEquipamientoAsCentroIntegracionComunitaria;
      */
-    protected $objEquipamientoAsUnidadSanitaria;
+    protected $objEquipamientoAsCentroIntegracionComunitaria;
 
     /**
-     * Private member variable that stores a reference to an array of EquipamientoAsUnidadSanitaria objects
+     * Private member variable that stores a reference to an array of EquipamientoAsCentroIntegracionComunitaria objects
      * (of type Equipamiento[]), if this OpcionesEquipamientos object was restored with
      * an ExpandAsArray on the equipamiento association table.
-     * @var Equipamiento[] _objEquipamientoAsUnidadSanitariaArray;
+     * @var Equipamiento[] _objEquipamientoAsCentroIntegracionComunitariaArray;
      */
-    protected $objEquipamientoAsUnidadSanitariaArray;
+    protected $objEquipamientoAsCentroIntegracionComunitariaArray;
 
     /**
-     * Private member variable that stores a reference to a single EquipamientoAsJardinInfantes object
+     * Private member variable that stores a reference to a single EquipamientoAsComedor object
      * (of type Equipamiento), if this OpcionesEquipamientos object was restored with
      * an expansion on the equipamiento association table.
-     * @var Equipamiento _objEquipamientoAsJardinInfantes;
+     * @var Equipamiento _objEquipamientoAsComedor;
      */
-    protected $objEquipamientoAsJardinInfantes;
+    protected $objEquipamientoAsComedor;
 
     /**
-     * Private member variable that stores a reference to an array of EquipamientoAsJardinInfantes objects
+     * Private member variable that stores a reference to an array of EquipamientoAsComedor objects
      * (of type Equipamiento[]), if this OpcionesEquipamientos object was restored with
      * an ExpandAsArray on the equipamiento association table.
-     * @var Equipamiento[] _objEquipamientoAsJardinInfantesArray;
+     * @var Equipamiento[] _objEquipamientoAsComedorArray;
      */
-    protected $objEquipamientoAsJardinInfantesArray;
+    protected $objEquipamientoAsComedorArray;
 
     /**
      * Private member variable that stores a reference to a single EquipamientoAsEscuelaPrimaria object
@@ -132,20 +132,20 @@ class OpcionesEquipamientosGen extends QBaseClass {
     protected $objEquipamientoAsEscuelaSecundariaArray;
 
     /**
-     * Private member variable that stores a reference to a single EquipamientoAsComedor object
+     * Private member variable that stores a reference to a single EquipamientoAsJardinInfantes object
      * (of type Equipamiento), if this OpcionesEquipamientos object was restored with
      * an expansion on the equipamiento association table.
-     * @var Equipamiento _objEquipamientoAsComedor;
+     * @var Equipamiento _objEquipamientoAsJardinInfantes;
      */
-    protected $objEquipamientoAsComedor;
+    protected $objEquipamientoAsJardinInfantes;
 
     /**
-     * Private member variable that stores a reference to an array of EquipamientoAsComedor objects
+     * Private member variable that stores a reference to an array of EquipamientoAsJardinInfantes objects
      * (of type Equipamiento[]), if this OpcionesEquipamientos object was restored with
      * an ExpandAsArray on the equipamiento association table.
-     * @var Equipamiento[] _objEquipamientoAsComedorArray;
+     * @var Equipamiento[] _objEquipamientoAsJardinInfantesArray;
      */
-    protected $objEquipamientoAsComedorArray;
+    protected $objEquipamientoAsJardinInfantesArray;
 
     /**
      * Private member variable that stores a reference to a single EquipamientoAsSalonUsosMultiples object
@@ -164,20 +164,20 @@ class OpcionesEquipamientosGen extends QBaseClass {
     protected $objEquipamientoAsSalonUsosMultiplesArray;
 
     /**
-     * Private member variable that stores a reference to a single EquipamientoAsCentroIntegracionComunitaria object
+     * Private member variable that stores a reference to a single EquipamientoAsUnidadSanitaria object
      * (of type Equipamiento), if this OpcionesEquipamientos object was restored with
      * an expansion on the equipamiento association table.
-     * @var Equipamiento _objEquipamientoAsCentroIntegracionComunitaria;
+     * @var Equipamiento _objEquipamientoAsUnidadSanitaria;
      */
-    protected $objEquipamientoAsCentroIntegracionComunitaria;
+    protected $objEquipamientoAsUnidadSanitaria;
 
     /**
-     * Private member variable that stores a reference to an array of EquipamientoAsCentroIntegracionComunitaria objects
+     * Private member variable that stores a reference to an array of EquipamientoAsUnidadSanitaria objects
      * (of type Equipamiento[]), if this OpcionesEquipamientos object was restored with
      * an ExpandAsArray on the equipamiento association table.
-     * @var Equipamiento[] _objEquipamientoAsCentroIntegracionComunitariaArray;
+     * @var Equipamiento[] _objEquipamientoAsUnidadSanitariaArray;
      */
-    protected $objEquipamientoAsCentroIntegracionComunitariaArray;
+    protected $objEquipamientoAsUnidadSanitariaArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -555,36 +555,36 @@ class OpcionesEquipamientosGen extends QBaseClass {
 							$strAliasPrefix = 'opciones_equipamientos__';
 
 
-						// Expanding reverse references: EquipamientoAsUnidadSanitaria
-						$strAlias = $strAliasPrefix . 'equipamientoasunidadsanitaria__id';
+						// Expanding reverse references: EquipamientoAsCentroIntegracionComunitaria
+						$strAlias = $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
 							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsUnidadSanitariaArray)) {
-								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsUnidadSanitariaArray;
-								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray)) {
+								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray;
+								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
 								if ($objChildItem) {
-									$objPreviousItem->objEquipamientoAsUnidadSanitariaArray[] = $objChildItem;
+									$objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray[] = $objChildItem;
 								}
 							} else {
-								$objPreviousItem->objEquipamientoAsUnidadSanitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+								$objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
 
-						// Expanding reverse references: EquipamientoAsJardinInfantes
-						$strAlias = $strAliasPrefix . 'equipamientoasjardininfantes__id';
+						// Expanding reverse references: EquipamientoAsComedor
+						$strAlias = $strAliasPrefix . 'equipamientoascomedor__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
 							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsJardinInfantesArray)) {
-								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsJardinInfantesArray;
-								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsComedorArray)) {
+								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsComedorArray;
+								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
 								if ($objChildItem) {
-									$objPreviousItem->objEquipamientoAsJardinInfantesArray[] = $objChildItem;
+									$objPreviousItem->objEquipamientoAsComedorArray[] = $objChildItem;
 								}
 							} else {
-								$objPreviousItem->objEquipamientoAsJardinInfantesArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+								$objPreviousItem->objEquipamientoAsComedorArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
@@ -623,19 +623,19 @@ class OpcionesEquipamientosGen extends QBaseClass {
 							$blnExpandedViaArray = true;
 						}
 
-						// Expanding reverse references: EquipamientoAsComedor
-						$strAlias = $strAliasPrefix . 'equipamientoascomedor__id';
+						// Expanding reverse references: EquipamientoAsJardinInfantes
+						$strAlias = $strAliasPrefix . 'equipamientoasjardininfantes__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
 							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsComedorArray)) {
-								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsComedorArray;
-								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsJardinInfantesArray)) {
+								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsJardinInfantesArray;
+								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
 								if ($objChildItem) {
-									$objPreviousItem->objEquipamientoAsComedorArray[] = $objChildItem;
+									$objPreviousItem->objEquipamientoAsJardinInfantesArray[] = $objChildItem;
 								}
 							} else {
-								$objPreviousItem->objEquipamientoAsComedorArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+								$objPreviousItem->objEquipamientoAsJardinInfantesArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
@@ -657,19 +657,19 @@ class OpcionesEquipamientosGen extends QBaseClass {
 							$blnExpandedViaArray = true;
 						}
 
-						// Expanding reverse references: EquipamientoAsCentroIntegracionComunitaria
-						$strAlias = $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__id';
+						// Expanding reverse references: EquipamientoAsUnidadSanitaria
+						$strAlias = $strAliasPrefix . 'equipamientoasunidadsanitaria__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
 							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray)) {
-								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray;
-								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+							if ($intPreviousChildItemCount = count($objPreviousItem->objEquipamientoAsUnidadSanitariaArray)) {
+								$objPreviousChildItems = $objPreviousItem->objEquipamientoAsUnidadSanitariaArray;
+								$objChildItem = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
 								if ($objChildItem) {
-									$objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray[] = $objChildItem;
+									$objPreviousItem->objEquipamientoAsUnidadSanitariaArray[] = $objChildItem;
 								}
 							} else {
-								$objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+								$objPreviousItem->objEquipamientoAsUnidadSanitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
@@ -698,10 +698,10 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objEquipamientoAsUnidadSanitariaArray, $objToReturn->objEquipamientoAsUnidadSanitariaArray) != null) {
+					if (array_diff($objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray, $objToReturn->objEquipamientoAsCentroIntegracionComunitariaArray) != null) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objEquipamientoAsJardinInfantesArray, $objToReturn->objEquipamientoAsJardinInfantesArray) != null) {
+					if (array_diff($objPreviousItem->objEquipamientoAsComedorArray, $objToReturn->objEquipamientoAsComedorArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objEquipamientoAsEscuelaPrimariaArray, $objToReturn->objEquipamientoAsEscuelaPrimariaArray) != null) {
@@ -710,13 +710,13 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					if (array_diff($objPreviousItem->objEquipamientoAsEscuelaSecundariaArray, $objToReturn->objEquipamientoAsEscuelaSecundariaArray) != null) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objEquipamientoAsComedorArray, $objToReturn->objEquipamientoAsComedorArray) != null) {
+					if (array_diff($objPreviousItem->objEquipamientoAsJardinInfantesArray, $objToReturn->objEquipamientoAsJardinInfantesArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objEquipamientoAsSalonUsosMultiplesArray, $objToReturn->objEquipamientoAsSalonUsosMultiplesArray) != null) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objEquipamientoAsCentroIntegracionComunitariaArray, $objToReturn->objEquipamientoAsCentroIntegracionComunitariaArray) != null) {
+					if (array_diff($objPreviousItem->objEquipamientoAsUnidadSanitariaArray, $objToReturn->objEquipamientoAsUnidadSanitariaArray) != null) {
 						continue;
 					}
 
@@ -740,24 +740,24 @@ class OpcionesEquipamientosGen extends QBaseClass {
 
 
 
-			// Check for EquipamientoAsUnidadSanitaria Virtual Binding
-			$strAlias = $strAliasPrefix . 'equipamientoasunidadsanitaria__id';
+			// Check for EquipamientoAsCentroIntegracionComunitaria Virtual Binding
+			$strAlias = $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName))) {
 				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objEquipamientoAsUnidadSanitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsCentroIntegracionComunitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
-					$objToReturn->objEquipamientoAsUnidadSanitaria = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsCentroIntegracionComunitaria = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
-			// Check for EquipamientoAsJardinInfantes Virtual Binding
-			$strAlias = $strAliasPrefix . 'equipamientoasjardininfantes__id';
+			// Check for EquipamientoAsComedor Virtual Binding
+			$strAlias = $strAliasPrefix . 'equipamientoascomedor__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName))) {
 				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objEquipamientoAsJardinInfantesArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsComedorArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
-					$objToReturn->objEquipamientoAsJardinInfantes = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsComedor = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			// Check for EquipamientoAsEscuelaPrimaria Virtual Binding
@@ -780,14 +780,14 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					$objToReturn->objEquipamientoAsEscuelaSecundaria = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasescuelasecundaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
-			// Check for EquipamientoAsComedor Virtual Binding
-			$strAlias = $strAliasPrefix . 'equipamientoascomedor__id';
+			// Check for EquipamientoAsJardinInfantes Virtual Binding
+			$strAlias = $strAliasPrefix . 'equipamientoasjardininfantes__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName))) {
 				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objEquipamientoAsComedorArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsJardinInfantesArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
-					$objToReturn->objEquipamientoAsComedor = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascomedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsJardinInfantes = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasjardininfantes__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			// Check for EquipamientoAsSalonUsosMultiples Virtual Binding
@@ -800,14 +800,14 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					$objToReturn->objEquipamientoAsSalonUsosMultiples = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoassalonusosmultiples__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
-			// Check for EquipamientoAsCentroIntegracionComunitaria Virtual Binding
-			$strAlias = $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__id';
+			// Check for EquipamientoAsUnidadSanitaria Virtual Binding
+			$strAlias = $strAliasPrefix . 'equipamientoasunidadsanitaria__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName))) {
 				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objEquipamientoAsCentroIntegracionComunitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsUnidadSanitariaArray[] = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
-					$objToReturn->objEquipamientoAsCentroIntegracionComunitaria = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoascentrointegracioncomunitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEquipamientoAsUnidadSanitaria = Equipamiento::InstantiateDbRow($objDbRow, $strAliasPrefix . 'equipamientoasunidadsanitaria__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			return $objToReturn;
@@ -1054,41 +1054,41 @@ class OpcionesEquipamientosGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
-            case 'EquipamientoAsUnidadSanitaria':
+            case 'EquipamientoAsCentroIntegracionComunitaria':
                 /**
-                 * Gets the value for the private _objEquipamientoAsUnidadSanitaria (Read-Only)
-                 * if set due to an expansion on the equipamiento.unidad_sanitaria reverse relationship
+                 * Gets the value for the private _objEquipamientoAsCentroIntegracionComunitaria (Read-Only)
+                 * if set due to an expansion on the equipamiento.centro_integracion_comunitaria reverse relationship
                  * @return Equipamiento
                  */
-                return $this->objEquipamientoAsUnidadSanitaria;
+                return $this->objEquipamientoAsCentroIntegracionComunitaria;
 
-            case 'EquipamientoAsUnidadSanitariaArray':
+            case 'EquipamientoAsCentroIntegracionComunitariaArray':
                 /**
-                 * Gets the value for the private _objEquipamientoAsUnidadSanitariaArray (Read-Only)
-                 * if set due to an ExpandAsArray on the equipamiento.unidad_sanitaria reverse relationship
+                 * Gets the value for the private _objEquipamientoAsCentroIntegracionComunitariaArray (Read-Only)
+                 * if set due to an ExpandAsArray on the equipamiento.centro_integracion_comunitaria reverse relationship
                  * @return Equipamiento[]
                  */
-                if(is_null($this->objEquipamientoAsUnidadSanitariaArray))
-                    $this->objEquipamientoAsUnidadSanitariaArray = $this->GetEquipamientoAsUnidadSanitariaArray();
-                return (array) $this->objEquipamientoAsUnidadSanitariaArray;
+                if(is_null($this->objEquipamientoAsCentroIntegracionComunitariaArray))
+                    $this->objEquipamientoAsCentroIntegracionComunitariaArray = $this->GetEquipamientoAsCentroIntegracionComunitariaArray();
+                return (array) $this->objEquipamientoAsCentroIntegracionComunitariaArray;
 
-            case 'EquipamientoAsJardinInfantes':
+            case 'EquipamientoAsComedor':
                 /**
-                 * Gets the value for the private _objEquipamientoAsJardinInfantes (Read-Only)
-                 * if set due to an expansion on the equipamiento.jardin_infantes reverse relationship
+                 * Gets the value for the private _objEquipamientoAsComedor (Read-Only)
+                 * if set due to an expansion on the equipamiento.comedor reverse relationship
                  * @return Equipamiento
                  */
-                return $this->objEquipamientoAsJardinInfantes;
+                return $this->objEquipamientoAsComedor;
 
-            case 'EquipamientoAsJardinInfantesArray':
+            case 'EquipamientoAsComedorArray':
                 /**
-                 * Gets the value for the private _objEquipamientoAsJardinInfantesArray (Read-Only)
-                 * if set due to an ExpandAsArray on the equipamiento.jardin_infantes reverse relationship
+                 * Gets the value for the private _objEquipamientoAsComedorArray (Read-Only)
+                 * if set due to an ExpandAsArray on the equipamiento.comedor reverse relationship
                  * @return Equipamiento[]
                  */
-                if(is_null($this->objEquipamientoAsJardinInfantesArray))
-                    $this->objEquipamientoAsJardinInfantesArray = $this->GetEquipamientoAsJardinInfantesArray();
-                return (array) $this->objEquipamientoAsJardinInfantesArray;
+                if(is_null($this->objEquipamientoAsComedorArray))
+                    $this->objEquipamientoAsComedorArray = $this->GetEquipamientoAsComedorArray();
+                return (array) $this->objEquipamientoAsComedorArray;
 
             case 'EquipamientoAsEscuelaPrimaria':
                 /**
@@ -1126,23 +1126,23 @@ class OpcionesEquipamientosGen extends QBaseClass {
                     $this->objEquipamientoAsEscuelaSecundariaArray = $this->GetEquipamientoAsEscuelaSecundariaArray();
                 return (array) $this->objEquipamientoAsEscuelaSecundariaArray;
 
-            case 'EquipamientoAsComedor':
+            case 'EquipamientoAsJardinInfantes':
                 /**
-                 * Gets the value for the private _objEquipamientoAsComedor (Read-Only)
-                 * if set due to an expansion on the equipamiento.comedor reverse relationship
+                 * Gets the value for the private _objEquipamientoAsJardinInfantes (Read-Only)
+                 * if set due to an expansion on the equipamiento.jardin_infantes reverse relationship
                  * @return Equipamiento
                  */
-                return $this->objEquipamientoAsComedor;
+                return $this->objEquipamientoAsJardinInfantes;
 
-            case 'EquipamientoAsComedorArray':
+            case 'EquipamientoAsJardinInfantesArray':
                 /**
-                 * Gets the value for the private _objEquipamientoAsComedorArray (Read-Only)
-                 * if set due to an ExpandAsArray on the equipamiento.comedor reverse relationship
+                 * Gets the value for the private _objEquipamientoAsJardinInfantesArray (Read-Only)
+                 * if set due to an ExpandAsArray on the equipamiento.jardin_infantes reverse relationship
                  * @return Equipamiento[]
                  */
-                if(is_null($this->objEquipamientoAsComedorArray))
-                    $this->objEquipamientoAsComedorArray = $this->GetEquipamientoAsComedorArray();
-                return (array) $this->objEquipamientoAsComedorArray;
+                if(is_null($this->objEquipamientoAsJardinInfantesArray))
+                    $this->objEquipamientoAsJardinInfantesArray = $this->GetEquipamientoAsJardinInfantesArray();
+                return (array) $this->objEquipamientoAsJardinInfantesArray;
 
             case 'EquipamientoAsSalonUsosMultiples':
                 /**
@@ -1162,23 +1162,23 @@ class OpcionesEquipamientosGen extends QBaseClass {
                     $this->objEquipamientoAsSalonUsosMultiplesArray = $this->GetEquipamientoAsSalonUsosMultiplesArray();
                 return (array) $this->objEquipamientoAsSalonUsosMultiplesArray;
 
-            case 'EquipamientoAsCentroIntegracionComunitaria':
+            case 'EquipamientoAsUnidadSanitaria':
                 /**
-                 * Gets the value for the private _objEquipamientoAsCentroIntegracionComunitaria (Read-Only)
-                 * if set due to an expansion on the equipamiento.centro_integracion_comunitaria reverse relationship
+                 * Gets the value for the private _objEquipamientoAsUnidadSanitaria (Read-Only)
+                 * if set due to an expansion on the equipamiento.unidad_sanitaria reverse relationship
                  * @return Equipamiento
                  */
-                return $this->objEquipamientoAsCentroIntegracionComunitaria;
+                return $this->objEquipamientoAsUnidadSanitaria;
 
-            case 'EquipamientoAsCentroIntegracionComunitariaArray':
+            case 'EquipamientoAsUnidadSanitariaArray':
                 /**
-                 * Gets the value for the private _objEquipamientoAsCentroIntegracionComunitariaArray (Read-Only)
-                 * if set due to an ExpandAsArray on the equipamiento.centro_integracion_comunitaria reverse relationship
+                 * Gets the value for the private _objEquipamientoAsUnidadSanitariaArray (Read-Only)
+                 * if set due to an ExpandAsArray on the equipamiento.unidad_sanitaria reverse relationship
                  * @return Equipamiento[]
                  */
-                if(is_null($this->objEquipamientoAsCentroIntegracionComunitariaArray))
-                    $this->objEquipamientoAsCentroIntegracionComunitariaArray = $this->GetEquipamientoAsCentroIntegracionComunitariaArray();
-                return (array) $this->objEquipamientoAsCentroIntegracionComunitariaArray;
+                if(is_null($this->objEquipamientoAsUnidadSanitariaArray))
+                    $this->objEquipamientoAsUnidadSanitariaArray = $this->GetEquipamientoAsUnidadSanitariaArray();
+                return (array) $this->objEquipamientoAsUnidadSanitariaArray;
 
 
             case '__Restored':
@@ -1257,65 +1257,65 @@ class OpcionesEquipamientosGen extends QBaseClass {
         
 			
 		
-		// Related Objects' Methods for EquipamientoAsUnidadSanitaria
+		// Related Objects' Methods for EquipamientoAsCentroIntegracionComunitaria
 		//-------------------------------------------------------------------
 
-                //Public Model methods for add and remove Items from the _EquipamientoAsUnidadSanitariaArray
+                //Public Model methods for add and remove Items from the _EquipamientoAsCentroIntegracionComunitariaArray
                 /**
-                * Add a Item to the _EquipamientoAsUnidadSanitariaArray
+                * Add a Item to the _EquipamientoAsCentroIntegracionComunitariaArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function AddEquipamientoAsUnidadSanitaria(Equipamiento $objItem){
+                public function AddEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objItem){
                    //add to the collection and add me as a parent
-                    $objItem->UnidadSanitariaObject = $this;
-                    $this->objEquipamientoAsUnidadSanitariaArray = $this->EquipamientoAsUnidadSanitariaArray;
-                    $this->objEquipamientoAsUnidadSanitariaArray[] = $objItem;
+                    $objItem->CentroIntegracionComunitariaObject = $this;
+                    $this->objEquipamientoAsCentroIntegracionComunitariaArray = $this->EquipamientoAsCentroIntegracionComunitariaArray;
+                    $this->objEquipamientoAsCentroIntegracionComunitariaArray[] = $objItem;
 
                     if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
                     
                     //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateEquipamientoAsUnidadSanitaria($objItem);
+                    //$this->AssociateEquipamientoAsCentroIntegracionComunitaria($objItem);
 
-                    return $this->EquipamientoAsUnidadSanitariaArray;
+                    return $this->EquipamientoAsCentroIntegracionComunitariaArray;
                 }
 
                 /**
-                * Remove a Item to the _EquipamientoAsUnidadSanitariaArray
+                * Remove a Item to the _EquipamientoAsCentroIntegracionComunitariaArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function RemoveEquipamientoAsUnidadSanitaria(Equipamiento $objItem){
+                public function RemoveEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objItem){
                     //remove Item from the collection
-                    $arrAux = $this->objEquipamientoAsUnidadSanitariaArray;
-                    $this->objEquipamientoAsUnidadSanitariaArray = array();
+                    $arrAux = $this->objEquipamientoAsCentroIntegracionComunitariaArray;
+                    $this->objEquipamientoAsCentroIntegracionComunitariaArray = array();
                     foreach ($arrAux as $obj) {
                         if ($obj !== $objItem) 
-                            array_push($this->objEquipamientoAsUnidadSanitariaArray,$obj);
+                            array_push($this->objEquipamientoAsCentroIntegracionComunitariaArray,$obj);
                     }
                     //automatic persistence to de DB if necesary
                     if(!is_null($objItem->Id))
                         try{
-                            $objItem->UnidadSanitariaObject = null;
+                            $objItem->CentroIntegracionComunitariaObject = null;
                             $objItem->Save();
                         }catch(Exception $e){
-                            $this->DeleteAssociatedEquipamientoAsUnidadSanitaria($objItem);
+                            $this->DeleteAssociatedEquipamientoAsCentroIntegracionComunitaria($objItem);
                         }
 
-                    return $this->objEquipamientoAsUnidadSanitariaArray;
+                    return $this->objEquipamientoAsCentroIntegracionComunitariaArray;
                 }
 
 		/**
-		 * Gets all associated EquipamientosAsUnidadSanitaria as an array of Equipamiento objects
+		 * Gets all associated EquipamientosAsCentroIntegracionComunitaria as an array of Equipamiento objects
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/ 
-		public function GetEquipamientoAsUnidadSanitariaArray($objOptionalClauses = null) {
+		public function GetEquipamientoAsCentroIntegracionComunitariaArray($objOptionalClauses = null) {
 			if ((is_null($this->intId)))
 				return array();
 
 			try {
-				return Equipamiento::LoadArrayByUnidadSanitaria($this->intId, $objOptionalClauses);
+				return Equipamiento::LoadArrayByCentroIntegracionComunitaria($this->intId, $objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
 				throw $objExc;
@@ -1323,26 +1323,26 @@ class OpcionesEquipamientosGen extends QBaseClass {
 		}
 
 		/**
-		 * Counts all associated EquipamientosAsUnidadSanitaria
+		 * Counts all associated EquipamientosAsCentroIntegracionComunitaria
 		 * @return int
 		*/ 
-		public function CountEquipamientosAsUnidadSanitaria() {
+		public function CountEquipamientosAsCentroIntegracionComunitaria() {
 			if ((is_null($this->intId)))
 				return 0;
 
-			return Equipamiento::CountByUnidadSanitaria($this->intId);
+			return Equipamiento::CountByCentroIntegracionComunitaria($this->intId);
 		}
 
 		/**
-		 * Associates a EquipamientoAsUnidadSanitaria
+		 * Associates a EquipamientoAsCentroIntegracionComunitaria
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function AssociateEquipamientoAsUnidadSanitaria(Equipamiento $objEquipamiento) {
+		public function AssociateEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsUnidadSanitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsCentroIntegracionComunitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1352,22 +1352,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . '
 			');
 		}
 
 		/**
-		 * Unassociates a EquipamientoAsUnidadSanitaria
+		 * Unassociates a EquipamientoAsCentroIntegracionComunitaria
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function UnassociateEquipamientoAsUnidadSanitaria(Equipamiento $objEquipamiento) {
+		public function UnassociateEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1377,20 +1377,20 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"unidad_sanitaria" = null
+					"centro_integracion_comunitaria" = null
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Unassociates all EquipamientosAsUnidadSanitaria
+		 * Unassociates all EquipamientosAsCentroIntegracionComunitaria
 		 * @return void
 		*/ 
-		public function UnassociateAllEquipamientosAsUnidadSanitaria() {
+		public function UnassociateAllEquipamientosAsCentroIntegracionComunitaria() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1400,22 +1400,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"unidad_sanitaria" = null
+					"centro_integracion_comunitaria" = null
 				WHERE
-					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes an associated EquipamientoAsUnidadSanitaria
+		 * Deletes an associated EquipamientoAsCentroIntegracionComunitaria
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function DeleteAssociatedEquipamientoAsUnidadSanitaria(Equipamiento $objEquipamiento) {
+		public function DeleteAssociatedEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1426,17 +1426,17 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					"equipamiento"
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes all associated EquipamientosAsUnidadSanitaria
+		 * Deletes all associated EquipamientosAsCentroIntegracionComunitaria
 		 * @return void
 		*/ 
-		public function DeleteAllEquipamientosAsUnidadSanitaria() {
+		public function DeleteAllEquipamientosAsCentroIntegracionComunitaria() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1446,71 +1446,71 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				DELETE FROM
 					"equipamiento"
 				WHERE
-					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 			
 		
-		// Related Objects' Methods for EquipamientoAsJardinInfantes
+		// Related Objects' Methods for EquipamientoAsComedor
 		//-------------------------------------------------------------------
 
-                //Public Model methods for add and remove Items from the _EquipamientoAsJardinInfantesArray
+                //Public Model methods for add and remove Items from the _EquipamientoAsComedorArray
                 /**
-                * Add a Item to the _EquipamientoAsJardinInfantesArray
+                * Add a Item to the _EquipamientoAsComedorArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function AddEquipamientoAsJardinInfantes(Equipamiento $objItem){
+                public function AddEquipamientoAsComedor(Equipamiento $objItem){
                    //add to the collection and add me as a parent
-                    $objItem->JardinInfantesObject = $this;
-                    $this->objEquipamientoAsJardinInfantesArray = $this->EquipamientoAsJardinInfantesArray;
-                    $this->objEquipamientoAsJardinInfantesArray[] = $objItem;
+                    $objItem->ComedorObject = $this;
+                    $this->objEquipamientoAsComedorArray = $this->EquipamientoAsComedorArray;
+                    $this->objEquipamientoAsComedorArray[] = $objItem;
 
                     if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
                     
                     //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateEquipamientoAsJardinInfantes($objItem);
+                    //$this->AssociateEquipamientoAsComedor($objItem);
 
-                    return $this->EquipamientoAsJardinInfantesArray;
+                    return $this->EquipamientoAsComedorArray;
                 }
 
                 /**
-                * Remove a Item to the _EquipamientoAsJardinInfantesArray
+                * Remove a Item to the _EquipamientoAsComedorArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function RemoveEquipamientoAsJardinInfantes(Equipamiento $objItem){
+                public function RemoveEquipamientoAsComedor(Equipamiento $objItem){
                     //remove Item from the collection
-                    $arrAux = $this->objEquipamientoAsJardinInfantesArray;
-                    $this->objEquipamientoAsJardinInfantesArray = array();
+                    $arrAux = $this->objEquipamientoAsComedorArray;
+                    $this->objEquipamientoAsComedorArray = array();
                     foreach ($arrAux as $obj) {
                         if ($obj !== $objItem) 
-                            array_push($this->objEquipamientoAsJardinInfantesArray,$obj);
+                            array_push($this->objEquipamientoAsComedorArray,$obj);
                     }
                     //automatic persistence to de DB if necesary
                     if(!is_null($objItem->Id))
                         try{
-                            $objItem->JardinInfantesObject = null;
+                            $objItem->ComedorObject = null;
                             $objItem->Save();
                         }catch(Exception $e){
-                            $this->DeleteAssociatedEquipamientoAsJardinInfantes($objItem);
+                            $this->DeleteAssociatedEquipamientoAsComedor($objItem);
                         }
 
-                    return $this->objEquipamientoAsJardinInfantesArray;
+                    return $this->objEquipamientoAsComedorArray;
                 }
 
 		/**
-		 * Gets all associated EquipamientosAsJardinInfantes as an array of Equipamiento objects
+		 * Gets all associated EquipamientosAsComedor as an array of Equipamiento objects
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/ 
-		public function GetEquipamientoAsJardinInfantesArray($objOptionalClauses = null) {
+		public function GetEquipamientoAsComedorArray($objOptionalClauses = null) {
 			if ((is_null($this->intId)))
 				return array();
 
 			try {
-				return Equipamiento::LoadArrayByJardinInfantes($this->intId, $objOptionalClauses);
+				return Equipamiento::LoadArrayByComedor($this->intId, $objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
 				throw $objExc;
@@ -1518,26 +1518,26 @@ class OpcionesEquipamientosGen extends QBaseClass {
 		}
 
 		/**
-		 * Counts all associated EquipamientosAsJardinInfantes
+		 * Counts all associated EquipamientosAsComedor
 		 * @return int
 		*/ 
-		public function CountEquipamientosAsJardinInfantes() {
+		public function CountEquipamientosAsComedor() {
 			if ((is_null($this->intId)))
 				return 0;
 
-			return Equipamiento::CountByJardinInfantes($this->intId);
+			return Equipamiento::CountByComedor($this->intId);
 		}
 
 		/**
-		 * Associates a EquipamientoAsJardinInfantes
+		 * Associates a EquipamientoAsComedor
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function AssociateEquipamientoAsJardinInfantes(Equipamiento $objEquipamiento) {
+		public function AssociateEquipamientoAsComedor(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsJardinInfantes on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsComedor on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1547,22 +1547,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . '
 			');
 		}
 
 		/**
-		 * Unassociates a EquipamientoAsJardinInfantes
+		 * Unassociates a EquipamientoAsComedor
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function UnassociateEquipamientoAsJardinInfantes(Equipamiento $objEquipamiento) {
+		public function UnassociateEquipamientoAsComedor(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1572,20 +1572,20 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"jardin_infantes" = null
+					"comedor" = null
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Unassociates all EquipamientosAsJardinInfantes
+		 * Unassociates all EquipamientosAsComedor
 		 * @return void
 		*/ 
-		public function UnassociateAllEquipamientosAsJardinInfantes() {
+		public function UnassociateAllEquipamientosAsComedor() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1595,22 +1595,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"jardin_infantes" = null
+					"comedor" = null
 				WHERE
-					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes an associated EquipamientoAsJardinInfantes
+		 * Deletes an associated EquipamientoAsComedor
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function DeleteAssociatedEquipamientoAsJardinInfantes(Equipamiento $objEquipamiento) {
+		public function DeleteAssociatedEquipamientoAsComedor(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1621,17 +1621,17 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					"equipamiento"
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes all associated EquipamientosAsJardinInfantes
+		 * Deletes all associated EquipamientosAsComedor
 		 * @return void
 		*/ 
-		public function DeleteAllEquipamientosAsJardinInfantes() {
+		public function DeleteAllEquipamientosAsComedor() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -1641,7 +1641,7 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				DELETE FROM
 					"equipamiento"
 				WHERE
-					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
@@ -2037,65 +2037,65 @@ class OpcionesEquipamientosGen extends QBaseClass {
 
 			
 		
-		// Related Objects' Methods for EquipamientoAsComedor
+		// Related Objects' Methods for EquipamientoAsJardinInfantes
 		//-------------------------------------------------------------------
 
-                //Public Model methods for add and remove Items from the _EquipamientoAsComedorArray
+                //Public Model methods for add and remove Items from the _EquipamientoAsJardinInfantesArray
                 /**
-                * Add a Item to the _EquipamientoAsComedorArray
+                * Add a Item to the _EquipamientoAsJardinInfantesArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function AddEquipamientoAsComedor(Equipamiento $objItem){
+                public function AddEquipamientoAsJardinInfantes(Equipamiento $objItem){
                    //add to the collection and add me as a parent
-                    $objItem->ComedorObject = $this;
-                    $this->objEquipamientoAsComedorArray = $this->EquipamientoAsComedorArray;
-                    $this->objEquipamientoAsComedorArray[] = $objItem;
+                    $objItem->JardinInfantesObject = $this;
+                    $this->objEquipamientoAsJardinInfantesArray = $this->EquipamientoAsJardinInfantesArray;
+                    $this->objEquipamientoAsJardinInfantesArray[] = $objItem;
 
                     if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
                     
                     //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateEquipamientoAsComedor($objItem);
+                    //$this->AssociateEquipamientoAsJardinInfantes($objItem);
 
-                    return $this->EquipamientoAsComedorArray;
+                    return $this->EquipamientoAsJardinInfantesArray;
                 }
 
                 /**
-                * Remove a Item to the _EquipamientoAsComedorArray
+                * Remove a Item to the _EquipamientoAsJardinInfantesArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function RemoveEquipamientoAsComedor(Equipamiento $objItem){
+                public function RemoveEquipamientoAsJardinInfantes(Equipamiento $objItem){
                     //remove Item from the collection
-                    $arrAux = $this->objEquipamientoAsComedorArray;
-                    $this->objEquipamientoAsComedorArray = array();
+                    $arrAux = $this->objEquipamientoAsJardinInfantesArray;
+                    $this->objEquipamientoAsJardinInfantesArray = array();
                     foreach ($arrAux as $obj) {
                         if ($obj !== $objItem) 
-                            array_push($this->objEquipamientoAsComedorArray,$obj);
+                            array_push($this->objEquipamientoAsJardinInfantesArray,$obj);
                     }
                     //automatic persistence to de DB if necesary
                     if(!is_null($objItem->Id))
                         try{
-                            $objItem->ComedorObject = null;
+                            $objItem->JardinInfantesObject = null;
                             $objItem->Save();
                         }catch(Exception $e){
-                            $this->DeleteAssociatedEquipamientoAsComedor($objItem);
+                            $this->DeleteAssociatedEquipamientoAsJardinInfantes($objItem);
                         }
 
-                    return $this->objEquipamientoAsComedorArray;
+                    return $this->objEquipamientoAsJardinInfantesArray;
                 }
 
 		/**
-		 * Gets all associated EquipamientosAsComedor as an array of Equipamiento objects
+		 * Gets all associated EquipamientosAsJardinInfantes as an array of Equipamiento objects
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/ 
-		public function GetEquipamientoAsComedorArray($objOptionalClauses = null) {
+		public function GetEquipamientoAsJardinInfantesArray($objOptionalClauses = null) {
 			if ((is_null($this->intId)))
 				return array();
 
 			try {
-				return Equipamiento::LoadArrayByComedor($this->intId, $objOptionalClauses);
+				return Equipamiento::LoadArrayByJardinInfantes($this->intId, $objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
 				throw $objExc;
@@ -2103,26 +2103,26 @@ class OpcionesEquipamientosGen extends QBaseClass {
 		}
 
 		/**
-		 * Counts all associated EquipamientosAsComedor
+		 * Counts all associated EquipamientosAsJardinInfantes
 		 * @return int
 		*/ 
-		public function CountEquipamientosAsComedor() {
+		public function CountEquipamientosAsJardinInfantes() {
 			if ((is_null($this->intId)))
 				return 0;
 
-			return Equipamiento::CountByComedor($this->intId);
+			return Equipamiento::CountByJardinInfantes($this->intId);
 		}
 
 		/**
-		 * Associates a EquipamientoAsComedor
+		 * Associates a EquipamientoAsJardinInfantes
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function AssociateEquipamientoAsComedor(Equipamiento $objEquipamiento) {
+		public function AssociateEquipamientoAsJardinInfantes(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsComedor on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsJardinInfantes on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2132,22 +2132,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . '
 			');
 		}
 
 		/**
-		 * Unassociates a EquipamientoAsComedor
+		 * Unassociates a EquipamientoAsJardinInfantes
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function UnassociateEquipamientoAsComedor(Equipamiento $objEquipamiento) {
+		public function UnassociateEquipamientoAsJardinInfantes(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2157,20 +2157,20 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"comedor" = null
+					"jardin_infantes" = null
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Unassociates all EquipamientosAsComedor
+		 * Unassociates all EquipamientosAsJardinInfantes
 		 * @return void
 		*/ 
-		public function UnassociateAllEquipamientosAsComedor() {
+		public function UnassociateAllEquipamientosAsJardinInfantes() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2180,22 +2180,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"comedor" = null
+					"jardin_infantes" = null
 				WHERE
-					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes an associated EquipamientoAsComedor
+		 * Deletes an associated EquipamientoAsJardinInfantes
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function DeleteAssociatedEquipamientoAsComedor(Equipamiento $objEquipamiento) {
+		public function DeleteAssociatedEquipamientoAsJardinInfantes(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2206,17 +2206,17 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					"equipamiento"
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes all associated EquipamientosAsComedor
+		 * Deletes all associated EquipamientosAsJardinInfantes
 		 * @return void
 		*/ 
-		public function DeleteAllEquipamientosAsComedor() {
+		public function DeleteAllEquipamientosAsJardinInfantes() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsComedor on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsJardinInfantes on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2226,7 +2226,7 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				DELETE FROM
 					"equipamiento"
 				WHERE
-					"comedor" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"jardin_infantes" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
@@ -2427,65 +2427,65 @@ class OpcionesEquipamientosGen extends QBaseClass {
 
 			
 		
-		// Related Objects' Methods for EquipamientoAsCentroIntegracionComunitaria
+		// Related Objects' Methods for EquipamientoAsUnidadSanitaria
 		//-------------------------------------------------------------------
 
-                //Public Model methods for add and remove Items from the _EquipamientoAsCentroIntegracionComunitariaArray
+                //Public Model methods for add and remove Items from the _EquipamientoAsUnidadSanitariaArray
                 /**
-                * Add a Item to the _EquipamientoAsCentroIntegracionComunitariaArray
+                * Add a Item to the _EquipamientoAsUnidadSanitariaArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function AddEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objItem){
+                public function AddEquipamientoAsUnidadSanitaria(Equipamiento $objItem){
                    //add to the collection and add me as a parent
-                    $objItem->CentroIntegracionComunitariaObject = $this;
-                    $this->objEquipamientoAsCentroIntegracionComunitariaArray = $this->EquipamientoAsCentroIntegracionComunitariaArray;
-                    $this->objEquipamientoAsCentroIntegracionComunitariaArray[] = $objItem;
+                    $objItem->UnidadSanitariaObject = $this;
+                    $this->objEquipamientoAsUnidadSanitariaArray = $this->EquipamientoAsUnidadSanitariaArray;
+                    $this->objEquipamientoAsUnidadSanitariaArray[] = $objItem;
 
                     if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
                     
                     //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateEquipamientoAsCentroIntegracionComunitaria($objItem);
+                    //$this->AssociateEquipamientoAsUnidadSanitaria($objItem);
 
-                    return $this->EquipamientoAsCentroIntegracionComunitariaArray;
+                    return $this->EquipamientoAsUnidadSanitariaArray;
                 }
 
                 /**
-                * Remove a Item to the _EquipamientoAsCentroIntegracionComunitariaArray
+                * Remove a Item to the _EquipamientoAsUnidadSanitariaArray
                 * @param Equipamiento $objItem
                 * @return Equipamiento[]
                 */
-                public function RemoveEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objItem){
+                public function RemoveEquipamientoAsUnidadSanitaria(Equipamiento $objItem){
                     //remove Item from the collection
-                    $arrAux = $this->objEquipamientoAsCentroIntegracionComunitariaArray;
-                    $this->objEquipamientoAsCentroIntegracionComunitariaArray = array();
+                    $arrAux = $this->objEquipamientoAsUnidadSanitariaArray;
+                    $this->objEquipamientoAsUnidadSanitariaArray = array();
                     foreach ($arrAux as $obj) {
                         if ($obj !== $objItem) 
-                            array_push($this->objEquipamientoAsCentroIntegracionComunitariaArray,$obj);
+                            array_push($this->objEquipamientoAsUnidadSanitariaArray,$obj);
                     }
                     //automatic persistence to de DB if necesary
                     if(!is_null($objItem->Id))
                         try{
-                            $objItem->CentroIntegracionComunitariaObject = null;
+                            $objItem->UnidadSanitariaObject = null;
                             $objItem->Save();
                         }catch(Exception $e){
-                            $this->DeleteAssociatedEquipamientoAsCentroIntegracionComunitaria($objItem);
+                            $this->DeleteAssociatedEquipamientoAsUnidadSanitaria($objItem);
                         }
 
-                    return $this->objEquipamientoAsCentroIntegracionComunitariaArray;
+                    return $this->objEquipamientoAsUnidadSanitariaArray;
                 }
 
 		/**
-		 * Gets all associated EquipamientosAsCentroIntegracionComunitaria as an array of Equipamiento objects
+		 * Gets all associated EquipamientosAsUnidadSanitaria as an array of Equipamiento objects
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
 		 * @return Equipamiento[]
 		*/ 
-		public function GetEquipamientoAsCentroIntegracionComunitariaArray($objOptionalClauses = null) {
+		public function GetEquipamientoAsUnidadSanitariaArray($objOptionalClauses = null) {
 			if ((is_null($this->intId)))
 				return array();
 
 			try {
-				return Equipamiento::LoadArrayByCentroIntegracionComunitaria($this->intId, $objOptionalClauses);
+				return Equipamiento::LoadArrayByUnidadSanitaria($this->intId, $objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
 				throw $objExc;
@@ -2493,26 +2493,26 @@ class OpcionesEquipamientosGen extends QBaseClass {
 		}
 
 		/**
-		 * Counts all associated EquipamientosAsCentroIntegracionComunitaria
+		 * Counts all associated EquipamientosAsUnidadSanitaria
 		 * @return int
 		*/ 
-		public function CountEquipamientosAsCentroIntegracionComunitaria() {
+		public function CountEquipamientosAsUnidadSanitaria() {
 			if ((is_null($this->intId)))
 				return 0;
 
-			return Equipamiento::CountByCentroIntegracionComunitaria($this->intId);
+			return Equipamiento::CountByUnidadSanitaria($this->intId);
 		}
 
 		/**
-		 * Associates a EquipamientoAsCentroIntegracionComunitaria
+		 * Associates a EquipamientoAsUnidadSanitaria
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function AssociateEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objEquipamiento) {
+		public function AssociateEquipamientoAsUnidadSanitaria(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsCentroIntegracionComunitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEquipamientoAsUnidadSanitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2522,22 +2522,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . '
 			');
 		}
 
 		/**
-		 * Unassociates a EquipamientoAsCentroIntegracionComunitaria
+		 * Unassociates a EquipamientoAsUnidadSanitaria
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function UnassociateEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objEquipamiento) {
+		public function UnassociateEquipamientoAsUnidadSanitaria(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2547,20 +2547,20 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"centro_integracion_comunitaria" = null
+					"unidad_sanitaria" = null
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Unassociates all EquipamientosAsCentroIntegracionComunitaria
+		 * Unassociates all EquipamientosAsUnidadSanitaria
 		 * @return void
 		*/ 
-		public function UnassociateAllEquipamientosAsCentroIntegracionComunitaria() {
+		public function UnassociateAllEquipamientosAsUnidadSanitaria() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2570,22 +2570,22 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				UPDATE
 					"equipamiento"
 				SET
-					"centro_integracion_comunitaria" = null
+					"unidad_sanitaria" = null
 				WHERE
-					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes an associated EquipamientoAsCentroIntegracionComunitaria
+		 * Deletes an associated EquipamientoAsUnidadSanitaria
 		 * @param Equipamiento $objEquipamiento
 		 * @return void
 		*/ 
-		public function DeleteAssociatedEquipamientoAsCentroIntegracionComunitaria(Equipamiento $objEquipamiento) {
+		public function DeleteAssociatedEquipamientoAsUnidadSanitaria(Equipamiento $objEquipamiento) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
 			if ((is_null($objEquipamiento->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this OpcionesEquipamientos with an unsaved Equipamiento.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2596,17 +2596,17 @@ class OpcionesEquipamientosGen extends QBaseClass {
 					"equipamiento"
 				WHERE
 					"id" = ' . $objDatabase->SqlVariable($objEquipamiento->Id) . ' AND
-					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes all associated EquipamientosAsCentroIntegracionComunitaria
+		 * Deletes all associated EquipamientosAsUnidadSanitaria
 		 * @return void
 		*/ 
-		public function DeleteAllEquipamientosAsCentroIntegracionComunitaria() {
+		public function DeleteAllEquipamientosAsUnidadSanitaria() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsCentroIntegracionComunitaria on this unsaved OpcionesEquipamientos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEquipamientoAsUnidadSanitaria on this unsaved OpcionesEquipamientos.');
 
 			// Get the Database Object for this Class
 			$objDatabase = OpcionesEquipamientos::GetDatabase();
@@ -2616,7 +2616,7 @@ class OpcionesEquipamientosGen extends QBaseClass {
 				DELETE FROM
 					"equipamiento"
 				WHERE
-					"centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
+					"unidad_sanitaria" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 

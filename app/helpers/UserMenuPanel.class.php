@@ -25,12 +25,12 @@ class UserMenuPanel extends QPanel {
         $btnInicio->AddCssClass('btn-white');
         $btnInicio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnHome_Click'));
 
-        $btnPersonal = new QButton($this);
-        $btnPersonal->Text = 'Establecimientos';
-        $btnPersonal->Icon = 'building';
-        $btnPersonal->AddCssClass('btn-white');
-        $btnPersonal->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnPersonal_Click'));
-        $btnPersonal->Visible = Permission::EsDirector();
+        $btnFolio = new QButton($this);
+        $btnFolio->Text = 'Folios';
+        $btnFolio->Icon = 'edit';
+        $btnFolio->AddCssClass('btn-white');
+        $btnFolio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnFolio_Click'));
+        //$btnFolio->Visible = Permission::EsDirector();
 
         $btnIncidente = new QButton($this);
         $btnIncidente->Text = 'Peticiones';
@@ -46,12 +46,12 @@ class UserMenuPanel extends QPanel {
             $btnIncidente->AddCssClass('btn-grey');
             $btnIncidente->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnDesvinculacion_Click'));
         }
-        
+        /*
         $btnCedula = new QButton($this);
         
         $btnCedula->Icon = 'edit';
         $btnCedula->AddCssClass('btn-white');
-        
+        */
         //El operador, en vez de acceso a Cedula, tiene acceso a pantalla Reseteo de Contraseñas
         if(Permission::EsOperador() || Permission::EsSupervisor()){
             $btnInformacionGeneral = new QButton($this);
@@ -66,7 +66,7 @@ class UserMenuPanel extends QPanel {
             $btnAdmNominas->AddCssClass('btn-white');
             $btnAdmNominas->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnAdmNominas_Click'));
         }
-
+/*
         if(Permission::EsOperador() || Permission::EsSupervisor()){
             $btnCedula->Text = 'Resetear Passwords';
             $btnCedula->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnResetearPassword_Click'));
@@ -74,7 +74,7 @@ class UserMenuPanel extends QPanel {
             $btnCedula->Text = 'Folios';
             $btnCedula->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnCedula_Click'));
         }
-        
+*/        
         
         $btnEditarPerfil = new QButton($this);
         $btnEditarPerfil->Text = 'Editar Perfil';
@@ -111,8 +111,8 @@ class UserMenuPanel extends QPanel {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/establecimiento/desvincular');
     }
 
-    public function btnPersonal_Click() {
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/establecimiento');
+    public function btnFolio_Click() {
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/folio');
     }
     
     public function btnInformacionGlobal_Click(){
@@ -122,7 +122,7 @@ class UserMenuPanel extends QPanel {
     public function btnAdmNominas_Click(){
         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/admnomina');
     }
-
+/*
     public function btnCedula_Click() {
         //QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/cedula');
         $arrInfoUsuario = Session::GetUsuario();
@@ -133,7 +133,7 @@ class UserMenuPanel extends QPanel {
             QApplication::DisplayAlert('Usted no posee Ofertas para cargar');
         }
     }
-    
+*/    
      public function btnResetearPassword_Click() {
          QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/usuario/resetearpass');
      }
