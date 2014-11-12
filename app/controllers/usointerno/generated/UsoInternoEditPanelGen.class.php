@@ -17,9 +17,9 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'calRegularizacionFechaInicio' => true,
         'chkRegularizacionTienePlano' => true,
         'chkRegularizacionCircular10Catastro' => true,
-        'txtRegularizacionAprobacionGeodesia' => true,
+        'lstRegularizacionAprobacionGeodesiaObject' => true,
         'txtRegularizacionRegistracion' => true,
-        'txtRegularizacionEstadoProceso' => true,
+        'lstRegularizacionEstadoProcesoObject' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -65,12 +65,12 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['chkRegularizacionTienePlano'] = $this->mctUsoInterno->chkRegularizacionTienePlano_Create();
         if (in_array('chkRegularizacionCircular10Catastro',$strControlsArray)) 
             $this->objControlsArray['chkRegularizacionCircular10Catastro'] = $this->mctUsoInterno->chkRegularizacionCircular10Catastro_Create();
-        if (in_array('txtRegularizacionAprobacionGeodesia',$strControlsArray)) 
-            $this->objControlsArray['txtRegularizacionAprobacionGeodesia'] = $this->mctUsoInterno->txtRegularizacionAprobacionGeodesia_Create();
+        if (in_array('lstRegularizacionAprobacionGeodesiaObject',$strControlsArray)) 
+            $this->objControlsArray['lstRegularizacionAprobacionGeodesiaObject'] = $this->mctUsoInterno->lstRegularizacionAprobacionGeodesiaObject_Create();
         if (in_array('txtRegularizacionRegistracion',$strControlsArray)) 
             $this->objControlsArray['txtRegularizacionRegistracion'] = $this->mctUsoInterno->txtRegularizacionRegistracion_Create();
-        if (in_array('txtRegularizacionEstadoProceso',$strControlsArray)) 
-            $this->objControlsArray['txtRegularizacionEstadoProceso'] = $this->mctUsoInterno->txtRegularizacionEstadoProceso_Create();
+        if (in_array('lstRegularizacionEstadoProcesoObject',$strControlsArray)) 
+            $this->objControlsArray['lstRegularizacionEstadoProcesoObject'] = $this->mctUsoInterno->lstRegularizacionEstadoProcesoObject_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

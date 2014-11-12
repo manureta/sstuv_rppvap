@@ -16,6 +16,7 @@
 		<?php $_CONTROL->txtParc->RenderWithName(); ?>
 		<?php $_CONTROL->txtInscripcionDominio->RenderWithName(); ?>
 		<?php $_CONTROL->txtDatoVerificadoRegPropiedad->RenderWithName(); ?>
+		<?php $_CONTROL->txtTitularRegPropiedad->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

@@ -3,6 +3,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     public $strTitulo = 'Datos Generales';
     public $strSubtitulo = '';
+    //public $strTemplate = "/var/www/html/sstuv_rppvap/app/views/folio/FolioEditPanel.tpl.php";
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
@@ -10,7 +11,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstIdPartidoObject' => true,
         'lstIdLocalidadObject' => true,
         'txtMatricula' => true,
-        'calFecha' => true,
+        'calFecha' => false,
         'txtEncargado' => true,
         'txtNombreBarrioOficial' => true,
         'txtNombreBarrioAlternativo1' => true,
@@ -31,10 +32,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     public function GetBreadCrumb() {
         return array(
-                'Datos Generales',
-                "Nomenclatura",
-                "Cond. Socio-Urbanistas",
-                "Integración Socio-Urbanistas"                
+                'Datos Generales'               
             );
     }
     
@@ -51,8 +49,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         }
 
         $this->intId = $intId;
-        $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab("Datos Generales");
+        //$this->pnlTabs = new QTabPanel($this);
+        //$this->pnlTabs->AddTab("Datos Generales");
         //$this->pnlTabs->AddTab("Nomenclatura Catastral");
         //$this->pnlTabs->AddTab("Cond. Socio-Urbanistas");
         //$this->pnlTabs->AddTab("Integración Socio-Urbana");
@@ -62,6 +60,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->objControlsArray['txtCodFolio']->Visible = null;
         $existeFolio=$this->mctFolio->Folio->CodFolio;
         //error_log($existeFolio);
+        QApplication::ExecuteJavascript("FolioPasos()");
         if(!$existeFolio)QApplication::ExecuteJavascript("mostrarMapa()");
     }
 

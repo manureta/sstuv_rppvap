@@ -32,6 +32,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         'Parc' => true,
         'InscripcionDominio' => true,
         'DatoVerificadoRegPropiedad' => true,
+        'TitularRegPropiedad' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -76,6 +77,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         if (NomenclaturaDataGrid::$strColumnsArray['Parc']) $this->MetaAddColumn('Parc')->Title = QApplication::Translate('Parc');
         if (NomenclaturaDataGrid::$strColumnsArray['InscripcionDominio']) $this->MetaAddColumn('InscripcionDominio')->Title = QApplication::Translate('InscripcionDominio');
         if (NomenclaturaDataGrid::$strColumnsArray['DatoVerificadoRegPropiedad']) $this->MetaAddColumn('DatoVerificadoRegPropiedad')->Title = QApplication::Translate('DatoVerificadoRegPropiedad');
+        if (NomenclaturaDataGrid::$strColumnsArray['TitularRegPropiedad']) $this->MetaAddColumn('TitularRegPropiedad')->Title = QApplication::Translate('TitularRegPropiedad');
     }
 
 /**
@@ -235,6 +237,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
 				case 'Parc': return QQN::Nomenclatura()->Parc;
 				case 'InscripcionDominio': return QQN::Nomenclatura()->InscripcionDominio;
 				case 'DatoVerificadoRegPropiedad': return QQN::Nomenclatura()->DatoVerificadoRegPropiedad;
+				case 'TitularRegPropiedad': return QQN::Nomenclatura()->TitularRegPropiedad;
 				default: throw new QCallerException('Simple Property not found in NomenclaturaDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

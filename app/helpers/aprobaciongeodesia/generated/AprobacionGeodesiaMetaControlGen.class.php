@@ -245,6 +245,58 @@
 
 
 
+    public $lstUsoInternoAsRegularizacion;
+    /**
+     * Gets all associated UsoInternosAsRegularizacion as an array of UsoInterno objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return UsoInterno[]
+    */ 
+    public function lstUsoInternoAsRegularizacion_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'UsoInterno';
+        $strConfigArray['strRefreshMethod'] = 'UsoInternoAsRegularizacionArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'RegularizacionAprobacionGeodesia';
+        $strConfigArray['strPrimaryKeyProperty'] = 'IdFolio';
+        $strConfigArray['strAddMethod'] = 'AddUsoInternoAsRegularizacion';
+        $strConfigArray['strRemoveMethod'] = 'RemoveUsoInternoAsRegularizacion';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['InformeUrbanisticoFecha'] = QApplication::Translate('InformeUrbanisticoFecha');
+        $strConfigArray['Columns']['MapeoPreliminar'] = QApplication::Translate('MapeoPreliminar');
+        $strConfigArray['Columns']['NoCorrespondeInscripcion'] = QApplication::Translate('NoCorrespondeInscripcion');
+        $strConfigArray['Columns']['ResolucionInscripcionProvisoria'] = QApplication::Translate('ResolucionInscripcionProvisoria');
+        $strConfigArray['Columns']['ResolucionInscripcionDefinitiva'] = QApplication::Translate('ResolucionInscripcionDefinitiva');
+        $strConfigArray['Columns']['RegularizacionFechaInicio'] = QApplication::Translate('RegularizacionFechaInicio');
+        $strConfigArray['Columns']['RegularizacionTienePlano'] = QApplication::Translate('RegularizacionTienePlano');
+        $strConfigArray['Columns']['RegularizacionCircular10Catastro'] = QApplication::Translate('RegularizacionCircular10Catastro');
+        $strConfigArray['Columns']['RegularizacionRegistracion'] = QApplication::Translate('RegularizacionRegistracion');
+        $strConfigArray['Columns']['RegularizacionEstadoProcesoObject'] = QApplication::Translate('RegularizacionEstadoProcesoObject');
+
+        $this->lstUsoInternoAsRegularizacion = new QListPanel($this->objParentObject, $this->objAprobacionGeodesia, $strConfigArray, $strControlId);
+        $this->lstUsoInternoAsRegularizacion->Name = UsoInterno::Noun();
+        $this->lstUsoInternoAsRegularizacion->SetNewMethod($this, "lstUsoInternoAsRegularizacion_New");
+        $this->lstUsoInternoAsRegularizacion->SetEditMethod($this, "lstUsoInternoAsRegularizacion_Edit");
+        return $this->lstUsoInternoAsRegularizacion;
+    }
+
+    public function lstUsoInternoAsRegularizacion_New() {
+        UsoInternoModalPanel::$strControlsArray['lstRegularizacionAprobacionGeodesiaObject'] = false;
+        $strControlsArray = array_keys(UsoInternoModalPanel::$strControlsArray, true);
+        $this->lstUsoInternoAsRegularizacion->ModalPanel = new UsoInternoModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstUsoInternoAsRegularizacion->ModalPanel->objCallerControl = $this->lstUsoInternoAsRegularizacion;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstUsoInternoAsRegularizacion_Edit($intKey) {
+        UsoInternoModalPanel::$strControlsArray['lstRegularizacionAprobacionGeodesiaObject'] = false;
+        $strControlsArray = array_keys(UsoInternoModalPanel::$strControlsArray, true);
+        $obj = $this->objAprobacionGeodesia->UsoInternoAsRegularizacionArray[$intKey];
+        $this->lstUsoInternoAsRegularizacion->ModalPanel = new UsoInternoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstUsoInternoAsRegularizacion->ModalPanel->objCallerControl = $this->lstUsoInternoAsRegularizacion;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
 
 
         /**

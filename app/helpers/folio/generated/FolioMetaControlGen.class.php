@@ -817,6 +817,7 @@
         $strConfigArray['Columns']['Parc'] = QApplication::Translate('Parc');
         $strConfigArray['Columns']['InscripcionDominio'] = QApplication::Translate('InscripcionDominio');
         $strConfigArray['Columns']['DatoVerificadoRegPropiedad'] = QApplication::Translate('DatoVerificadoRegPropiedad');
+        $strConfigArray['Columns']['TitularRegPropiedad'] = QApplication::Translate('TitularRegPropiedad');
 
         $this->lstNomenclaturaAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
         $this->lstNomenclaturaAsId->Name = Nomenclatura::Noun();

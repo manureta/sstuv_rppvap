@@ -73,7 +73,7 @@ class FolioGen extends QBaseClass {
      * @var string strCodFolio
      */
     protected $strCodFolio;
-    const CodFolioMaxLength = 6;
+    const CodFolioMaxLength = 7;
     const CodFolioDefault = null;
 
 
@@ -98,7 +98,7 @@ class FolioGen extends QBaseClass {
      * @var string strMatricula
      */
     protected $strMatricula;
-    const MatriculaMaxLength = 3;
+    const MatriculaMaxLength = 4;
     const MatriculaDefault = null;
 
 
@@ -107,7 +107,7 @@ class FolioGen extends QBaseClass {
      * @var QDateTime dttFecha
      */
     protected $dttFecha;
-    const FechaDefault = null;
+    const FechaDefault = 'now()';
 
 
     /**

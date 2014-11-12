@@ -32,6 +32,7 @@ class FolioEditPanelGen extends EditPanelBase {
         'lstNomenclaturaAsId' => false,
     );
 
+ 
 
     protected function metaControl_Create($strControlsArray){
         // Construct the FolioMetaControl
@@ -82,9 +83,9 @@ class FolioEditPanelGen extends EditPanelBase {
         if (in_array('lstUsoInterno',$strControlsArray)) 
             $this->objControlsArray['lstUsoInterno'] = $this->mctFolio->lstUsoInterno_Create();
         if (in_array('lstNomenclaturaAsId',$strControlsArray))
-            $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();        
+            $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
 
-        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
     
     protected function buttons_Create($blnDelete = true) {
@@ -96,7 +97,17 @@ class FolioEditPanelGen extends EditPanelBase {
         }
     }
 
-    
+    // Control AjaxAction Event Handlers
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the FolioMetaControl
+        $this->mctFolio->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->objModifiedChildsArray = array();
+        QApplication::DisplayNotification('Los datos se guardaron correctamente');
+    }
 
     public function btnDelete_Click($strFormId, $strControlId, $strParameter) {
         // Delegate "Delete" processing to the FolioMetaControl

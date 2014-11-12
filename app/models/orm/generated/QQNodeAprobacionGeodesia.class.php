@@ -15,6 +15,8 @@ class QQNodeAprobacionGeodesia extends QQNode {
 					return new QQNode('num', 'Num', 'integer', $this);
 				case 'Anio':
 					return new QQNode('anio', 'Anio', 'string', $this);
+				case 'UsoInternoAsRegularizacion':
+					return new QQReverseReferenceNodeUsoInterno($this, 'usointernoasregularizacion', 'reverse_reference', 'regularizacion_aprobacion_geodesia');
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

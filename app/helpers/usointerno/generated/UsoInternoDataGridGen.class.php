@@ -29,9 +29,9 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'RegularizacionFechaInicio' => true,
         'RegularizacionTienePlano' => true,
         'RegularizacionCircular10Catastro' => true,
-        'RegularizacionAprobacionGeodesia' => true,
+        'RegularizacionAprobacionGeodesiaObject' => true,
         'RegularizacionRegistracion' => true,
-        'RegularizacionEstadoProceso' => true,
+        'RegularizacionEstadoProcesoObject' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -73,9 +73,9 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionFechaInicio']) $this->MetaAddColumn('RegularizacionFechaInicio')->Title = QApplication::Translate('RegularizacionFechaInicio');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionTienePlano']) $this->MetaAddColumn('RegularizacionTienePlano')->Title = QApplication::Translate('RegularizacionTienePlano');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionCircular10Catastro']) $this->MetaAddColumn('RegularizacionCircular10Catastro')->Title = QApplication::Translate('RegularizacionCircular10Catastro');
-        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionAprobacionGeodesia']) $this->MetaAddColumn('RegularizacionAprobacionGeodesia')->Title = QApplication::Translate('RegularizacionAprobacionGeodesia');
+        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionAprobacionGeodesiaObject']) $this->MetaAddColumn(QQN::UsoInterno()->RegularizacionAprobacionGeodesiaObject)->Title = QApplication::Translate('RegularizacionAprobacionGeodesiaObject');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionRegistracion']) $this->MetaAddColumn('RegularizacionRegistracion')->Title = QApplication::Translate('RegularizacionRegistracion');
-        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionEstadoProceso']) $this->MetaAddColumn('RegularizacionEstadoProceso')->Title = QApplication::Translate('RegularizacionEstadoProceso');
+        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionEstadoProcesoObject']) $this->MetaAddColumn(QQN::UsoInterno()->RegularizacionEstadoProcesoObject)->Title = QApplication::Translate('RegularizacionEstadoProcesoObject');
     }
 
 /**
@@ -233,8 +233,10 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'RegularizacionTienePlano': return QQN::UsoInterno()->RegularizacionTienePlano;
 				case 'RegularizacionCircular10Catastro': return QQN::UsoInterno()->RegularizacionCircular10Catastro;
 				case 'RegularizacionAprobacionGeodesia': return QQN::UsoInterno()->RegularizacionAprobacionGeodesia;
+				case 'RegularizacionAprobacionGeodesiaObject': return QQN::UsoInterno()->RegularizacionAprobacionGeodesiaObject;
 				case 'RegularizacionRegistracion': return QQN::UsoInterno()->RegularizacionRegistracion;
 				case 'RegularizacionEstadoProceso': return QQN::UsoInterno()->RegularizacionEstadoProceso;
+				case 'RegularizacionEstadoProcesoObject': return QQN::UsoInterno()->RegularizacionEstadoProcesoObject;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

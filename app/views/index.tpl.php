@@ -60,7 +60,7 @@
                     <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logosstuv.png" style="width:171px; height:60px;">
                 </div>
                 <?php if (Session::Get('objUsuario')) { ?>
-                <div><span class="nombre-usuario">Bienvenido,<p><?php echo Session::GetObjUsuario()?></p></span></div>
+                <div><span class="nombre-usuario">Bienvenido,<p><?php echo Session::GetObjUsuario()->Nombre?></p></span></div>
                 <div class="pull-right">
                     <div id="menu-usuario" class="pull-right">
                         <?php $this->pnlUserMenu->Render(); ?>
@@ -154,10 +154,12 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
               </div>
             </div>
         </div>
-        <link rel="stylesheet" href="/registro/assets/leaflet/leaflet.css" />
-        <link rel="stylesheet" href="/registro/assets/leaflet/leaflet.draw.css" />
-        <script src="/registro/assets/leaflet/leaflet.js"></script>
-        <script src="/registro/assets/leaflet/leaflet.draw.js"></script>
+
+        <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.css" />
+        <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.css" />
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/jquery.steps.min.js"></script>
         <style>
         #map {
           min-height: 500px;

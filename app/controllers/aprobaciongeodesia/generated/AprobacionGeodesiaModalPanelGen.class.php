@@ -14,6 +14,7 @@ class AprobacionGeodesiaModalPanelGen extends EditPanelBase {
         'lstIdPartidoObject' => true,
         'txtNum' => true,
         'txtAnio' => true,
+        'lstUsoInternoAsRegularizacion' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objAprobacionGeodesia = null, $strControlId = null) {
@@ -52,6 +53,8 @@ class AprobacionGeodesiaModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNum'] = $this->mctAprobacionGeodesia->txtNum_Create();
         if (in_array('txtAnio',$strControlsArray)) 
             $this->objControlsArray['txtAnio'] = $this->mctAprobacionGeodesia->txtAnio_Create();
+        if (in_array('lstUsoInternoAsRegularizacion',$strControlsArray))
+            $this->objControlsArray['lstUsoInternoAsRegularizacion'] = $this->mctAprobacionGeodesia->lstUsoInternoAsRegularizacion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

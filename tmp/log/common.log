@@ -6,3 +6,19 @@ LINE 13:     "t0"."id_personal" AS "a11"
              ^
 2014-10-21 18:18:54 Undefined GET property or variable in 'Usuario' class: IdPersonal
 2014-10-21 18:21:53 Undefined GET property or variable in 'Usuario' class: IdPersonal
+2014-11-10 14:06:35 Unable to connect to Database: SQLSTATE[08006] [7] could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+2014-11-10 14:06:35 Unable to connect to Database: SQLSTATE[08006] [7] could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+2014-11-10 14:59:08 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 14:59:08 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 14:59:21 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 14:59:21 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 15:00:24 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 15:00:24 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 15:00:57 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 15:00:57 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 15:01:10 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist
+2014-11-10 15:01:10 Unable to connect to Database: SQLSTATE[08006] [7] FATAL:  database "sstuv_app" does not exist

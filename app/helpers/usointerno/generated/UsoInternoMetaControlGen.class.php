@@ -34,11 +34,11 @@
      * property-read QLabel $RegularizacionTienePlanoLabel
      * property QCheckBox $RegularizacionCircular10CatastroControl
      * property-read QLabel $RegularizacionCircular10CatastroLabel
-     * property QIntegerTextBox $RegularizacionAprobacionGeodesiaControl
+     * property QListBox $RegularizacionAprobacionGeodesiaControl
      * property-read QLabel $RegularizacionAprobacionGeodesiaLabel
      * property QIntegerTextBox $RegularizacionRegistracionControl
      * property-read QLabel $RegularizacionRegistracionLabel
-     * property QIntegerTextBox $RegularizacionEstadoProcesoControl
+     * property QListBox $RegularizacionEstadoProcesoControl
      * property-read QLabel $RegularizacionEstadoProcesoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
@@ -65,9 +65,9 @@
         protected $calRegularizacionFechaInicio;
         protected $chkRegularizacionTienePlano;
         protected $chkRegularizacionCircular10Catastro;
-        protected $txtRegularizacionAprobacionGeodesia;
+        protected $lstRegularizacionAprobacionGeodesiaObject;
         protected $txtRegularizacionRegistracion;
-        protected $txtRegularizacionEstadoProceso;
+        protected $lstRegularizacionEstadoProcesoObject;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -415,30 +415,29 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtRegularizacionAprobacionGeodesia
+         * Create and setup QAjaxAutoCompleteEntidadTextBox lstRegularizacionAprobacionGeodesiaObject
          * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
+         * @return QAjaxAutoCompleteEntidadTextBox
          */
-        public function txtRegularizacionAprobacionGeodesia_Create($strControlId = null) {
-            $this->txtRegularizacionAprobacionGeodesia = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesia');
-            $this->txtRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-                        $this->txtRegularizacionAprobacionGeodesia->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegularizacionAprobacionGeodesia->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegularizacionAprobacionGeodesia;
+        public function lstRegularizacionAprobacionGeodesiaObject_Create($strControlId = null) {
+            $this->lstRegularizacionAprobacionGeodesiaObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'AprobacionGeodesia', 'Id' , $strControlId);
+            if($this->objUsoInterno->RegularizacionAprobacionGeodesiaObject){
+                $this->lstRegularizacionAprobacionGeodesiaObject->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesiaObject->__toString();
+                $this->lstRegularizacionAprobacionGeodesiaObject->Value = $this->objUsoInterno->RegularizacionAprobacionGeodesiaObject->Id;
+            }
+            $this->lstRegularizacionAprobacionGeodesiaObject->Name = QApplication::Translate('RegularizacionAprobacionGeodesiaObject');
+            return $this->lstRegularizacionAprobacionGeodesiaObject;
         }
 
         /**
          * Create and setup QLabel lblRegularizacionAprobacionGeodesia
          * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
          * @return QLabel
          */
-        public function lblRegularizacionAprobacionGeodesia_Create($strControlId = null, $strFormat = null) {
+        public function lblRegularizacionAprobacionGeodesia_Create($strControlId = null) {
             $this->lblRegularizacionAprobacionGeodesia = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesia');
-            $this->lblRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-            $this->lblRegularizacionAprobacionGeodesia->Format = $strFormat;
+            $this->lblRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesiaObject');
+            $this->lblRegularizacionAprobacionGeodesia->Text = ($this->objUsoInterno->RegularizacionAprobacionGeodesiaObject) ? $this->objUsoInterno->RegularizacionAprobacionGeodesiaObject->__toString() : null;
             return $this->lblRegularizacionAprobacionGeodesia;
         }
 
@@ -471,30 +470,29 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtRegularizacionEstadoProceso
+         * Create and setup QAjaxAutoCompleteEntidadTextBox lstRegularizacionEstadoProcesoObject
          * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
+         * @return QAjaxAutoCompleteEntidadTextBox
          */
-        public function txtRegularizacionEstadoProceso_Create($strControlId = null) {
-            $this->txtRegularizacionEstadoProceso = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegularizacionEstadoProceso->Name = QApplication::Translate('RegularizacionEstadoProceso');
-            $this->txtRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
-                        $this->txtRegularizacionEstadoProceso->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegularizacionEstadoProceso->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegularizacionEstadoProceso;
+        public function lstRegularizacionEstadoProcesoObject_Create($strControlId = null) {
+            $this->lstRegularizacionEstadoProcesoObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'EstadoProceso', 'Id' , $strControlId);
+            if($this->objUsoInterno->RegularizacionEstadoProcesoObject){
+                $this->lstRegularizacionEstadoProcesoObject->Text = $this->objUsoInterno->RegularizacionEstadoProcesoObject->__toString();
+                $this->lstRegularizacionEstadoProcesoObject->Value = $this->objUsoInterno->RegularizacionEstadoProcesoObject->Id;
+            }
+            $this->lstRegularizacionEstadoProcesoObject->Name = QApplication::Translate('RegularizacionEstadoProcesoObject');
+            return $this->lstRegularizacionEstadoProcesoObject;
         }
 
         /**
          * Create and setup QLabel lblRegularizacionEstadoProceso
          * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
          * @return QLabel
          */
-        public function lblRegularizacionEstadoProceso_Create($strControlId = null, $strFormat = null) {
+        public function lblRegularizacionEstadoProceso_Create($strControlId = null) {
             $this->lblRegularizacionEstadoProceso = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionEstadoProceso->Name = QApplication::Translate('RegularizacionEstadoProceso');
-            $this->lblRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
-            $this->lblRegularizacionEstadoProceso->Format = $strFormat;
+            $this->lblRegularizacionEstadoProceso->Name = QApplication::Translate('RegularizacionEstadoProcesoObject');
+            $this->lblRegularizacionEstadoProceso->Text = ($this->objUsoInterno->RegularizacionEstadoProcesoObject) ? $this->objUsoInterno->RegularizacionEstadoProcesoObject->__toString() : null;
             return $this->lblRegularizacionEstadoProceso;
         }
 
@@ -543,14 +541,24 @@
             if ($this->chkRegularizacionCircular10Catastro) $this->chkRegularizacionCircular10Catastro->Checked = $this->objUsoInterno->RegularizacionCircular10Catastro;
             if ($this->lblRegularizacionCircular10Catastro) $this->lblRegularizacionCircular10Catastro->Text = ($this->objUsoInterno->RegularizacionCircular10Catastro) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
-            if ($this->txtRegularizacionAprobacionGeodesia) $this->txtRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-            if ($this->lblRegularizacionAprobacionGeodesia) $this->lblRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
+            if ($this->lstRegularizacionAprobacionGeodesiaObject) {
+                if($this->objUsoInterno->RegularizacionAprobacionGeodesiaObject){
+                    $this->lstRegularizacionAprobacionGeodesiaObject->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesiaObject->__toString();
+                    $this->lstRegularizacionAprobacionGeodesiaObject->Value = $this->objUsoInterno->RegularizacionAprobacionGeodesia->Id;
+                }                
+            }
+            if ($this->lblRegularizacionAprobacionGeodesia) $this->lblRegularizacionAprobacionGeodesia->Text = ($this->objUsoInterno->RegularizacionAprobacionGeodesiaObject) ? $this->objUsoInterno->RegularizacionAprobacionGeodesiaObject->__toString() : null;
 
             if ($this->txtRegularizacionRegistracion) $this->txtRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
             if ($this->lblRegularizacionRegistracion) $this->lblRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
 
-            if ($this->txtRegularizacionEstadoProceso) $this->txtRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
-            if ($this->lblRegularizacionEstadoProceso) $this->lblRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
+            if ($this->lstRegularizacionEstadoProcesoObject) {
+                if($this->objUsoInterno->RegularizacionEstadoProcesoObject){
+                    $this->lstRegularizacionEstadoProcesoObject->Text = $this->objUsoInterno->RegularizacionEstadoProcesoObject->__toString();
+                    $this->lstRegularizacionEstadoProcesoObject->Value = $this->objUsoInterno->RegularizacionEstadoProceso->Id;
+                }                
+            }
+            if ($this->lblRegularizacionEstadoProceso) $this->lblRegularizacionEstadoProceso->Text = ($this->objUsoInterno->RegularizacionEstadoProcesoObject) ? $this->objUsoInterno->RegularizacionEstadoProcesoObject->__toString() : null;
 
         }
 
@@ -579,9 +587,9 @@
                 if ($this->calRegularizacionFechaInicio) $this->objUsoInterno->RegularizacionFechaInicio = $this->calRegularizacionFechaInicio->DateTime;
                 if ($this->chkRegularizacionTienePlano) $this->objUsoInterno->RegularizacionTienePlano = $this->chkRegularizacionTienePlano->Checked;
                 if ($this->chkRegularizacionCircular10Catastro) $this->objUsoInterno->RegularizacionCircular10Catastro = $this->chkRegularizacionCircular10Catastro->Checked;
-                if ($this->txtRegularizacionAprobacionGeodesia) $this->objUsoInterno->RegularizacionAprobacionGeodesia = $this->txtRegularizacionAprobacionGeodesia->Text;
+                if ($this->lstRegularizacionAprobacionGeodesiaObject) $this->objUsoInterno->RegularizacionAprobacionGeodesia = $this->lstRegularizacionAprobacionGeodesiaObject->SelectedValue;
                 if ($this->txtRegularizacionRegistracion) $this->objUsoInterno->RegularizacionRegistracion = $this->txtRegularizacionRegistracion->Text;
-                if ($this->txtRegularizacionEstadoProceso) $this->objUsoInterno->RegularizacionEstadoProceso = $this->txtRegularizacionEstadoProceso->Text;
+                if ($this->lstRegularizacionEstadoProcesoObject) $this->objUsoInterno->RegularizacionEstadoProceso = $this->lstRegularizacionEstadoProcesoObject->SelectedValue;
 
 
         }
@@ -693,8 +701,8 @@
                     if (!$this->lblRegularizacionCircular10Catastro) return $this->lblRegularizacionCircular10Catastro_Create();
                     return $this->lblRegularizacionCircular10Catastro;
                 case 'RegularizacionAprobacionGeodesiaControl':
-                    if (!$this->txtRegularizacionAprobacionGeodesia) return $this->txtRegularizacionAprobacionGeodesia_Create();
-                    return $this->txtRegularizacionAprobacionGeodesia;
+                    if (!$this->lstRegularizacionAprobacionGeodesiaObject) return $this->lstRegularizacionAprobacionGeodesiaObject_Create();
+                    return $this->lstRegularizacionAprobacionGeodesiaObject;
                 case 'RegularizacionAprobacionGeodesiaLabel':
                     if (!$this->lblRegularizacionAprobacionGeodesia) return $this->lblRegularizacionAprobacionGeodesia_Create();
                     return $this->lblRegularizacionAprobacionGeodesia;
@@ -705,8 +713,8 @@
                     if (!$this->lblRegularizacionRegistracion) return $this->lblRegularizacionRegistracion_Create();
                     return $this->lblRegularizacionRegistracion;
                 case 'RegularizacionEstadoProcesoControl':
-                    if (!$this->txtRegularizacionEstadoProceso) return $this->txtRegularizacionEstadoProceso_Create();
-                    return $this->txtRegularizacionEstadoProceso;
+                    if (!$this->lstRegularizacionEstadoProcesoObject) return $this->lstRegularizacionEstadoProcesoObject_Create();
+                    return $this->lstRegularizacionEstadoProcesoObject;
                 case 'RegularizacionEstadoProcesoLabel':
                     if (!$this->lblRegularizacionEstadoProceso) return $this->lblRegularizacionEstadoProceso_Create();
                     return $this->lblRegularizacionEstadoProceso;
@@ -751,11 +759,11 @@
                     case 'RegularizacionCircular10CatastroControl':
                         return ($this->chkRegularizacionCircular10Catastro = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAprobacionGeodesiaControl':
-                        return ($this->txtRegularizacionAprobacionGeodesia = QType::Cast($mixValue, 'QControl'));
+                        return ($this->lstRegularizacionAprobacionGeodesiaObject = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionRegistracionControl':
                         return ($this->txtRegularizacionRegistracion = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionEstadoProcesoControl':
-                        return ($this->txtRegularizacionEstadoProceso = QType::Cast($mixValue, 'QControl'));
+                        return ($this->lstRegularizacionEstadoProcesoObject = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }
