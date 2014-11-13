@@ -50,6 +50,7 @@
 
 		// Link the Wrapper and the Control together
 		var objWrapper = this.getWrapper(objControl);
+		//f(!objWrapper) return;
 		objControl.wrapper = objWrapper;
 		objWrapper.control = objControl;
 

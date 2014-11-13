@@ -67,14 +67,3 @@ function mostrarMapa(){
 
 }
 
-function FolioPasos(){
-	$( document ).ready(function() {
-		$("#wizard").steps({
-		    headerTag: "h2",
-		    bodyTag: "section",
-		    transitionEffect: "slideLeft",
-		    autoFocus: true
-		});
-	});	
-
-}

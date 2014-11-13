@@ -4,7 +4,7 @@
  * Puede sobreescribir los métodos de su padre para utilizar funcionalidad propia.
  * 
  */
-class NomenclaturaFolioPanel extends NomenclaturaIndexPanelGen {
+class NomenclaturaFolioPanel extends NomenclaturaIndexPanel {
 
     public $strTitulo = 'Nomenclatura Catastral';
     public $strSubtitulo = '';
@@ -12,17 +12,10 @@ class NomenclaturaFolioPanel extends NomenclaturaIndexPanelGen {
     public $btnSiguente;
 
     protected $objFolio;
-    public function GetBreadCrumb() {
-        return array(
-                'Datos Generales',
-                "Nomenclatura",
-                "Cond. Socio-Urbanistas",
-                "Integración Socio-Urbanistas"                
-            );
-    }
+    
 
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
-
+        
         try {
             parent::__construct($objParentObject, $strControlId);
         } catch (QCallerException $objExc) {
@@ -31,6 +24,8 @@ class NomenclaturaFolioPanel extends NomenclaturaIndexPanelGen {
         }
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         $this->dtgNomenclaturas->AddCondition(QQ::Equal(QQN::Nomenclatura()->IdFolio,QApplication::QueryString("id")));
+
+        
 
         //$this->btnSiguente = new QButton($this);
         //$this->btnSiguente->Text = 'Siguiente';

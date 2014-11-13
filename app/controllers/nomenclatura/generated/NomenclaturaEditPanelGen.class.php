@@ -7,40 +7,9 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
     protected $intId;
 
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
-    public static $strControlsArray = array(
-        'lblId' => false,
-        'lstIdFolioObject' => true,
-        'txtPartidaInmobiliaria' => true,
-        'txtTitularDominio' => true,
-        'txtCirc' => true,
-        'txtSecc' => true,
-        'txtChacQuinta' => true,
-        'txtFrac' => true,
-        'txtMza' => true,
-        'txtParc' => true,
-        'txtInscripcionDominio' => true,
-        'txtDatoVerificadoRegPropiedad' => true,
-        'txtTitularRegPropiedad' => true,
-    );
+    
 
-    public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
-
-        $strControlsArray = empty($strControlsArray) ? array_keys(NomenclaturaEditPanel::$strControlsArray, true) : $strControlsArray;
-
-        // Call the Parent
-        try {
-            parent::__construct($objParentObject, $strControlId);
-        } catch (QCallerException $objExc) {
-            $objExc->IncrementOffset();
-            throw $objExc;
-        }
-
-        $this->intId = $intId;
-        $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab(Nomenclatura::Noun());
-        $this->metaControl_Create($strControlsArray);
-        $this->buttons_Create();
-    }
+   
 
     protected function metaControl_Create($strControlsArray){
         // Construct the NomenclaturaMetaControl
@@ -75,7 +44,7 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
         if (in_array('txtTitularRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['txtTitularRegPropiedad'] = $this->mctNomenclatura->txtTitularRegPropiedad_Create();
 
-        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
     
     protected function buttons_Create($blnDelete = true) {

@@ -3,7 +3,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     public $strTitulo = 'Datos Generales';
     public $strSubtitulo = '';
-    public $strTemplate = "/var/www/sstuv_rppvap/app/views/folio/FolioEditPanel.tpl.php";
+    public $strTemplate = "";
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
@@ -39,6 +39,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
 
         $strControlsArray = empty($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
+        $this->strTemplate=__VIEW_DIR__."/folio/FolioEditPanel.tpl.php";
 
         // Call the Parent
         try {
@@ -47,21 +48,17 @@ class FolioEditPanel extends FolioEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-
+        
         $this->intId = $intId;
-        $this->pnlTabs = new QTabPanel($this);
-        //$this->pnlTabs->AddTab("Datos Generales");
-        //$this->pnlTabs->AddTab("Nomenclatura Catastral");
-        //$this->pnlTabs->AddTab("Cond. Socio-Urbanistas");
-        //$this->pnlTabs->AddTab("Integración Socio-Urbana");
+        
         
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
         $existeFolio=$this->mctFolio->Folio->CodFolio;
-        //error_log($existeFolio);
-        QApplication::ExecuteJavascript("FolioPasos()");
+        
         if(!$existeFolio)QApplication::ExecuteJavascript("mostrarMapa()");
+
     }
 
 

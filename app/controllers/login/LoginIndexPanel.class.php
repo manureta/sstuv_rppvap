@@ -93,15 +93,17 @@ class LoginIndexPanel extends QPanel {
         try {
             $blnLogged = Authentication::LoguearUsuario($this->txtUsuario->Text, $this->txtPassword->Text);
             if ($blnLogged) {
+                QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/');
+                /*
                 if(Authentication::$objUsuarioLocal->IdPerfil == Perfil::OPERADOR){
                     QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/usuario/resetearpass');
                 } else if (Authentication::$objUsuarioLocal->IdPerfil == Perfil::PERSONAL) {
                     QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/cedula');
                 } else{
-                //if (!count(Authentication::$objUsuarioLocal->IdPersonalObject->PersonalLocalizacionPerfilAsIdArray)) {
+                
                     QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/');
                 }
-                //}
+                */
             } else {
                 QApplication::DisplayAlert("ERROR: Usuario o Contraseña incorrectos.");
             }
