@@ -30,6 +30,7 @@
 
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/estilos.css" />
           <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/sstuv.css" />
+          <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/jquery.steps.css" />
         <!--[if lte IE 8]>
           <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/ace-ie.min.css" />
         <![endif]-->
@@ -158,8 +159,7 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.css" />
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.css" />
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.js"></script>
-        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>
-        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/jquery.steps.min.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>        
         <style>
         #map {
           min-height: 500px;

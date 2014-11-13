@@ -3,7 +3,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     public $strTitulo = 'Datos Generales';
     public $strSubtitulo = '';
-    //public $strTemplate = "/var/www/html/sstuv_rppvap/app/views/folio/FolioEditPanel.tpl.php";
+    public $strTemplate = "/var/www/sstuv_rppvap/app/views/folio/FolioEditPanel.tpl.php";
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
@@ -49,7 +49,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         }
 
         $this->intId = $intId;
-        //$this->pnlTabs = new QTabPanel($this);
+        $this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab("Datos Generales");
         //$this->pnlTabs->AddTab("Nomenclatura Catastral");
         //$this->pnlTabs->AddTab("Cond. Socio-Urbanistas");

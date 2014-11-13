@@ -68,11 +68,13 @@ function mostrarMapa(){
 }
 
 function FolioPasos(){
-
-		$("#example-form").steps({
-		    headerTag: "h3",
+	$( document ).ready(function() {
+		$("#wizard").steps({
+		    headerTag: "h2",
 		    bodyTag: "section",
 		    transitionEffect: "slideLeft",
 		    autoFocus: true
 		});
+	});	
+
 }
