@@ -21,25 +21,7 @@ class CondicionesSocioUrbanisticasEditPanelGen extends EditPanelBase {
         'lstTransporteAsIdFolio' => false,
     );
 
-    public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $intIdFolio = null, $strControlId = null) {
-
-        $strControlsArray = empty($strControlsArray) ? array_keys(CondicionesSocioUrbanisticasEditPanel::$strControlsArray, true) : $strControlsArray;
-
-        // Call the Parent
-        try {
-            parent::__construct($objParentObject, $strControlId);
-        } catch (QCallerException $objExc) {
-            $objExc->IncrementOffset();
-            throw $objExc;
-        }
-
-        $this->intId = $intId;
-        $this->intIdFolio = $intIdFolio;
-        $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab(CondicionesSocioUrbanisticas::Noun());
-        $this->metaControl_Create($strControlsArray);
-        $this->buttons_Create();
-    }
+    
 
     protected function metaControl_Create($strControlsArray){
         // Construct the CondicionesSocioUrbanisticasMetaControl
