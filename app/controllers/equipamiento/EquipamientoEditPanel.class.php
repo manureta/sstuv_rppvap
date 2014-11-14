@@ -33,16 +33,11 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
         }
 
         $this->intId = $intId;
-        //$this->pnlTabs = new QTabPanel($this);
-        
-        //$this->Resizable->Resizable = true;
-        //$this->Resizable->AddAction (new QResizable_StopEvent(), new QAjaxAction ('resizable_stop'));
-        //$this->pnlTabs->AddTab(Equipamiento::Noun());
-        //$this->Resizable = new QPanel($this);
-        $this->CssClass = 'resizable';
+      
         $this->metaControl_Create($strControlsArray);
 
-        $this->buttons_Create();
+        //$this->buttons_Create();
+        $this->blnAutoRenderChildrenWithName = true;
     }
 
     protected function metaControl_Create($strControlsArray){

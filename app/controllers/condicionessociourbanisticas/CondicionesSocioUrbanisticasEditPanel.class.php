@@ -7,6 +7,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
     //id variables for meta_create
   	protected $intId;
     protected $intIdFolio;
+    protected $objFolio;
 
     public $pnlCondiciones;
     public $pnlEquipamiento;
@@ -34,6 +35,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         // Call the Parent
         try {
             parent::__construct($objParentObject, $strControlId);
+            $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;
@@ -45,24 +47,32 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlTabs->AddTab("Condiciones");
         $this->metaControl_Create($strControlsArray);
 
-
-        error_log("creando segundo tab");
+                    
         $this->pnlEquipamiento = new EquipamientoEditPanel($this);
+        $this->pnlEquipamiento->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlEquipamiento->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlEquipamiento->lstIdFolioObject->Enabled = false;
         $tabEquip =$this->pnlTabs->AddTab("Equipamiento");
         $tabEquip->AddControls(array($this->pnlEquipamiento));
 
-        error_log("creando tercer tab");
+        
         $this->pnlInfraestructura = new InfraestructuraEditPanel($this);
+        $this->pnlInfraestructura->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlInfraestructura->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlInfraestructura->lstIdFolioObject->Enabled = false;        
         $tabInf =$this->pnlTabs->AddTab("Infraestructura");
         $tabInf->AddControls(array($this->pnlInfraestructura));
 
-        error_log("creando cuarto tab");
+        
         $this->pnlAmbiental = new SituacionAmbientalEditPanel($this);
+        $this->pnlAmbiental->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlAmbiental->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlAmbiental->lstIdFolioObject->Enabled = false;                
         $tabAmb =$this->pnlTabs->AddTab("Situacion Ambiental");
         $tabAmb->AddControls(array($this->pnlAmbiental));
 
-        error_log("listo");
-        //$this->blnAutoRenderChildren = true;
+       $this->buttons_Create();
+       //$this->blnAutoRenderChildrenWithName = true;
        
     }
 

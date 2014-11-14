@@ -29,6 +29,7 @@ class EditPanelBase extends QPanel {
         }
 
         $this->blnAutoRenderChildren = true;
+         //$this->blnAutoRenderChildrenWithName = true;
 
     }
     
