@@ -32,10 +32,11 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
             throw $objExc;
         }
          $this->intId = $intId;
-        $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab(Nomenclatura::Noun());
+        //$this->pnlTabs = new QTabPanel($this);
+        //$this->pnlTabs->AddTab(Nomenclatura::Noun());
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
+        $this->blnAutoRenderChildrenWithName = true;
 
     }
 
@@ -72,7 +73,7 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         if (in_array('txtTitularRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['txtTitularRegPropiedad'] = $this->mctNomenclatura->txtTitularRegPropiedad_Create();
 
-        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+      //  $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 
     // Control AjaxAction Event Handlers

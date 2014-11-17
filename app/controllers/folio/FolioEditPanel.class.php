@@ -30,11 +30,6 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstNomenclaturaAsId' => false,
     );
 
-    public function GetBreadCrumb() {
-        return array(
-                'Datos Generales'               
-            );
-    }
     
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
 
@@ -57,7 +52,12 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->objControlsArray['txtCodFolio']->Visible = null;
         $existeFolio=$this->mctFolio->Folio->CodFolio;
         
-        if(!$existeFolio)QApplication::ExecuteJavascript("mostrarMapa()");
+        if(!$existeFolio){
+            QApplication::ExecuteJavascript("mostrarMapa()");
+        }else{
+            $this->objControlsArray['txtCodFolio']->ActionParameter=$this->mctFolio->Folio->Id;
+            
+        }
 
     }
 

@@ -1,9 +1,9 @@
-
+<?php $folio=QApplication::QueryString("id"); ?>
  <div id="steps-tabs-folio" role="application" class="wizard clearfix">
     <div class="steps clearfix">
         <ul role="tablist">
-            <li role="tab" class="disabled" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-0" href="#" id="wizard-t-0">
+            <li role="tab" class="done" aria-disabled="false" aria-selected="false">
+                <a aria-controls="wizard-p-0" href="/registro/folio/<?=$folio;?>" id="wizard-t-0">
                     <span class="current-info audible">current step: </span>
                     <span class="number">1.</span> Datos Generales
                 </a>
@@ -13,14 +13,14 @@
                     <span class="number">2.</span> Nomenclatura Catastral
                 </a>
             </li>
-            <li role="tab" class="disabled" aria-disabled="true">
-                <a aria-controls="wizard-p-2" href="#" id="wizard-t-2">
-                    <span class="number">3.</span>Cond. Socio-Urbanisticas
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-2" href="/registro/condiciones/folio/<?=$folio;?>" id="wizard-t-2">
+                    <span class="number">3.</span>Cond. Socio-Urbanísticas
                 </a>
             </li>
-            <li role="tab" class="disabled last" aria-disabled="true">
-                <a aria-controls="wizard-p-3" href="#" id="wizard-t-3">
-                    <span class="number">4.</span> Regulacion
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="/registro/regularizacion/folio/<?=$folio;?>">
+                    <span class="number">4.</span> Regularización
                 </a>
             </li>
         </ul>

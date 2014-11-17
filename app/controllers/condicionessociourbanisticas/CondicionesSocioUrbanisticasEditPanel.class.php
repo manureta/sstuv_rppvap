@@ -14,6 +14,8 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
     public $pnlInfraestructura;
     public $pnlAmbiental; 
 
+    public $strTemplate;
+
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
@@ -36,6 +38,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         try {
             parent::__construct($objParentObject, $strControlId);
             $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+              $this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasFolioPanel.tpl.php";
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;
@@ -43,33 +46,38 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
 
         $this->intId = $intId;
         $this->intIdFolio = $intIdFolio;
-		$this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab("Condiciones");
+		//$this->pnlTabs = new QTabPanel($this);
+        //$this->pnlTabs->AddTab("Condiciones");
         $this->metaControl_Create($strControlsArray);
+        $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        $this->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->lstIdFolioObject->Enabled = false;
+        
 
                     
         $this->pnlEquipamiento = new EquipamientoEditPanel($this);
         $this->pnlEquipamiento->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEquipamiento->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEquipamiento->lstIdFolioObject->Enabled = false;
-        $tabEquip =$this->pnlTabs->AddTab("Equipamiento");
-        $tabEquip->AddControls(array($this->pnlEquipamiento));
+        //$tabEquip =$this->pnlTabs->AddTab("Equipamiento");
+        //$tabEquip->AddControls(array($this->pnlEquipamiento));
 
         
         $this->pnlInfraestructura = new InfraestructuraEditPanel($this);
         $this->pnlInfraestructura->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlInfraestructura->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlInfraestructura->lstIdFolioObject->Enabled = false;        
-        $tabInf =$this->pnlTabs->AddTab("Infraestructura");
-        $tabInf->AddControls(array($this->pnlInfraestructura));
+        //$tabInf =$this->pnlTabs->AddTab("Infraestructura");
+        //$tabInf->AddControls(array($this->pnlInfraestructura));
 
         
         $this->pnlAmbiental = new SituacionAmbientalEditPanel($this);
         $this->pnlAmbiental->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAmbiental->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAmbiental->lstIdFolioObject->Enabled = false;                
-        $tabAmb =$this->pnlTabs->AddTab("Situacion Ambiental");
-        $tabAmb->AddControls(array($this->pnlAmbiental));
+        //$tabAmb =$this->pnlTabs->AddTab("Situacion Ambiental");
+        //$tabAmb->AddControls(array($this->pnlAmbiental));
 
        $this->buttons_Create();
        //$this->blnAutoRenderChildrenWithName = true;
@@ -103,7 +111,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         if (in_array('lstTransporteAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstTransporteAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstTransporteAsIdFolio_Create();
 
-        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
     
     protected function buttons_Create($blnDelete = true) {

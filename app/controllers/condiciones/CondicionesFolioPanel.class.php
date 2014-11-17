@@ -1,30 +1,31 @@
 <?php
 
-class CondicionesFolioPanel extends CondicionesSocioUrbanisticasIndexPanel {
+class CondicionesFolioPanel extends CondicionesSocioUrbanisticasEditPanel {
 
     public $strTitulo = 'Condiciones Socio-Urbanisticas';
     public $strSubtitulo = '';
 
     public $btnSiguente;
 
-    protected $objFolio;
-    
+    public $objFolio;
+    public $objCond;
 
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
                         
         try {
-            parent::__construct($objParentObject, $strControlId);
+            $this->objCond=CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
+            parent::__construct($objParentObject, $strControlsArray,$this->objCond->Id);
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        $this->objFolio = Folio::Load(QApplication::QueryString("id"));
-        $this->dtgCondicionesSocioUrbanisticases->AddCondition(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
+        //$this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        //$this->dtgCondicionesSocioUrbanisticases->AddCondition(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
 
         
 
     }
-
+/*
     public function CondicionesSocioUrbanisticasEditPanel_Create($intId = null) {
         if (isset($this->pnlEditCondicionesSocioUrbanisticas))
             $this->Form->RemoveControl($this->pnlEditCondicionesSocioUrbanisticas->ControlId);
@@ -35,6 +36,6 @@ class CondicionesFolioPanel extends CondicionesSocioUrbanisticasIndexPanel {
         $this->pnlEditCondicionesSocioUrbanisticas->lstIdFolioObject->Enabled = false;
         return $this->pnlEditCondicionesSocioUrbanisticas;
     }
-
+*/
 }
 ?>

@@ -1,25 +1,41 @@
+ <?php 
+    if($_CONTROL->txtCodFolio->ActionParameter){
+        error_log("entro");
+        $folio=$_CONTROL->txtCodFolio->ActionParameter;
+        $link_nomenclatura="/registro/nomenclatura/folio/$folio";
+        $link_condiciones="/registro/condiciones/folio/$folio";
+        $link_regularizacion="/registro/regularizacion/folio/$folio";
+        $clase="done";
+    }else{
+        error_log("no entro");
+        $link_nomenclatura="#";
+        $link_condiciones="#";
+        $link_regularizacion="#";
+        $clase="disabled";
+    }; 
+
+ ?>
  <div id="steps-tabs-folio" role="application" class="wizard clearfix">
     <div class="steps clearfix">
         <ul role="tablist">
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
-                <a aria-controls="wizard-p-0" href="#" id="wizard-t-0">
-                    <span class="current-info audible">current step: </span>
+                <a aria-controls="wizard-p-0" href="#">
                     <span class="number">1.</span> Datos Generales
                 </a>
             </li>
-            <li role="tab" class="disabled" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-1" href="#" id="wizard-t-1">                    
+            <li role="tab" class="<?=$clase;?>" aria-disabled="false" aria-selected="false">
+                <a aria-controls="wizard-p-1" href="<?=$link_nomenclatura;?>">                    
                     <span class="number">2.</span> Nomenclatura
                 </a>
             </li>
-            <li role="tab" class="disabled" aria-disabled="true">
-                <a aria-controls="wizard-p-2" href="#" id="wizard-t-2">
-                    <span class="number">3.</span>Cond. Socio-Urbanisticas
+            <li role="tab" class="<?=$clase;?>" aria-disabled="true">
+                <a aria-controls="wizard-p-2" href="<?=$link_condiciones;?>">
+                    <span class="number">3.</span>Cond. Socio-Urbanísticas
                 </a>
             </li>
-            <li role="tab" class="disabled last" aria-disabled="true">
-                <a aria-controls="wizard-p-3" href="#" id="wizard-t-3">
-                    <span class="number">4.</span> Regulacion
+            <li role="tab" class="<?=$clase;?>" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="<?=$link_regularizacion;?>">
+                    <span class="number">4.</span> Regularización
                 </a>
             </li>
         </ul>
@@ -48,19 +64,6 @@
 					
                 </section>
 
-                <h2 id="wizard-h-1" tabindex="-1" class="title">Second Step</h2>
-                <section id="tab-2" role="tabpanel" aria-labelledby="wizard-h-1" class="body" style="display: none; left: 0px;" aria-hidden="true">
-                    
-                </section>
-
-                <h2 id="wizard-h-2" tabindex="-1" class="title">Third Step</h2>
-                <section id="tab-3" role="tabpanel" aria-labelledby="wizard-h-2" class="body" style="display: none;" aria-hidden="true">
-                    
-                </section>
-
-                <h2 id="wizard-h-3" tabindex="-1" class="title">Forth Step</h2>
-                <section id="tab-4" role="tabpanel" aria-labelledby="wizard-h-3" class="body" style="display: none;" aria-hidden="true">                    
-                </section>
     </div>
 </div>
 
