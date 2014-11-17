@@ -7,7 +7,7 @@ class OpcionesTransporte extends OpcionesTransporteGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('OpcionesTransporte %s',  $this->intId);
+        return sprintf('%s',  $this->strOpcion);
     }
 
 }

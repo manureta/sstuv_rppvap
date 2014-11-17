@@ -14,7 +14,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         'lblId' => false,
         'lstIdFolioObject' => true,
         'chkProcesoIniciado' => true,
-        'lstAntecedentesAsIdFolio' => true,
+        'lstAntecedentesAsIdFolio' => false,
         'lstEncuadreLegalAsIdFolio' => false,
         'lstRegistracionAsIdFolio' => false,
     );
@@ -61,7 +61,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         
 
 
-        $this->blnAutoRenderChildrenWithName = true;
+        //$this->blnAutoRenderChildrenWithName = true;
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -86,7 +86,20 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
     
-  
+     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the RegularizacionMetaControl
+        $this->mctRegularizacion->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->pnlEncuadre->btnSave_Click($strFormId, $strControlId, $strParameter);
+        $this->pnlAntecedentes->btnSave_Click($strFormId, $strControlId, $strParameter);
+        $this->pnlOrganismos->btnSave_Click($strFormId, $strControlId, $strParameter);
+        
+        $this->objModifiedChildsArray = array();
+        QApplication::DisplayNotification('Los datos se guardaron correctamente');
+    }
 
 
 }

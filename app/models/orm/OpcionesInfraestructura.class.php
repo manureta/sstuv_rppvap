@@ -6,8 +6,8 @@ class OpcionesInfraestructura extends OpcionesInfraestructuraGen {
     protected $strNounPlural = 'OpcionesInfraestructuras';
     protected $blnGenderMale = true;
 
-    public function __toString() {
-        return sprintf('OpcionesInfraestructura %s',  $this->intId);
+   public function __toString() {
+        return sprintf('%s',  $this->strOpcion);
     }
 
 }

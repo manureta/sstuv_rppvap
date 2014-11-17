@@ -60,6 +60,7 @@ class FolioIndexPanel extends FolioIndexPanelGen {
             $this->Form->RemoveControl($this->pnlEditFolio->ControlId);
         }
 
+        
     }
 
 

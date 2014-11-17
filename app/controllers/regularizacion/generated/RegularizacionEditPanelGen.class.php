@@ -12,16 +12,7 @@ class RegularizacionEditPanelGen extends EditPanelBase {
     }
 
     // Control AjaxAction Event Handlers
-    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
-        // Delegate "Save" processing to the RegularizacionMetaControl
-        $this->mctRegularizacion->Save();
-        foreach ($this->objModifiedChildsArray as $obj) {
-            $obj->Save();
-        }
-        $this->objModifiedChildsArray = array();
-        QApplication::DisplayNotification('Los datos se guardaron correctamente');
-    }
+   
 
     public function btnDelete_Click($strFormId, $strControlId, $strParameter) {
         // Delegate "Delete" processing to the RegularizacionMetaControl

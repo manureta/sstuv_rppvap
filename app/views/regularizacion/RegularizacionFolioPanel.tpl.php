@@ -3,7 +3,7 @@
     <div class="steps clearfix">
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-0" href="/registro/folio/<?=$folio;?>" id="wizard-t-0">
+                <a aria-controls="wizard-p-0" href="/registro/folio/view/<?=$folio;?>" id="wizard-t-0">
                     <span class="current-info audible">current step: </span>
                     <span class="number">1.</span> Datos Generales
                 </a>
@@ -25,17 +25,19 @@
             </l
         </ul>
     </div>
-    <div class="content clearfix">
-                <h2 id="wizard-h-0" tabindex="-1" class="title current">First Step</h2>
-                <section id="tab-1" role="tabpanel" aria-labelledby="wizard-h-0" class="body current" aria-hidden="true" style="display: block;">               
-				        <p>Regularizacion</p>
+    <h6>Regularización</h6>
+    <div class="content_small clearfix">
+                
+                <section>               				        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
-                        <?php $_CONTROL->lstAntecedentesAsIdFolio->RenderWithName(); ?>
                         
+                </section>        
+    </div>
 
-
-                        <p>Encuadre Legal</p>
+    <h6>Encuadre Legal</h6>
+    <div class="content clearfix">
+                <section>                    
                         <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
@@ -44,16 +46,25 @@
                         <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
+                </section>
+    </div>    
 
-                        <p>Antecedentes</p>
+    <h6>Antecedentes</h6>       
+    <div class="content clearfix"> 
+                <section>        
+                        
                         <?php $_CONTROL->pnlAntecedentes->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkSinIntervencion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkObrasInfraestructura->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkEquipamientos->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkIntervencionesEnViviendas->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->txtOtros->RenderWithName(); ?>
-
-                        <p>Organismos de intervencion</p>
+                </section>
+    </div>
+    <h6>Organismos de intervencion</h6>
+    <div class="content clearfix">            
+                <section>        
+                        
                         <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>
@@ -62,9 +73,9 @@
                         <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>
 				</section>
-
+    </div>            
                 
-    </div>
+   
 </div>
 
 <div class="botones-form">

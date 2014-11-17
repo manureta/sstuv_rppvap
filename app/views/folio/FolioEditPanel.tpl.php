@@ -1,13 +1,13 @@
  <?php 
     if($_CONTROL->txtCodFolio->ActionParameter){
-        error_log("entro");
+        
         $folio=$_CONTROL->txtCodFolio->ActionParameter;
         $link_nomenclatura="/registro/nomenclatura/folio/$folio";
         $link_condiciones="/registro/condiciones/folio/$folio";
         $link_regularizacion="/registro/regularizacion/folio/$folio";
         $clase="done";
     }else{
-        error_log("no entro");
+        
         $link_nomenclatura="#";
         $link_condiciones="#";
         $link_regularizacion="#";
@@ -43,7 +43,7 @@
 
     <div class="content clearfix">
                 <h2 id="wizard-h-0" tabindex="-1" class="title current">First Step</h2>
-                <section id="tab-1" role="tabpanel" aria-labelledby="wizard-h-0" class="body current" aria-hidden="true" style="display: block;">
+                <section style="display: block;">
                     <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
 					<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
 					<?php $_CONTROL->lstIdLocalidadObject->RenderWithName(); ?>

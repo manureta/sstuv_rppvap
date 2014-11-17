@@ -40,7 +40,7 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
 
         try {
             parent::__construct($objParentObject, $strControlId);
-            $this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasIndexPanel.tpl.php";
+            //$this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasIndexPanel.tpl.php";
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;

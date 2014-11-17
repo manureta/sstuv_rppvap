@@ -142,7 +142,21 @@
     background: #eee;
     display: block;
     margin: 0.5em;
-    min-height: 35em;
+    min-height: 30em;
+    overflow: auto;
+    position: relative;
+    width: auto;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.wizard > .content_small
+{
+    background: #eee;
+    display: block;
+    margin: 0.5em;
     overflow: auto;
     position: relative;
     width: auto;
