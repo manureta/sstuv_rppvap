@@ -1,4 +1,4 @@
-<?php
+    <?php
 class RegularizacionEditPanel extends RegularizacionEditPanelGen {
 
     public $mctRegularizacion;
