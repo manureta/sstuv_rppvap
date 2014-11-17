@@ -46,39 +46,31 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
 
         $this->intId = $intId;
         $this->intIdFolio = $intIdFolio;
-		//$this->pnlTabs = new QTabPanel($this);
-        //$this->pnlTabs->AddTab("Condiciones");
+        
         $this->metaControl_Create($strControlsArray);
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
-        $this->lstIdFolioObject->Enabled = false;
-        
+        $this->lstIdFolioObject->Enabled = false;        
 
                     
         $this->pnlEquipamiento = new EquipamientoEditPanel($this);
         $this->pnlEquipamiento->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEquipamiento->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEquipamiento->lstIdFolioObject->Enabled = false;
-        //$tabEquip =$this->pnlTabs->AddTab("Equipamiento");
-        //$tabEquip->AddControls(array($this->pnlEquipamiento));
-
+        
         
         $this->pnlInfraestructura = new InfraestructuraEditPanel($this);
         $this->pnlInfraestructura->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlInfraestructura->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlInfraestructura->lstIdFolioObject->Enabled = false;        
-        //$tabInf =$this->pnlTabs->AddTab("Infraestructura");
-        //$tabInf->AddControls(array($this->pnlInfraestructura));
-
+        
         
         $this->pnlAmbiental = new SituacionAmbientalEditPanel($this);
         $this->pnlAmbiental->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAmbiental->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAmbiental->lstIdFolioObject->Enabled = false;                
-        //$tabAmb =$this->pnlTabs->AddTab("Situacion Ambiental");
-        //$tabAmb->AddControls(array($this->pnlAmbiental));
-
+        
        $this->buttons_Create();
        //$this->blnAutoRenderChildrenWithName = true;
        

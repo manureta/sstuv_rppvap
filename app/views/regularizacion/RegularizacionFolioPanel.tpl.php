@@ -28,11 +28,39 @@
     <div class="content clearfix">
                 <h2 id="wizard-h-0" tabindex="-1" class="title current">First Step</h2>
                 <section id="tab-1" role="tabpanel" aria-labelledby="wizard-h-0" class="body current" aria-hidden="true" style="display: block;">               
-				        <?php //$_CONTROL->lblId->RenderWithName(); ?>
+				        <p>Regularizacion</p>
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
                         <?php $_CONTROL->lstAntecedentesAsIdFolio->RenderWithName(); ?>
+                        
 
+
+                        <p>Encuadre Legal</p>
+                        <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkDecreto81588->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
+
+                        <p>Antecedentes</p>
+                        <?php $_CONTROL->pnlAntecedentes->lstIdFolioObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlAntecedentes->chkSinIntervencion->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlAntecedentes->chkObrasInfraestructura->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlAntecedentes->chkEquipamientos->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlAntecedentes->chkIntervencionesEnViviendas->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlAntecedentes->txtOtros->RenderWithName(); ?>
+
+                        <p>Organismos de intervencion</p>
+                        <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlOrganismos->chkMunicipal->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlOrganismos->calFechaIntervencion->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>
 				</section>
 
                 

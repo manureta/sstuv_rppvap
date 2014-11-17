@@ -5,6 +5,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
     public $objFolio;
     //id variables for meta_create
     protected $intId;
+    public $pnlEncuadre;
+    public $pnlAntecedentes;
+    public $pnlOrganismos;
 
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
@@ -29,8 +32,6 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         }
 
         $this->intId = $intId;
-        //$this->pnlTabs = new QTabPanel($this);
-        //$this->pnlTabs->AddTab(Regularizacion::Noun());
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
 
@@ -38,6 +39,28 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
+
+
+                    
+        $this->pnlEncuadre = new EncuadreLegalEditPanel($this);
+        $this->pnlEncuadre->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
+        
+        
+        $this->pnlAntecedentes = new AntecedentesEditPanel($this);
+        $this->pnlAntecedentes->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlAntecedentes->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;        
+        
+        
+        $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this);
+        $this->pnlOrganismos->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlOrganismos->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlOrganismos->lstIdFolioObject->Enabled = false;                
+        
+
+
         $this->blnAutoRenderChildrenWithName = true;
     }
 
