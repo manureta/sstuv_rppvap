@@ -303,10 +303,10 @@ ALTER SEQUENCE estado_proceso_id_seq OWNED BY estado_proceso.id;
 
 CREATE TABLE folio (
     id serial NOT NULL,
-    cod_folio character varying(6) NOT NULL UNIQUE,
+    cod_folio character varying(7) NOT NULL UNIQUE,
     id_partido integer NOT NULL,
     id_localidad integer,
-    matricula character varying(3) NOT NULL,
+    matricula character varying(4) NOT NULL,
     fecha date,
     encargado character varying(45),
     nombre_barrio_oficial character varying(45),
@@ -459,6 +459,7 @@ CREATE TABLE nomenclatura (
     mza character varying(45),
     parc character varying(45),
     _inscripcion_dominio character varying(45),
+    _titular_reg_propiedad character varying,	
     _dato_verificado_reg_propiedad smallint
 );
 
@@ -1380,7 +1381,7 @@ SELECT pg_catalog.setval('localidad_id_seq', 1, true);
 -- Data for Name: nomenclatura; Type: TABLE DATA; Schema: public; Owner: sstuv_app
 --
 
-COPY nomenclatura (id, id_folio, partida_inmobiliaria, titular_dominio, circ, secc, chac_quinta, frac, mza, parc, _inscripcion_dominio, _dato_verificado_reg_propiedad) FROM stdin;
+COPY nomenclatura (id, id_folio, partida_inmobiliaria, titular_dominio, circ, secc, chac_quinta, frac, mza, parc, _inscripcion_dominio, _dato_verificado_reg_propiedad,_titular_reg_propiedad) FROM stdin;
 \.
 
 
