@@ -50,10 +50,11 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         }
 
         $this->intId = $intId;
-        $this->intIdFolio = $intIdFolio;
-        
+        $this->intIdFolio = $intId;
+
         $this->metaControl_Create($strControlsArray);
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;        
@@ -79,7 +80,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlAmbiental->lstIdFolioObject->Enabled = false;                
         
        $this->buttons_Create();
-       $this->blnAutoRenderChildrenWithName = true;
+       $this->blnAutoRenderChildrenWithName = false;
        
     }
 
