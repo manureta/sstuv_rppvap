@@ -9,6 +9,10 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
     public $pnlAntecedentes;
     public $pnlOrganismos;
 
+    protected $objEncuadre;
+    protected $objAntecedentes;
+    protected $objOrganismos;
+
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
@@ -41,20 +45,20 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Enabled = false;
 
 
-                    
-        $this->pnlEncuadre = new EncuadreLegalEditPanel($this);
+        $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));                        
+        $this->pnlEncuadre = new EncuadreLegalEditPanel($this,EncuadreLegalEditPanel::$strControlsArray,$this->objEncuadre->Id);
         $this->pnlEncuadre->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
         
-        
-        $this->pnlAntecedentes = new AntecedentesEditPanel($this);
+        $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
+        $this->pnlAntecedentes = new AntecedentesEditPanel($this,AntecedentesEditPanel::$strControlsArray,$this->objAntecedentes->Id);
         $this->pnlAntecedentes->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAntecedentes->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;        
         
-        
-        $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this);
+        $this->objOrganismos=OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,QApplication::QueryString("id")));                        
+        $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this,OrganismosDeIntervencionEditPanel::$strControlsArray,$this->objOrganismos->Id);
         $this->pnlOrganismos->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlOrganismos->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlOrganismos->lstIdFolioObject->Enabled = false;                

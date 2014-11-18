@@ -459,6 +459,7 @@ CREATE TABLE nomenclatura (
     mza character varying(45),
     parc character varying(45),
     _inscripcion_dominio character varying(45),
+    _titular_reg_propiedad character varying,	
     _dato_verificado_reg_propiedad smallint
 );
 
@@ -1380,7 +1381,7 @@ SELECT pg_catalog.setval('localidad_id_seq', 1, true);
 -- Data for Name: nomenclatura; Type: TABLE DATA; Schema: public; Owner: sstuv_app
 --
 
-COPY nomenclatura (id, id_folio, partida_inmobiliaria, titular_dominio, circ, secc, chac_quinta, frac, mza, parc, _inscripcion_dominio, _dato_verificado_reg_propiedad) FROM stdin;
+COPY nomenclatura (id, id_folio, partida_inmobiliaria, titular_dominio, circ, secc, chac_quinta, frac, mza, parc, _inscripcion_dominio, _dato_verificado_reg_propiedad,_titular_reg_propiedad) FROM stdin;
 \.
 
 

@@ -7,7 +7,12 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
     //id variables for meta_create
   	protected $intId;
     protected $intIdFolio;
+    
     protected $objFolio;
+    protected $objEquipamiento;
+    protected $objInfraestructura;
+    protected $objAmbiental;
+
 
     public $pnlCondiciones;
     public $pnlEquipamiento;
@@ -53,26 +58,28 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;        
 
-                    
-        $this->pnlEquipamiento = new EquipamientoEditPanel($this);
+        $this->objEquipamiento=Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,QApplication::QueryString("id")));                        
+        $this->pnlEquipamiento = new EquipamientoEditPanel($this,EquipamientoEditPanel::$strControlsArray,$this->objEquipamiento->Id);
         $this->pnlEquipamiento->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEquipamiento->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEquipamiento->lstIdFolioObject->Enabled = false;
         
         
-        $this->pnlInfraestructura = new InfraestructuraEditPanel($this);
+        $this->objInfraestructura=Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,QApplication::QueryString("id")));
+        $this->pnlInfraestructura = new InfraestructuraEditPanel($this,InfraestructuraEditPanel::$strControlsArray,$this->objInfraestructura->Id);
         $this->pnlInfraestructura->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlInfraestructura->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlInfraestructura->lstIdFolioObject->Enabled = false;        
         
         
-        $this->pnlAmbiental = new SituacionAmbientalEditPanel($this);
+        $this->objAmbiental=SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,QApplication::QueryString("id")));
+        $this->pnlAmbiental = new SituacionAmbientalEditPanel($this,SituacionAmbientalEditPanel::$strControlsArray,$this->objAmbiental->Id);
         $this->pnlAmbiental->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAmbiental->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAmbiental->lstIdFolioObject->Enabled = false;                
         
        $this->buttons_Create();
-       //$this->blnAutoRenderChildrenWithName = true;
+       $this->blnAutoRenderChildrenWithName = true;
        
     }
 
