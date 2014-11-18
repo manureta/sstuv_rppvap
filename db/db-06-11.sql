@@ -303,10 +303,10 @@ ALTER SEQUENCE estado_proceso_id_seq OWNED BY estado_proceso.id;
 
 CREATE TABLE folio (
     id serial NOT NULL,
-    cod_folio character varying(6) NOT NULL UNIQUE,
+    cod_folio character varying(7) NOT NULL UNIQUE,
     id_partido integer NOT NULL,
     id_localidad integer,
-    matricula character varying(3) NOT NULL,
+    matricula character varying(4) NOT NULL,
     fecha date,
     encargado character varying(45),
     nombre_barrio_oficial character varying(45),
