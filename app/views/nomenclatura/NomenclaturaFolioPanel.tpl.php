@@ -24,9 +24,9 @@
             </li>
         </ul>
     </div>
-    <div class="content clearfix">
+    <div>
                 
-                <section style="display: block;">               
+                <div class="well bs-component">   
 				<?php $_CONTROL->dtgNomenclaturas->Render(); ?>
 				<p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p>
 				<?php 
@@ -34,12 +34,11 @@
 						$_CONTROL->pnlEditNomenclatura->Render();
 						} 
 				?>
-				</section>
+
+				</div>
 
                 
     </div>
+    <div class="botones-form"></div>
 </div>
 
-<div class="botones-form">
-
-</div>

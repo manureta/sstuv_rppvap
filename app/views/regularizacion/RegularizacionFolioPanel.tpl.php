@@ -15,7 +15,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="false">
                 <a aria-controls="wizard-p-2" href="/registro/condiciones/folio/<?=$folio;?>" id="wizard-t-2">
-                    <span class="number">3.</span>Cond. Socio-Urbanisticas
+                    <span class="number">3.</span>Condiciones Socio-Urbanisticas
                 </a>
             </li>
             <li role="tab" class="current" aria-selected="true">
@@ -26,18 +26,18 @@
         </ul>
     </div>
     <h6>Regularización</h6>
-    <div class="content_small clearfix">
+    <div>
                 
-                <section>               				        
+                <div class="well bs-component">           				        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
                         
-                </section>        
+                </div>        
     </div>
 
     <h6>Encuadre Legal</h6>
-    <div class="content clearfix">
-                <section>                    
+    <div>
+               <div class="well bs-component">                       
                         <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
@@ -46,12 +46,12 @@
                         <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
-                </section>
+                </div>
     </div>    
 
     <h6>Antecedentes</h6>       
-    <div class="content clearfix"> 
-                <section>        
+    <div> 
+                <div class="well bs-component">     
                         
                         <?php $_CONTROL->pnlAntecedentes->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkSinIntervencion->RenderWithName(); ?>
@@ -59,11 +59,11 @@
                         <?php $_CONTROL->pnlAntecedentes->chkEquipamientos->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkIntervencionesEnViviendas->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->txtOtros->RenderWithName(); ?>
-                </section>
+                </div>
     </div>
     <h6>Organismos de intervencion</h6>
-    <div class="content clearfix">            
-                <section>        
+    <div>            
+                <div class="well bs-component">   
                         
                         <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
@@ -72,12 +72,10 @@
                         <?php $_CONTROL->pnlOrganismos->calFechaIntervencion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>
-				</section>
+				</div>
     </div>            
                 
    
 </div>
 
-<div class="botones-form">
-
-</div>
+<div class="botones-form"></div>

@@ -55,27 +55,37 @@ class FolioEditPanelGen extends EditPanelBase {
         if (in_array('txtEncargado',$strControlsArray)) 
             $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
         if (in_array('txtNombreBarrioOficial',$strControlsArray)) 
-            $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();
+            $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();    
+            $this->objControlsArray['txtNombreBarrioOficial']->Name="Nombre oficial";        
         if (in_array('txtNombreBarrioAlternativo1',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioAlternativo1'] = $this->mctFolio->txtNombreBarrioAlternativo1_Create();
+            $this->objControlsArray['txtNombreBarrioAlternativo1']->Name="Nombre alternativo 1";
         if (in_array('txtNombreBarrioAlternativo2',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioAlternativo2'] = $this->mctFolio->txtNombreBarrioAlternativo2_Create();
+            $this->objControlsArray['txtNombreBarrioAlternativo2']->Name="Nombre alternativo 2";
         if (in_array('txtAnioOrigen',$strControlsArray)) 
             $this->objControlsArray['txtAnioOrigen'] = $this->mctFolio->txtAnioOrigen_Create();
+            $this->objControlsArray['txtAnioOrigen']->Name="Año de origen";
         if (in_array('txtSuperficie',$strControlsArray)) 
             $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
+            $this->objControlsArray['txtSuperficie']->Name="Superficie (m2)";
         if (in_array('txtCantidadFamilias',$strControlsArray)) 
             $this->objControlsArray['txtCantidadFamilias'] = $this->mctFolio->txtCantidadFamilias_Create();
+            $this->objControlsArray['txtCantidadFamilias']->Name="Cantidad de familias";
         if (in_array('lstTipoBarrioObject',$strControlsArray)) 
             $this->objControlsArray['lstTipoBarrioObject'] = $this->mctFolio->lstTipoBarrioObject_Create();
+            $this->objControlsArray['lstTipoBarrioObject']->Name="Tipo de barrio";
         if (in_array('txtObservacionCasoDudoso',$strControlsArray)) 
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
+            $this->objControlsArray['txtObservacionCasoDudoso']->Name="Observación de caso dudoso";
         if (in_array('txtJudicializado',$strControlsArray)) 
-            $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
+            $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();            
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
+            $this->objControlsArray['txtDireccion']->Name="Dirección";
         if (in_array('txtNumExpedientes',$strControlsArray)) 
             $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
+            $this->objControlsArray['txtNumExpedientes']->Name="N° expediente";
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 
