@@ -50,10 +50,10 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         }
 
         $this->intId = $intId;
-        $this->intIdFolio = $intId;
+        $this->intIdFolio = $this->objFolio->Id;
 
         $this->metaControl_Create($strControlsArray);
-        $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        //$this->objFolio = Folio::Load(QApplication::QueryString("id"));
         
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
