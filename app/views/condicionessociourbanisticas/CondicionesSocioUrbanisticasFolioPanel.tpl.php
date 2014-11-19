@@ -15,7 +15,7 @@
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
                 <a aria-controls="wizard-p-2" href="#">
-                    <span class="number">3.</span>Cond. Socio-Urbanísticas
+                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
@@ -27,19 +27,19 @@
     </div>
     
     <h6>Condiciones</h6>
-    <div class="content_small clearfix">                
-                <section>               				                        
+    <div>                
+                <div class="well bs-component">              				                        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkEspacioLibreComun->RenderWithName(); ?>
                         <?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
                         <?php $_CONTROL->txtNombreRefernte->RenderWithName(); ?>
                         <?php $_CONTROL->txtTelefonoReferente->RenderWithName(); ?>
-                </section>
+                </div>
     </div>
 
     <h6>Equipamiento</h6>
-    <div class="content clearfix">
-                    <section>                                    
+    <div>
+                    <div class="well bs-component">                            
                         <?php $_CONTROL->pnlEquipamiento->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstUnidadSanitariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstJardinInfantesObject->RenderWithName(); ?>
@@ -49,12 +49,12 @@
                         <?php $_CONTROL->pnlEquipamiento->lstSalonUsosMultiplesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstCentroIntegracionComunitariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->txtOtro->RenderWithName(); ?>
-                    </section>
+                    </div>
     </div>
 
     <h6>Infraestructura</h6>
-    <div class="content clearfix">
-                    <section>                                                            
+    <div>
+                    <div class="well bs-component">                                                          
 
                         <?php $_CONTROL->pnlInfraestructura->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstEnergiaElectricaMedidorIndividualObject->RenderWithName(); ?>
@@ -69,12 +69,12 @@
                         <?php $_CONTROL->pnlInfraestructura->lstCordonCunetaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstDesaguesPluvialesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstRecoleccionResiduosObject->RenderWithName(); ?>
-                    </section> 
+                    </div> 
     </div>
 
     <h6>Situacion Ambiental</h6>
-    <div class="content clearfix">
-                    <section>                                                        
+    <div>
+                   <div class="well bs-component">                                                     
 
                         <?php $_CONTROL->pnlAmbiental->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAmbiental->chkSinProblemas->RenderWithName(); ?>
@@ -87,7 +87,7 @@
                         <?php $_CONTROL->pnlAmbiental->txtOtro->RenderWithName(); ?>
 
 
-				</section>                
+				</div>                
     </div>
 </div>
 

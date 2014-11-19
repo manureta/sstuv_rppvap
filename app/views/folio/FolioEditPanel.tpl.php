@@ -30,7 +30,7 @@
             </li>
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-2" href="<?=$link_condiciones;?>">
-                    <span class="number">3.</span>Cond. Socio-Urbanísticas
+                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
                 </a>
             </li>
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
@@ -41,28 +41,27 @@
         </ul>
     </div>
 
-    <div class="content clearfix">
-                <h2 id="wizard-h-0" tabindex="-1" class="title current">First Step</h2>
-                <section style="display: block;">
-                    <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
-					<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
-					<?php $_CONTROL->lstIdLocalidadObject->RenderWithName(); ?>
-					<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
-					
-					<?php $_CONTROL->txtEncargado->RenderWithName(); ?>
-					<?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
-					<?php $_CONTROL->txtNombreBarrioAlternativo1->RenderWithName(); ?>
-					<?php $_CONTROL->txtNombreBarrioAlternativo2->RenderWithName(); ?>
-					<?php $_CONTROL->txtAnioOrigen->RenderWithName(); ?>
-					<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
-					<?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
-					<?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
-					<?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
-					<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
-					<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
-					<?php $_CONTROL->txtNumExpedientes->RenderWithName(); ?>
-					
-                </section>
+    <div>                
+        <div class="well bs-component">
+            <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
+			<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
+			<?php $_CONTROL->lstIdLocalidadObject->RenderWithName(); ?>
+			<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
+			
+			<?php $_CONTROL->txtEncargado->RenderWithName(); ?>
+			<?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
+			<?php $_CONTROL->txtNombreBarrioAlternativo1->RenderWithName(); ?>
+			<?php $_CONTROL->txtNombreBarrioAlternativo2->RenderWithName(); ?>
+			<?php $_CONTROL->txtAnioOrigen->RenderWithName(); ?>
+			<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
+			<?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
+			<?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
+			<?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
+			<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
+			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
+			<?php $_CONTROL->txtNumExpedientes->RenderWithName(); ?>
+			
+        </div>
 
     </div>
 </div>

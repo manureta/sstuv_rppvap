@@ -14,7 +14,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-2" href="/registro/condiciones/folio/<?=$folio;?>" id="wizard-t-2">
-                    <span class="number">3.</span>Cond. Socio-Urbanísticas
+                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
@@ -24,9 +24,9 @@
             </li>
         </ul>
     </div>
-    <div class="content clearfix">
+    <div>
                 
-                <section style="display: block;">               
+                <div class="well bs-component">   
 				<?php $_CONTROL->dtgNomenclaturas->Render(); ?>
 				<p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p>
 				<?php 
@@ -34,12 +34,11 @@
 						$_CONTROL->pnlEditNomenclatura->Render();
 						} 
 				?>
-				</section>
+
+				</div>
 
                 
     </div>
+    <div class="botones-form"></div>
 </div>
 
-<div class="botones-form">
-
-</div>
