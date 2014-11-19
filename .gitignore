@@ -1,3 +1,4 @@
 app/*/*/generated
 cache/
-tmp/
+tmp/log/debug.log
+config/configuracion.xml
