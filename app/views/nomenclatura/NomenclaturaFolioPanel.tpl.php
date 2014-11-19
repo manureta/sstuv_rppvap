@@ -14,7 +14,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-2" href="/registro/condiciones/folio/<?=$folio;?>" id="wizard-t-2">
-                    <span class="number">3.</span>Cond. Socio-Urbanísticas
+                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">

@@ -15,7 +15,7 @@
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
                 <a aria-controls="wizard-p-2" href="#">
-                    <span class="number">3.</span>Cond. Socio-Urbanísticas
+                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">

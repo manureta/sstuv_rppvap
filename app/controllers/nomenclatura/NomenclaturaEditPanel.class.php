@@ -32,11 +32,12 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
             throw $objExc;
         }
          $this->intId = $intId;
-        //$this->pnlTabs = new QTabPanel($this);
-        //$this->pnlTabs->AddTab(Nomenclatura::Noun());
+        
         $this->metaControl_Create($strControlsArray);
-        $this->buttons_Create();
+        
         $this->blnAutoRenderChildrenWithName = true;
+
+        $this->buttons_Create();
 
     }
 
