@@ -60,6 +60,7 @@
 			<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
 			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
 			<?php $_CONTROL->txtNumExpedientes->RenderWithName(); ?>
+            <?php $_CONTROL->txtGeom->RenderWithName(); ?>
 			
         </div>
 

@@ -216,6 +216,7 @@
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
         $strConfigArray['Columns']['NumExpedientes'] = QApplication::Translate('NumExpedientes');
+        $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
 
         $this->lstFolio = new QListPanel($this->objParentObject, $this->objTipoBarrio, $strConfigArray, $strControlId);
         $this->lstFolio->Name = Folio::Noun();

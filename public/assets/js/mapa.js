@@ -57,8 +57,10 @@ function mostrarMapa(){
 			}
 
 			drawnItems.addLayer(layer);
-			//var shape = layer.toGeoJSON()
-  			//var shape_for_db = JSON.stringify(shape);
+			var json = layer.toGeoJSON()
+  			var geom = JSON.stringify(json);
+
+  			$(".geometria_barrio").val(geom);
 		});
 	  	
 	});

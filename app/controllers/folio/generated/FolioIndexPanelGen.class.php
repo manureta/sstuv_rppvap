@@ -11,6 +11,32 @@
  */
 class FolioIndexPanelGen extends QPanel {
 
+    public $lblTitulo;
+
+    // Instancia local de un DataGrid para listar Folios
+    public $dtgFolios;
+
+    // Controles
+    public $btnCreateNew;
+
+    // Paneles
+    public $pnlEditFolio;
+
+    // Redefinicion de visibilidad de columnas y controles
+    protected $strColumnsArray;
+    protected $strControlsArray;    
+
+    
+    /**
+     * Constructor del panel índice generado
+     * 
+     * @param <Panel> $objParentObject
+     * @param <array> $strColumnsArray
+     * @param <array> $strControlsArray
+     * @param <string> $strControlId
+     *
+     */
+
 
     protected function btnCreateNew_Create() {
         $this->btnCreateNew = new QButton($this);

@@ -28,6 +28,7 @@ class FolioModalPanelGen extends EditPanelBase {
         'txtJudicializado' => true,
         'txtDireccion' => true,
         'txtNumExpedientes' => true,
+        'txtGeom' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -98,6 +99,8 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
         if (in_array('txtNumExpedientes',$strControlsArray)) 
             $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
+        if (in_array('txtGeom',$strControlsArray)) 
+            $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

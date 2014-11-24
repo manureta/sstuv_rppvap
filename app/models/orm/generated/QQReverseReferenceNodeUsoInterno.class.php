@@ -27,14 +27,10 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('regularizacion_circular_10_catastro', 'RegularizacionCircular10Catastro', 'boolean', $this);
 				case 'RegularizacionAprobacionGeodesia':
 					return new QQNode('regularizacion_aprobacion_geodesia', 'RegularizacionAprobacionGeodesia', 'integer', $this);
-				case 'RegularizacionAprobacionGeodesiaObject':
-					return new QQNodeAprobacionGeodesia('regularizacion_aprobacion_geodesia', 'RegularizacionAprobacionGeodesiaObject', 'integer', $this);
 				case 'RegularizacionRegistracion':
 					return new QQNode('regularizacion_registracion', 'RegularizacionRegistracion', 'integer', $this);
 				case 'RegularizacionEstadoProceso':
 					return new QQNode('regularizacion_estado_proceso', 'RegularizacionEstadoProceso', 'integer', $this);
-				case 'RegularizacionEstadoProcesoObject':
-					return new QQNodeEstadoProceso('regularizacion_estado_proceso', 'RegularizacionEstadoProcesoObject', 'integer', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

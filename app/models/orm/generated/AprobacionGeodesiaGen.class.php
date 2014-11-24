@@ -20,8 +20,6 @@
 	 * @property integer $Num the value for intNum 
 	 * @property string $Anio the value for strAnio 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido 
-	 * @property-read UsoInterno $UsoInternoAsRegularizacion the value for the private _objUsoInternoAsRegularizacion (Read-Only) if set due to an expansion on the uso_interno.regularizacion_aprobacion_geodesia reverse relationship
-	 * @property-read UsoInterno[] $UsoInternoAsRegularizacionArray the value for the private _objUsoInternoAsRegularizacionArray (Read-Only) if set due to an ExpandAsArray on the uso_interno.regularizacion_aprobacion_geodesia reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class AprobacionGeodesiaGen extends QBaseClass {
@@ -73,22 +71,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
     const AnioMaxLength = 4;
     const AnioDefault = null;
 
-
-    /**
-     * Private member variable that stores a reference to a single UsoInternoAsRegularizacion object
-     * (of type UsoInterno), if this AprobacionGeodesia object was restored with
-     * an expansion on the uso_interno association table.
-     * @var UsoInterno _objUsoInternoAsRegularizacion;
-     */
-    protected $objUsoInternoAsRegularizacion;
-
-    /**
-     * Private member variable that stores a reference to an array of UsoInternoAsRegularizacion objects
-     * (of type UsoInterno[]), if this AprobacionGeodesia object was restored with
-     * an ExpandAsArray on the uso_interno association table.
-     * @var UsoInterno[] _objUsoInternoAsRegularizacionArray;
-     */
-    protected $objUsoInternoAsRegularizacionArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -466,44 +448,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			if (!$objDbRow) {
 				return null;
 			}
-			// See if we're doing an array expansion on the previous item
-			$strAlias = $strAliasPrefix . 'id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (($strExpandAsArrayNodes) && is_array($arrPreviousItems) && count($arrPreviousItems)) {
-				foreach ($arrPreviousItems as $objPreviousItem) {            
-					if ($objPreviousItem->intId == $objDbRow->GetColumn($strAliasName, 'Integer')) {        
-						// We are.  Now, prepare to check for ExpandAsArray clauses
-						$blnExpandedViaArray = false;
-						if (!$strAliasPrefix)
-							$strAliasPrefix = 'aprobacion_geodesia__';
-
-
-						// Expanding reverse references: UsoInternoAsRegularizacion
-						$strAlias = $strAliasPrefix . 'usointernoasregularizacion__id_folio';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objUsoInternoAsRegularizacionArray)) {
-								$objPreviousChildItems = $objPreviousItem->objUsoInternoAsRegularizacionArray;
-								$objChildItem = UsoInterno::InstantiateDbRow($objDbRow, $strAliasPrefix . 'usointernoasregularizacion__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objUsoInternoAsRegularizacionArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objUsoInternoAsRegularizacionArray[] = UsoInterno::InstantiateDbRow($objDbRow, $strAliasPrefix . 'usointernoasregularizacion__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Either return false to signal array expansion, or check-to-reset the Alias prefix and move on
-						if ($blnExpandedViaArray) {
-							return false;
-						} else if ($strAliasPrefix == 'aprobacion_geodesia__') {
-							$strAliasPrefix = null;
-						}
-					}
-				}
-			}
 
 			// Create a new instance of the AprobacionGeodesia object
 			$objToReturn = new AprobacionGeodesia();
@@ -521,9 +465,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objUsoInternoAsRegularizacionArray, $objToReturn->objUsoInternoAsRegularizacionArray) != null) {
 						continue;
 					}
 
@@ -552,16 +493,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
 
 
 
-
-			// Check for UsoInternoAsRegularizacion Virtual Binding
-			$strAlias = $strAliasPrefix . 'usointernoasregularizacion__id_folio';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objUsoInternoAsRegularizacionArray[] = UsoInterno::InstantiateDbRow($objDbRow, $strAliasPrefix . 'usointernoasregularizacion__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objUsoInternoAsRegularizacion = UsoInterno::InstantiateDbRow($objDbRow, $strAliasPrefix . 'usointernoasregularizacion__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
 
 			return $objToReturn;
 		}
@@ -895,24 +826,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
-            case 'UsoInternoAsRegularizacion':
-                /**
-                 * Gets the value for the private _objUsoInternoAsRegularizacion (Read-Only)
-                 * if set due to an expansion on the uso_interno.regularizacion_aprobacion_geodesia reverse relationship
-                 * @return UsoInterno
-                 */
-                return $this->objUsoInternoAsRegularizacion;
-
-            case 'UsoInternoAsRegularizacionArray':
-                /**
-                 * Gets the value for the private _objUsoInternoAsRegularizacionArray (Read-Only)
-                 * if set due to an ExpandAsArray on the uso_interno.regularizacion_aprobacion_geodesia reverse relationship
-                 * @return UsoInterno[]
-                 */
-                if(is_null($this->objUsoInternoAsRegularizacionArray))
-                    $this->objUsoInternoAsRegularizacionArray = $this->GetUsoInternoAsRegularizacionArray();
-                return (array) $this->objUsoInternoAsRegularizacionArray;
-
 
             case '__Restored':
                 return $this->__blnRestored;
@@ -1052,201 +965,6 @@ class AprobacionGeodesiaGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
-			
-		
-		// Related Objects' Methods for UsoInternoAsRegularizacion
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _UsoInternoAsRegularizacionArray
-                /**
-                * Add a Item to the _UsoInternoAsRegularizacionArray
-                * @param UsoInterno $objItem
-                * @return UsoInterno[]
-                */
-                public function AddUsoInternoAsRegularizacion(UsoInterno $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->RegularizacionAprobacionGeodesiaObject = $this;
-                    $this->objUsoInternoAsRegularizacionArray = $this->UsoInternoAsRegularizacionArray;
-                    $this->objUsoInternoAsRegularizacionArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateUsoInternoAsRegularizacion($objItem);
-
-                    return $this->UsoInternoAsRegularizacionArray;
-                }
-
-                /**
-                * Remove a Item to the _UsoInternoAsRegularizacionArray
-                * @param UsoInterno $objItem
-                * @return UsoInterno[]
-                */
-                public function RemoveUsoInternoAsRegularizacion(UsoInterno $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objUsoInternoAsRegularizacionArray;
-                    $this->objUsoInternoAsRegularizacionArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objUsoInternoAsRegularizacionArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->IdFolio))
-                        try{
-                            $objItem->RegularizacionAprobacionGeodesiaObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedUsoInternoAsRegularizacion($objItem);
-                        }
-
-                    return $this->objUsoInternoAsRegularizacionArray;
-                }
-
-		/**
-		 * Gets all associated UsoInternosAsRegularizacion as an array of UsoInterno objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return UsoInterno[]
-		*/ 
-		public function GetUsoInternoAsRegularizacionArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return UsoInterno::LoadArrayByRegularizacionAprobacionGeodesia($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated UsoInternosAsRegularizacion
-		 * @return int
-		*/ 
-		public function CountUsoInternosAsRegularizacion() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return UsoInterno::CountByRegularizacionAprobacionGeodesia($this->intId);
-		}
-
-		/**
-		 * Associates a UsoInternoAsRegularizacion
-		 * @param UsoInterno $objUsoInterno
-		 * @return void
-		*/ 
-		public function AssociateUsoInternoAsRegularizacion(UsoInterno $objUsoInterno) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateUsoInternoAsRegularizacion on this unsaved AprobacionGeodesia.');
-			if ((is_null($objUsoInterno->IdFolio)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateUsoInternoAsRegularizacion on this AprobacionGeodesia with an unsaved UsoInterno.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"uso_interno"
-				SET
-					"regularizacion_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id_folio" = ' . $objDatabase->SqlVariable($objUsoInterno->IdFolio) . '
-			');
-		}
-
-		/**
-		 * Unassociates a UsoInternoAsRegularizacion
-		 * @param UsoInterno $objUsoInterno
-		 * @return void
-		*/ 
-		public function UnassociateUsoInternoAsRegularizacion(UsoInterno $objUsoInterno) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateUsoInternoAsRegularizacion on this unsaved AprobacionGeodesia.');
-			if ((is_null($objUsoInterno->IdFolio)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateUsoInternoAsRegularizacion on this AprobacionGeodesia with an unsaved UsoInterno.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"uso_interno"
-				SET
-					"regularizacion_aprobacion_geodesia" = null
-				WHERE
-					"id_folio" = ' . $objDatabase->SqlVariable($objUsoInterno->IdFolio) . ' AND
-					"regularizacion_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all UsoInternosAsRegularizacion
-		 * @return void
-		*/ 
-		public function UnassociateAllUsoInternosAsRegularizacion() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateUsoInternoAsRegularizacion on this unsaved AprobacionGeodesia.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"uso_interno"
-				SET
-					"regularizacion_aprobacion_geodesia" = null
-				WHERE
-					"regularizacion_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated UsoInternoAsRegularizacion
-		 * @param UsoInterno $objUsoInterno
-		 * @return void
-		*/ 
-		public function DeleteAssociatedUsoInternoAsRegularizacion(UsoInterno $objUsoInterno) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateUsoInternoAsRegularizacion on this unsaved AprobacionGeodesia.');
-			if ((is_null($objUsoInterno->IdFolio)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateUsoInternoAsRegularizacion on this AprobacionGeodesia with an unsaved UsoInterno.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"uso_interno"
-				WHERE
-					"id_folio" = ' . $objDatabase->SqlVariable($objUsoInterno->IdFolio) . ' AND
-					"regularizacion_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated UsoInternosAsRegularizacion
-		 * @return void
-		*/ 
-		public function DeleteAllUsoInternosAsRegularizacion() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateUsoInternoAsRegularizacion on this unsaved AprobacionGeodesia.');
-
-			// Get the Database Object for this Class
-			$objDatabase = AprobacionGeodesia::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"uso_interno"
-				WHERE
-					"regularizacion_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
 
 
 

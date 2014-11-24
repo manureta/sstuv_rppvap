@@ -33,6 +33,7 @@
 	 * @property integer $Judicializado the value for intJudicializado 
 	 * @property string $Direccion the value for strDireccion 
 	 * @property string $NumExpedientes the value for strNumExpedientes 
+	 * @property string $Geom the value for strGeom 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property Localidad $IdLocalidadObject the value for the Localidad object referenced by intIdLocalidad 
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio 
@@ -107,7 +108,7 @@ class FolioGen extends QBaseClass {
      * @var QDateTime dttFecha
      */
     protected $dttFecha;
-    const FechaDefault = 'now()';
+    const FechaDefault = null;
 
 
     /**
@@ -213,6 +214,14 @@ class FolioGen extends QBaseClass {
     protected $strNumExpedientes;
     const NumExpedientesMaxLength = 45;
     const NumExpedientesDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column folio.geom
+     * @var string strGeom
+     */
+    protected $strGeom;
+    const GeomDefault = null;
 
 
     /**
@@ -672,6 +681,7 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'judicializado', $strAliasPrefix . 'judicializado');
 			$objBuilder->AddSelectItem($strTableName, 'direccion', $strAliasPrefix . 'direccion');
 			$objBuilder->AddSelectItem($strTableName, 'num_expedientes', $strAliasPrefix . 'num_expedientes');
+			$objBuilder->AddSelectItem($strTableName, 'geom', $strAliasPrefix . 'geom');
 		}
 
 //instantiation_methods
@@ -775,6 +785,8 @@ class FolioGen extends QBaseClass {
 			$objToReturn->strDireccion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'num_expedientes', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'num_expedientes'] : $strAliasPrefix . 'num_expedientes';
 			$objToReturn->strNumExpedientes = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'geom', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'geom'] : $strAliasPrefix . 'geom';
+			$objToReturn->strGeom = $objDbRow->GetColumn($strAliasName, 'Blob');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -1159,7 +1171,8 @@ class FolioGen extends QBaseClass {
                             "observacion_caso_dudoso",
                             "judicializado",
                             "direccion",
-                            "num_expedientes"
+                            "num_expedientes",
+                            "geom"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
@@ -1177,7 +1190,8 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
                             ' . $objDatabase->SqlVariable($this->intJudicializado) . ',
                             ' . $objDatabase->SqlVariable($this->strDireccion) . ',
-                            ' . $objDatabase->SqlVariable($this->strNumExpedientes) . '
+                            ' . $objDatabase->SqlVariable($this->strNumExpedientes) . ',
+                            ' . $objDatabase->SqlVariable($this->strGeom) . '
                         )
                     ');
 
@@ -1209,7 +1223,8 @@ class FolioGen extends QBaseClass {
                             "observacion_caso_dudoso" = ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
                             "judicializado" = ' . $objDatabase->SqlVariable($this->intJudicializado) . ',
                             "direccion" = ' . $objDatabase->SqlVariable($this->strDireccion) . ',
-                            "num_expedientes" = ' . $objDatabase->SqlVariable($this->strNumExpedientes) . '
+                            "num_expedientes" = ' . $objDatabase->SqlVariable($this->strNumExpedientes) . ',
+                            "geom" = ' . $objDatabase->SqlVariable($this->strGeom) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -1398,6 +1413,7 @@ class FolioGen extends QBaseClass {
 			$this->intJudicializado = $objReloaded->intJudicializado;
 			$this->strDireccion = $objReloaded->strDireccion;
 			$this->strNumExpedientes = $objReloaded->strNumExpedientes;
+			$this->strGeom = $objReloaded->strGeom;
 		}
 
 
@@ -1544,6 +1560,13 @@ class FolioGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strNumExpedientes;
+
+            case 'Geom':
+                /**
+                 * Gets the value for strGeom 
+                 * @return string
+                 */
+                return $this->strGeom;
 
 
             ///////////////////
@@ -1955,6 +1978,21 @@ class FolioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strNumExpedientes = QType::Cast($mixValue, QType::String));
                                                 return ($this->strNumExpedientes = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Geom':
+					/**
+					 * Sets the value for strGeom 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strGeom = QType::Cast($mixValue, QType::String));
+                                                return ($this->strGeom = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2432,6 +2470,7 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="Judicializado" type="xsd:int"/>';
 			$strToReturn .= '<element name="Direccion" type="xsd:string"/>';
 			$strToReturn .= '<element name="NumExpedientes" type="xsd:string"/>';
+			$strToReturn .= '<element name="Geom" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2511,6 +2550,9 @@ class FolioGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'NumExpedientes')) {
 				$objToReturn->strNumExpedientes = $objSoapObject->NumExpedientes;
+            }
+			if (property_exists($objSoapObject, 'Geom')) {
+				$objToReturn->strGeom = $objSoapObject->Geom;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

@@ -290,6 +290,7 @@
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
         $strConfigArray['Columns']['NumExpedientes'] = QApplication::Translate('NumExpedientes');
+        $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
 
         $this->lstFolioAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
         $this->lstFolioAsId->Name = Folio::Noun();

@@ -47,6 +47,8 @@ class QQNodeFolio extends QQNode {
 					return new QQNode('direccion', 'Direccion', 'string', $this);
 				case 'NumExpedientes':
 					return new QQNode('num_expedientes', 'NumExpedientes', 'string', $this);
+				case 'Geom':
+					return new QQNode('geom', 'Geom', 'string', $this);
 				case 'CondicionesSocioUrbanisticasAsId':
 					return new QQReverseReferenceNodeCondicionesSocioUrbanisticas($this, 'condicionessociourbanisticasasid', 'reverse_reference', 'id_folio', 'CondicionesSocioUrbanisticasAsId');
 				case 'NomenclaturaAsId':

@@ -52,6 +52,8 @@
      * property-read QLabel $DireccionLabel
      * property QTextBox $NumExpedientesControl
      * property-read QLabel $NumExpedientesLabel
+     * property QTextBox $GeomControl
+     * property-read QLabel $GeomLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -92,6 +94,7 @@
         protected $txtJudicializado;
         protected $txtDireccion;
         protected $txtNumExpedientes;
+        protected $txtGeom;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -111,6 +114,7 @@
         protected $lblJudicializado;
         protected $lblDireccion;
         protected $lblNumExpedientes;
+        protected $lblGeom;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -691,6 +695,32 @@
         }
 
         /**
+         * Create and setup QTextBox txtGeom
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtGeom_Create($strControlId = null) {
+            $this->txtGeom = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtGeom->Name = QApplication::Translate('Geom');
+            $this->txtGeom->Text = $this->objFolio->Geom;
+            $this->txtGeom->TextMode = QTextMode::MultiLine;
+            
+            return $this->txtGeom;
+        }
+
+        /**
+         * Create and setup QLabel lblGeom
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblGeom_Create($strControlId = null) {
+            $this->lblGeom = new QLabel($this->objParentObject, $strControlId);
+            $this->lblGeom->Name = QApplication::Translate('Geom');
+            $this->lblGeom->Text = $this->objFolio->Geom;
+            return $this->lblGeom;
+        }
+
+        /**
          * Create and setup QListBox lstCondicionesSocioUrbanisticasAsId ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -816,8 +846,8 @@
         $strConfigArray['Columns']['Mza'] = QApplication::Translate('Mza');
         $strConfigArray['Columns']['Parc'] = QApplication::Translate('Parc');
         $strConfigArray['Columns']['InscripcionDominio'] = QApplication::Translate('InscripcionDominio');
-        $strConfigArray['Columns']['DatoVerificadoRegPropiedad'] = QApplication::Translate('DatoVerificadoRegPropiedad');
         $strConfigArray['Columns']['TitularRegPropiedad'] = QApplication::Translate('TitularRegPropiedad');
+        $strConfigArray['Columns']['DatoVerificadoRegPropiedad'] = QApplication::Translate('DatoVerificadoRegPropiedad');
 
         $this->lstNomenclaturaAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
         $this->lstNomenclaturaAsId->Name = Nomenclatura::Noun();
@@ -923,6 +953,9 @@
             if ($this->txtNumExpedientes) $this->txtNumExpedientes->Text = $this->objFolio->NumExpedientes;
             if ($this->lblNumExpedientes) $this->lblNumExpedientes->Text = $this->objFolio->NumExpedientes;
 
+            if ($this->txtGeom) $this->txtGeom->Text = $this->objFolio->Geom;
+            if ($this->lblGeom) $this->lblGeom->Text = $this->objFolio->Geom;
+
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
                 $this->lstCondicionesSocioUrbanisticasAsId->AddItem(QApplication::Translate('- Select One -'), null);
@@ -1007,6 +1040,7 @@
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
                 if ($this->txtDireccion) $this->objFolio->Direccion = $this->txtDireccion->Text;
                 if ($this->txtNumExpedientes) $this->objFolio->NumExpedientes = $this->txtNumExpedientes->Text;
+                if ($this->txtGeom) $this->objFolio->Geom = $this->txtGeom->Text;
 
 
         }
@@ -1174,6 +1208,12 @@
                 case 'NumExpedientesLabel':
                     if (!$this->lblNumExpedientes) return $this->lblNumExpedientes_Create();
                     return $this->lblNumExpedientes;
+                case 'GeomControl':
+                    if (!$this->txtGeom) return $this->txtGeom_Create();
+                    return $this->txtGeom;
+                case 'GeomLabel':
+                    if (!$this->lblGeom) return $this->lblGeom_Create();
+                    return $this->lblGeom;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1250,6 +1290,8 @@
                         return ($this->txtDireccion = QType::Cast($mixValue, 'QControl'));
                     case 'NumExpedientesControl':
                         return ($this->txtNumExpedientes = QType::Cast($mixValue, 'QControl'));
+                    case 'GeomControl':
+                        return ($this->txtGeom = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

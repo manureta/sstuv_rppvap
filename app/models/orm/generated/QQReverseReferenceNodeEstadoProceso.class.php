@@ -9,8 +9,6 @@ class QQReverseReferenceNodeEstadoProceso extends QQReverseReferenceNode {
 					return new QQNode('id', 'Id', 'integer', $this);
 				case 'Descripcion':
 					return new QQNode('descripcion', 'Descripcion', 'string', $this);
-				case 'UsoInternoAsRegularizacion':
-					return new QQReverseReferenceNodeUsoInterno($this, 'usointernoasregularizacion', 'reverse_reference', 'regularizacion_estado_proceso');
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);
