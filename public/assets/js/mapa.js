@@ -24,7 +24,8 @@ function mostrarMapa(){
 			draw: {
 				position: 'topleft',
 				polygon: {
-					title: 'Draw a sexy polygon!',
+					title: 'Dibujar un poligono',
+					tooltip:"Dibujar",
 					allowIntersection: false,
 					drawError: {
 						color: '#b00b00',
@@ -35,14 +36,11 @@ function mostrarMapa(){
 					},
 					showArea: true
 				},
-				polyline: {
-					metric: false
-				},
-				circle: {
-					shapeOptions: {
-						color: '#662d91'
-					}
-				}
+				marker:false,
+				line:false,
+				circle:false,
+				polyline:false,
+				rectangle:false
 			},
 			edit: {
 				featureGroup: drawnItems
@@ -59,6 +57,8 @@ function mostrarMapa(){
 			}
 
 			drawnItems.addLayer(layer);
+			//var shape = layer.toGeoJSON()
+  			//var shape_for_db = JSON.stringify(shape);
 		});
 	  	
 	});
