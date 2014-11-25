@@ -1,5 +1,6 @@
 <?php	
 class FolioDataGrid extends FolioDataGridGen {
+ public $mdlPanel;
    protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
@@ -26,6 +27,8 @@ class FolioDataGrid extends FolioDataGridGen {
         //if (FolioDataGrid::$strColumnsArray['CondicionesSocioUrbanisticasAsId']) $this->MetaAddColumn(QQN::Folio()->CondicionesSocioUrbanisticasAsId)->Title = QApplication::Translate('CondicionesSocioUrbanisticasAsId');
         //if (FolioDataGrid::$strColumnsArray['RegularizacionAsId']) $this->MetaAddColumn(QQN::Folio()->RegularizacionAsId)->Title = QApplication::Translate('RegularizacionAsId');
         //if (FolioDataGrid::$strColumnsArray['UsoInterno']) $this->MetaAddColumn(QQN::Folio()->UsoInterno)->Title = QApplication::Translate('UsoInterno');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetPrintButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false); ?>', 'Width=9%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $this->AddColumn($objColumnAcciones);
     }
 
     public function btnEdit_Click($strFormId, $strControlId, $strParameter) {
@@ -39,9 +42,55 @@ class FolioDataGrid extends FolioDataGridGen {
                              QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
                           }
                  }
-         
-   
 
+    
+
+
+    public function GetEditButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn btn-xs btn-info');
+        $objButton->Icon = 'edit';
+        $objButton->ToolTip = 'Editar Folio';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnEdit_Click"));
+        $objButton->Enabled = true;
+        return $objButton;
+    }
+
+    public function GetPrintButton() {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn btn-xs btn-print');
+        $objButton->Icon = 'print';
+        $objButton->Enabled = true;
+        $objButton->ToolTip = "Imprimir carátula";
+        $objButton->ActionParameter = 8;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "PrintClick"));
+        return $objButton;
+    }
+
+    public function GetDeleteButton() {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-danger');
+        $objButton->Icon = 'trash';
+        $objButton->ToolTip = 'Borrar Folio';
+        $objButton->ActionParameter = 55;
+        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere BORRAR esta persona de este FOLIO?\\r\\nEsta acción no se puede deshacer")));
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnDelete_Click"));
+        $objButton->Enabled = true;
+        return $objButton;
+    }                 
+       
+      
+   
+   public function PrintClick($strFormId, $strControlId, $strParameter) {
+        //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/caratula/".$strParameter);
+    //$this-> mdlPanel=new FolioModalPanel($this,Folio::strControlsArray,$strParameter);
+    //new FolioModalPanel($this->ParentControl,null,$strParameter);
+
+    }
+
+
+ 
 
 }
 ?>
