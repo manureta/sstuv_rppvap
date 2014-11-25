@@ -44,6 +44,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
         
+        // Si proceso iniciado esta tildado hay que mostrar encuadre legal
         $valor=($this->chkProcesoIniciado->Checked==1)? true: false;
         if($valor)QApplication::ExecuteJavascript("mostrarEncuadre(true)");
         $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QJavascriptAction ("mostrarEncuadre()"));
@@ -61,7 +62,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlAntecedentes->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;        
 
+        // Si se tilda sin intervencion hay que ocultar org de intervencion
         $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;
+        error_log("valor : $sinintervencion");
         if($sinintervencion)QApplication::ExecuteJavascript("SinIntervencion(true)");
         $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(), new QJavascriptAction ("SinIntervencion()"));
 

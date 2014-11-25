@@ -28,28 +28,32 @@
     <h6>Regularización</h6>
     <div>
                 
-                <div class="well bs-component">           				        
+            <div class="well bs-component">           				        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
+
+                <div class="panel_encuadre_legal" style="display:none">
+        		<br>
+        		<b>Encuadre Legal</b>
+		        <br>
+		        	<div>
+		                                         
+                        <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkDecreto81588->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
+		                    
+		        	</div>    
+    			</div>        
                         
-                </div>        
+            </div>        
     </div>
 
-    <div class="panel_encuadre_legal" style="display:none">
-        <h6>Encuadre Legal</h6>
-        <div>
-                   <div class="well bs-component">                       
-                            <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->chkDecreto81588->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
-                            <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
-                    </div>
-        </div>    
-    </div>
+    
 
     <h6>Antecedentes</h6>       
     <div> 
@@ -61,23 +65,24 @@
                         <?php $_CONTROL->pnlAntecedentes->chkEquipamientos->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkIntervencionesEnViviendas->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->txtOtros->RenderWithName(); ?>
+
+                        <div class="panel_organismos">
+					        <br>
+					        <b>Organismos de intervencion</b>
+					        <br>
+					        <div>                                                    
+					                <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->chkMunicipal->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->calFechaIntervencion->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>		
+					        </div>            
+					    </div>  
                 </div>
     </div>
-    <div class="panel_organismos" style="display:none">
-        <h6>Organismos de intervencion</h6>
-        <div>            
-                <div class="well bs-component">   
-                        
-                        <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlOrganismos->chkMunicipal->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlOrganismos->calFechaIntervencion->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>
-				</div>
-        </div>            
-    </div>            
+
    
 </div>
 
