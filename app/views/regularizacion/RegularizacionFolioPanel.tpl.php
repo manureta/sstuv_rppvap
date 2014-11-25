@@ -35,19 +35,21 @@
                 </div>        
     </div>
 
-    <h6>Encuadre Legal</h6>
-    <div>
-               <div class="well bs-component">                       
-                        <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkDecreto81588->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
-                </div>
-    </div>    
+    <div class="panel_encuadre_legal" style="display:none">
+        <h6>Encuadre Legal</h6>
+        <div>
+                   <div class="well bs-component">                       
+                            <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->chkDecreto81588->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
+                            <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
+                    </div>
+        </div>    
+    </div>
 
     <h6>Antecedentes</h6>       
     <div> 
@@ -61,8 +63,9 @@
                         <?php $_CONTROL->pnlAntecedentes->txtOtros->RenderWithName(); ?>
                 </div>
     </div>
-    <h6>Organismos de intervencion</h6>
-    <div>            
+    <div class="panel_organismos" style="display:none">
+        <h6>Organismos de intervencion</h6>
+        <div>            
                 <div class="well bs-component">   
                         
                         <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
@@ -73,9 +76,29 @@
                         <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
                         <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>
 				</div>
+        </div>            
     </div>            
-                
    
 </div>
 
 <div class="botones-form"></div>
+
+<script type="text/javascript">
+    function mostrarEncuadre(checked){
+        
+        if(checked){
+            $(".panel_encuadre_legal").fadeIn();
+        }else{
+            $(".panel_encuadre_legal").toggle();
+        }
+    }
+
+    function SinIntervencion(checked){
+        console.log("entro");
+        if(checked){
+            $(".panel_organismos").fadeOut();
+        }else{
+            $(".panel_organismos").toggle();
+        }
+    }
+</script>

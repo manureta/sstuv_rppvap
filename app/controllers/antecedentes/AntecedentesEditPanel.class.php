@@ -58,8 +58,8 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
             $this->objControlsArray['chkIntervencionesEnViviendas'] = $this->mctAntecedentes->chkIntervencionesEnViviendas_Create();
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctAntecedentes->txtOtros_Create();
-        if (in_array('lstOrganismosDeIntervencionAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstOrganismosDeIntervencionAsIdFolio'] = $this->mctAntecedentes->lstOrganismosDeIntervencionAsIdFolio_Create();
+        //if (in_array('lstOrganismosDeIntervencionAsIdFolio',$strControlsArray))
+          //  $this->objControlsArray['lstOrganismosDeIntervencionAsIdFolio'] = $this->mctAntecedentes->lstOrganismosDeIntervencionAsIdFolio_Create();
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

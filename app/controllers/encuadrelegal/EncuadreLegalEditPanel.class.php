@@ -39,6 +39,7 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         //$this->buttons_Create();
     }
 
+ 
     protected function metaControl_Create($strControlsArray){
         // Construct the EncuadreLegalMetaControl
         // MAKE SURE we specify "$this" as the MetaControl's (and thus all subsequent controls') parent

@@ -43,7 +43,10 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
-
+        
+        $valor=($this->chkProcesoIniciado->Checked==1)? true: false;
+        if($valor)QApplication::ExecuteJavascript("mostrarEncuadre(true)");
+        $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QJavascriptAction ("mostrarEncuadre()"));
 
         $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));                        
         $this->pnlEncuadre = new EncuadreLegalEditPanel($this,EncuadreLegalEditPanel::$strControlsArray,$this->objEncuadre->Id);
@@ -51,11 +54,17 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
         
+        
         $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
         $this->pnlAntecedentes = new AntecedentesEditPanel($this,AntecedentesEditPanel::$strControlsArray,$this->objAntecedentes->Id);
         $this->pnlAntecedentes->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAntecedentes->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;        
+
+        $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;
+        if($sinintervencion)QApplication::ExecuteJavascript("SinIntervencion(true)");
+        $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(), new QJavascriptAction ("SinIntervencion()"));
+
         
         $this->objOrganismos=OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,QApplication::QueryString("id")));                        
         $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this,OrganismosDeIntervencionEditPanel::$strControlsArray,$this->objOrganismos->Id);
@@ -67,6 +76,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
 
         //$this->blnAutoRenderChildrenWithName = true;
     }
+
+   
+
 
     protected function metaControl_Create($strControlsArray){
         // Construct the RegularizacionMetaControl
