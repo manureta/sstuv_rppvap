@@ -26,7 +26,7 @@
         </ul>
     </div>
     
-    <h6>Condiciones</h6>
+    <h6>Condiciones</h>
     <div>                
                 <div class="well bs-component">              				                        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>

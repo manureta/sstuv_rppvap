@@ -108,12 +108,16 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
             $this->objControlsArray['lstIdFolioObject'] = $this->mctCondicionesSocioUrbanisticas->lstIdFolioObject_Create();
         if (in_array('chkEspacioLibreComun',$strControlsArray)) 
             $this->objControlsArray['chkEspacioLibreComun'] = $this->mctCondicionesSocioUrbanisticas->chkEspacioLibreComun_Create();
+            $this->objControlsArray['chkEspacioLibreComun']->Name="Espacio libre común";
         if (in_array('txtPresenciaOrgSociales',$strControlsArray)) 
             $this->objControlsArray['txtPresenciaOrgSociales'] = $this->mctCondicionesSocioUrbanisticas->txtPresenciaOrgSociales_Create();
+            $this->objControlsArray['txtPresenciaOrgSociales']->Name="Presencia de organismos sociales";
         if (in_array('txtNombreRefernte',$strControlsArray)) 
             $this->objControlsArray['txtNombreRefernte'] = $this->mctCondicionesSocioUrbanisticas->txtNombreRefernte_Create();
+            $this->objControlsArray['txtNombreRefernte']->Name="Nombre del referente";
         if (in_array('txtTelefonoReferente',$strControlsArray)) 
             $this->objControlsArray['txtTelefonoReferente'] = $this->mctCondicionesSocioUrbanisticas->txtTelefonoReferente_Create();
+            $this->objControlsArray['txtTelefonoReferente']->Name="Teléfono del referente";
         if (in_array('lstEquipamientoAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstEquipamientoAsIdFolio_Create();
         if (in_array('lstInfraestructuraAsIdFolio',$strControlsArray))
