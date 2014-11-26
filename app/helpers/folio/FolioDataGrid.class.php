@@ -57,23 +57,23 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }
 
-    public function GetPrintButton() {
+    public function GetPrintButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn btn-xs btn-print');
         $objButton->Icon = 'print';
         $objButton->Enabled = true;
         $objButton->ToolTip = "Imprimir carátula";
-        $objButton->ActionParameter = 8;
+        $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "PrintClick"));
         return $objButton;
     }
 
-    public function GetDeleteButton() {
+    public function GetDeleteButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-danger');
         $objButton->Icon = 'trash';
         $objButton->ToolTip = 'Borrar Folio';
-        $objButton->ActionParameter = 55;
+        $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere BORRAR esta persona de este FOLIO?\\r\\nEsta acción no se puede deshacer")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnDelete_Click"));
         $objButton->Enabled = true;
@@ -83,9 +83,9 @@ class FolioDataGrid extends FolioDataGridGen {
       
    
    public function PrintClick($strFormId, $strControlId, $strParameter) {
-        //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/caratula/".$strParameter);
-    //$this-> mdlPanel=new FolioModalPanel($this,Folio::strControlsArray,$strParameter);
-    //new FolioModalPanel($this->ParentControl,null,$strParameter);
+        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";
+        error_log($url);
+        QApplication::DisplayAlert("<iframe src='$url' width='100%' height='400'></iframe>");
 
     }
 
