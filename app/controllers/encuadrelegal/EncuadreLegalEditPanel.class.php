@@ -46,8 +46,7 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         $this->mctEncuadreLegal = EncuadreLegalMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on EncuadreLegal's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctEncuadreLegal->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctEncuadreLegal->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctEncuadreLegal->lstIdFolioObject_Create();
         if (in_array('chkDecreto222595',$strControlsArray)) 

@@ -47,8 +47,7 @@ class SituacionAmbientalEditPanel extends SituacionAmbientalEditPanelGen {
         $this->mctSituacionAmbiental = SituacionAmbientalMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on SituacionAmbiental's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctSituacionAmbiental->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctSituacionAmbiental->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctSituacionAmbiental->lstIdFolioObject_Create();
         if (in_array('chkSinProblemas',$strControlsArray)) 

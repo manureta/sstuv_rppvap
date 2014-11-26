@@ -44,8 +44,7 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
         $this->mctAntecedentes = AntecedentesMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Antecedentes's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctAntecedentes->lblId_Create();
+       // if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctAntecedentes->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctAntecedentes->lstIdFolioObject_Create();
         if (in_array('chkSinIntervencion',$strControlsArray)) 

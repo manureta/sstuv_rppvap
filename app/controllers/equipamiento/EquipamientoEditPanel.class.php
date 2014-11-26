@@ -46,8 +46,7 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
         $this->mctEquipamiento = EquipamientoMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Equipamiento's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctEquipamiento->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctEquipamiento->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctEquipamiento->lstIdFolioObject_Create();
         if (in_array('lstUnidadSanitariaObject',$strControlsArray)) 

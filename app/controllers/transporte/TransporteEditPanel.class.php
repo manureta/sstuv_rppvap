@@ -38,8 +38,7 @@ class TransporteEditPanel extends TransporteEditPanelGen {
         $this->mctTransporte = TransporteMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Transporte's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctTransporte->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctTransporte->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctTransporte->lstIdFolioObject_Create();
         if (in_array('lstColectivosObject',$strControlsArray)) 

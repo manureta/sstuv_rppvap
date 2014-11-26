@@ -44,8 +44,7 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         $this->mctOrganismosDeIntervencion = OrganismosDeIntervencionMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on OrganismosDeIntervencion's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctOrganismosDeIntervencion->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctOrganismosDeIntervencion->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctOrganismosDeIntervencion->lstIdFolioObject_Create();
         if (in_array('chkNacional',$strControlsArray)) 

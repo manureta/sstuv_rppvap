@@ -51,8 +51,7 @@ class InfraestructuraEditPanel extends InfraestructuraEditPanelGen {
         $this->mctInfraestructura = InfraestructuraMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Infraestructura's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctInfraestructura->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctInfraestructura->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctInfraestructura->lstIdFolioObject_Create();
         if (in_array('lstEnergiaElectricaMedidorIndividualObject',$strControlsArray)) 
