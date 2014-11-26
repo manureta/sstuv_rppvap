@@ -10,12 +10,14 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
     
     protected $objFolio;
     protected $objEquipamiento;
+    protected $objTransporte;
     protected $objInfraestructura;
     protected $objAmbiental;
 
 
     public $pnlCondiciones;
     public $pnlEquipamiento;
+    public $pnlTransporte;
     public $pnlInfraestructura;
     public $pnlAmbiental; 
 
@@ -64,6 +66,12 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlEquipamiento->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEquipamiento->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEquipamiento->lstIdFolioObject->Enabled = false;
+
+        $this->objTransporte=Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,QApplication::QueryString("id")));                        
+        $this->pnlTransporte = new TransporteEditPanel($this,TransporteEditPanel::$strControlsArray,$this->objTransporte->Id);
+        $this->pnlTransporte->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlTransporte->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlTransporte->lstIdFolioObject->Enabled = false;
         
         
         $this->objInfraestructura=Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,QApplication::QueryString("id")));
@@ -131,6 +139,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlInfraestructura->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlAmbiental->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlEquipamiento->btnSave_Click($strFormId, $strControlId, $strParameter);
+        $this->pnlTransporte->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->mctCondicionesSocioUrbanisticas->Save();
         foreach ($this->objModifiedChildsArray as $obj) {
             $obj->Save();

@@ -52,6 +52,18 @@
                     </div>
     </div>
 
+
+    <h6>Transporte</h6>
+    <div>
+                    <div class="well bs-component">                            
+
+                    <?php $_CONTROL->pnlTransporte->lstIdFolioObject->RenderWithName(); ?>
+                    <?php $_CONTROL->pnlTransporte->lstColectivosObject->RenderWithName(); ?>
+                    <?php $_CONTROL->pnlTransporte->lstFerrocarrilObject->RenderWithName(); ?>
+                    <?php $_CONTROL->pnlTransporte->lstRemisCombisObject->RenderWithName(); ?>
+                    </div>
+    </div>
+
     <h6>Infraestructura</h6>
     <div>
                     <div class="well bs-component">                                                          
