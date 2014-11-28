@@ -532,7 +532,7 @@ class UsuarioGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAliasPrefix . 'super_admin', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'super_admin'] : $strAliasPrefix . 'super_admin';
 			$objToReturn->blnSuperAdmin = $objDbRow->GetColumn($strAliasName, 'Bit');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_activacion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_activacion'] : $strAliasPrefix . 'fecha_activacion';
-			$objToReturn->dttFechaActivacion = $objDbRow->GetColumn($strAliasName, 'DateTime');
+			$objToReturn->dttFechaActivacion = $objDbRow->GetColumn($strAliasName, 'Date');
 			$strAliasName = array_key_exists($strAliasPrefix . 'nombre', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nombre'] : $strAliasPrefix . 'nombre';
 			$objToReturn->strNombre = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'id_perfil', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_perfil'] : $strAliasPrefix . 'id_perfil';

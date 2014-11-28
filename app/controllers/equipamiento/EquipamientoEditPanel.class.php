@@ -15,7 +15,6 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
         'lstEscuelaPrimariaObject' => true,
         'lstEscuelaSecundariaObject' => true,
         'lstComedorObject' => true,
-        'lstSalonUsosMultiplesObject' => true,
         'lstCentroIntegracionComunitariaObject' => true,
         'txtOtro' => true,
     );
@@ -59,8 +58,6 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
             $this->objControlsArray['lstEscuelaSecundariaObject'] = $this->mctEquipamiento->lstEscuelaSecundariaObject_Create();
         if (in_array('lstComedorObject',$strControlsArray)) 
             $this->objControlsArray['lstComedorObject'] = $this->mctEquipamiento->lstComedorObject_Create();
-        if (in_array('lstSalonUsosMultiplesObject',$strControlsArray)) 
-            $this->objControlsArray['lstSalonUsosMultiplesObject'] = $this->mctEquipamiento->lstSalonUsosMultiplesObject_Create();
         if (in_array('lstCentroIntegracionComunitariaObject',$strControlsArray)) 
             $this->objControlsArray['lstCentroIntegracionComunitariaObject'] = $this->mctEquipamiento->lstCentroIntegracionComunitariaObject_Create();
         if (in_array('txtOtro',$strControlsArray)) 

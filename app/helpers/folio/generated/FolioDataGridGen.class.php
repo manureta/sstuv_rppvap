@@ -80,10 +80,6 @@ class FolioDataGridGen extends QFilteredDataGrid {
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
         'UsoInterno' => true,
-        'Judicializado' => true,
-        'CondicionesSocioUrbanisticasAsId' => true,
-        'RegularizacionAsId' => true,
-        'UsoInterno' => true,
         'Direccion' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
@@ -93,6 +89,10 @@ class FolioDataGridGen extends QFilteredDataGrid {
         'RegularizacionAsId' => true,
         'UsoInterno' => true,
         'Geom' => true,
+        'CondicionesSocioUrbanisticasAsId' => true,
+        'RegularizacionAsId' => true,
+        'UsoInterno' => true,
+        'Judicializado' => true,
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
         'UsoInterno' => true,
@@ -143,10 +143,10 @@ class FolioDataGridGen extends QFilteredDataGrid {
         if (FolioDataGrid::$strColumnsArray['CantidadFamilias']) $this->MetaAddColumn('CantidadFamilias')->Title = QApplication::Translate('CantidadFamilias');
         if (FolioDataGrid::$strColumnsArray['TipoBarrioObject']) $this->MetaAddColumn(QQN::Folio()->TipoBarrioObject)->Title = QApplication::Translate('TipoBarrioObject');
         if (FolioDataGrid::$strColumnsArray['ObservacionCasoDudoso']) $this->MetaAddColumn('ObservacionCasoDudoso')->Title = QApplication::Translate('ObservacionCasoDudoso');
-        if (FolioDataGrid::$strColumnsArray['Judicializado']) $this->MetaAddColumn('Judicializado')->Title = QApplication::Translate('Judicializado');
         if (FolioDataGrid::$strColumnsArray['Direccion']) $this->MetaAddColumn('Direccion')->Title = QApplication::Translate('Direccion');
         if (FolioDataGrid::$strColumnsArray['NumExpedientes']) $this->MetaAddColumn('NumExpedientes')->Title = QApplication::Translate('NumExpedientes');
         if (FolioDataGrid::$strColumnsArray['Geom']) $this->MetaAddColumn('Geom')->Title = QApplication::Translate('Geom');
+        if (FolioDataGrid::$strColumnsArray['Judicializado']) $this->MetaAddColumn('Judicializado')->Title = QApplication::Translate('Judicializado');
         if (FolioDataGrid::$strColumnsArray['CondicionesSocioUrbanisticasAsId']) $this->MetaAddColumn(QQN::Folio()->CondicionesSocioUrbanisticasAsId)->Title = QApplication::Translate('CondicionesSocioUrbanisticasAsId');
         if (FolioDataGrid::$strColumnsArray['RegularizacionAsId']) $this->MetaAddColumn(QQN::Folio()->RegularizacionAsId)->Title = QApplication::Translate('RegularizacionAsId');
         if (FolioDataGrid::$strColumnsArray['UsoInterno']) $this->MetaAddColumn(QQN::Folio()->UsoInterno)->Title = QApplication::Translate('UsoInterno');
@@ -314,10 +314,10 @@ class FolioDataGridGen extends QFilteredDataGrid {
 				case 'TipoBarrio': return QQN::Folio()->TipoBarrio;
 				case 'TipoBarrioObject': return QQN::Folio()->TipoBarrioObject;
 				case 'ObservacionCasoDudoso': return QQN::Folio()->ObservacionCasoDudoso;
-				case 'Judicializado': return QQN::Folio()->Judicializado;
 				case 'Direccion': return QQN::Folio()->Direccion;
 				case 'NumExpedientes': return QQN::Folio()->NumExpedientes;
 				case 'Geom': return QQN::Folio()->Geom;
+				case 'Judicializado': return QQN::Folio()->Judicializado;
 				case 'CondicionesSocioUrbanisticasAsId': return QQN::Folio()->CondicionesSocioUrbanisticasAsId;
 
 				case 'RegularizacionAsId': return QQN::Folio()->RegularizacionAsId;

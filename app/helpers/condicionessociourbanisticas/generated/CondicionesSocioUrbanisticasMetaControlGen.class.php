@@ -327,7 +327,6 @@
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 

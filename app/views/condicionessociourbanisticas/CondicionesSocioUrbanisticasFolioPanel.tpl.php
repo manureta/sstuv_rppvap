@@ -46,7 +46,6 @@
                         <?php $_CONTROL->pnlEquipamiento->lstEscuelaPrimariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstEscuelaSecundariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstComedorObject->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEquipamiento->lstSalonUsosMultiplesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstCentroIntegracionComunitariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->txtOtro->RenderWithName(); ?>
                     </div>

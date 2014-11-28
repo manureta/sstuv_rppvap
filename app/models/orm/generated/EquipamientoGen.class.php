@@ -22,7 +22,6 @@
 	 * @property integer $EscuelaPrimaria the value for intEscuelaPrimaria 
 	 * @property integer $EscuelaSecundaria the value for intEscuelaSecundaria 
 	 * @property integer $Comedor the value for intComedor 
-	 * @property integer $SalonUsosMultiples the value for intSalonUsosMultiples 
 	 * @property integer $CentroIntegracionComunitaria the value for intCentroIntegracionComunitaria 
 	 * @property string $Otro the value for strOtro 
 	 * @property CondicionesSocioUrbanisticas $IdFolioObject the value for the CondicionesSocioUrbanisticas object referenced by intIdFolio 
@@ -31,7 +30,6 @@
 	 * @property OpcionesEquipamientos $EscuelaPrimariaObject the value for the OpcionesEquipamientos object referenced by intEscuelaPrimaria 
 	 * @property OpcionesEquipamientos $EscuelaSecundariaObject the value for the OpcionesEquipamientos object referenced by intEscuelaSecundaria 
 	 * @property OpcionesEquipamientos $ComedorObject the value for the OpcionesEquipamientos object referenced by intComedor 
-	 * @property OpcionesEquipamientos $SalonUsosMultiplesObject the value for the OpcionesEquipamientos object referenced by intSalonUsosMultiples 
 	 * @property OpcionesEquipamientos $CentroIntegracionComunitariaObject the value for the OpcionesEquipamientos object referenced by intCentroIntegracionComunitaria 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -106,14 +104,6 @@ class EquipamientoGen extends QBaseClass {
      */
     protected $intComedor;
     const ComedorDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column equipamiento.salon_usos_multiples
-     * @var integer intSalonUsosMultiples
-     */
-    protected $intSalonUsosMultiples;
-    const SalonUsosMultiplesDefault = null;
 
 
     /**
@@ -212,16 +202,6 @@ class EquipamientoGen extends QBaseClass {
 		 * @var OpcionesEquipamientos objComedorObject
 		 */
 		protected $objComedorObject;
-
-		/**
-		 * Protected member variable that contains the object pointed by the reference
-		 * in the database column equipamiento.salon_usos_multiples.
-		 *
-		 * NOTE: Always use the SalonUsosMultiplesObject property getter to correctly retrieve this OpcionesEquipamientos object.
-		 * (Because this class implements late binding, this variable reference MAY be null.)
-		 * @var OpcionesEquipamientos objSalonUsosMultiplesObject
-		 */
-		protected $objSalonUsosMultiplesObject;
 
 		/**
 		 * Protected member variable that contains the object pointed by the reference
@@ -557,7 +537,6 @@ class EquipamientoGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'escuela_primaria', $strAliasPrefix . 'escuela_primaria');
 			$objBuilder->AddSelectItem($strTableName, 'escuela_secundaria', $strAliasPrefix . 'escuela_secundaria');
 			$objBuilder->AddSelectItem($strTableName, 'comedor', $strAliasPrefix . 'comedor');
-			$objBuilder->AddSelectItem($strTableName, 'salon_usos_multiples', $strAliasPrefix . 'salon_usos_multiples');
 			$objBuilder->AddSelectItem($strTableName, 'centro_integracion_comunitaria', $strAliasPrefix . 'centro_integracion_comunitaria');
 			$objBuilder->AddSelectItem($strTableName, 'otro', $strAliasPrefix . 'otro');
 		}
@@ -603,8 +582,6 @@ class EquipamientoGen extends QBaseClass {
 			$objToReturn->intEscuelaSecundaria = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'comedor', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'comedor'] : $strAliasPrefix . 'comedor';
 			$objToReturn->intComedor = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . 'salon_usos_multiples', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'salon_usos_multiples'] : $strAliasPrefix . 'salon_usos_multiples';
-			$objToReturn->intSalonUsosMultiples = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'centro_integracion_comunitaria', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'centro_integracion_comunitaria'] : $strAliasPrefix . 'centro_integracion_comunitaria';
 			$objToReturn->intCentroIntegracionComunitaria = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'otro', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'otro'] : $strAliasPrefix . 'otro';
@@ -668,12 +645,6 @@ class EquipamientoGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName)))
 				$objToReturn->objComedorObject = OpcionesEquipamientos::InstantiateDbRow($objDbRow, $strAliasPrefix . 'comedor__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-
-			// Check for SalonUsosMultiplesObject Early Binding
-			$strAlias = $strAliasPrefix . 'salon_usos_multiples__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName)))
-				$objToReturn->objSalonUsosMultiplesObject = OpcionesEquipamientos::InstantiateDbRow($objDbRow, $strAliasPrefix . 'salon_usos_multiples__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 
 			// Check for CentroIntegracionComunitariaObject Early Binding
 			$strAlias = $strAliasPrefix . 'centro_integracion_comunitaria__id';
@@ -936,38 +907,6 @@ class EquipamientoGen extends QBaseClass {
 			
 		/**
 		 * Load an array of Equipamiento objects,
-		 * by SalonUsosMultiples Index(es)
-		 * @param integer $intSalonUsosMultiples
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Equipamiento[]
-		*/
-		public static function LoadArrayBySalonUsosMultiples($intSalonUsosMultiples, $objOptionalClauses = null) {
-			// Call Equipamiento::QueryArray to perform the LoadArrayBySalonUsosMultiples query
-			try {
-				return Equipamiento::QueryArray(
-					QQ::Equal(QQN::Equipamiento()->SalonUsosMultiples, $intSalonUsosMultiples),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count Equipamientos
-		 * by SalonUsosMultiples Index(es)
-		 * @param integer $intSalonUsosMultiples
-		 * @return int
-		*/
-		public static function CountBySalonUsosMultiples($intSalonUsosMultiples) {
-			// Call Equipamiento::QueryCount to perform the CountBySalonUsosMultiples query
-			return Equipamiento::QueryCount(
-				QQ::Equal(QQN::Equipamiento()->SalonUsosMultiples, $intSalonUsosMultiples)
-			);
-		}
-			
-		/**
-		 * Load an array of Equipamiento objects,
 		 * by UnidadSanitaria Index(es)
 		 * @param integer $intUnidadSanitaria
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -1110,20 +1049,6 @@ class EquipamientoGen extends QBaseClass {
 			throw $objExc;
                 }
             }
-            // ver si objSalonUsosMultiplesObject esta Guardado
-            if(is_null($this->intSalonUsosMultiples)){
-                //Si el objeto esta seteado lo grabo sino no hago NADA.
-                if(!is_null($this->SalonUsosMultiplesObject))
-                try{
-                    if(!is_null($this->SalonUsosMultiplesObject->SalonUsosMultiples))
-                        $this->intSalonUsosMultiples = $this->SalonUsosMultiplesObject->SalonUsosMultiples;
-                    else
-                        $this->intSalonUsosMultiples = $this->SalonUsosMultiplesObject->Save();
-                }catch(Exception $objExc){
-                    	$objExc->IncrementOffset();
-			throw $objExc;
-                }
-            }
             // ver si objCentroIntegracionComunitariaObject esta Guardado
             if(is_null($this->intCentroIntegracionComunitaria)){
                 //Si el objeto esta seteado lo grabo sino no hago NADA.
@@ -1160,9 +1085,6 @@ class EquipamientoGen extends QBaseClass {
                     if ($this->intComedor && ($this->intComedor > QDatabaseNumberFieldMax::Integer || $this->intComedor < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intComedor', QDatabaseFieldType::Integer);
                     }
-                    if ($this->intSalonUsosMultiples && ($this->intSalonUsosMultiples > QDatabaseNumberFieldMax::Integer || $this->intSalonUsosMultiples < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intSalonUsosMultiples', QDatabaseFieldType::Integer);
-                    }
                     if ($this->intCentroIntegracionComunitaria && ($this->intCentroIntegracionComunitaria > QDatabaseNumberFieldMax::Integer || $this->intCentroIntegracionComunitaria < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intCentroIntegracionComunitaria', QDatabaseFieldType::Integer);
                     }
@@ -1178,7 +1100,6 @@ class EquipamientoGen extends QBaseClass {
                             "escuela_primaria",
                             "escuela_secundaria",
                             "comedor",
-                            "salon_usos_multiples",
                             "centro_integracion_comunitaria",
                             "otro"
                         ) VALUES (
@@ -1188,7 +1109,6 @@ class EquipamientoGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->intEscuelaPrimaria) . ',
                             ' . $objDatabase->SqlVariable($this->intEscuelaSecundaria) . ',
                             ' . $objDatabase->SqlVariable($this->intComedor) . ',
-                            ' . $objDatabase->SqlVariable($this->intSalonUsosMultiples) . ',
                             ' . $objDatabase->SqlVariable($this->intCentroIntegracionComunitaria) . ',
                             ' . $objDatabase->SqlVariable($this->strOtro) . '
                         )
@@ -1212,7 +1132,6 @@ class EquipamientoGen extends QBaseClass {
                             "escuela_primaria" = ' . $objDatabase->SqlVariable($this->intEscuelaPrimaria) . ',
                             "escuela_secundaria" = ' . $objDatabase->SqlVariable($this->intEscuelaSecundaria) . ',
                             "comedor" = ' . $objDatabase->SqlVariable($this->intComedor) . ',
-                            "salon_usos_multiples" = ' . $objDatabase->SqlVariable($this->intSalonUsosMultiples) . ',
                             "centro_integracion_comunitaria" = ' . $objDatabase->SqlVariable($this->intCentroIntegracionComunitaria) . ',
                             "otro" = ' . $objDatabase->SqlVariable($this->strOtro) . '
                         WHERE
@@ -1304,7 +1223,6 @@ class EquipamientoGen extends QBaseClass {
 			$this->EscuelaPrimaria = $objReloaded->EscuelaPrimaria;
 			$this->EscuelaSecundaria = $objReloaded->EscuelaSecundaria;
 			$this->Comedor = $objReloaded->Comedor;
-			$this->SalonUsosMultiples = $objReloaded->SalonUsosMultiples;
 			$this->CentroIntegracionComunitaria = $objReloaded->CentroIntegracionComunitaria;
 			$this->strOtro = $objReloaded->strOtro;
 		}
@@ -1376,13 +1294,6 @@ class EquipamientoGen extends QBaseClass {
                  * @return integer
                  */
                 return $this->intComedor;
-
-            case 'SalonUsosMultiples':
-                /**
-                 * Gets the value for intSalonUsosMultiples 
-                 * @return integer
-                 */
-                return $this->intSalonUsosMultiples;
 
             case 'CentroIntegracionComunitaria':
                 /**
@@ -1481,20 +1392,6 @@ class EquipamientoGen extends QBaseClass {
                     if ((!$this->objComedorObject) && (!is_null($this->intComedor)))
                         $this->objComedorObject = OpcionesEquipamientos::Load($this->intComedor);
                     return $this->objComedorObject;
-                } catch (QCallerException $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-
-            case 'SalonUsosMultiplesObject':
-                /**
-                 * Gets the value for the OpcionesEquipamientos object referenced by intSalonUsosMultiples 
-                 * @return OpcionesEquipamientos
-                 */
-                try {
-                    if ((!$this->objSalonUsosMultiplesObject) && (!is_null($this->intSalonUsosMultiples)))
-                        $this->objSalonUsosMultiplesObject = OpcionesEquipamientos::Load($this->intSalonUsosMultiples);
-                    return $this->objSalonUsosMultiplesObject;
                 } catch (QCallerException $objExc) {
                     $objExc->IncrementOffset();
                     throw $objExc;
@@ -1638,22 +1535,6 @@ class EquipamientoGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->intComedor = QType::Cast($mixValue, QType::Integer));
                                                 return ($this->intComedor = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'SalonUsosMultiples':
-					/**
-					 * Sets the value for intSalonUsosMultiples 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						$this->objSalonUsosMultiplesObject = null;
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intSalonUsosMultiples = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intSalonUsosMultiples = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1892,39 +1773,6 @@ class EquipamientoGen extends QBaseClass {
 					}
 					break;
 
-				case 'SalonUsosMultiplesObject':
-					/**
-					 * Sets the value for the OpcionesEquipamientos object referenced by intSalonUsosMultiples 
-					 * @param OpcionesEquipamientos $mixValue
-					 * @return OpcionesEquipamientos
-					 */
-					if (is_null($mixValue)) {
-						$this->intSalonUsosMultiples = null;
-						$this->objSalonUsosMultiplesObject = null;
-						return null;
-					} else {
-						// Make sure $mixValue actually is a OpcionesEquipamientos object
-						//try {
-						//	$mixValue = QType::Cast($mixValue, 'OpcionesEquipamientos');
-						//} catch (QInvalidCastException $objExc) {
-						//	$objExc->IncrementOffset();
-						//	throw $objExc;
-						//}
-
-						// DEPRECATED
-                                                // Make sure $mixValue is a SAVED OpcionesEquipamientos object
-						//if (is_null($mixValue->Id))
-						//	throw new QCallerException('Unable to set an unsaved SalonUsosMultiplesObject for this Equipamiento');
-
-						// Update Local Member Variables
-						$this->objSalonUsosMultiplesObject = $mixValue;
-						$this->intSalonUsosMultiples = $mixValue->Id;
-
-						// Return $mixValue
-						return $mixValue;
-					}
-					break;
-
 				case 'CentroIntegracionComunitariaObject':
 					/**
 					 * Sets the value for the OpcionesEquipamientos object referenced by intCentroIntegracionComunitaria 
@@ -2004,7 +1852,6 @@ class EquipamientoGen extends QBaseClass {
 			$strToReturn .= '<element name="EscuelaPrimariaObject" type="xsd1:OpcionesEquipamientos"/>';
 			$strToReturn .= '<element name="EscuelaSecundariaObject" type="xsd1:OpcionesEquipamientos"/>';
 			$strToReturn .= '<element name="ComedorObject" type="xsd1:OpcionesEquipamientos"/>';
-			$strToReturn .= '<element name="SalonUsosMultiplesObject" type="xsd1:OpcionesEquipamientos"/>';
 			$strToReturn .= '<element name="CentroIntegracionComunitariaObject" type="xsd1:OpcionesEquipamientos"/>';
 			$strToReturn .= '<element name="Otro" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
@@ -2016,7 +1863,6 @@ class EquipamientoGen extends QBaseClass {
 			if (!array_key_exists('Equipamiento', $strComplexTypeArray)) {
 				$strComplexTypeArray['Equipamiento'] = Equipamiento::GetSoapComplexTypeXml();
 				$strComplexTypeArray = CondicionesSocioUrbanisticas::AlterSoapComplexTypeArray($strComplexTypeArray);
-				$strComplexTypeArray = OpcionesEquipamientos::AlterSoapComplexTypeArray($strComplexTypeArray);
 				$strComplexTypeArray = OpcionesEquipamientos::AlterSoapComplexTypeArray($strComplexTypeArray);
 				$strComplexTypeArray = OpcionesEquipamientos::AlterSoapComplexTypeArray($strComplexTypeArray);
 				$strComplexTypeArray = OpcionesEquipamientos::AlterSoapComplexTypeArray($strComplexTypeArray);
@@ -2059,9 +1905,6 @@ class EquipamientoGen extends QBaseClass {
 			if ((property_exists($objSoapObject, 'ComedorObject')) &&
 				($objSoapObject->ComedorObject))
 				$objToReturn->ComedorObject = OpcionesEquipamientos::GetObjectFromSoapObject($objSoapObject->ComedorObject);
-			if ((property_exists($objSoapObject, 'SalonUsosMultiplesObject')) &&
-				($objSoapObject->SalonUsosMultiplesObject))
-				$objToReturn->SalonUsosMultiplesObject = OpcionesEquipamientos::GetObjectFromSoapObject($objSoapObject->SalonUsosMultiplesObject);
 			if ((property_exists($objSoapObject, 'CentroIntegracionComunitariaObject')) &&
 				($objSoapObject->CentroIntegracionComunitariaObject))
 				$objToReturn->CentroIntegracionComunitariaObject = OpcionesEquipamientos::GetObjectFromSoapObject($objSoapObject->CentroIntegracionComunitariaObject);
@@ -2110,10 +1953,6 @@ class EquipamientoGen extends QBaseClass {
 				$objObject->objComedorObject = OpcionesEquipamientos::GetSoapObjectFromObject($objObject->objComedorObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intComedor = null;
-			if ($objObject->objSalonUsosMultiplesObject)
-				$objObject->objSalonUsosMultiplesObject = OpcionesEquipamientos::GetSoapObjectFromObject($objObject->objSalonUsosMultiplesObject, false);
-			else if (!$blnBindRelatedObjects)
-				$objObject->intSalonUsosMultiples = null;
 			if ($objObject->objCentroIntegracionComunitariaObject)
 				$objObject->objCentroIntegracionComunitariaObject = OpcionesEquipamientos::GetSoapObjectFromObject($objObject->objCentroIntegracionComunitariaObject, false);
 			else if (!$blnBindRelatedObjects)

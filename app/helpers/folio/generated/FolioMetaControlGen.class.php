@@ -46,14 +46,14 @@
      * property-read QLabel $TipoBarrioLabel
      * property QTextBox $ObservacionCasoDudosoControl
      * property-read QLabel $ObservacionCasoDudosoLabel
-     * property QIntegerTextBox $JudicializadoControl
-     * property-read QLabel $JudicializadoLabel
      * property QTextBox $DireccionControl
      * property-read QLabel $DireccionLabel
      * property QTextBox $NumExpedientesControl
      * property-read QLabel $NumExpedientesLabel
      * property QTextBox $GeomControl
      * property-read QLabel $GeomLabel
+     * property QTextBox $JudicializadoControl
+     * property-read QLabel $JudicializadoLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -91,10 +91,10 @@
         protected $txtCantidadFamilias;
         protected $lstTipoBarrioObject;
         protected $txtObservacionCasoDudoso;
-        protected $txtJudicializado;
         protected $txtDireccion;
         protected $txtNumExpedientes;
         protected $txtGeom;
+        protected $txtJudicializado;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -111,10 +111,10 @@
         protected $lblCantidadFamilias;
         protected $lblTipoBarrio;
         protected $lblObservacionCasoDudoso;
-        protected $lblJudicializado;
         protected $lblDireccion;
         protected $lblNumExpedientes;
         protected $lblGeom;
+        protected $lblJudicializado;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -615,34 +615,6 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtJudicializado
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtJudicializado_Create($strControlId = null) {
-            $this->txtJudicializado = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtJudicializado->Name = QApplication::Translate('Judicializado');
-            $this->txtJudicializado->Text = $this->objFolio->Judicializado;
-                        $this->txtJudicializado->Maximum = QDatabaseNumberFieldMax::Smallint;
-                        $this->txtJudicializado->Minimum = QDatabaseNumberFieldMin::Smallint;
-            return $this->txtJudicializado;
-        }
-
-        /**
-         * Create and setup QLabel lblJudicializado
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblJudicializado_Create($strControlId = null, $strFormat = null) {
-            $this->lblJudicializado = new QLabel($this->objParentObject, $strControlId);
-            $this->lblJudicializado->Name = QApplication::Translate('Judicializado');
-            $this->lblJudicializado->Text = $this->objFolio->Judicializado;
-            $this->lblJudicializado->Format = $strFormat;
-            return $this->lblJudicializado;
-        }
-
-        /**
          * Create and setup QTextBox txtDireccion
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
@@ -718,6 +690,31 @@
             $this->lblGeom->Name = QApplication::Translate('Geom');
             $this->lblGeom->Text = $this->objFolio->Geom;
             return $this->lblGeom;
+        }
+
+        /**
+         * Create and setup QTextBox txtJudicializado
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtJudicializado_Create($strControlId = null) {
+            $this->txtJudicializado = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtJudicializado->Name = QApplication::Translate('Judicializado');
+            $this->txtJudicializado->Text = $this->objFolio->Judicializado;
+            
+            return $this->txtJudicializado;
+        }
+
+        /**
+         * Create and setup QLabel lblJudicializado
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblJudicializado_Create($strControlId = null) {
+            $this->lblJudicializado = new QLabel($this->objParentObject, $strControlId);
+            $this->lblJudicializado->Name = QApplication::Translate('Judicializado');
+            $this->lblJudicializado->Text = $this->objFolio->Judicializado;
+            return $this->lblJudicializado;
         }
 
         /**
@@ -944,9 +941,6 @@
             if ($this->txtObservacionCasoDudoso) $this->txtObservacionCasoDudoso->Text = $this->objFolio->ObservacionCasoDudoso;
             if ($this->lblObservacionCasoDudoso) $this->lblObservacionCasoDudoso->Text = $this->objFolio->ObservacionCasoDudoso;
 
-            if ($this->txtJudicializado) $this->txtJudicializado->Text = $this->objFolio->Judicializado;
-            if ($this->lblJudicializado) $this->lblJudicializado->Text = $this->objFolio->Judicializado;
-
             if ($this->txtDireccion) $this->txtDireccion->Text = $this->objFolio->Direccion;
             if ($this->lblDireccion) $this->lblDireccion->Text = $this->objFolio->Direccion;
 
@@ -955,6 +949,9 @@
 
             if ($this->txtGeom) $this->txtGeom->Text = $this->objFolio->Geom;
             if ($this->lblGeom) $this->lblGeom->Text = $this->objFolio->Geom;
+
+            if ($this->txtJudicializado) $this->txtJudicializado->Text = $this->objFolio->Judicializado;
+            if ($this->lblJudicializado) $this->lblJudicializado->Text = $this->objFolio->Judicializado;
 
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
@@ -1037,10 +1034,10 @@
                 if ($this->txtCantidadFamilias) $this->objFolio->CantidadFamilias = $this->txtCantidadFamilias->Text;
                 if ($this->lstTipoBarrioObject) $this->objFolio->TipoBarrio = $this->lstTipoBarrioObject->SelectedValue;
                 if ($this->txtObservacionCasoDudoso) $this->objFolio->ObservacionCasoDudoso = $this->txtObservacionCasoDudoso->Text;
-                if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
                 if ($this->txtDireccion) $this->objFolio->Direccion = $this->txtDireccion->Text;
                 if ($this->txtNumExpedientes) $this->objFolio->NumExpedientes = $this->txtNumExpedientes->Text;
                 if ($this->txtGeom) $this->objFolio->Geom = $this->txtGeom->Text;
+                if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
 
 
         }
@@ -1190,12 +1187,6 @@
                 case 'ObservacionCasoDudosoLabel':
                     if (!$this->lblObservacionCasoDudoso) return $this->lblObservacionCasoDudoso_Create();
                     return $this->lblObservacionCasoDudoso;
-                case 'JudicializadoControl':
-                    if (!$this->txtJudicializado) return $this->txtJudicializado_Create();
-                    return $this->txtJudicializado;
-                case 'JudicializadoLabel':
-                    if (!$this->lblJudicializado) return $this->lblJudicializado_Create();
-                    return $this->lblJudicializado;
                 case 'DireccionControl':
                     if (!$this->txtDireccion) return $this->txtDireccion_Create();
                     return $this->txtDireccion;
@@ -1214,6 +1205,12 @@
                 case 'GeomLabel':
                     if (!$this->lblGeom) return $this->lblGeom_Create();
                     return $this->lblGeom;
+                case 'JudicializadoControl':
+                    if (!$this->txtJudicializado) return $this->txtJudicializado_Create();
+                    return $this->txtJudicializado;
+                case 'JudicializadoLabel':
+                    if (!$this->lblJudicializado) return $this->lblJudicializado_Create();
+                    return $this->lblJudicializado;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1284,14 +1281,14 @@
                         return ($this->lstTipoBarrioObject = QType::Cast($mixValue, 'QControl'));
                     case 'ObservacionCasoDudosoControl':
                         return ($this->txtObservacionCasoDudoso = QType::Cast($mixValue, 'QControl'));
-                    case 'JudicializadoControl':
-                        return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
                     case 'DireccionControl':
                         return ($this->txtDireccion = QType::Cast($mixValue, 'QControl'));
                     case 'NumExpedientesControl':
                         return ($this->txtNumExpedientes = QType::Cast($mixValue, 'QControl'));
                     case 'GeomControl':
                         return ($this->txtGeom = QType::Cast($mixValue, 'QControl'));
+                    case 'JudicializadoControl':
+                        return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

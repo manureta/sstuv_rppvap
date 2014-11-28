@@ -19,8 +19,6 @@ class QQReverseReferenceNodeOpcionesEquipamientos extends QQReverseReferenceNode
 					return new QQReverseReferenceNodeEquipamiento($this, 'equipamientoasescuelasecundaria', 'reverse_reference', 'escuela_secundaria');
 				case 'EquipamientoAsJardinInfantes':
 					return new QQReverseReferenceNodeEquipamiento($this, 'equipamientoasjardininfantes', 'reverse_reference', 'jardin_infantes');
-				case 'EquipamientoAsSalonUsosMultiples':
-					return new QQReverseReferenceNodeEquipamiento($this, 'equipamientoassalonusosmultiples', 'reverse_reference', 'salon_usos_multiples');
 				case 'EquipamientoAsUnidadSanitaria':
 					return new QQReverseReferenceNodeEquipamiento($this, 'equipamientoasunidadsanitaria', 'reverse_reference', 'unidad_sanitaria');
 

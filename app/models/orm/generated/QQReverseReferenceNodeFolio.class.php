@@ -41,14 +41,14 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNodeTipoBarrio('tipo_barrio', 'TipoBarrioObject', 'integer', $this);
 				case 'ObservacionCasoDudoso':
 					return new QQNode('observacion_caso_dudoso', 'ObservacionCasoDudoso', 'string', $this);
-				case 'Judicializado':
-					return new QQNode('judicializado', 'Judicializado', 'integer', $this);
 				case 'Direccion':
 					return new QQNode('direccion', 'Direccion', 'string', $this);
 				case 'NumExpedientes':
 					return new QQNode('num_expedientes', 'NumExpedientes', 'string', $this);
 				case 'Geom':
 					return new QQNode('geom', 'Geom', 'string', $this);
+				case 'Judicializado':
+					return new QQNode('judicializado', 'Judicializado', 'string', $this);
 				case 'CondicionesSocioUrbanisticasAsId':
 					return new QQReverseReferenceNodeCondicionesSocioUrbanisticas($this, 'condicionessociourbanisticasasid', 'reverse_reference', 'id_folio', 'CondicionesSocioUrbanisticasAsId');
 				case 'NomenclaturaAsId':

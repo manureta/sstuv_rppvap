@@ -11,7 +11,6 @@
 		<?php $_CONTROL->lstEscuelaPrimariaObject->RenderWithName(); ?>
 		<?php $_CONTROL->lstEscuelaSecundariaObject->RenderWithName(); ?>
 		<?php $_CONTROL->lstComedorObject->RenderWithName(); ?>
-		<?php $_CONTROL->lstSalonUsosMultiplesObject->RenderWithName(); ?>
 		<?php $_CONTROL->lstCentroIntegracionComunitariaObject->RenderWithName(); ?>
 		<?php $_CONTROL->txtOtro->RenderWithName(); ?>
 
