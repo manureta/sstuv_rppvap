@@ -19,25 +19,19 @@ class UserMenuPanel extends QPanel {
 //        $this->Template = __PROJECT_DIR__ . '/public/tmp/menu-usuario.html';
         $this->blnAutoRenderChildren = true;
         
-        $btnInicio = new QButton($this);
+        $btnInicio = new QLinkButton($this);
         $btnInicio->Text = 'Inicio';
         $btnInicio->Icon = 'home';
-        $btnInicio->AddCssClass('btn-white');
+        $btnInicio->AddCssClass('navbar-link');
         $btnInicio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnHome_Click'));
 
-        $btnFolio = new QButton($this);
+        $btnFolio = new QLinkButton($this);
         $btnFolio->Text = 'Folios';
         $btnFolio->Icon = 'edit';
-        $btnFolio->AddCssClass('btn-white');
+        $btnFolio->AddCssClass('navbar-link');
         $btnFolio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnFolio_Click'));
         //$btnFolio->Visible = Permission::EsDirector();
 
-        $btnIncidente = new QButton($this);
-        $btnIncidente->Text = 'Peticiones';
-        $btnIncidente->Icon = 'bolt';
-        $btnIncidente->AddCssClass('btn-warning');
-        $btnIncidente->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnIncidente_Click'));
-        $btnIncidente->Visible = (Permission::EsDirector() || Permission::EsSupervisor() || Permission::EsOperador()); 
         
         if(Permission::EsSupervisor()){
             $btnIncidente = new QButton($this);
@@ -74,18 +68,18 @@ class UserMenuPanel extends QPanel {
             $btnCedula->Text = 'Folios';
             $btnCedula->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnCedula_Click'));
         }
-*/        
+        
         
         $btnEditarPerfil = new QButton($this);
         $btnEditarPerfil->Text = 'Editar Perfil';
         $btnEditarPerfil->Icon = 'user';
         $btnEditarPerfil->AddCssClass('btn-white');
         $btnEditarPerfil->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnEditarPerfil_Click'));
-        
-        $btnCerrarSesion = new QButton($this);
+*/        
+        $btnCerrarSesion = new QLinkButton($this);
         $btnCerrarSesion->Text = 'Salir';
         $btnCerrarSesion->Icon = 'off';
-        $btnCerrarSesion->AddCssClass('btn-white');
+        $btnCerrarSesion->AddCssClass('navbar-link');
         $btnCerrarSesion->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnCerrarSesion_Click'));
    
     }

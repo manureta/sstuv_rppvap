@@ -36,3 +36,18 @@ span.nombre-usuario {
     margin: 0;
     padding: 12px;
 }
+
+.pull-right {
+    float: right;
+    width: 20%;
+}
+
+
+#menu-usuario{
+    top:35px;
+}
+
+#menu-usuario span{
+  padding:12px;
+  font-size: 16px;
+}

@@ -51,16 +51,22 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
             $this->objControlsArray['lstIdFolioObject'] = $this->mctEncuadreLegal->lstIdFolioObject_Create();
         if (in_array('chkDecreto222595',$strControlsArray)) 
             $this->objControlsArray['chkDecreto222595'] = $this->mctEncuadreLegal->chkDecreto222595_Create();
+            $this->objControlsArray['chkDecreto222595']->Name="Decreto 222595";
         if (in_array('chkLey24374',$strControlsArray)) 
             $this->objControlsArray['chkLey24374'] = $this->mctEncuadreLegal->chkLey24374_Create();
+            $this->objControlsArray['chkLey24374']->Name="Ley 24374";
         if (in_array('chkDecreto81588',$strControlsArray)) 
             $this->objControlsArray['chkDecreto81588'] = $this->mctEncuadreLegal->chkDecreto81588_Create();
+            $this->objControlsArray['chkDecreto81588']->Name="Decreto 81588";
         if (in_array('chkLey23073',$strControlsArray)) 
             $this->objControlsArray['chkLey23073'] = $this->mctEncuadreLegal->chkLey23073_Create();
+            $this->objControlsArray['chkLey23073']->Name="Ley 23073";
         if (in_array('chkDecreto468696',$strControlsArray)) 
             $this->objControlsArray['chkDecreto468696'] = $this->mctEncuadreLegal->chkDecreto468696_Create();
+            $this->objControlsArray['chkDecreto468696']->Name="Decreto 468696";
         if (in_array('txtExpropiacion',$strControlsArray)) 
             $this->objControlsArray['txtExpropiacion'] = $this->mctEncuadreLegal->txtExpropiacion_Create();
+            $this->objControlsArray['txtExpropiacion']->Name="Expropiación";
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctEncuadreLegal->txtOtros_Create();
 
