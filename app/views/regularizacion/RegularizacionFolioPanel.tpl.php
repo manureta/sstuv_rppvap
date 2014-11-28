@@ -22,7 +22,12 @@
                 <a aria-controls="wizard-p-3" href="#" id="wizard-t-3">
                     <span class="number">4.</span> Regularización
                 </a>
-            </l
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
+                    <span class="number">-</span> Uso Interno
+                </a>
+            </li>
         </ul>
     </div>
     <h6>Regularización</h6>

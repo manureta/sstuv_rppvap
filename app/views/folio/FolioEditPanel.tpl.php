@@ -5,6 +5,7 @@
         $link_nomenclatura="/registro/nomenclatura/folio/$folio";
         $link_condiciones="/registro/condiciones/folio/$folio";
         $link_regularizacion="/registro/regularizacion/folio/$folio";
+        $link_interno="/registro/interno/folio/$folio";
         $clase="done";
     }else{
         
@@ -36,6 +37,11 @@
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?=$link_regularizacion;?>">
                     <span class="number">4.</span> Regularización
+                </a>
+            </li>
+            <li role="tab" class="<?=$clase;?>" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="<?=$link_interno;?>">
+                    <span class="number">-</span> Uso Interno
                 </a>
             </li>
         </ul>

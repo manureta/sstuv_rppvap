@@ -51,3 +51,7 @@ span.nombre-usuario {
   padding:12px;
   font-size: 16px;
 }
+
+.wizard > .steps > ul > li {
+    width: 20% !IMPORTANT;
+}

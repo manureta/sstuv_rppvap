@@ -23,6 +23,11 @@
                     <span class="number">4.</span> Regularización
                 </a>
             </li>
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
+                    <span class="number">-</span> Uso Interno
+                </a>
+            </li>
         </ul>
     </div>
     
