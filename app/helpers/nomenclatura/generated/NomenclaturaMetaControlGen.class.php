@@ -38,10 +38,10 @@
      * property-read QLabel $ParcLabel
      * property QTextBox $InscripcionDominioControl
      * property-read QLabel $InscripcionDominioLabel
-     * property QIntegerTextBox $DatoVerificadoRegPropiedadControl
-     * property-read QLabel $DatoVerificadoRegPropiedadLabel
      * property QTextBox $TitularRegPropiedadControl
      * property-read QLabel $TitularRegPropiedadLabel
+     * property QIntegerTextBox $DatoVerificadoRegPropiedadControl
+     * property-read QLabel $DatoVerificadoRegPropiedadLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -69,8 +69,8 @@
         protected $txtMza;
         protected $txtParc;
         protected $txtInscripcionDominio;
-        protected $txtDatoVerificadoRegPropiedad;
         protected $txtTitularRegPropiedad;
+        protected $txtDatoVerificadoRegPropiedad;
 
         // Controls that allow the viewing of Nomenclatura's individual data fields
         protected $lblIdFolio;
@@ -83,8 +83,8 @@
         protected $lblMza;
         protected $lblParc;
         protected $lblInscripcionDominio;
-        protected $lblDatoVerificadoRegPropiedad;
         protected $lblTitularRegPropiedad;
+        protected $lblDatoVerificadoRegPropiedad;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -460,6 +460,31 @@
         }
 
         /**
+         * Create and setup QTextBox txtTitularRegPropiedad
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtTitularRegPropiedad_Create($strControlId = null) {
+            $this->txtTitularRegPropiedad = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtTitularRegPropiedad->Name = QApplication::Translate('TitularRegPropiedad');
+            $this->txtTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
+            
+            return $this->txtTitularRegPropiedad;
+        }
+
+        /**
+         * Create and setup QLabel lblTitularRegPropiedad
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblTitularRegPropiedad_Create($strControlId = null) {
+            $this->lblTitularRegPropiedad = new QLabel($this->objParentObject, $strControlId);
+            $this->lblTitularRegPropiedad->Name = QApplication::Translate('TitularRegPropiedad');
+            $this->lblTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
+            return $this->lblTitularRegPropiedad;
+        }
+
+        /**
          * Create and setup QIntegerTextBox txtDatoVerificadoRegPropiedad
          * @param string $strControlId optional ControlId to use
          * @return QIntegerTextBox
@@ -485,31 +510,6 @@
             $this->lblDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
             $this->lblDatoVerificadoRegPropiedad->Format = $strFormat;
             return $this->lblDatoVerificadoRegPropiedad;
-        }
-
-        /**
-         * Create and setup QTextBox txtTitularRegPropiedad
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtTitularRegPropiedad_Create($strControlId = null) {
-            $this->txtTitularRegPropiedad = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtTitularRegPropiedad->Name = QApplication::Translate('TitularRegPropiedad');
-            $this->txtTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
-            
-            return $this->txtTitularRegPropiedad;
-        }
-
-        /**
-         * Create and setup QLabel lblTitularRegPropiedad
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblTitularRegPropiedad_Create($strControlId = null) {
-            $this->lblTitularRegPropiedad = new QLabel($this->objParentObject, $strControlId);
-            $this->lblTitularRegPropiedad->Name = QApplication::Translate('TitularRegPropiedad');
-            $this->lblTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
-            return $this->lblTitularRegPropiedad;
         }
 
 
@@ -562,11 +562,11 @@
             if ($this->txtInscripcionDominio) $this->txtInscripcionDominio->Text = $this->objNomenclatura->InscripcionDominio;
             if ($this->lblInscripcionDominio) $this->lblInscripcionDominio->Text = $this->objNomenclatura->InscripcionDominio;
 
-            if ($this->txtDatoVerificadoRegPropiedad) $this->txtDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
-            if ($this->lblDatoVerificadoRegPropiedad) $this->lblDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
-
             if ($this->txtTitularRegPropiedad) $this->txtTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
             if ($this->lblTitularRegPropiedad) $this->lblTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
+
+            if ($this->txtDatoVerificadoRegPropiedad) $this->txtDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
+            if ($this->lblDatoVerificadoRegPropiedad) $this->lblDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
 
         }
 
@@ -596,8 +596,8 @@
                 if ($this->txtMza) $this->objNomenclatura->Mza = $this->txtMza->Text;
                 if ($this->txtParc) $this->objNomenclatura->Parc = $this->txtParc->Text;
                 if ($this->txtInscripcionDominio) $this->objNomenclatura->InscripcionDominio = $this->txtInscripcionDominio->Text;
-                if ($this->txtDatoVerificadoRegPropiedad) $this->objNomenclatura->DatoVerificadoRegPropiedad = $this->txtDatoVerificadoRegPropiedad->Text;
                 if ($this->txtTitularRegPropiedad) $this->objNomenclatura->TitularRegPropiedad = $this->txtTitularRegPropiedad->Text;
+                if ($this->txtDatoVerificadoRegPropiedad) $this->objNomenclatura->DatoVerificadoRegPropiedad = $this->txtDatoVerificadoRegPropiedad->Text;
 
 
         }
@@ -720,18 +720,18 @@
                 case 'InscripcionDominioLabel':
                     if (!$this->lblInscripcionDominio) return $this->lblInscripcionDominio_Create();
                     return $this->lblInscripcionDominio;
-                case 'DatoVerificadoRegPropiedadControl':
-                    if (!$this->txtDatoVerificadoRegPropiedad) return $this->txtDatoVerificadoRegPropiedad_Create();
-                    return $this->txtDatoVerificadoRegPropiedad;
-                case 'DatoVerificadoRegPropiedadLabel':
-                    if (!$this->lblDatoVerificadoRegPropiedad) return $this->lblDatoVerificadoRegPropiedad_Create();
-                    return $this->lblDatoVerificadoRegPropiedad;
                 case 'TitularRegPropiedadControl':
                     if (!$this->txtTitularRegPropiedad) return $this->txtTitularRegPropiedad_Create();
                     return $this->txtTitularRegPropiedad;
                 case 'TitularRegPropiedadLabel':
                     if (!$this->lblTitularRegPropiedad) return $this->lblTitularRegPropiedad_Create();
                     return $this->lblTitularRegPropiedad;
+                case 'DatoVerificadoRegPropiedadControl':
+                    if (!$this->txtDatoVerificadoRegPropiedad) return $this->txtDatoVerificadoRegPropiedad_Create();
+                    return $this->txtDatoVerificadoRegPropiedad;
+                case 'DatoVerificadoRegPropiedadLabel':
+                    if (!$this->lblDatoVerificadoRegPropiedad) return $this->lblDatoVerificadoRegPropiedad_Create();
+                    return $this->lblDatoVerificadoRegPropiedad;
                 default:
                     try {
                         return parent::__get($strName);
@@ -776,10 +776,10 @@
                         return ($this->txtParc = QType::Cast($mixValue, 'QControl'));
                     case 'InscripcionDominioControl':
                         return ($this->txtInscripcionDominio = QType::Cast($mixValue, 'QControl'));
-                    case 'DatoVerificadoRegPropiedadControl':
-                        return ($this->txtDatoVerificadoRegPropiedad = QType::Cast($mixValue, 'QControl'));
                     case 'TitularRegPropiedadControl':
                         return ($this->txtTitularRegPropiedad = QType::Cast($mixValue, 'QControl'));
+                    case 'DatoVerificadoRegPropiedadControl':
+                        return ($this->txtDatoVerificadoRegPropiedad = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

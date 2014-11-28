@@ -56,10 +56,10 @@
         <?php $this->RenderBegin(); ?>
         <?php $this->pnlLoadingPanel->Render(); ?>
         <div id="body">
-            <nav id="navbar" class="navbar navbar-default" role="navigation">
+            <nav id="navbar-header" class="navbar navbar-default" role="navigation">
                 <div class="pull-left">
-                    <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logosstuv.png" style="width:171px; height:60px;">
-                </div>
+                        <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_izquierda.png" style="width:160px;heigth:40px;">
+                    </div>
                 <?php if (Session::Get('objUsuario')) { ?>
                 <div><span class="nombre-usuario">Bienvenido,<p><?php echo Session::GetObjUsuario()->Nombre?></p></span></div>
                 <div class="pull-right">
@@ -99,13 +99,13 @@
 
             </div><!-- /.main-container -->
             <hr class="footrow" />
-            <nav id="navbar" class="navbar navbar-default" role="navigation">
+            <nav id="navbar-footer" class="navbar navbar-default" role="navigation">
                 <div class="row">
                     <div class="center col-md-6">
-                        <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_me_trans.png">
+                        <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_izquierda.png">
                     </div>
                     <div class="center col-md-6">
-                        <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_argentina.png">
+                        <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_derecha.png">
                     </div>
                 </div>
             </nav>

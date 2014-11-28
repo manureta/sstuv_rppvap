@@ -27,7 +27,6 @@ class EquipamientoDataGridGen extends QFilteredDataGrid {
         'EscuelaPrimariaObject' => true,
         'EscuelaSecundariaObject' => true,
         'ComedorObject' => true,
-        'SalonUsosMultiplesObject' => true,
         'CentroIntegracionComunitariaObject' => true,
         'Otro' => true,
     );
@@ -69,7 +68,6 @@ class EquipamientoDataGridGen extends QFilteredDataGrid {
         if (EquipamientoDataGrid::$strColumnsArray['EscuelaPrimariaObject']) $this->MetaAddColumn(QQN::Equipamiento()->EscuelaPrimariaObject)->Title = QApplication::Translate('EscuelaPrimariaObject');
         if (EquipamientoDataGrid::$strColumnsArray['EscuelaSecundariaObject']) $this->MetaAddColumn(QQN::Equipamiento()->EscuelaSecundariaObject)->Title = QApplication::Translate('EscuelaSecundariaObject');
         if (EquipamientoDataGrid::$strColumnsArray['ComedorObject']) $this->MetaAddColumn(QQN::Equipamiento()->ComedorObject)->Title = QApplication::Translate('ComedorObject');
-        if (EquipamientoDataGrid::$strColumnsArray['SalonUsosMultiplesObject']) $this->MetaAddColumn(QQN::Equipamiento()->SalonUsosMultiplesObject)->Title = QApplication::Translate('SalonUsosMultiplesObject');
         if (EquipamientoDataGrid::$strColumnsArray['CentroIntegracionComunitariaObject']) $this->MetaAddColumn(QQN::Equipamiento()->CentroIntegracionComunitariaObject)->Title = QApplication::Translate('CentroIntegracionComunitariaObject');
         if (EquipamientoDataGrid::$strColumnsArray['Otro']) $this->MetaAddColumn('Otro')->Title = QApplication::Translate('Otro');
     }
@@ -231,8 +229,6 @@ class EquipamientoDataGridGen extends QFilteredDataGrid {
 				case 'EscuelaSecundariaObject': return QQN::Equipamiento()->EscuelaSecundariaObject;
 				case 'Comedor': return QQN::Equipamiento()->Comedor;
 				case 'ComedorObject': return QQN::Equipamiento()->ComedorObject;
-				case 'SalonUsosMultiples': return QQN::Equipamiento()->SalonUsosMultiples;
-				case 'SalonUsosMultiplesObject': return QQN::Equipamiento()->SalonUsosMultiplesObject;
 				case 'CentroIntegracionComunitaria': return QQN::Equipamiento()->CentroIntegracionComunitaria;
 				case 'CentroIntegracionComunitariaObject': return QQN::Equipamiento()->CentroIntegracionComunitariaObject;
 				case 'Otro': return QQN::Equipamiento()->Otro;

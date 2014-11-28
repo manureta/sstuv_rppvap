@@ -206,7 +206,6 @@
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
         $this->lstEquipamientoAsCentroIntegracionComunitaria = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
@@ -255,7 +254,6 @@
         $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
@@ -305,7 +303,6 @@
         $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
@@ -355,7 +352,6 @@
         $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
@@ -405,7 +401,6 @@
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 
@@ -434,56 +429,6 @@
     }
 
 
-    public $lstEquipamientoAsSalonUsosMultiples;
-    /**
-     * Gets all associated EquipamientosAsSalonUsosMultiples as an array of Equipamiento objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Equipamiento[]
-    */ 
-    public function lstEquipamientoAsSalonUsosMultiples_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Equipamiento';
-        $strConfigArray['strRefreshMethod'] = 'EquipamientoAsSalonUsosMultiplesArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'SalonUsosMultiples';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddEquipamientoAsSalonUsosMultiples';
-        $strConfigArray['strRemoveMethod'] = 'RemoveEquipamientoAsSalonUsosMultiples';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
-        $strConfigArray['Columns']['UnidadSanitariaObject'] = QApplication::Translate('UnidadSanitariaObject');
-        $strConfigArray['Columns']['JardinInfantesObject'] = QApplication::Translate('JardinInfantesObject');
-        $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
-        $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
-        $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
-        $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
-
-        $this->lstEquipamientoAsSalonUsosMultiples = new QListPanel($this->objParentObject, $this->objOpcionesEquipamientos, $strConfigArray, $strControlId);
-        $this->lstEquipamientoAsSalonUsosMultiples->Name = Equipamiento::Noun();
-        $this->lstEquipamientoAsSalonUsosMultiples->SetNewMethod($this, "lstEquipamientoAsSalonUsosMultiples_New");
-        $this->lstEquipamientoAsSalonUsosMultiples->SetEditMethod($this, "lstEquipamientoAsSalonUsosMultiples_Edit");
-        return $this->lstEquipamientoAsSalonUsosMultiples;
-    }
-
-    public function lstEquipamientoAsSalonUsosMultiples_New() {
-        EquipamientoModalPanel::$strControlsArray['lstSalonUsosMultiplesObject'] = false;
-        $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $this->lstEquipamientoAsSalonUsosMultiples->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstEquipamientoAsSalonUsosMultiples->ModalPanel->objCallerControl = $this->lstEquipamientoAsSalonUsosMultiples;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstEquipamientoAsSalonUsosMultiples_Edit($intKey) {
-        EquipamientoModalPanel::$strControlsArray['lstSalonUsosMultiplesObject'] = false;
-        $strControlsArray = array_keys(EquipamientoModalPanel::$strControlsArray, true);
-        $obj = $this->objOpcionesEquipamientos->EquipamientoAsSalonUsosMultiplesArray[$intKey];
-        $this->lstEquipamientoAsSalonUsosMultiples->ModalPanel = new EquipamientoModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstEquipamientoAsSalonUsosMultiples->ModalPanel->objCallerControl = $this->lstEquipamientoAsSalonUsosMultiples;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
     public $lstEquipamientoAsUnidadSanitaria;
     /**
      * Gets all associated EquipamientosAsUnidadSanitaria as an array of Equipamiento objects
@@ -505,7 +450,6 @@
         $strConfigArray['Columns']['EscuelaPrimariaObject'] = QApplication::Translate('EscuelaPrimariaObject');
         $strConfigArray['Columns']['EscuelaSecundariaObject'] = QApplication::Translate('EscuelaSecundariaObject');
         $strConfigArray['Columns']['ComedorObject'] = QApplication::Translate('ComedorObject');
-        $strConfigArray['Columns']['SalonUsosMultiplesObject'] = QApplication::Translate('SalonUsosMultiplesObject');
         $strConfigArray['Columns']['CentroIntegracionComunitariaObject'] = QApplication::Translate('CentroIntegracionComunitariaObject');
         $strConfigArray['Columns']['Otro'] = QApplication::Translate('Otro');
 

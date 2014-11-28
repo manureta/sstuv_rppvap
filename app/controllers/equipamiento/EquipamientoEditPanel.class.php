@@ -15,7 +15,6 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
         'lstEscuelaPrimariaObject' => true,
         'lstEscuelaSecundariaObject' => true,
         'lstComedorObject' => true,
-        'lstSalonUsosMultiplesObject' => true,
         'lstCentroIntegracionComunitariaObject' => true,
         'txtOtro' => true,
     );
@@ -46,24 +45,27 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
         $this->mctEquipamiento = EquipamientoMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Equipamiento's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctEquipamiento->lblId_Create();
+        //if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctEquipamiento->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctEquipamiento->lstIdFolioObject_Create();
         if (in_array('lstUnidadSanitariaObject',$strControlsArray)) 
             $this->objControlsArray['lstUnidadSanitariaObject'] = $this->mctEquipamiento->lstUnidadSanitariaObject_Create();
+            $this->objControlsArray['lstUnidadSanitariaObject']->Name="Unidad sanitaria/Hospital";
         if (in_array('lstJardinInfantesObject',$strControlsArray)) 
             $this->objControlsArray['lstJardinInfantesObject'] = $this->mctEquipamiento->lstJardinInfantesObject_Create();
+            $this->objControlsArray['lstJardinInfantesObject']->Name="Jardín de infantes";
         if (in_array('lstEscuelaPrimariaObject',$strControlsArray)) 
             $this->objControlsArray['lstEscuelaPrimariaObject'] = $this->mctEquipamiento->lstEscuelaPrimariaObject_Create();
+            $this->objControlsArray['lstEscuelaPrimariaObject']->Name="Escuela primaria";
         if (in_array('lstEscuelaSecundariaObject',$strControlsArray)) 
             $this->objControlsArray['lstEscuelaSecundariaObject'] = $this->mctEquipamiento->lstEscuelaSecundariaObject_Create();
+            $this->objControlsArray['lstEscuelaSecundariaObject']->Name="Escuela secundaria";
         if (in_array('lstComedorObject',$strControlsArray)) 
             $this->objControlsArray['lstComedorObject'] = $this->mctEquipamiento->lstComedorObject_Create();
-        if (in_array('lstSalonUsosMultiplesObject',$strControlsArray)) 
-            $this->objControlsArray['lstSalonUsosMultiplesObject'] = $this->mctEquipamiento->lstSalonUsosMultiplesObject_Create();
+            $this->objControlsArray['lstComedorObject']->Name="Comedor";
         if (in_array('lstCentroIntegracionComunitariaObject',$strControlsArray)) 
             $this->objControlsArray['lstCentroIntegracionComunitariaObject'] = $this->mctEquipamiento->lstCentroIntegracionComunitariaObject_Create();
+            $this->objControlsArray['lstCentroIntegracionComunitariaObject']->Name="Centro de integración comunitaria";
         if (in_array('txtOtro',$strControlsArray)) 
             $this->objControlsArray['txtOtro'] = $this->mctEquipamiento->txtOtro_Create();
 

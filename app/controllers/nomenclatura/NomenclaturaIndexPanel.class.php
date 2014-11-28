@@ -9,6 +9,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     public $strTitulo = 'Nomenclatura';
     public $strSubtitulo = '';
     public $strTemplate='';
+    public $btnParcelas;
 
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
     	$this->strTemplate=__VIEW_DIR__."/nomenclatura/NomenclaturaFolioPanel.tpl.php";
@@ -33,6 +34,9 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         //Botón de creación
         $this->btnCreateNew_Create();
 
+        // boton para calcular parcelas
+        $this->btnParcelas_Create();
+
         $this->blnAutoRenderChildren = false;
         
         if (isset($this->pnlEditNomenclatura)) {
@@ -45,6 +49,21 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         return array(
                 'Nomenclatura'
             );
+    }
+
+      protected function btnParcelas_Create() {
+        $this->btnParcelas = new QButton($this);
+        $this->btnParcelas->Text = "Calcular Parcelas";
+        $this->btnParcelas->AddCssClass('btn-red btn-create-indexpanel');
+        $this->btnParcelas->Icon = 'plus';
+        $this->btnParcelas->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnParcelas_Click'));
+
+        return $this->btnCreateNew;            
+    }
+
+     public function btnParcelas_Click($strFormId, $strControlId, $strParameter) {
+        QApplication::ExecuteJavascript("alert('calculando')");
+        $this->Refresh();
     }
 
 }

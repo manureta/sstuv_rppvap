@@ -11,6 +11,32 @@
  */
 class FolioIndexPanelGen extends QPanel {
 
+    public $lblTitulo;
+
+    // Instancia local de un DataGrid para listar Folios
+    public $dtgFolios;
+
+    // Controles
+    public $btnCreateNew;
+
+    // Paneles
+    public $pnlEditFolio;
+
+    // Redefinicion de visibilidad de columnas y controles
+    protected $strColumnsArray;
+    protected $strControlsArray;    
+
+    
+    /**
+     * Constructor del panel índice generado
+     * 
+     * @param <Panel> $objParentObject
+     * @param <array> $strColumnsArray
+     * @param <array> $strControlsArray
+     * @param <string> $strControlId
+     *
+     */
+
 
     protected function btnCreateNew_Create() {
         $this->btnCreateNew = new QButton($this);
@@ -35,12 +61,13 @@ class FolioIndexPanelGen extends QPanel {
     }
     
     public function dtgRow_Click(Folio $objFolio) {
-        $this->FolioEditPanel_Create($objFolio->Id);
+     /*   $this->FolioEditPanel_Create($objFolio->Id);
         $this->dtgFolios->Visible=false;
         if ($this->btnCreateNew) $this->btnCreateNew->Visible=false;
         // si tengo un pivote padre
         if (isset($this->btnVolver)) $this->btnVolver->Visible = false;
         $this->Refresh();
+        */
     }
 
     public function btnCreateNew_Click($strFormId, $strControlId, $strParameter) {

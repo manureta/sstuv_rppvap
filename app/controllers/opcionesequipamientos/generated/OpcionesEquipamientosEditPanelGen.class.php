@@ -15,7 +15,6 @@ class OpcionesEquipamientosEditPanelGen extends EditPanelBase {
         'lstEquipamientoAsEscuelaPrimaria' => false,
         'lstEquipamientoAsEscuelaSecundaria' => false,
         'lstEquipamientoAsJardinInfantes' => false,
-        'lstEquipamientoAsSalonUsosMultiples' => false,
         'lstEquipamientoAsUnidadSanitaria' => false,
     );
 
@@ -58,8 +57,6 @@ class OpcionesEquipamientosEditPanelGen extends EditPanelBase {
             $this->objControlsArray['lstEquipamientoAsEscuelaSecundaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsEscuelaSecundaria_Create();
         if (in_array('lstEquipamientoAsJardinInfantes',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsJardinInfantes'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsJardinInfantes_Create();
-        if (in_array('lstEquipamientoAsSalonUsosMultiples',$strControlsArray))
-            $this->objControlsArray['lstEquipamientoAsSalonUsosMultiples'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsSalonUsosMultiples_Create();
         if (in_array('lstEquipamientoAsUnidadSanitaria',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsUnidadSanitaria'] = $this->mctOpcionesEquipamientos->lstEquipamientoAsUnidadSanitaria_Create();
 

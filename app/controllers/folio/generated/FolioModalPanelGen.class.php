@@ -25,9 +25,10 @@ class FolioModalPanelGen extends EditPanelBase {
         'txtCantidadFamilias' => true,
         'lstTipoBarrioObject' => true,
         'txtObservacionCasoDudoso' => true,
-        'txtJudicializado' => true,
         'txtDireccion' => true,
         'txtNumExpedientes' => true,
+        'txtGeom' => true,
+        'txtJudicializado' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -92,12 +93,14 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lstTipoBarrioObject'] = $this->mctFolio->lstTipoBarrioObject_Create();
         if (in_array('txtObservacionCasoDudoso',$strControlsArray)) 
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
-        if (in_array('txtJudicializado',$strControlsArray)) 
-            $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
         if (in_array('txtNumExpedientes',$strControlsArray)) 
             $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
+        if (in_array('txtGeom',$strControlsArray)) 
+            $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();
+        if (in_array('txtJudicializado',$strControlsArray)) 
+            $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

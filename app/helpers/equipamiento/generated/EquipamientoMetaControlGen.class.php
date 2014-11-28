@@ -30,8 +30,6 @@
      * property-read QLabel $EscuelaSecundariaLabel
      * property QListBox $ComedorControl
      * property-read QLabel $ComedorLabel
-     * property QListBox $SalonUsosMultiplesControl
-     * property-read QLabel $SalonUsosMultiplesLabel
      * property QListBox $CentroIntegracionComunitariaControl
      * property-read QLabel $CentroIntegracionComunitariaLabel
      * property QTextBox $OtroControl
@@ -59,7 +57,6 @@
         protected $lstEscuelaPrimariaObject;
         protected $lstEscuelaSecundariaObject;
         protected $lstComedorObject;
-        protected $lstSalonUsosMultiplesObject;
         protected $lstCentroIntegracionComunitariaObject;
         protected $txtOtro;
 
@@ -70,7 +67,6 @@
         protected $lblEscuelaPrimaria;
         protected $lblEscuelaSecundaria;
         protected $lblComedor;
-        protected $lblSalonUsosMultiples;
         protected $lblCentroIntegracionComunitaria;
         protected $lblOtro;
 
@@ -349,33 +345,6 @@
         }
 
         /**
-         * Create and setup QAjaxAutoCompleteEntidadTextBox lstSalonUsosMultiplesObject
-         * @param string $strControlId optional ControlId to use
-         * @return QAjaxAutoCompleteEntidadTextBox
-         */
-        public function lstSalonUsosMultiplesObject_Create($strControlId = null) {
-            $this->lstSalonUsosMultiplesObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'OpcionesEquipamientos', 'Id' , $strControlId);
-            if($this->objEquipamiento->SalonUsosMultiplesObject){
-                $this->lstSalonUsosMultiplesObject->Text = $this->objEquipamiento->SalonUsosMultiplesObject->__toString();
-                $this->lstSalonUsosMultiplesObject->Value = $this->objEquipamiento->SalonUsosMultiplesObject->Id;
-            }
-            $this->lstSalonUsosMultiplesObject->Name = QApplication::Translate('SalonUsosMultiplesObject');
-            return $this->lstSalonUsosMultiplesObject;
-        }
-
-        /**
-         * Create and setup QLabel lblSalonUsosMultiples
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblSalonUsosMultiples_Create($strControlId = null) {
-            $this->lblSalonUsosMultiples = new QLabel($this->objParentObject, $strControlId);
-            $this->lblSalonUsosMultiples->Name = QApplication::Translate('SalonUsosMultiplesObject');
-            $this->lblSalonUsosMultiples->Text = ($this->objEquipamiento->SalonUsosMultiplesObject) ? $this->objEquipamiento->SalonUsosMultiplesObject->__toString() : null;
-            return $this->lblSalonUsosMultiples;
-        }
-
-        /**
          * Create and setup QAjaxAutoCompleteEntidadTextBox lstCentroIntegracionComunitariaObject
          * @param string $strControlId optional ControlId to use
          * @return QAjaxAutoCompleteEntidadTextBox
@@ -490,14 +459,6 @@
             }
             if ($this->lblComedor) $this->lblComedor->Text = ($this->objEquipamiento->ComedorObject) ? $this->objEquipamiento->ComedorObject->__toString() : null;
 
-            if ($this->lstSalonUsosMultiplesObject) {
-                if($this->objEquipamiento->SalonUsosMultiplesObject){
-                    $this->lstSalonUsosMultiplesObject->Text = $this->objEquipamiento->SalonUsosMultiplesObject->__toString();
-                    $this->lstSalonUsosMultiplesObject->Value = $this->objEquipamiento->SalonUsosMultiples->Id;
-                }                
-            }
-            if ($this->lblSalonUsosMultiples) $this->lblSalonUsosMultiples->Text = ($this->objEquipamiento->SalonUsosMultiplesObject) ? $this->objEquipamiento->SalonUsosMultiplesObject->__toString() : null;
-
             if ($this->lstCentroIntegracionComunitariaObject) {
                 if($this->objEquipamiento->CentroIntegracionComunitariaObject){
                     $this->lstCentroIntegracionComunitariaObject->Text = $this->objEquipamiento->CentroIntegracionComunitariaObject->__toString();
@@ -533,7 +494,6 @@
                 if ($this->lstEscuelaPrimariaObject) $this->objEquipamiento->EscuelaPrimaria = $this->lstEscuelaPrimariaObject->SelectedValue;
                 if ($this->lstEscuelaSecundariaObject) $this->objEquipamiento->EscuelaSecundaria = $this->lstEscuelaSecundariaObject->SelectedValue;
                 if ($this->lstComedorObject) $this->objEquipamiento->Comedor = $this->lstComedorObject->SelectedValue;
-                if ($this->lstSalonUsosMultiplesObject) $this->objEquipamiento->SalonUsosMultiples = $this->lstSalonUsosMultiplesObject->SelectedValue;
                 if ($this->lstCentroIntegracionComunitariaObject) $this->objEquipamiento->CentroIntegracionComunitaria = $this->lstCentroIntegracionComunitariaObject->SelectedValue;
                 if ($this->txtOtro) $this->objEquipamiento->Otro = $this->txtOtro->Text;
 
@@ -634,12 +594,6 @@
                 case 'ComedorLabel':
                     if (!$this->lblComedor) return $this->lblComedor_Create();
                     return $this->lblComedor;
-                case 'SalonUsosMultiplesControl':
-                    if (!$this->lstSalonUsosMultiplesObject) return $this->lstSalonUsosMultiplesObject_Create();
-                    return $this->lstSalonUsosMultiplesObject;
-                case 'SalonUsosMultiplesLabel':
-                    if (!$this->lblSalonUsosMultiples) return $this->lblSalonUsosMultiples_Create();
-                    return $this->lblSalonUsosMultiples;
                 case 'CentroIntegracionComunitariaControl':
                     if (!$this->lstCentroIntegracionComunitariaObject) return $this->lstCentroIntegracionComunitariaObject_Create();
                     return $this->lstCentroIntegracionComunitariaObject;
@@ -688,8 +642,6 @@
                         return ($this->lstEscuelaSecundariaObject = QType::Cast($mixValue, 'QControl'));
                     case 'ComedorControl':
                         return ($this->lstComedorObject = QType::Cast($mixValue, 'QControl'));
-                    case 'SalonUsosMultiplesControl':
-                        return ($this->lstSalonUsosMultiplesObject = QType::Cast($mixValue, 'QControl'));
                     case 'CentroIntegracionComunitariaControl':
                         return ($this->lstCentroIntegracionComunitariaObject = QType::Cast($mixValue, 'QControl'));
                     case 'OtroControl':

@@ -10,12 +10,14 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
     
     protected $objFolio;
     protected $objEquipamiento;
+    protected $objTransporte;
     protected $objInfraestructura;
     protected $objAmbiental;
 
 
     public $pnlCondiciones;
     public $pnlEquipamiento;
+    public $pnlTransporte;
     public $pnlInfraestructura;
     public $pnlAmbiental; 
 
@@ -64,6 +66,14 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlEquipamiento->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEquipamiento->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEquipamiento->lstIdFolioObject->Enabled = false;
+        $this->pnlEquipamiento->lstIdFolioObject->Visible = false;
+
+        $this->objTransporte=Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,QApplication::QueryString("id")));                        
+        $this->pnlTransporte = new TransporteEditPanel($this,TransporteEditPanel::$strControlsArray,$this->objTransporte->Id);
+        $this->pnlTransporte->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlTransporte->lstIdFolioObject->Text = $this->objFolio->__toString();
+        $this->pnlTransporte->lstIdFolioObject->Enabled = false;
+        $this->pnlTransporte->lstIdFolioObject->Visible = false;
         
         
         $this->objInfraestructura=Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,QApplication::QueryString("id")));
@@ -71,13 +81,15 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlInfraestructura->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlInfraestructura->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlInfraestructura->lstIdFolioObject->Enabled = false;        
+        $this->pnlInfraestructura->lstIdFolioObject->Visible = false;        
         
         
         $this->objAmbiental=SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,QApplication::QueryString("id")));
         $this->pnlAmbiental = new SituacionAmbientalEditPanel($this,SituacionAmbientalEditPanel::$strControlsArray,$this->objAmbiental->Id);
         $this->pnlAmbiental->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAmbiental->lstIdFolioObject->Text = $this->objFolio->__toString();
-        $this->pnlAmbiental->lstIdFolioObject->Enabled = false;                
+        $this->pnlAmbiental->lstIdFolioObject->Enabled = false;
+        $this->pnlAmbiental->lstIdFolioObject->Visible = false;                
         
        $this->buttons_Create();
        $this->blnAutoRenderChildrenWithName = false;
@@ -96,12 +108,16 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
             $this->objControlsArray['lstIdFolioObject'] = $this->mctCondicionesSocioUrbanisticas->lstIdFolioObject_Create();
         if (in_array('chkEspacioLibreComun',$strControlsArray)) 
             $this->objControlsArray['chkEspacioLibreComun'] = $this->mctCondicionesSocioUrbanisticas->chkEspacioLibreComun_Create();
+            $this->objControlsArray['chkEspacioLibreComun']->Name="Espacio libre común";
         if (in_array('txtPresenciaOrgSociales',$strControlsArray)) 
             $this->objControlsArray['txtPresenciaOrgSociales'] = $this->mctCondicionesSocioUrbanisticas->txtPresenciaOrgSociales_Create();
+            $this->objControlsArray['txtPresenciaOrgSociales']->Name="Presencia de organismos sociales";
         if (in_array('txtNombreRefernte',$strControlsArray)) 
             $this->objControlsArray['txtNombreRefernte'] = $this->mctCondicionesSocioUrbanisticas->txtNombreRefernte_Create();
+            $this->objControlsArray['txtNombreRefernte']->Name="Nombre del referente";
         if (in_array('txtTelefonoReferente',$strControlsArray)) 
             $this->objControlsArray['txtTelefonoReferente'] = $this->mctCondicionesSocioUrbanisticas->txtTelefonoReferente_Create();
+            $this->objControlsArray['txtTelefonoReferente']->Name="Teléfono del referente";
         if (in_array('lstEquipamientoAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstEquipamientoAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstEquipamientoAsIdFolio_Create();
         if (in_array('lstInfraestructuraAsIdFolio',$strControlsArray))
@@ -131,6 +147,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlInfraestructura->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlAmbiental->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlEquipamiento->btnSave_Click($strFormId, $strControlId, $strParameter);
+        $this->pnlTransporte->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->mctCondicionesSocioUrbanisticas->Save();
         foreach ($this->objModifiedChildsArray as $obj) {
             $obj->Save();

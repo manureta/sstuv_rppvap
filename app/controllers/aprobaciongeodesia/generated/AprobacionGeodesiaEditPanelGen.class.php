@@ -12,7 +12,6 @@ class AprobacionGeodesiaEditPanelGen extends EditPanelBase {
         'lstIdPartidoObject' => true,
         'txtNum' => true,
         'txtAnio' => true,
-        'lstUsoInternoAsRegularizacion' => false,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -48,8 +47,6 @@ class AprobacionGeodesiaEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNum'] = $this->mctAprobacionGeodesia->txtNum_Create();
         if (in_array('txtAnio',$strControlsArray)) 
             $this->objControlsArray['txtAnio'] = $this->mctAprobacionGeodesia->txtAnio_Create();
-        if (in_array('lstUsoInternoAsRegularizacion',$strControlsArray))
-            $this->objControlsArray['lstUsoInternoAsRegularizacion'] = $this->mctAprobacionGeodesia->lstUsoInternoAsRegularizacion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
@@ -68,10 +65,6 @@ class AprobacionGeodesiaEditPanelGen extends EditPanelBase {
         parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the AprobacionGeodesiaMetaControl
         $this->mctAprobacionGeodesia->Save();
-        foreach ($this->objModifiedChildsArray as $obj) {
-            $obj->Save();
-        }
-        $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
 

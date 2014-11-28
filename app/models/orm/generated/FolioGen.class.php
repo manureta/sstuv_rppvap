@@ -30,9 +30,10 @@
 	 * @property integer $CantidadFamilias the value for intCantidadFamilias 
 	 * @property integer $TipoBarrio the value for intTipoBarrio 
 	 * @property string $ObservacionCasoDudoso the value for strObservacionCasoDudoso 
-	 * @property integer $Judicializado the value for intJudicializado 
 	 * @property string $Direccion the value for strDireccion 
 	 * @property string $NumExpedientes the value for strNumExpedientes 
+	 * @property string $Geom the value for strGeom 
+	 * @property string $Judicializado the value for strJudicializado 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property Localidad $IdLocalidadObject the value for the Localidad object referenced by intIdLocalidad 
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio 
@@ -107,7 +108,7 @@ class FolioGen extends QBaseClass {
      * @var QDateTime dttFecha
      */
     protected $dttFecha;
-    const FechaDefault = 'now()';
+    const FechaDefault = null;
 
 
     /**
@@ -190,14 +191,6 @@ class FolioGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column folio.judicializado
-     * @var integer intJudicializado
-     */
-    protected $intJudicializado;
-    const JudicializadoDefault = null;
-
-
-    /**
      * Protected member variable that maps to the database column folio.direccion
      * @var string strDireccion
      */
@@ -213,6 +206,22 @@ class FolioGen extends QBaseClass {
     protected $strNumExpedientes;
     const NumExpedientesMaxLength = 45;
     const NumExpedientesDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column folio.geom
+     * @var string strGeom
+     */
+    protected $strGeom;
+    const GeomDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column folio.judicializado
+     * @var string strJudicializado
+     */
+    protected $strJudicializado;
+    const JudicializadoDefault = null;
 
 
     /**
@@ -669,9 +678,10 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'cantidad_familias', $strAliasPrefix . 'cantidad_familias');
 			$objBuilder->AddSelectItem($strTableName, 'tipo_barrio', $strAliasPrefix . 'tipo_barrio');
 			$objBuilder->AddSelectItem($strTableName, 'observacion_caso_dudoso', $strAliasPrefix . 'observacion_caso_dudoso');
-			$objBuilder->AddSelectItem($strTableName, 'judicializado', $strAliasPrefix . 'judicializado');
 			$objBuilder->AddSelectItem($strTableName, 'direccion', $strAliasPrefix . 'direccion');
 			$objBuilder->AddSelectItem($strTableName, 'num_expedientes', $strAliasPrefix . 'num_expedientes');
+			$objBuilder->AddSelectItem($strTableName, 'geom', $strAliasPrefix . 'geom');
+			$objBuilder->AddSelectItem($strTableName, 'judicializado', $strAliasPrefix . 'judicializado');
 		}
 
 //instantiation_methods
@@ -769,12 +779,14 @@ class FolioGen extends QBaseClass {
 			$objToReturn->intTipoBarrio = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'observacion_caso_dudoso', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'observacion_caso_dudoso'] : $strAliasPrefix . 'observacion_caso_dudoso';
 			$objToReturn->strObservacionCasoDudoso = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'judicializado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'judicializado'] : $strAliasPrefix . 'judicializado';
-			$objToReturn->intJudicializado = $objDbRow->GetColumn($strAliasName, 'Smallint');
 			$strAliasName = array_key_exists($strAliasPrefix . 'direccion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'direccion'] : $strAliasPrefix . 'direccion';
 			$objToReturn->strDireccion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'num_expedientes', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'num_expedientes'] : $strAliasPrefix . 'num_expedientes';
 			$objToReturn->strNumExpedientes = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'geom', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'geom'] : $strAliasPrefix . 'geom';
+			$objToReturn->strGeom = $objDbRow->GetColumn($strAliasName, 'Blob');
+			$strAliasName = array_key_exists($strAliasPrefix . 'judicializado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'judicializado'] : $strAliasPrefix . 'judicializado';
+			$objToReturn->strJudicializado = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -1134,9 +1146,6 @@ class FolioGen extends QBaseClass {
                     if ($this->intTipoBarrio && ($this->intTipoBarrio > QDatabaseNumberFieldMax::Integer || $this->intTipoBarrio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intTipoBarrio', QDatabaseFieldType::Integer);
                     }
-                    if ($this->intJudicializado && ($this->intJudicializado > QDatabaseNumberFieldMax::Smallint || $this->intJudicializado < QDatabaseNumberFieldMin::Smallint)) {
-                        throw new NumberOutOfRangeException('intJudicializado', QDatabaseFieldType::Smallint);
-                    }
 
             try {
                 if (((!$this->__blnRestored) && (!$blnForceUpdate)) || ($blnForceInsert)) {
@@ -1157,9 +1166,10 @@ class FolioGen extends QBaseClass {
                             "cantidad_familias",
                             "tipo_barrio",
                             "observacion_caso_dudoso",
-                            "judicializado",
                             "direccion",
-                            "num_expedientes"
+                            "num_expedientes",
+                            "geom",
+                            "judicializado"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
@@ -1175,9 +1185,10 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->intCantidadFamilias) . ',
                             ' . $objDatabase->SqlVariable($this->intTipoBarrio) . ',
                             ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
-                            ' . $objDatabase->SqlVariable($this->intJudicializado) . ',
                             ' . $objDatabase->SqlVariable($this->strDireccion) . ',
-                            ' . $objDatabase->SqlVariable($this->strNumExpedientes) . '
+                            ' . $objDatabase->SqlVariable($this->strNumExpedientes) . ',
+                            ' . $objDatabase->SqlVariable($this->strGeom) . ',
+                            ' . $objDatabase->SqlVariable($this->strJudicializado) . '
                         )
                     ');
 
@@ -1207,9 +1218,10 @@ class FolioGen extends QBaseClass {
                             "cantidad_familias" = ' . $objDatabase->SqlVariable($this->intCantidadFamilias) . ',
                             "tipo_barrio" = ' . $objDatabase->SqlVariable($this->intTipoBarrio) . ',
                             "observacion_caso_dudoso" = ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
-                            "judicializado" = ' . $objDatabase->SqlVariable($this->intJudicializado) . ',
                             "direccion" = ' . $objDatabase->SqlVariable($this->strDireccion) . ',
-                            "num_expedientes" = ' . $objDatabase->SqlVariable($this->strNumExpedientes) . '
+                            "num_expedientes" = ' . $objDatabase->SqlVariable($this->strNumExpedientes) . ',
+                            "geom" = ' . $objDatabase->SqlVariable($this->strGeom) . ',
+                            "judicializado" = ' . $objDatabase->SqlVariable($this->strJudicializado) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -1395,9 +1407,10 @@ class FolioGen extends QBaseClass {
 			$this->intCantidadFamilias = $objReloaded->intCantidadFamilias;
 			$this->TipoBarrio = $objReloaded->TipoBarrio;
 			$this->strObservacionCasoDudoso = $objReloaded->strObservacionCasoDudoso;
-			$this->intJudicializado = $objReloaded->intJudicializado;
 			$this->strDireccion = $objReloaded->strDireccion;
 			$this->strNumExpedientes = $objReloaded->strNumExpedientes;
+			$this->strGeom = $objReloaded->strGeom;
+			$this->strJudicializado = $objReloaded->strJudicializado;
 		}
 
 
@@ -1524,13 +1537,6 @@ class FolioGen extends QBaseClass {
                  */
                 return $this->strObservacionCasoDudoso;
 
-            case 'Judicializado':
-                /**
-                 * Gets the value for intJudicializado 
-                 * @return integer
-                 */
-                return $this->intJudicializado;
-
             case 'Direccion':
                 /**
                  * Gets the value for strDireccion 
@@ -1544,6 +1550,20 @@ class FolioGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strNumExpedientes;
+
+            case 'Geom':
+                /**
+                 * Gets the value for strGeom 
+                 * @return string
+                 */
+                return $this->strGeom;
+
+            case 'Judicializado':
+                /**
+                 * Gets the value for strJudicializado 
+                 * @return string
+                 */
+                return $this->strJudicializado;
 
 
             ///////////////////
@@ -1915,21 +1935,6 @@ class FolioGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'Judicializado':
-					/**
-					 * Sets the value for intJudicializado 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intJudicializado = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intJudicializado = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 				case 'Direccion':
 					/**
 					 * Sets the value for strDireccion 
@@ -1955,6 +1960,36 @@ class FolioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strNumExpedientes = QType::Cast($mixValue, QType::String));
                                                 return ($this->strNumExpedientes = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Geom':
+					/**
+					 * Sets the value for strGeom 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strGeom = QType::Cast($mixValue, QType::String));
+                                                return ($this->strGeom = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Judicializado':
+					/**
+					 * Sets the value for strJudicializado 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strJudicializado = QType::Cast($mixValue, QType::String));
+                                                return ($this->strJudicializado = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2429,9 +2464,10 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="CantidadFamilias" type="xsd:int"/>';
 			$strToReturn .= '<element name="TipoBarrioObject" type="xsd1:TipoBarrio"/>';
 			$strToReturn .= '<element name="ObservacionCasoDudoso" type="xsd:string"/>';
-			$strToReturn .= '<element name="Judicializado" type="xsd:int"/>';
 			$strToReturn .= '<element name="Direccion" type="xsd:string"/>';
 			$strToReturn .= '<element name="NumExpedientes" type="xsd:string"/>';
+			$strToReturn .= '<element name="Geom" type="xsd:string"/>';
+			$strToReturn .= '<element name="Judicializado" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2503,14 +2539,17 @@ class FolioGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'ObservacionCasoDudoso')) {
 				$objToReturn->strObservacionCasoDudoso = $objSoapObject->ObservacionCasoDudoso;
             }
-			if (property_exists($objSoapObject, 'Judicializado')) {
-				$objToReturn->intJudicializado = $objSoapObject->Judicializado;
-            }
 			if (property_exists($objSoapObject, 'Direccion')) {
 				$objToReturn->strDireccion = $objSoapObject->Direccion;
             }
 			if (property_exists($objSoapObject, 'NumExpedientes')) {
 				$objToReturn->strNumExpedientes = $objSoapObject->NumExpedientes;
+            }
+			if (property_exists($objSoapObject, 'Geom')) {
+				$objToReturn->strGeom = $objSoapObject->Geom;
+            }
+			if (property_exists($objSoapObject, 'Judicializado')) {
+				$objToReturn->strJudicializado = $objSoapObject->Judicializado;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

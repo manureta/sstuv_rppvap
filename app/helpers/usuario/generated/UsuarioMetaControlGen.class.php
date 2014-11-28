@@ -277,7 +277,7 @@
             $this->calFechaActivacion = new QDateTimePicker($this->objParentObject, $strControlId);
             $this->calFechaActivacion->Name = QApplication::Translate('FechaActivacion');
             $this->calFechaActivacion->DateTime = $this->objUsuario->FechaActivacion;
-            $this->calFechaActivacion->DateTimePickerType = QDateTimePickerType::DateTime;
+            $this->calFechaActivacion->DateTimePickerType = QDateTimePickerType::Date;
             $this->calFechaActivacion->Required = true;
             
             return $this->calFechaActivacion;

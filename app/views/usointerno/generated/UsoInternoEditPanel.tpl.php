@@ -13,9 +13,9 @@
 		<?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>
 		<?php $_CONTROL->chkRegularizacionTienePlano->RenderWithName(); ?>
 		<?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
-		<?php $_CONTROL->lstRegularizacionAprobacionGeodesiaObject->RenderWithName(); ?>
+		<?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
 		<?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
-		<?php $_CONTROL->lstRegularizacionEstadoProcesoObject->RenderWithName(); ?>
+		<?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

@@ -44,8 +44,7 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
         $this->mctAntecedentes = AntecedentesMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Antecedentes's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctAntecedentes->lblId_Create();
+       // if (in_array('lblId',$strControlsArray)) $this->objControlsArray['lblId'] = $this->mctAntecedentes->lblId_Create();
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctAntecedentes->lstIdFolioObject_Create();
         if (in_array('chkSinIntervencion',$strControlsArray)) 
@@ -58,8 +57,8 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
             $this->objControlsArray['chkIntervencionesEnViviendas'] = $this->mctAntecedentes->chkIntervencionesEnViviendas_Create();
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctAntecedentes->txtOtros_Create();
-        if (in_array('lstOrganismosDeIntervencionAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstOrganismosDeIntervencionAsIdFolio'] = $this->mctAntecedentes->lstOrganismosDeIntervencionAsIdFolio_Create();
+        //if (in_array('lstOrganismosDeIntervencionAsIdFolio',$strControlsArray))
+          //  $this->objControlsArray['lstOrganismosDeIntervencionAsIdFolio'] = $this->mctAntecedentes->lstOrganismosDeIntervencionAsIdFolio_Create();
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

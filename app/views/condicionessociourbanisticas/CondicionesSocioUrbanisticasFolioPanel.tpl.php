@@ -26,7 +26,7 @@
         </ul>
     </div>
     
-    <h6>Condiciones</h6>
+    <h6>Condiciones</h>
     <div>                
                 <div class="well bs-component">              				                        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
@@ -46,9 +46,20 @@
                         <?php $_CONTROL->pnlEquipamiento->lstEscuelaPrimariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstEscuelaSecundariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstComedorObject->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEquipamiento->lstSalonUsosMultiplesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstCentroIntegracionComunitariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->txtOtro->RenderWithName(); ?>
+                    </div>
+    </div>
+
+
+    <h6>Transporte</h6>
+    <div>
+                    <div class="well bs-component">                            
+
+                    <?php $_CONTROL->pnlTransporte->lstIdFolioObject->RenderWithName(); ?>
+                    <?php $_CONTROL->pnlTransporte->lstColectivosObject->RenderWithName(); ?>
+                    <?php $_CONTROL->pnlTransporte->lstFerrocarrilObject->RenderWithName(); ?>
+                    <?php $_CONTROL->pnlTransporte->lstRemisCombisObject->RenderWithName(); ?>
                     </div>
     </div>
 

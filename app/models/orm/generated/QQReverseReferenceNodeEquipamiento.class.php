@@ -31,10 +31,6 @@ class QQReverseReferenceNodeEquipamiento extends QQReverseReferenceNode {
 					return new QQNode('comedor', 'Comedor', 'integer', $this);
 				case 'ComedorObject':
 					return new QQNodeOpcionesEquipamientos('comedor', 'ComedorObject', 'integer', $this);
-				case 'SalonUsosMultiples':
-					return new QQNode('salon_usos_multiples', 'SalonUsosMultiples', 'integer', $this);
-				case 'SalonUsosMultiplesObject':
-					return new QQNodeOpcionesEquipamientos('salon_usos_multiples', 'SalonUsosMultiplesObject', 'integer', $this);
 				case 'CentroIntegracionComunitaria':
 					return new QQNode('centro_integracion_comunitaria', 'CentroIntegracionComunitaria', 'integer', $this);
 				case 'CentroIntegracionComunitariaObject':

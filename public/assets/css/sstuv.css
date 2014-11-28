@@ -17,3 +17,22 @@
     background: none repeat scroll 0 0 #F07A0C;
     border-top: 2px solid #F07A00;
 }
+
+#navbar-footer{
+  background-image: url(../images/fondo.png);
+  min-height: 118px;
+}
+
+#navbar-header{
+  background-image: url(../images/fondo.png);
+  min-height: 70px;
+}
+
+span.nombre-usuario {
+    color: #2679b5;
+    float: left;
+    font-size: 13px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 12px;
+}
