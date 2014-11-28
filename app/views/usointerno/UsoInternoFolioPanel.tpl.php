@@ -1,0 +1,57 @@
+
+ <?php $folio=QApplication::QueryString("id"); ?>   
+ <div id="steps-tabs-folio" role="application" class="wizard clearfix">
+    <div class="steps clearfix">
+        <ul role="tablist">
+            <li role="tab" class="done" aria-disabled="false" >
+                <a aria-controls="wizard-p-0" href="/registro/folio/view/<?=$folio;?>">
+                    <span class="number">1.</span> Datos Generales
+                </a>
+            </li>
+            <li role="tab" class="done" aria-disabled="false" aria-selected="false">
+                <a aria-controls="wizard-p-1" href="/registro/nomenclatura/folio/<?=$folio;?>">                    
+                    <span class="number">2.</span> Nomenclatura
+                </a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-2" href="/registro/condiciones/folio/<?=$folio;?>">
+                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
+                </a>
+            </li>
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="/registro/regularizacion/folio/<?=$folio;?>">
+                    <span class="number">4.</span> Regularización
+                </a>
+            </li>
+            <li role="tab" class="current" aria-disabled="false" aria-selected="true">
+                <a aria-controls="wizard-p-3" href="">
+                    <span class="number">-</span> Uso Interno
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div>                
+        <div class="well bs-component">
+			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
+        <?php $_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
+        <?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
+        <?php $_CONTROL->chkNoCorrespondeInscripcion->RenderWithName(); ?>
+        <?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
+        <?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
+        <?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>
+        <?php $_CONTROL->chkRegularizacionTienePlano->RenderWithName(); ?>
+        <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
+        <?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
+        <?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
+        <?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
+        </div>
+
+    </div>
+</div>
+
+  
+	
+
+
+
