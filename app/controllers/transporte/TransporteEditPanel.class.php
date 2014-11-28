@@ -43,10 +43,13 @@ class TransporteEditPanel extends TransporteEditPanelGen {
             $this->objControlsArray['lstIdFolioObject'] = $this->mctTransporte->lstIdFolioObject_Create();
         if (in_array('lstColectivosObject',$strControlsArray)) 
             $this->objControlsArray['lstColectivosObject'] = $this->mctTransporte->lstColectivosObject_Create();
+            $this->objControlsArray['lstColectivosObject']->Name="Colectivos";
         if (in_array('lstFerrocarrilObject',$strControlsArray)) 
             $this->objControlsArray['lstFerrocarrilObject'] = $this->mctTransporte->lstFerrocarrilObject_Create();
+            $this->objControlsArray['lstFerrocarrilObject']->Name="Ferrocarril";
         if (in_array('lstRemisCombisObject',$strControlsArray)) 
             $this->objControlsArray['lstRemisCombisObject'] = $this->mctTransporte->lstRemisCombisObject_Create();
+            $this->objControlsArray['lstRemisCombisObject']->Name="Remis/Combis";
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
