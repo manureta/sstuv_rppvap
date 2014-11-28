@@ -54,17 +54,18 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
+        $this->pnlEncuadre->lstIdFolioObject->Visible = false;
         
         
         $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
         $this->pnlAntecedentes = new AntecedentesEditPanel($this,AntecedentesEditPanel::$strControlsArray,$this->objAntecedentes->Id);
         $this->pnlAntecedentes->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAntecedentes->lstIdFolioObject->Text = $this->objFolio->__toString();
-        $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;        
+        $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;
+        $this->pnlAntecedentes->lstIdFolioObject->Visible = false;        
 
         // Si se tilda sin intervencion hay que ocultar org de intervencion
-        $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;
-        error_log("valor : $sinintervencion");
+        $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;        
         if($sinintervencion)QApplication::ExecuteJavascript("SinIntervencion(true)");
         $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(), new QJavascriptAction ("SinIntervencion()"));
 
@@ -73,7 +74,8 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this,OrganismosDeIntervencionEditPanel::$strControlsArray,$this->objOrganismos->Id);
         $this->pnlOrganismos->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlOrganismos->lstIdFolioObject->Text = $this->objFolio->__toString();
-        $this->pnlOrganismos->lstIdFolioObject->Enabled = false;                
+        $this->pnlOrganismos->lstIdFolioObject->Enabled = false;
+        $this->pnlOrganismos->lstIdFolioObject->Visible = false;                
         
 
 
@@ -95,6 +97,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->objControlsArray['lstIdFolioObject'] = $this->mctRegularizacion->lstIdFolioObject_Create();
         if (in_array('chkProcesoIniciado',$strControlsArray)) 
             $this->objControlsArray['chkProcesoIniciado'] = $this->mctRegularizacion->chkProcesoIniciado_Create();
+            $this->objControlsArray['chkProcesoIniciado']->Name="Proceso iniciado"; 
         if (in_array('lstAntecedentesAsIdFolio',$strControlsArray)) 
             $this->objControlsArray['lstAntecedentesAsIdFolio'] = $this->mctRegularizacion->lstAntecedentesAsIdFolio_Create();
         if (in_array('lstEncuadreLegalAsIdFolio',$strControlsArray))

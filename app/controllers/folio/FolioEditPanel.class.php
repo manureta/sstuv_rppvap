@@ -98,7 +98,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtAnioOrigen']->Name="Año de origen";
         if (in_array('txtSuperficie',$strControlsArray)) 
             $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
-            $this->objControlsArray['txtSuperficie']->Name="Superficie (m2)";
+            $this->objControlsArray['txtSuperficie']->Name="Superficie (ha)";
         if (in_array('txtCantidadFamilias',$strControlsArray)) 
             $this->objControlsArray['txtCantidadFamilias'] = $this->mctFolio->txtCantidadFamilias_Create();
             $this->objControlsArray['txtCantidadFamilias']->Name="Cantidad de familias";
