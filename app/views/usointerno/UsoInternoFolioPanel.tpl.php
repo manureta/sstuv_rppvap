@@ -45,6 +45,7 @@
         <?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
         <?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
         <?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
+        <?php $_CONTROL->txtNumExpediente->RenderWithName(); ?>
         </div>
 
     </div>
