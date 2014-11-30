@@ -36,7 +36,8 @@ class UsuarioEditPanel extends UsuarioEditPanelGen {
         }
 
         $this->intIdUsuario = $intIdUsuario;
-        
+        $this->pnlTabs = new QTabPanel($this);
+        $this->pnlTabs->AddTab("Usuarios");
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
     }
@@ -72,6 +73,7 @@ class UsuarioEditPanel extends UsuarioEditPanelGen {
         if (in_array('txtCodPartido',$strControlsArray)) 
             $this->objControlsArray['txtCodPartido'] = $this->mctUsuario->txtCodPartido_Create();
 
+        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
         
     }
 

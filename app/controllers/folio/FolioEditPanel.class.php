@@ -54,10 +54,17 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
+
         $existeFolio=$this->mctFolio->Folio->CodFolio;
         
         if(!$existeFolio){
-            QApplication::ExecuteJavascript("mostrarMapa()");
+            $partido_usuario=Session::GetObjUsuario()->CodPartido;
+            $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
+            
+            $this->lstIdPartidoObject->Value = $objPartido->Id;
+            $this->lstIdPartidoObject->Text = $objPartido->__toString();
+            $this->lstIdPartidoObject->Enabled = false;            
+            QApplication::ExecuteJavascript("mostrarMapa('$objPartido->CodPartido')");
         }else{
             $this->objControlsArray['txtCodFolio']->ActionParameter=$this->mctFolio->Folio->Id;
             

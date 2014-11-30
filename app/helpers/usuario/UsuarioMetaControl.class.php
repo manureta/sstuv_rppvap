@@ -179,7 +179,7 @@
                     if ($this->txtRespuestaB) $this->objUsuario->RespuestaB = $this->txtRespuestaB->Text;
                     if ($this->lstPregunta1) $this->objUsuario->PreguntaSecretaA = $this->lstPregunta1->SelectedValue;
                     if ($this->lstPregunta2) $this->objUsuario->PreguntaSecretaB = $this->lstPregunta2->SelectedValue;
-                    if ($this->lstIdPersonalObject) $this->objUsuario->IdPersonal = $this->lstIdPersonalObject->SelectedValue;
+                    if ($this->txtCodPartido) $this->objUsuario->CodPartido = $this->txtCodPartido->Text;
 
 
         }

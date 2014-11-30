@@ -2,16 +2,17 @@
     if($_CONTROL->txtCodFolio->ActionParameter){
         
         $folio=$_CONTROL->txtCodFolio->ActionParameter;
-        $link_nomenclatura="/registro/nomenclatura/folio/$folio";
-        $link_condiciones="/registro/condiciones/folio/$folio";
-        $link_regularizacion="/registro/regularizacion/folio/$folio";
-        $link_interno="/registro/interno/folio/$folio";
+        $link_nomenclatura=__VIRTUAL_DIRECTORY__."/nomenclatura/folio/$folio";
+        $link_condiciones=__VIRTUAL_DIRECTORY__."/condiciones/folio/$folio";
+        $link_regularizacion=__VIRTUAL_DIRECTORY__."/regularizacion/folio/$folio";
+        $link_interno=__VIRTUAL_DIRECTORY__."/interno/folio/$folio";
         $clase="done";
     }else{
         
         $link_nomenclatura="#";
         $link_condiciones="#";
         $link_regularizacion="#";
+        $link_interno="#";
         $clase="disabled";
     }; 
 

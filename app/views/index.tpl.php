@@ -61,7 +61,7 @@
                         <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_izquierda.png" style="width:160px;heigth:40px;">
                     </div>
                 <?php if (Session::Get('objUsuario')) { ?>
-                <div><span class="nombre-usuario">Bienvenido,<p><?php echo Session::GetObjUsuario()->Nombre?></p></span></div>
+                <div><span class="nombre-usuario">Bienvenido,<p><?php echo Session::GetObjUsuario()->Nombre." (".Session::GetObjUsuario()->IdPerfilObject->Nombre.")";?></p></span></div>
                 <div class="pull-right">
                     <div id="menu-usuario" class="pull-right">
                         <?php $this->pnlUserMenu->Render(); ?>
