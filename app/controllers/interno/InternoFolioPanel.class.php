@@ -14,7 +14,7 @@ class InternoFolioPanel extends UsoInternoEditPanel {
         
         try {
            $this->obj=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,QApplication::QueryString("id")));
-            parent::__construct($objParentObject, $strControlsArray,$this->obj->Id);
+            parent::__construct($objParentObject, $strControlsArray,$this->obj->IdFolio);
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;

@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
-                <a aria-controls="wizard-p-3" href="">
+                <a aria-controls="wizard-p-3" href="#">
                     <span class="number">-</span> Uso Interno
                 </a>
             </li>

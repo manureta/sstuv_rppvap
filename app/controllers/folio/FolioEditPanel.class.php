@@ -60,12 +60,28 @@ class FolioEditPanel extends FolioEditPanelGen {
         if(!$existeFolio){
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
-            
-            $this->lstIdPartidoObject->Value = $objPartido->Id;
-            $this->lstIdPartidoObject->Text = $objPartido->__toString();
-            $this->lstIdPartidoObject->Enabled = false;            
-            QApplication::ExecuteJavascript("mostrarMapa('$objPartido->CodPartido')");
+            if($objPartido){
+                //seteo partido
+                $this->lstIdPartidoObject->Value = $objPartido->Id;
+                $this->lstIdPartidoObject->Text = $objPartido->__toString();
+                $this->lstIdPartidoObject->Enabled = false;            
+                
+                //calculo Matricula
+                $arrFoliosPartido=Folio::QueryArray(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,$partido_usuario));
+                $arrMatriculas = array();
+                foreach ($arrFoliosPartido as $folio) {
+                    array_push($arrMatriculas,intval($folio->Matricula));
+                }
+                $ultimo=max($arrMatriculas);
+                $nueva_matricula=str_pad($ultimo+1, 4, '0', STR_PAD_LEFT);
+                // seteo matricula
+                $this->txtMatricula->Text=$nueva_matricula;
+                
+            }
+            QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario')");
         }else{
+            $this->lstIdPartidoObject->Enabled = false; 
+            $this->txtMatricula->Enabled = false; 
             $this->objControlsArray['txtCodFolio']->ActionParameter=$this->mctFolio->Folio->Id;
             
         }
