@@ -31,9 +31,9 @@
         </ul>
     </div>
     
-    <h6>Condiciones</h>
+     <div class="titulos"><i class="icon-chevron-right"> Condiciones</i></div>  
     <div>                
-                <div class="well bs-component">              				                        
+                <div class="well bs-component">                               				                        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkEspacioLibreComun->RenderWithName(); ?>
                         <?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
@@ -42,7 +42,7 @@
                 </div>
     </div>
 
-    <h6>Equipamiento</h6>
+    <div class="titulos"><i class="icon-chevron-right"> Equipamiento</i></div> 
     <div>
                     <div class="well bs-component">                            
                         <?php $_CONTROL->pnlEquipamiento->lstIdFolioObject->RenderWithName(); ?>
@@ -57,7 +57,7 @@
     </div>
 
 
-    <h6>Transporte</h6>
+    <div class="titulos"><i class="icon-chevron-right">Transporte</i></div> 
     <div>
                     <div class="well bs-component">                            
 
@@ -68,7 +68,7 @@
                     </div>
     </div>
 
-    <h6>Infraestructura</h6>
+    <div class="titulos"><i class="icon-chevron-right"> Infraestructura</i></div> 
     <div>
                     <div class="well bs-component">                                                          
 
@@ -88,7 +88,8 @@
                     </div> 
     </div>
 
-    <h6>Situacion Ambiental</h6>
+    
+    <div class="titulos"><i class="icon-chevron-right"> Situacion Ambiental</i></div>
     <div>
                    <div class="well bs-component">                                                     
 

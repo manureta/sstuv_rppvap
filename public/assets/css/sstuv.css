@@ -55,3 +55,12 @@ span.nombre-usuario {
 .wizard > .steps > ul > li {
     width: 20% !IMPORTANT;
 }
+
+.titulos {
+    
+}
+
+.renderWithName  input[type="checkbox"]{
+    float: left;
+    width: 10%!IMPORTANT;
+}
