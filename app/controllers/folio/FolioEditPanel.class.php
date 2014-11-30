@@ -13,6 +13,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtCodFolio' => true,
         'lstIdPartidoObject' => true,
         'lstIdLocalidadObject' => true,
+        'txtObservacionLocalidad' => true,
         'txtMatricula' => true,
         'calFecha' => false,
         'txtEncargado' => true,
@@ -26,7 +27,6 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtObservacionCasoDudoso' => true,
         'txtJudicializado' => true,
         'txtDireccion' => true,
-        'txtNumExpedientes' => true,
         'txtGeom'=>true,
         'lstCondicionesSocioUrbanisticasAsId' => false,
         'lstRegularizacionAsId' => false,
@@ -78,6 +78,9 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctFolio->lstIdPartidoObject_Create();
         if (in_array('lstIdLocalidadObject',$strControlsArray)) 
             $this->objControlsArray['lstIdLocalidadObject'] = $this->mctFolio->lstIdLocalidadObject_Create();
+        if (in_array('txtObservacionLocalidad',$strControlsArray)) 
+            $this->objControlsArray['txtObservacionLocalidad'] = $this->mctFolio->txtObservacionLocalidad_Create();
+            $this->objControlsArray['txtObservacionLocalidad']->Name="Observación sobre localidad";
         if (in_array('txtMatricula',$strControlsArray)) 
             $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
@@ -113,9 +116,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
             $this->objControlsArray['txtDireccion']->Name="Dirección";
-        if (in_array('txtNumExpedientes',$strControlsArray)) 
-            $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
-            $this->objControlsArray['txtNumExpedientes']->Name="N° expediente";
+        
 
         if (in_array('txtGeom',$strControlsArray)) 
             $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();

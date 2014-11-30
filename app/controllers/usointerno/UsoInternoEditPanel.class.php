@@ -49,7 +49,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstIdFolioObject->Enabled = false;
 
         $this->buttons_Create();
-        $this->blnAutoRenderChildrenWithName = true;
+        $this->blnAutoRenderChildrenWithName = false;
     }
 
     protected function metaControl_Create($strControlsArray){

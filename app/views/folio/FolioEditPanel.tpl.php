@@ -52,6 +52,7 @@
             <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
 			<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
 			<?php $_CONTROL->lstIdLocalidadObject->RenderWithName(); ?>
+            <?php $_CONTROL->txtObservacionLocalidad->RenderWithName(); ?>
 			<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
 			
 			<?php $_CONTROL->txtEncargado->RenderWithName(); ?>
@@ -65,7 +66,6 @@
 			<?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
 			<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
 			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
-			<?php $_CONTROL->txtNumExpedientes->RenderWithName(); ?>
             <?php $_CONTROL->txtGeom->RenderWithName(); ?>
 			
         </div>
