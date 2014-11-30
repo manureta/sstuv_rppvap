@@ -31,6 +31,8 @@ class QQNodeUsoInterno extends QQNode {
 					return new QQNode('regularizacion_registracion', 'RegularizacionRegistracion', 'integer', $this);
 				case 'RegularizacionEstadoProceso':
 					return new QQNode('regularizacion_estado_proceso', 'RegularizacionEstadoProceso', 'integer', $this);
+				case 'NumExpediente':
+					return new QQNode('num_expediente', 'NumExpediente', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

@@ -288,9 +288,9 @@
         $strConfigArray['Columns']['TipoBarrioObject'] = QApplication::Translate('TipoBarrioObject');
         $strConfigArray['Columns']['ObservacionCasoDudoso'] = QApplication::Translate('ObservacionCasoDudoso');
         $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
-        $strConfigArray['Columns']['NumExpedientes'] = QApplication::Translate('NumExpedientes');
         $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
+        $strConfigArray['Columns']['ObservacionLocalidad'] = QApplication::Translate('ObservacionLocalidad');
 
         $this->lstFolioAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
         $this->lstFolioAsId->Name = Folio::Noun();

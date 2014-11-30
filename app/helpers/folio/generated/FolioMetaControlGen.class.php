@@ -48,12 +48,12 @@
      * property-read QLabel $ObservacionCasoDudosoLabel
      * property QTextBox $DireccionControl
      * property-read QLabel $DireccionLabel
-     * property QTextBox $NumExpedientesControl
-     * property-read QLabel $NumExpedientesLabel
      * property QTextBox $GeomControl
      * property-read QLabel $GeomLabel
      * property QTextBox $JudicializadoControl
      * property-read QLabel $JudicializadoLabel
+     * property QTextBox $ObservacionLocalidadControl
+     * property-read QLabel $ObservacionLocalidadLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -92,9 +92,9 @@
         protected $lstTipoBarrioObject;
         protected $txtObservacionCasoDudoso;
         protected $txtDireccion;
-        protected $txtNumExpedientes;
         protected $txtGeom;
         protected $txtJudicializado;
+        protected $txtObservacionLocalidad;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -112,9 +112,9 @@
         protected $lblTipoBarrio;
         protected $lblObservacionCasoDudoso;
         protected $lblDireccion;
-        protected $lblNumExpedientes;
         protected $lblGeom;
         protected $lblJudicializado;
+        protected $lblObservacionLocalidad;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -641,32 +641,6 @@
         }
 
         /**
-         * Create and setup QTextBox txtNumExpedientes
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtNumExpedientes_Create($strControlId = null) {
-            $this->txtNumExpedientes = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtNumExpedientes->Name = QApplication::Translate('NumExpedientes');
-            $this->txtNumExpedientes->Text = $this->objFolio->NumExpedientes;
-            $this->txtNumExpedientes->MaxLength = Folio::NumExpedientesMaxLength;
-            
-            return $this->txtNumExpedientes;
-        }
-
-        /**
-         * Create and setup QLabel lblNumExpedientes
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblNumExpedientes_Create($strControlId = null) {
-            $this->lblNumExpedientes = new QLabel($this->objParentObject, $strControlId);
-            $this->lblNumExpedientes->Name = QApplication::Translate('NumExpedientes');
-            $this->lblNumExpedientes->Text = $this->objFolio->NumExpedientes;
-            return $this->lblNumExpedientes;
-        }
-
-        /**
          * Create and setup QTextBox txtGeom
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
@@ -715,6 +689,31 @@
             $this->lblJudicializado->Name = QApplication::Translate('Judicializado');
             $this->lblJudicializado->Text = $this->objFolio->Judicializado;
             return $this->lblJudicializado;
+        }
+
+        /**
+         * Create and setup QTextBox txtObservacionLocalidad
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtObservacionLocalidad_Create($strControlId = null) {
+            $this->txtObservacionLocalidad = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtObservacionLocalidad->Name = QApplication::Translate('ObservacionLocalidad');
+            $this->txtObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
+            
+            return $this->txtObservacionLocalidad;
+        }
+
+        /**
+         * Create and setup QLabel lblObservacionLocalidad
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblObservacionLocalidad_Create($strControlId = null) {
+            $this->lblObservacionLocalidad = new QLabel($this->objParentObject, $strControlId);
+            $this->lblObservacionLocalidad->Name = QApplication::Translate('ObservacionLocalidad');
+            $this->lblObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
+            return $this->lblObservacionLocalidad;
         }
 
         /**
@@ -816,6 +815,50 @@
             return $this->lblUsoInterno;
         }
 
+
+
+    public $lstArchivosAdjuntosAsId;
+    /**
+     * Gets all associated ArchivosAdjuntosesAsId as an array of ArchivosAdjuntos objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return ArchivosAdjuntos[]
+    */ 
+    public function lstArchivosAdjuntosAsId_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'ArchivosAdjuntos';
+        $strConfigArray['strRefreshMethod'] = 'ArchivosAdjuntosAsIdArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'IdFolio';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddArchivosAdjuntosAsId';
+        $strConfigArray['strRemoveMethod'] = 'RemoveArchivosAdjuntosAsId';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['Tipo'] = QApplication::Translate('Tipo');
+        $strConfigArray['Columns']['PathFile'] = QApplication::Translate('PathFile');
+
+        $this->lstArchivosAdjuntosAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
+        $this->lstArchivosAdjuntosAsId->Name = ArchivosAdjuntos::Noun();
+        $this->lstArchivosAdjuntosAsId->SetNewMethod($this, "lstArchivosAdjuntosAsId_New");
+        $this->lstArchivosAdjuntosAsId->SetEditMethod($this, "lstArchivosAdjuntosAsId_Edit");
+        return $this->lstArchivosAdjuntosAsId;
+    }
+
+    public function lstArchivosAdjuntosAsId_New() {
+        ArchivosAdjuntosModalPanel::$strControlsArray['lstIdFolioObject'] = false;
+        $strControlsArray = array_keys(ArchivosAdjuntosModalPanel::$strControlsArray, true);
+        $this->lstArchivosAdjuntosAsId->ModalPanel = new ArchivosAdjuntosModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstArchivosAdjuntosAsId->ModalPanel->objCallerControl = $this->lstArchivosAdjuntosAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstArchivosAdjuntosAsId_Edit($intKey) {
+        ArchivosAdjuntosModalPanel::$strControlsArray['lstIdFolioObject'] = false;
+        $strControlsArray = array_keys(ArchivosAdjuntosModalPanel::$strControlsArray, true);
+        $obj = $this->objFolio->ArchivosAdjuntosAsIdArray[$intKey];
+        $this->lstArchivosAdjuntosAsId->ModalPanel = new ArchivosAdjuntosModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstArchivosAdjuntosAsId->ModalPanel->objCallerControl = $this->lstArchivosAdjuntosAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
 
 
     public $lstNomenclaturaAsId;
@@ -944,14 +987,14 @@
             if ($this->txtDireccion) $this->txtDireccion->Text = $this->objFolio->Direccion;
             if ($this->lblDireccion) $this->lblDireccion->Text = $this->objFolio->Direccion;
 
-            if ($this->txtNumExpedientes) $this->txtNumExpedientes->Text = $this->objFolio->NumExpedientes;
-            if ($this->lblNumExpedientes) $this->lblNumExpedientes->Text = $this->objFolio->NumExpedientes;
-
             if ($this->txtGeom) $this->txtGeom->Text = $this->objFolio->Geom;
             if ($this->lblGeom) $this->lblGeom->Text = $this->objFolio->Geom;
 
             if ($this->txtJudicializado) $this->txtJudicializado->Text = $this->objFolio->Judicializado;
             if ($this->lblJudicializado) $this->lblJudicializado->Text = $this->objFolio->Judicializado;
+
+            if ($this->txtObservacionLocalidad) $this->txtObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
+            if ($this->lblObservacionLocalidad) $this->lblObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
 
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
@@ -1035,9 +1078,9 @@
                 if ($this->lstTipoBarrioObject) $this->objFolio->TipoBarrio = $this->lstTipoBarrioObject->SelectedValue;
                 if ($this->txtObservacionCasoDudoso) $this->objFolio->ObservacionCasoDudoso = $this->txtObservacionCasoDudoso->Text;
                 if ($this->txtDireccion) $this->objFolio->Direccion = $this->txtDireccion->Text;
-                if ($this->txtNumExpedientes) $this->objFolio->NumExpedientes = $this->txtNumExpedientes->Text;
                 if ($this->txtGeom) $this->objFolio->Geom = $this->txtGeom->Text;
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
+                if ($this->txtObservacionLocalidad) $this->objFolio->ObservacionLocalidad = $this->txtObservacionLocalidad->Text;
 
 
         }
@@ -1193,12 +1236,6 @@
                 case 'DireccionLabel':
                     if (!$this->lblDireccion) return $this->lblDireccion_Create();
                     return $this->lblDireccion;
-                case 'NumExpedientesControl':
-                    if (!$this->txtNumExpedientes) return $this->txtNumExpedientes_Create();
-                    return $this->txtNumExpedientes;
-                case 'NumExpedientesLabel':
-                    if (!$this->lblNumExpedientes) return $this->lblNumExpedientes_Create();
-                    return $this->lblNumExpedientes;
                 case 'GeomControl':
                     if (!$this->txtGeom) return $this->txtGeom_Create();
                     return $this->txtGeom;
@@ -1211,6 +1248,12 @@
                 case 'JudicializadoLabel':
                     if (!$this->lblJudicializado) return $this->lblJudicializado_Create();
                     return $this->lblJudicializado;
+                case 'ObservacionLocalidadControl':
+                    if (!$this->txtObservacionLocalidad) return $this->txtObservacionLocalidad_Create();
+                    return $this->txtObservacionLocalidad;
+                case 'ObservacionLocalidadLabel':
+                    if (!$this->lblObservacionLocalidad) return $this->lblObservacionLocalidad_Create();
+                    return $this->lblObservacionLocalidad;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1283,12 +1326,12 @@
                         return ($this->txtObservacionCasoDudoso = QType::Cast($mixValue, 'QControl'));
                     case 'DireccionControl':
                         return ($this->txtDireccion = QType::Cast($mixValue, 'QControl'));
-                    case 'NumExpedientesControl':
-                        return ($this->txtNumExpedientes = QType::Cast($mixValue, 'QControl'));
                     case 'GeomControl':
                         return ($this->txtGeom = QType::Cast($mixValue, 'QControl'));
                     case 'JudicializadoControl':
                         return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
+                    case 'ObservacionLocalidadControl':
+                        return ($this->txtObservacionLocalidad = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

@@ -19,6 +19,7 @@ class UsuarioEditPanelGen extends EditPanelBase {
         'txtRespuestaB' => true,
         'txtPreguntaSecretaA' => true,
         'txtPreguntaSecretaB' => true,
+        'txtCodPartido' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdUsuario = null, $strControlId = null) {
@@ -68,6 +69,8 @@ class UsuarioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtPreguntaSecretaA'] = $this->mctUsuario->txtPreguntaSecretaA_Create();
         if (in_array('txtPreguntaSecretaB',$strControlsArray)) 
             $this->objControlsArray['txtPreguntaSecretaB'] = $this->mctUsuario->txtPreguntaSecretaB_Create();
+        if (in_array('txtCodPartido',$strControlsArray)) 
+            $this->objControlsArray['txtCodPartido'] = $this->mctUsuario->txtCodPartido_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

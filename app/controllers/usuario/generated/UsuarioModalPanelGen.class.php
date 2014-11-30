@@ -21,6 +21,7 @@ class UsuarioModalPanelGen extends EditPanelBase {
         'txtRespuestaB' => true,
         'txtPreguntaSecretaA' => true,
         'txtPreguntaSecretaB' => true,
+        'txtCodPartido' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsuario = null, $strControlId = null) {
@@ -73,6 +74,8 @@ class UsuarioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtPreguntaSecretaA'] = $this->mctUsuario->txtPreguntaSecretaA_Create();
         if (in_array('txtPreguntaSecretaB',$strControlsArray)) 
             $this->objControlsArray['txtPreguntaSecretaB'] = $this->mctUsuario->txtPreguntaSecretaB_Create();
+        if (in_array('txtCodPartido',$strControlsArray)) 
+            $this->objControlsArray['txtCodPartido'] = $this->mctUsuario->txtCodPartido_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

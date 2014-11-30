@@ -38,6 +38,8 @@
      * property-read QLabel $PreguntaSecretaALabel
      * property QTextBox $PreguntaSecretaBControl
      * property-read QLabel $PreguntaSecretaBLabel
+     * property QTextBox $CodPartidoControl
+     * property-read QLabel $CodPartidoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -65,6 +67,7 @@
         protected $txtRespuestaB;
         protected $txtPreguntaSecretaA;
         protected $txtPreguntaSecretaB;
+        protected $txtCodPartido;
 
         // Controls that allow the viewing of Usuario's individual data fields
         protected $lblPassword;
@@ -77,6 +80,7 @@
         protected $lblRespuestaB;
         protected $lblPreguntaSecretaA;
         protected $lblPreguntaSecretaB;
+        protected $lblCodPartido;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -453,6 +457,32 @@
             return $this->lblPreguntaSecretaB;
         }
 
+        /**
+         * Create and setup QTextBox txtCodPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtCodPartido_Create($strControlId = null) {
+            $this->txtCodPartido = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtCodPartido->Name = QApplication::Translate('CodPartido');
+            $this->txtCodPartido->Text = $this->objUsuario->CodPartido;
+            $this->txtCodPartido->MaxLength = Usuario::CodPartidoMaxLength;
+            
+            return $this->txtCodPartido;
+        }
+
+        /**
+         * Create and setup QLabel lblCodPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblCodPartido_Create($strControlId = null) {
+            $this->lblCodPartido = new QLabel($this->objParentObject, $strControlId);
+            $this->lblCodPartido->Name = QApplication::Translate('CodPartido');
+            $this->lblCodPartido->Text = $this->objUsuario->CodPartido;
+            return $this->lblCodPartido;
+        }
+
 
 
 
@@ -503,6 +533,9 @@
             if ($this->txtPreguntaSecretaB) $this->txtPreguntaSecretaB->Text = $this->objUsuario->PreguntaSecretaB;
             if ($this->lblPreguntaSecretaB) $this->lblPreguntaSecretaB->Text = $this->objUsuario->PreguntaSecretaB;
 
+            if ($this->txtCodPartido) $this->txtCodPartido->Text = $this->objUsuario->CodPartido;
+            if ($this->lblCodPartido) $this->lblCodPartido->Text = $this->objUsuario->CodPartido;
+
         }
 
 
@@ -531,6 +564,7 @@
                 if ($this->txtRespuestaB) $this->objUsuario->RespuestaB = $this->txtRespuestaB->Text;
                 if ($this->txtPreguntaSecretaA) $this->objUsuario->PreguntaSecretaA = $this->txtPreguntaSecretaA->Text;
                 if ($this->txtPreguntaSecretaB) $this->objUsuario->PreguntaSecretaB = $this->txtPreguntaSecretaB->Text;
+                if ($this->txtCodPartido) $this->objUsuario->CodPartido = $this->txtCodPartido->Text;
 
 
         }
@@ -653,6 +687,12 @@
                 case 'PreguntaSecretaBLabel':
                     if (!$this->lblPreguntaSecretaB) return $this->lblPreguntaSecretaB_Create();
                     return $this->lblPreguntaSecretaB;
+                case 'CodPartidoControl':
+                    if (!$this->txtCodPartido) return $this->txtCodPartido_Create();
+                    return $this->txtCodPartido;
+                case 'CodPartidoLabel':
+                    if (!$this->lblCodPartido) return $this->lblCodPartido_Create();
+                    return $this->lblCodPartido;
                 default:
                     try {
                         return parent::__get($strName);
@@ -697,6 +737,8 @@
                         return ($this->txtPreguntaSecretaA = QType::Cast($mixValue, 'QControl'));
                     case 'PreguntaSecretaBControl':
                         return ($this->txtPreguntaSecretaB = QType::Cast($mixValue, 'QControl'));
+                    case 'CodPartidoControl':
+                        return ($this->txtCodPartido = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }
