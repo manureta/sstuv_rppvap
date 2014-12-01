@@ -1,6 +1,11 @@
-function mostrarMapa(cod_partido){
+function mostrarMapa(cod_partido,editar){
+    
     $( document ).ready(function() {
+    	// para el zoom
     	console.log(cod_partido);
+    	
+
+
     	$("#MapaModal").modal();
     	var map=  L.map("map");
     	map.invalidateSize();
@@ -18,6 +23,8 @@ function mostrarMapa(cod_partido){
 	  	// EDITOR
 
 	  	var drawnItems = new L.FeatureGroup();
+	  	
+
 		map.addLayer(drawnItems);
 
 		var drawControl = new L.Control.Draw({
@@ -48,46 +55,51 @@ function mostrarMapa(cod_partido){
 		});
 		map.addControl(drawControl);
 
+		if(editar){
+	  		var geojson = Terraformer.WKT.parse($(".geometria_barrio").val());
+	  		var layer=L.geoJson(geojson);
+	  		
+	  		L.geoJson(geojson, {
+			  onEachFeature: function (feature, layer) {
+			    drawnItems.addLayer(layer);
+			  }
+			});
+	  		$(".leaflet-draw-draw-polygon").fadeOut();
+	  			
+	  	}
+
 		map.on('draw:created', function (e) {
 			var type = e.layerType,
 				layer = e.layer;
-
+			var geojson = layer.toGeoJSON();
+    		var wkt = Terraformer.WKT.convert(geojson.geometry);	
+			
 			if (type === 'marker') {
 				layer.bindPopup('A popup!');
 			}
 
-			drawnItems.addLayer(layer);
-			//var json = layer.toGeoJSON()
-  			//var geom = JSON.stringify(json);
-  			var geom=toWKT(layer);
+			drawnItems.addLayer(layer);			  			
 
-  			$(".geometria_barrio").val(geom);
+  			$(".geometria_barrio").val(wkt);
+  			$(".leaflet-draw-draw-polygon").fadeOut();
+		});
+
+		map.on('draw:edited', function (e) {
+			var layers = e.layers;
+    		layers.eachLayer(function (layer) {
+        		var geojson = layer.toGeoJSON();
+    			var wkt = Terraformer.WKT.convert(geojson.geometry);	
+    			$(".geometria_barrio").val(wkt);
+    		});
+						  			
+		});
+
+		map.on('draw:deleted',function(e){
+			$(".leaflet-draw-draw-polygon").fadeIn();
 		});
 	  	
 	});
 
 
 
-}
-
-function toWKT(layer) {
-    var lng, lat, coords = [];
-    if (layer instanceof L.Polygon || layer instanceof L.Polyline) {
-        var latlngs = layer.getLatLngs();
-        for (var i = 0; i < latlngs.length; i++) {
-	    	latlngs[i]
-	    	coords.push(latlngs[i].lng + " " + latlngs[i].lat);
-	        if (i === 0) {
-	        	lng = latlngs[i].lng;
-	        	lat = latlngs[i].lat;
-	        }
-	};
-        if (layer instanceof L.Polygon) {
-            return "POLYGON((" + coords.join(",") + "," + lng + " " + lat + "))";
-        } else if (layer instanceof L.Polyline) {
-            return "LINESTRING(" + coords.join(",") + ")";
-        }
-    } else if (layer instanceof L.Marker) {
-        return "POINT(" + layer.getLatLng().lng + " " + layer.getLatLng().lat + ")";
-    }
 }

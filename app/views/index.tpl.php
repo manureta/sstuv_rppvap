@@ -138,6 +138,8 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <!-- ace scripts -->
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/myace.js"></script>
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/mapa.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/terraformer.min.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/terraformer-wkt-parser.min.js"></script>
        
 
         <div id="MapaModal" class="modal">
