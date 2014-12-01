@@ -32,6 +32,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'RegularizacionAprobacionGeodesia' => true,
         'RegularizacionRegistracion' => true,
         'RegularizacionEstadoProceso' => true,
+        'NumExpediente' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -76,6 +77,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionAprobacionGeodesia']) $this->MetaAddColumn('RegularizacionAprobacionGeodesia')->Title = QApplication::Translate('RegularizacionAprobacionGeodesia');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionRegistracion']) $this->MetaAddColumn('RegularizacionRegistracion')->Title = QApplication::Translate('RegularizacionRegistracion');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionEstadoProceso']) $this->MetaAddColumn('RegularizacionEstadoProceso')->Title = QApplication::Translate('RegularizacionEstadoProceso');
+        if (UsoInternoDataGrid::$strColumnsArray['NumExpediente']) $this->MetaAddColumn('NumExpediente')->Title = QApplication::Translate('NumExpediente');
     }
 
 /**
@@ -235,6 +237,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'RegularizacionAprobacionGeodesia': return QQN::UsoInterno()->RegularizacionAprobacionGeodesia;
 				case 'RegularizacionRegistracion': return QQN::UsoInterno()->RegularizacionRegistracion;
 				case 'RegularizacionEstadoProceso': return QQN::UsoInterno()->RegularizacionEstadoProceso;
+				case 'NumExpediente': return QQN::UsoInterno()->NumExpediente;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

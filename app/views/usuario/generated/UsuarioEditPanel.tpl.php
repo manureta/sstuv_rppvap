@@ -15,6 +15,7 @@
 		<?php $_CONTROL->txtRespuestaB->RenderWithName(); ?>
 		<?php $_CONTROL->txtPreguntaSecretaA->RenderWithName(); ?>
 		<?php $_CONTROL->txtPreguntaSecretaB->RenderWithName(); ?>
+		<?php $_CONTROL->txtCodPartido->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

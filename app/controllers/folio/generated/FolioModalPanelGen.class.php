@@ -26,12 +26,13 @@ class FolioModalPanelGen extends EditPanelBase {
         'lstTipoBarrioObject' => true,
         'txtObservacionCasoDudoso' => true,
         'txtDireccion' => true,
-        'txtNumExpedientes' => true,
         'txtGeom' => true,
         'txtJudicializado' => true,
+        'txtObservacionLocalidad' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
+        'lstArchivosAdjuntosAsId' => false,
         'lstNomenclaturaAsId' => false,
     );
     
@@ -95,18 +96,20 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
-        if (in_array('txtNumExpedientes',$strControlsArray)) 
-            $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
         if (in_array('txtGeom',$strControlsArray)) 
             $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();
         if (in_array('txtJudicializado',$strControlsArray)) 
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
+        if (in_array('txtObservacionLocalidad',$strControlsArray)) 
+            $this->objControlsArray['txtObservacionLocalidad'] = $this->mctFolio->txtObservacionLocalidad_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 
             $this->objControlsArray['lstRegularizacionAsId'] = $this->mctFolio->lstRegularizacionAsId_Create();
         if (in_array('lstUsoInterno',$strControlsArray)) 
             $this->objControlsArray['lstUsoInterno'] = $this->mctFolio->lstUsoInterno_Create();
+        if (in_array('lstArchivosAdjuntosAsId',$strControlsArray))
+            $this->objControlsArray['lstArchivosAdjuntosAsId'] = $this->mctFolio->lstArchivosAdjuntosAsId_Create();
         if (in_array('lstNomenclaturaAsId',$strControlsArray))
             $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
 

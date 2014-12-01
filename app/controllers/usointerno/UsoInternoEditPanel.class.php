@@ -22,6 +22,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'txtRegularizacionAprobacionGeodesia' => true,
         'txtRegularizacionRegistracion' => true,
         'txtRegularizacionEstadoProceso' => true,
+        'txtNumExpediente' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -49,7 +50,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstIdFolioObject->Enabled = false;
 
         $this->buttons_Create();
-        $this->blnAutoRenderChildrenWithName = true;
+        $this->blnAutoRenderChildrenWithName = false;
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -82,6 +83,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtRegularizacionRegistracion'] = $this->mctUsoInterno->txtRegularizacionRegistracion_Create();
         if (in_array('txtRegularizacionEstadoProceso',$strControlsArray)) 
             $this->objControlsArray['txtRegularizacionEstadoProceso'] = $this->mctUsoInterno->txtRegularizacionEstadoProceso_Create();
+        if (in_array('txtNumExpediente',$strControlsArray)) 
+            $this->objControlsArray['txtNumExpediente'] = $this->mctUsoInterno->txtNumExpediente_Create();
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

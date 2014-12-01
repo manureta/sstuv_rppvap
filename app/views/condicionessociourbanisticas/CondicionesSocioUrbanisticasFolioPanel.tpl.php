@@ -3,13 +3,13 @@
     <div class="steps clearfix">
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-0" href="/registro/folio/view/<?=$folio;?>">
+                <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>">
                     <span class="current-info audible">current step: </span>
                     <span class="number">1.</span> Datos Generales
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true" aria-selected="false">
-                <a aria-controls="wizard-p-1" href="/registro/nomenclatura/folio/<?=$folio;?>">                    
+                <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">                    
                     <span class="number">2.</span> Nomenclatura Catastral
                 </a>
             </li>
@@ -19,21 +19,21 @@
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-                <a aria-controls="wizard-p-3" href="/registro/regularizacion/folio/<?=$folio;?>">
+                <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/regularizacion/folio/<?=$folio;?>">
                     <span class="number">4.</span> Regularización
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-                <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
+                <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">
                     <span class="number">-</span> Uso Interno
                 </a>
             </li>
         </ul>
     </div>
     
-    <h6>Condiciones</h>
+     <div class="titulos"><i class="icon-chevron-right"> Condiciones</i></div>  
     <div>                
-                <div class="well bs-component">              				                        
+                <div class="well bs-component">                               				                        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkEspacioLibreComun->RenderWithName(); ?>
                         <?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
@@ -42,7 +42,7 @@
                 </div>
     </div>
 
-    <h6>Equipamiento</h6>
+    <div class="titulos"><i class="icon-chevron-right"> Equipamiento</i></div> 
     <div>
                     <div class="well bs-component">                            
                         <?php $_CONTROL->pnlEquipamiento->lstIdFolioObject->RenderWithName(); ?>
@@ -57,7 +57,7 @@
     </div>
 
 
-    <h6>Transporte</h6>
+    <div class="titulos"><i class="icon-chevron-right">Transporte</i></div> 
     <div>
                     <div class="well bs-component">                            
 
@@ -68,7 +68,7 @@
                     </div>
     </div>
 
-    <h6>Infraestructura</h6>
+    <div class="titulos"><i class="icon-chevron-right"> Infraestructura</i></div> 
     <div>
                     <div class="well bs-component">                                                          
 
@@ -88,7 +88,8 @@
                     </div> 
     </div>
 
-    <h6>Situacion Ambiental</h6>
+    
+    <div class="titulos"><i class="icon-chevron-right"> Situacion Ambiental</i></div>
     <div>
                    <div class="well bs-component">                                                     
 

@@ -43,6 +43,27 @@
     QApplication::$ClassFile['qqreversereferencenodeaprobaciongeodesia'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeAprobacionGeodesia.class.php';
 
 
+    // ClassPaths for the ArchivosAdjuntos class
+    QApplication::$ClassFile['archivosadjuntosindexpanelgen'] = __CONTROLLER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosIndexPanelGen.class.php';
+    QApplication::$ClassFile['archivosadjuntoseditpanelgen'] = __CONTROLLER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosEditPanelGen.class.php';
+
+    QApplication::$ClassFile['archivosadjuntosindexpanel'] = __CONTROLLER_DIR__.'/archivosadjuntos/ArchivosAdjuntosIndexPanel.class.php';
+    QApplication::$ClassFile['archivosadjuntoseditpanel'] = __CONTROLLER_DIR__.'/archivosadjuntos/ArchivosAdjuntosEditPanel.class.php';
+
+    QApplication::$ClassFile['archivosadjuntosmodalpanel'] = __CONTROLLER_DIR__.'/archivosadjuntos/ArchivosAdjuntosModalPanel.class.php';
+    QApplication::$ClassFile['archivosadjuntosmodalpanelgen'] = __CONTROLLER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosModalPanelGen.class.php';
+
+    QApplication::$ClassFile['archivosadjuntosdatagridgen'] = __HELPER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosDataGridGen.class.php';
+    QApplication::$ClassFile['archivosadjuntosmetacontrolgen'] = __HELPER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosMetaControlGen.class.php';
+    QApplication::$ClassFile['archivosadjuntosdatagrid'] = __HELPER_DIR__.'/archivosadjuntos/ArchivosAdjuntosDataGrid.class.php';
+    QApplication::$ClassFile['archivosadjuntosmetacontrol'] = __HELPER_DIR__.'/archivosadjuntos/ArchivosAdjuntosMetaControl.class.php';
+
+    QApplication::$ClassFile['archivosadjuntosgen'] = __MODEL_DIR__.'/orm/generated/ArchivosAdjuntosGen.class.php';
+    QApplication::$ClassFile['archivosadjuntos'] = __MODEL_DIR__.'/orm/ArchivosAdjuntos.class.php';
+    QApplication::$ClassFile['qqnodearchivosadjuntos'] = __MODEL_DIR__.'/orm/generated/QQNodeArchivosAdjuntos.class.php';
+    QApplication::$ClassFile['qqreversereferencenodearchivosadjuntos'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeArchivosAdjuntos.class.php';
+
+
     // ClassPaths for the CondicionesSocioUrbanisticas class
     QApplication::$ClassFile['condicionessociourbanisticasindexpanelgen'] = __CONTROLLER_DIR__.'/condicionessociourbanisticas/generated/CondicionesSocioUrbanisticasIndexPanelGen.class.php';
     QApplication::$ClassFile['condicionessociourbanisticaseditpanelgen'] = __CONTROLLER_DIR__.'/condicionessociourbanisticas/generated/CondicionesSocioUrbanisticasEditPanelGen.class.php';

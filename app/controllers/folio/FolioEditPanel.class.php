@@ -5,6 +5,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public $strSubtitulo = '';
     public $strTemplate = "";
     public $mctFolio;
+    public $lstJudicializado;
     //id variables for meta_create
     protected $intId;
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
@@ -13,8 +14,9 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtCodFolio' => true,
         'lstIdPartidoObject' => true,
         'lstIdLocalidadObject' => true,
+        'txtObservacionLocalidad' => true,
         'txtMatricula' => true,
-        'calFecha' => false,
+        'calFecha' => true,
         'txtEncargado' => true,
         'txtNombreBarrioOficial' => true,
         'txtNombreBarrioAlternativo1' => true,
@@ -26,7 +28,6 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtObservacionCasoDudoso' => true,
         'txtJudicializado' => true,
         'txtDireccion' => true,
-        'txtNumExpedientes' => true,
         'txtGeom'=>true,
         'lstCondicionesSocioUrbanisticasAsId' => false,
         'lstRegularizacionAsId' => false,
@@ -54,14 +55,72 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
+
         $existeFolio=$this->mctFolio->Folio->CodFolio;
         
         if(!$existeFolio){
-            QApplication::ExecuteJavascript("mostrarMapa()");
+            $partido_usuario=Session::GetObjUsuario()->CodPartido;
+            $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
+            if($objPartido){
+                //seteo partido
+                $this->lstIdPartidoObject->Value = $objPartido->Id;
+                $this->lstIdPartidoObject->Text = $objPartido->__toString();
+                $this->lstIdPartidoObject->Enabled = false;            
+                
+                //calculo Matricula
+                $arrFoliosPartido=Folio::QueryArray(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,$partido_usuario));
+                $arrMatriculas = array();
+                foreach ($arrFoliosPartido as $folio) {
+                    array_push($arrMatriculas,intval($folio->Matricula));
+                }
+                $ultimo=max($arrMatriculas);
+                $nueva_matricula=str_pad($ultimo+1, 4, '0', STR_PAD_LEFT);
+                // seteo matricula
+                $this->txtMatricula->Text=$nueva_matricula;
+                
+            }
+            // Judicializado
+            $this->lstJudicializado=new QListBox($this);
+            $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');
+            $this->lstJudicializado->AddItem('- Si ', 'si');
+            $this->lstJudicializado->AddItem('- No ', 'no');
+            $this->lstJudicializado->Name="Judicializado";
+            // inicializo en sin dato
+            $this->txtJudicializado->Text=$this->lstJudicializado->SelectedValue;            
+            
+            // Mapa
+            QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario')");
         }else{
+            $this->lstIdPartidoObject->Enabled = false; 
+            $this->txtMatricula->Enabled = false; 
             $this->objControlsArray['txtCodFolio']->ActionParameter=$this->mctFolio->Folio->Id;
             
+            //Judicializado
+            $this->lstJudicializado=new QListBox($this);
+            $this->lstJudicializado->Name="Judicializado";
+            
+            switch ($this->txtJudicializado->Text) {
+                case 'sin_dato':
+                    $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');
+                    $this->lstJudicializado->AddItem('- Si ', 'si');
+                    $this->lstJudicializado->AddItem('- No ', 'no');            
+                    break;
+                case 'si':
+                    $this->lstJudicializado->AddItem('- Si ', 'si');
+                    $this->lstJudicializado->AddItem('- No ', 'no');
+                    $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');                
+                    break;
+                case 'no':    
+                    $this->lstJudicializado->AddItem('- No ', 'no');
+                    $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');                
+                    $this->lstJudicializado->AddItem('- Si ', 'si');
+                    break;                
+            }
         }
+        $this->lstJudicializado->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstJudicializado_Change'));
+        // escondo el judicializado original
+        $this->txtJudicializado->Visible=false;
+
 
     }
 
@@ -76,17 +135,23 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtCodFolio'] = $this->mctFolio->txtCodFolio_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctFolio->lstIdPartidoObject_Create();
+      
         if (in_array('lstIdLocalidadObject',$strControlsArray)) 
             $this->objControlsArray['lstIdLocalidadObject'] = $this->mctFolio->lstIdLocalidadObject_Create();
+
+        if (in_array('txtObservacionLocalidad',$strControlsArray)) 
+            $this->objControlsArray['txtObservacionLocalidad'] = $this->mctFolio->txtObservacionLocalidad_Create();
+            $this->objControlsArray['txtObservacionLocalidad']->Name="Observación sobre localidad";
         if (in_array('txtMatricula',$strControlsArray)) 
             $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
             $this->objControlsArray['calFecha'] = $this->mctFolio->calFecha_Create();
+            $this->objControlsArray['calFecha']->Name="Fecha de carga <span class='add-on'><i class='icon-calendar'></i></span>";
         if (in_array('txtEncargado',$strControlsArray)) 
             $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
         if (in_array('txtNombreBarrioOficial',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();    
-            $this->objControlsArray['txtNombreBarrioOficial']->Name="Nombre oficial";        
+            $this->objControlsArray['txtNombreBarrioOficial']->Name="Nombre oficial del barrio";        
         if (in_array('txtNombreBarrioAlternativo1',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioAlternativo1'] = $this->mctFolio->txtNombreBarrioAlternativo1_Create();
             $this->objControlsArray['txtNombreBarrioAlternativo1']->Name="Nombre alternativo 1";
@@ -108,14 +173,14 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtObservacionCasoDudoso',$strControlsArray)) 
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
             $this->objControlsArray['txtObservacionCasoDudoso']->Name="Observación de caso dudoso";
+        
         if (in_array('txtJudicializado',$strControlsArray)) 
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();            
+            
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
             $this->objControlsArray['txtDireccion']->Name="Dirección";
-        if (in_array('txtNumExpedientes',$strControlsArray)) 
-            $this->objControlsArray['txtNumExpedientes'] = $this->mctFolio->txtNumExpedientes_Create();
-            $this->objControlsArray['txtNumExpedientes']->Name="N° expediente";
+        
 
         if (in_array('txtGeom',$strControlsArray)) 
             $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();
@@ -153,6 +218,12 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
             $this->btnDelete->Visible = $this->mctFolio->EditMode;
         }
+    }
+
+     // Handle the changing of the listbox
+    public function lstJudicializado_Change($strFormId, $strControlId, $strParameter) {       
+        $this->txtJudicializado->Text=$this->lstJudicializado->SelectedValue;
+
     }
 
 

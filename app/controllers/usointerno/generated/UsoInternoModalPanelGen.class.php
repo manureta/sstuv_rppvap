@@ -22,6 +22,7 @@ class UsoInternoModalPanelGen extends EditPanelBase {
         'txtRegularizacionAprobacionGeodesia' => true,
         'txtRegularizacionRegistracion' => true,
         'txtRegularizacionEstadoProceso' => true,
+        'txtNumExpediente' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsoInterno = null, $strControlId = null) {
@@ -76,6 +77,8 @@ class UsoInternoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtRegularizacionRegistracion'] = $this->mctUsoInterno->txtRegularizacionRegistracion_Create();
         if (in_array('txtRegularizacionEstadoProceso',$strControlsArray)) 
             $this->objControlsArray['txtRegularizacionEstadoProceso'] = $this->mctUsoInterno->txtRegularizacionEstadoProceso_Create();
+        if (in_array('txtNumExpediente',$strControlsArray)) 
+            $this->objControlsArray['txtNumExpediente'] = $this->mctUsoInterno->txtNumExpediente_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

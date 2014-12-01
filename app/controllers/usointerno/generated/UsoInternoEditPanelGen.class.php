@@ -1,12 +1,7 @@
 <?php
 class UsoInternoEditPanelGen extends EditPanelBase {
-    // Local instance of the UsoInternoMetaControl
-    public $mctUsoInterno;
+    
 
-    //id variables for meta_create
-    protected $intIdFolio;
-
-  
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

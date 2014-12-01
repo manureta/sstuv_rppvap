@@ -1,6 +1,6 @@
-function mostrarMapa(){
+function mostrarMapa(cod_partido){
     $( document ).ready(function() {
-    	
+    	console.log(cod_partido);
     	$("#MapaModal").modal();
     	var map=  L.map("map");
     	map.invalidateSize();

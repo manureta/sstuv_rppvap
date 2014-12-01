@@ -40,6 +40,8 @@
      * property-read QLabel $RegularizacionRegistracionLabel
      * property QIntegerTextBox $RegularizacionEstadoProcesoControl
      * property-read QLabel $RegularizacionEstadoProcesoLabel
+     * property QTextBox $NumExpedienteControl
+     * property-read QLabel $NumExpedienteLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -68,6 +70,7 @@
         protected $txtRegularizacionAprobacionGeodesia;
         protected $txtRegularizacionRegistracion;
         protected $txtRegularizacionEstadoProceso;
+        protected $txtNumExpediente;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -82,6 +85,7 @@
         protected $lblRegularizacionAprobacionGeodesia;
         protected $lblRegularizacionRegistracion;
         protected $lblRegularizacionEstadoProceso;
+        protected $lblNumExpediente;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -498,6 +502,31 @@
             return $this->lblRegularizacionEstadoProceso;
         }
 
+        /**
+         * Create and setup QTextBox txtNumExpediente
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtNumExpediente_Create($strControlId = null) {
+            $this->txtNumExpediente = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtNumExpediente->Name = QApplication::Translate('NumExpediente');
+            $this->txtNumExpediente->Text = $this->objUsoInterno->NumExpediente;
+            
+            return $this->txtNumExpediente;
+        }
+
+        /**
+         * Create and setup QLabel lblNumExpediente
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblNumExpediente_Create($strControlId = null) {
+            $this->lblNumExpediente = new QLabel($this->objParentObject, $strControlId);
+            $this->lblNumExpediente->Name = QApplication::Translate('NumExpediente');
+            $this->lblNumExpediente->Text = $this->objUsoInterno->NumExpediente;
+            return $this->lblNumExpediente;
+        }
+
 
 
 
@@ -552,6 +581,9 @@
             if ($this->txtRegularizacionEstadoProceso) $this->txtRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
             if ($this->lblRegularizacionEstadoProceso) $this->lblRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
 
+            if ($this->txtNumExpediente) $this->txtNumExpediente->Text = $this->objUsoInterno->NumExpediente;
+            if ($this->lblNumExpediente) $this->lblNumExpediente->Text = $this->objUsoInterno->NumExpediente;
+
         }
 
 
@@ -582,6 +614,7 @@
                 if ($this->txtRegularizacionAprobacionGeodesia) $this->objUsoInterno->RegularizacionAprobacionGeodesia = $this->txtRegularizacionAprobacionGeodesia->Text;
                 if ($this->txtRegularizacionRegistracion) $this->objUsoInterno->RegularizacionRegistracion = $this->txtRegularizacionRegistracion->Text;
                 if ($this->txtRegularizacionEstadoProceso) $this->objUsoInterno->RegularizacionEstadoProceso = $this->txtRegularizacionEstadoProceso->Text;
+                if ($this->txtNumExpediente) $this->objUsoInterno->NumExpediente = $this->txtNumExpediente->Text;
 
 
         }
@@ -710,6 +743,12 @@
                 case 'RegularizacionEstadoProcesoLabel':
                     if (!$this->lblRegularizacionEstadoProceso) return $this->lblRegularizacionEstadoProceso_Create();
                     return $this->lblRegularizacionEstadoProceso;
+                case 'NumExpedienteControl':
+                    if (!$this->txtNumExpediente) return $this->txtNumExpediente_Create();
+                    return $this->txtNumExpediente;
+                case 'NumExpedienteLabel':
+                    if (!$this->lblNumExpediente) return $this->lblNumExpediente_Create();
+                    return $this->lblNumExpediente;
                 default:
                     try {
                         return parent::__get($strName);
@@ -756,6 +795,8 @@
                         return ($this->txtRegularizacionRegistracion = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionEstadoProcesoControl':
                         return ($this->txtRegularizacionEstadoProceso = QType::Cast($mixValue, 'QControl'));
+                    case 'NumExpedienteControl':
+                        return ($this->txtNumExpediente = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

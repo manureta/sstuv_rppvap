@@ -29,6 +29,8 @@ class QQNodeUsuario extends QQNode {
 					return new QQNode('pregunta_secreta_a', 'PreguntaSecretaA', 'string', $this);
 				case 'PreguntaSecretaB':
 					return new QQNode('pregunta_secreta_b', 'PreguntaSecretaB', 'string', $this);
+				case 'CodPartido':
+					return new QQNode('cod_partido', 'CodPartido', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id_usuario', 'IdUsuario', 'integer', $this);

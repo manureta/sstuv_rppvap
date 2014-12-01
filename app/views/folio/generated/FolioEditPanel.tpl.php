@@ -20,9 +20,9 @@
 		<?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
 		<?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
 		<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
-		<?php $_CONTROL->txtNumExpedientes->RenderWithName(); ?>
 		<?php $_CONTROL->txtGeom->RenderWithName(); ?>
 		<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
+		<?php $_CONTROL->txtObservacionLocalidad->RenderWithName(); ?>
 		<?php $_CONTROL->lstCondicionesSocioUrbanisticasAsId->RenderWithName(); ?>
 
 		<?php $_CONTROL->lstRegularizacionAsId->RenderWithName(); ?>

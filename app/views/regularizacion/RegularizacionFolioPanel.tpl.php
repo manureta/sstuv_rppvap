@@ -3,18 +3,18 @@
     <div class="steps clearfix">
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-0" href="/registro/folio/view/<?=$folio;?>" id="wizard-t-0">
+                <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>" id="wizard-t-0">
                     <span class="current-info audible">current step: </span>
                     <span class="number">1.</span> Datos Generales
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true" aria-selected="false">
-                <a aria-controls="wizard-p-1" href="/registro/nomenclatura/folio/<?=$folio;?>" id="wizard-t-1">                    
+                <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>" id="wizard-t-1">                    
                     <span class="number">2.</span> Nomenclatura Catastral
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="false">
-                <a aria-controls="wizard-p-2" href="/registro/condiciones/folio/<?=$folio;?>" id="wizard-t-2">
+                <a aria-controls="wizard-p-2" href="<?php echo __VIRTUAL_DIRECTORY__;?>/condiciones/folio/<?=$folio;?>" id="wizard-t-2">
                     <span class="number">3.</span>Condiciones Socio-Urbanisticas
                 </a>
             </li>
@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
-                <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
+                <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">
                     <span class="number">-</span> Uso Interno
                 </a>
             </li>

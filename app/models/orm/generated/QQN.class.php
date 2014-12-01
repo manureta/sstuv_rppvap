@@ -13,6 +13,12 @@
 			return new QQNodeAprobacionGeodesia('aprobacion_geodesia', null, null);
 		}
 		/**
+		 * @return QQNodeArchivosAdjuntos
+		 */
+		static public function ArchivosAdjuntos() {
+			return new QQNodeArchivosAdjuntos('archivos_adjuntos', null, null);
+		}
+		/**
 		 * @return QQNodeCondicionesSocioUrbanisticas
 		 */
 		static public function CondicionesSocioUrbanisticas() {
