@@ -86,7 +86,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->lstJudicializado->AddItem('- No ', 'no');
             $this->lstJudicializado->Name="Judicializado";
             // inicializo en sin dato
-            $this->txtJudicializado->Text=$this->lstJudicializado->SelectedValue;            
+            $this->txtJudicializado->Text='sin_dato';            
             
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario')");
