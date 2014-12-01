@@ -103,3 +103,7 @@ function mostrarMapa(cod_partido,editar){
 
 
 }
+
+$("#actualizar_geom").click(function(e){
+	mostrarMapa('',true);
+});
