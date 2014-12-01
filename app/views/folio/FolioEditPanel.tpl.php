@@ -50,11 +50,16 @@
 
     <div>                
         <div class="well bs-component">
+           <button type="button" id="actualizar_geom" class="btn btn-info">Actualizar Geometría</button>
+
             <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
-			<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
-			<?php $_CONTROL->lstIdLocalidadObject->RenderWithName(); ?>
+			
+            <?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
+            <?php $_CONTROL->lstIdLocalidadObject->RenderWithName(); ?>
+            
             <?php $_CONTROL->txtObservacionLocalidad->RenderWithName(); ?>
 			<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
+            <?php $_CONTROL->calFecha->RenderWithName(); ?>
 			
 			<?php $_CONTROL->txtEncargado->RenderWithName(); ?>
 			<?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
@@ -66,6 +71,7 @@
 			<?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
 			<?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
 			<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
+            <?php $_CONTROL->lstJudicializado->RenderWithName(); ?>
 			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
             <?php $_CONTROL->txtGeom->RenderWithName(); ?>
 			

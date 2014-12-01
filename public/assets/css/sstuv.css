@@ -64,3 +64,8 @@ span.nombre-usuario {
     float: left;
     width: 10%!IMPORTANT;
 }
+
+
+.partido_localidad{
+  width: 50%;
+}
