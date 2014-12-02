@@ -6,6 +6,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public $strTemplate = "";
     public $mctFolio;
     public $lstJudicializado;
+    public $folioExistente;
     //id variables for meta_create
     protected $intId;
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
@@ -56,9 +57,9 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
 
-        $existeFolio=$this->mctFolio->Folio->CodFolio;
+        $this->folioExistente=($this->mctFolio->Folio->CodFolio)? true: false;
         
-        if(!$existeFolio){
+        if(!$this->folioExistente){
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
             if($objPartido){
@@ -201,14 +202,25 @@ class FolioEditPanel extends FolioEditPanelGen {
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
         parent::btnSave_Click($strFormId, $strControlId, $strParameter);
-        // Delegate "Save" processing to the FolioMetaControl
+        // Delegate "Save" processing to the FolioMetaControl                
         $this->mctFolio->Save();
         foreach ($this->objModifiedChildsArray as $obj) {
             $obj->Save();
         }
         $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id) ; 
+        //
+        
+        if(!$this->folioExistente){
+        	error_log("calculando nomenclaturas");   
+        	//QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id);     		
+        	$this->calcular_nomenclaturas();
+        	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
+        }else{
+        	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id); 
+        }
+        
+         
     }
 
     protected function buttons_Create($blnDelete = true) {
@@ -226,6 +238,35 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     }
 
+    public function calcular_nomenclaturas(){
+    	error_log("entro a calcular");
+    	$strQuery = "SELECT count(*) as cantidad from folio";
+	    $objDatabase = QApplication::$Database[1];
+
+	    // Perform the Query
+	    $objDbResult = $objDatabase->Query($strQuery);
+	    $res=$objDbResult->FetchArray();
+	    
+	    $nom = new Nomenclatura();
+        $nom->IdFolio = $this->mctFolio->Folio->Id;
+		$nom->PartidaInmobiliaria = '';
+		$nom->TitularDominio = '';
+		$nom->Circ = 'calculado';
+		$nom->Secc = 'calculado';
+		$nom->ChacQuinta = 'calculado';
+		$nom->Frac = 'calculado';
+		$nom->Mza = 'calculado';
+		$nom->Parc = 'calculado';
+		$nom->InscripcionDominio = 'calculado';
+		$nom->TitularRegPropiedad = 'calculado';
+		$nom->DatoVerificadoRegPropiedad = 8;
+
+		$nom->Save();
+
+        QApplication::DisplayAlert($res['cantidad']);
+    	
+	  	//QApplication::DisplayAlert(var_dump($objDbResult)) ;
+	 }
 
 }
 ?>
