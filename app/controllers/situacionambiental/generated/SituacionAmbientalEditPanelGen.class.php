@@ -1,6 +1,16 @@
 <?php
 class SituacionAmbientalEditPanelGen extends EditPanelBase {
-    
+    // Local instance of the SituacionAmbientalMetaControl
+    public $mctSituacionAmbiental;
+
+    //id variables for meta_create
+    protected $intId;
+
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+   
+
+
+ 
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

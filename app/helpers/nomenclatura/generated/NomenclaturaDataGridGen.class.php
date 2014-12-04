@@ -32,6 +32,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         'Parc' => true,
         'InscripcionDominio' => true,
         'TitularRegPropiedad' => true,
+        'Partido' => true,
         'DatoVerificadoRegPropiedad' => true,
     );
     
@@ -77,6 +78,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         if (NomenclaturaDataGrid::$strColumnsArray['Parc']) $this->MetaAddColumn('Parc')->Title = QApplication::Translate('Parc');
         if (NomenclaturaDataGrid::$strColumnsArray['InscripcionDominio']) $this->MetaAddColumn('InscripcionDominio')->Title = QApplication::Translate('InscripcionDominio');
         if (NomenclaturaDataGrid::$strColumnsArray['TitularRegPropiedad']) $this->MetaAddColumn('TitularRegPropiedad')->Title = QApplication::Translate('TitularRegPropiedad');
+        if (NomenclaturaDataGrid::$strColumnsArray['Partido']) $this->MetaAddColumn('Partido')->Title = QApplication::Translate('Partido');
         if (NomenclaturaDataGrid::$strColumnsArray['DatoVerificadoRegPropiedad']) $this->MetaAddColumn('DatoVerificadoRegPropiedad')->Title = QApplication::Translate('DatoVerificadoRegPropiedad');
     }
 
@@ -237,6 +239,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
 				case 'Parc': return QQN::Nomenclatura()->Parc;
 				case 'InscripcionDominio': return QQN::Nomenclatura()->InscripcionDominio;
 				case 'TitularRegPropiedad': return QQN::Nomenclatura()->TitularRegPropiedad;
+				case 'Partido': return QQN::Nomenclatura()->Partido;
 				case 'DatoVerificadoRegPropiedad': return QQN::Nomenclatura()->DatoVerificadoRegPropiedad;
 				default: throw new QCallerException('Simple Property not found in NomenclaturaDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)

@@ -11,7 +11,6 @@ class LocalidadEditPanelGen extends EditPanelBase {
         'lblId' => false,
         'txtNombre' => true,
         'lstIdPartidoObject' => true,
-        'lstFolioAsId' => false,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -45,8 +44,6 @@ class LocalidadEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombre'] = $this->mctLocalidad->txtNombre_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctLocalidad->lstIdPartidoObject_Create();
-        if (in_array('lstFolioAsId',$strControlsArray))
-            $this->objControlsArray['lstFolioAsId'] = $this->mctLocalidad->lstFolioAsId_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
@@ -65,10 +62,6 @@ class LocalidadEditPanelGen extends EditPanelBase {
         parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the LocalidadMetaControl
         $this->mctLocalidad->Save();
-        foreach ($this->objModifiedChildsArray as $obj) {
-            $obj->Save();
-        }
-        $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
 

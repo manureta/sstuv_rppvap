@@ -1,5 +1,11 @@
 <?php
 class UsoInternoEditPanelGen extends EditPanelBase {
+    // Local instance of the UsoInternoMetaControl
+    public $mctUsoInterno;
+
+    //id variables for meta_create
+    protected $intIdFolio;
+
     
 
     

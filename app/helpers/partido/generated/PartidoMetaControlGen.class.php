@@ -275,7 +275,6 @@
         $strConfigArray['strRemoveMethod'] = 'RemoveFolioAsId';
         $strConfigArray['Columns'] = array();
         $strConfigArray['Columns']['CodFolio'] = QApplication::Translate('CodFolio');
-        $strConfigArray['Columns']['IdLocalidadObject'] = QApplication::Translate('IdLocalidadObject');
         $strConfigArray['Columns']['Matricula'] = QApplication::Translate('Matricula');
         $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
         $strConfigArray['Columns']['Encargado'] = QApplication::Translate('Encargado');
@@ -290,7 +289,7 @@
         $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
         $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
-        $strConfigArray['Columns']['ObservacionLocalidad'] = QApplication::Translate('ObservacionLocalidad');
+        $strConfigArray['Columns']['Localidad'] = QApplication::Translate('Localidad');
 
         $this->lstFolioAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
         $this->lstFolioAsId->Name = Folio::Noun();

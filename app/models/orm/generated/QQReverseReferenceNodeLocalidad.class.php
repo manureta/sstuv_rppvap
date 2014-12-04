@@ -13,8 +13,6 @@ class QQReverseReferenceNodeLocalidad extends QQReverseReferenceNode {
 					return new QQNode('id_partido', 'IdPartido', 'integer', $this);
 				case 'IdPartidoObject':
 					return new QQNodePartido('id_partido', 'IdPartidoObject', 'integer', $this);
-				case 'FolioAsId':
-					return new QQReverseReferenceNodeFolio($this, 'folioasid', 'reverse_reference', 'id_localidad');
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

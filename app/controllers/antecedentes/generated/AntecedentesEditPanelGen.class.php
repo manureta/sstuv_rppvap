@@ -1,5 +1,16 @@
 <?php
 class AntecedentesEditPanelGen extends EditPanelBase {
+    // Local instance of the AntecedentesMetaControl
+    public $mctAntecedentes;
+
+    //id variables for meta_create
+    protected $intId;
+
+ 
+
+    
+
+  
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

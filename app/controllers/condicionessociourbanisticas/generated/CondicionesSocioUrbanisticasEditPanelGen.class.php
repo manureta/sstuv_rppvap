@@ -8,50 +8,9 @@ class CondicionesSocioUrbanisticasEditPanelGen extends EditPanelBase {
     protected $intIdFolio;
 
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
-    public static $strControlsArray = array(
-        'lblId' => false,
-        'lstIdFolioObject' => true,
-        'chkEspacioLibreComun' => true,
-        'txtPresenciaOrgSociales' => true,
-        'txtNombreRefernte' => true,
-        'txtTelefonoReferente' => true,
-        'lstEquipamientoAsIdFolio' => false,
-        'lstInfraestructuraAsIdFolio' => false,
-        'lstSituacionAmbientalAsIdFolio' => false,
-        'lstTransporteAsIdFolio' => false,
-    );
+   
 
-    
-
-    protected function metaControl_Create($strControlsArray){
-        // Construct the CondicionesSocioUrbanisticasMetaControl
-        // MAKE SURE we specify "$this" as the MetaControl's (and thus all subsequent controls') parent
-        $this->mctCondicionesSocioUrbanisticas = CondicionesSocioUrbanisticasMetaControl::Create($this, $this->intId, $this->intIdFolio);
-
-        // Call MetaControl's methods to create qcontrols based on CondicionesSocioUrbanisticas's data fields
-        if (in_array('lblId',$strControlsArray)) 
-            $this->objControlsArray['lblId'] = $this->mctCondicionesSocioUrbanisticas->lblId_Create();
-        if (in_array('lstIdFolioObject',$strControlsArray)) 
-            $this->objControlsArray['lstIdFolioObject'] = $this->mctCondicionesSocioUrbanisticas->lstIdFolioObject_Create();
-        if (in_array('chkEspacioLibreComun',$strControlsArray)) 
-            $this->objControlsArray['chkEspacioLibreComun'] = $this->mctCondicionesSocioUrbanisticas->chkEspacioLibreComun_Create();
-        if (in_array('txtPresenciaOrgSociales',$strControlsArray)) 
-            $this->objControlsArray['txtPresenciaOrgSociales'] = $this->mctCondicionesSocioUrbanisticas->txtPresenciaOrgSociales_Create();
-        if (in_array('txtNombreRefernte',$strControlsArray)) 
-            $this->objControlsArray['txtNombreRefernte'] = $this->mctCondicionesSocioUrbanisticas->txtNombreRefernte_Create();
-        if (in_array('txtTelefonoReferente',$strControlsArray)) 
-            $this->objControlsArray['txtTelefonoReferente'] = $this->mctCondicionesSocioUrbanisticas->txtTelefonoReferente_Create();
-        if (in_array('lstEquipamientoAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstEquipamientoAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstEquipamientoAsIdFolio_Create();
-        if (in_array('lstInfraestructuraAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstInfraestructuraAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstInfraestructuraAsIdFolio_Create();
-        if (in_array('lstSituacionAmbientalAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstSituacionAmbientalAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstSituacionAmbientalAsIdFolio_Create();
-        if (in_array('lstTransporteAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstTransporteAsIdFolio'] = $this->mctCondicionesSocioUrbanisticas->lstTransporteAsIdFolio_Create();
-
-        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
-    }
+  
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

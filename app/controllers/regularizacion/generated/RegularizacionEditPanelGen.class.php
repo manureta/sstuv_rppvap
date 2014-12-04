@@ -1,6 +1,15 @@
 <?php
 class RegularizacionEditPanelGen extends EditPanelBase {
     // Local instance of the RegularizacionMetaControl
+    public $mctRegularizacion;
+
+    //id variables for meta_create
+    protected $intId;
+
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+  
+  
+
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);
@@ -12,7 +21,16 @@ class RegularizacionEditPanelGen extends EditPanelBase {
     }
 
     // Control AjaxAction Event Handlers
-   
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the RegularizacionMetaControl
+        $this->mctRegularizacion->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->objModifiedChildsArray = array();
+        QApplication::DisplayNotification('Los datos se guardaron correctamente');
+    }
 
     public function btnDelete_Click($strFormId, $strControlId, $strParameter) {
         // Delegate "Delete" processing to the RegularizacionMetaControl

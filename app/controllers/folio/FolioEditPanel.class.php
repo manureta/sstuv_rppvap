@@ -10,12 +10,11 @@ class FolioEditPanel extends FolioEditPanelGen {
     //id variables for meta_create
     protected $intId;
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lblId' => false,
         'txtCodFolio' => true,
         'lstIdPartidoObject' => true,
-        'lstIdLocalidadObject' => true,
-        'txtObservacionLocalidad' => true,
         'txtMatricula' => true,
         'calFecha' => true,
         'txtEncargado' => true,
@@ -27,12 +26,14 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtCantidadFamilias' => true,
         'lstTipoBarrioObject' => true,
         'txtObservacionCasoDudoso' => true,
-        'txtJudicializado' => true,
         'txtDireccion' => true,
-        'txtGeom'=>true,
+        'txtGeom' => true,
+        'txtJudicializado' => true,
+        'txtLocalidad' => true,
         'lstCondicionesSocioUrbanisticasAsId' => false,
         'lstRegularizacionAsId' => false,
         'lstUsoInterno' => false,
+        'lstArchivosAdjuntosAsId' => false,
         'lstNomenclaturaAsId' => false,
     );
 
@@ -144,13 +145,8 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtCodFolio'] = $this->mctFolio->txtCodFolio_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctFolio->lstIdPartidoObject_Create();
-      
-        if (in_array('lstIdLocalidadObject',$strControlsArray)) 
-            $this->objControlsArray['lstIdLocalidadObject'] = $this->mctFolio->lstIdLocalidadObject_Create();
-
-        if (in_array('txtObservacionLocalidad',$strControlsArray)) 
-            $this->objControlsArray['txtObservacionLocalidad'] = $this->mctFolio->txtObservacionLocalidad_Create();
-            $this->objControlsArray['txtObservacionLocalidad']->Name="Observación sobre localidad";
+        if (in_array('txtLocalidad',$strControlsArray)) 
+            $this->objControlsArray['txtLocalidad'] = $this->mctFolio->txtLocalidad_Create();
         if (in_array('txtMatricula',$strControlsArray)) 
             $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
@@ -172,7 +168,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtAnioOrigen']->Name="Año de origen";
         if (in_array('txtSuperficie',$strControlsArray)) 
             $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
-            $this->objControlsArray['txtSuperficie']->Name="Superficie (ha)";
+            $this->objControlsArray['txtSuperficie']->Name="Superficie (hectáreas)";
         if (in_array('txtCantidadFamilias',$strControlsArray)) 
             $this->objControlsArray['txtCantidadFamilias'] = $this->mctFolio->txtCantidadFamilias_Create();
             $this->objControlsArray['txtCantidadFamilias']->Name="Cantidad de familias";
@@ -247,7 +243,8 @@ class FolioEditPanel extends FolioEditPanelGen {
     }
 
     public function calcular_nomenclaturas(){
-    	error_log("calculando nomenclaturas");
+        
+    	
     	$cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
         $gid=$this->mctFolio->Folio->Id;
         $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
@@ -264,6 +261,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $nom->IdFolio = $this->mctFolio->Folio->Id;
             $nom->PartidaInmobiliaria = '';
             $nom->TitularDominio = '';
+            $nom->Partido = substr($nomencla,0,3);
             $nom->Circ = substr($nomencla,3,2);//2
             $nom->Secc = substr($nomencla,5,2);//2
             $nom->ChacQuinta = substr($nomencla,7,14);//14
@@ -272,7 +270,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $nom->Parc = substr($nomencla,35,7);//7;
             $nom->InscripcionDominio = '-';
             $nom->TitularRegPropiedad = '-';
-            $nom->DatoVerificadoRegPropiedad = 0;
+            $nom->DatoVerificadoRegPropiedad = false;
             $nom->Save();
             
         }

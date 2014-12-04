@@ -36,7 +36,7 @@ class FolioIndexPanelGen extends QPanel {
      * @param <string> $strControlId
      *
      */
-
+ 
 
     protected function btnCreateNew_Create() {
         $this->btnCreateNew = new QButton($this);
@@ -61,13 +61,12 @@ class FolioIndexPanelGen extends QPanel {
     }
     
     public function dtgRow_Click(Folio $objFolio) {
-     /*   $this->FolioEditPanel_Create($objFolio->Id);
+        $this->FolioEditPanel_Create($objFolio->Id);
         $this->dtgFolios->Visible=false;
         if ($this->btnCreateNew) $this->btnCreateNew->Visible=false;
         // si tengo un pivote padre
         if (isset($this->btnVolver)) $this->btnVolver->Visible = false;
         $this->Refresh();
-        */
     }
 
     public function btnCreateNew_Click($strFormId, $strControlId, $strParameter) {
