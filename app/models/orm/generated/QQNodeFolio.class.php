@@ -13,10 +13,6 @@ class QQNodeFolio extends QQNode {
 					return new QQNode('id_partido', 'IdPartido', 'integer', $this);
 				case 'IdPartidoObject':
 					return new QQNodePartido('id_partido', 'IdPartidoObject', 'integer', $this);
-				case 'IdLocalidad':
-					return new QQNode('id_localidad', 'IdLocalidad', 'integer', $this);
-				case 'IdLocalidadObject':
-					return new QQNodeLocalidad('id_localidad', 'IdLocalidadObject', 'integer', $this);
 				case 'Matricula':
 					return new QQNode('matricula', 'Matricula', 'string', $this);
 				case 'Fecha':
@@ -47,8 +43,8 @@ class QQNodeFolio extends QQNode {
 					return new QQNode('geom', 'Geom', 'string', $this);
 				case 'Judicializado':
 					return new QQNode('judicializado', 'Judicializado', 'string', $this);
-				case 'ObservacionLocalidad':
-					return new QQNode('observacion_localidad', 'ObservacionLocalidad', 'string', $this);
+				case 'Localidad':
+					return new QQNode('localidad', 'Localidad', 'string', $this);
 				case 'ArchivosAdjuntosAsId':
 					return new QQReverseReferenceNodeArchivosAdjuntos($this, 'archivosadjuntosasid', 'reverse_reference', 'id_folio');
 				case 'CondicionesSocioUrbanisticasAsId':

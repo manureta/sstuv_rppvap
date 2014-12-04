@@ -19,8 +19,6 @@
 	 * @property string $Nombre the value for strNombre (Not Null)
 	 * @property integer $IdPartido the value for intIdPartido (Not Null)
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
-	 * @property-read Folio $FolioAsId the value for the private _objFolioAsId (Read-Only) if set due to an expansion on the folio.id_localidad reverse relationship
-	 * @property-read Folio[] $FolioAsIdArray the value for the private _objFolioAsIdArray (Read-Only) if set due to an ExpandAsArray on the folio.id_localidad reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class LocalidadGen extends QBaseClass {
@@ -64,22 +62,6 @@ class LocalidadGen extends QBaseClass {
     protected $intIdPartido;
     const IdPartidoDefault = null;
 
-
-    /**
-     * Private member variable that stores a reference to a single FolioAsId object
-     * (of type Folio), if this Localidad object was restored with
-     * an expansion on the folio association table.
-     * @var Folio _objFolioAsId;
-     */
-    protected $objFolioAsId;
-
-    /**
-     * Private member variable that stores a reference to an array of FolioAsId objects
-     * (of type Folio[]), if this Localidad object was restored with
-     * an ExpandAsArray on the folio association table.
-     * @var Folio[] _objFolioAsIdArray;
-     */
-    protected $objFolioAsIdArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -456,44 +438,6 @@ class LocalidadGen extends QBaseClass {
 			if (!$objDbRow) {
 				return null;
 			}
-			// See if we're doing an array expansion on the previous item
-			$strAlias = $strAliasPrefix . 'id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (($strExpandAsArrayNodes) && is_array($arrPreviousItems) && count($arrPreviousItems)) {
-				foreach ($arrPreviousItems as $objPreviousItem) {            
-					if ($objPreviousItem->intId == $objDbRow->GetColumn($strAliasName, 'Integer')) {        
-						// We are.  Now, prepare to check for ExpandAsArray clauses
-						$blnExpandedViaArray = false;
-						if (!$strAliasPrefix)
-							$strAliasPrefix = 'localidad__';
-
-
-						// Expanding reverse references: FolioAsId
-						$strAlias = $strAliasPrefix . 'folioasid__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objFolioAsIdArray)) {
-								$objPreviousChildItems = $objPreviousItem->objFolioAsIdArray;
-								$objChildItem = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioasid__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objFolioAsIdArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objFolioAsIdArray[] = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
-						// Either return false to signal array expansion, or check-to-reset the Alias prefix and move on
-						if ($blnExpandedViaArray) {
-							return false;
-						} else if ($strAliasPrefix == 'localidad__') {
-							$strAliasPrefix = null;
-						}
-					}
-				}
-			}
 
 			// Create a new instance of the Localidad object
 			$objToReturn = new Localidad();
@@ -509,9 +453,6 @@ class LocalidadGen extends QBaseClass {
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objFolioAsIdArray, $objToReturn->objFolioAsIdArray) != null) {
 						continue;
 					}
 
@@ -540,16 +481,6 @@ class LocalidadGen extends QBaseClass {
 
 
 
-
-			// Check for FolioAsId Virtual Binding
-			$strAlias = $strAliasPrefix . 'folioasid__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objFolioAsIdArray[] = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objFolioAsId = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
 
 			return $objToReturn;
 		}
@@ -869,24 +800,6 @@ class LocalidadGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
-            case 'FolioAsId':
-                /**
-                 * Gets the value for the private _objFolioAsId (Read-Only)
-                 * if set due to an expansion on the folio.id_localidad reverse relationship
-                 * @return Folio
-                 */
-                return $this->objFolioAsId;
-
-            case 'FolioAsIdArray':
-                /**
-                 * Gets the value for the private _objFolioAsIdArray (Read-Only)
-                 * if set due to an ExpandAsArray on the folio.id_localidad reverse relationship
-                 * @return Folio[]
-                 */
-                if(is_null($this->objFolioAsIdArray))
-                    $this->objFolioAsIdArray = $this->GetFolioAsIdArray();
-                return (array) $this->objFolioAsIdArray;
-
 
             case '__Restored':
                 return $this->__blnRestored;
@@ -1011,201 +924,6 @@ class LocalidadGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
-			
-		
-		// Related Objects' Methods for FolioAsId
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _FolioAsIdArray
-                /**
-                * Add a Item to the _FolioAsIdArray
-                * @param Folio $objItem
-                * @return Folio[]
-                */
-                public function AddFolioAsId(Folio $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->IdLocalidadObject = $this;
-                    $this->objFolioAsIdArray = $this->FolioAsIdArray;
-                    $this->objFolioAsIdArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateFolioAsId($objItem);
-
-                    return $this->FolioAsIdArray;
-                }
-
-                /**
-                * Remove a Item to the _FolioAsIdArray
-                * @param Folio $objItem
-                * @return Folio[]
-                */
-                public function RemoveFolioAsId(Folio $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objFolioAsIdArray;
-                    $this->objFolioAsIdArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objFolioAsIdArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->IdLocalidadObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedFolioAsId($objItem);
-                        }
-
-                    return $this->objFolioAsIdArray;
-                }
-
-		/**
-		 * Gets all associated FoliosAsId as an array of Folio objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Folio[]
-		*/ 
-		public function GetFolioAsIdArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Folio::LoadArrayByIdLocalidad($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated FoliosAsId
-		 * @return int
-		*/ 
-		public function CountFoliosAsId() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Folio::CountByIdLocalidad($this->intId);
-		}
-
-		/**
-		 * Associates a FolioAsId
-		 * @param Folio $objFolio
-		 * @return void
-		*/ 
-		public function AssociateFolioAsId(Folio $objFolio) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateFolioAsId on this unsaved Localidad.');
-			if ((is_null($objFolio->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateFolioAsId on this Localidad with an unsaved Folio.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Localidad::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"folio"
-				SET
-					"id_localidad" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objFolio->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a FolioAsId
-		 * @param Folio $objFolio
-		 * @return void
-		*/ 
-		public function UnassociateFolioAsId(Folio $objFolio) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsId on this unsaved Localidad.');
-			if ((is_null($objFolio->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsId on this Localidad with an unsaved Folio.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Localidad::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"folio"
-				SET
-					"id_localidad" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objFolio->Id) . ' AND
-					"id_localidad" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all FoliosAsId
-		 * @return void
-		*/ 
-		public function UnassociateAllFoliosAsId() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsId on this unsaved Localidad.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Localidad::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"folio"
-				SET
-					"id_localidad" = null
-				WHERE
-					"id_localidad" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated FolioAsId
-		 * @param Folio $objFolio
-		 * @return void
-		*/ 
-		public function DeleteAssociatedFolioAsId(Folio $objFolio) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsId on this unsaved Localidad.');
-			if ((is_null($objFolio->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsId on this Localidad with an unsaved Folio.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Localidad::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"folio"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objFolio->Id) . ' AND
-					"id_localidad" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated FoliosAsId
-		 * @return void
-		*/ 
-		public function DeleteAllFoliosAsId() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsId on this unsaved Localidad.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Localidad::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"folio"
-				WHERE
-					"id_localidad" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
 
 
 

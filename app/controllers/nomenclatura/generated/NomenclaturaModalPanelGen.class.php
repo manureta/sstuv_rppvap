@@ -22,7 +22,8 @@ class NomenclaturaModalPanelGen extends EditPanelBase {
         'txtParc' => true,
         'txtInscripcionDominio' => true,
         'txtTitularRegPropiedad' => true,
-        'txtDatoVerificadoRegPropiedad' => true,
+        'txtPartido' => true,
+        'chkDatoVerificadoRegPropiedad' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objNomenclatura = null, $strControlId = null) {
@@ -77,8 +78,10 @@ class NomenclaturaModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtInscripcionDominio'] = $this->mctNomenclatura->txtInscripcionDominio_Create();
         if (in_array('txtTitularRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['txtTitularRegPropiedad'] = $this->mctNomenclatura->txtTitularRegPropiedad_Create();
-        if (in_array('txtDatoVerificadoRegPropiedad',$strControlsArray)) 
-            $this->objControlsArray['txtDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->txtDatoVerificadoRegPropiedad_Create();
+        if (in_array('txtPartido',$strControlsArray)) 
+            $this->objControlsArray['txtPartido'] = $this->mctNomenclatura->txtPartido_Create();
+        if (in_array('chkDatoVerificadoRegPropiedad',$strControlsArray)) 
+            $this->objControlsArray['chkDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->chkDatoVerificadoRegPropiedad_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

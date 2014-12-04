@@ -22,8 +22,6 @@
      * property-read QLabel $CodFolioLabel
      * property QListBox $IdPartidoControl
      * property-read QLabel $IdPartidoLabel
-     * property QListBox $IdLocalidadControl
-     * property-read QLabel $IdLocalidadLabel
      * property QTextBox $MatriculaControl
      * property-read QLabel $MatriculaLabel
      * property QDateTimePicker $FechaControl
@@ -52,8 +50,8 @@
      * property-read QLabel $GeomLabel
      * property QTextBox $JudicializadoControl
      * property-read QLabel $JudicializadoLabel
-     * property QTextBox $ObservacionLocalidadControl
-     * property-read QLabel $ObservacionLocalidadLabel
+     * property QTextBox $LocalidadControl
+     * property-read QLabel $LocalidadLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -79,7 +77,6 @@
         protected $lblId;
         protected $txtCodFolio;
         protected $lstIdPartidoObject;
-        protected $lstIdLocalidadObject;
         protected $txtMatricula;
         protected $calFecha;
         protected $txtEncargado;
@@ -94,12 +91,11 @@
         protected $txtDireccion;
         protected $txtGeom;
         protected $txtJudicializado;
-        protected $txtObservacionLocalidad;
+        protected $txtLocalidad;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
         protected $lblIdPartido;
-        protected $lblIdLocalidad;
         protected $lblMatricula;
         protected $lblFecha;
         protected $lblEncargado;
@@ -114,7 +110,7 @@
         protected $lblDireccion;
         protected $lblGeom;
         protected $lblJudicializado;
-        protected $lblObservacionLocalidad;
+        protected $lblLocalidad;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -289,33 +285,6 @@
             $this->lblIdPartido->Text = ($this->objFolio->IdPartidoObject) ? $this->objFolio->IdPartidoObject->__toString() : null;
             $this->lblIdPartido->Required = true;
             return $this->lblIdPartido;
-        }
-
-        /**
-         * Create and setup QAjaxAutoCompleteEntidadTextBox lstIdLocalidadObject
-         * @param string $strControlId optional ControlId to use
-         * @return QAjaxAutoCompleteEntidadTextBox
-         */
-        public function lstIdLocalidadObject_Create($strControlId = null) {
-            $this->lstIdLocalidadObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'Localidad', 'Id' , $strControlId);
-            if($this->objFolio->IdLocalidadObject){
-                $this->lstIdLocalidadObject->Text = $this->objFolio->IdLocalidadObject->__toString();
-                $this->lstIdLocalidadObject->Value = $this->objFolio->IdLocalidadObject->Id;
-            }
-            $this->lstIdLocalidadObject->Name = QApplication::Translate('IdLocalidadObject');
-            return $this->lstIdLocalidadObject;
-        }
-
-        /**
-         * Create and setup QLabel lblIdLocalidad
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblIdLocalidad_Create($strControlId = null) {
-            $this->lblIdLocalidad = new QLabel($this->objParentObject, $strControlId);
-            $this->lblIdLocalidad->Name = QApplication::Translate('IdLocalidadObject');
-            $this->lblIdLocalidad->Text = ($this->objFolio->IdLocalidadObject) ? $this->objFolio->IdLocalidadObject->__toString() : null;
-            return $this->lblIdLocalidad;
         }
 
         /**
@@ -692,28 +661,28 @@
         }
 
         /**
-         * Create and setup QTextBox txtObservacionLocalidad
+         * Create and setup QTextBox txtLocalidad
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
          */
-        public function txtObservacionLocalidad_Create($strControlId = null) {
-            $this->txtObservacionLocalidad = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtObservacionLocalidad->Name = QApplication::Translate('ObservacionLocalidad');
-            $this->txtObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
+        public function txtLocalidad_Create($strControlId = null) {
+            $this->txtLocalidad = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtLocalidad->Name = QApplication::Translate('Localidad');
+            $this->txtLocalidad->Text = $this->objFolio->Localidad;
             
-            return $this->txtObservacionLocalidad;
+            return $this->txtLocalidad;
         }
 
         /**
-         * Create and setup QLabel lblObservacionLocalidad
+         * Create and setup QLabel lblLocalidad
          * @param string $strControlId optional ControlId to use
          * @return QLabel
          */
-        public function lblObservacionLocalidad_Create($strControlId = null) {
-            $this->lblObservacionLocalidad = new QLabel($this->objParentObject, $strControlId);
-            $this->lblObservacionLocalidad->Name = QApplication::Translate('ObservacionLocalidad');
-            $this->lblObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
-            return $this->lblObservacionLocalidad;
+        public function lblLocalidad_Create($strControlId = null) {
+            $this->lblLocalidad = new QLabel($this->objParentObject, $strControlId);
+            $this->lblLocalidad->Name = QApplication::Translate('Localidad');
+            $this->lblLocalidad->Text = $this->objFolio->Localidad;
+            return $this->lblLocalidad;
         }
 
         /**
@@ -887,6 +856,7 @@
         $strConfigArray['Columns']['Parc'] = QApplication::Translate('Parc');
         $strConfigArray['Columns']['InscripcionDominio'] = QApplication::Translate('InscripcionDominio');
         $strConfigArray['Columns']['TitularRegPropiedad'] = QApplication::Translate('TitularRegPropiedad');
+        $strConfigArray['Columns']['Partido'] = QApplication::Translate('Partido');
         $strConfigArray['Columns']['DatoVerificadoRegPropiedad'] = QApplication::Translate('DatoVerificadoRegPropiedad');
 
         $this->lstNomenclaturaAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
@@ -938,14 +908,6 @@
             }
             if ($this->lblIdPartido) $this->lblIdPartido->Text = ($this->objFolio->IdPartidoObject) ? $this->objFolio->IdPartidoObject->__toString() : null;
 
-            if ($this->lstIdLocalidadObject) {
-                if($this->objFolio->IdLocalidadObject){
-                    $this->lstIdLocalidadObject->Text = $this->objFolio->IdLocalidadObject->__toString();
-                    $this->lstIdLocalidadObject->Value = $this->objFolio->IdLocalidad->Id;
-                }                
-            }
-            if ($this->lblIdLocalidad) $this->lblIdLocalidad->Text = ($this->objFolio->IdLocalidadObject) ? $this->objFolio->IdLocalidadObject->__toString() : null;
-
             if ($this->txtMatricula) $this->txtMatricula->Text = $this->objFolio->Matricula;
             if ($this->lblMatricula) $this->lblMatricula->Text = $this->objFolio->Matricula;
 
@@ -993,8 +955,8 @@
             if ($this->txtJudicializado) $this->txtJudicializado->Text = $this->objFolio->Judicializado;
             if ($this->lblJudicializado) $this->lblJudicializado->Text = $this->objFolio->Judicializado;
 
-            if ($this->txtObservacionLocalidad) $this->txtObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
-            if ($this->lblObservacionLocalidad) $this->lblObservacionLocalidad->Text = $this->objFolio->ObservacionLocalidad;
+            if ($this->txtLocalidad) $this->txtLocalidad->Text = $this->objFolio->Localidad;
+            if ($this->lblLocalidad) $this->lblLocalidad->Text = $this->objFolio->Localidad;
 
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
@@ -1065,7 +1027,6 @@
                 // Update any fields for controls that have been created
                 if ($this->txtCodFolio) $this->objFolio->CodFolio = $this->txtCodFolio->Text;
                 if ($this->lstIdPartidoObject) $this->objFolio->IdPartido = $this->lstIdPartidoObject->SelectedValue;
-                if ($this->lstIdLocalidadObject) $this->objFolio->IdLocalidad = $this->lstIdLocalidadObject->SelectedValue;
                 if ($this->txtMatricula) $this->objFolio->Matricula = $this->txtMatricula->Text;
                 if ($this->calFecha) $this->objFolio->Fecha = $this->calFecha->DateTime;
                 if ($this->txtEncargado) $this->objFolio->Encargado = $this->txtEncargado->Text;
@@ -1080,7 +1041,7 @@
                 if ($this->txtDireccion) $this->objFolio->Direccion = $this->txtDireccion->Text;
                 if ($this->txtGeom) $this->objFolio->Geom = $this->txtGeom->Text;
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
-                if ($this->txtObservacionLocalidad) $this->objFolio->ObservacionLocalidad = $this->txtObservacionLocalidad->Text;
+                if ($this->txtLocalidad) $this->objFolio->Localidad = $this->txtLocalidad->Text;
 
 
         }
@@ -1158,12 +1119,6 @@
                 case 'IdPartidoLabel':
                     if (!$this->lblIdPartido) return $this->lblIdPartido_Create();
                     return $this->lblIdPartido;
-                case 'IdLocalidadControl':
-                    if (!$this->lstIdLocalidadObject) return $this->lstIdLocalidadObject_Create();
-                    return $this->lstIdLocalidadObject;
-                case 'IdLocalidadLabel':
-                    if (!$this->lblIdLocalidad) return $this->lblIdLocalidad_Create();
-                    return $this->lblIdLocalidad;
                 case 'MatriculaControl':
                     if (!$this->txtMatricula) return $this->txtMatricula_Create();
                     return $this->txtMatricula;
@@ -1248,12 +1203,12 @@
                 case 'JudicializadoLabel':
                     if (!$this->lblJudicializado) return $this->lblJudicializado_Create();
                     return $this->lblJudicializado;
-                case 'ObservacionLocalidadControl':
-                    if (!$this->txtObservacionLocalidad) return $this->txtObservacionLocalidad_Create();
-                    return $this->txtObservacionLocalidad;
-                case 'ObservacionLocalidadLabel':
-                    if (!$this->lblObservacionLocalidad) return $this->lblObservacionLocalidad_Create();
-                    return $this->lblObservacionLocalidad;
+                case 'LocalidadControl':
+                    if (!$this->txtLocalidad) return $this->txtLocalidad_Create();
+                    return $this->txtLocalidad;
+                case 'LocalidadLabel':
+                    if (!$this->lblLocalidad) return $this->lblLocalidad_Create();
+                    return $this->lblLocalidad;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1300,8 +1255,6 @@
                         return ($this->txtCodFolio = QType::Cast($mixValue, 'QControl'));
                     case 'IdPartidoControl':
                         return ($this->lstIdPartidoObject = QType::Cast($mixValue, 'QControl'));
-                    case 'IdLocalidadControl':
-                        return ($this->lstIdLocalidadObject = QType::Cast($mixValue, 'QControl'));
                     case 'MatriculaControl':
                         return ($this->txtMatricula = QType::Cast($mixValue, 'QControl'));
                     case 'FechaControl':
@@ -1330,8 +1283,8 @@
                         return ($this->txtGeom = QType::Cast($mixValue, 'QControl'));
                     case 'JudicializadoControl':
                         return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
-                    case 'ObservacionLocalidadControl':
-                        return ($this->txtObservacionLocalidad = QType::Cast($mixValue, 'QControl'));
+                    case 'LocalidadControl':
+                        return ($this->txtLocalidad = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

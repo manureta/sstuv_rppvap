@@ -13,7 +13,6 @@ class LocalidadModalPanelGen extends EditPanelBase {
         'lblId' => false,
         'txtNombre' => true,
         'lstIdPartidoObject' => true,
-        'lstFolioAsId' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objLocalidad = null, $strControlId = null) {
@@ -50,8 +49,6 @@ class LocalidadModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombre'] = $this->mctLocalidad->txtNombre_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctLocalidad->lstIdPartidoObject_Create();
-        if (in_array('lstFolioAsId',$strControlsArray))
-            $this->objControlsArray['lstFolioAsId'] = $this->mctLocalidad->lstFolioAsId_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

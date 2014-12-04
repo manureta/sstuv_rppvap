@@ -27,7 +27,8 @@
 	 * @property string $Parc the value for strParc 
 	 * @property string $InscripcionDominio the value for strInscripcionDominio 
 	 * @property string $TitularRegPropiedad the value for strTitularRegPropiedad 
-	 * @property integer $DatoVerificadoRegPropiedad the value for intDatoVerificadoRegPropiedad 
+	 * @property string $Partido the value for strPartido 
+	 * @property boolean $DatoVerificadoRegPropiedad the value for blnDatoVerificadoRegPropiedad 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -87,7 +88,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strCirc
      */
     protected $strCirc;
-    const CircMaxLength = 45;
+    const CircMaxLength = 2;
     const CircDefault = null;
 
 
@@ -96,7 +97,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strSecc
      */
     protected $strSecc;
-    const SeccMaxLength = 45;
+    const SeccMaxLength = 2;
     const SeccDefault = null;
 
 
@@ -105,7 +106,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strChacQuinta
      */
     protected $strChacQuinta;
-    const ChacQuintaMaxLength = 45;
+    const ChacQuintaMaxLength = 14;
     const ChacQuintaDefault = null;
 
 
@@ -114,7 +115,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strFrac
      */
     protected $strFrac;
-    const FracMaxLength = 45;
+    const FracMaxLength = 7;
     const FracDefault = null;
 
 
@@ -123,7 +124,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strMza
      */
     protected $strMza;
-    const MzaMaxLength = 45;
+    const MzaMaxLength = 7;
     const MzaDefault = null;
 
 
@@ -132,7 +133,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strParc
      */
     protected $strParc;
-    const ParcMaxLength = 45;
+    const ParcMaxLength = 7;
     const ParcDefault = null;
 
 
@@ -154,10 +155,19 @@ class NomenclaturaGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column nomenclatura._dato_verificado_reg_propiedad
-     * @var integer intDatoVerificadoRegPropiedad
+     * Protected member variable that maps to the database column nomenclatura.partido
+     * @var string strPartido
      */
-    protected $intDatoVerificadoRegPropiedad;
+    protected $strPartido;
+    const PartidoMaxLength = 3;
+    const PartidoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column nomenclatura._dato_verificado_reg_propiedad
+     * @var boolean blnDatoVerificadoRegPropiedad
+     */
+    protected $blnDatoVerificadoRegPropiedad;
     const DatoVerificadoRegPropiedadDefault = null;
 
 
@@ -521,6 +531,7 @@ class NomenclaturaGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'parc', $strAliasPrefix . 'parc');
 			$objBuilder->AddSelectItem($strTableName, '_inscripcion_dominio', $strAliasPrefix . '_inscripcion_dominio');
 			$objBuilder->AddSelectItem($strTableName, '_titular_reg_propiedad', $strAliasPrefix . '_titular_reg_propiedad');
+			$objBuilder->AddSelectItem($strTableName, 'partido', $strAliasPrefix . 'partido');
 			$objBuilder->AddSelectItem($strTableName, '_dato_verificado_reg_propiedad', $strAliasPrefix . '_dato_verificado_reg_propiedad');
 		}
 
@@ -575,8 +586,10 @@ class NomenclaturaGen extends QBaseClass {
 			$objToReturn->strInscripcionDominio = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . '_titular_reg_propiedad', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_titular_reg_propiedad'] : $strAliasPrefix . '_titular_reg_propiedad';
 			$objToReturn->strTitularRegPropiedad = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'partido'] : $strAliasPrefix . 'partido';
+			$objToReturn->strPartido = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . '_dato_verificado_reg_propiedad', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_dato_verificado_reg_propiedad'] : $strAliasPrefix . '_dato_verificado_reg_propiedad';
-			$objToReturn->intDatoVerificadoRegPropiedad = $objDbRow->GetColumn($strAliasName, 'Smallint');
+			$objToReturn->blnDatoVerificadoRegPropiedad = $objDbRow->GetColumn($strAliasName, 'Bit');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -749,9 +762,6 @@ class NomenclaturaGen extends QBaseClass {
                     if ($this->intIdFolio && ($this->intIdFolio > QDatabaseNumberFieldMax::Integer || $this->intIdFolio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intIdFolio', QDatabaseFieldType::Integer);
                     }
-                    if ($this->intDatoVerificadoRegPropiedad && ($this->intDatoVerificadoRegPropiedad > QDatabaseNumberFieldMax::Smallint || $this->intDatoVerificadoRegPropiedad < QDatabaseNumberFieldMin::Smallint)) {
-                        throw new NumberOutOfRangeException('intDatoVerificadoRegPropiedad', QDatabaseFieldType::Smallint);
-                    }
 
             try {
                 if (((!$this->__blnRestored) && (!$blnForceUpdate)) || ($blnForceInsert)) {
@@ -769,6 +779,7 @@ class NomenclaturaGen extends QBaseClass {
                             "parc",
                             "_inscripcion_dominio",
                             "_titular_reg_propiedad",
+                            "partido",
                             "_dato_verificado_reg_propiedad"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
@@ -782,7 +793,8 @@ class NomenclaturaGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strParc) . ',
                             ' . $objDatabase->SqlVariable($this->strInscripcionDominio) . ',
                             ' . $objDatabase->SqlVariable($this->strTitularRegPropiedad) . ',
-                            ' . $objDatabase->SqlVariable($this->intDatoVerificadoRegPropiedad) . '
+                            ' . $objDatabase->SqlVariable($this->strPartido) . ',
+                            ' . $objDatabase->SqlVariable($this->blnDatoVerificadoRegPropiedad) . '
                         )
                     ');
 
@@ -809,7 +821,8 @@ class NomenclaturaGen extends QBaseClass {
                             "parc" = ' . $objDatabase->SqlVariable($this->strParc) . ',
                             "_inscripcion_dominio" = ' . $objDatabase->SqlVariable($this->strInscripcionDominio) . ',
                             "_titular_reg_propiedad" = ' . $objDatabase->SqlVariable($this->strTitularRegPropiedad) . ',
-                            "_dato_verificado_reg_propiedad" = ' . $objDatabase->SqlVariable($this->intDatoVerificadoRegPropiedad) . '
+                            "partido" = ' . $objDatabase->SqlVariable($this->strPartido) . ',
+                            "_dato_verificado_reg_propiedad" = ' . $objDatabase->SqlVariable($this->blnDatoVerificadoRegPropiedad) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -904,7 +917,8 @@ class NomenclaturaGen extends QBaseClass {
 			$this->strParc = $objReloaded->strParc;
 			$this->strInscripcionDominio = $objReloaded->strInscripcionDominio;
 			$this->strTitularRegPropiedad = $objReloaded->strTitularRegPropiedad;
-			$this->intDatoVerificadoRegPropiedad = $objReloaded->intDatoVerificadoRegPropiedad;
+			$this->strPartido = $objReloaded->strPartido;
+			$this->blnDatoVerificadoRegPropiedad = $objReloaded->blnDatoVerificadoRegPropiedad;
 		}
 
 
@@ -1010,12 +1024,19 @@ class NomenclaturaGen extends QBaseClass {
                  */
                 return $this->strTitularRegPropiedad;
 
+            case 'Partido':
+                /**
+                 * Gets the value for strPartido 
+                 * @return string
+                 */
+                return $this->strPartido;
+
             case 'DatoVerificadoRegPropiedad':
                 /**
-                 * Gets the value for intDatoVerificadoRegPropiedad 
-                 * @return integer
+                 * Gets the value for blnDatoVerificadoRegPropiedad 
+                 * @return boolean
                  */
-                return $this->intDatoVerificadoRegPropiedad;
+                return $this->blnDatoVerificadoRegPropiedad;
 
 
             ///////////////////
@@ -1234,16 +1255,31 @@ class NomenclaturaGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'DatoVerificadoRegPropiedad':
+				case 'Partido':
 					/**
-					 * Sets the value for intDatoVerificadoRegPropiedad 
-					 * @param integer $mixValue
-					 * @return integer
+					 * Sets the value for strPartido 
+					 * @param string $mixValue
+					 * @return string
 					 */
 					try {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intDatoVerificadoRegPropiedad = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intDatoVerificadoRegPropiedad = $mixValue);
+                                                //return ($this->strPartido = QType::Cast($mixValue, QType::String));
+                                                return ($this->strPartido = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'DatoVerificadoRegPropiedad':
+					/**
+					 * Sets the value for blnDatoVerificadoRegPropiedad 
+					 * @param boolean $mixValue
+					 * @return boolean
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->blnDatoVerificadoRegPropiedad = QType::Cast($mixValue, QType::Boolean));
+                                                return ($this->blnDatoVerificadoRegPropiedad = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1337,7 +1373,8 @@ class NomenclaturaGen extends QBaseClass {
 			$strToReturn .= '<element name="Parc" type="xsd:string"/>';
 			$strToReturn .= '<element name="InscripcionDominio" type="xsd:string"/>';
 			$strToReturn .= '<element name="TitularRegPropiedad" type="xsd:string"/>';
-			$strToReturn .= '<element name="DatoVerificadoRegPropiedad" type="xsd:int"/>';
+			$strToReturn .= '<element name="Partido" type="xsd:string"/>';
+			$strToReturn .= '<element name="DatoVerificadoRegPropiedad" type="xsd:boolean"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1398,8 +1435,11 @@ class NomenclaturaGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'TitularRegPropiedad')) {
 				$objToReturn->strTitularRegPropiedad = $objSoapObject->TitularRegPropiedad;
             }
+			if (property_exists($objSoapObject, 'Partido')) {
+				$objToReturn->strPartido = $objSoapObject->Partido;
+            }
 			if (property_exists($objSoapObject, 'DatoVerificadoRegPropiedad')) {
-				$objToReturn->intDatoVerificadoRegPropiedad = $objSoapObject->DatoVerificadoRegPropiedad;
+				$objToReturn->blnDatoVerificadoRegPropiedad = $objSoapObject->DatoVerificadoRegPropiedad;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

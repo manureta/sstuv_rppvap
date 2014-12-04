@@ -40,7 +40,9 @@
      * property-read QLabel $InscripcionDominioLabel
      * property QTextBox $TitularRegPropiedadControl
      * property-read QLabel $TitularRegPropiedadLabel
-     * property QIntegerTextBox $DatoVerificadoRegPropiedadControl
+     * property QTextBox $PartidoControl
+     * property-read QLabel $PartidoLabel
+     * property QCheckBox $DatoVerificadoRegPropiedadControl
      * property-read QLabel $DatoVerificadoRegPropiedadLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
@@ -70,7 +72,8 @@
         protected $txtParc;
         protected $txtInscripcionDominio;
         protected $txtTitularRegPropiedad;
-        protected $txtDatoVerificadoRegPropiedad;
+        protected $txtPartido;
+        protected $chkDatoVerificadoRegPropiedad;
 
         // Controls that allow the viewing of Nomenclatura's individual data fields
         protected $lblIdFolio;
@@ -84,6 +87,7 @@
         protected $lblParc;
         protected $lblInscripcionDominio;
         protected $lblTitularRegPropiedad;
+        protected $lblPartido;
         protected $lblDatoVerificadoRegPropiedad;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
@@ -485,30 +489,52 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtDatoVerificadoRegPropiedad
+         * Create and setup QTextBox txtPartido
          * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
+         * @return QTextBox
          */
-        public function txtDatoVerificadoRegPropiedad_Create($strControlId = null) {
-            $this->txtDatoVerificadoRegPropiedad = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtDatoVerificadoRegPropiedad->Name = QApplication::Translate('DatoVerificadoRegPropiedad');
-            $this->txtDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
-                        $this->txtDatoVerificadoRegPropiedad->Maximum = QDatabaseNumberFieldMax::Smallint;
-                        $this->txtDatoVerificadoRegPropiedad->Minimum = QDatabaseNumberFieldMin::Smallint;
-            return $this->txtDatoVerificadoRegPropiedad;
+        public function txtPartido_Create($strControlId = null) {
+            $this->txtPartido = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtPartido->Name = QApplication::Translate('Partido');
+            $this->txtPartido->Text = $this->objNomenclatura->Partido;
+            $this->txtPartido->MaxLength = Nomenclatura::PartidoMaxLength;
+            
+            return $this->txtPartido;
+        }
+
+        /**
+         * Create and setup QLabel lblPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblPartido_Create($strControlId = null) {
+            $this->lblPartido = new QLabel($this->objParentObject, $strControlId);
+            $this->lblPartido->Name = QApplication::Translate('Partido');
+            $this->lblPartido->Text = $this->objNomenclatura->Partido;
+            return $this->lblPartido;
+        }
+
+        /**
+         * Create and setup QCheckBox chkDatoVerificadoRegPropiedad
+         * @param string $strControlId optional ControlId to use
+         * @return QCheckBox
+         */
+        public function chkDatoVerificadoRegPropiedad_Create($strControlId = null) {
+            $this->chkDatoVerificadoRegPropiedad = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkDatoVerificadoRegPropiedad->Name = QApplication::Translate('DatoVerificadoRegPropiedad');
+            $this->chkDatoVerificadoRegPropiedad->Checked = $this->objNomenclatura->DatoVerificadoRegPropiedad;
+                        return $this->chkDatoVerificadoRegPropiedad;
         }
 
         /**
          * Create and setup QLabel lblDatoVerificadoRegPropiedad
          * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
          * @return QLabel
          */
-        public function lblDatoVerificadoRegPropiedad_Create($strControlId = null, $strFormat = null) {
+        public function lblDatoVerificadoRegPropiedad_Create($strControlId = null) {
             $this->lblDatoVerificadoRegPropiedad = new QLabel($this->objParentObject, $strControlId);
             $this->lblDatoVerificadoRegPropiedad->Name = QApplication::Translate('DatoVerificadoRegPropiedad');
-            $this->lblDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
-            $this->lblDatoVerificadoRegPropiedad->Format = $strFormat;
+            $this->lblDatoVerificadoRegPropiedad->Text = ($this->objNomenclatura->DatoVerificadoRegPropiedad) ? QApplication::Translate('Yes') : QApplication::Translate('No');
             return $this->lblDatoVerificadoRegPropiedad;
         }
 
@@ -565,8 +591,11 @@
             if ($this->txtTitularRegPropiedad) $this->txtTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
             if ($this->lblTitularRegPropiedad) $this->lblTitularRegPropiedad->Text = $this->objNomenclatura->TitularRegPropiedad;
 
-            if ($this->txtDatoVerificadoRegPropiedad) $this->txtDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
-            if ($this->lblDatoVerificadoRegPropiedad) $this->lblDatoVerificadoRegPropiedad->Text = $this->objNomenclatura->DatoVerificadoRegPropiedad;
+            if ($this->txtPartido) $this->txtPartido->Text = $this->objNomenclatura->Partido;
+            if ($this->lblPartido) $this->lblPartido->Text = $this->objNomenclatura->Partido;
+
+            if ($this->chkDatoVerificadoRegPropiedad) $this->chkDatoVerificadoRegPropiedad->Checked = $this->objNomenclatura->DatoVerificadoRegPropiedad;
+            if ($this->lblDatoVerificadoRegPropiedad) $this->lblDatoVerificadoRegPropiedad->Text = ($this->objNomenclatura->DatoVerificadoRegPropiedad) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
         }
 
@@ -597,7 +626,8 @@
                 if ($this->txtParc) $this->objNomenclatura->Parc = $this->txtParc->Text;
                 if ($this->txtInscripcionDominio) $this->objNomenclatura->InscripcionDominio = $this->txtInscripcionDominio->Text;
                 if ($this->txtTitularRegPropiedad) $this->objNomenclatura->TitularRegPropiedad = $this->txtTitularRegPropiedad->Text;
-                if ($this->txtDatoVerificadoRegPropiedad) $this->objNomenclatura->DatoVerificadoRegPropiedad = $this->txtDatoVerificadoRegPropiedad->Text;
+                if ($this->txtPartido) $this->objNomenclatura->Partido = $this->txtPartido->Text;
+                if ($this->chkDatoVerificadoRegPropiedad) $this->objNomenclatura->DatoVerificadoRegPropiedad = $this->chkDatoVerificadoRegPropiedad->Checked;
 
 
         }
@@ -726,9 +756,15 @@
                 case 'TitularRegPropiedadLabel':
                     if (!$this->lblTitularRegPropiedad) return $this->lblTitularRegPropiedad_Create();
                     return $this->lblTitularRegPropiedad;
+                case 'PartidoControl':
+                    if (!$this->txtPartido) return $this->txtPartido_Create();
+                    return $this->txtPartido;
+                case 'PartidoLabel':
+                    if (!$this->lblPartido) return $this->lblPartido_Create();
+                    return $this->lblPartido;
                 case 'DatoVerificadoRegPropiedadControl':
-                    if (!$this->txtDatoVerificadoRegPropiedad) return $this->txtDatoVerificadoRegPropiedad_Create();
-                    return $this->txtDatoVerificadoRegPropiedad;
+                    if (!$this->chkDatoVerificadoRegPropiedad) return $this->chkDatoVerificadoRegPropiedad_Create();
+                    return $this->chkDatoVerificadoRegPropiedad;
                 case 'DatoVerificadoRegPropiedadLabel':
                     if (!$this->lblDatoVerificadoRegPropiedad) return $this->lblDatoVerificadoRegPropiedad_Create();
                     return $this->lblDatoVerificadoRegPropiedad;
@@ -778,8 +814,10 @@
                         return ($this->txtInscripcionDominio = QType::Cast($mixValue, 'QControl'));
                     case 'TitularRegPropiedadControl':
                         return ($this->txtTitularRegPropiedad = QType::Cast($mixValue, 'QControl'));
+                    case 'PartidoControl':
+                        return ($this->txtPartido = QType::Cast($mixValue, 'QControl'));
                     case 'DatoVerificadoRegPropiedadControl':
-                        return ($this->txtDatoVerificadoRegPropiedad = QType::Cast($mixValue, 'QControl'));
+                        return ($this->chkDatoVerificadoRegPropiedad = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

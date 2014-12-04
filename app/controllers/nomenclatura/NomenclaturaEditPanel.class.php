@@ -18,8 +18,9 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         'txtMza' => true,
         'txtParc' => true,
         'txtInscripcionDominio' => true,
-        'txtDatoVerificadoRegPropiedad' => true,
         'txtTitularRegPropiedad' => true,
+        'txtPartido' => true,
+        'chkDatoVerificadoRegPropiedad' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = null, $intId = null, $strControlId = null) {
@@ -41,7 +42,7 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
 
     }
 
-       protected function metaControl_Create($strControlsArray){
+        protected function metaControl_Create($strControlsArray){
         // Construct the NomenclaturaMetaControl
         // MAKE SURE we specify "$this" as the MetaControl's (and thus all subsequent controls') parent
         $this->mctNomenclatura = NomenclaturaMetaControl::Create($this, $this->intId);
@@ -69,12 +70,14 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
             $this->objControlsArray['txtParc'] = $this->mctNomenclatura->txtParc_Create();
         if (in_array('txtInscripcionDominio',$strControlsArray)) 
             $this->objControlsArray['txtInscripcionDominio'] = $this->mctNomenclatura->txtInscripcionDominio_Create();
-        if (in_array('txtDatoVerificadoRegPropiedad',$strControlsArray)) 
-            $this->objControlsArray['txtDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->txtDatoVerificadoRegPropiedad_Create();
         if (in_array('txtTitularRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['txtTitularRegPropiedad'] = $this->mctNomenclatura->txtTitularRegPropiedad_Create();
+        if (in_array('txtPartido',$strControlsArray)) 
+            $this->objControlsArray['txtPartido'] = $this->mctNomenclatura->txtPartido_Create();
+        if (in_array('chkDatoVerificadoRegPropiedad',$strControlsArray)) 
+            $this->objControlsArray['chkDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->chkDatoVerificadoRegPropiedad_Create();
 
-      //  $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        
     }
 
     // Control AjaxAction Event Handlers

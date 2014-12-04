@@ -31,8 +31,10 @@ class QQNodeNomenclatura extends QQNode {
 					return new QQNode('_inscripcion_dominio', 'InscripcionDominio', 'string', $this);
 				case 'TitularRegPropiedad':
 					return new QQNode('_titular_reg_propiedad', 'TitularRegPropiedad', 'string', $this);
+				case 'Partido':
+					return new QQNode('partido', 'Partido', 'string', $this);
 				case 'DatoVerificadoRegPropiedad':
-					return new QQNode('_dato_verificado_reg_propiedad', 'DatoVerificadoRegPropiedad', 'integer', $this);
+					return new QQNode('_dato_verificado_reg_propiedad', 'DatoVerificadoRegPropiedad', 'boolean', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

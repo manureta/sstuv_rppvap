@@ -1,4 +1,8 @@
 app/*/*/generated
+app/*/geometrycolumns
+app/*/spatialrefsys
+app/*/*/GeometryColumns.class.php
+app/*/*/SpatialRefSys.class.php
 cache/
 tmp/log/debug.log
 config/configuracion.xml
