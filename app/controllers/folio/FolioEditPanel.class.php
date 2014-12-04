@@ -6,6 +6,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public $strTemplate = "";
     public $mctFolio;
     public $lstJudicializado;
+    public $folioExistente;
     //id variables for meta_create
     protected $intId;
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
@@ -56,9 +57,9 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
 
-        $existeFolio=$this->mctFolio->Folio->CodFolio;
-        
-        if(!$existeFolio){
+        $this->folioExistente=($this->mctFolio->Folio->CodFolio)? true: false;
+        $partido_usuario="";
+        if(!$this->folioExistente){
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
             if($objPartido){
@@ -89,7 +90,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->txtJudicializado->Text='sin_dato';            
             
             // Mapa
-            QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario')");
+            QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
             $this->lstIdPartidoObject->Enabled = false; 
             $this->txtMatricula->Enabled = false; 
@@ -117,6 +118,14 @@ class FolioEditPanel extends FolioEditPanelGen {
                     break;                
             }
         }
+
+        $btnInicio = new QButton($this);
+        $btnInicio->Text = 'Actualizar Geometría';
+        $btnInicio->Icon = 'edit';
+        $btnInicio->AddCssClass('btn-info');
+        $btnInicio->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario',true);"));
+
+
         $this->lstJudicializado->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstJudicializado_Change'));
         // escondo el judicializado original
         $this->txtJudicializado->Visible=false;
@@ -201,14 +210,25 @@ class FolioEditPanel extends FolioEditPanelGen {
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
         parent::btnSave_Click($strFormId, $strControlId, $strParameter);
-        // Delegate "Save" processing to the FolioMetaControl
+        // Delegate "Save" processing to the FolioMetaControl                
         $this->mctFolio->Save();
         foreach ($this->objModifiedChildsArray as $obj) {
             $obj->Save();
         }
         $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id) ; 
+        //
+        
+        if(!$this->folioExistente){
+        	error_log("calculando nomenclaturas");   
+        	//QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id);     		
+        	$this->calcular_nomenclaturas();
+        	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
+        }else{
+        	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id); 
+        }
+        
+         
     }
 
     protected function buttons_Create($blnDelete = true) {
@@ -226,6 +246,39 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     }
 
+    public function calcular_nomenclaturas(){
+    	error_log("calculando nomenclaturas");
+    	$cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
+        $gid=$this->mctFolio->Folio->Id;
+        $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
+	    error_log($strQuery);
+        $objDatabase = QApplication::$Database[1];
+
+	    // Perform the Query
+	    $objDbResult = $objDatabase->Query($strQuery);
+	    
+        while ($row = $objDbResult->FetchArray()) {
+           
+            $nomencla=$row['nomencla'];
+            $nom = new Nomenclatura();
+            $nom->IdFolio = $this->mctFolio->Folio->Id;
+            $nom->PartidaInmobiliaria = '';
+            $nom->TitularDominio = '';
+            $nom->Circ = substr($nomencla,3,2);//2
+            $nom->Secc = substr($nomencla,5,2);//2
+            $nom->ChacQuinta = substr($nomencla,7,14);//14
+            $nom->Frac = substr($nomencla,21,7);//7
+            $nom->Mza = substr($nomencla,28,7);//7;
+            $nom->Parc = substr($nomencla,35,7);//7;
+            $nom->InscripcionDominio = '-';
+            $nom->TitularRegPropiedad = '-';
+            $nom->DatoVerificadoRegPropiedad = 0;
+            $nom->Save();
+            
+        }
+        
+	    
+	 }
 
 }
 ?>
