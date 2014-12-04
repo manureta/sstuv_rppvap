@@ -18,7 +18,21 @@
 	 * 
 	 */
 	class UsuarioDataGrid extends UsuarioDataGridGen {
-
+		  //array de controles para omitir antes del construct
+    public static $strColumnsArray = array(
+        'IdUsuario' => false,
+        'Password' => true,
+        'Email' => true,
+        'SuperAdmin' => true,
+        'FechaActivacion' => true,
+        'Nombre' => true,
+        'IdPerfilObject' => true,
+        'RespuestaA' => false,
+        'RespuestaB' => false,
+        'PreguntaSecretaA' => false,
+        'PreguntaSecretaB' => false,
+        'CodPartido' => true,
+    );
 		protected function addColumns() {
 		 // Use the MetaDataGrid functionality to add Columns for this datagrid
 

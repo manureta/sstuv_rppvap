@@ -16,10 +16,10 @@ class UsuarioEditPanel extends UsuarioEditPanelGen {
         'calFechaActivacion' => true,
         'txtNombre' => true,
         'lstIdPerfilObject' => true,
-        'txtRespuestaA' => true,
-        'txtRespuestaB' => true,
-        'txtPreguntaSecretaA' => true,
-        'txtPreguntaSecretaB' => true,
+        'txtRespuestaA' => false,
+        'txtRespuestaB' => false,
+        'txtPreguntaSecretaA' => false,
+        'txtPreguntaSecretaB' => false,
         'txtCodPartido' => true,
     );
 
