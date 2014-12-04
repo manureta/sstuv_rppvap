@@ -50,7 +50,7 @@
 
     <div>                
         <div class="well bs-component">
-           <button type="button" id="actualizar_geom" class="btn btn-info">Actualizar Geometría</button>
+           
 
             <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
 			

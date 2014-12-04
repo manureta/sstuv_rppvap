@@ -58,7 +58,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->objControlsArray['txtCodFolio']->Visible = null;
 
         $this->folioExistente=($this->mctFolio->Folio->CodFolio)? true: false;
-        
+        $partido_usuario="";
         if(!$this->folioExistente){
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
@@ -90,7 +90,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->txtJudicializado->Text='sin_dato';            
             
             // Mapa
-            QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario')");
+            QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
             $this->lstIdPartidoObject->Enabled = false; 
             $this->txtMatricula->Enabled = false; 
@@ -118,6 +118,14 @@ class FolioEditPanel extends FolioEditPanelGen {
                     break;                
             }
         }
+
+        $btnInicio = new QButton($this);
+        $btnInicio->Text = 'Actualizar Geometría';
+        $btnInicio->Icon = 'edit';
+        $btnInicio->AddCssClass('btn-info');
+        $btnInicio->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario',true);"));
+
+
         $this->lstJudicializado->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstJudicializado_Change'));
         // escondo el judicializado original
         $this->txtJudicializado->Visible=false;
@@ -239,33 +247,37 @@ class FolioEditPanel extends FolioEditPanelGen {
     }
 
     public function calcular_nomenclaturas(){
-    	error_log("entro a calcular");
-    	$strQuery = "SELECT count(*) as cantidad from folio";
-	    $objDatabase = QApplication::$Database[1];
+    	error_log("calculando nomenclaturas");
+    	$cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
+        $gid=$this->mctFolio->Folio->Id;
+        $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
+	    error_log($strQuery);
+        $objDatabase = QApplication::$Database[1];
 
 	    // Perform the Query
 	    $objDbResult = $objDatabase->Query($strQuery);
-	    $res=$objDbResult->FetchArray();
 	    
-	    $nom = new Nomenclatura();
-        $nom->IdFolio = $this->mctFolio->Folio->Id;
-		$nom->PartidaInmobiliaria = '';
-		$nom->TitularDominio = '';
-		$nom->Circ = 'calculado';
-		$nom->Secc = 'calculado';
-		$nom->ChacQuinta = 'calculado';
-		$nom->Frac = 'calculado';
-		$nom->Mza = 'calculado';
-		$nom->Parc = 'calculado';
-		$nom->InscripcionDominio = 'calculado';
-		$nom->TitularRegPropiedad = 'calculado';
-		$nom->DatoVerificadoRegPropiedad = 8;
-
-		$nom->Save();
-
-        QApplication::DisplayAlert($res['cantidad']);
-    	
-	  	//QApplication::DisplayAlert(var_dump($objDbResult)) ;
+        while ($row = $objDbResult->FetchArray()) {
+           
+            $nomencla=$row['nomencla'];
+            $nom = new Nomenclatura();
+            $nom->IdFolio = $this->mctFolio->Folio->Id;
+            $nom->PartidaInmobiliaria = '';
+            $nom->TitularDominio = '';
+            $nom->Circ = substr($nomencla,3,2);//2
+            $nom->Secc = substr($nomencla,5,2);//2
+            $nom->ChacQuinta = substr($nomencla,7,14);//14
+            $nom->Frac = substr($nomencla,21,7);//7
+            $nom->Mza = substr($nomencla,28,7);//7;
+            $nom->Parc = substr($nomencla,35,7);//7;
+            $nom->InscripcionDominio = '-';
+            $nom->TitularRegPropiedad = '-';
+            $nom->DatoVerificadoRegPropiedad = 0;
+            $nom->Save();
+            
+        }
+        
+	    
 	 }
 
 }

@@ -35,7 +35,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $this->btnCreateNew_Create();
 
         // boton para calcular parcelas
-        $this->btnParcelas_Create();
+        //$this->btnParcelas_Create();
 
         $this->blnAutoRenderChildren = false;
         

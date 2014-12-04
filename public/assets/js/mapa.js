@@ -1,12 +1,20 @@
 function mostrarMapa(cod_partido,editar){
-    
+
+	var container = L.DomUtil.get("map");
+	if (container._leaflet) {
+			map.remove();
+			var div = document.createElement("div");
+			div.setAttribute("id", "map");
+			$(".modal-body").append(div);
+		}    
+
     $( document ).ready(function() {
-    	// para el zoom
-    	console.log(cod_partido);
     	
-
-
+ 
+		
+    	
     	$("#MapaModal").modal();
+
     	var map=  L.map("map");
     	map.invalidateSize();
 
@@ -97,13 +105,14 @@ function mostrarMapa(cod_partido,editar){
 		map.on('draw:deleted',function(e){
 			$(".leaflet-draw-draw-polygon").fadeIn();
 		});
+
+		$("#actualizar_geom").click(function(e){
+			console.log("mostrando mapa para edicion");
+			mostrarMapa('',true);
+		});
 	  	
 	});
 
 
 
 }
-
-$("#actualizar_geom").click(function(e){
-	mostrarMapa('',true);
-});

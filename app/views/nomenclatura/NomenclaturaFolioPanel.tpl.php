@@ -33,8 +33,7 @@
                 
                 <div class="well bs-component">   
 				<?php $_CONTROL->dtgNomenclaturas->Render(); ?>
-				<p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p>
-                <p><?php $_CONTROL->btnParcelas->Render('CssClass="btn btn-red btn-create-indexpanel"'); ?></p>
+				<p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p>                
 				<?php 
 					if ($_CONTROL->pnlEditNomenclatura) {
 						$_CONTROL->pnlEditNomenclatura->Render();
