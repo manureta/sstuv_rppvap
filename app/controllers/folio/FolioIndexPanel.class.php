@@ -66,7 +66,7 @@ class FolioIndexPanel extends FolioIndexPanelGen {
 
     protected function dtgFolio_Create() {            
         $this->dtgFolios = new FolioDataGrid($this);
-        $this->dtgFolios->RowClickMethod = 'dtgRow_Click';
+        //$this->dtgFolios->RowClickMethod = 'dtgRow_Click';
         return $this->dtgFolios;
     }
 }

@@ -25,6 +25,12 @@ class UserMenuPanel extends QPanel {
         $btnInicio->AddCssClass('navbar-link');
         $btnInicio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnHome_Click'));
 
+        $btnMapa = new QLinkButton($this);
+        $btnMapa->Text = 'Mapa';
+        $btnMapa->Icon = 'map-marker';
+        $btnMapa->AddCssClass('navbar-link');
+        $btnMapa->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnMapa_Click'));
+
         $btnFolio = new QLinkButton($this);
         $btnFolio->Text = 'Folios';
         $btnFolio->Icon = 'edit';
@@ -136,4 +142,9 @@ class UserMenuPanel extends QPanel {
     public function lnkRedirect_Click($strFormId, $strControlId, $strParameter) {
         QApplication::Redirect($strParameter);
     }
+
+     public function btnMapa_Click() {
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/page/mapa');
+    }
+
 }
