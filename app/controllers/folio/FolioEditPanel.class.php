@@ -93,6 +93,9 @@ class FolioEditPanel extends FolioEditPanelGen {
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
+            $partido_usuario=$this->mctFolio->Folio->IdPartidoObject->CodPartido;
+            error_log("el partido es:");
+            error_log($partido_usuario);
             $this->lstIdPartidoObject->Enabled = false; 
             $this->txtMatricula->Enabled = false; 
             $this->objControlsArray['txtCodFolio']->ActionParameter=$this->mctFolio->Folio->Id;
@@ -145,6 +148,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtCodFolio'] = $this->mctFolio->txtCodFolio_Create();
         if (in_array('lstIdPartidoObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPartidoObject'] = $this->mctFolio->lstIdPartidoObject_Create();
+            $this->objControlsArray['lstIdPartidoObject']->AddCssClass("partido");
         if (in_array('txtLocalidad',$strControlsArray)) 
             $this->objControlsArray['txtLocalidad'] = $this->mctFolio->txtLocalidad_Create();
         if (in_array('txtMatricula',$strControlsArray)) 
