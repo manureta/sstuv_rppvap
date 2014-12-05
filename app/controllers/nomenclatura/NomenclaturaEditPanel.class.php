@@ -36,9 +36,9 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         
         $this->metaControl_Create($strControlsArray);
         
+         $this->buttons_Create();
         $this->blnAutoRenderChildrenWithName = true;
-
-        $this->buttons_Create();
+       
 
     }
 
@@ -87,6 +87,15 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         $this->mctNomenclatura->Save();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctNomenclatura->Nomenclatura->IdFolio) ; 
+    }
+
+     protected function buttons_Create($blnDelete = true) {
+        parent::buttons_Create($blnDelete);
+        if ($blnDelete) {
+            $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Nomenclatura::GenderMale() ? 'e' : 'a'), Nomenclatura::Noun())));
+            $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
+            $this->btnDelete->Visible = $this->mctNomenclatura->EditMode;
+        }
     }
 
 }

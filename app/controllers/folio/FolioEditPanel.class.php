@@ -123,11 +123,11 @@ class FolioEditPanel extends FolioEditPanelGen {
             }
         }
 
-        $btnInicio = new QButton($this);
-        $btnInicio->Text = 'Actualizar Geometría';
-        $btnInicio->Icon = 'edit';
-        $btnInicio->AddCssClass('btn-info');
-        $btnInicio->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario',true);"));
+        $btnUpdateGeom = new QButton($this);
+        $btnUpdateGeom->Text = 'Actualizar Geometría';
+        $btnUpdateGeom->Icon = 'edit';
+        $btnUpdateGeom->AddCssClass('btn-info');
+        $btnUpdateGeom->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario',true);"));
 
 
         $this->lstJudicializado->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstJudicializado_Change'));
@@ -219,9 +219,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
         //
         
-        if(!$this->folioExistente){
-        	error_log("calculando nomenclaturas");   
-        	//QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id);     		
+        if(!$this->folioExistente){        	    	
         	$this->calcular_nomenclaturas();
         	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
         }else{

@@ -69,3 +69,7 @@ span.nombre-usuario {
 .partido_localidad{
   width: 50%;
 }
+
+.index_nomenclaturas{
+  min-height: 200px;
+}

@@ -30,7 +30,8 @@
             </li>
         </ul>
     </div>
-    <h6>Regularización</h6>
+    
+    <div class="titulos"><i class="icon-chevron-right"> Regularización</i></div>  
     <div>
                 
             <div class="well bs-component">           				        
@@ -39,9 +40,9 @@
 
                 <div class="panel_encuadre_legal" style="display:none">
         		<br>
-        		<b>Encuadre Legal</b>
+        		<div class="titulos"><i class="icon-tag"> Encuadre Legal</i></div> 
 		        <br>
-		        	<div>
+		        	<div class="well bs-component">
 		                                         
                         <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
@@ -59,8 +60,8 @@
     </div>
 
     
-
-    <h6>Antecedentes</h6>       
+ 
+    <div class="titulos"><i class="icon-chevron-right">Antecedentes</i></div>    
     <div> 
                 <div class="well bs-component">     
                         
@@ -72,10 +73,10 @@
                         <?php $_CONTROL->pnlAntecedentes->txtOtros->RenderWithName(); ?>
 
                         <div class="panel_organismos">
+					        <br>					        
+                            <div class="titulos"><i class="icon-tag"> Organismos de intervención</i></div>    
 					        <br>
-					        <b>Organismos de intervencion</b>
-					        <br>
-					        <div>                                                    
+					        <div class="well bs-component">                                                    
 					                <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>

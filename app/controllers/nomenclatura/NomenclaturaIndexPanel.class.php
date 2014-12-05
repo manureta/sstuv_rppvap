@@ -9,7 +9,8 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     public $strTitulo = 'Nomenclatura';
     public $strSubtitulo = '';
     public $strTemplate='';
-    public $btnParcelas;
+    public $btnAnalizar;
+
 
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
     	$this->strTemplate=__VIEW_DIR__."/nomenclatura/NomenclaturaFolioPanel.tpl.php";
@@ -34,8 +35,9 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         //Botón de creación
         $this->btnCreateNew_Create();
 
-        // boton para calcular parcelas
-        //$this->btnParcelas_Create();
+        $this->btnAnalizar = new QLinkButton($this);
+        $this->btnAnalizar->Text = 'Analizar Nomenclaturas';               
+        $this->btnAnalizar->AddAction(new QClickEvent(), new QAjaxControlAction($this,'analizar_nomenclatura'));
 
         $this->blnAutoRenderChildren = false;
         
@@ -43,6 +45,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
             $this->Form->RemoveControl($this->pnlEditNomenclatura->ControlId);
         }
 
+        
     }
 
     public function GetBreadCrumb() {
@@ -51,20 +54,11 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
             );
     }
 
-      protected function btnParcelas_Create() {
-        $this->btnParcelas = new QButton($this);
-        $this->btnParcelas->Text = "Calcular Parcelas";
-        $this->btnParcelas->AddCssClass('btn-red btn-create-indexpanel');
-        $this->btnParcelas->Icon = 'plus';
-        $this->btnParcelas->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnParcelas_Click'));
-
-        return $this->btnCreateNew;            
+    public function analizar_nomenclatura(){
+        QApplication::DisplayAlert("analizando ...");
     }
 
-     public function btnParcelas_Click($strFormId, $strControlId, $strParameter) {
-        QApplication::ExecuteJavascript("alert('calculando')");
-        $this->Refresh();
-    }
+    
 
 }
 ?>

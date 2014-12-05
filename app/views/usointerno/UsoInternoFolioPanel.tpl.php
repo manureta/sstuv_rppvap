@@ -31,22 +31,31 @@
         </ul>
     </div>
 
-    <div>                
+    <div>     
+        <div class="titulos"><i class="icon-chevron-right"> Situación Registral</i></div>        
         <div class="well bs-component">
 			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
-        <?php $_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
-        <?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
-        <?php $_CONTROL->chkNoCorrespondeInscripcion->RenderWithName(); ?>
-        <?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
-        <?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
-        <?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>
-        <?php $_CONTROL->chkRegularizacionTienePlano->RenderWithName(); ?>
-        <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
-        <?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
-        <?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
-        <?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
-        <?php $_CONTROL->txtNumExpediente->RenderWithName(); ?>
+            <?php $_CONTROL->chkNoCorrespondeInscripcion->RenderWithName(); ?>
+            <?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
+            <?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
+            <?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
+         </div>    
+        
+        <div class="titulos"><i class="icon-chevron-right"> Condiciones Socio-Urbanísticas</i></div> 
+        <div class="well bs-component">
+            <?php $_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
         </div>
+
+        <div class="titulos"><i class="icon-chevron-right"> Regularización</i></div>   
+        	<div class="well bs-component"> 
+            <?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>
+            <?php $_CONTROL->chkRegularizacionTienePlano->RenderWithName(); ?>
+            <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
+            <?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
+            <?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
+            <?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
+            <?php $_CONTROL->txtNumExpediente->RenderWithName(); ?>
+       		</div>
 
     </div>
 </div>

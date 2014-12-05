@@ -9,14 +9,7 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
    
     
-    protected function buttons_Create($blnDelete = true) {
-        parent::buttons_Create($blnDelete);
-        if ($blnDelete) {
-            $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Nomenclatura::GenderMale() ? 'e' : 'a'), Nomenclatura::Noun())));
-            $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
-            $this->btnDelete->Visible = $this->mctNomenclatura->EditMode;
-        }
-    }
+   
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {

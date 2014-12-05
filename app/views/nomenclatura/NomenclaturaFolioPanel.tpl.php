@@ -29,21 +29,28 @@
             </li>
         </ul>
     </div>
-    <div>
+    <div class="index_nomenclaturas">
                 
                 <div class="well bs-component">   
 				<?php $_CONTROL->dtgNomenclaturas->Render(); ?>
-				<p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p>                
+				
+
 				<?php 
 					if ($_CONTROL->pnlEditNomenclatura) {
 						$_CONTROL->pnlEditNomenclatura->Render();
 						} 
 				?>
 
-				</div>
-
+				</div>             
+                <p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p> 
                 
     </div>
-    <div class="botones-form"></div>
+
+    <div class="alert alert-info" role="alert">
+      <span class="icon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+     <?php $_CONTROL->btnAnalizar->Render(); ?>
+    </div>
+    
 </div>
 
