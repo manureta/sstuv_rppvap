@@ -18,6 +18,8 @@
  */
 class NomenclaturaDataGridGen extends QFilteredDataGrid {
 
+public $greenStyle;
+public $redStyle;
     //array de controles para omitir antes del construct
     public static $strColumnsArray = array(
         'Id' => false,
@@ -60,8 +62,24 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         } else {
             $this->addAllColumns();
         }
+        /*
+        $this->greenStyle = new QDataGridRowStyle();
+	    $this->greenStyle->BackColor = 'green';
+	    $this->redStyle = new QDataGridRowStyle();
+	    $this->redStyle->BackColor = 'red';
+	   */
     }
-
+/*
+    protected function GetDataGridRowHtml($objObject) {
+    	error_log("llama");
+	    if ($objObject->EstadoGeografico = 'parcial') {
+	       $this->objRowStyle = $this->greenStyle;
+	    } else {
+	       $this->objRowStyle = $this->redStyle;
+	    }
+	    return parent::GetDataGridRowHtml($objObject);
+	  }
+*/
     protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 

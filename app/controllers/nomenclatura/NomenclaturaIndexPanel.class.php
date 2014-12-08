@@ -10,7 +10,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     public $strSubtitulo = '';
     public $strTemplate='';
     public $btnAnalizar;
-
+    public $btnMapa;
 
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
     	$this->strTemplate=__VIEW_DIR__."/nomenclatura/NomenclaturaFolioPanel.tpl.php";
@@ -41,6 +41,11 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $this->btnAnalizar->Text = 'Analizar Nomenclaturas';               
         $this->btnAnalizar->AddAction(new QClickEvent(), new QAjaxControlAction($this,'analizar_nomenclatura'));
 
+        $this->btnMapa = new QLinkButton($this);
+        $this->btnMapa->Text = 'Mostrar Mapa';               
+        $this->btnMapa->AddAction(new QClickEvent(), new QAjaxControlAction($this,'mostrar_mapa'));
+
+
         $this->blnAutoRenderChildren = false;
         
         if (isset($this->pnlEditNomenclatura)) {
@@ -60,7 +65,9 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         QApplication::DisplayAlert("analizando ...");
     }
 
-    
+    public function mostrar_mapa(){
+        QApplication::DisplayAlert("mapita con las parcelas");
+    }
 
 }
 ?>

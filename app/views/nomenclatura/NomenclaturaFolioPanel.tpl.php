@@ -42,19 +42,30 @@
 				?>
 
 				</div>             
-                <p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?></p> 
+                <p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?>
+                    <?php if(!($_CONTROL->pnlEditNomenclatura)){ ?>
+                    <div class="alert alert-info msg-nomenclatura" role="alert">
+                      <span class="icon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only"></span>
+                     <?php $_CONTROL->btnAnalizar->Render(); ?>
+                    </div>
+                    
+                    <div class="alert alert-info msg-nomenclatura" role="alert">
+                      <span class="icon-map-marker" aria-hidden="true"></span>
+                      <span class="sr-only"></span>
+                     <?php $_CONTROL->btnMapa->Render(); ?>
+                    </div>
+                    <? } ?>
+                </p> 
                 
     </div>
 
-    <div class="alert alert-info" role="alert">
-      <span class="icon-exclamation-sign" aria-hidden="true"></span>
-      <span class="sr-only"></span>
-     <?php $_CONTROL->btnAnalizar->Render(); ?>
-    </div>
+    
     
 </div>
 
 <script type="text/javascript">
+    /*
     $( document ).ready(function() {
         function setearEstilos(){
             $(".dataTable tr").each(function(){
@@ -74,5 +85,6 @@
         setearEstilos();
         
     });
+*/
 </script>
 

@@ -73,3 +73,8 @@ span.nombre-usuario {
 .index_nomenclaturas{
   min-height: 200px;
 }
+
+.msg-nomenclatura{
+ float:right;
+ margin-left: 10px;
+}
