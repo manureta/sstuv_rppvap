@@ -62,11 +62,24 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     }
 
     public function analizar_nomenclatura(){
-        QApplication::DisplayAlert("analizando ...");
+        QApplication::DisplayAlert("<p>analizando las nomanclaturas ...</p><p>Aca tendria que informar si hay parcelas que no estan dentro del dibujo o si faltan parcelas</p>");
     }
 
     public function mostrar_mapa(){
-        QApplication::DisplayAlert("mapita con las parcelas");
+        $intIdFolio=QApplication::QueryString("id");
+        $strQuery = "select st_xmin(the_geom),st_ymin(the_geom),st_xmax(the_geom),st_ymax(the_geom) from v_folios where gid=$intIdFolio;";
+        try {
+            $objDatabase = QApplication::$Database[1];
+            $objDbResult = $objDatabase->Query($strQuery);
+            $row = $objDbResult->FetchArray();
+            $encuadre= array($row[0],$row[1],$row[2],$row[3]); //quick fix
+            $bbox=implode(',',$encuadre);
+            $mapa="http://190.188.234.6/geoserver/registro/wms?service=WMS&version=1.1.0&request=GetMap&layers=registro:folios,registro:parcelas_nomenclas&styles=&bbox=$bbox&width=512&height=465&srs=EPSG:4326&format=application/openlayers";
+            error_log($mapa);
+            QApplication::DisplayAlert("<iframe src='$mapa' width='100%' height='400'></iframe>");
+        } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>Hubo un error al calcular el encuadre geográfico del mapa.</p> Revisar geometría en 'Datos Generales'");
+        }
     }
 
 }

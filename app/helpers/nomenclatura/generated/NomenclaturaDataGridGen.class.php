@@ -24,18 +24,18 @@ public $redStyle;
     public static $strColumnsArray = array(
         'Id' => false,
         'IdFolioObject' => true,
-        'PartidaInmobiliaria' => true,
-        'TitularDominio' => true,
+        'PartidaInmobiliaria' => false,
+        'TitularDominio' => false,
+        'Partido' => true,
         'Circ' => true,
         'Secc' => true,
         'ChacQuinta' => true,
         'Frac' => true,
         'Mza' => true,
         'Parc' => true,
-        'InscripcionDominio' => true,
-        'TitularRegPropiedad' => true,
-        'Partido' => true,
-        'DatoVerificadoRegPropiedad' => true,
+        'InscripcionDominio' => false,
+        'TitularRegPropiedad' => false,
+        'DatoVerificadoRegPropiedad' => false,
         'EstadoGeografico' => true,
     );
     
@@ -62,14 +62,14 @@ public $redStyle;
         } else {
             $this->addAllColumns();
         }
-        /*
+        
         $this->greenStyle = new QDataGridRowStyle();
 	    $this->greenStyle->BackColor = 'green';
 	    $this->redStyle = new QDataGridRowStyle();
 	    $this->redStyle->BackColor = 'red';
-	   */
+	   
     }
-/*
+
     protected function GetDataGridRowHtml($objObject) {
     	error_log("llama");
 	    if ($objObject->EstadoGeografico = 'parcial') {
@@ -79,7 +79,7 @@ public $redStyle;
 	    }
 	    return parent::GetDataGridRowHtml($objObject);
 	  }
-*/
+
     protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
@@ -89,16 +89,16 @@ public $redStyle;
         if (NomenclaturaDataGrid::$strColumnsArray['IdFolioObject']) $this->MetaAddColumn(QQN::Nomenclatura()->IdFolioObject)->Title = QApplication::Translate('IdFolioObject');
         if (NomenclaturaDataGrid::$strColumnsArray['PartidaInmobiliaria']) $this->MetaAddColumn('PartidaInmobiliaria')->Title = QApplication::Translate('PartidaInmobiliaria');
         if (NomenclaturaDataGrid::$strColumnsArray['TitularDominio']) $this->MetaAddColumn('TitularDominio')->Title = QApplication::Translate('TitularDominio');
+        if (NomenclaturaDataGrid::$strColumnsArray['Partido']) $this->MetaAddColumn('Partido')->Title = QApplication::Translate('Partido');
         if (NomenclaturaDataGrid::$strColumnsArray['Circ']) $this->MetaAddColumn('Circ')->Title = QApplication::Translate('Circ');
         if (NomenclaturaDataGrid::$strColumnsArray['Secc']) $this->MetaAddColumn('Secc')->Title = QApplication::Translate('Secc');
         if (NomenclaturaDataGrid::$strColumnsArray['ChacQuinta']) $this->MetaAddColumn('ChacQuinta')->Title = QApplication::Translate('ChacQuinta');
         if (NomenclaturaDataGrid::$strColumnsArray['Frac']) $this->MetaAddColumn('Frac')->Title = QApplication::Translate('Frac');
         if (NomenclaturaDataGrid::$strColumnsArray['Mza']) $this->MetaAddColumn('Mza')->Title = QApplication::Translate('Mza');
         if (NomenclaturaDataGrid::$strColumnsArray['Parc']) $this->MetaAddColumn('Parc')->Title = QApplication::Translate('Parc');
-        if (NomenclaturaDataGrid::$strColumnsArray['InscripcionDominio']) $this->MetaAddColumn('InscripcionDominio')->Title = QApplication::Translate('InscripcionDominio');
-        if (NomenclaturaDataGrid::$strColumnsArray['TitularRegPropiedad']) $this->MetaAddColumn('TitularRegPropiedad')->Title = QApplication::Translate('TitularRegPropiedad');
-        if (NomenclaturaDataGrid::$strColumnsArray['Partido']) $this->MetaAddColumn('Partido')->Title = QApplication::Translate('Partido');
-        if (NomenclaturaDataGrid::$strColumnsArray['DatoVerificadoRegPropiedad']) $this->MetaAddColumn('DatoVerificadoRegPropiedad')->Title = QApplication::Translate('DatoVerificadoRegPropiedad');
+        //if (NomenclaturaDataGrid::$strColumnsArray['InscripcionDominio']) $this->MetaAddColumn('InscripcionDominio')->Title = QApplication::Translate('InscripcionDominio');
+        //if (NomenclaturaDataGrid::$strColumnsArray['TitularRegPropiedad']) $this->MetaAddColumn('TitularRegPropiedad')->Title = QApplication::Translate('TitularRegPropiedad');
+        //if (NomenclaturaDataGrid::$strColumnsArray['DatoVerificadoRegPropiedad']) $this->MetaAddColumn('DatoVerificadoRegPropiedad')->Title = QApplication::Translate('DatoVerificadoRegPropiedad');
         if (NomenclaturaDataGrid::$strColumnsArray['EstadoGeografico']) $this->MetaAddColumn('EstadoGeografico')->Title = QApplication::Translate('EstadoGeografico');
     }
 
