@@ -56,14 +56,23 @@
 
 <script type="text/javascript">
     $( document ).ready(function() {
-        $(".dataTable tr").each(function(){
-           var estado=$(this).find('td:last').text(); 
-           if(estado=="parcial") $(this).addClass("warning");
-           if(estado=="exterior") $(this).addClass("danger");
-           if(estado=="completo") $(this).addClass("success");
-           if(estado=="desconocido") $(this).addClass("danger");
+        function setearEstilos(){
+            $(".dataTable tr").each(function(){
+                var estado=$(this).find('td:last').text(); 
+                if(estado=="parcial") $(this).addClass("warning");
+                if(estado=="exterior") $(this).addClass("danger");
+                if(estado=="completo") $(this).addClass("success");
+                if(estado=="desconocido") $(this).addClass("danger");
 
+            });    
+        }
+
+        $(".paginator").click(function(){
+            setearEstilos();
         });
+
+        setearEstilos();
+        
     });
 </script>
 
