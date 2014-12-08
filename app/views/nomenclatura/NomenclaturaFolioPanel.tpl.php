@@ -67,7 +67,7 @@
             });    
         }
 
-        $(".paginator").click(function(){
+        $( document ).ajaxComplete(function() {
             setearEstilos();
         });
 
