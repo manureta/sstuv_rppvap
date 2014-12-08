@@ -29,6 +29,7 @@
 	 * @property string $TitularRegPropiedad the value for strTitularRegPropiedad 
 	 * @property string $Partido the value for strPartido 
 	 * @property boolean $DatoVerificadoRegPropiedad the value for blnDatoVerificadoRegPropiedad 
+	 * @property string $EstadoGeografico the value for strEstadoGeografico 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -169,6 +170,15 @@ class NomenclaturaGen extends QBaseClass {
      */
     protected $blnDatoVerificadoRegPropiedad;
     const DatoVerificadoRegPropiedadDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column nomenclatura.estado_geografico
+     * @var string strEstadoGeografico
+     */
+    protected $strEstadoGeografico;
+    const EstadoGeograficoMaxLength = 8;
+    const EstadoGeograficoDefault = null;
 
 
     /**
@@ -533,6 +543,7 @@ class NomenclaturaGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, '_titular_reg_propiedad', $strAliasPrefix . '_titular_reg_propiedad');
 			$objBuilder->AddSelectItem($strTableName, 'partido', $strAliasPrefix . 'partido');
 			$objBuilder->AddSelectItem($strTableName, '_dato_verificado_reg_propiedad', $strAliasPrefix . '_dato_verificado_reg_propiedad');
+			$objBuilder->AddSelectItem($strTableName, 'estado_geografico', $strAliasPrefix . 'estado_geografico');
 		}
 
 //instantiation_methods
@@ -590,6 +601,8 @@ class NomenclaturaGen extends QBaseClass {
 			$objToReturn->strPartido = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . '_dato_verificado_reg_propiedad', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . '_dato_verificado_reg_propiedad'] : $strAliasPrefix . '_dato_verificado_reg_propiedad';
 			$objToReturn->blnDatoVerificadoRegPropiedad = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'estado_geografico', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'estado_geografico'] : $strAliasPrefix . 'estado_geografico';
+			$objToReturn->strEstadoGeografico = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -780,7 +793,8 @@ class NomenclaturaGen extends QBaseClass {
                             "_inscripcion_dominio",
                             "_titular_reg_propiedad",
                             "partido",
-                            "_dato_verificado_reg_propiedad"
+                            "_dato_verificado_reg_propiedad",
+                            "estado_geografico"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->strPartidaInmobiliaria) . ',
@@ -794,7 +808,8 @@ class NomenclaturaGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strInscripcionDominio) . ',
                             ' . $objDatabase->SqlVariable($this->strTitularRegPropiedad) . ',
                             ' . $objDatabase->SqlVariable($this->strPartido) . ',
-                            ' . $objDatabase->SqlVariable($this->blnDatoVerificadoRegPropiedad) . '
+                            ' . $objDatabase->SqlVariable($this->blnDatoVerificadoRegPropiedad) . ',
+                            ' . $objDatabase->SqlVariable($this->strEstadoGeografico) . '
                         )
                     ');
 
@@ -822,7 +837,8 @@ class NomenclaturaGen extends QBaseClass {
                             "_inscripcion_dominio" = ' . $objDatabase->SqlVariable($this->strInscripcionDominio) . ',
                             "_titular_reg_propiedad" = ' . $objDatabase->SqlVariable($this->strTitularRegPropiedad) . ',
                             "partido" = ' . $objDatabase->SqlVariable($this->strPartido) . ',
-                            "_dato_verificado_reg_propiedad" = ' . $objDatabase->SqlVariable($this->blnDatoVerificadoRegPropiedad) . '
+                            "_dato_verificado_reg_propiedad" = ' . $objDatabase->SqlVariable($this->blnDatoVerificadoRegPropiedad) . ',
+                            "estado_geografico" = ' . $objDatabase->SqlVariable($this->strEstadoGeografico) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -919,6 +935,7 @@ class NomenclaturaGen extends QBaseClass {
 			$this->strTitularRegPropiedad = $objReloaded->strTitularRegPropiedad;
 			$this->strPartido = $objReloaded->strPartido;
 			$this->blnDatoVerificadoRegPropiedad = $objReloaded->blnDatoVerificadoRegPropiedad;
+			$this->strEstadoGeografico = $objReloaded->strEstadoGeografico;
 		}
 
 
@@ -1037,6 +1054,13 @@ class NomenclaturaGen extends QBaseClass {
                  * @return boolean
                  */
                 return $this->blnDatoVerificadoRegPropiedad;
+
+            case 'EstadoGeografico':
+                /**
+                 * Gets the value for strEstadoGeografico 
+                 * @return string
+                 */
+                return $this->strEstadoGeografico;
 
 
             ///////////////////
@@ -1285,6 +1309,21 @@ class NomenclaturaGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'EstadoGeografico':
+					/**
+					 * Sets the value for strEstadoGeografico 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strEstadoGeografico = QType::Cast($mixValue, QType::String));
+                                                return ($this->strEstadoGeografico = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1375,6 +1414,7 @@ class NomenclaturaGen extends QBaseClass {
 			$strToReturn .= '<element name="TitularRegPropiedad" type="xsd:string"/>';
 			$strToReturn .= '<element name="Partido" type="xsd:string"/>';
 			$strToReturn .= '<element name="DatoVerificadoRegPropiedad" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="EstadoGeografico" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1440,6 +1480,9 @@ class NomenclaturaGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'DatoVerificadoRegPropiedad')) {
 				$objToReturn->blnDatoVerificadoRegPropiedad = $objSoapObject->DatoVerificadoRegPropiedad;
+            }
+			if (property_exists($objSoapObject, 'EstadoGeografico')) {
+				$objToReturn->strEstadoGeografico = $objSoapObject->EstadoGeografico;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

@@ -18,6 +18,7 @@
 		<?php $_CONTROL->txtTitularRegPropiedad->RenderWithName(); ?>
 		<?php $_CONTROL->txtPartido->RenderWithName(); ?>
 		<?php $_CONTROL->chkDatoVerificadoRegPropiedad->RenderWithName(); ?>
+		<?php $_CONTROL->txtEstadoGeografico->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

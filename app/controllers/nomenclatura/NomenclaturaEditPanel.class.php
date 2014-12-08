@@ -21,6 +21,7 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         'txtTitularRegPropiedad' => true,
         'txtPartido' => true,
         'chkDatoVerificadoRegPropiedad' => true,
+        'txtEstadoGeografico' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = null, $intId = null, $strControlId = null) {
@@ -34,7 +35,7 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         }
          $this->intId = $intId;
         
-        $this->metaControl_Create($strControlsArray);
+            $this->metaControl_Create($strControlsArray);
         
          $this->buttons_Create();
         $this->blnAutoRenderChildrenWithName = true;
@@ -76,7 +77,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
             $this->objControlsArray['txtPartido'] = $this->mctNomenclatura->txtPartido_Create();
         if (in_array('chkDatoVerificadoRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['chkDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->chkDatoVerificadoRegPropiedad_Create();
-
+        if (in_array('txtEstadoGeografico',$strControlsArray)) 
+            $this->objControlsArray['txtEstadoGeografico'] = $this->mctNomenclatura->txtEstadoGeografico_Create();
         
     }
 

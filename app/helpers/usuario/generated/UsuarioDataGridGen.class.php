@@ -18,7 +18,21 @@
  */
 class UsuarioDataGridGen extends QFilteredDataGrid {
 
-  
+    //array de controles para omitir antes del construct
+    public static $strColumnsArray = array(
+        'IdUsuario' => false,
+        'Password' => true,
+        'Email' => true,
+        'SuperAdmin' => true,
+        'FechaActivacion' => true,
+        'Nombre' => true,
+        'IdPerfilObject' => true,
+        'RespuestaA' => true,
+        'RespuestaB' => true,
+        'PreguntaSecretaA' => true,
+        'PreguntaSecretaB' => true,
+        'CodPartido' => true,
+    );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
         parent::__construct($objParentObject, $strControlId);

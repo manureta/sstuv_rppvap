@@ -34,6 +34,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         'TitularRegPropiedad' => true,
         'Partido' => true,
         'DatoVerificadoRegPropiedad' => true,
+        'EstadoGeografico' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -80,6 +81,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         if (NomenclaturaDataGrid::$strColumnsArray['TitularRegPropiedad']) $this->MetaAddColumn('TitularRegPropiedad')->Title = QApplication::Translate('TitularRegPropiedad');
         if (NomenclaturaDataGrid::$strColumnsArray['Partido']) $this->MetaAddColumn('Partido')->Title = QApplication::Translate('Partido');
         if (NomenclaturaDataGrid::$strColumnsArray['DatoVerificadoRegPropiedad']) $this->MetaAddColumn('DatoVerificadoRegPropiedad')->Title = QApplication::Translate('DatoVerificadoRegPropiedad');
+        if (NomenclaturaDataGrid::$strColumnsArray['EstadoGeografico']) $this->MetaAddColumn('EstadoGeografico')->Title = QApplication::Translate('EstadoGeografico');
     }
 
 /**
@@ -241,6 +243,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
 				case 'TitularRegPropiedad': return QQN::Nomenclatura()->TitularRegPropiedad;
 				case 'Partido': return QQN::Nomenclatura()->Partido;
 				case 'DatoVerificadoRegPropiedad': return QQN::Nomenclatura()->DatoVerificadoRegPropiedad;
+				case 'EstadoGeografico': return QQN::Nomenclatura()->EstadoGeografico;
 				default: throw new QCallerException('Simple Property not found in NomenclaturaDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

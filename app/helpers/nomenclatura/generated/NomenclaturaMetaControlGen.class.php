@@ -44,6 +44,8 @@
      * property-read QLabel $PartidoLabel
      * property QCheckBox $DatoVerificadoRegPropiedadControl
      * property-read QLabel $DatoVerificadoRegPropiedadLabel
+     * property QTextBox $EstadoGeograficoControl
+     * property-read QLabel $EstadoGeograficoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -74,6 +76,7 @@
         protected $txtTitularRegPropiedad;
         protected $txtPartido;
         protected $chkDatoVerificadoRegPropiedad;
+        protected $txtEstadoGeografico;
 
         // Controls that allow the viewing of Nomenclatura's individual data fields
         protected $lblIdFolio;
@@ -89,6 +92,7 @@
         protected $lblTitularRegPropiedad;
         protected $lblPartido;
         protected $lblDatoVerificadoRegPropiedad;
+        protected $lblEstadoGeografico;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -538,6 +542,32 @@
             return $this->lblDatoVerificadoRegPropiedad;
         }
 
+        /**
+         * Create and setup QTextBox txtEstadoGeografico
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtEstadoGeografico_Create($strControlId = null) {
+            $this->txtEstadoGeografico = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtEstadoGeografico->Name = QApplication::Translate('EstadoGeografico');
+            $this->txtEstadoGeografico->Text = $this->objNomenclatura->EstadoGeografico;
+            $this->txtEstadoGeografico->MaxLength = Nomenclatura::EstadoGeograficoMaxLength;
+            
+            return $this->txtEstadoGeografico;
+        }
+
+        /**
+         * Create and setup QLabel lblEstadoGeografico
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblEstadoGeografico_Create($strControlId = null) {
+            $this->lblEstadoGeografico = new QLabel($this->objParentObject, $strControlId);
+            $this->lblEstadoGeografico->Name = QApplication::Translate('EstadoGeografico');
+            $this->lblEstadoGeografico->Text = $this->objNomenclatura->EstadoGeografico;
+            return $this->lblEstadoGeografico;
+        }
+
 
 
 
@@ -597,6 +627,9 @@
             if ($this->chkDatoVerificadoRegPropiedad) $this->chkDatoVerificadoRegPropiedad->Checked = $this->objNomenclatura->DatoVerificadoRegPropiedad;
             if ($this->lblDatoVerificadoRegPropiedad) $this->lblDatoVerificadoRegPropiedad->Text = ($this->objNomenclatura->DatoVerificadoRegPropiedad) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
+            if ($this->txtEstadoGeografico) $this->txtEstadoGeografico->Text = $this->objNomenclatura->EstadoGeografico;
+            if ($this->lblEstadoGeografico) $this->lblEstadoGeografico->Text = $this->objNomenclatura->EstadoGeografico;
+
         }
 
 
@@ -628,6 +661,7 @@
                 if ($this->txtTitularRegPropiedad) $this->objNomenclatura->TitularRegPropiedad = $this->txtTitularRegPropiedad->Text;
                 if ($this->txtPartido) $this->objNomenclatura->Partido = $this->txtPartido->Text;
                 if ($this->chkDatoVerificadoRegPropiedad) $this->objNomenclatura->DatoVerificadoRegPropiedad = $this->chkDatoVerificadoRegPropiedad->Checked;
+                if ($this->txtEstadoGeografico) $this->objNomenclatura->EstadoGeografico = $this->txtEstadoGeografico->Text;
 
 
         }
@@ -768,6 +802,12 @@
                 case 'DatoVerificadoRegPropiedadLabel':
                     if (!$this->lblDatoVerificadoRegPropiedad) return $this->lblDatoVerificadoRegPropiedad_Create();
                     return $this->lblDatoVerificadoRegPropiedad;
+                case 'EstadoGeograficoControl':
+                    if (!$this->txtEstadoGeografico) return $this->txtEstadoGeografico_Create();
+                    return $this->txtEstadoGeografico;
+                case 'EstadoGeograficoLabel':
+                    if (!$this->lblEstadoGeografico) return $this->lblEstadoGeografico_Create();
+                    return $this->lblEstadoGeografico;
                 default:
                     try {
                         return parent::__get($strName);
@@ -818,6 +858,8 @@
                         return ($this->txtPartido = QType::Cast($mixValue, 'QControl'));
                     case 'DatoVerificadoRegPropiedadControl':
                         return ($this->chkDatoVerificadoRegPropiedad = QType::Cast($mixValue, 'QControl'));
+                    case 'EstadoGeograficoControl':
+                        return ($this->txtEstadoGeografico = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

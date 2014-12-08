@@ -223,6 +223,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         	$this->calcular_nomenclaturas();
         	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
         }else{
+            $this->actualizarEstadoNomenclaturas();
         	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id); 
         }
         
@@ -270,15 +271,21 @@ class FolioEditPanel extends FolioEditPanelGen {
             $nom->Frac = substr($nomencla,21,7);//7
             $nom->Mza = substr($nomencla,28,7);//7;
             $nom->Parc = substr($nomencla,35,7);//7;
-            $nom->InscripcionDominio = '-';
-            $nom->TitularRegPropiedad = '-';
+            $nom->InscripcionDominio = '';
+            $nom->TitularRegPropiedad = '';
+            $nom->EstadoGeografico='completo';
             $nom->DatoVerificadoRegPropiedad = false;
             $nom->Save();
             
-        }
-        
+        }        
 	    
 	 }
+
+     protected function actualizarEstadoNomenclaturas(){
+         $id_folio=$this->mctFolio->Folio->Id;
+         $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
+         $objDatabase->NonQuery($strQuery);
+     }
 
 }
 ?>

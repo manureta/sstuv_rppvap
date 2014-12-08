@@ -618,6 +618,7 @@
             $this->txtGeom = new QTextBox($this->objParentObject, $strControlId);
             $this->txtGeom->Name = QApplication::Translate('Geom');
             $this->txtGeom->Text = $this->objFolio->Geom;
+            $this->txtGeom->Required = true;
             $this->txtGeom->TextMode = QTextMode::MultiLine;
             
             return $this->txtGeom;
@@ -632,6 +633,7 @@
             $this->lblGeom = new QLabel($this->objParentObject, $strControlId);
             $this->lblGeom->Name = QApplication::Translate('Geom');
             $this->lblGeom->Text = $this->objFolio->Geom;
+            $this->lblGeom->Required = true;
             return $this->lblGeom;
         }
 
@@ -858,6 +860,7 @@
         $strConfigArray['Columns']['TitularRegPropiedad'] = QApplication::Translate('TitularRegPropiedad');
         $strConfigArray['Columns']['Partido'] = QApplication::Translate('Partido');
         $strConfigArray['Columns']['DatoVerificadoRegPropiedad'] = QApplication::Translate('DatoVerificadoRegPropiedad');
+        $strConfigArray['Columns']['EstadoGeografico'] = QApplication::Translate('EstadoGeografico');
 
         $this->lstNomenclaturaAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
         $this->lstNomenclaturaAsId->Name = Nomenclatura::Noun();

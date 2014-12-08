@@ -49,12 +49,12 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
 
         //Creo el datagrid
-        $this->dtgFolio_Create();
+        //$this->dtgFolio_Create();
 
         //Botón de creación
-        $this->btnCreateNew_Create();
+        //$this->btnCreateNew_Create();
 
-        $this->blnAutoRenderChildren = true;
+        //$this->blnAutoRenderChildren = true;
         
         if (isset($this->pnlEditFolio)) {
             $this->Form->RemoveControl($this->pnlEditFolio->ControlId);

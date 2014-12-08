@@ -6,7 +6,6 @@ class OrganismosDeIntervencionEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intId;
 
-
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

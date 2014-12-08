@@ -30,7 +30,7 @@
 	 * @property integer $TipoBarrio the value for intTipoBarrio 
 	 * @property string $ObservacionCasoDudoso the value for strObservacionCasoDudoso 
 	 * @property string $Direccion the value for strDireccion 
-	 * @property string $Geom the value for strGeom 
+	 * @property string $Geom the value for strGeom (Not Null)
 	 * @property string $Judicializado the value for strJudicializado 
 	 * @property string $Localidad the value for strLocalidad 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
@@ -1504,7 +1504,7 @@ class FolioGen extends QBaseClass {
 
             case 'Geom':
                 /**
-                 * Gets the value for strGeom 
+                 * Gets the value for strGeom (Not Null)
                  * @return string
                  */
                 return $this->strGeom;
@@ -1898,7 +1898,7 @@ class FolioGen extends QBaseClass {
 
 				case 'Geom':
 					/**
-					 * Sets the value for strGeom 
+					 * Sets the value for strGeom (Not Null)
 					 * @param string $mixValue
 					 * @return string
 					 */

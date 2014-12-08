@@ -7,10 +7,6 @@ class CondicionesSocioUrbanisticasEditPanelGen extends EditPanelBase {
     protected $intId;
     protected $intIdFolio;
 
-    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
-   
-
-  
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

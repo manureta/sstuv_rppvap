@@ -6,10 +6,10 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intId;
 
-    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
-   
     
-   
+
+
+    
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {

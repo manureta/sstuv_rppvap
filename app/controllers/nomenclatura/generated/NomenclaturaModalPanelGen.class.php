@@ -24,6 +24,7 @@ class NomenclaturaModalPanelGen extends EditPanelBase {
         'txtTitularRegPropiedad' => true,
         'txtPartido' => true,
         'chkDatoVerificadoRegPropiedad' => true,
+        'txtEstadoGeografico' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objNomenclatura = null, $strControlId = null) {
@@ -82,6 +83,8 @@ class NomenclaturaModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtPartido'] = $this->mctNomenclatura->txtPartido_Create();
         if (in_array('chkDatoVerificadoRegPropiedad',$strControlsArray)) 
             $this->objControlsArray['chkDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->chkDatoVerificadoRegPropiedad_Create();
+        if (in_array('txtEstadoGeografico',$strControlsArray)) 
+            $this->objControlsArray['txtEstadoGeografico'] = $this->mctNomenclatura->txtEstadoGeografico_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
