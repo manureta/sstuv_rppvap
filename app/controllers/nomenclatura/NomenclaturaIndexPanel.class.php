@@ -32,6 +32,8 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         //Creo el datagrid
         $this->dtgNomenclatura_Create();
 
+
+        
         //Botón de creación
         $this->btnCreateNew_Create();
 

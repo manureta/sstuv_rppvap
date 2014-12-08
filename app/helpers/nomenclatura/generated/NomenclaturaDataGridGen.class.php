@@ -131,7 +131,7 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
                         // se concatenan todos los campos PK
                         $strControlId = "";
                         $strControlId .= "x" . $objNomenclatura->Id;
-                        $strControlId = str_replace("-","n",substr($strControlId, 1));
+                        $strControlId = str_replace("-","n",substr($strControlId, 1));                        
 	                $btnEdit = $this->objForm->GetControl("btnEdit".$strControlId);
 	                if (!$btnEdit) {
 	                    // Create the Edit button for this row in the DataGrid

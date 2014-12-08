@@ -31,7 +31,7 @@
     </div>
     <div class="index_nomenclaturas">
                 
-                <div class="well bs-component">   
+                <div class="well bs-component">
 				<?php $_CONTROL->dtgNomenclaturas->Render(); ?>
 				
 
@@ -53,4 +53,17 @@
     </div>
     
 </div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $(".dataTable tr").each(function(){
+           var estado=$(this).find('td:last').text(); 
+           if(estado=="parcial") $(this).addClass("warning");
+           if(estado=="exterior") $(this).addClass("danger");
+           if(estado=="completo") $(this).addClass("success");
+           if(estado=="desconocido") $(this).addClass("danger");
+
+        });
+    });
+</script>
 
