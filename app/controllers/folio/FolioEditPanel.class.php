@@ -251,7 +251,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     	$cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
         $gid=$this->mctFolio->Folio->Id;
         $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
-	    error_log($strQuery);
+	    
         $objDatabase = QApplication::$Database[1];
 
 	    // Perform the Query
@@ -273,15 +273,17 @@ class FolioEditPanel extends FolioEditPanelGen {
             $nom->Parc = substr($nomencla,35,7);//7;
             $nom->InscripcionDominio = '';
             $nom->TitularRegPropiedad = '';
-            $nom->EstadoGeografico='completo';
+            $nom->EstadoGeografico='';
             $nom->DatoVerificadoRegPropiedad = false;
             $nom->Save();
             
-        }        
+        }
+        $this->actualizarEstadoNomenclaturas();        
 	    
 	 }
 
      protected function actualizarEstadoNomenclaturas(){
+         $objDatabase = QApplication::$Database[1];
          $id_folio=$this->mctFolio->Folio->Id;
          $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
          $objDatabase->NonQuery($strQuery);
