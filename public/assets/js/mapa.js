@@ -1,7 +1,11 @@
 var partidos=[];
+var map;
 function mostrarMapa(cod_partido,editar){
-
-	
+	var zoom=11;
+	if(!cod_partido){
+		cod_partido='all'; // toda la provincia
+		zoom=6;
+	}
 	cargarPartidos();
 
 	var container = L.DomUtil.get("map");
@@ -17,7 +21,7 @@ function mostrarMapa(cod_partido,editar){
      	
     	$("#MapaModal").modal();
 
-    	var map=  L.map("map");
+    	map=  L.map("map");
     	map.invalidateSize();
 
 	  	var mapquestOSM = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
@@ -28,7 +32,7 @@ function mostrarMapa(cod_partido,editar){
 	  	
 	  	map.addLayer(mapquestOSM);
 	  	
-	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), 11);
+	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), zoom);
 
 	  	// EDITOR
 
@@ -65,7 +69,7 @@ function mostrarMapa(cod_partido,editar){
 		});
 		map.addControl(drawControl);
 
-		if(editar){
+		if(editar && ($(".geometria_barrio").val()!=="")){
 	  		var geojson = Terraformer.WKT.parse($(".geometria_barrio").val());
 	  		var layer=L.geoJson(geojson);
 	  		
@@ -122,6 +126,7 @@ function mostrarMapa(cod_partido,editar){
 }
 
 function cargarPartidos(){
+			partidos['all']=[-58,-37];
 			partidos['055']=[-57.9531182610472,-34.9201559357356];
 			partidos['012']=[-60.4912431248804,-35.1152226313929];
 			partidos['018']=[-59.8236308180915,-34.376595866889];

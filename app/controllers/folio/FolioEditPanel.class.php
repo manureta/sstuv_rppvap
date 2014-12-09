@@ -36,6 +36,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstArchivosAdjuntosAsId' => false,
         'lstNomenclaturaAsId' => false,
     );
+    public $objPartido;
 
     
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -57,9 +58,15 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->metaControl_Create($strControlsArray);
         $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
+        // SI SE ELIJE PARTIDO QUE SE PONGA LA MATRICULA AUTOMATICAMENTE
+        $this->lstIdPartidoObject->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstPartido_Change'));
+
 
         $this->folioExistente=($this->mctFolio->Folio->CodFolio)? true: false;
         $partido_usuario="";
+
+        // SI ES UN FOLIO NUEVO
+
         if(!$this->folioExistente){
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
@@ -69,16 +76,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $this->lstIdPartidoObject->Text = $objPartido->__toString();
                 $this->lstIdPartidoObject->Enabled = false;            
                 
-                //calculo Matricula
-                $arrFoliosPartido=Folio::QueryArray(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,$partido_usuario));
-                $arrMatriculas = array();
-                foreach ($arrFoliosPartido as $folio) {
-                    array_push($arrMatriculas,intval($folio->Matricula));
-                }
-                $ultimo=max($arrMatriculas);
-                $nueva_matricula=str_pad($ultimo+1, 4, '0', STR_PAD_LEFT);
-                // seteo matricula
-                $this->txtMatricula->Text=$nueva_matricula;
+                $this->setearValorMatricula($partido_usuario);
                 
             }
             // Judicializado
@@ -284,10 +282,43 @@ class FolioEditPanel extends FolioEditPanelGen {
 
      protected function actualizarEstadoNomenclaturas(){
          $objDatabase = QApplication::$Database[1];
-         $id_folio=$this->mctFolio->Folio->Id;
-         $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
-         $objDatabase->NonQuery($strQuery);
+         $id_folio=$this->mctFolio->Folio->Id; 
+         try {             
+             $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
+             $objDatabase->NonQuery($strQuery);
+         } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>No se pudo actualizar la columna de los estados geograficos de las nomenclaturas del Folio.</p><p>Este error generalmente indica que no existe la funcion actualizar_estado_nomenclaturas en la base de datos.</p>"); 
+            error_log($e);
+         }
+         
      }
+
+     protected function setearValorMatricula($strCodPartido){
+        if($strCodPartido){
+            //calculo Matricula
+            $arrFoliosPartido=Folio::QueryArray(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,$strCodPartido));
+            $arrMatriculas = array();
+            foreach ($arrFoliosPartido as $folio) {
+                array_push($arrMatriculas,intval($folio->Matricula));
+            }
+            $ultimo=max($arrMatriculas);
+            error_log($ultimo);
+            $nueva_matricula=str_pad($ultimo+1, 4, '0', STR_PAD_LEFT);
+            // seteo matricula
+            $this->txtMatricula->Text=$nueva_matricula;
+        }
+        
+            
+     }
+
+       // Handle the changing of the listbox
+    public function lstPartido_Change($strFormId, $strControlId, $strParameter) {    
+        $idPartido=$this->lstIdPartidoObject->Value;
+        $this->objPartido=Partido::Load($idPartido);   
+        $strCodPartido=$this->objPartido->CodPartido;
+        $this->setearValorMatricula($strCodPartido);
+
+    }
 
 }
 ?>
