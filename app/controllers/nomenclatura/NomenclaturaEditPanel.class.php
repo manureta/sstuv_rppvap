@@ -100,5 +100,12 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         }
     }
 
+    public function actualizarEstadoNomenclaturas(){
+         $objDatabase = QApplication::$Database[1];
+         $id_folio=$this->mctNomenclatura->Nomenclatura->IdFolio;
+         $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
+         $objDatabase->NonQuery($strQuery);
+     }
+
 }
 ?>
