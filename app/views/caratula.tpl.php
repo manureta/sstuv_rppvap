@@ -2,7 +2,7 @@
 	<body>
 		<?php $this->RenderBegin(); ?>
 		
-		<?php include(__VIEW_DIR__."/hoja1/1.html"); ?>
+		<?php include(__VIEW_DIR__."/caratula/index.php"); ?>
 
 		<?php $this->RenderEnd(); ?>
 	</body>	
