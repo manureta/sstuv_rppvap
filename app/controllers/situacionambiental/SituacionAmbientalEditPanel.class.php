@@ -72,6 +72,7 @@ class SituacionAmbientalEditPanel extends SituacionAmbientalEditPanelGen {
             $this->objControlsArray['chkSobreSueloDegradado']->Name="Sobre suelo degradado";
         if (in_array('txtOtro',$strControlsArray)) 
             $this->objControlsArray['txtOtro'] = $this->mctSituacionAmbiental->txtOtro_Create();
+            $this->objControlsArray['txtOtro']->Name="Otra";
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

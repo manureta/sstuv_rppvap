@@ -4,12 +4,12 @@
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
                 <a aria-controls="wizard-p-0" href="/registro/folio/view/<?=$folio;?>" id="wizard-t-0">                    
-                    <span class="number">1.</span> Datos Generales
+                    <span class="number">1.</span> Datos Generales del barrio
                 </a>
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
                 <a aria-controls="wizard-p-1" href="#" id="wizard-t-1">                    
-                    <span class="number">2.</span> Nomenclatura Catastral
+                    <span class="number">2.</span> Nomenclatura Catastral y Dominio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
@@ -19,7 +19,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="/registro/regularizacion/folio/<?=$folio;?>">
-                    <span class="number">4.</span> Regularización
+                    <span class="number">4.</span> Integración socio-urbana
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
@@ -55,7 +55,7 @@
                       <span class="sr-only"></span>
                      <?php $_CONTROL->btnMapa->Render(); ?>
                     </div>
-                    <? } ?>
+                    <?php } ?>
                 </p> 
                 
     </div>
@@ -64,27 +64,4 @@
     
 </div>
 
-<script type="text/javascript">
-    /*
-    $( document ).ready(function() {
-        function setearEstilos(){
-            $(".dataTable tr").each(function(){
-                var estado=$(this).find('td:last').text(); 
-                if(estado=="parcial") $(this).addClass("warning");
-                if(estado=="exterior") $(this).addClass("danger");
-                if(estado=="completo") $(this).addClass("success");
-                if(estado=="desconocido") $(this).addClass("danger");
-
-            });    
-        }
-
-        $( document ).ajaxComplete(function() {
-            setearEstilos();
-        });
-
-        setearEstilos();
-        
-    });
-*/
-</script>
 

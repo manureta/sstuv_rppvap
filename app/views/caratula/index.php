@@ -153,17 +153,17 @@ body,td,th {
       </tr>
       <tr>
         <td colspan="15"><img name="caratulaform_r14_c1" src="assets/caratula/caratula-form_r14_c1.jpg" width="282" height="25" id="caratulaform_r14_c1" alt="" /></td>
-        <td colspan="2">nom</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(0,'circ'); ?></td>
         <td colspan="3"><img name="caratulaform_r14_c18" src="assets/caratula/caratula-form_r14_c18.jpg" width="35" height="25" id="caratulaform_r14_c18" alt="" /></td>
-        <td colspan="3">nom</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(0,'secc'); ?></td>
         <td colspan="3"><img name="caratulaform_r14_c24" src="assets/caratula/caratula-form_r14_c24.jpg" width="80" height="25" id="caratulaform_r14_c24" alt="" /></td>
-        <td colspan="3">nom</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(0,'chac_quinta'); ?></td>
         <td colspan="3"><img name="caratulaform_r14_c30" src="assets/caratula/caratula-form_r14_c30.jpg" width="33" height="25" id="caratulaform_r14_c30" alt="" /></td>
-        <td colspan="2">nom</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(0,'frac'); ?></td>
         <td colspan="2"><img name="caratulaform_r14_c35" src="assets/caratula/caratula-form_r14_c35.jpg" width="37" height="25" id="caratulaform_r14_c35" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(0,'mza'); ?></td>
         <td colspan="4"><img name="caratulaform_r14_c38" src="assets/caratula/caratula-form_r14_c38.jpg" width="35" height="25" id="caratulaform_r14_c38" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(0,'parc'); ?></td>
         <td colspan="4"><img name="caratulaform_r14_c43" src="assets/caratula/caratula-form_r14_c43.jpg" width="40" height="25" id="caratulaform_r14_c43" alt="" /></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="25" alt="" /></td>
       </tr>
@@ -173,7 +173,7 @@ body,td,th {
       </tr>
       <tr>
         <td colspan="12"><img name="caratulaform_r16_c1" src="assets/caratula/caratula-form_r16_c1.jpg" width="262" height="32" id="caratulaform_r16_c1" alt="" /></td>
-        <td colspan="30">nom</td>
+        <td colspan="30">tit</td>
         <td colspan="4"><img name="caratulaform_r16_c43" src="assets/caratula/caratula-form_r16_c43.jpg" width="40" height="32" id="caratulaform_r16_c43" alt="" /></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="32" alt="" /></td>
       </tr>
@@ -183,17 +183,17 @@ body,td,th {
       </tr>
       <tr>
         <td colspan="15"><img name="caratulaform_r18_c1" src="assets/caratula/caratula-form_r18_c1.jpg" width="282" height="25" id="caratulaform_r18_c1" alt="" /></td>
-        <td colspan="2">nom</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(1,'circ'); ?></td>
         <td colspan="3"><img name="caratulaform_r18_c18" src="assets/caratula/caratula-form_r18_c18.jpg" width="35" height="25" id="caratulaform_r18_c18" alt="" /></td>
-        <td colspan="3">&nbsp;</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(1,'secc'); ?></td>
         <td colspan="3"><img name="caratulaform_r18_c24" src="assets/caratula/caratula-form_r18_c24.jpg" width="80" height="25" id="caratulaform_r18_c24" alt="" /></td>
-        <td colspan="3">&nbsp;</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(1,'chac_quinta'); ?></td>
         <td colspan="3"><img name="caratulaform_r18_c30" src="assets/caratula/caratula-form_r18_c30.jpg" width="33" height="25" id="caratulaform_r18_c30" alt="" /></td>
-        <td colspan="2">&nbsp;</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(1,'frac'); ?></td>
         <td colspan="2"><img name="caratulaform_r18_c35" src="assets/caratula/caratula-form_r18_c35.jpg" width="37" height="25" id="caratulaform_r18_c35" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(1,'mza'); ?></td>
         <td colspan="4"><img name="caratulaform_r18_c38" src="assets/caratula/caratula-form_r18_c38.jpg" width="35" height="25" id="caratulaform_r18_c38" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(1,'parc'); ?></td>
         <td colspan="4"><img name="caratulaform_r18_c43" src="assets/caratula/caratula-form_r18_c43.jpg" width="40" height="25" id="caratulaform_r18_c43" alt="" /></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="25" alt="" /></td>
       </tr>
@@ -214,17 +214,17 @@ body,td,th {
       </tr>
       <tr>
         <td colspan="15"><img name="caratulaform_r22_c1" src="assets/caratula/caratula-form_r22_c1.jpg" width="282" height="24" id="caratulaform_r22_c1" alt="" /></td>
-        <td colspan="2">nom</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(2,'circ'); ?></td>
         <td colspan="3"><img name="caratulaform_r22_c18" src="assets/caratula/caratula-form_r22_c18.jpg" width="35" height="24" id="caratulaform_r22_c18" alt="" /></td>
-        <td colspan="3">&nbsp;</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(2,'secc'); ?></td>
         <td colspan="3"><img name="caratulaform_r22_c24" src="assets/caratula/caratula-form_r22_c24.jpg" width="80" height="24" id="caratulaform_r22_c24" alt="" /></td>
-        <td colspan="3">&nbsp;</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(2,'chac_quinta'); ?></td>
         <td colspan="3"><img name="caratulaform_r22_c30" src="assets/caratula/caratula-form_r22_c30.jpg" width="33" height="24" id="caratulaform_r22_c30" alt="" /></td>
-        <td colspan="2">&nbsp;</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(2,'frac'); ?></td>
         <td colspan="2"><img name="caratulaform_r22_c35" src="assets/caratula/caratula-form_r22_c35.jpg" width="37" height="24" id="caratulaform_r22_c35" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(2,'mza'); ?></td>
         <td colspan="4"><img name="caratulaform_r22_c38" src="assets/caratula/caratula-form_r22_c38.jpg" width="35" height="24" id="caratulaform_r22_c38" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(2,'parc'); ?></td>
         <td colspan="4"><img name="caratulaform_r22_c43" src="assets/caratula/caratula-form_r22_c43.jpg" width="40" height="24" id="caratulaform_r22_c43" alt="" /></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="24" alt="" /></td>
       </tr>
@@ -245,17 +245,17 @@ body,td,th {
       <tr>
         <td colspan="14"><img name="caratulaform_r26_c1" src="assets/caratula/caratula-form_r26_c1.jpg" width="281" height="25" id="caratulaform_r26_c1" alt="" /></td>
         <td><img name="caratulaform_r26_c15" src="assets/caratula/caratula-form_r26_c15.jpg" width="1" height="25" id="caratulaform_r26_c15" alt="" /></td>
-        <td colspan="2">nom</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(3,'circ'); ?></td>
         <td colspan="3"><img name="caratulaform_r26_c18" src="assets/caratula/caratula-form_r26_c18.jpg" width="35" height="25" id="caratulaform_r26_c18" alt="" /></td>
-        <td colspan="3">&nbsp;</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(3,'secc'); ?></td>
         <td colspan="3"><img name="caratulaform_r26_c24" src="assets/caratula/caratula-form_r26_c24.jpg" width="80" height="25" id="caratulaform_r26_c24" alt="" /></td>
-        <td colspan="3">&nbsp;</td>
+        <td colspan="3"><?php echo $this->limpiar_ceros(3,'chac_quinta'); ?></td>
         <td colspan="3"><img name="caratulaform_r26_c30" src="assets/caratula/caratula-form_r26_c30.jpg" width="33" height="25" id="caratulaform_r26_c30" alt="" /></td>
-        <td colspan="2">&nbsp;</td>
+        <td colspan="2"><?php echo $this->limpiar_ceros(3,'frac'); ?></td>
         <td colspan="2"><img name="caratulaform_r26_c35" src="assets/caratula/caratula-form_r26_c35.jpg" width="37" height="25" id="caratulaform_r26_c35" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(3,'mza'); ?></td>
         <td colspan="4"><img name="caratulaform_r26_c38" src="assets/caratula/caratula-form_r26_c38.jpg" width="35" height="25" id="caratulaform_r26_c38" alt="" /></td>
-        <td>&nbsp;</td>
+        <td><?php echo $this->limpiar_ceros(3,'parc'); ?></td>
         <td colspan="4"><img name="caratulaform_r26_c43" src="assets/caratula/caratula-form_r26_c43.jpg" width="40" height="25" id="caratulaform_r26_c43" alt="" /></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="25" alt="" /></td>
       </tr>

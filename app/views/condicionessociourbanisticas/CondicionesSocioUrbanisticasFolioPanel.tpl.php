@@ -5,12 +5,12 @@
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
                 <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>">
                     <span class="current-info audible">current step: </span>
-                    <span class="number">1.</span> Datos Generales
+                    <span class="number">1.</span> Datos Generales del barrio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true" aria-selected="false">
                 <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">                    
-                    <span class="number">2.</span> Nomenclatura Catastral
+                    <span class="number">2.</span> Nomenclatura Catastral y Dominio
                 </a>
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
@@ -20,7 +20,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/regularizacion/folio/<?=$folio;?>">
-                    <span class="number">4.</span> Regularización
+                    <span class="number">4.</span> Integración socio-urbana
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
@@ -30,22 +30,13 @@
             </li>
         </ul>
     </div>
-    
-     <div class="titulos"><i class="icon-chevron-right"> Condiciones</i></div>  
-    <div>                
-                <div class="well bs-component">                               				                        
-                        <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
-                        <?php $_CONTROL->chkEspacioLibreComun->RenderWithName(); ?>
-                        <?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
-                        <?php $_CONTROL->txtNombreRefernte->RenderWithName(); ?>
-                        <?php $_CONTROL->txtTelefonoReferente->RenderWithName(); ?>
-                </div>
-    </div>
+        
 
-    <div class="titulos"><i class="icon-chevron-right"> Equipamiento</i></div> 
+    <div class="titulos"><i class="icon-chevron-right"> Espacios públicos y equipamientos comunitarios</i></div> 
     <div>
                     <div class="well bs-component">                            
                         <?php $_CONTROL->pnlEquipamiento->lstIdFolioObject->RenderWithName(); ?>
+                        <?php $_CONTROL->chkEspacioLibreComun->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstUnidadSanitariaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstJardinInfantesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstEscuelaPrimariaObject->RenderWithName(); ?>
@@ -105,6 +96,15 @@
 
 
 				</div>                
+    </div>
+    <div class="titulos"><i class="icon-chevron-right"> Organizaciones Sociales</i></div>  
+    <div>                
+                <div class="well bs-component">                                                                     
+                        <?php //$_CONTROL->lstIdFolioObject->RenderWithName(); ?>                        
+                        <?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
+                        <?php $_CONTROL->txtNombreRefernte->RenderWithName(); ?>
+                        <?php $_CONTROL->txtTelefonoReferente->RenderWithName(); ?>
+                </div>
     </div>
 </div>
 

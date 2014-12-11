@@ -55,8 +55,10 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
             $this->objControlsArray['chkMunicipal'] = $this->mctOrganismosDeIntervencion->chkMunicipal_Create();
         if (in_array('calFechaIntervencion',$strControlsArray)) 
             $this->objControlsArray['calFechaIntervencion'] = $this->mctOrganismosDeIntervencion->calFechaIntervencion_Create();
+            $this->objControlsArray['calFechaIntervencion']->Name="Fecha de intervención";
         if (in_array('txtProgramas',$strControlsArray)) 
             $this->objControlsArray['txtProgramas'] = $this->mctOrganismosDeIntervencion->txtProgramas_Create();
+            $this->objControlsArray['txtProgramas']->Name="A través de que programas";
         if (in_array('txtObservaciones',$strControlsArray)) 
             $this->objControlsArray['txtObservaciones'] = $this->mctOrganismosDeIntervencion->txtObservaciones_Create();
 

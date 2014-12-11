@@ -59,7 +59,8 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
-        $this->lstIdFolioObject->Enabled = false;        
+        $this->lstIdFolioObject->Enabled = false;  
+        $this->lstIdFolioObject->Visible = false;       
 
         $this->objEquipamiento=Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,QApplication::QueryString("id")));                        
         $this->pnlEquipamiento = new EquipamientoEditPanel($this,EquipamientoEditPanel::$strControlsArray,$this->objEquipamiento->Id);
@@ -108,10 +109,10 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
             $this->objControlsArray['lstIdFolioObject'] = $this->mctCondicionesSocioUrbanisticas->lstIdFolioObject_Create();
         if (in_array('chkEspacioLibreComun',$strControlsArray)) 
             $this->objControlsArray['chkEspacioLibreComun'] = $this->mctCondicionesSocioUrbanisticas->chkEspacioLibreComun_Create();
-            $this->objControlsArray['chkEspacioLibreComun']->Name="Espacio libre común";
+            $this->objControlsArray['chkEspacioLibreComun']->Name="SUM y/o SIC";
         if (in_array('txtPresenciaOrgSociales',$strControlsArray)) 
             $this->objControlsArray['txtPresenciaOrgSociales'] = $this->mctCondicionesSocioUrbanisticas->txtPresenciaOrgSociales_Create();
-            $this->objControlsArray['txtPresenciaOrgSociales']->Name="Presencia de organismos sociales";
+            $this->objControlsArray['txtPresenciaOrgSociales']->Name="Nombre de la organización social";
         if (in_array('txtNombreRefernte',$strControlsArray)) 
             $this->objControlsArray['txtNombreRefernte'] = $this->mctCondicionesSocioUrbanisticas->txtNombreRefernte_Create();
             $this->objControlsArray['txtNombreRefernte']->Name="Nombre del referente";

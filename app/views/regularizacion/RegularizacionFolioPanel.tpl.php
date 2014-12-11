@@ -5,12 +5,12 @@
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
                 <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>" id="wizard-t-0">
                     <span class="current-info audible">current step: </span>
-                    <span class="number">1.</span> Datos Generales
+                    <span class="number">1.</span> Datos Generales del barrio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true" aria-selected="false">
                 <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>" id="wizard-t-1">                    
-                    <span class="number">2.</span> Nomenclatura Catastral
+                    <span class="number">2.</span> Nomenclatura Catastral y Dominio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="false">
@@ -20,7 +20,7 @@
             </li>
             <li role="tab" class="current" aria-selected="true">
                 <a aria-controls="wizard-p-3" href="#" id="wizard-t-3">
-                    <span class="number">4.</span> Regularización
+                    <span class="number">4.</span> Integración socio-urbana
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
@@ -31,7 +31,7 @@
         </ul>
     </div>
     
-    <div class="titulos"><i class="icon-chevron-right"> Regularización</i></div>  
+    <div class="titulos"><i class="icon-chevron-right"> Regularización Dominial</i></div>  
     <div>
                 
             <div class="well bs-component">           				        
@@ -52,6 +52,7 @@
                         <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
+                        <p>* ley 14449</p>
 		                    
 		        	</div>    
     			</div>        
@@ -61,7 +62,7 @@
 
     
  
-    <div class="titulos"><i class="icon-chevron-right">Antecedentes</i></div>    
+    <div class="titulos"><i class="icon-chevron-right">Antecedentes de intervención en materia</i></div>    
     <div> 
                 <div class="well bs-component">     
                         
