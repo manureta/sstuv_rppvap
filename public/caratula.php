@@ -40,19 +40,22 @@ public function limpiar_ceros($intInd,$strTipo){
         case 'secc':
             $valor=strtoupper(ltrim($nom->Secc,'0'));
             break;
-        case 'chac_quinta':
+        case 'chac':
             $c=substr($nom->ChacQuinta, 0,7);
             $cn=substr($c, 0,4);
             $cl=substr($c, 4,3);
             $chacra=ltrim($cn,'0').ltrim($cl,'0');
 
+            $valor=$chacra;
+            break;
+        case 'quinta':            
             $q=substr($nom->ChacQuinta, 7,7);
             $qn=substr($q, 0,4);
             $ql=substr($q, 4,3);
             $quinta=ltrim($qn,'0').ltrim($ql,'0');
             
-            $valor=$chacra.$quinta;
-            break;    
+            $valor=$quinta;
+            break;        
         case 'frac':
             $fn=substr($nom->Frac, 0,4);
             $fl=substr($nom->Frac, 4,3);
