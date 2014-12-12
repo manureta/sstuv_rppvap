@@ -52,6 +52,8 @@
      * property-read QLabel $JudicializadoLabel
      * property QTextBox $LocalidadControl
      * property-read QLabel $LocalidadLabel
+     * property QTextBox $ReparticionPublicaControl
+     * property-read QLabel $ReparticionPublicaLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -92,6 +94,7 @@
         protected $txtGeom;
         protected $txtJudicializado;
         protected $txtLocalidad;
+        protected $txtReparticionPublica;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -111,6 +114,7 @@
         protected $lblGeom;
         protected $lblJudicializado;
         protected $lblLocalidad;
+        protected $lblReparticionPublica;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -688,6 +692,31 @@
         }
 
         /**
+         * Create and setup QTextBox txtReparticionPublica
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtReparticionPublica_Create($strControlId = null) {
+            $this->txtReparticionPublica = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtReparticionPublica->Name = QApplication::Translate('ReparticionPublica');
+            $this->txtReparticionPublica->Text = $this->objFolio->ReparticionPublica;
+            
+            return $this->txtReparticionPublica;
+        }
+
+        /**
+         * Create and setup QLabel lblReparticionPublica
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblReparticionPublica_Create($strControlId = null) {
+            $this->lblReparticionPublica = new QLabel($this->objParentObject, $strControlId);
+            $this->lblReparticionPublica->Name = QApplication::Translate('ReparticionPublica');
+            $this->lblReparticionPublica->Text = $this->objFolio->ReparticionPublica;
+            return $this->lblReparticionPublica;
+        }
+
+        /**
          * Create and setup QListBox lstCondicionesSocioUrbanisticasAsId ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -961,6 +990,9 @@
             if ($this->txtLocalidad) $this->txtLocalidad->Text = $this->objFolio->Localidad;
             if ($this->lblLocalidad) $this->lblLocalidad->Text = $this->objFolio->Localidad;
 
+            if ($this->txtReparticionPublica) $this->txtReparticionPublica->Text = $this->objFolio->ReparticionPublica;
+            if ($this->lblReparticionPublica) $this->lblReparticionPublica->Text = $this->objFolio->ReparticionPublica;
+
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
                 $this->lstCondicionesSocioUrbanisticasAsId->AddItem(QApplication::Translate('- Select One -'), null);
@@ -1045,6 +1077,7 @@
                 if ($this->txtGeom) $this->objFolio->Geom = $this->txtGeom->Text;
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
                 if ($this->txtLocalidad) $this->objFolio->Localidad = $this->txtLocalidad->Text;
+                if ($this->txtReparticionPublica) $this->objFolio->ReparticionPublica = $this->txtReparticionPublica->Text;
 
 
         }
@@ -1212,6 +1245,12 @@
                 case 'LocalidadLabel':
                     if (!$this->lblLocalidad) return $this->lblLocalidad_Create();
                     return $this->lblLocalidad;
+                case 'ReparticionPublicaControl':
+                    if (!$this->txtReparticionPublica) return $this->txtReparticionPublica_Create();
+                    return $this->txtReparticionPublica;
+                case 'ReparticionPublicaLabel':
+                    if (!$this->lblReparticionPublica) return $this->lblReparticionPublica_Create();
+                    return $this->lblReparticionPublica;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1288,6 +1327,8 @@
                         return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
                     case 'LocalidadControl':
                         return ($this->txtLocalidad = QType::Cast($mixValue, 'QControl'));
+                    case 'ReparticionPublicaControl':
+                        return ($this->txtReparticionPublica = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

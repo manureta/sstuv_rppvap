@@ -25,7 +25,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">
-                    <span class="number">-</span> Uso Interno
+                    <span class="number">5.</span> Uso Interno
                 </a>
             </li>
         </ul>
@@ -48,11 +48,12 @@
                         <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkLey24374->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkDecreto81588->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>                        
                         <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkLey14449->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
-                        <p>* ley 14449</p>
+                       
 		                    
 		        	</div>    
     			</div>        

@@ -6,10 +6,14 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intId;
 
-    
-
-
-    
+    protected function buttons_Create($blnDelete = true) {
+        parent::buttons_Create($blnDelete);
+        if ($blnDelete) {
+            $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Nomenclatura::GenderMale() ? 'e' : 'a'), Nomenclatura::Noun())));
+            $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
+            $this->btnDelete->Visible = $this->mctNomenclatura->EditMode;
+        }
+    }
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {

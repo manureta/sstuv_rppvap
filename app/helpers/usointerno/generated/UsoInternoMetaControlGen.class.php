@@ -34,14 +34,28 @@
      * property-read QLabel $RegularizacionTienePlanoLabel
      * property QCheckBox $RegularizacionCircular10CatastroControl
      * property-read QLabel $RegularizacionCircular10CatastroLabel
-     * property QIntegerTextBox $RegularizacionAprobacionGeodesiaControl
-     * property-read QLabel $RegularizacionAprobacionGeodesiaLabel
-     * property QIntegerTextBox $RegularizacionRegistracionControl
-     * property-read QLabel $RegularizacionRegistracionLabel
      * property QIntegerTextBox $RegularizacionEstadoProcesoControl
      * property-read QLabel $RegularizacionEstadoProcesoLabel
      * property QTextBox $NumExpedienteControl
      * property-read QLabel $NumExpedienteLabel
+     * property QTextBox $RegistracionLegajoControl
+     * property-read QLabel $RegistracionLegajoLabel
+     * property QTextBox $RegistracionFechaControl
+     * property-read QLabel $RegistracionFechaLabel
+     * property QTextBox $RegistracionFolioControl
+     * property-read QLabel $RegistracionFolioLabel
+     * property QTextBox $GeodesiaNumControl
+     * property-read QLabel $GeodesiaNumLabel
+     * property QTextBox $GeodesiaAnioControl
+     * property-read QLabel $GeodesiaAnioLabel
+     * property QCheckBox $Ley14449Control
+     * property-read QLabel $Ley14449Label
+     * property QCheckBox $TieneCensoControl
+     * property-read QLabel $TieneCensoLabel
+     * property QTextBox $FechaCensoControl
+     * property-read QLabel $FechaCensoLabel
+     * property QTextBox $GeodesiaPartidoControl
+     * property-read QLabel $GeodesiaPartidoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -67,10 +81,17 @@
         protected $calRegularizacionFechaInicio;
         protected $chkRegularizacionTienePlano;
         protected $chkRegularizacionCircular10Catastro;
-        protected $txtRegularizacionAprobacionGeodesia;
-        protected $txtRegularizacionRegistracion;
         protected $txtRegularizacionEstadoProceso;
         protected $txtNumExpediente;
+        protected $txtRegistracionLegajo;
+        protected $txtRegistracionFecha;
+        protected $txtRegistracionFolio;
+        protected $txtGeodesiaNum;
+        protected $txtGeodesiaAnio;
+        protected $chkLey14449;
+        protected $chkTieneCenso;
+        protected $txtFechaCenso;
+        protected $txtGeodesiaPartido;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -82,10 +103,17 @@
         protected $lblRegularizacionFechaInicio;
         protected $lblRegularizacionTienePlano;
         protected $lblRegularizacionCircular10Catastro;
-        protected $lblRegularizacionAprobacionGeodesia;
-        protected $lblRegularizacionRegistracion;
         protected $lblRegularizacionEstadoProceso;
         protected $lblNumExpediente;
+        protected $lblRegistracionLegajo;
+        protected $lblRegistracionFecha;
+        protected $lblRegistracionFolio;
+        protected $lblGeodesiaNum;
+        protected $lblGeodesiaAnio;
+        protected $lblLey14449;
+        protected $lblTieneCenso;
+        protected $lblFechaCenso;
+        protected $lblGeodesiaPartido;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -419,62 +447,6 @@
         }
 
         /**
-         * Create and setup QIntegerTextBox txtRegularizacionAprobacionGeodesia
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtRegularizacionAprobacionGeodesia_Create($strControlId = null) {
-            $this->txtRegularizacionAprobacionGeodesia = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesia');
-            $this->txtRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-                        $this->txtRegularizacionAprobacionGeodesia->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegularizacionAprobacionGeodesia->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegularizacionAprobacionGeodesia;
-        }
-
-        /**
-         * Create and setup QLabel lblRegularizacionAprobacionGeodesia
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblRegularizacionAprobacionGeodesia_Create($strControlId = null, $strFormat = null) {
-            $this->lblRegularizacionAprobacionGeodesia = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesia');
-            $this->lblRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-            $this->lblRegularizacionAprobacionGeodesia->Format = $strFormat;
-            return $this->lblRegularizacionAprobacionGeodesia;
-        }
-
-        /**
-         * Create and setup QIntegerTextBox txtRegularizacionRegistracion
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtRegularizacionRegistracion_Create($strControlId = null) {
-            $this->txtRegularizacionRegistracion = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegularizacionRegistracion->Name = QApplication::Translate('RegularizacionRegistracion');
-            $this->txtRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-                        $this->txtRegularizacionRegistracion->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegularizacionRegistracion->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegularizacionRegistracion;
-        }
-
-        /**
-         * Create and setup QLabel lblRegularizacionRegistracion
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblRegularizacionRegistracion_Create($strControlId = null, $strFormat = null) {
-            $this->lblRegularizacionRegistracion = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionRegistracion->Name = QApplication::Translate('RegularizacionRegistracion');
-            $this->lblRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-            $this->lblRegularizacionRegistracion->Format = $strFormat;
-            return $this->lblRegularizacionRegistracion;
-        }
-
-        /**
          * Create and setup QIntegerTextBox txtRegularizacionEstadoProceso
          * @param string $strControlId optional ControlId to use
          * @return QIntegerTextBox
@@ -527,6 +499,230 @@
             return $this->lblNumExpediente;
         }
 
+        /**
+         * Create and setup QTextBox txtRegistracionLegajo
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtRegistracionLegajo_Create($strControlId = null) {
+            $this->txtRegistracionLegajo = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtRegistracionLegajo->Name = QApplication::Translate('RegistracionLegajo');
+            $this->txtRegistracionLegajo->Text = $this->objUsoInterno->RegistracionLegajo;
+            
+            return $this->txtRegistracionLegajo;
+        }
+
+        /**
+         * Create and setup QLabel lblRegistracionLegajo
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblRegistracionLegajo_Create($strControlId = null) {
+            $this->lblRegistracionLegajo = new QLabel($this->objParentObject, $strControlId);
+            $this->lblRegistracionLegajo->Name = QApplication::Translate('RegistracionLegajo');
+            $this->lblRegistracionLegajo->Text = $this->objUsoInterno->RegistracionLegajo;
+            return $this->lblRegistracionLegajo;
+        }
+
+        /**
+         * Create and setup QTextBox txtRegistracionFecha
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtRegistracionFecha_Create($strControlId = null) {
+            $this->txtRegistracionFecha = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtRegistracionFecha->Name = QApplication::Translate('RegistracionFecha');
+            $this->txtRegistracionFecha->Text = $this->objUsoInterno->RegistracionFecha;
+            
+            return $this->txtRegistracionFecha;
+        }
+
+        /**
+         * Create and setup QLabel lblRegistracionFecha
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblRegistracionFecha_Create($strControlId = null) {
+            $this->lblRegistracionFecha = new QLabel($this->objParentObject, $strControlId);
+            $this->lblRegistracionFecha->Name = QApplication::Translate('RegistracionFecha');
+            $this->lblRegistracionFecha->Text = $this->objUsoInterno->RegistracionFecha;
+            return $this->lblRegistracionFecha;
+        }
+
+        /**
+         * Create and setup QTextBox txtRegistracionFolio
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtRegistracionFolio_Create($strControlId = null) {
+            $this->txtRegistracionFolio = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtRegistracionFolio->Name = QApplication::Translate('RegistracionFolio');
+            $this->txtRegistracionFolio->Text = $this->objUsoInterno->RegistracionFolio;
+            
+            return $this->txtRegistracionFolio;
+        }
+
+        /**
+         * Create and setup QLabel lblRegistracionFolio
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblRegistracionFolio_Create($strControlId = null) {
+            $this->lblRegistracionFolio = new QLabel($this->objParentObject, $strControlId);
+            $this->lblRegistracionFolio->Name = QApplication::Translate('RegistracionFolio');
+            $this->lblRegistracionFolio->Text = $this->objUsoInterno->RegistracionFolio;
+            return $this->lblRegistracionFolio;
+        }
+
+        /**
+         * Create and setup QTextBox txtGeodesiaNum
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtGeodesiaNum_Create($strControlId = null) {
+            $this->txtGeodesiaNum = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtGeodesiaNum->Name = QApplication::Translate('GeodesiaNum');
+            $this->txtGeodesiaNum->Text = $this->objUsoInterno->GeodesiaNum;
+            
+            return $this->txtGeodesiaNum;
+        }
+
+        /**
+         * Create and setup QLabel lblGeodesiaNum
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblGeodesiaNum_Create($strControlId = null) {
+            $this->lblGeodesiaNum = new QLabel($this->objParentObject, $strControlId);
+            $this->lblGeodesiaNum->Name = QApplication::Translate('GeodesiaNum');
+            $this->lblGeodesiaNum->Text = $this->objUsoInterno->GeodesiaNum;
+            return $this->lblGeodesiaNum;
+        }
+
+        /**
+         * Create and setup QTextBox txtGeodesiaAnio
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtGeodesiaAnio_Create($strControlId = null) {
+            $this->txtGeodesiaAnio = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtGeodesiaAnio->Name = QApplication::Translate('GeodesiaAnio');
+            $this->txtGeodesiaAnio->Text = $this->objUsoInterno->GeodesiaAnio;
+            
+            return $this->txtGeodesiaAnio;
+        }
+
+        /**
+         * Create and setup QLabel lblGeodesiaAnio
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblGeodesiaAnio_Create($strControlId = null) {
+            $this->lblGeodesiaAnio = new QLabel($this->objParentObject, $strControlId);
+            $this->lblGeodesiaAnio->Name = QApplication::Translate('GeodesiaAnio');
+            $this->lblGeodesiaAnio->Text = $this->objUsoInterno->GeodesiaAnio;
+            return $this->lblGeodesiaAnio;
+        }
+
+        /**
+         * Create and setup QCheckBox chkLey14449
+         * @param string $strControlId optional ControlId to use
+         * @return QCheckBox
+         */
+        public function chkLey14449_Create($strControlId = null) {
+            $this->chkLey14449 = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkLey14449->Name = QApplication::Translate('Ley14449');
+            $this->chkLey14449->Checked = $this->objUsoInterno->Ley14449;
+                        return $this->chkLey14449;
+        }
+
+        /**
+         * Create and setup QLabel lblLey14449
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblLey14449_Create($strControlId = null) {
+            $this->lblLey14449 = new QLabel($this->objParentObject, $strControlId);
+            $this->lblLey14449->Name = QApplication::Translate('Ley14449');
+            $this->lblLey14449->Text = ($this->objUsoInterno->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            return $this->lblLey14449;
+        }
+
+        /**
+         * Create and setup QCheckBox chkTieneCenso
+         * @param string $strControlId optional ControlId to use
+         * @return QCheckBox
+         */
+        public function chkTieneCenso_Create($strControlId = null) {
+            $this->chkTieneCenso = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkTieneCenso->Name = QApplication::Translate('TieneCenso');
+            $this->chkTieneCenso->Checked = $this->objUsoInterno->TieneCenso;
+                        return $this->chkTieneCenso;
+        }
+
+        /**
+         * Create and setup QLabel lblTieneCenso
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblTieneCenso_Create($strControlId = null) {
+            $this->lblTieneCenso = new QLabel($this->objParentObject, $strControlId);
+            $this->lblTieneCenso->Name = QApplication::Translate('TieneCenso');
+            $this->lblTieneCenso->Text = ($this->objUsoInterno->TieneCenso) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            return $this->lblTieneCenso;
+        }
+
+        /**
+         * Create and setup QTextBox txtFechaCenso
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtFechaCenso_Create($strControlId = null) {
+            $this->txtFechaCenso = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtFechaCenso->Name = QApplication::Translate('FechaCenso');
+            $this->txtFechaCenso->Text = $this->objUsoInterno->FechaCenso;
+            
+            return $this->txtFechaCenso;
+        }
+
+        /**
+         * Create and setup QLabel lblFechaCenso
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblFechaCenso_Create($strControlId = null) {
+            $this->lblFechaCenso = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFechaCenso->Name = QApplication::Translate('FechaCenso');
+            $this->lblFechaCenso->Text = $this->objUsoInterno->FechaCenso;
+            return $this->lblFechaCenso;
+        }
+
+        /**
+         * Create and setup QTextBox txtGeodesiaPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtGeodesiaPartido_Create($strControlId = null) {
+            $this->txtGeodesiaPartido = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtGeodesiaPartido->Name = QApplication::Translate('GeodesiaPartido');
+            $this->txtGeodesiaPartido->Text = $this->objUsoInterno->GeodesiaPartido;
+            $this->txtGeodesiaPartido->MaxLength = UsoInterno::GeodesiaPartidoMaxLength;
+            
+            return $this->txtGeodesiaPartido;
+        }
+
+        /**
+         * Create and setup QLabel lblGeodesiaPartido
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblGeodesiaPartido_Create($strControlId = null) {
+            $this->lblGeodesiaPartido = new QLabel($this->objParentObject, $strControlId);
+            $this->lblGeodesiaPartido->Name = QApplication::Translate('GeodesiaPartido');
+            $this->lblGeodesiaPartido->Text = $this->objUsoInterno->GeodesiaPartido;
+            return $this->lblGeodesiaPartido;
+        }
+
 
 
 
@@ -572,17 +768,38 @@
             if ($this->chkRegularizacionCircular10Catastro) $this->chkRegularizacionCircular10Catastro->Checked = $this->objUsoInterno->RegularizacionCircular10Catastro;
             if ($this->lblRegularizacionCircular10Catastro) $this->lblRegularizacionCircular10Catastro->Text = ($this->objUsoInterno->RegularizacionCircular10Catastro) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
-            if ($this->txtRegularizacionAprobacionGeodesia) $this->txtRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-            if ($this->lblRegularizacionAprobacionGeodesia) $this->lblRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-
-            if ($this->txtRegularizacionRegistracion) $this->txtRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-            if ($this->lblRegularizacionRegistracion) $this->lblRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-
             if ($this->txtRegularizacionEstadoProceso) $this->txtRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
             if ($this->lblRegularizacionEstadoProceso) $this->lblRegularizacionEstadoProceso->Text = $this->objUsoInterno->RegularizacionEstadoProceso;
 
             if ($this->txtNumExpediente) $this->txtNumExpediente->Text = $this->objUsoInterno->NumExpediente;
             if ($this->lblNumExpediente) $this->lblNumExpediente->Text = $this->objUsoInterno->NumExpediente;
+
+            if ($this->txtRegistracionLegajo) $this->txtRegistracionLegajo->Text = $this->objUsoInterno->RegistracionLegajo;
+            if ($this->lblRegistracionLegajo) $this->lblRegistracionLegajo->Text = $this->objUsoInterno->RegistracionLegajo;
+
+            if ($this->txtRegistracionFecha) $this->txtRegistracionFecha->Text = $this->objUsoInterno->RegistracionFecha;
+            if ($this->lblRegistracionFecha) $this->lblRegistracionFecha->Text = $this->objUsoInterno->RegistracionFecha;
+
+            if ($this->txtRegistracionFolio) $this->txtRegistracionFolio->Text = $this->objUsoInterno->RegistracionFolio;
+            if ($this->lblRegistracionFolio) $this->lblRegistracionFolio->Text = $this->objUsoInterno->RegistracionFolio;
+
+            if ($this->txtGeodesiaNum) $this->txtGeodesiaNum->Text = $this->objUsoInterno->GeodesiaNum;
+            if ($this->lblGeodesiaNum) $this->lblGeodesiaNum->Text = $this->objUsoInterno->GeodesiaNum;
+
+            if ($this->txtGeodesiaAnio) $this->txtGeodesiaAnio->Text = $this->objUsoInterno->GeodesiaAnio;
+            if ($this->lblGeodesiaAnio) $this->lblGeodesiaAnio->Text = $this->objUsoInterno->GeodesiaAnio;
+
+            if ($this->chkLey14449) $this->chkLey14449->Checked = $this->objUsoInterno->Ley14449;
+            if ($this->lblLey14449) $this->lblLey14449->Text = ($this->objUsoInterno->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+
+            if ($this->chkTieneCenso) $this->chkTieneCenso->Checked = $this->objUsoInterno->TieneCenso;
+            if ($this->lblTieneCenso) $this->lblTieneCenso->Text = ($this->objUsoInterno->TieneCenso) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+
+            if ($this->txtFechaCenso) $this->txtFechaCenso->Text = $this->objUsoInterno->FechaCenso;
+            if ($this->lblFechaCenso) $this->lblFechaCenso->Text = $this->objUsoInterno->FechaCenso;
+
+            if ($this->txtGeodesiaPartido) $this->txtGeodesiaPartido->Text = $this->objUsoInterno->GeodesiaPartido;
+            if ($this->lblGeodesiaPartido) $this->lblGeodesiaPartido->Text = $this->objUsoInterno->GeodesiaPartido;
 
         }
 
@@ -611,10 +828,17 @@
                 if ($this->calRegularizacionFechaInicio) $this->objUsoInterno->RegularizacionFechaInicio = $this->calRegularizacionFechaInicio->DateTime;
                 if ($this->chkRegularizacionTienePlano) $this->objUsoInterno->RegularizacionTienePlano = $this->chkRegularizacionTienePlano->Checked;
                 if ($this->chkRegularizacionCircular10Catastro) $this->objUsoInterno->RegularizacionCircular10Catastro = $this->chkRegularizacionCircular10Catastro->Checked;
-                if ($this->txtRegularizacionAprobacionGeodesia) $this->objUsoInterno->RegularizacionAprobacionGeodesia = $this->txtRegularizacionAprobacionGeodesia->Text;
-                if ($this->txtRegularizacionRegistracion) $this->objUsoInterno->RegularizacionRegistracion = $this->txtRegularizacionRegistracion->Text;
                 if ($this->txtRegularizacionEstadoProceso) $this->objUsoInterno->RegularizacionEstadoProceso = $this->txtRegularizacionEstadoProceso->Text;
                 if ($this->txtNumExpediente) $this->objUsoInterno->NumExpediente = $this->txtNumExpediente->Text;
+                if ($this->txtRegistracionLegajo) $this->objUsoInterno->RegistracionLegajo = $this->txtRegistracionLegajo->Text;
+                if ($this->txtRegistracionFecha) $this->objUsoInterno->RegistracionFecha = $this->txtRegistracionFecha->Text;
+                if ($this->txtRegistracionFolio) $this->objUsoInterno->RegistracionFolio = $this->txtRegistracionFolio->Text;
+                if ($this->txtGeodesiaNum) $this->objUsoInterno->GeodesiaNum = $this->txtGeodesiaNum->Text;
+                if ($this->txtGeodesiaAnio) $this->objUsoInterno->GeodesiaAnio = $this->txtGeodesiaAnio->Text;
+                if ($this->chkLey14449) $this->objUsoInterno->Ley14449 = $this->chkLey14449->Checked;
+                if ($this->chkTieneCenso) $this->objUsoInterno->TieneCenso = $this->chkTieneCenso->Checked;
+                if ($this->txtFechaCenso) $this->objUsoInterno->FechaCenso = $this->txtFechaCenso->Text;
+                if ($this->txtGeodesiaPartido) $this->objUsoInterno->GeodesiaPartido = $this->txtGeodesiaPartido->Text;
 
 
         }
@@ -725,18 +949,6 @@
                 case 'RegularizacionCircular10CatastroLabel':
                     if (!$this->lblRegularizacionCircular10Catastro) return $this->lblRegularizacionCircular10Catastro_Create();
                     return $this->lblRegularizacionCircular10Catastro;
-                case 'RegularizacionAprobacionGeodesiaControl':
-                    if (!$this->txtRegularizacionAprobacionGeodesia) return $this->txtRegularizacionAprobacionGeodesia_Create();
-                    return $this->txtRegularizacionAprobacionGeodesia;
-                case 'RegularizacionAprobacionGeodesiaLabel':
-                    if (!$this->lblRegularizacionAprobacionGeodesia) return $this->lblRegularizacionAprobacionGeodesia_Create();
-                    return $this->lblRegularizacionAprobacionGeodesia;
-                case 'RegularizacionRegistracionControl':
-                    if (!$this->txtRegularizacionRegistracion) return $this->txtRegularizacionRegistracion_Create();
-                    return $this->txtRegularizacionRegistracion;
-                case 'RegularizacionRegistracionLabel':
-                    if (!$this->lblRegularizacionRegistracion) return $this->lblRegularizacionRegistracion_Create();
-                    return $this->lblRegularizacionRegistracion;
                 case 'RegularizacionEstadoProcesoControl':
                     if (!$this->txtRegularizacionEstadoProceso) return $this->txtRegularizacionEstadoProceso_Create();
                     return $this->txtRegularizacionEstadoProceso;
@@ -749,6 +961,60 @@
                 case 'NumExpedienteLabel':
                     if (!$this->lblNumExpediente) return $this->lblNumExpediente_Create();
                     return $this->lblNumExpediente;
+                case 'RegistracionLegajoControl':
+                    if (!$this->txtRegistracionLegajo) return $this->txtRegistracionLegajo_Create();
+                    return $this->txtRegistracionLegajo;
+                case 'RegistracionLegajoLabel':
+                    if (!$this->lblRegistracionLegajo) return $this->lblRegistracionLegajo_Create();
+                    return $this->lblRegistracionLegajo;
+                case 'RegistracionFechaControl':
+                    if (!$this->txtRegistracionFecha) return $this->txtRegistracionFecha_Create();
+                    return $this->txtRegistracionFecha;
+                case 'RegistracionFechaLabel':
+                    if (!$this->lblRegistracionFecha) return $this->lblRegistracionFecha_Create();
+                    return $this->lblRegistracionFecha;
+                case 'RegistracionFolioControl':
+                    if (!$this->txtRegistracionFolio) return $this->txtRegistracionFolio_Create();
+                    return $this->txtRegistracionFolio;
+                case 'RegistracionFolioLabel':
+                    if (!$this->lblRegistracionFolio) return $this->lblRegistracionFolio_Create();
+                    return $this->lblRegistracionFolio;
+                case 'GeodesiaNumControl':
+                    if (!$this->txtGeodesiaNum) return $this->txtGeodesiaNum_Create();
+                    return $this->txtGeodesiaNum;
+                case 'GeodesiaNumLabel':
+                    if (!$this->lblGeodesiaNum) return $this->lblGeodesiaNum_Create();
+                    return $this->lblGeodesiaNum;
+                case 'GeodesiaAnioControl':
+                    if (!$this->txtGeodesiaAnio) return $this->txtGeodesiaAnio_Create();
+                    return $this->txtGeodesiaAnio;
+                case 'GeodesiaAnioLabel':
+                    if (!$this->lblGeodesiaAnio) return $this->lblGeodesiaAnio_Create();
+                    return $this->lblGeodesiaAnio;
+                case 'Ley14449Control':
+                    if (!$this->chkLey14449) return $this->chkLey14449_Create();
+                    return $this->chkLey14449;
+                case 'Ley14449Label':
+                    if (!$this->lblLey14449) return $this->lblLey14449_Create();
+                    return $this->lblLey14449;
+                case 'TieneCensoControl':
+                    if (!$this->chkTieneCenso) return $this->chkTieneCenso_Create();
+                    return $this->chkTieneCenso;
+                case 'TieneCensoLabel':
+                    if (!$this->lblTieneCenso) return $this->lblTieneCenso_Create();
+                    return $this->lblTieneCenso;
+                case 'FechaCensoControl':
+                    if (!$this->txtFechaCenso) return $this->txtFechaCenso_Create();
+                    return $this->txtFechaCenso;
+                case 'FechaCensoLabel':
+                    if (!$this->lblFechaCenso) return $this->lblFechaCenso_Create();
+                    return $this->lblFechaCenso;
+                case 'GeodesiaPartidoControl':
+                    if (!$this->txtGeodesiaPartido) return $this->txtGeodesiaPartido_Create();
+                    return $this->txtGeodesiaPartido;
+                case 'GeodesiaPartidoLabel':
+                    if (!$this->lblGeodesiaPartido) return $this->lblGeodesiaPartido_Create();
+                    return $this->lblGeodesiaPartido;
                 default:
                     try {
                         return parent::__get($strName);
@@ -789,14 +1055,28 @@
                         return ($this->chkRegularizacionTienePlano = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionCircular10CatastroControl':
                         return ($this->chkRegularizacionCircular10Catastro = QType::Cast($mixValue, 'QControl'));
-                    case 'RegularizacionAprobacionGeodesiaControl':
-                        return ($this->txtRegularizacionAprobacionGeodesia = QType::Cast($mixValue, 'QControl'));
-                    case 'RegularizacionRegistracionControl':
-                        return ($this->txtRegularizacionRegistracion = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionEstadoProcesoControl':
                         return ($this->txtRegularizacionEstadoProceso = QType::Cast($mixValue, 'QControl'));
                     case 'NumExpedienteControl':
                         return ($this->txtNumExpediente = QType::Cast($mixValue, 'QControl'));
+                    case 'RegistracionLegajoControl':
+                        return ($this->txtRegistracionLegajo = QType::Cast($mixValue, 'QControl'));
+                    case 'RegistracionFechaControl':
+                        return ($this->txtRegistracionFecha = QType::Cast($mixValue, 'QControl'));
+                    case 'RegistracionFolioControl':
+                        return ($this->txtRegistracionFolio = QType::Cast($mixValue, 'QControl'));
+                    case 'GeodesiaNumControl':
+                        return ($this->txtGeodesiaNum = QType::Cast($mixValue, 'QControl'));
+                    case 'GeodesiaAnioControl':
+                        return ($this->txtGeodesiaAnio = QType::Cast($mixValue, 'QControl'));
+                    case 'Ley14449Control':
+                        return ($this->chkLey14449 = QType::Cast($mixValue, 'QControl'));
+                    case 'TieneCensoControl':
+                        return ($this->chkTieneCenso = QType::Cast($mixValue, 'QControl'));
+                    case 'FechaCensoControl':
+                        return ($this->txtFechaCenso = QType::Cast($mixValue, 'QControl'));
+                    case 'GeodesiaPartidoControl':
+                        return ($this->txtGeodesiaPartido = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

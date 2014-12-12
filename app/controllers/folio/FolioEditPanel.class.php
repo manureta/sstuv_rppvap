@@ -18,6 +18,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtMatricula' => true,
         'calFecha' => true,
         'txtEncargado' => true,
+        'txtReparticionPublica' => true,
         'txtNombreBarrioOficial' => true,
         'txtNombreBarrioAlternativo1' => true,
         'txtNombreBarrioAlternativo2' => true,
@@ -104,19 +105,19 @@ class FolioEditPanel extends FolioEditPanelGen {
             
             switch ($this->txtJudicializado->Text) {
                 case 'sin_dato':
-                    $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');
-                    $this->lstJudicializado->AddItem('- Si ', 'si');
-                    $this->lstJudicializado->AddItem('- No ', 'no');            
+                    $this->lstJudicializado->AddItem(' Sin Dato ', 'sin_dato');
+                    $this->lstJudicializado->AddItem(' Si ', 'si');
+                    $this->lstJudicializado->AddItem(' No ', 'no');            
                     break;
                 case 'si':
-                    $this->lstJudicializado->AddItem('- Si ', 'si');
-                    $this->lstJudicializado->AddItem('- No ', 'no');
-                    $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');                
+                    $this->lstJudicializado->AddItem(' Si ', 'si');
+                    $this->lstJudicializado->AddItem(' No ', 'no');
+                    $this->lstJudicializado->AddItem(' Sin Dato ', 'sin_dato');                
                     break;
                 case 'no':    
-                    $this->lstJudicializado->AddItem('- No ', 'no');
-                    $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');                
-                    $this->lstJudicializado->AddItem('- Si ', 'si');
+                    $this->lstJudicializado->AddItem(' No ', 'no');
+                    $this->lstJudicializado->AddItem(' Sin Dato ', 'sin_dato');                
+                    $this->lstJudicializado->AddItem(' Si ', 'si');
                     break;                
             }
         }
@@ -156,6 +157,9 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['calFecha']->Name="Fecha de carga <span class='add-on'><i class='icon-calendar'></i></span>";
         if (in_array('txtEncargado',$strControlsArray)) 
             $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
+        if (in_array('txtReparticionPublica',$strControlsArray)) 
+            $this->objControlsArray['txtReparticionPublica'] = $this->mctFolio->txtReparticionPublica_Create();
+            $this->objControlsArray['txtReparticionPublica']->Name="Repartición pública";
         if (in_array('txtNombreBarrioOficial',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();    
             $this->objControlsArray['txtNombreBarrioOficial']->Name="Nombre oficial del barrio";        

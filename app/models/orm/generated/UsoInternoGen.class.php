@@ -24,10 +24,17 @@
 	 * @property QDateTime $RegularizacionFechaInicio the value for dttRegularizacionFechaInicio 
 	 * @property boolean $RegularizacionTienePlano the value for blnRegularizacionTienePlano 
 	 * @property boolean $RegularizacionCircular10Catastro the value for blnRegularizacionCircular10Catastro 
-	 * @property integer $RegularizacionAprobacionGeodesia the value for intRegularizacionAprobacionGeodesia 
-	 * @property integer $RegularizacionRegistracion the value for intRegularizacionRegistracion 
 	 * @property integer $RegularizacionEstadoProceso the value for intRegularizacionEstadoProceso 
 	 * @property string $NumExpediente the value for strNumExpediente 
+	 * @property string $RegistracionLegajo the value for strRegistracionLegajo 
+	 * @property string $RegistracionFecha the value for strRegistracionFecha 
+	 * @property string $RegistracionFolio the value for strRegistracionFolio 
+	 * @property string $GeodesiaNum the value for strGeodesiaNum 
+	 * @property string $GeodesiaAnio the value for strGeodesiaAnio 
+	 * @property boolean $Ley14449 the value for blnLey14449 
+	 * @property boolean $TieneCenso the value for blnTieneCenso 
+	 * @property string $FechaCenso the value for strFechaCenso 
+	 * @property string $GeodesiaPartido the value for strGeodesiaPartido 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (PK)
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -131,22 +138,6 @@ class UsoInternoGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column uso_interno.regularizacion_aprobacion_geodesia
-     * @var integer intRegularizacionAprobacionGeodesia
-     */
-    protected $intRegularizacionAprobacionGeodesia;
-    const RegularizacionAprobacionGeodesiaDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column uso_interno.regularizacion_registracion
-     * @var integer intRegularizacionRegistracion
-     */
-    protected $intRegularizacionRegistracion;
-    const RegularizacionRegistracionDefault = null;
-
-
-    /**
      * Protected member variable that maps to the database column uso_interno.regularizacion_estado_proceso
      * @var integer intRegularizacionEstadoProceso
      */
@@ -160,6 +151,79 @@ class UsoInternoGen extends QBaseClass {
      */
     protected $strNumExpediente;
     const NumExpedienteDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.registracion_legajo
+     * @var string strRegistracionLegajo
+     */
+    protected $strRegistracionLegajo;
+    const RegistracionLegajoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.registracion_fecha
+     * @var string strRegistracionFecha
+     */
+    protected $strRegistracionFecha;
+    const RegistracionFechaDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.registracion_folio
+     * @var string strRegistracionFolio
+     */
+    protected $strRegistracionFolio;
+    const RegistracionFolioDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.geodesia_num
+     * @var string strGeodesiaNum
+     */
+    protected $strGeodesiaNum;
+    const GeodesiaNumDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.geodesia_anio
+     * @var string strGeodesiaAnio
+     */
+    protected $strGeodesiaAnio;
+    const GeodesiaAnioDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.ley_14449
+     * @var boolean blnLey14449
+     */
+    protected $blnLey14449;
+    const Ley14449Default = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.tiene_censo
+     * @var boolean blnTieneCenso
+     */
+    protected $blnTieneCenso;
+    const TieneCensoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.fecha_censo
+     * @var string strFechaCenso
+     */
+    protected $strFechaCenso;
+    const FechaCensoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.geodesia_partido
+     * @var string strGeodesiaPartido
+     */
+    protected $strGeodesiaPartido;
+    const GeodesiaPartidoMaxLength = 3;
+    const GeodesiaPartidoDefault = null;
 
 
     /**
@@ -519,10 +583,17 @@ class UsoInternoGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'regularizacion_fecha_inicio', $strAliasPrefix . 'regularizacion_fecha_inicio');
 			$objBuilder->AddSelectItem($strTableName, 'regularizacion_tiene_plano', $strAliasPrefix . 'regularizacion_tiene_plano');
 			$objBuilder->AddSelectItem($strTableName, 'regularizacion_circular_10_catastro', $strAliasPrefix . 'regularizacion_circular_10_catastro');
-			$objBuilder->AddSelectItem($strTableName, 'regularizacion_aprobacion_geodesia', $strAliasPrefix . 'regularizacion_aprobacion_geodesia');
-			$objBuilder->AddSelectItem($strTableName, 'regularizacion_registracion', $strAliasPrefix . 'regularizacion_registracion');
 			$objBuilder->AddSelectItem($strTableName, 'regularizacion_estado_proceso', $strAliasPrefix . 'regularizacion_estado_proceso');
 			$objBuilder->AddSelectItem($strTableName, 'num_expediente', $strAliasPrefix . 'num_expediente');
+			$objBuilder->AddSelectItem($strTableName, 'registracion_legajo', $strAliasPrefix . 'registracion_legajo');
+			$objBuilder->AddSelectItem($strTableName, 'registracion_fecha', $strAliasPrefix . 'registracion_fecha');
+			$objBuilder->AddSelectItem($strTableName, 'registracion_folio', $strAliasPrefix . 'registracion_folio');
+			$objBuilder->AddSelectItem($strTableName, 'geodesia_num', $strAliasPrefix . 'geodesia_num');
+			$objBuilder->AddSelectItem($strTableName, 'geodesia_anio', $strAliasPrefix . 'geodesia_anio');
+			$objBuilder->AddSelectItem($strTableName, 'ley_14449', $strAliasPrefix . 'ley_14449');
+			$objBuilder->AddSelectItem($strTableName, 'tiene_censo', $strAliasPrefix . 'tiene_censo');
+			$objBuilder->AddSelectItem($strTableName, 'fecha_censo', $strAliasPrefix . 'fecha_censo');
+			$objBuilder->AddSelectItem($strTableName, 'geodesia_partido', $strAliasPrefix . 'geodesia_partido');
 		}
 
 //instantiation_methods
@@ -571,14 +642,28 @@ class UsoInternoGen extends QBaseClass {
 			$objToReturn->blnRegularizacionTienePlano = $objDbRow->GetColumn($strAliasName, 'Bit');
 			$strAliasName = array_key_exists($strAliasPrefix . 'regularizacion_circular_10_catastro', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'regularizacion_circular_10_catastro'] : $strAliasPrefix . 'regularizacion_circular_10_catastro';
 			$objToReturn->blnRegularizacionCircular10Catastro = $objDbRow->GetColumn($strAliasName, 'Bit');
-			$strAliasName = array_key_exists($strAliasPrefix . 'regularizacion_aprobacion_geodesia', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'regularizacion_aprobacion_geodesia'] : $strAliasPrefix . 'regularizacion_aprobacion_geodesia';
-			$objToReturn->intRegularizacionAprobacionGeodesia = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . 'regularizacion_registracion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'regularizacion_registracion'] : $strAliasPrefix . 'regularizacion_registracion';
-			$objToReturn->intRegularizacionRegistracion = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'regularizacion_estado_proceso', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'regularizacion_estado_proceso'] : $strAliasPrefix . 'regularizacion_estado_proceso';
 			$objToReturn->intRegularizacionEstadoProceso = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'num_expediente', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'num_expediente'] : $strAliasPrefix . 'num_expediente';
 			$objToReturn->strNumExpediente = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'registracion_legajo', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'registracion_legajo'] : $strAliasPrefix . 'registracion_legajo';
+			$objToReturn->strRegistracionLegajo = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'registracion_fecha', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'registracion_fecha'] : $strAliasPrefix . 'registracion_fecha';
+			$objToReturn->strRegistracionFecha = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'registracion_folio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'registracion_folio'] : $strAliasPrefix . 'registracion_folio';
+			$objToReturn->strRegistracionFolio = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'geodesia_num', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'geodesia_num'] : $strAliasPrefix . 'geodesia_num';
+			$objToReturn->strGeodesiaNum = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'geodesia_anio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'geodesia_anio'] : $strAliasPrefix . 'geodesia_anio';
+			$objToReturn->strGeodesiaAnio = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'ley_14449', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'ley_14449'] : $strAliasPrefix . 'ley_14449';
+			$objToReturn->blnLey14449 = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'tiene_censo', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tiene_censo'] : $strAliasPrefix . 'tiene_censo';
+			$objToReturn->blnTieneCenso = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_censo', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_censo'] : $strAliasPrefix . 'fecha_censo';
+			$objToReturn->strFechaCenso = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'geodesia_partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'geodesia_partido'] : $strAliasPrefix . 'geodesia_partido';
+			$objToReturn->strGeodesiaPartido = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -716,12 +801,6 @@ class UsoInternoGen extends QBaseClass {
                     if ($this->intIdFolio && ($this->intIdFolio > QDatabaseNumberFieldMax::Integer || $this->intIdFolio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intIdFolio', QDatabaseFieldType::Integer);
                     }
-                    if ($this->intRegularizacionAprobacionGeodesia && ($this->intRegularizacionAprobacionGeodesia > QDatabaseNumberFieldMax::Integer || $this->intRegularizacionAprobacionGeodesia < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intRegularizacionAprobacionGeodesia', QDatabaseFieldType::Integer);
-                    }
-                    if ($this->intRegularizacionRegistracion && ($this->intRegularizacionRegistracion > QDatabaseNumberFieldMax::Integer || $this->intRegularizacionRegistracion < QDatabaseNumberFieldMin::Integer)) {
-                        throw new NumberOutOfRangeException('intRegularizacionRegistracion', QDatabaseFieldType::Integer);
-                    }
                     if ($this->intRegularizacionEstadoProceso && ($this->intRegularizacionEstadoProceso > QDatabaseNumberFieldMax::Integer || $this->intRegularizacionEstadoProceso < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intRegularizacionEstadoProceso', QDatabaseFieldType::Integer);
                     }
@@ -740,10 +819,17 @@ class UsoInternoGen extends QBaseClass {
                             "regularizacion_fecha_inicio",
                             "regularizacion_tiene_plano",
                             "regularizacion_circular_10_catastro",
-                            "regularizacion_aprobacion_geodesia",
-                            "regularizacion_registracion",
                             "regularizacion_estado_proceso",
-                            "num_expediente"
+                            "num_expediente",
+                            "registracion_legajo",
+                            "registracion_fecha",
+                            "registracion_folio",
+                            "geodesia_num",
+                            "geodesia_anio",
+                            "ley_14449",
+                            "tiene_censo",
+                            "fecha_censo",
+                            "geodesia_partido"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->strInformeUrbanisticoFecha) . ',
@@ -754,10 +840,17 @@ class UsoInternoGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->dttRegularizacionFechaInicio) . ',
                             ' . $objDatabase->SqlVariable($this->blnRegularizacionTienePlano) . ',
                             ' . $objDatabase->SqlVariable($this->blnRegularizacionCircular10Catastro) . ',
-                            ' . $objDatabase->SqlVariable($this->intRegularizacionAprobacionGeodesia) . ',
-                            ' . $objDatabase->SqlVariable($this->intRegularizacionRegistracion) . ',
                             ' . $objDatabase->SqlVariable($this->intRegularizacionEstadoProceso) . ',
-                            ' . $objDatabase->SqlVariable($this->strNumExpediente) . '
+                            ' . $objDatabase->SqlVariable($this->strNumExpediente) . ',
+                            ' . $objDatabase->SqlVariable($this->strRegistracionLegajo) . ',
+                            ' . $objDatabase->SqlVariable($this->strRegistracionFecha) . ',
+                            ' . $objDatabase->SqlVariable($this->strRegistracionFolio) . ',
+                            ' . $objDatabase->SqlVariable($this->strGeodesiaNum) . ',
+                            ' . $objDatabase->SqlVariable($this->strGeodesiaAnio) . ',
+                            ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
+                            ' . $objDatabase->SqlVariable($this->blnTieneCenso) . ',
+                            ' . $objDatabase->SqlVariable($this->strFechaCenso) . ',
+                            ' . $objDatabase->SqlVariable($this->strGeodesiaPartido) . '
                         )
                     ');
 
@@ -781,10 +874,17 @@ class UsoInternoGen extends QBaseClass {
                             "regularizacion_fecha_inicio" = ' . $objDatabase->SqlVariable($this->dttRegularizacionFechaInicio) . ',
                             "regularizacion_tiene_plano" = ' . $objDatabase->SqlVariable($this->blnRegularizacionTienePlano) . ',
                             "regularizacion_circular_10_catastro" = ' . $objDatabase->SqlVariable($this->blnRegularizacionCircular10Catastro) . ',
-                            "regularizacion_aprobacion_geodesia" = ' . $objDatabase->SqlVariable($this->intRegularizacionAprobacionGeodesia) . ',
-                            "regularizacion_registracion" = ' . $objDatabase->SqlVariable($this->intRegularizacionRegistracion) . ',
                             "regularizacion_estado_proceso" = ' . $objDatabase->SqlVariable($this->intRegularizacionEstadoProceso) . ',
-                            "num_expediente" = ' . $objDatabase->SqlVariable($this->strNumExpediente) . '
+                            "num_expediente" = ' . $objDatabase->SqlVariable($this->strNumExpediente) . ',
+                            "registracion_legajo" = ' . $objDatabase->SqlVariable($this->strRegistracionLegajo) . ',
+                            "registracion_fecha" = ' . $objDatabase->SqlVariable($this->strRegistracionFecha) . ',
+                            "registracion_folio" = ' . $objDatabase->SqlVariable($this->strRegistracionFolio) . ',
+                            "geodesia_num" = ' . $objDatabase->SqlVariable($this->strGeodesiaNum) . ',
+                            "geodesia_anio" = ' . $objDatabase->SqlVariable($this->strGeodesiaAnio) . ',
+                            "ley_14449" = ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
+                            "tiene_censo" = ' . $objDatabase->SqlVariable($this->blnTieneCenso) . ',
+                            "fecha_censo" = ' . $objDatabase->SqlVariable($this->strFechaCenso) . ',
+                            "geodesia_partido" = ' . $objDatabase->SqlVariable($this->strGeodesiaPartido) . '
                         WHERE
                             "id_folio" = ' . $objDatabase->SqlVariable($this->__intIdFolio) . '
                     ');
@@ -878,10 +978,17 @@ class UsoInternoGen extends QBaseClass {
 			$this->dttRegularizacionFechaInicio = $objReloaded->dttRegularizacionFechaInicio;
 			$this->blnRegularizacionTienePlano = $objReloaded->blnRegularizacionTienePlano;
 			$this->blnRegularizacionCircular10Catastro = $objReloaded->blnRegularizacionCircular10Catastro;
-			$this->intRegularizacionAprobacionGeodesia = $objReloaded->intRegularizacionAprobacionGeodesia;
-			$this->intRegularizacionRegistracion = $objReloaded->intRegularizacionRegistracion;
 			$this->intRegularizacionEstadoProceso = $objReloaded->intRegularizacionEstadoProceso;
 			$this->strNumExpediente = $objReloaded->strNumExpediente;
+			$this->strRegistracionLegajo = $objReloaded->strRegistracionLegajo;
+			$this->strRegistracionFecha = $objReloaded->strRegistracionFecha;
+			$this->strRegistracionFolio = $objReloaded->strRegistracionFolio;
+			$this->strGeodesiaNum = $objReloaded->strGeodesiaNum;
+			$this->strGeodesiaAnio = $objReloaded->strGeodesiaAnio;
+			$this->blnLey14449 = $objReloaded->blnLey14449;
+			$this->blnTieneCenso = $objReloaded->blnTieneCenso;
+			$this->strFechaCenso = $objReloaded->strFechaCenso;
+			$this->strGeodesiaPartido = $objReloaded->strGeodesiaPartido;
 		}
 
 
@@ -966,20 +1073,6 @@ class UsoInternoGen extends QBaseClass {
                  */
                 return $this->blnRegularizacionCircular10Catastro;
 
-            case 'RegularizacionAprobacionGeodesia':
-                /**
-                 * Gets the value for intRegularizacionAprobacionGeodesia 
-                 * @return integer
-                 */
-                return $this->intRegularizacionAprobacionGeodesia;
-
-            case 'RegularizacionRegistracion':
-                /**
-                 * Gets the value for intRegularizacionRegistracion 
-                 * @return integer
-                 */
-                return $this->intRegularizacionRegistracion;
-
             case 'RegularizacionEstadoProceso':
                 /**
                  * Gets the value for intRegularizacionEstadoProceso 
@@ -993,6 +1086,69 @@ class UsoInternoGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strNumExpediente;
+
+            case 'RegistracionLegajo':
+                /**
+                 * Gets the value for strRegistracionLegajo 
+                 * @return string
+                 */
+                return $this->strRegistracionLegajo;
+
+            case 'RegistracionFecha':
+                /**
+                 * Gets the value for strRegistracionFecha 
+                 * @return string
+                 */
+                return $this->strRegistracionFecha;
+
+            case 'RegistracionFolio':
+                /**
+                 * Gets the value for strRegistracionFolio 
+                 * @return string
+                 */
+                return $this->strRegistracionFolio;
+
+            case 'GeodesiaNum':
+                /**
+                 * Gets the value for strGeodesiaNum 
+                 * @return string
+                 */
+                return $this->strGeodesiaNum;
+
+            case 'GeodesiaAnio':
+                /**
+                 * Gets the value for strGeodesiaAnio 
+                 * @return string
+                 */
+                return $this->strGeodesiaAnio;
+
+            case 'Ley14449':
+                /**
+                 * Gets the value for blnLey14449 
+                 * @return boolean
+                 */
+                return $this->blnLey14449;
+
+            case 'TieneCenso':
+                /**
+                 * Gets the value for blnTieneCenso 
+                 * @return boolean
+                 */
+                return $this->blnTieneCenso;
+
+            case 'FechaCenso':
+                /**
+                 * Gets the value for strFechaCenso 
+                 * @return string
+                 */
+                return $this->strFechaCenso;
+
+            case 'GeodesiaPartido':
+                /**
+                 * Gets the value for strGeodesiaPartido 
+                 * @return string
+                 */
+                return $this->strGeodesiaPartido;
 
 
             ///////////////////
@@ -1181,36 +1337,6 @@ class UsoInternoGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'RegularizacionAprobacionGeodesia':
-					/**
-					 * Sets the value for intRegularizacionAprobacionGeodesia 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intRegularizacionAprobacionGeodesia = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intRegularizacionAprobacionGeodesia = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'RegularizacionRegistracion':
-					/**
-					 * Sets the value for intRegularizacionRegistracion 
-					 * @param integer $mixValue
-					 * @return integer
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->intRegularizacionRegistracion = QType::Cast($mixValue, QType::Integer));
-                                                return ($this->intRegularizacionRegistracion = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 				case 'RegularizacionEstadoProceso':
 					/**
 					 * Sets the value for intRegularizacionEstadoProceso 
@@ -1236,6 +1362,141 @@ class UsoInternoGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strNumExpediente = QType::Cast($mixValue, QType::String));
                                                 return ($this->strNumExpediente = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'RegistracionLegajo':
+					/**
+					 * Sets the value for strRegistracionLegajo 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strRegistracionLegajo = QType::Cast($mixValue, QType::String));
+                                                return ($this->strRegistracionLegajo = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'RegistracionFecha':
+					/**
+					 * Sets the value for strRegistracionFecha 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strRegistracionFecha = QType::Cast($mixValue, QType::String));
+                                                return ($this->strRegistracionFecha = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'RegistracionFolio':
+					/**
+					 * Sets the value for strRegistracionFolio 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strRegistracionFolio = QType::Cast($mixValue, QType::String));
+                                                return ($this->strRegistracionFolio = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'GeodesiaNum':
+					/**
+					 * Sets the value for strGeodesiaNum 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strGeodesiaNum = QType::Cast($mixValue, QType::String));
+                                                return ($this->strGeodesiaNum = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'GeodesiaAnio':
+					/**
+					 * Sets the value for strGeodesiaAnio 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strGeodesiaAnio = QType::Cast($mixValue, QType::String));
+                                                return ($this->strGeodesiaAnio = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Ley14449':
+					/**
+					 * Sets the value for blnLey14449 
+					 * @param boolean $mixValue
+					 * @return boolean
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->blnLey14449 = QType::Cast($mixValue, QType::Boolean));
+                                                return ($this->blnLey14449 = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'TieneCenso':
+					/**
+					 * Sets the value for blnTieneCenso 
+					 * @param boolean $mixValue
+					 * @return boolean
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->blnTieneCenso = QType::Cast($mixValue, QType::Boolean));
+                                                return ($this->blnTieneCenso = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'FechaCenso':
+					/**
+					 * Sets the value for strFechaCenso 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strFechaCenso = QType::Cast($mixValue, QType::String));
+                                                return ($this->strFechaCenso = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'GeodesiaPartido':
+					/**
+					 * Sets the value for strGeodesiaPartido 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strGeodesiaPartido = QType::Cast($mixValue, QType::String));
+                                                return ($this->strGeodesiaPartido = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1326,10 +1587,17 @@ class UsoInternoGen extends QBaseClass {
 			$strToReturn .= '<element name="RegularizacionFechaInicio" type="xsd:dateTime"/>';
 			$strToReturn .= '<element name="RegularizacionTienePlano" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="RegularizacionCircular10Catastro" type="xsd:boolean"/>';
-			$strToReturn .= '<element name="RegularizacionAprobacionGeodesia" type="xsd:int"/>';
-			$strToReturn .= '<element name="RegularizacionRegistracion" type="xsd:int"/>';
 			$strToReturn .= '<element name="RegularizacionEstadoProceso" type="xsd:int"/>';
 			$strToReturn .= '<element name="NumExpediente" type="xsd:string"/>';
+			$strToReturn .= '<element name="RegistracionLegajo" type="xsd:string"/>';
+			$strToReturn .= '<element name="RegistracionFecha" type="xsd:string"/>';
+			$strToReturn .= '<element name="RegistracionFolio" type="xsd:string"/>';
+			$strToReturn .= '<element name="GeodesiaNum" type="xsd:string"/>';
+			$strToReturn .= '<element name="GeodesiaAnio" type="xsd:string"/>';
+			$strToReturn .= '<element name="Ley14449" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="TieneCenso" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="FechaCenso" type="xsd:string"/>';
+			$strToReturn .= '<element name="GeodesiaPartido" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1381,17 +1649,38 @@ class UsoInternoGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'RegularizacionCircular10Catastro')) {
 				$objToReturn->blnRegularizacionCircular10Catastro = $objSoapObject->RegularizacionCircular10Catastro;
             }
-			if (property_exists($objSoapObject, 'RegularizacionAprobacionGeodesia')) {
-				$objToReturn->intRegularizacionAprobacionGeodesia = $objSoapObject->RegularizacionAprobacionGeodesia;
-            }
-			if (property_exists($objSoapObject, 'RegularizacionRegistracion')) {
-				$objToReturn->intRegularizacionRegistracion = $objSoapObject->RegularizacionRegistracion;
-            }
 			if (property_exists($objSoapObject, 'RegularizacionEstadoProceso')) {
 				$objToReturn->intRegularizacionEstadoProceso = $objSoapObject->RegularizacionEstadoProceso;
             }
 			if (property_exists($objSoapObject, 'NumExpediente')) {
 				$objToReturn->strNumExpediente = $objSoapObject->NumExpediente;
+            }
+			if (property_exists($objSoapObject, 'RegistracionLegajo')) {
+				$objToReturn->strRegistracionLegajo = $objSoapObject->RegistracionLegajo;
+            }
+			if (property_exists($objSoapObject, 'RegistracionFecha')) {
+				$objToReturn->strRegistracionFecha = $objSoapObject->RegistracionFecha;
+            }
+			if (property_exists($objSoapObject, 'RegistracionFolio')) {
+				$objToReturn->strRegistracionFolio = $objSoapObject->RegistracionFolio;
+            }
+			if (property_exists($objSoapObject, 'GeodesiaNum')) {
+				$objToReturn->strGeodesiaNum = $objSoapObject->GeodesiaNum;
+            }
+			if (property_exists($objSoapObject, 'GeodesiaAnio')) {
+				$objToReturn->strGeodesiaAnio = $objSoapObject->GeodesiaAnio;
+            }
+			if (property_exists($objSoapObject, 'Ley14449')) {
+				$objToReturn->blnLey14449 = $objSoapObject->Ley14449;
+            }
+			if (property_exists($objSoapObject, 'TieneCenso')) {
+				$objToReturn->blnTieneCenso = $objSoapObject->TieneCenso;
+            }
+			if (property_exists($objSoapObject, 'FechaCenso')) {
+				$objToReturn->strFechaCenso = $objSoapObject->FechaCenso;
+            }
+			if (property_exists($objSoapObject, 'GeodesiaPartido')) {
+				$objToReturn->strGeodesiaPartido = $objSoapObject->GeodesiaPartido;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

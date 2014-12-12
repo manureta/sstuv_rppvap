@@ -34,6 +34,8 @@
      * property-read QLabel $ExpropiacionLabel
      * property QTextBox $OtrosControl
      * property-read QLabel $OtrosLabel
+     * property QCheckBox $Ley14449Control
+     * property-read QLabel $Ley14449Label
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -59,6 +61,7 @@
         protected $chkDecreto468696;
         protected $txtExpropiacion;
         protected $txtOtros;
+        protected $chkLey14449;
 
         // Controls that allow the viewing of EncuadreLegal's individual data fields
         protected $lblIdFolio;
@@ -69,6 +72,7 @@
         protected $lblDecreto468696;
         protected $lblExpropiacion;
         protected $lblOtros;
+        protected $lblLey14449;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -381,6 +385,30 @@
             return $this->lblOtros;
         }
 
+        /**
+         * Create and setup QCheckBox chkLey14449
+         * @param string $strControlId optional ControlId to use
+         * @return QCheckBox
+         */
+        public function chkLey14449_Create($strControlId = null) {
+            $this->chkLey14449 = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkLey14449->Name = QApplication::Translate('Ley14449');
+            $this->chkLey14449->Checked = $this->objEncuadreLegal->Ley14449;
+                        return $this->chkLey14449;
+        }
+
+        /**
+         * Create and setup QLabel lblLey14449
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblLey14449_Create($strControlId = null) {
+            $this->lblLey14449 = new QLabel($this->objParentObject, $strControlId);
+            $this->lblLey14449->Name = QApplication::Translate('Ley14449');
+            $this->lblLey14449->Text = ($this->objEncuadreLegal->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            return $this->lblLey14449;
+        }
+
 
 
 
@@ -425,6 +453,9 @@
             if ($this->txtOtros) $this->txtOtros->Text = $this->objEncuadreLegal->Otros;
             if ($this->lblOtros) $this->lblOtros->Text = $this->objEncuadreLegal->Otros;
 
+            if ($this->chkLey14449) $this->chkLey14449->Checked = $this->objEncuadreLegal->Ley14449;
+            if ($this->lblLey14449) $this->lblLey14449->Text = ($this->objEncuadreLegal->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+
         }
 
 
@@ -451,6 +482,7 @@
                 if ($this->chkDecreto468696) $this->objEncuadreLegal->Decreto468696 = $this->chkDecreto468696->Checked;
                 if ($this->txtExpropiacion) $this->objEncuadreLegal->Expropiacion = $this->txtExpropiacion->Text;
                 if ($this->txtOtros) $this->objEncuadreLegal->Otros = $this->txtOtros->Text;
+                if ($this->chkLey14449) $this->objEncuadreLegal->Ley14449 = $this->chkLey14449->Checked;
 
 
         }
@@ -561,6 +593,12 @@
                 case 'OtrosLabel':
                     if (!$this->lblOtros) return $this->lblOtros_Create();
                     return $this->lblOtros;
+                case 'Ley14449Control':
+                    if (!$this->chkLey14449) return $this->chkLey14449_Create();
+                    return $this->chkLey14449;
+                case 'Ley14449Label':
+                    if (!$this->lblLey14449) return $this->lblLey14449_Create();
+                    return $this->lblLey14449;
                 default:
                     try {
                         return parent::__get($strName);
@@ -601,6 +639,8 @@
                         return ($this->txtExpropiacion = QType::Cast($mixValue, 'QControl'));
                     case 'OtrosControl':
                         return ($this->txtOtros = QType::Cast($mixValue, 'QControl'));
+                    case 'Ley14449Control':
+                        return ($this->chkLey14449 = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

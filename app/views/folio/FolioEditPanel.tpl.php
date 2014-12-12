@@ -42,7 +42,7 @@
             </li>
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?=$link_interno;?>">
-                    <span class="number">-</span> Uso Interno
+                    <span class="number">5.</span> Uso Interno
                 </a>
             </li>
         </ul>
@@ -53,7 +53,7 @@
             <div class="well bs-component">
                 <?php $_CONTROL->calFecha->RenderWithName(); ?> 
                 <?php $_CONTROL->txtEncargado->RenderWithName(); ?>
-                <p>* Reparticion publica </p>      
+                <?php $_CONTROL->txtReparticionPublica->RenderWithName(); ?>                      
              </div>
         </div>
     

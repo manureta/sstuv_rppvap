@@ -269,6 +269,7 @@
         $strConfigArray['Columns']['Decreto468696'] = QApplication::Translate('Decreto468696');
         $strConfigArray['Columns']['Expropiacion'] = QApplication::Translate('Expropiacion');
         $strConfigArray['Columns']['Otros'] = QApplication::Translate('Otros');
+        $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
 
         $this->lstEncuadreLegalAsIdFolio = new QListPanel($this->objParentObject, $this->objRegularizacion, $strConfigArray, $strControlId);
         $this->lstEncuadreLegalAsIdFolio->Name = EncuadreLegal::Noun();
@@ -291,51 +292,6 @@
         $obj = $this->objRegularizacion->EncuadreLegalAsIdFolioArray[$intKey];
         $this->lstEncuadreLegalAsIdFolio->ModalPanel = new EncuadreLegalModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
         $this->lstEncuadreLegalAsIdFolio->ModalPanel->objCallerControl = $this->lstEncuadreLegalAsIdFolio;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
-    public $lstRegistracionAsIdFolio;
-    /**
-     * Gets all associated RegistracionesAsIdFolio as an array of Registracion objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return Registracion[]
-    */ 
-    public function lstRegistracionAsIdFolio_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'Registracion';
-        $strConfigArray['strRefreshMethod'] = 'RegistracionAsIdFolioArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'IdFolio';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddRegistracionAsIdFolio';
-        $strConfigArray['strRemoveMethod'] = 'RemoveRegistracionAsIdFolio';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['Legajo'] = QApplication::Translate('Legajo');
-        $strConfigArray['Columns']['Folio'] = QApplication::Translate('Folio');
-        $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
-
-        $this->lstRegistracionAsIdFolio = new QListPanel($this->objParentObject, $this->objRegularizacion, $strConfigArray, $strControlId);
-        $this->lstRegistracionAsIdFolio->Name = Registracion::Noun();
-        $this->lstRegistracionAsIdFolio->SetNewMethod($this, "lstRegistracionAsIdFolio_New");
-        $this->lstRegistracionAsIdFolio->SetEditMethod($this, "lstRegistracionAsIdFolio_Edit");
-        return $this->lstRegistracionAsIdFolio;
-    }
-
-    public function lstRegistracionAsIdFolio_New() {
-        RegistracionModalPanel::$strControlsArray['lstIdFolioObject'] = false;
-        $strControlsArray = array_keys(RegistracionModalPanel::$strControlsArray, true);
-        $this->lstRegistracionAsIdFolio->ModalPanel = new RegistracionModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstRegistracionAsIdFolio->ModalPanel->objCallerControl = $this->lstRegistracionAsIdFolio;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstRegistracionAsIdFolio_Edit($intKey) {
-        RegistracionModalPanel::$strControlsArray['lstIdFolioObject'] = false;
-        $strControlsArray = array_keys(RegistracionModalPanel::$strControlsArray, true);
-        $obj = $this->objRegularizacion->RegistracionAsIdFolioArray[$intKey];
-        $this->lstRegistracionAsIdFolio->ModalPanel = new RegistracionModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstRegistracionAsIdFolio->ModalPanel->objCallerControl = $this->lstRegistracionAsIdFolio;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 

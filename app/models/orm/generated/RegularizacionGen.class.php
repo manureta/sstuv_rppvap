@@ -22,8 +22,6 @@
 	 * @property Antecedentes $AntecedentesAsIdFolio the value for the Antecedentes object that uniquely references this Regularizacion
 	 * @property-read EncuadreLegal $EncuadreLegalAsIdFolio the value for the private _objEncuadreLegalAsIdFolio (Read-Only) if set due to an expansion on the encuadre_legal.id_folio reverse relationship
 	 * @property-read EncuadreLegal[] $EncuadreLegalAsIdFolioArray the value for the private _objEncuadreLegalAsIdFolioArray (Read-Only) if set due to an ExpandAsArray on the encuadre_legal.id_folio reverse relationship
-	 * @property-read Registracion $RegistracionAsIdFolio the value for the private _objRegistracionAsIdFolio (Read-Only) if set due to an expansion on the registracion.id_folio reverse relationship
-	 * @property-read Registracion[] $RegistracionAsIdFolioArray the value for the private _objRegistracionAsIdFolioArray (Read-Only) if set due to an ExpandAsArray on the registracion.id_folio reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class RegularizacionGen extends QBaseClass {
@@ -82,22 +80,6 @@ class RegularizacionGen extends QBaseClass {
      * @var EncuadreLegal[] _objEncuadreLegalAsIdFolioArray;
      */
     protected $objEncuadreLegalAsIdFolioArray;
-
-    /**
-     * Private member variable that stores a reference to a single RegistracionAsIdFolio object
-     * (of type Registracion), if this Regularizacion object was restored with
-     * an expansion on the registracion association table.
-     * @var Registracion _objRegistracionAsIdFolio;
-     */
-    protected $objRegistracionAsIdFolio;
-
-    /**
-     * Private member variable that stores a reference to an array of RegistracionAsIdFolio objects
-     * (of type Registracion[]), if this Regularizacion object was restored with
-     * an ExpandAsArray on the registracion association table.
-     * @var Registracion[] _objRegistracionAsIdFolioArray;
-     */
-    protected $objRegistracionAsIdFolioArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -521,23 +503,6 @@ class RegularizacionGen extends QBaseClass {
 							$blnExpandedViaArray = true;
 						}
 
-						// Expanding reverse references: RegistracionAsIdFolio
-						$strAlias = $strAliasPrefix . 'registracionasidfolio__id';
-						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
-							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objRegistracionAsIdFolioArray)) {
-								$objPreviousChildItems = $objPreviousItem->objRegistracionAsIdFolioArray;
-								$objChildItem = Registracion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'registracionasidfolio__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
-								if ($objChildItem) {
-									$objPreviousItem->objRegistracionAsIdFolioArray[] = $objChildItem;
-								}
-							} else {
-								$objPreviousItem->objRegistracionAsIdFolioArray[] = Registracion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'registracionasidfolio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-							}
-							$blnExpandedViaArray = true;
-						}
-
 						// Either return false to signal array expansion, or check-to-reset the Alias prefix and move on
 						if ($blnExpandedViaArray) {
 							return false;
@@ -568,9 +533,6 @@ class RegularizacionGen extends QBaseClass {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objEncuadreLegalAsIdFolioArray, $objToReturn->objEncuadreLegalAsIdFolioArray) != null) {
-						continue;
-					}
-					if (array_diff($objPreviousItem->objRegistracionAsIdFolioArray, $objToReturn->objRegistracionAsIdFolioArray) != null) {
 						continue;
 					}
 
@@ -620,16 +582,6 @@ class RegularizacionGen extends QBaseClass {
 					$objToReturn->objEncuadreLegalAsIdFolioArray[] = EncuadreLegal::InstantiateDbRow($objDbRow, $strAliasPrefix . 'encuadrelegalasidfolio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
 					$objToReturn->objEncuadreLegalAsIdFolio = EncuadreLegal::InstantiateDbRow($objDbRow, $strAliasPrefix . 'encuadrelegalasidfolio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-			}
-
-			// Check for RegistracionAsIdFolio Virtual Binding
-			$strAlias = $strAliasPrefix . 'registracionasidfolio__id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if (!is_null($objDbRow->GetColumn($strAliasName))) {
-				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objRegistracionAsIdFolioArray[] = Registracion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'registracionasidfolio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					$objToReturn->objRegistracionAsIdFolio = Registracion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'registracionasidfolio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			return $objToReturn;
@@ -1002,24 +954,6 @@ class RegularizacionGen extends QBaseClass {
                     $this->objEncuadreLegalAsIdFolioArray = $this->GetEncuadreLegalAsIdFolioArray();
                 return (array) $this->objEncuadreLegalAsIdFolioArray;
 
-            case 'RegistracionAsIdFolio':
-                /**
-                 * Gets the value for the private _objRegistracionAsIdFolio (Read-Only)
-                 * if set due to an expansion on the registracion.id_folio reverse relationship
-                 * @return Registracion
-                 */
-                return $this->objRegistracionAsIdFolio;
-
-            case 'RegistracionAsIdFolioArray':
-                /**
-                 * Gets the value for the private _objRegistracionAsIdFolioArray (Read-Only)
-                 * if set due to an ExpandAsArray on the registracion.id_folio reverse relationship
-                 * @return Registracion[]
-                 */
-                if(is_null($this->objRegistracionAsIdFolioArray))
-                    $this->objRegistracionAsIdFolioArray = $this->GetRegistracionAsIdFolioArray();
-                return (array) $this->objRegistracionAsIdFolioArray;
-
 
             case '__Restored':
                 return $this->__blnRestored;
@@ -1373,201 +1307,6 @@ class RegularizacionGen extends QBaseClass {
 			$objDatabase->NonQuery('
 				DELETE FROM
 					"encuadre_legal"
-				WHERE
-					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-			
-		
-		// Related Objects' Methods for RegistracionAsIdFolio
-		//-------------------------------------------------------------------
-
-                //Public Model methods for add and remove Items from the _RegistracionAsIdFolioArray
-                /**
-                * Add a Item to the _RegistracionAsIdFolioArray
-                * @param Registracion $objItem
-                * @return Registracion[]
-                */
-                public function AddRegistracionAsIdFolio(Registracion $objItem){
-                   //add to the collection and add me as a parent
-                    $objItem->IdFolioObject = $this;
-                    $this->objRegistracionAsIdFolioArray = $this->RegistracionAsIdFolioArray;
-                    $this->objRegistracionAsIdFolioArray[] = $objItem;
-
-                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
-                    
-                    //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateRegistracionAsIdFolio($objItem);
-
-                    return $this->RegistracionAsIdFolioArray;
-                }
-
-                /**
-                * Remove a Item to the _RegistracionAsIdFolioArray
-                * @param Registracion $objItem
-                * @return Registracion[]
-                */
-                public function RemoveRegistracionAsIdFolio(Registracion $objItem){
-                    //remove Item from the collection
-                    $arrAux = $this->objRegistracionAsIdFolioArray;
-                    $this->objRegistracionAsIdFolioArray = array();
-                    foreach ($arrAux as $obj) {
-                        if ($obj !== $objItem) 
-                            array_push($this->objRegistracionAsIdFolioArray,$obj);
-                    }
-                    //automatic persistence to de DB if necesary
-                    if(!is_null($objItem->Id))
-                        try{
-                            $objItem->IdFolioObject = null;
-                            $objItem->Save();
-                        }catch(Exception $e){
-                            $this->DeleteAssociatedRegistracionAsIdFolio($objItem);
-                        }
-
-                    return $this->objRegistracionAsIdFolioArray;
-                }
-
-		/**
-		 * Gets all associated RegistracionesAsIdFolio as an array of Registracion objects
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return Registracion[]
-		*/ 
-		public function GetRegistracionAsIdFolioArray($objOptionalClauses = null) {
-			if ((is_null($this->intId)))
-				return array();
-
-			try {
-				return Registracion::LoadArrayByIdFolio($this->intId, $objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Counts all associated RegistracionesAsIdFolio
-		 * @return int
-		*/ 
-		public function CountRegistracionesAsIdFolio() {
-			if ((is_null($this->intId)))
-				return 0;
-
-			return Registracion::CountByIdFolio($this->intId);
-		}
-
-		/**
-		 * Associates a RegistracionAsIdFolio
-		 * @param Registracion $objRegistracion
-		 * @return void
-		*/ 
-		public function AssociateRegistracionAsIdFolio(Registracion $objRegistracion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateRegistracionAsIdFolio on this unsaved Regularizacion.');
-			if ((is_null($objRegistracion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateRegistracionAsIdFolio on this Regularizacion with an unsaved Registracion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Regularizacion::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"registracion"
-				SET
-					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegistracion->Id) . '
-			');
-		}
-
-		/**
-		 * Unassociates a RegistracionAsIdFolio
-		 * @param Registracion $objRegistracion
-		 * @return void
-		*/ 
-		public function UnassociateRegistracionAsIdFolio(Registracion $objRegistracion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegistracionAsIdFolio on this unsaved Regularizacion.');
-			if ((is_null($objRegistracion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegistracionAsIdFolio on this Regularizacion with an unsaved Registracion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Regularizacion::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"registracion"
-				SET
-					"id_folio" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegistracion->Id) . ' AND
-					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all RegistracionesAsIdFolio
-		 * @return void
-		*/ 
-		public function UnassociateAllRegistracionesAsIdFolio() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegistracionAsIdFolio on this unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Regularizacion::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"registracion"
-				SET
-					"id_folio" = null
-				WHERE
-					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes an associated RegistracionAsIdFolio
-		 * @param Registracion $objRegistracion
-		 * @return void
-		*/ 
-		public function DeleteAssociatedRegistracionAsIdFolio(Registracion $objRegistracion) {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegistracionAsIdFolio on this unsaved Regularizacion.');
-			if ((is_null($objRegistracion->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegistracionAsIdFolio on this Regularizacion with an unsaved Registracion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Regularizacion::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"registracion"
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objRegistracion->Id) . ' AND
-					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Deletes all associated RegistracionesAsIdFolio
-		 * @return void
-		*/ 
-		public function DeleteAllRegistracionesAsIdFolio() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateRegistracionAsIdFolio on this unsaved Regularizacion.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Regularizacion::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				DELETE FROM
-					"registracion"
 				WHERE
 					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');

@@ -13,7 +13,6 @@ class PartidoModalPanelGen extends EditPanelBase {
         'lblId' => false,
         'txtNombre' => true,
         'txtCodPartido' => true,
-        'lstAprobacionGeodesiaAsId' => false,
         'lstFolioAsId' => false,
         'lstLocalidadAsId' => false,
     );
@@ -52,8 +51,6 @@ class PartidoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombre'] = $this->mctPartido->txtNombre_Create();
         if (in_array('txtCodPartido',$strControlsArray)) 
             $this->objControlsArray['txtCodPartido'] = $this->mctPartido->txtCodPartido_Create();
-        if (in_array('lstAprobacionGeodesiaAsId',$strControlsArray))
-            $this->objControlsArray['lstAprobacionGeodesiaAsId'] = $this->mctPartido->lstAprobacionGeodesiaAsId_Create();
         if (in_array('lstFolioAsId',$strControlsArray))
             $this->objControlsArray['lstFolioAsId'] = $this->mctPartido->lstFolioAsId_Create();
         if (in_array('lstLocalidadAsId',$strControlsArray))

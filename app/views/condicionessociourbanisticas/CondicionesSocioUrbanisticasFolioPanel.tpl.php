@@ -25,7 +25,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">
-                    <span class="number">-</span> Uso Interno
+                    <span class="number">5.</span> Uso Interno
                 </a>
             </li>
         </ul>

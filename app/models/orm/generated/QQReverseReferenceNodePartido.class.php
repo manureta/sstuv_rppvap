@@ -11,8 +11,6 @@ class QQReverseReferenceNodePartido extends QQReverseReferenceNode {
 					return new QQNode('nombre', 'Nombre', 'string', $this);
 				case 'CodPartido':
 					return new QQNode('cod_partido', 'CodPartido', 'string', $this);
-				case 'AprobacionGeodesiaAsId':
-					return new QQReverseReferenceNodeAprobacionGeodesia($this, 'aprobaciongeodesiaasid', 'reverse_reference', 'id_partido');
 				case 'FolioAsId':
 					return new QQReverseReferenceNodeFolio($this, 'folioasid', 'reverse_reference', 'id_partido');
 				case 'LocalidadAsId':

@@ -22,6 +22,7 @@
 		<?php $_CONTROL->txtGeom->RenderWithName(); ?>
 		<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
 		<?php $_CONTROL->txtLocalidad->RenderWithName(); ?>
+		<?php $_CONTROL->txtReparticionPublica->RenderWithName(); ?>
 		<?php $_CONTROL->lstCondicionesSocioUrbanisticasAsId->RenderWithName(); ?>
 
 		<?php $_CONTROL->lstRegularizacionAsId->RenderWithName(); ?>

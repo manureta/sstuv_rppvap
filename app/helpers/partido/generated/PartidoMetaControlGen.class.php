@@ -214,50 +214,6 @@
 
 
 
-    public $lstAprobacionGeodesiaAsId;
-    /**
-     * Gets all associated AprobacionGeodesiasAsId as an array of AprobacionGeodesia objects
-     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return AprobacionGeodesia[]
-    */ 
-    public function lstAprobacionGeodesiaAsId_Create($strControlId = null) {
-
-        $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'AprobacionGeodesia';
-        $strConfigArray['strRefreshMethod'] = 'AprobacionGeodesiaAsIdArray';
-        $strConfigArray['strParentPrimaryKeyProperty'] = 'IdPartido';
-        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddAprobacionGeodesiaAsId';
-        $strConfigArray['strRemoveMethod'] = 'RemoveAprobacionGeodesiaAsId';
-        $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['Num'] = QApplication::Translate('Num');
-        $strConfigArray['Columns']['Anio'] = QApplication::Translate('Anio');
-
-        $this->lstAprobacionGeodesiaAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
-        $this->lstAprobacionGeodesiaAsId->Name = AprobacionGeodesia::Noun();
-        $this->lstAprobacionGeodesiaAsId->SetNewMethod($this, "lstAprobacionGeodesiaAsId_New");
-        $this->lstAprobacionGeodesiaAsId->SetEditMethod($this, "lstAprobacionGeodesiaAsId_Edit");
-        return $this->lstAprobacionGeodesiaAsId;
-    }
-
-    public function lstAprobacionGeodesiaAsId_New() {
-        AprobacionGeodesiaModalPanel::$strControlsArray['lstIdPartidoObject'] = false;
-        $strControlsArray = array_keys(AprobacionGeodesiaModalPanel::$strControlsArray, true);
-        $this->lstAprobacionGeodesiaAsId->ModalPanel = new AprobacionGeodesiaModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstAprobacionGeodesiaAsId->ModalPanel->objCallerControl = $this->lstAprobacionGeodesiaAsId;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-    public function lstAprobacionGeodesiaAsId_Edit($intKey) {
-        AprobacionGeodesiaModalPanel::$strControlsArray['lstIdPartidoObject'] = false;
-        $strControlsArray = array_keys(AprobacionGeodesiaModalPanel::$strControlsArray, true);
-        $obj = $this->objPartido->AprobacionGeodesiaAsIdArray[$intKey];
-        $this->lstAprobacionGeodesiaAsId->ModalPanel = new AprobacionGeodesiaModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstAprobacionGeodesiaAsId->ModalPanel->objCallerControl = $this->lstAprobacionGeodesiaAsId;
-        $this->objParentObject->Modal->ShowDialogBox();
-    }
-
-
     public $lstFolioAsId;
     /**
      * Gets all associated FoliosAsId as an array of Folio objects
@@ -290,6 +246,7 @@
         $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Localidad'] = QApplication::Translate('Localidad');
+        $strConfigArray['Columns']['ReparticionPublica'] = QApplication::Translate('ReparticionPublica');
 
         $this->lstFolioAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
         $this->lstFolioAsId->Name = Folio::Noun();

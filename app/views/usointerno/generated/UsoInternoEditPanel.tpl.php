@@ -13,10 +13,17 @@
 		<?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>
 		<?php $_CONTROL->chkRegularizacionTienePlano->RenderWithName(); ?>
 		<?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
-		<?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
-		<?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
 		<?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
 		<?php $_CONTROL->txtNumExpediente->RenderWithName(); ?>
+		<?php $_CONTROL->txtRegistracionLegajo->RenderWithName(); ?>
+		<?php $_CONTROL->txtRegistracionFecha->RenderWithName(); ?>
+		<?php $_CONTROL->txtRegistracionFolio->RenderWithName(); ?>
+		<?php $_CONTROL->txtGeodesiaNum->RenderWithName(); ?>
+		<?php $_CONTROL->txtGeodesiaAnio->RenderWithName(); ?>
+		<?php $_CONTROL->chkLey14449->RenderWithName(); ?>
+		<?php $_CONTROL->chkTieneCenso->RenderWithName(); ?>
+		<?php $_CONTROL->txtFechaCenso->RenderWithName(); ?>
+		<?php $_CONTROL->txtGeodesiaPartido->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

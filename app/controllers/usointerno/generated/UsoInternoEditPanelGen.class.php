@@ -6,6 +6,9 @@ class UsoInternoEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intIdFolio;
 
+
+  
+    
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);
         if ($blnDelete) {

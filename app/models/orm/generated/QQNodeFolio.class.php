@@ -45,6 +45,8 @@ class QQNodeFolio extends QQNode {
 					return new QQNode('judicializado', 'Judicializado', 'string', $this);
 				case 'Localidad':
 					return new QQNode('localidad', 'Localidad', 'string', $this);
+				case 'ReparticionPublica':
+					return new QQNode('reparticion_publica', 'ReparticionPublica', 'string', $this);
 				case 'ArchivosAdjuntosAsId':
 					return new QQReverseReferenceNodeArchivosAdjuntos($this, 'archivosadjuntosasid', 'reverse_reference', 'id_folio');
 				case 'CondicionesSocioUrbanisticasAsId':

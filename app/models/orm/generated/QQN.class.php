@@ -7,12 +7,6 @@
 			return new QQNodeAntecedentes('antecedentes', null, null);
 		}
 		/**
-		 * @return QQNodeAprobacionGeodesia
-		 */
-		static public function AprobacionGeodesia() {
-			return new QQNodeAprobacionGeodesia('aprobacion_geodesia', null, null);
-		}
-		/**
 		 * @return QQNodeArchivosAdjuntos
 		 */
 		static public function ArchivosAdjuntos() {
@@ -47,12 +41,6 @@
 		 */
 		static public function Folio() {
 			return new QQNodeFolio('folio', null, null);
-		}
-		/**
-		 * @return QQNodeGeometryColumns
-		 */
-		static public function GeometryColumns() {
-			return new QQNodeGeometryColumns('geometry_columns', null, null);
 		}
 		/**
 		 * @return QQNodeInfraestructura
@@ -109,12 +97,6 @@
 			return new QQNodePerfil('perfil', null, null);
 		}
 		/**
-		 * @return QQNodeRegistracion
-		 */
-		static public function Registracion() {
-			return new QQNodeRegistracion('registracion', null, null);
-		}
-		/**
 		 * @return QQNodeRegularizacion
 		 */
 		static public function Regularizacion() {
@@ -125,12 +107,6 @@
 		 */
 		static public function SituacionAmbiental() {
 			return new QQNodeSituacionAmbiental('situacion_ambiental', null, null);
-		}
-		/**
-		 * @return QQNodeSpatialRefSys
-		 */
-		static public function SpatialRefSys() {
-			return new QQNodeSpatialRefSys('spatial_ref_sys', null, null);
 		}
 		/**
 		 * @return QQNodeTipoBarrio

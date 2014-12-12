@@ -15,7 +15,6 @@ class RegularizacionModalPanelGen extends EditPanelBase {
         'chkProcesoIniciado' => true,
         'lstAntecedentesAsIdFolio' => true,
         'lstEncuadreLegalAsIdFolio' => false,
-        'lstRegistracionAsIdFolio' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objRegularizacion = null, $strControlId = null) {
@@ -56,8 +55,6 @@ class RegularizacionModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lstAntecedentesAsIdFolio'] = $this->mctRegularizacion->lstAntecedentesAsIdFolio_Create();
         if (in_array('lstEncuadreLegalAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstEncuadreLegalAsIdFolio'] = $this->mctRegularizacion->lstEncuadreLegalAsIdFolio_Create();
-        if (in_array('lstRegistracionAsIdFolio',$strControlsArray))
-            $this->objControlsArray['lstRegistracionAsIdFolio'] = $this->mctRegularizacion->lstRegistracionAsIdFolio_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

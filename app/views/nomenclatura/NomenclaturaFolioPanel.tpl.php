@@ -24,7 +24,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
-                    <span class="number">-</span> Uso Interno
+                    <span class="number">5.</span> Uso Interno
                 </a>
             </li>
         </ul>

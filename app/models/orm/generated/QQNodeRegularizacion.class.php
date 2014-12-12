@@ -17,8 +17,6 @@ class QQNodeRegularizacion extends QQNode {
 					return new QQReverseReferenceNodeAntecedentes($this, 'antecedentesasidfolio', 'reverse_reference', 'id_folio', 'AntecedentesAsIdFolio');
 				case 'EncuadreLegalAsIdFolio':
 					return new QQReverseReferenceNodeEncuadreLegal($this, 'encuadrelegalasidfolio', 'reverse_reference', 'id_folio');
-				case 'RegistracionAsIdFolio':
-					return new QQReverseReferenceNodeRegistracion($this, 'registracionasidfolio', 'reverse_reference', 'id_folio');
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);
