@@ -90,7 +90,7 @@
         <td colspan="9"><?=$this->objFolio->IdPartidoObject->Nombre?></td>
         <td colspan="7"><img name="caratulanueva_r4_c16" src="assets/caratula/caratula-nueva_r4_c16.jpg" width="111" height="32" id="caratulanueva_r4_c16" alt="" /></td>
         <td><img name="caratulanueva_r4_c23" src="assets/caratula/caratula-nueva_r4_c23.jpg" width="1" height="32" id="caratulanueva_r4_c23" alt="" /></td>
-        <td colspan="19"><?=$this->objFolio->IdPartidoObject->Nombre?></td>
+        <td colspan="19"><?=$this->objFolio->Localidad?></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="32" alt="" /></td>
       </tr>
       <tr>
