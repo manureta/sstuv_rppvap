@@ -292,6 +292,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 	 }
 
      protected function actualizarEstadoNomenclaturas(){
+         error_log("entro a actualizarEstadoNomenclaturas");
          $objDatabase = QApplication::$Database[1];
          $id_folio=$this->mctFolio->Folio->Id; 
          try {             

@@ -60,10 +60,3 @@ $BODY$
 --SELECT id  FROM nomenclatura WHERE id_folio=1
 
 
-/*
-select nomencla,st_intersects(geom,(select the_geom from v_folios where gid=1)) as interseccion,
-st_overlaps(geom,(select the_geom from v_folios where gid=1)) as overlaps
- from parcelas where nomencla in (
-SELECT (((((partido::text || circ::text) || secc::text) || chac_quinta::text) || frac::text) || mza::text) || parc::text AS nomencla
-           FROM nomenclatura where id_folio=1);
-*/
