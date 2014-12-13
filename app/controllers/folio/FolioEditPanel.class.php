@@ -82,9 +82,9 @@ class FolioEditPanel extends FolioEditPanelGen {
             }
             // Judicializado
             $this->lstJudicializado=new QListBox($this);
-            $this->lstJudicializado->AddItem('- Sin Dato ', 'sin_dato');
-            $this->lstJudicializado->AddItem('- Si ', 'si');
-            $this->lstJudicializado->AddItem('- No ', 'no');
+            $this->lstJudicializado->AddItem(' Sin Dato ', 'sin_dato');
+            $this->lstJudicializado->AddItem(' Si ', 'si');
+            $this->lstJudicializado->AddItem(' No ', 'no');
             $this->lstJudicializado->Name="Judicializado";
             // inicializo en sin dato
             $this->txtJudicializado->Text='sin_dato';            
@@ -93,8 +93,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
             $partido_usuario=$this->mctFolio->Folio->IdPartidoObject->CodPartido;
-            error_log("el partido es:");
-            error_log($partido_usuario);
+            
             $this->lstIdPartidoObject->Enabled = false; 
             $this->txtMatricula->Enabled = false; 
             $this->objControlsArray['txtCodFolio']->ActionParameter=$this->mctFolio->Folio->Id;
@@ -183,7 +182,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['lstTipoBarrioObject']->Name="Tipo de barrio";
         if (in_array('txtObservacionCasoDudoso',$strControlsArray)) 
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
-            $this->objControlsArray['txtObservacionCasoDudoso']->Name="Observación de caso dudoso";
+            $this->objControlsArray['txtObservacionCasoDudoso']->Name="Observación de otro caso";
         
         if (in_array('txtJudicializado',$strControlsArray)) 
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();            
