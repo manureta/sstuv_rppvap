@@ -249,38 +249,46 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     public function calcular_nomenclaturas(){
         
-    	
-    	$cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
-        $gid=$this->mctFolio->Folio->Id;
-        $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
-	    
-        $objDatabase = QApplication::$Database[1];
-
-	    // Perform the Query
-	    $objDbResult = $objDatabase->Query($strQuery);
-	    
-        while ($row = $objDbResult->FetchArray()) {
-           
-            $nomencla=$row['nomencla'];
-            $nom = new Nomenclatura();
-            $nom->IdFolio = $this->mctFolio->Folio->Id;
-            $nom->PartidaInmobiliaria = '';
-            $nom->TitularDominio = '';
-            $nom->Partido = substr($nomencla,0,3);
-            $nom->Circ = substr($nomencla,3,2);//2
-            $nom->Secc = substr($nomencla,5,2);//2
-            $nom->ChacQuinta = substr($nomencla,7,14);//14
-            $nom->Frac = substr($nomencla,21,7);//7
-            $nom->Mza = substr($nomencla,28,7);//7;
-            $nom->Parc = substr($nomencla,35,7);//7;
-            $nom->InscripcionDominio = '';
-            $nom->TitularRegPropiedad = '';
-            $nom->EstadoGeografico='';
-            $nom->DatoVerificadoRegPropiedad = false;
-            $nom->Save();
+        try {
+            $cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
+            $gid=$this->mctFolio->Folio->Id;
+            $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
             
+            $objDatabase = QApplication::$Database[1];
+
+            // Perform the Query
+            $objDbResult = $objDatabase->Query($strQuery);
+            
+            while ($row = $objDbResult->FetchArray()) {
+               
+                $nomencla=$row['nomencla'];
+                $nom = new Nomenclatura();
+                $nom->IdFolio = $this->mctFolio->Folio->Id;
+                $nom->PartidaInmobiliaria = '';
+                $nom->TitularDominio = '';
+                $nom->Partido = substr($nomencla,0,3);
+                $nom->Circ = substr($nomencla,3,2);//2
+                $nom->Secc = substr($nomencla,5,2);//2
+                $nom->ChacQuinta = substr($nomencla,7,14);//14
+                $nom->Frac = substr($nomencla,21,7);//7
+                $nom->Mza = substr($nomencla,28,7);//7;
+                $nom->Parc = substr($nomencla,35,7);//7;
+                $nom->InscripcionDominio = '';
+                $nom->TitularRegPropiedad = '';
+                $nom->EstadoGeografico='';
+                $nom->DatoVerificadoRegPropiedad = false;
+                $nom->Save();
+                
+            } 
+            $this->actualizarEstadoNomenclaturas();         
+        } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>Error al calcular las nomenclaturas del barrio</p>");
+            // mandar mail
+            error_log($e);
         }
-        $this->actualizarEstadoNomenclaturas();        
+    	
+    	
+                
 	    
 	 }
 
