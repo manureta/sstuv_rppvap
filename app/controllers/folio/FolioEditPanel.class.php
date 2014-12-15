@@ -279,16 +279,14 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $nom->DatoVerificadoRegPropiedad = false;
                 $nom->Save();
                 
-            } 
-            $this->actualizarEstadoNomenclaturas();         
+            }                     
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Error al calcular las nomenclaturas del barrio</p>");
             // mandar mail
             error_log($e);
         }
-    	
-    	
-                
+        $this->actualizarEstadoNomenclaturas();
+    	    	               
 	    
 	 }
 
