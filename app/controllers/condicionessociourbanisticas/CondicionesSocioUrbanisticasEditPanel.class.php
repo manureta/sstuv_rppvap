@@ -131,7 +131,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
     
-    protected function buttons_Create($blnDelete = true) {
+    protected function buttons_Create($blnDelete = false) {
         parent::buttons_Create($blnDelete);
         if ($blnDelete) {
             $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (CondicionesSocioUrbanisticas::GenderMale() ? 'e' : 'a'), CondicionesSocioUrbanisticas::Noun())));

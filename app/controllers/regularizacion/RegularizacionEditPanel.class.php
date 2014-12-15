@@ -147,5 +147,14 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         QApplication::ExecuteJavascript("SinIntervencion(false)");
     }
 
+      protected function buttons_Create($blnDelete = false) {
+        parent::buttons_Create($blnDelete);
+        if ($blnDelete) {
+            $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Regularizacion::GenderMale() ? 'e' : 'a'), Regularizacion::Noun())));
+            $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
+            $this->btnDelete->Visible = $this->mctRegularizacion->EditMode;
+        }
+    }
+
 }
 ?>

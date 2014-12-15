@@ -7,6 +7,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     //id variables for meta_create
     protected $intIdFolio;
     protected $objFolio;
+    public $lstInformeUrbanistico;
 
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
@@ -54,6 +55,34 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
+
+         // informe urbanistico
+        $this->lstInformeUrbanistico=new QListBox($this);
+        switch ($this->txtInformeUrbanisticoFecha->Text) {                
+                case 'si':
+                    $this->lstInformeUrbanistico->AddItem(' Si ', 'si');
+                    $this->lstInformeUrbanistico->AddItem(' No ', 'no');
+                    $this->lstInformeUrbanistico->AddItem(' Sin Dato ', 'sin_dato');                
+                    break;
+                case 'no':    
+                    $this->lstInformeUrbanistico->AddItem(' No ', 'no');
+                    $this->lstInformeUrbanistico->AddItem(' Sin Dato ', 'sin_dato');                
+                    $this->lstInformeUrbanistico->AddItem(' Si ', 'si');
+                    break;
+                default:
+                    $this->lstInformeUrbanistico->AddItem(' Sin Dato ', 'sin_dato');
+                    $this->lstInformeUrbanistico->AddItem(' Si ', 'si');
+                    $this->lstInformeUrbanistico->AddItem(' No ', 'no'); 
+                    $this->txtInformeUrbanisticoFecha->Text='sin_dato'; // para inicializarlo           
+                    break;                    
+            }
+        $this->lstInformeUrbanistico->Name="¿Cuenta con informe urbanístico?";    
+        $this->lstInformeUrbanistico->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstInforme_Change'));
+        $this->txtInformeUrbanisticoFecha->Visible=false;
+
+        // Partido de Geodesia
+        if($this->txtGeodesiaPartido->Text=="") $this->txtGeodesiaPartido->Text=$this->objFolio->IdPartidoObject->CodPartido;
+        //$this->txtGeodesiaPartido->Text=$this->objFolio->IdPartidoObject->CodPartido;
 
         $this->buttons_Create();
         $this->blnAutoRenderChildrenWithName = false;
@@ -121,6 +150,18 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 
+    public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       
+        $this->txtInformeUrbanisticoFecha->Text=$this->lstInformeUrbanistico->SelectedValue;
+    }
+
+    protected function buttons_Create($blnDelete = false) {
+        parent::buttons_Create($blnDelete);
+        if ($blnDelete) {
+            $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (UsoInterno::GenderMale() ? 'e' : 'a'), UsoInterno::Noun())));
+            $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
+            $this->btnDelete->Visible = $this->mctUsoInterno->EditMode;
+        }
+    }
 
 }
 ?>

@@ -45,7 +45,8 @@
         
         <div class="titulos"><i class="icon-chevron-right"> Informe Urbanístico</i></div> 
         <div class="well bs-component">
-            <?php $_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
+            <?php //$_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
+            <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
             <p>* adjuntar</p>
         </div>
 
