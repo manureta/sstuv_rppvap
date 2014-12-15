@@ -36,6 +36,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         
         //Botón de creación
         $this->btnCreateNew_Create();
+        $this->btnCreateNew->Text="Añadir Nomenclatura";
 
         $this->btnAnalizar = new QLinkButton($this);
         $this->btnAnalizar->Text = 'Analizar Nomenclaturas';               

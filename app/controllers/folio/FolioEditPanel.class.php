@@ -89,6 +89,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             // inicializo en sin dato
             $this->txtJudicializado->Text='sin_dato';            
             
+            //Fecha 
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{

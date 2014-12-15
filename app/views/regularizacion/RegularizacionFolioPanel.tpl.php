@@ -107,11 +107,11 @@
     }
 
     function SinIntervencion(checked){
-        console.log("entro");
+        
         if(checked){
             $(".panel_organismos").fadeOut();
         }else{
-            $(".panel_organismos").toggle();
+            $(".panel_organismos").fadeIn();
         }
     }
 </script>

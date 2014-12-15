@@ -67,9 +67,14 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         // Si se tilda sin intervencion hay que ocultar org de intervencion
         $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;        
         if($sinintervencion)QApplication::ExecuteJavascript("SinIntervencion(true)");
-        $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(), new QJavascriptAction ("SinIntervencion()"));
-
         
+        $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"sinintervencion_chk"));
+        $this->pnlAntecedentes->chkObrasInfraestructura->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
+        $this->pnlAntecedentes->chkEquipamientos->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
+        $this->pnlAntecedentes->chkIntervencionesEnViviendas->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
+        
+
+
         $this->objOrganismos=OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,QApplication::QueryString("id")));                        
         $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this,OrganismosDeIntervencionEditPanel::$strControlsArray,$this->objOrganismos->Id);
         $this->pnlOrganismos->lstIdFolioObject->Value = $this->objFolio->Id;
@@ -123,6 +128,24 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
 
+    public function sinintervencion_chk($strFormId, $strControlId, $strParameter){
+        if($this->pnlAntecedentes->chkSinIntervencion->Checked){
+            $this->pnlAntecedentes->chkObrasInfraestructura->Checked=false;
+            $this->pnlAntecedentes->chkEquipamientos->Checked=false;
+            $this->pnlAntecedentes->chkIntervencionesEnViviendas->Checked=false;
+            $this->pnlAntecedentes->txtOtros->Text="";                
+            QApplication::ExecuteJavascript("SinIntervencion(true)");
+        }else{
+            QApplication::ExecuteJavascript("SinIntervencion(false)");
+        }
+        
+        
+    }
+
+    public function deshabilitar_sinintervencion(){
+        $this->pnlAntecedentes->chkSinIntervencion->Checked=false;
+        QApplication::ExecuteJavascript("SinIntervencion(false)");
+    }
 
 }
 ?>
