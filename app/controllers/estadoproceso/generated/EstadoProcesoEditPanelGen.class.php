@@ -10,6 +10,7 @@ class EstadoProcesoEditPanelGen extends EditPanelBase {
     public static $strControlsArray = array(
         'lblId' => false,
         'txtDescripcion' => true,
+        'lstUsoInternoAsRegularizacion' => false,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -41,6 +42,8 @@ class EstadoProcesoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['lblId'] = $this->mctEstadoProceso->lblId_Create();
         if (in_array('txtDescripcion',$strControlsArray)) 
             $this->objControlsArray['txtDescripcion'] = $this->mctEstadoProceso->txtDescripcion_Create();
+        if (in_array('lstUsoInternoAsRegularizacion',$strControlsArray))
+            $this->objControlsArray['lstUsoInternoAsRegularizacion'] = $this->mctEstadoProceso->lstUsoInternoAsRegularizacion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
@@ -59,6 +62,10 @@ class EstadoProcesoEditPanelGen extends EditPanelBase {
         parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the EstadoProcesoMetaControl
         $this->mctEstadoProceso->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
 

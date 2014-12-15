@@ -12,6 +12,7 @@ class EstadoProcesoModalPanelGen extends EditPanelBase {
     public static $strControlsArray = array(
         'lblId' => false,
         'txtDescripcion' => true,
+        'lstUsoInternoAsRegularizacion' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objEstadoProceso = null, $strControlId = null) {
@@ -46,6 +47,8 @@ class EstadoProcesoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lblId'] = $this->mctEstadoProceso->lblId_Create();
         if (in_array('txtDescripcion',$strControlsArray)) 
             $this->objControlsArray['txtDescripcion'] = $this->mctEstadoProceso->txtDescripcion_Create();
+        if (in_array('lstUsoInternoAsRegularizacion',$strControlsArray))
+            $this->objControlsArray['lstUsoInternoAsRegularizacion'] = $this->mctEstadoProceso->lstUsoInternoAsRegularizacion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

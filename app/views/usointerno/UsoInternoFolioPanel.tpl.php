@@ -73,7 +73,7 @@
             
             
             
-            <?php $_CONTROL->txtRegularizacionEstadoProceso->RenderWithName(); ?>
+            <?php $_CONTROL->lstRegularizacionEstadoProcesoObject->RenderWithName(); ?>
             
        		</div>
 

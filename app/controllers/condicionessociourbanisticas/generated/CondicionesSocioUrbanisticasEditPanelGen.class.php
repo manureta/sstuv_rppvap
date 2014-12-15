@@ -7,8 +7,6 @@ class CondicionesSocioUrbanisticasEditPanelGen extends EditPanelBase {
     protected $intId;
     protected $intIdFolio;
 
-   
-
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

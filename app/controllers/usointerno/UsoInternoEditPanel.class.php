@@ -18,7 +18,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'calRegularizacionFechaInicio' => true,
         'chkRegularizacionTienePlano' => true,
         'chkRegularizacionCircular10Catastro' => true,
-        'txtRegularizacionEstadoProceso' => true,
+        'lstRegularizacionEstadoProcesoObject' => true,
         'txtNumExpediente' => true,
         'txtRegistracionLegajo' => true,
         'txtRegistracionFecha' => true,
@@ -91,9 +91,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('chkRegularizacionCircular10Catastro',$strControlsArray)) 
             $this->objControlsArray['chkRegularizacionCircular10Catastro'] = $this->mctUsoInterno->chkRegularizacionCircular10Catastro_Create();
             $this->objControlsArray['chkRegularizacionCircular10Catastro']->Name="Circular 10 Catastro";                
-        if (in_array('txtRegularizacionEstadoProceso',$strControlsArray)) 
-            $this->objControlsArray['txtRegularizacionEstadoProceso'] = $this->mctUsoInterno->txtRegularizacionEstadoProceso_Create();
-            $this->objControlsArray['txtRegularizacionEstadoProceso']->Name="Estado del proceso de regularización";
+        if (in_array('lstRegularizacionEstadoProcesoObject',$strControlsArray)) 
+            $this->objControlsArray['lstRegularizacionEstadoProcesoObject'] = $this->mctUsoInterno->lstRegularizacionEstadoProcesoObject_Create();
+            $this->objControlsArray['lstRegularizacionEstadoProcesoObject']->Name="Estado del proceso de regularización";
         if (in_array('txtNumExpediente',$strControlsArray)) 
             $this->objControlsArray['txtNumExpediente'] = $this->mctUsoInterno->txtNumExpediente_Create();
             $this->objControlsArray['txtNumExpediente']->Name="N° Expediente";

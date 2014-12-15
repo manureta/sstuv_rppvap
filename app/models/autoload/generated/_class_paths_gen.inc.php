@@ -148,6 +148,27 @@
     QApplication::$ClassFile['qqreversereferencenodefolio'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeFolio.class.php';
 
 
+    // ClassPaths for the GeometryColumns class
+    QApplication::$ClassFile['geometrycolumnsindexpanelgen'] = __CONTROLLER_DIR__.'/geometrycolumns/generated/GeometryColumnsIndexPanelGen.class.php';
+    QApplication::$ClassFile['geometrycolumnseditpanelgen'] = __CONTROLLER_DIR__.'/geometrycolumns/generated/GeometryColumnsEditPanelGen.class.php';
+
+    QApplication::$ClassFile['geometrycolumnsindexpanel'] = __CONTROLLER_DIR__.'/geometrycolumns/GeometryColumnsIndexPanel.class.php';
+    QApplication::$ClassFile['geometrycolumnseditpanel'] = __CONTROLLER_DIR__.'/geometrycolumns/GeometryColumnsEditPanel.class.php';
+
+    QApplication::$ClassFile['geometrycolumnsmodalpanel'] = __CONTROLLER_DIR__.'/geometrycolumns/GeometryColumnsModalPanel.class.php';
+    QApplication::$ClassFile['geometrycolumnsmodalpanelgen'] = __CONTROLLER_DIR__.'/geometrycolumns/generated/GeometryColumnsModalPanelGen.class.php';
+
+    QApplication::$ClassFile['geometrycolumnsdatagridgen'] = __HELPER_DIR__.'/geometrycolumns/generated/GeometryColumnsDataGridGen.class.php';
+    QApplication::$ClassFile['geometrycolumnsmetacontrolgen'] = __HELPER_DIR__.'/geometrycolumns/generated/GeometryColumnsMetaControlGen.class.php';
+    QApplication::$ClassFile['geometrycolumnsdatagrid'] = __HELPER_DIR__.'/geometrycolumns/GeometryColumnsDataGrid.class.php';
+    QApplication::$ClassFile['geometrycolumnsmetacontrol'] = __HELPER_DIR__.'/geometrycolumns/GeometryColumnsMetaControl.class.php';
+
+    QApplication::$ClassFile['geometrycolumnsgen'] = __MODEL_DIR__.'/orm/generated/GeometryColumnsGen.class.php';
+    QApplication::$ClassFile['geometrycolumns'] = __MODEL_DIR__.'/orm/GeometryColumns.class.php';
+    QApplication::$ClassFile['qqnodegeometrycolumns'] = __MODEL_DIR__.'/orm/generated/QQNodeGeometryColumns.class.php';
+    QApplication::$ClassFile['qqreversereferencenodegeometrycolumns'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeGeometryColumns.class.php';
+
+
     // ClassPaths for the Infraestructura class
     QApplication::$ClassFile['infraestructuraindexpanelgen'] = __CONTROLLER_DIR__.'/infraestructura/generated/InfraestructuraIndexPanelGen.class.php';
     QApplication::$ClassFile['infraestructuraeditpanelgen'] = __CONTROLLER_DIR__.'/infraestructura/generated/InfraestructuraEditPanelGen.class.php';
@@ -377,6 +398,27 @@
     QApplication::$ClassFile['situacionambiental'] = __MODEL_DIR__.'/orm/SituacionAmbiental.class.php';
     QApplication::$ClassFile['qqnodesituacionambiental'] = __MODEL_DIR__.'/orm/generated/QQNodeSituacionAmbiental.class.php';
     QApplication::$ClassFile['qqreversereferencenodesituacionambiental'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeSituacionAmbiental.class.php';
+
+
+    // ClassPaths for the SpatialRefSys class
+    QApplication::$ClassFile['spatialrefsysindexpanelgen'] = __CONTROLLER_DIR__.'/spatialrefsys/generated/SpatialRefSysIndexPanelGen.class.php';
+    QApplication::$ClassFile['spatialrefsyseditpanelgen'] = __CONTROLLER_DIR__.'/spatialrefsys/generated/SpatialRefSysEditPanelGen.class.php';
+
+    QApplication::$ClassFile['spatialrefsysindexpanel'] = __CONTROLLER_DIR__.'/spatialrefsys/SpatialRefSysIndexPanel.class.php';
+    QApplication::$ClassFile['spatialrefsyseditpanel'] = __CONTROLLER_DIR__.'/spatialrefsys/SpatialRefSysEditPanel.class.php';
+
+    QApplication::$ClassFile['spatialrefsysmodalpanel'] = __CONTROLLER_DIR__.'/spatialrefsys/SpatialRefSysModalPanel.class.php';
+    QApplication::$ClassFile['spatialrefsysmodalpanelgen'] = __CONTROLLER_DIR__.'/spatialrefsys/generated/SpatialRefSysModalPanelGen.class.php';
+
+    QApplication::$ClassFile['spatialrefsysdatagridgen'] = __HELPER_DIR__.'/spatialrefsys/generated/SpatialRefSysDataGridGen.class.php';
+    QApplication::$ClassFile['spatialrefsysmetacontrolgen'] = __HELPER_DIR__.'/spatialrefsys/generated/SpatialRefSysMetaControlGen.class.php';
+    QApplication::$ClassFile['spatialrefsysdatagrid'] = __HELPER_DIR__.'/spatialrefsys/SpatialRefSysDataGrid.class.php';
+    QApplication::$ClassFile['spatialrefsysmetacontrol'] = __HELPER_DIR__.'/spatialrefsys/SpatialRefSysMetaControl.class.php';
+
+    QApplication::$ClassFile['spatialrefsysgen'] = __MODEL_DIR__.'/orm/generated/SpatialRefSysGen.class.php';
+    QApplication::$ClassFile['spatialrefsys'] = __MODEL_DIR__.'/orm/SpatialRefSys.class.php';
+    QApplication::$ClassFile['qqnodespatialrefsys'] = __MODEL_DIR__.'/orm/generated/QQNodeSpatialRefSys.class.php';
+    QApplication::$ClassFile['qqreversereferencenodespatialrefsys'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeSpatialRefSys.class.php';
 
 
     // ClassPaths for the TipoBarrio class

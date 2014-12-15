@@ -25,8 +25,14 @@ class QQNodeUsoInterno extends QQNode {
 					return new QQNode('regularizacion_tiene_plano', 'RegularizacionTienePlano', 'boolean', $this);
 				case 'RegularizacionCircular10Catastro':
 					return new QQNode('regularizacion_circular_10_catastro', 'RegularizacionCircular10Catastro', 'boolean', $this);
+				case 'RegularizacionAprobacionGeodesia':
+					return new QQNode('regularizacion_aprobacion_geodesia', 'RegularizacionAprobacionGeodesia', 'integer', $this);
+				case 'RegularizacionRegistracion':
+					return new QQNode('regularizacion_registracion', 'RegularizacionRegistracion', 'integer', $this);
 				case 'RegularizacionEstadoProceso':
 					return new QQNode('regularizacion_estado_proceso', 'RegularizacionEstadoProceso', 'integer', $this);
+				case 'RegularizacionEstadoProcesoObject':
+					return new QQNodeEstadoProceso('regularizacion_estado_proceso', 'RegularizacionEstadoProcesoObject', 'integer', $this);
 				case 'NumExpediente':
 					return new QQNode('num_expediente', 'NumExpediente', 'string', $this);
 				case 'RegistracionLegajo':
@@ -39,14 +45,14 @@ class QQNodeUsoInterno extends QQNode {
 					return new QQNode('geodesia_num', 'GeodesiaNum', 'string', $this);
 				case 'GeodesiaAnio':
 					return new QQNode('geodesia_anio', 'GeodesiaAnio', 'string', $this);
-				case 'Ley14449':
-					return new QQNode('ley_14449', 'Ley14449', 'boolean', $this);
 				case 'TieneCenso':
 					return new QQNode('tiene_censo', 'TieneCenso', 'boolean', $this);
 				case 'FechaCenso':
 					return new QQNode('fecha_censo', 'FechaCenso', 'string', $this);
 				case 'GeodesiaPartido':
 					return new QQNode('geodesia_partido', 'GeodesiaPartido', 'string', $this);
+				case 'Ley14449':
+					return new QQNode('ley_14449', 'Ley14449', 'boolean', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

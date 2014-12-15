@@ -29,17 +29,19 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'RegularizacionFechaInicio' => true,
         'RegularizacionTienePlano' => true,
         'RegularizacionCircular10Catastro' => true,
-        'RegularizacionEstadoProceso' => true,
+        'RegularizacionAprobacionGeodesia' => true,
+        'RegularizacionRegistracion' => true,
+        'RegularizacionEstadoProcesoObject' => true,
         'NumExpediente' => true,
         'RegistracionLegajo' => true,
         'RegistracionFecha' => true,
         'RegistracionFolio' => true,
         'GeodesiaNum' => true,
         'GeodesiaAnio' => true,
-        'Ley14449' => true,
         'TieneCenso' => true,
         'FechaCenso' => true,
         'GeodesiaPartido' => true,
+        'Ley14449' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -81,17 +83,19 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionFechaInicio']) $this->MetaAddColumn('RegularizacionFechaInicio')->Title = QApplication::Translate('RegularizacionFechaInicio');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionTienePlano']) $this->MetaAddColumn('RegularizacionTienePlano')->Title = QApplication::Translate('RegularizacionTienePlano');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionCircular10Catastro']) $this->MetaAddColumn('RegularizacionCircular10Catastro')->Title = QApplication::Translate('RegularizacionCircular10Catastro');
-        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionEstadoProceso']) $this->MetaAddColumn('RegularizacionEstadoProceso')->Title = QApplication::Translate('RegularizacionEstadoProceso');
+        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionAprobacionGeodesia']) $this->MetaAddColumn('RegularizacionAprobacionGeodesia')->Title = QApplication::Translate('RegularizacionAprobacionGeodesia');
+        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionRegistracion']) $this->MetaAddColumn('RegularizacionRegistracion')->Title = QApplication::Translate('RegularizacionRegistracion');
+        if (UsoInternoDataGrid::$strColumnsArray['RegularizacionEstadoProcesoObject']) $this->MetaAddColumn(QQN::UsoInterno()->RegularizacionEstadoProcesoObject)->Title = QApplication::Translate('RegularizacionEstadoProcesoObject');
         if (UsoInternoDataGrid::$strColumnsArray['NumExpediente']) $this->MetaAddColumn('NumExpediente')->Title = QApplication::Translate('NumExpediente');
         if (UsoInternoDataGrid::$strColumnsArray['RegistracionLegajo']) $this->MetaAddColumn('RegistracionLegajo')->Title = QApplication::Translate('RegistracionLegajo');
         if (UsoInternoDataGrid::$strColumnsArray['RegistracionFecha']) $this->MetaAddColumn('RegistracionFecha')->Title = QApplication::Translate('RegistracionFecha');
         if (UsoInternoDataGrid::$strColumnsArray['RegistracionFolio']) $this->MetaAddColumn('RegistracionFolio')->Title = QApplication::Translate('RegistracionFolio');
         if (UsoInternoDataGrid::$strColumnsArray['GeodesiaNum']) $this->MetaAddColumn('GeodesiaNum')->Title = QApplication::Translate('GeodesiaNum');
         if (UsoInternoDataGrid::$strColumnsArray['GeodesiaAnio']) $this->MetaAddColumn('GeodesiaAnio')->Title = QApplication::Translate('GeodesiaAnio');
-        if (UsoInternoDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
         if (UsoInternoDataGrid::$strColumnsArray['TieneCenso']) $this->MetaAddColumn('TieneCenso')->Title = QApplication::Translate('TieneCenso');
         if (UsoInternoDataGrid::$strColumnsArray['FechaCenso']) $this->MetaAddColumn('FechaCenso')->Title = QApplication::Translate('FechaCenso');
         if (UsoInternoDataGrid::$strColumnsArray['GeodesiaPartido']) $this->MetaAddColumn('GeodesiaPartido')->Title = QApplication::Translate('GeodesiaPartido');
+        if (UsoInternoDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
     }
 
 /**
@@ -248,17 +252,20 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'RegularizacionFechaInicio': return QQN::UsoInterno()->RegularizacionFechaInicio;
 				case 'RegularizacionTienePlano': return QQN::UsoInterno()->RegularizacionTienePlano;
 				case 'RegularizacionCircular10Catastro': return QQN::UsoInterno()->RegularizacionCircular10Catastro;
+				case 'RegularizacionAprobacionGeodesia': return QQN::UsoInterno()->RegularizacionAprobacionGeodesia;
+				case 'RegularizacionRegistracion': return QQN::UsoInterno()->RegularizacionRegistracion;
 				case 'RegularizacionEstadoProceso': return QQN::UsoInterno()->RegularizacionEstadoProceso;
+				case 'RegularizacionEstadoProcesoObject': return QQN::UsoInterno()->RegularizacionEstadoProcesoObject;
 				case 'NumExpediente': return QQN::UsoInterno()->NumExpediente;
 				case 'RegistracionLegajo': return QQN::UsoInterno()->RegistracionLegajo;
 				case 'RegistracionFecha': return QQN::UsoInterno()->RegistracionFecha;
 				case 'RegistracionFolio': return QQN::UsoInterno()->RegistracionFolio;
 				case 'GeodesiaNum': return QQN::UsoInterno()->GeodesiaNum;
 				case 'GeodesiaAnio': return QQN::UsoInterno()->GeodesiaAnio;
-				case 'Ley14449': return QQN::UsoInterno()->Ley14449;
 				case 'TieneCenso': return QQN::UsoInterno()->TieneCenso;
 				case 'FechaCenso': return QQN::UsoInterno()->FechaCenso;
 				case 'GeodesiaPartido': return QQN::UsoInterno()->GeodesiaPartido;
+				case 'Ley14449': return QQN::UsoInterno()->Ley14449;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');
