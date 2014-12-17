@@ -4,7 +4,7 @@
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
                 <a aria-controls="wizard-p-0" href="/registro/folio/view/<?=$folio;?>" id="wizard-t-0">                    
-                    <span class="number">1.</span> Datos Generales del barrio
+                    <span class="number">1.</span> Datos Generales del Barrio
                 </a>
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">

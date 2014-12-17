@@ -5,7 +5,7 @@
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" >
                 <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>">
-                    <span class="number">1.</span> Datos Generales del barrio
+                    <span class="number">1.</span> Datos Generales del Barrio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">

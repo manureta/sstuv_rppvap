@@ -5,7 +5,7 @@
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
                 <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>" id="wizard-t-0">
                     <span class="current-info audible">current step: </span>
-                    <span class="number">1.</span> Datos Generales del barrio
+                    <span class="number">1.</span> Datos Generales del Barrio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true" aria-selected="false">

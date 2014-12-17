@@ -65,7 +65,7 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
             $this->objControlsArray['lstComedorObject']->Name="Comedor";
         if (in_array('lstCentroIntegracionComunitariaObject',$strControlsArray)) 
             $this->objControlsArray['lstCentroIntegracionComunitariaObject'] = $this->mctEquipamiento->lstCentroIntegracionComunitariaObject_Create();
-            $this->objControlsArray['lstCentroIntegracionComunitariaObject']->Name="Centro de integración comunitaria";
+            $this->objControlsArray['lstCentroIntegracionComunitariaObject']->Name="CIC y/o SUM";
         if (in_array('txtOtro',$strControlsArray)) 
             $this->objControlsArray['txtOtro'] = $this->mctEquipamiento->txtOtro_Create();
 

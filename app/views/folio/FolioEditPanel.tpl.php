@@ -22,7 +22,7 @@
         <ul role="tablist">
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
                 <a aria-controls="wizard-p-0" href="#">
-                    <span class="number">1.</span> Datos Generales del barrio
+                    <span class="number">1.</span> Datos Generales del Barrio
                 </a>
             </li>
             <li role="tab" class="<?=$clase;?>" aria-disabled="false" aria-selected="false">
