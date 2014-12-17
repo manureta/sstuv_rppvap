@@ -17,7 +17,6 @@ class OrganismosDeIntervencionModalPanelGen extends EditPanelBase {
         'chkMunicipal' => true,
         'calFechaIntervencion' => true,
         'txtProgramas' => true,
-        'txtObservaciones' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objOrganismosDeIntervencion = null, $strControlId = null) {
@@ -62,8 +61,6 @@ class OrganismosDeIntervencionModalPanelGen extends EditPanelBase {
             $this->objControlsArray['calFechaIntervencion'] = $this->mctOrganismosDeIntervencion->calFechaIntervencion_Create();
         if (in_array('txtProgramas',$strControlsArray)) 
             $this->objControlsArray['txtProgramas'] = $this->mctOrganismosDeIntervencion->txtProgramas_Create();
-        if (in_array('txtObservaciones',$strControlsArray)) 
-            $this->objControlsArray['txtObservaciones'] = $this->mctOrganismosDeIntervencion->txtObservaciones_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

@@ -7,6 +7,7 @@
 		<?php $_CONTROL->lblId->RenderWithName(); ?>
 		<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
 		<?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
+		<?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
 		<?php $_CONTROL->lstAntecedentesAsIdFolio->RenderWithName(); ?>
 
 

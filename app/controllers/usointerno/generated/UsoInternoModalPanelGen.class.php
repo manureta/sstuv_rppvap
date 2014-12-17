@@ -32,6 +32,7 @@ class UsoInternoModalPanelGen extends EditPanelBase {
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
         'chkLey14449' => true,
+        'lstEstadoFolioObject' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsoInterno = null, $strControlId = null) {
@@ -106,6 +107,8 @@ class UsoInternoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtGeodesiaPartido'] = $this->mctUsoInterno->txtGeodesiaPartido_Create();
         if (in_array('chkLey14449',$strControlsArray)) 
             $this->objControlsArray['chkLey14449'] = $this->mctUsoInterno->chkLey14449_Create();
+        if (in_array('lstEstadoFolioObject',$strControlsArray)) 
+            $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

@@ -26,6 +26,7 @@
 		<?php $_CONTROL->txtFechaCenso->RenderWithName(); ?>
 		<?php $_CONTROL->txtGeodesiaPartido->RenderWithName(); ?>
 		<?php $_CONTROL->chkLey14449->RenderWithName(); ?>
+		<?php $_CONTROL->lstEstadoFolioObject->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

@@ -29,8 +29,6 @@ class QQReverseReferenceNodeNomenclatura extends QQReverseReferenceNode {
 					return new QQNode('parc', 'Parc', 'string', $this);
 				case 'InscripcionDominio':
 					return new QQNode('_inscripcion_dominio', 'InscripcionDominio', 'string', $this);
-				case 'TitularRegPropiedad':
-					return new QQNode('_titular_reg_propiedad', 'TitularRegPropiedad', 'string', $this);
 				case 'Partido':
 					return new QQNode('partido', 'Partido', 'string', $this);
 				case 'DatoVerificadoRegPropiedad':

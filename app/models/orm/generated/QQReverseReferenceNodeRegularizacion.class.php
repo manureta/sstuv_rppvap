@@ -13,6 +13,8 @@ class QQReverseReferenceNodeRegularizacion extends QQReverseReferenceNode {
 					return new QQNodeFolio('id_folio', 'IdFolioObject', 'integer', $this);
 				case 'ProcesoIniciado':
 					return new QQNode('proceso_iniciado', 'ProcesoIniciado', 'boolean', $this);
+				case 'Observaciones':
+					return new QQNode('observaciones', 'Observaciones', 'string', $this);
 				case 'AntecedentesAsIdFolio':
 					return new QQReverseReferenceNodeAntecedentes($this, 'antecedentesasidfolio', 'reverse_reference', 'id_folio', 'AntecedentesAsIdFolio');
 				case 'EncuadreLegalAsIdFolio':

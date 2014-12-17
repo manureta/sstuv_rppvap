@@ -30,8 +30,6 @@
      * property-read QLabel $FechaIntervencionLabel
      * property QTextBox $ProgramasControl
      * property-read QLabel $ProgramasLabel
-     * property QTextBox $ObservacionesControl
-     * property-read QLabel $ObservacionesLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -55,7 +53,6 @@
         protected $chkMunicipal;
         protected $calFechaIntervencion;
         protected $txtProgramas;
-        protected $txtObservaciones;
 
         // Controls that allow the viewing of OrganismosDeIntervencion's individual data fields
         protected $lblIdFolio;
@@ -64,7 +61,6 @@
         protected $lblMunicipal;
         protected $lblFechaIntervencion;
         protected $lblProgramas;
-        protected $lblObservaciones;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -334,32 +330,6 @@
             return $this->lblProgramas;
         }
 
-        /**
-         * Create and setup QTextBox txtObservaciones
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtObservaciones_Create($strControlId = null) {
-            $this->txtObservaciones = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtObservaciones->Name = QApplication::Translate('Observaciones');
-            $this->txtObservaciones->Text = $this->objOrganismosDeIntervencion->Observaciones;
-            $this->txtObservaciones->MaxLength = OrganismosDeIntervencion::ObservacionesMaxLength;
-            
-            return $this->txtObservaciones;
-        }
-
-        /**
-         * Create and setup QLabel lblObservaciones
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblObservaciones_Create($strControlId = null) {
-            $this->lblObservaciones = new QLabel($this->objParentObject, $strControlId);
-            $this->lblObservaciones->Name = QApplication::Translate('Observaciones');
-            $this->lblObservaciones->Text = $this->objOrganismosDeIntervencion->Observaciones;
-            return $this->lblObservaciones;
-        }
-
 
 
 
@@ -398,9 +368,6 @@
             if ($this->txtProgramas) $this->txtProgramas->Text = $this->objOrganismosDeIntervencion->Programas;
             if ($this->lblProgramas) $this->lblProgramas->Text = $this->objOrganismosDeIntervencion->Programas;
 
-            if ($this->txtObservaciones) $this->txtObservaciones->Text = $this->objOrganismosDeIntervencion->Observaciones;
-            if ($this->lblObservaciones) $this->lblObservaciones->Text = $this->objOrganismosDeIntervencion->Observaciones;
-
         }
 
 
@@ -425,7 +392,6 @@
                 if ($this->chkMunicipal) $this->objOrganismosDeIntervencion->Municipal = $this->chkMunicipal->Checked;
                 if ($this->calFechaIntervencion) $this->objOrganismosDeIntervencion->FechaIntervencion = $this->calFechaIntervencion->DateTime;
                 if ($this->txtProgramas) $this->objOrganismosDeIntervencion->Programas = $this->txtProgramas->Text;
-                if ($this->txtObservaciones) $this->objOrganismosDeIntervencion->Observaciones = $this->txtObservaciones->Text;
 
 
         }
@@ -524,12 +490,6 @@
                 case 'ProgramasLabel':
                     if (!$this->lblProgramas) return $this->lblProgramas_Create();
                     return $this->lblProgramas;
-                case 'ObservacionesControl':
-                    if (!$this->txtObservaciones) return $this->txtObservaciones_Create();
-                    return $this->txtObservaciones;
-                case 'ObservacionesLabel':
-                    if (!$this->lblObservaciones) return $this->lblObservaciones_Create();
-                    return $this->lblObservaciones;
                 default:
                     try {
                         return parent::__get($strName);
@@ -566,8 +526,6 @@
                         return ($this->calFechaIntervencion = QType::Cast($mixValue, 'QControl'));
                     case 'ProgramasControl':
                         return ($this->txtProgramas = QType::Cast($mixValue, 'QControl'));
-                    case 'ObservacionesControl':
-                        return ($this->txtObservaciones = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

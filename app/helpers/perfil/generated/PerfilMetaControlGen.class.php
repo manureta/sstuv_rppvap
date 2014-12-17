@@ -233,11 +233,9 @@
         $strConfigArray['Columns']['SuperAdmin'] = QApplication::Translate('SuperAdmin');
         $strConfigArray['Columns']['FechaActivacion'] = QApplication::Translate('FechaActivacion');
         $strConfigArray['Columns']['Nombre'] = QApplication::Translate('Nombre');
-        $strConfigArray['Columns']['RespuestaA'] = QApplication::Translate('RespuestaA');
-        $strConfigArray['Columns']['RespuestaB'] = QApplication::Translate('RespuestaB');
-        $strConfigArray['Columns']['PreguntaSecretaA'] = QApplication::Translate('PreguntaSecretaA');
-        $strConfigArray['Columns']['PreguntaSecretaB'] = QApplication::Translate('PreguntaSecretaB');
         $strConfigArray['Columns']['CodPartido'] = QApplication::Translate('CodPartido');
+        $strConfigArray['Columns']['NombreCompleto'] = QApplication::Translate('NombreCompleto');
+        $strConfigArray['Columns']['Reparticion'] = QApplication::Translate('Reparticion');
 
         $this->lstUsuarioAsId = new QListPanel($this->objParentObject, $this->objPerfil, $strConfigArray, $strControlId);
         $this->lstUsuarioAsId->Name = Usuario::Noun();

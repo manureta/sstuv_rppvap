@@ -218,6 +218,7 @@
         $strConfigArray['Columns']['FechaCenso'] = QApplication::Translate('FechaCenso');
         $strConfigArray['Columns']['GeodesiaPartido'] = QApplication::Translate('GeodesiaPartido');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
+        $strConfigArray['Columns']['EstadoFolioObject'] = QApplication::Translate('EstadoFolioObject');
 
         $this->lstUsoInternoAsRegularizacion = new QListPanel($this->objParentObject, $this->objEstadoProceso, $strConfigArray, $strControlId);
         $this->lstUsoInternoAsRegularizacion->Name = UsoInterno::Noun();

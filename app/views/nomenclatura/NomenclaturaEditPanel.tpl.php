@@ -17,7 +17,7 @@
 		
 			<div class="well bs-component">
 				<?php $_CONTROL->txtInscripcionDominio->RenderWithName(); ?>
-				<?php $_CONTROL->txtTitularRegPropiedad->RenderWithName(); ?>
+			
 				<?php $_CONTROL->chkDatoVerificadoRegPropiedad->RenderWithName(); ?>
 			</div>
 			

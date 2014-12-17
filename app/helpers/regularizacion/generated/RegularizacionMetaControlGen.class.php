@@ -22,6 +22,8 @@
      * property-read QLabel $IdFolioLabel
      * property QCheckBox $ProcesoIniciadoControl
      * property-read QLabel $ProcesoIniciadoLabel
+     * property QTextBox $ObservacionesControl
+     * property-read QLabel $ObservacionesLabel
      * property QListBox $AntecedentesAsIdFolioControl
      * property-read QLabel $AntecedentesAsIdFolioLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
@@ -43,10 +45,12 @@
         protected $lblId;
         protected $lstIdFolioObject;
         protected $chkProcesoIniciado;
+        protected $txtObservaciones;
 
         // Controls that allow the viewing of Regularizacion's individual data fields
         protected $lblIdFolio;
         protected $lblProcesoIniciado;
+        protected $lblObservaciones;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstAntecedentesAsIdFolio;
@@ -214,6 +218,32 @@
         }
 
         /**
+         * Create and setup QTextBox txtObservaciones
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtObservaciones_Create($strControlId = null) {
+            $this->txtObservaciones = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtObservaciones->Name = QApplication::Translate('Observaciones');
+            $this->txtObservaciones->Text = $this->objRegularizacion->Observaciones;
+            $this->txtObservaciones->TextMode = QTextMode::MultiLine;
+            
+            return $this->txtObservaciones;
+        }
+
+        /**
+         * Create and setup QLabel lblObservaciones
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblObservaciones_Create($strControlId = null) {
+            $this->lblObservaciones = new QLabel($this->objParentObject, $strControlId);
+            $this->lblObservaciones->Name = QApplication::Translate('Observaciones');
+            $this->lblObservaciones->Text = $this->objRegularizacion->Observaciones;
+            return $this->lblObservaciones;
+        }
+
+        /**
          * Create and setup QListBox lstAntecedentesAsIdFolio ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -270,6 +300,7 @@
         $strConfigArray['Columns']['Expropiacion'] = QApplication::Translate('Expropiacion');
         $strConfigArray['Columns']['Otros'] = QApplication::Translate('Otros');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
+        $strConfigArray['Columns']['TieneExpropiacion'] = QApplication::Translate('TieneExpropiacion');
 
         $this->lstEncuadreLegalAsIdFolio = new QListPanel($this->objParentObject, $this->objRegularizacion, $strConfigArray, $strControlId);
         $this->lstEncuadreLegalAsIdFolio->Name = EncuadreLegal::Noun();
@@ -320,6 +351,9 @@
             if ($this->chkProcesoIniciado) $this->chkProcesoIniciado->Checked = $this->objRegularizacion->ProcesoIniciado;
             if ($this->lblProcesoIniciado) $this->lblProcesoIniciado->Text = ($this->objRegularizacion->ProcesoIniciado) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
+            if ($this->txtObservaciones) $this->txtObservaciones->Text = $this->objRegularizacion->Observaciones;
+            if ($this->lblObservaciones) $this->lblObservaciones->Text = $this->objRegularizacion->Observaciones;
+
             if ($this->lstAntecedentesAsIdFolio) {
                 $this->lstAntecedentesAsIdFolio->RemoveAllItems();
                 $this->lstAntecedentesAsIdFolio->AddItem(QApplication::Translate('- Select One -'), null);
@@ -353,6 +387,7 @@
                 // Update any fields for controls that have been created
                 if ($this->lstIdFolioObject) $this->objRegularizacion->IdFolio = $this->lstIdFolioObject->SelectedValue;
                 if ($this->chkProcesoIniciado) $this->objRegularizacion->ProcesoIniciado = $this->chkProcesoIniciado->Checked;
+                if ($this->txtObservaciones) $this->objRegularizacion->Observaciones = $this->txtObservaciones->Text;
 
 
         }
@@ -428,6 +463,12 @@
                 case 'ProcesoIniciadoLabel':
                     if (!$this->lblProcesoIniciado) return $this->lblProcesoIniciado_Create();
                     return $this->lblProcesoIniciado;
+                case 'ObservacionesControl':
+                    if (!$this->txtObservaciones) return $this->txtObservaciones_Create();
+                    return $this->txtObservaciones;
+                case 'ObservacionesLabel':
+                    if (!$this->lblObservaciones) return $this->lblObservaciones_Create();
+                    return $this->lblObservaciones;
                 case 'AntecedentesAsIdFolioControl':
                     if (!$this->lstAntecedentesAsIdFolio) return $this->lstAntecedentesAsIdFolio_Create();
                     return $this->lstAntecedentesAsIdFolio;
@@ -462,6 +503,8 @@
                         return ($this->lstIdFolioObject = QType::Cast($mixValue, 'QControl'));
                     case 'ProcesoIniciadoControl':
                         return ($this->chkProcesoIniciado = QType::Cast($mixValue, 'QControl'));
+                    case 'ObservacionesControl':
+                        return ($this->txtObservaciones = QType::Cast($mixValue, 'QControl'));
                     case 'AntecedentesAsIdFolioControl':
                         return ($this->lstAntecedentesAsIdFolio = QType::Cast($mixValue, 'QControl'));
                     default:

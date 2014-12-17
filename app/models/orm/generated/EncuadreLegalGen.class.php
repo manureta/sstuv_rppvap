@@ -25,6 +25,7 @@
 	 * @property string $Expropiacion the value for strExpropiacion 
 	 * @property string $Otros the value for strOtros 
 	 * @property boolean $Ley14449 the value for blnLey14449 
+	 * @property boolean $TieneExpropiacion the value for blnTieneExpropiacion 
 	 * @property Regularizacion $IdFolioObject the value for the Regularizacion object referenced by intIdFolio 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -125,6 +126,14 @@ class EncuadreLegalGen extends QBaseClass {
      */
     protected $blnLey14449;
     const Ley14449Default = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.tiene_expropiacion
+     * @var boolean blnTieneExpropiacion
+     */
+    protected $blnTieneExpropiacion;
+    const TieneExpropiacionDefault = null;
 
 
     /**
@@ -485,6 +494,7 @@ class EncuadreLegalGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'expropiacion', $strAliasPrefix . 'expropiacion');
 			$objBuilder->AddSelectItem($strTableName, 'otros', $strAliasPrefix . 'otros');
 			$objBuilder->AddSelectItem($strTableName, 'ley_14449', $strAliasPrefix . 'ley_14449');
+			$objBuilder->AddSelectItem($strTableName, 'tiene_expropiacion', $strAliasPrefix . 'tiene_expropiacion');
 		}
 
 //instantiation_methods
@@ -534,6 +544,8 @@ class EncuadreLegalGen extends QBaseClass {
 			$objToReturn->strOtros = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'ley_14449', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'ley_14449'] : $strAliasPrefix . 'ley_14449';
 			$objToReturn->blnLey14449 = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'tiene_expropiacion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tiene_expropiacion'] : $strAliasPrefix . 'tiene_expropiacion';
+			$objToReturn->blnTieneExpropiacion = $objDbRow->GetColumn($strAliasName, 'Bit');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -720,7 +732,8 @@ class EncuadreLegalGen extends QBaseClass {
                             "decreto_4686_96",
                             "expropiacion",
                             "otros",
-                            "ley_14449"
+                            "ley_14449",
+                            "tiene_expropiacion"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->blnDecreto222595) . ',
@@ -730,7 +743,8 @@ class EncuadreLegalGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->blnDecreto468696) . ',
                             ' . $objDatabase->SqlVariable($this->strExpropiacion) . ',
                             ' . $objDatabase->SqlVariable($this->strOtros) . ',
-                            ' . $objDatabase->SqlVariable($this->blnLey14449) . '
+                            ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
+                            ' . $objDatabase->SqlVariable($this->blnTieneExpropiacion) . '
                         )
                     ');
 
@@ -754,7 +768,8 @@ class EncuadreLegalGen extends QBaseClass {
                             "decreto_4686_96" = ' . $objDatabase->SqlVariable($this->blnDecreto468696) . ',
                             "expropiacion" = ' . $objDatabase->SqlVariable($this->strExpropiacion) . ',
                             "otros" = ' . $objDatabase->SqlVariable($this->strOtros) . ',
-                            "ley_14449" = ' . $objDatabase->SqlVariable($this->blnLey14449) . '
+                            "ley_14449" = ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
+                            "tiene_expropiacion" = ' . $objDatabase->SqlVariable($this->blnTieneExpropiacion) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -847,6 +862,7 @@ class EncuadreLegalGen extends QBaseClass {
 			$this->strExpropiacion = $objReloaded->strExpropiacion;
 			$this->strOtros = $objReloaded->strOtros;
 			$this->blnLey14449 = $objReloaded->blnLey14449;
+			$this->blnTieneExpropiacion = $objReloaded->blnTieneExpropiacion;
 		}
 
 
@@ -937,6 +953,13 @@ class EncuadreLegalGen extends QBaseClass {
                  * @return boolean
                  */
                 return $this->blnLey14449;
+
+            case 'TieneExpropiacion':
+                /**
+                 * Gets the value for blnTieneExpropiacion 
+                 * @return boolean
+                 */
+                return $this->blnTieneExpropiacion;
 
 
             ///////////////////
@@ -1125,6 +1148,21 @@ class EncuadreLegalGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'TieneExpropiacion':
+					/**
+					 * Sets the value for blnTieneExpropiacion 
+					 * @param boolean $mixValue
+					 * @return boolean
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->blnTieneExpropiacion = QType::Cast($mixValue, QType::Boolean));
+                                                return ($this->blnTieneExpropiacion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1211,6 +1249,7 @@ class EncuadreLegalGen extends QBaseClass {
 			$strToReturn .= '<element name="Expropiacion" type="xsd:string"/>';
 			$strToReturn .= '<element name="Otros" type="xsd:string"/>';
 			$strToReturn .= '<element name="Ley14449" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="TieneExpropiacion" type="xsd:boolean"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1264,6 +1303,9 @@ class EncuadreLegalGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Ley14449')) {
 				$objToReturn->blnLey14449 = $objSoapObject->Ley14449;
+            }
+			if (property_exists($objSoapObject, 'TieneExpropiacion')) {
+				$objToReturn->blnTieneExpropiacion = $objSoapObject->TieneExpropiacion;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

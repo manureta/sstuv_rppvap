@@ -21,7 +21,6 @@ class NomenclaturaModalPanelGen extends EditPanelBase {
         'txtMza' => true,
         'txtParc' => true,
         'txtInscripcionDominio' => true,
-        'txtTitularRegPropiedad' => true,
         'txtPartido' => true,
         'chkDatoVerificadoRegPropiedad' => true,
         'txtEstadoGeografico' => true,
@@ -77,8 +76,6 @@ class NomenclaturaModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtParc'] = $this->mctNomenclatura->txtParc_Create();
         if (in_array('txtInscripcionDominio',$strControlsArray)) 
             $this->objControlsArray['txtInscripcionDominio'] = $this->mctNomenclatura->txtInscripcionDominio_Create();
-        if (in_array('txtTitularRegPropiedad',$strControlsArray)) 
-            $this->objControlsArray['txtTitularRegPropiedad'] = $this->mctNomenclatura->txtTitularRegPropiedad_Create();
         if (in_array('txtPartido',$strControlsArray)) 
             $this->objControlsArray['txtPartido'] = $this->mctNomenclatura->txtPartido_Create();
         if (in_array('chkDatoVerificadoRegPropiedad',$strControlsArray)) 

@@ -30,6 +30,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'chkTieneCenso' => true,
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
+        'lstEstadoFolioObject' => true
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -147,7 +148,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtFechaCenso']->Name="Fecha del último censo";
         if (in_array('txtGeodesiaPartido',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaPartido'] = $this->mctUsoInterno->txtGeodesiaPartido_Create();    
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        if (in_array('lstEstadoFolioObject',$strControlsArray)) 
+            $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
     }
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       

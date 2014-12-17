@@ -53,6 +53,10 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('geodesia_partido', 'GeodesiaPartido', 'string', $this);
 				case 'Ley14449':
 					return new QQNode('ley_14449', 'Ley14449', 'boolean', $this);
+				case 'EstadoFolio':
+					return new QQNode('estado_folio', 'EstadoFolio', 'integer', $this);
+				case 'EstadoFolioObject':
+					return new QQNodeEstadoFolio('estado_folio', 'EstadoFolioObject', 'integer', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

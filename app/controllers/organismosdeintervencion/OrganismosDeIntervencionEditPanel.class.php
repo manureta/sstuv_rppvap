@@ -15,8 +15,8 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         'chkProvincial' => true,
         'chkMunicipal' => true,
         'calFechaIntervencion' => true,
-        'txtProgramas' => true,
-        'txtObservaciones' => true,
+        'txtProgramas' => true
+        
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -59,8 +59,7 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         if (in_array('txtProgramas',$strControlsArray)) 
             $this->objControlsArray['txtProgramas'] = $this->mctOrganismosDeIntervencion->txtProgramas_Create();
             $this->objControlsArray['txtProgramas']->Name="A través de que programas";
-        if (in_array('txtObservaciones',$strControlsArray)) 
-            $this->objControlsArray['txtObservaciones'] = $this->mctOrganismosDeIntervencion->txtObservaciones_Create();
+        
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

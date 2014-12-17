@@ -36,6 +36,8 @@
      * property-read QLabel $OtrosLabel
      * property QCheckBox $Ley14449Control
      * property-read QLabel $Ley14449Label
+     * property QCheckBox $TieneExpropiacionControl
+     * property-read QLabel $TieneExpropiacionLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -62,6 +64,7 @@
         protected $txtExpropiacion;
         protected $txtOtros;
         protected $chkLey14449;
+        protected $chkTieneExpropiacion;
 
         // Controls that allow the viewing of EncuadreLegal's individual data fields
         protected $lblIdFolio;
@@ -73,6 +76,7 @@
         protected $lblExpropiacion;
         protected $lblOtros;
         protected $lblLey14449;
+        protected $lblTieneExpropiacion;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -409,6 +413,30 @@
             return $this->lblLey14449;
         }
 
+        /**
+         * Create and setup QCheckBox chkTieneExpropiacion
+         * @param string $strControlId optional ControlId to use
+         * @return QCheckBox
+         */
+        public function chkTieneExpropiacion_Create($strControlId = null) {
+            $this->chkTieneExpropiacion = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkTieneExpropiacion->Name = QApplication::Translate('TieneExpropiacion');
+            $this->chkTieneExpropiacion->Checked = $this->objEncuadreLegal->TieneExpropiacion;
+                        return $this->chkTieneExpropiacion;
+        }
+
+        /**
+         * Create and setup QLabel lblTieneExpropiacion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblTieneExpropiacion_Create($strControlId = null) {
+            $this->lblTieneExpropiacion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblTieneExpropiacion->Name = QApplication::Translate('TieneExpropiacion');
+            $this->lblTieneExpropiacion->Text = ($this->objEncuadreLegal->TieneExpropiacion) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            return $this->lblTieneExpropiacion;
+        }
+
 
 
 
@@ -456,6 +484,9 @@
             if ($this->chkLey14449) $this->chkLey14449->Checked = $this->objEncuadreLegal->Ley14449;
             if ($this->lblLey14449) $this->lblLey14449->Text = ($this->objEncuadreLegal->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
+            if ($this->chkTieneExpropiacion) $this->chkTieneExpropiacion->Checked = $this->objEncuadreLegal->TieneExpropiacion;
+            if ($this->lblTieneExpropiacion) $this->lblTieneExpropiacion->Text = ($this->objEncuadreLegal->TieneExpropiacion) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+
         }
 
 
@@ -483,6 +514,7 @@
                 if ($this->txtExpropiacion) $this->objEncuadreLegal->Expropiacion = $this->txtExpropiacion->Text;
                 if ($this->txtOtros) $this->objEncuadreLegal->Otros = $this->txtOtros->Text;
                 if ($this->chkLey14449) $this->objEncuadreLegal->Ley14449 = $this->chkLey14449->Checked;
+                if ($this->chkTieneExpropiacion) $this->objEncuadreLegal->TieneExpropiacion = $this->chkTieneExpropiacion->Checked;
 
 
         }
@@ -599,6 +631,12 @@
                 case 'Ley14449Label':
                     if (!$this->lblLey14449) return $this->lblLey14449_Create();
                     return $this->lblLey14449;
+                case 'TieneExpropiacionControl':
+                    if (!$this->chkTieneExpropiacion) return $this->chkTieneExpropiacion_Create();
+                    return $this->chkTieneExpropiacion;
+                case 'TieneExpropiacionLabel':
+                    if (!$this->lblTieneExpropiacion) return $this->lblTieneExpropiacion_Create();
+                    return $this->lblTieneExpropiacion;
                 default:
                     try {
                         return parent::__get($strName);
@@ -641,6 +679,8 @@
                         return ($this->txtOtros = QType::Cast($mixValue, 'QControl'));
                     case 'Ley14449Control':
                         return ($this->chkLey14449 = QType::Cast($mixValue, 'QControl'));
+                    case 'TieneExpropiacionControl':
+                        return ($this->chkTieneExpropiacion = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

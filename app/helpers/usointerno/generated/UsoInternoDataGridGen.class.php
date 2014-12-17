@@ -42,6 +42,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'FechaCenso' => true,
         'GeodesiaPartido' => true,
         'Ley14449' => true,
+        'EstadoFolioObject' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -96,6 +97,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['FechaCenso']) $this->MetaAddColumn('FechaCenso')->Title = QApplication::Translate('FechaCenso');
         if (UsoInternoDataGrid::$strColumnsArray['GeodesiaPartido']) $this->MetaAddColumn('GeodesiaPartido')->Title = QApplication::Translate('GeodesiaPartido');
         if (UsoInternoDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
+        if (UsoInternoDataGrid::$strColumnsArray['EstadoFolioObject']) $this->MetaAddColumn(QQN::UsoInterno()->EstadoFolioObject)->Title = QApplication::Translate('EstadoFolioObject');
     }
 
 /**
@@ -266,6 +268,8 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'FechaCenso': return QQN::UsoInterno()->FechaCenso;
 				case 'GeodesiaPartido': return QQN::UsoInterno()->GeodesiaPartido;
 				case 'Ley14449': return QQN::UsoInterno()->Ley14449;
+				case 'EstadoFolio': return QQN::UsoInterno()->EstadoFolio;
+				case 'EstadoFolioObject': return QQN::UsoInterno()->EstadoFolioObject;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

@@ -21,16 +21,12 @@ class QQReverseReferenceNodeUsuario extends QQReverseReferenceNode {
 					return new QQNode('id_perfil', 'IdPerfil', 'integer', $this);
 				case 'IdPerfilObject':
 					return new QQNodePerfil('id_perfil', 'IdPerfilObject', 'integer', $this);
-				case 'RespuestaA':
-					return new QQNode('respuesta_a', 'RespuestaA', 'string', $this);
-				case 'RespuestaB':
-					return new QQNode('respuesta_b', 'RespuestaB', 'string', $this);
-				case 'PreguntaSecretaA':
-					return new QQNode('pregunta_secreta_a', 'PreguntaSecretaA', 'string', $this);
-				case 'PreguntaSecretaB':
-					return new QQNode('pregunta_secreta_b', 'PreguntaSecretaB', 'string', $this);
 				case 'CodPartido':
 					return new QQNode('cod_partido', 'CodPartido', 'string', $this);
+				case 'NombreCompleto':
+					return new QQNode('nombre_completo', 'NombreCompleto', 'string', $this);
+				case 'Reparticion':
+					return new QQNode('reparticion', 'Reparticion', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id_usuario', 'IdUsuario', 'integer', $this);

@@ -22,7 +22,6 @@
 	 * @property boolean $Municipal the value for blnMunicipal 
 	 * @property QDateTime $FechaIntervencion the value for dttFechaIntervencion 
 	 * @property string $Programas the value for strProgramas 
-	 * @property string $Observaciones the value for strObservaciones 
 	 * @property Antecedentes $IdFolioObject the value for the Antecedentes object referenced by intIdFolio 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -97,15 +96,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
      */
     protected $strProgramas;
     const ProgramasDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column organismos_de_intervencion.observaciones
-     * @var string strObservaciones
-     */
-    protected $strObservaciones;
-    const ObservacionesMaxLength = 45;
-    const ObservacionesDefault = null;
 
 
     /**
@@ -463,7 +453,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'municipal', $strAliasPrefix . 'municipal');
 			$objBuilder->AddSelectItem($strTableName, 'fecha_intervencion', $strAliasPrefix . 'fecha_intervencion');
 			$objBuilder->AddSelectItem($strTableName, 'programas', $strAliasPrefix . 'programas');
-			$objBuilder->AddSelectItem($strTableName, 'observaciones', $strAliasPrefix . 'observaciones');
 		}
 
 //instantiation_methods
@@ -507,8 +496,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$objToReturn->dttFechaIntervencion = $objDbRow->GetColumn($strAliasName, 'Date');
 			$strAliasName = array_key_exists($strAliasPrefix . 'programas', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'programas'] : $strAliasPrefix . 'programas';
 			$objToReturn->strProgramas = $objDbRow->GetColumn($strAliasName, 'Blob');
-			$strAliasName = array_key_exists($strAliasPrefix . 'observaciones', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'observaciones'] : $strAliasPrefix . 'observaciones';
-			$objToReturn->strObservaciones = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -692,16 +679,14 @@ class OrganismosDeIntervencionGen extends QBaseClass {
                             "provincial",
                             "municipal",
                             "fecha_intervencion",
-                            "programas",
-                            "observaciones"
+                            "programas"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->blnNacional) . ',
                             ' . $objDatabase->SqlVariable($this->blnProvincial) . ',
                             ' . $objDatabase->SqlVariable($this->blnMunicipal) . ',
                             ' . $objDatabase->SqlVariable($this->dttFechaIntervencion) . ',
-                            ' . $objDatabase->SqlVariable($this->strProgramas) . ',
-                            ' . $objDatabase->SqlVariable($this->strObservaciones) . '
+                            ' . $objDatabase->SqlVariable($this->strProgramas) . '
                         )
                     ');
 
@@ -722,8 +707,7 @@ class OrganismosDeIntervencionGen extends QBaseClass {
                             "provincial" = ' . $objDatabase->SqlVariable($this->blnProvincial) . ',
                             "municipal" = ' . $objDatabase->SqlVariable($this->blnMunicipal) . ',
                             "fecha_intervencion" = ' . $objDatabase->SqlVariable($this->dttFechaIntervencion) . ',
-                            "programas" = ' . $objDatabase->SqlVariable($this->strProgramas) . ',
-                            "observaciones" = ' . $objDatabase->SqlVariable($this->strObservaciones) . '
+                            "programas" = ' . $objDatabase->SqlVariable($this->strProgramas) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -813,7 +797,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$this->blnMunicipal = $objReloaded->blnMunicipal;
 			$this->dttFechaIntervencion = $objReloaded->dttFechaIntervencion;
 			$this->strProgramas = $objReloaded->strProgramas;
-			$this->strObservaciones = $objReloaded->strObservaciones;
 		}
 
 
@@ -883,13 +866,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strProgramas;
-
-            case 'Observaciones':
-                /**
-                 * Gets the value for strObservaciones 
-                 * @return string
-                 */
-                return $this->strObservaciones;
 
 
             ///////////////////
@@ -1033,21 +1009,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'Observaciones':
-					/**
-					 * Sets the value for strObservaciones 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strObservaciones = QType::Cast($mixValue, QType::String));
-                                                return ($this->strObservaciones = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 
 				///////////////////
 				// Member Objects
@@ -1131,7 +1092,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$strToReturn .= '<element name="Municipal" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="FechaIntervencion" type="xsd:dateTime"/>';
 			$strToReturn .= '<element name="Programas" type="xsd:string"/>';
-			$strToReturn .= '<element name="Observaciones" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1176,9 +1136,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Programas')) {
 				$objToReturn->strProgramas = $objSoapObject->Programas;
-            }
-			if (property_exists($objSoapObject, 'Observaciones')) {
-				$objToReturn->strObservaciones = $objSoapObject->Observaciones;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

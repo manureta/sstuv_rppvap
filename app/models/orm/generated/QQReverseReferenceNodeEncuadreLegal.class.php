@@ -27,6 +27,8 @@ class QQReverseReferenceNodeEncuadreLegal extends QQReverseReferenceNode {
 					return new QQNode('otros', 'Otros', 'string', $this);
 				case 'Ley14449':
 					return new QQNode('ley_14449', 'Ley14449', 'boolean', $this);
+				case 'TieneExpropiacion':
+					return new QQNode('tiene_expropiacion', 'TieneExpropiacion', 'boolean', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

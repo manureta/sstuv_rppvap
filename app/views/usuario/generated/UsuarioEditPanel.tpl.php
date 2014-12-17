@@ -11,11 +11,9 @@
 		<?php $_CONTROL->calFechaActivacion->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombre->RenderWithName(); ?>
 		<?php $_CONTROL->lstIdPerfilObject->RenderWithName(); ?>
-		<?php $_CONTROL->txtRespuestaA->RenderWithName(); ?>
-		<?php $_CONTROL->txtRespuestaB->RenderWithName(); ?>
-		<?php $_CONTROL->txtPreguntaSecretaA->RenderWithName(); ?>
-		<?php $_CONTROL->txtPreguntaSecretaB->RenderWithName(); ?>
 		<?php $_CONTROL->txtCodPartido->RenderWithName(); ?>
+		<?php $_CONTROL->txtNombreCompleto->RenderWithName(); ?>
+		<?php $_CONTROL->txtReparticion->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

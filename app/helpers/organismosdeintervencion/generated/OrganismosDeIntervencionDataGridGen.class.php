@@ -27,7 +27,6 @@ class OrganismosDeIntervencionDataGridGen extends QFilteredDataGrid {
         'Municipal' => true,
         'FechaIntervencion' => true,
         'Programas' => true,
-        'Observaciones' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -67,7 +66,6 @@ class OrganismosDeIntervencionDataGridGen extends QFilteredDataGrid {
         if (OrganismosDeIntervencionDataGrid::$strColumnsArray['Municipal']) $this->MetaAddColumn('Municipal')->Title = QApplication::Translate('Municipal');
         if (OrganismosDeIntervencionDataGrid::$strColumnsArray['FechaIntervencion']) $this->MetaAddColumn('FechaIntervencion')->Title = QApplication::Translate('FechaIntervencion');
         if (OrganismosDeIntervencionDataGrid::$strColumnsArray['Programas']) $this->MetaAddColumn('Programas')->Title = QApplication::Translate('Programas');
-        if (OrganismosDeIntervencionDataGrid::$strColumnsArray['Observaciones']) $this->MetaAddColumn('Observaciones')->Title = QApplication::Translate('Observaciones');
     }
 
 /**
@@ -222,7 +220,6 @@ class OrganismosDeIntervencionDataGridGen extends QFilteredDataGrid {
 				case 'Municipal': return QQN::OrganismosDeIntervencion()->Municipal;
 				case 'FechaIntervencion': return QQN::OrganismosDeIntervencion()->FechaIntervencion;
 				case 'Programas': return QQN::OrganismosDeIntervencion()->Programas;
-				case 'Observaciones': return QQN::OrganismosDeIntervencion()->Observaciones;
 				default: throw new QCallerException('Simple Property not found in OrganismosDeIntervencionDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

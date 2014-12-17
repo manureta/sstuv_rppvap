@@ -51,6 +51,7 @@
                         <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>                        
                         <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkLey14449->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkTieneExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
                        
@@ -85,13 +86,14 @@
 					                <?php $_CONTROL->pnlOrganismos->chkMunicipal->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->calFechaIntervencion->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
-					                <?php $_CONTROL->pnlOrganismos->txtObservaciones->RenderWithName(); ?>		
+					                	
 					        </div>            
 					    </div>  
                 </div>
     </div>
-
-   
+    <div class="well bs-component">     
+        <?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
+    </div>
 </div>
 
 <div class="botones-form"></div>

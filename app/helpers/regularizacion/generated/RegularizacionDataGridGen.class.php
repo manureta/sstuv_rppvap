@@ -26,6 +26,8 @@ class RegularizacionDataGridGen extends QFilteredDataGrid {
         'AntecedentesAsIdFolio' => true,
         'ProcesoIniciado' => true,
         'AntecedentesAsIdFolio' => true,
+        'Observaciones' => true,
+        'AntecedentesAsIdFolio' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -61,6 +63,7 @@ class RegularizacionDataGridGen extends QFilteredDataGrid {
         if (RegularizacionDataGrid::$strColumnsArray['Id']) $this->MetaAddColumn('Id')->Title = QApplication::Translate('Id');
         if (RegularizacionDataGrid::$strColumnsArray['IdFolioObject']) $this->MetaAddColumn(QQN::Regularizacion()->IdFolioObject)->Title = QApplication::Translate('IdFolioObject');
         if (RegularizacionDataGrid::$strColumnsArray['ProcesoIniciado']) $this->MetaAddColumn('ProcesoIniciado')->Title = QApplication::Translate('ProcesoIniciado');
+        if (RegularizacionDataGrid::$strColumnsArray['Observaciones']) $this->MetaAddColumn('Observaciones')->Title = QApplication::Translate('Observaciones');
         if (RegularizacionDataGrid::$strColumnsArray['AntecedentesAsIdFolio']) $this->MetaAddColumn(QQN::Regularizacion()->AntecedentesAsIdFolio)->Title = QApplication::Translate('AntecedentesAsIdFolio');
     }
 
@@ -212,6 +215,7 @@ class RegularizacionDataGridGen extends QFilteredDataGrid {
 				case 'IdFolio': return QQN::Regularizacion()->IdFolio;
 				case 'IdFolioObject': return QQN::Regularizacion()->IdFolioObject;
 				case 'ProcesoIniciado': return QQN::Regularizacion()->ProcesoIniciado;
+				case 'Observaciones': return QQN::Regularizacion()->Observaciones;
 				case 'AntecedentesAsIdFolio': return QQN::Regularizacion()->AntecedentesAsIdFolio;
 
 				default: throw new QCallerException('Simple Property not found in RegularizacionDataGrid content: ' . $mixContent);

@@ -21,6 +21,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         'lstAntecedentesAsIdFolio' => false,
         'lstEncuadreLegalAsIdFolio' => false,
         'lstRegistracionAsIdFolio' => false,
+        'txtObservaciones' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -109,6 +110,8 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->objControlsArray['lstEncuadreLegalAsIdFolio'] = $this->mctRegularizacion->lstEncuadreLegalAsIdFolio_Create();
         if (in_array('lstRegistracionAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstRegistracionAsIdFolio'] = $this->mctRegularizacion->lstRegistracionAsIdFolio_Create();
+        if (in_array('txtObservaciones',$strControlsArray)) 
+            $this->objControlsArray['txtObservaciones'] = $this->mctRegularizacion->txtObservaciones_Create();
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

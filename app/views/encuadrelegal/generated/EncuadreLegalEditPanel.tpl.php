@@ -14,6 +14,7 @@
 		<?php $_CONTROL->txtExpropiacion->RenderWithName(); ?>
 		<?php $_CONTROL->txtOtros->RenderWithName(); ?>
 		<?php $_CONTROL->chkLey14449->RenderWithName(); ?>
+		<?php $_CONTROL->chkTieneExpropiacion->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

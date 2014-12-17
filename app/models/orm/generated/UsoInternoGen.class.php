@@ -37,8 +37,10 @@
 	 * @property string $FechaCenso the value for strFechaCenso 
 	 * @property string $GeodesiaPartido the value for strGeodesiaPartido 
 	 * @property boolean $Ley14449 the value for blnLey14449 
+	 * @property integer $EstadoFolio the value for intEstadoFolio 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (PK)
 	 * @property EstadoProceso $RegularizacionEstadoProcesoObject the value for the EstadoProceso object referenced by intRegularizacionEstadoProceso 
+	 * @property EstadoFolio $EstadoFolioObject the value for the EstadoFolio object referenced by intEstadoFolio 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class UsoInternoGen extends QBaseClass {
@@ -245,6 +247,14 @@ class UsoInternoGen extends QBaseClass {
 
 
     /**
+     * Protected member variable that maps to the database column uso_interno.estado_folio
+     * @var integer intEstadoFolio
+     */
+    protected $intEstadoFolio;
+    const EstadoFolioDefault = null;
+
+
+    /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
      * columns from the run-time database query result for this object).  Used by InstantiateDbRow and
      * GetVirtualAttribute.
@@ -284,6 +294,16 @@ class UsoInternoGen extends QBaseClass {
 		 * @var EstadoProceso objRegularizacionEstadoProcesoObject
 		 */
 		protected $objRegularizacionEstadoProcesoObject;
+
+		/**
+		 * Protected member variable that contains the object pointed by the reference
+		 * in the database column uso_interno.estado_folio.
+		 *
+		 * NOTE: Always use the EstadoFolioObject property getter to correctly retrieve this EstadoFolio object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var EstadoFolio objEstadoFolioObject
+		 */
+		protected $objEstadoFolioObject;
 
 
 
@@ -624,6 +644,7 @@ class UsoInternoGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'fecha_censo', $strAliasPrefix . 'fecha_censo');
 			$objBuilder->AddSelectItem($strTableName, 'geodesia_partido', $strAliasPrefix . 'geodesia_partido');
 			$objBuilder->AddSelectItem($strTableName, 'ley_14449', $strAliasPrefix . 'ley_14449');
+			$objBuilder->AddSelectItem($strTableName, 'estado_folio', $strAliasPrefix . 'estado_folio');
 		}
 
 //instantiation_methods
@@ -698,6 +719,8 @@ class UsoInternoGen extends QBaseClass {
 			$objToReturn->strGeodesiaPartido = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'ley_14449', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'ley_14449'] : $strAliasPrefix . 'ley_14449';
 			$objToReturn->blnLey14449 = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'estado_folio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'estado_folio'] : $strAliasPrefix . 'estado_folio';
+			$objToReturn->intEstadoFolio = $objDbRow->GetColumn($strAliasName, 'Integer');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -733,6 +756,12 @@ class UsoInternoGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName)))
 				$objToReturn->objRegularizacionEstadoProcesoObject = EstadoProceso::InstantiateDbRow($objDbRow, $strAliasPrefix . 'regularizacion_estado_proceso__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+
+			// Check for EstadoFolioObject Early Binding
+			$strAlias = $strAliasPrefix . 'estado_folio__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName)))
+				$objToReturn->objEstadoFolioObject = EstadoFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'estado_folio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 
 
 
@@ -826,6 +855,38 @@ class UsoInternoGen extends QBaseClass {
 				QQ::Equal(QQN::UsoInterno()->RegularizacionEstadoProceso, $intRegularizacionEstadoProceso)
 			);
 		}
+			
+		/**
+		 * Load an array of UsoInterno objects,
+		 * by EstadoFolio Index(es)
+		 * @param integer $intEstadoFolio
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return UsoInterno[]
+		*/
+		public static function LoadArrayByEstadoFolio($intEstadoFolio, $objOptionalClauses = null) {
+			// Call UsoInterno::QueryArray to perform the LoadArrayByEstadoFolio query
+			try {
+				return UsoInterno::QueryArray(
+					QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count UsoInternos
+		 * by EstadoFolio Index(es)
+		 * @param integer $intEstadoFolio
+		 * @return int
+		*/
+		public static function CountByEstadoFolio($intEstadoFolio) {
+			// Call UsoInterno::QueryCount to perform the CountByEstadoFolio query
+			return UsoInterno::QueryCount(
+				QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio)
+			);
+		}
 
 
 
@@ -883,6 +944,20 @@ class UsoInternoGen extends QBaseClass {
 			throw $objExc;
                 }
             }
+            // ver si objEstadoFolioObject esta Guardado
+            if(is_null($this->intEstadoFolio)){
+                //Si el objeto esta seteado lo grabo sino no hago NADA.
+                if(!is_null($this->EstadoFolioObject))
+                try{
+                    if(!is_null($this->EstadoFolioObject->EstadoFolio))
+                        $this->intEstadoFolio = $this->EstadoFolioObject->EstadoFolio;
+                    else
+                        $this->intEstadoFolio = $this->EstadoFolioObject->Save();
+                }catch(Exception $objExc){
+                    	$objExc->IncrementOffset();
+			throw $objExc;
+                }
+            }
 
                     if ($this->intIdFolio && ($this->intIdFolio > QDatabaseNumberFieldMax::Integer || $this->intIdFolio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intIdFolio', QDatabaseFieldType::Integer);
@@ -895,6 +970,9 @@ class UsoInternoGen extends QBaseClass {
                     }
                     if ($this->intRegularizacionEstadoProceso && ($this->intRegularizacionEstadoProceso > QDatabaseNumberFieldMax::Integer || $this->intRegularizacionEstadoProceso < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intRegularizacionEstadoProceso', QDatabaseFieldType::Integer);
+                    }
+                    if ($this->intEstadoFolio && ($this->intEstadoFolio > QDatabaseNumberFieldMax::Integer || $this->intEstadoFolio < QDatabaseNumberFieldMin::Integer)) {
+                        throw new NumberOutOfRangeException('intEstadoFolio', QDatabaseFieldType::Integer);
                     }
 
             try {
@@ -923,7 +1001,8 @@ class UsoInternoGen extends QBaseClass {
                             "tiene_censo",
                             "fecha_censo",
                             "geodesia_partido",
-                            "ley_14449"
+                            "ley_14449",
+                            "estado_folio"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->strInformeUrbanisticoFecha) . ',
@@ -946,7 +1025,8 @@ class UsoInternoGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->blnTieneCenso) . ',
                             ' . $objDatabase->SqlVariable($this->strFechaCenso) . ',
                             ' . $objDatabase->SqlVariable($this->strGeodesiaPartido) . ',
-                            ' . $objDatabase->SqlVariable($this->blnLey14449) . '
+                            ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
+                            ' . $objDatabase->SqlVariable($this->intEstadoFolio) . '
                         )
                     ');
 
@@ -982,7 +1062,8 @@ class UsoInternoGen extends QBaseClass {
                             "tiene_censo" = ' . $objDatabase->SqlVariable($this->blnTieneCenso) . ',
                             "fecha_censo" = ' . $objDatabase->SqlVariable($this->strFechaCenso) . ',
                             "geodesia_partido" = ' . $objDatabase->SqlVariable($this->strGeodesiaPartido) . ',
-                            "ley_14449" = ' . $objDatabase->SqlVariable($this->blnLey14449) . '
+                            "ley_14449" = ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
+                            "estado_folio" = ' . $objDatabase->SqlVariable($this->intEstadoFolio) . '
                         WHERE
                             "id_folio" = ' . $objDatabase->SqlVariable($this->__intIdFolio) . '
                     ');
@@ -1089,6 +1170,7 @@ class UsoInternoGen extends QBaseClass {
 			$this->strFechaCenso = $objReloaded->strFechaCenso;
 			$this->strGeodesiaPartido = $objReloaded->strGeodesiaPartido;
 			$this->blnLey14449 = $objReloaded->blnLey14449;
+			$this->EstadoFolio = $objReloaded->EstadoFolio;
 		}
 
 
@@ -1264,6 +1346,13 @@ class UsoInternoGen extends QBaseClass {
                  */
                 return $this->blnLey14449;
 
+            case 'EstadoFolio':
+                /**
+                 * Gets the value for intEstadoFolio 
+                 * @return integer
+                 */
+                return $this->intEstadoFolio;
+
 
             ///////////////////
             // Member Objects
@@ -1291,6 +1380,20 @@ class UsoInternoGen extends QBaseClass {
                     if ((!$this->objRegularizacionEstadoProcesoObject) && (!is_null($this->intRegularizacionEstadoProceso)))
                         $this->objRegularizacionEstadoProcesoObject = EstadoProceso::Load($this->intRegularizacionEstadoProceso);
                     return $this->objRegularizacionEstadoProcesoObject;
+                } catch (QCallerException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
+
+            case 'EstadoFolioObject':
+                /**
+                 * Gets the value for the EstadoFolio object referenced by intEstadoFolio 
+                 * @return EstadoFolio
+                 */
+                try {
+                    if ((!$this->objEstadoFolioObject) && (!is_null($this->intEstadoFolio)))
+                        $this->objEstadoFolioObject = EstadoFolio::Load($this->intEstadoFolio);
+                    return $this->objEstadoFolioObject;
                 } catch (QCallerException $objExc) {
                     $objExc->IncrementOffset();
                     throw $objExc;
@@ -1661,6 +1764,22 @@ class UsoInternoGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'EstadoFolio':
+					/**
+					 * Sets the value for intEstadoFolio 
+					 * @param integer $mixValue
+					 * @return integer
+					 */
+					try {
+						$this->objEstadoFolioObject = null;
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->intEstadoFolio = QType::Cast($mixValue, QType::Integer));
+                                                return ($this->intEstadoFolio = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1731,6 +1850,39 @@ class UsoInternoGen extends QBaseClass {
 					}
 					break;
 
+				case 'EstadoFolioObject':
+					/**
+					 * Sets the value for the EstadoFolio object referenced by intEstadoFolio 
+					 * @param EstadoFolio $mixValue
+					 * @return EstadoFolio
+					 */
+					if (is_null($mixValue)) {
+						$this->intEstadoFolio = null;
+						$this->objEstadoFolioObject = null;
+						return null;
+					} else {
+						// Make sure $mixValue actually is a EstadoFolio object
+						//try {
+						//	$mixValue = QType::Cast($mixValue, 'EstadoFolio');
+						//} catch (QInvalidCastException $objExc) {
+						//	$objExc->IncrementOffset();
+						//	throw $objExc;
+						//}
+
+						// DEPRECATED
+                                                // Make sure $mixValue is a SAVED EstadoFolio object
+						//if (is_null($mixValue->Id))
+						//	throw new QCallerException('Unable to set an unsaved EstadoFolioObject for this UsoInterno');
+
+						// Update Local Member Variables
+						$this->objEstadoFolioObject = $mixValue;
+						$this->intEstadoFolio = $mixValue->Id;
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
 				default:
 					try {
 						return parent::__set($strName, $mixValue);
@@ -1792,6 +1944,7 @@ class UsoInternoGen extends QBaseClass {
 			$strToReturn .= '<element name="FechaCenso" type="xsd:string"/>';
 			$strToReturn .= '<element name="GeodesiaPartido" type="xsd:string"/>';
 			$strToReturn .= '<element name="Ley14449" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="EstadoFolioObject" type="xsd1:EstadoFolio"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1802,6 +1955,7 @@ class UsoInternoGen extends QBaseClass {
 				$strComplexTypeArray['UsoInterno'] = UsoInterno::GetSoapComplexTypeXml();
 				$strComplexTypeArray = Folio::AlterSoapComplexTypeArray($strComplexTypeArray);
 				$strComplexTypeArray = EstadoProceso::AlterSoapComplexTypeArray($strComplexTypeArray);
+				$strComplexTypeArray = EstadoFolio::AlterSoapComplexTypeArray($strComplexTypeArray);
 			}
             return $strComplexTypeArray;
 		}
@@ -1883,6 +2037,9 @@ class UsoInternoGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Ley14449')) {
 				$objToReturn->blnLey14449 = $objSoapObject->Ley14449;
             }
+			if ((property_exists($objSoapObject, 'EstadoFolioObject')) &&
+				($objSoapObject->EstadoFolioObject))
+				$objToReturn->EstadoFolioObject = EstadoFolio::GetObjectFromSoapObject($objSoapObject->EstadoFolioObject);
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
 			return $objToReturn;
@@ -1911,6 +2068,10 @@ class UsoInternoGen extends QBaseClass {
 				$objObject->objRegularizacionEstadoProcesoObject = EstadoProceso::GetSoapObjectFromObject($objObject->objRegularizacionEstadoProcesoObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intRegularizacionEstadoProceso = null;
+			if ($objObject->objEstadoFolioObject)
+				$objObject->objEstadoFolioObject = EstadoFolio::GetSoapObjectFromObject($objObject->objEstadoFolioObject, false);
+			else if (!$blnBindRelatedObjects)
+				$objObject->intEstadoFolio = null;
 			return $objObject;
 		}
 

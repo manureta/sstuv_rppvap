@@ -41,55 +41,7 @@
 		}
 
 
-                public function lstPregunta1_Create($strControlId = null){
-                    $this->lstPregunta1 = new QListBox($this->objParentObject);
-                    $this->lstPregunta1->Name = 'Pregunta Secreta 1';
-                    $this->lstPregunta1->AddItem('Seleccione', '');
-                    $this->lstPregunta1->Required = true;
-                    
-                    for ($i = 0; $i < count($this->arrPreguntas) / 2; $i++) {
-                        $this->lstPregunta1->AddItem($this->arrPreguntas[$i], $i);
-                    }
-                    return $this->lstPregunta1;                  
-                }
-                
-                public function lstPregunta2_Create($strControlId = null){
-                    $this->lstPregunta2 = new QListBox($this->objParentObject);
-                    $this->lstPregunta2->Name = 'Pregunta Secreta 2';
-                    $this->lstPregunta2->Required = true;
-                    $this->lstPregunta2->AddItem('Seleccione', '');
-                    
-                    for ($i = count($this->arrPreguntas) / 2; $i < count($this->arrPreguntas); $i++) {
-                        $this->lstPregunta2->AddItem($this->arrPreguntas[$i], $i);
-                    }
-                    return $this->lstPregunta2;                  
-                }
-                /**
-                * Create and setup QTextBox txtRespuestaA
-                * @param string $strControlId optional ControlId to use
-                * @return QTextBox
-                */
-               public function txtRespuestaA_Create($strControlId = null) {
-                   $this->txtRespuestaA = new QTextBox($this->objParentObject, $strControlId);
-                   $this->txtRespuestaA->Name = "Respuesta a pregunta secreta 1";
-                   $this->txtRespuestaA->Text = $this->objUsuario->RespuestaA;
-                   $this->txtRespuestaA->Required = true;
-
-                   return $this->txtRespuestaA;
-               }
-                /**
-                * Create and setup QTextBox txtRespuestaA
-                * @param string $strControlId optional ControlId to use
-                * @return QTextBox
-                */
-               public function txtRespuestaB_Create($strControlId = null) {
-                   $this->txtRespuestaB = new QTextBox($this->objParentObject, $strControlId);
-                   $this->txtRespuestaB->Name = "Respuesta a pregunta secreta 2";
-                   $this->txtRespuestaB->Text = $this->objUsuario->RespuestaB;
-                   $this->txtRespuestaB->Required = true;
-
-                   return $this->txtRespuestaB;
-               }
+               
                public function txtPassword_Create($strControlId = null) {
                    $this->txtPassword = new QTextBox($this->objParentObject, $strControlId);
                    $this->txtPassword->Name = "Contraseña";
@@ -175,11 +127,10 @@
                     if ($this->calFechaActivacion) $this->objUsuario->FechaActivacion = $this->calFechaActivacion->DateTime;
                     if ($this->txtNombre) $this->objUsuario->Nombre = $this->txtNombre->Text;
                     if ($this->lstIdPerfilObject) $this->objUsuario->IdPerfil = $this->lstIdPerfilObject->SelectedValue;
-                    if ($this->txtRespuestaA) $this->objUsuario->RespuestaA = $this->txtRespuestaA->Text;
-                    if ($this->txtRespuestaB) $this->objUsuario->RespuestaB = $this->txtRespuestaB->Text;
-                    if ($this->lstPregunta1) $this->objUsuario->PreguntaSecretaA = $this->lstPregunta1->SelectedValue;
-                    if ($this->lstPregunta2) $this->objUsuario->PreguntaSecretaB = $this->lstPregunta2->SelectedValue;
+                    
                     if ($this->txtCodPartido) $this->objUsuario->CodPartido = $this->txtCodPartido->Text;
+                    if ($this->txtNombreCompleto) $this->objUsuario->NombreCompleto = $this->txtNombreCompleto->Text;
+                    if ($this->txtReparticion) $this->objUsuario->Reparticion = $this->txtReparticion->Text;
 
 
         }

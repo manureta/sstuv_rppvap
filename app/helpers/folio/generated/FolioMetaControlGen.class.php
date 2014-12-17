@@ -329,6 +329,7 @@
             $this->calFecha->Name = QApplication::Translate('Fecha');
             $this->calFecha->DateTime = $this->objFolio->Fecha;
             $this->calFecha->DateTimePickerType = QDateTimePickerType::Date;
+            $this->calFecha->Required = true;
             
             return $this->calFecha;
         }
@@ -344,6 +345,7 @@
             $this->lblFecha->Name = QApplication::Translate('Fecha');
             $this->strFechaDateTimeFormat = $strDateTimeFormat;
             $this->lblFecha->Text = sprintf($this->objFolio->Fecha) ? $this->objFolio->Fecha->__toString($this->strFechaDateTimeFormat) : null;
+            $this->lblFecha->Required = true;
             return $this->lblFecha;
         }
 
@@ -359,6 +361,7 @@
             $this->txtEncargado = new QTextBox($this->objParentObject, $strControlId);
             $this->txtEncargado->Name = QApplication::Translate('Encargado');
             $this->txtEncargado->Text = $this->objFolio->Encargado;
+            $this->txtEncargado->Required = true;
             $this->txtEncargado->MaxLength = Folio::EncargadoMaxLength;
             
             return $this->txtEncargado;
@@ -373,6 +376,7 @@
             $this->lblEncargado = new QLabel($this->objParentObject, $strControlId);
             $this->lblEncargado->Name = QApplication::Translate('Encargado');
             $this->lblEncargado->Text = $this->objFolio->Encargado;
+            $this->lblEncargado->Required = true;
             return $this->lblEncargado;
         }
 
@@ -463,6 +467,7 @@
             $this->txtAnioOrigen = new QTextBox($this->objParentObject, $strControlId);
             $this->txtAnioOrigen->Name = QApplication::Translate('AnioOrigen');
             $this->txtAnioOrigen->Text = $this->objFolio->AnioOrigen;
+            $this->txtAnioOrigen->Required = true;
             $this->txtAnioOrigen->MaxLength = Folio::AnioOrigenMaxLength;
             
             return $this->txtAnioOrigen;
@@ -477,6 +482,7 @@
             $this->lblAnioOrigen = new QLabel($this->objParentObject, $strControlId);
             $this->lblAnioOrigen->Name = QApplication::Translate('AnioOrigen');
             $this->lblAnioOrigen->Text = $this->objFolio->AnioOrigen;
+            $this->lblAnioOrigen->Required = true;
             return $this->lblAnioOrigen;
         }
 
@@ -546,6 +552,7 @@
                 $this->lstTipoBarrioObject->Value = $this->objFolio->TipoBarrioObject->Id;
             }
             $this->lstTipoBarrioObject->Name = QApplication::Translate('TipoBarrioObject');
+            $this->lstTipoBarrioObject->Required = true;
             return $this->lstTipoBarrioObject;
         }
 
@@ -558,6 +565,7 @@
             $this->lblTipoBarrio = new QLabel($this->objParentObject, $strControlId);
             $this->lblTipoBarrio->Name = QApplication::Translate('TipoBarrioObject');
             $this->lblTipoBarrio->Text = ($this->objFolio->TipoBarrioObject) ? $this->objFolio->TipoBarrioObject->__toString() : null;
+            $this->lblTipoBarrio->Required = true;
             return $this->lblTipoBarrio;
         }
 
@@ -886,7 +894,6 @@
         $strConfigArray['Columns']['Mza'] = QApplication::Translate('Mza');
         $strConfigArray['Columns']['Parc'] = QApplication::Translate('Parc');
         $strConfigArray['Columns']['InscripcionDominio'] = QApplication::Translate('InscripcionDominio');
-        $strConfigArray['Columns']['TitularRegPropiedad'] = QApplication::Translate('TitularRegPropiedad');
         $strConfigArray['Columns']['Partido'] = QApplication::Translate('Partido');
         $strConfigArray['Columns']['DatoVerificadoRegPropiedad'] = QApplication::Translate('DatoVerificadoRegPropiedad');
         $strConfigArray['Columns']['EstadoGeografico'] = QApplication::Translate('EstadoGeografico');

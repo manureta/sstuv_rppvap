@@ -31,7 +31,12 @@
         </ul>
     </div>
 
-    <div>     
+    <div>
+        <div class="titulos"><i class="icon-chevron-right"> Administración</i></div>        
+        <div class="well bs-component">
+            <?php $_CONTROL->lstEstadoFolioObject->RenderWithName(); ?>            
+         </div>
+
         <div class="titulos"><i class="icon-chevron-right"> Situación Registral</i></div>        
         <div class="well bs-component">
 			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>

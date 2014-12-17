@@ -13,6 +13,7 @@ class RegularizacionModalPanelGen extends EditPanelBase {
         'lblId' => false,
         'lstIdFolioObject' => true,
         'chkProcesoIniciado' => true,
+        'txtObservaciones' => true,
         'lstAntecedentesAsIdFolio' => true,
         'lstEncuadreLegalAsIdFolio' => false,
     );
@@ -51,6 +52,8 @@ class RegularizacionModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lstIdFolioObject'] = $this->mctRegularizacion->lstIdFolioObject_Create();
         if (in_array('chkProcesoIniciado',$strControlsArray)) 
             $this->objControlsArray['chkProcesoIniciado'] = $this->mctRegularizacion->chkProcesoIniciado_Create();
+        if (in_array('txtObservaciones',$strControlsArray)) 
+            $this->objControlsArray['txtObservaciones'] = $this->mctRegularizacion->txtObservaciones_Create();
         if (in_array('lstAntecedentesAsIdFolio',$strControlsArray)) 
             $this->objControlsArray['lstAntecedentesAsIdFolio'] = $this->mctRegularizacion->lstAntecedentesAsIdFolio_Create();
         if (in_array('lstEncuadreLegalAsIdFolio',$strControlsArray))

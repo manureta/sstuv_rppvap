@@ -17,11 +17,9 @@ class UsuarioModalPanelGen extends EditPanelBase {
         'calFechaActivacion' => true,
         'txtNombre' => true,
         'lstIdPerfilObject' => true,
-        'txtRespuestaA' => true,
-        'txtRespuestaB' => true,
-        'txtPreguntaSecretaA' => true,
-        'txtPreguntaSecretaB' => true,
         'txtCodPartido' => true,
+        'txtNombreCompleto' => true,
+        'txtReparticion' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsuario = null, $strControlId = null) {
@@ -66,16 +64,12 @@ class UsuarioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombre'] = $this->mctUsuario->txtNombre_Create();
         if (in_array('lstIdPerfilObject',$strControlsArray)) 
             $this->objControlsArray['lstIdPerfilObject'] = $this->mctUsuario->lstIdPerfilObject_Create();
-        if (in_array('txtRespuestaA',$strControlsArray)) 
-            $this->objControlsArray['txtRespuestaA'] = $this->mctUsuario->txtRespuestaA_Create();
-        if (in_array('txtRespuestaB',$strControlsArray)) 
-            $this->objControlsArray['txtRespuestaB'] = $this->mctUsuario->txtRespuestaB_Create();
-        if (in_array('txtPreguntaSecretaA',$strControlsArray)) 
-            $this->objControlsArray['txtPreguntaSecretaA'] = $this->mctUsuario->txtPreguntaSecretaA_Create();
-        if (in_array('txtPreguntaSecretaB',$strControlsArray)) 
-            $this->objControlsArray['txtPreguntaSecretaB'] = $this->mctUsuario->txtPreguntaSecretaB_Create();
         if (in_array('txtCodPartido',$strControlsArray)) 
             $this->objControlsArray['txtCodPartido'] = $this->mctUsuario->txtCodPartido_Create();
+        if (in_array('txtNombreCompleto',$strControlsArray)) 
+            $this->objControlsArray['txtNombreCompleto'] = $this->mctUsuario->txtNombreCompleto_Create();
+        if (in_array('txtReparticion',$strControlsArray)) 
+            $this->objControlsArray['txtReparticion'] = $this->mctUsuario->txtReparticion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

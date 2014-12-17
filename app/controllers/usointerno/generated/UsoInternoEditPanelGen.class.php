@@ -6,6 +6,35 @@ class UsoInternoEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intIdFolio;
 
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+    public static $strControlsArray = array(
+        'lstIdFolioObject' => true,
+        'txtInformeUrbanisticoFecha' => true,
+        'chkMapeoPreliminar' => true,
+        'chkNoCorrespondeInscripcion' => true,
+        'txtResolucionInscripcionProvisoria' => true,
+        'txtResolucionInscripcionDefinitiva' => true,
+        'calRegularizacionFechaInicio' => true,
+        'chkRegularizacionTienePlano' => true,
+        'chkRegularizacionCircular10Catastro' => true,
+        'txtRegularizacionAprobacionGeodesia' => true,
+        'txtRegularizacionRegistracion' => true,
+        'lstRegularizacionEstadoProcesoObject' => true,
+        'txtNumExpediente' => true,
+        'txtRegistracionLegajo' => true,
+        'txtRegistracionFecha' => true,
+        'txtRegistracionFolio' => true,
+        'txtGeodesiaNum' => true,
+        'txtGeodesiaAnio' => true,
+        'chkTieneCenso' => true,
+        'txtFechaCenso' => true,
+        'txtGeodesiaPartido' => true,
+        'chkLey14449' => true,
+        'lstEstadoFolioObject' => true,
+    );
+
+
+    
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);
         if ($blnDelete) {

@@ -19,15 +19,15 @@
 	 * @property string $CodFolio the value for strCodFolio (Unique)
 	 * @property integer $IdPartido the value for intIdPartido (Not Null)
 	 * @property string $Matricula the value for strMatricula (Not Null)
-	 * @property QDateTime $Fecha the value for dttFecha 
-	 * @property string $Encargado the value for strEncargado 
+	 * @property QDateTime $Fecha the value for dttFecha (Not Null)
+	 * @property string $Encargado the value for strEncargado (Not Null)
 	 * @property string $NombreBarrioOficial the value for strNombreBarrioOficial 
 	 * @property string $NombreBarrioAlternativo1 the value for strNombreBarrioAlternativo1 
 	 * @property string $NombreBarrioAlternativo2 the value for strNombreBarrioAlternativo2 
-	 * @property string $AnioOrigen the value for strAnioOrigen 
+	 * @property string $AnioOrigen the value for strAnioOrigen (Not Null)
 	 * @property string $Superficie the value for strSuperficie 
 	 * @property integer $CantidadFamilias the value for intCantidadFamilias 
-	 * @property integer $TipoBarrio the value for intTipoBarrio 
+	 * @property integer $TipoBarrio the value for intTipoBarrio (Not Null)
 	 * @property string $ObservacionCasoDudoso the value for strObservacionCasoDudoso 
 	 * @property string $Direccion the value for strDireccion 
 	 * @property string $Geom the value for strGeom (Not Null)
@@ -35,7 +35,7 @@
 	 * @property string $Localidad the value for strLocalidad 
 	 * @property string $ReparticionPublica the value for strReparticionPublica 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
-	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio 
+	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
 	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
@@ -109,7 +109,7 @@ class FolioGen extends QBaseClass {
      * @var string strEncargado
      */
     protected $strEncargado;
-    const EncargadoMaxLength = 45;
+    const EncargadoMaxLength = 128;
     const EncargadoDefault = null;
 
 
@@ -1443,14 +1443,14 @@ class FolioGen extends QBaseClass {
 
             case 'Fecha':
                 /**
-                 * Gets the value for dttFecha 
+                 * Gets the value for dttFecha (Not Null)
                  * @return QDateTime
                  */
                 return $this->dttFecha;
 
             case 'Encargado':
                 /**
-                 * Gets the value for strEncargado 
+                 * Gets the value for strEncargado (Not Null)
                  * @return string
                  */
                 return $this->strEncargado;
@@ -1478,7 +1478,7 @@ class FolioGen extends QBaseClass {
 
             case 'AnioOrigen':
                 /**
-                 * Gets the value for strAnioOrigen 
+                 * Gets the value for strAnioOrigen (Not Null)
                  * @return string
                  */
                 return $this->strAnioOrigen;
@@ -1499,7 +1499,7 @@ class FolioGen extends QBaseClass {
 
             case 'TipoBarrio':
                 /**
-                 * Gets the value for intTipoBarrio 
+                 * Gets the value for intTipoBarrio (Not Null)
                  * @return integer
                  */
                 return $this->intTipoBarrio;
@@ -1566,7 +1566,7 @@ class FolioGen extends QBaseClass {
 
             case 'TipoBarrioObject':
                 /**
-                 * Gets the value for the TipoBarrio object referenced by intTipoBarrio 
+                 * Gets the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
                  * @return TipoBarrio
                  */
                 try {
@@ -1755,7 +1755,7 @@ class FolioGen extends QBaseClass {
 
 				case 'Fecha':
 					/**
-					 * Sets the value for dttFecha 
+					 * Sets the value for dttFecha (Not Null)
 					 * @param QDateTime $mixValue
 					 * @return QDateTime
 					 */
@@ -1770,7 +1770,7 @@ class FolioGen extends QBaseClass {
 
 				case 'Encargado':
 					/**
-					 * Sets the value for strEncargado 
+					 * Sets the value for strEncargado (Not Null)
 					 * @param string $mixValue
 					 * @return string
 					 */
@@ -1830,7 +1830,7 @@ class FolioGen extends QBaseClass {
 
 				case 'AnioOrigen':
 					/**
-					 * Sets the value for strAnioOrigen 
+					 * Sets the value for strAnioOrigen (Not Null)
 					 * @param string $mixValue
 					 * @return string
 					 */
@@ -1875,7 +1875,7 @@ class FolioGen extends QBaseClass {
 
 				case 'TipoBarrio':
 					/**
-					 * Sets the value for intTipoBarrio 
+					 * Sets the value for intTipoBarrio (Not Null)
 					 * @param integer $mixValue
 					 * @return integer
 					 */
@@ -2018,7 +2018,7 @@ class FolioGen extends QBaseClass {
 
 				case 'TipoBarrioObject':
 					/**
-					 * Sets the value for the TipoBarrio object referenced by intTipoBarrio 
+					 * Sets the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
 					 * @param TipoBarrio $mixValue
 					 * @return TipoBarrio
 					 */

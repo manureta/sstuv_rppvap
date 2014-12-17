@@ -30,16 +30,12 @@
      * property-read QLabel $NombreLabel
      * property QListBox $IdPerfilControl
      * property-read QLabel $IdPerfilLabel
-     * property QTextBox $RespuestaAControl
-     * property-read QLabel $RespuestaALabel
-     * property QTextBox $RespuestaBControl
-     * property-read QLabel $RespuestaBLabel
-     * property QTextBox $PreguntaSecretaAControl
-     * property-read QLabel $PreguntaSecretaALabel
-     * property QTextBox $PreguntaSecretaBControl
-     * property-read QLabel $PreguntaSecretaBLabel
      * property QTextBox $CodPartidoControl
      * property-read QLabel $CodPartidoLabel
+     * property QTextBox $NombreCompletoControl
+     * property-read QLabel $NombreCompletoLabel
+     * property QTextBox $ReparticionControl
+     * property-read QLabel $ReparticionLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -63,11 +59,9 @@
         protected $calFechaActivacion;
         protected $txtNombre;
         protected $lstIdPerfilObject;
-        protected $txtRespuestaA;
-        protected $txtRespuestaB;
-        protected $txtPreguntaSecretaA;
-        protected $txtPreguntaSecretaB;
         protected $txtCodPartido;
+        protected $txtNombreCompleto;
+        protected $txtReparticion;
 
         // Controls that allow the viewing of Usuario's individual data fields
         protected $lblPassword;
@@ -76,11 +70,9 @@
         protected $lblFechaActivacion;
         protected $lblNombre;
         protected $lblIdPerfil;
-        protected $lblRespuestaA;
-        protected $lblRespuestaB;
-        protected $lblPreguntaSecretaA;
-        protected $lblPreguntaSecretaB;
         protected $lblCodPartido;
+        protected $lblNombreCompleto;
+        protected $lblReparticion;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -358,106 +350,6 @@
         }
 
         /**
-         * Create and setup QTextBox txtRespuestaA
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtRespuestaA_Create($strControlId = null) {
-            $this->txtRespuestaA = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtRespuestaA->Name = QApplication::Translate('RespuestaA');
-            $this->txtRespuestaA->Text = $this->objUsuario->RespuestaA;
-            
-            return $this->txtRespuestaA;
-        }
-
-        /**
-         * Create and setup QLabel lblRespuestaA
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblRespuestaA_Create($strControlId = null) {
-            $this->lblRespuestaA = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRespuestaA->Name = QApplication::Translate('RespuestaA');
-            $this->lblRespuestaA->Text = $this->objUsuario->RespuestaA;
-            return $this->lblRespuestaA;
-        }
-
-        /**
-         * Create and setup QTextBox txtRespuestaB
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtRespuestaB_Create($strControlId = null) {
-            $this->txtRespuestaB = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtRespuestaB->Name = QApplication::Translate('RespuestaB');
-            $this->txtRespuestaB->Text = $this->objUsuario->RespuestaB;
-            
-            return $this->txtRespuestaB;
-        }
-
-        /**
-         * Create and setup QLabel lblRespuestaB
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblRespuestaB_Create($strControlId = null) {
-            $this->lblRespuestaB = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRespuestaB->Name = QApplication::Translate('RespuestaB');
-            $this->lblRespuestaB->Text = $this->objUsuario->RespuestaB;
-            return $this->lblRespuestaB;
-        }
-
-        /**
-         * Create and setup QTextBox txtPreguntaSecretaA
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtPreguntaSecretaA_Create($strControlId = null) {
-            $this->txtPreguntaSecretaA = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtPreguntaSecretaA->Name = QApplication::Translate('PreguntaSecretaA');
-            $this->txtPreguntaSecretaA->Text = $this->objUsuario->PreguntaSecretaA;
-            
-            return $this->txtPreguntaSecretaA;
-        }
-
-        /**
-         * Create and setup QLabel lblPreguntaSecretaA
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblPreguntaSecretaA_Create($strControlId = null) {
-            $this->lblPreguntaSecretaA = new QLabel($this->objParentObject, $strControlId);
-            $this->lblPreguntaSecretaA->Name = QApplication::Translate('PreguntaSecretaA');
-            $this->lblPreguntaSecretaA->Text = $this->objUsuario->PreguntaSecretaA;
-            return $this->lblPreguntaSecretaA;
-        }
-
-        /**
-         * Create and setup QTextBox txtPreguntaSecretaB
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtPreguntaSecretaB_Create($strControlId = null) {
-            $this->txtPreguntaSecretaB = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtPreguntaSecretaB->Name = QApplication::Translate('PreguntaSecretaB');
-            $this->txtPreguntaSecretaB->Text = $this->objUsuario->PreguntaSecretaB;
-            
-            return $this->txtPreguntaSecretaB;
-        }
-
-        /**
-         * Create and setup QLabel lblPreguntaSecretaB
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblPreguntaSecretaB_Create($strControlId = null) {
-            $this->lblPreguntaSecretaB = new QLabel($this->objParentObject, $strControlId);
-            $this->lblPreguntaSecretaB->Name = QApplication::Translate('PreguntaSecretaB');
-            $this->lblPreguntaSecretaB->Text = $this->objUsuario->PreguntaSecretaB;
-            return $this->lblPreguntaSecretaB;
-        }
-
-        /**
          * Create and setup QTextBox txtCodPartido
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
@@ -481,6 +373,60 @@
             $this->lblCodPartido->Name = QApplication::Translate('CodPartido');
             $this->lblCodPartido->Text = $this->objUsuario->CodPartido;
             return $this->lblCodPartido;
+        }
+
+        /**
+         * Create and setup QTextBox txtNombreCompleto
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtNombreCompleto_Create($strControlId = null) {
+            $this->txtNombreCompleto = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtNombreCompleto->Name = QApplication::Translate('NombreCompleto');
+            $this->txtNombreCompleto->Text = $this->objUsuario->NombreCompleto;
+            $this->txtNombreCompleto->Required = true;
+            
+            return $this->txtNombreCompleto;
+        }
+
+        /**
+         * Create and setup QLabel lblNombreCompleto
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblNombreCompleto_Create($strControlId = null) {
+            $this->lblNombreCompleto = new QLabel($this->objParentObject, $strControlId);
+            $this->lblNombreCompleto->Name = QApplication::Translate('NombreCompleto');
+            $this->lblNombreCompleto->Text = $this->objUsuario->NombreCompleto;
+            $this->lblNombreCompleto->Required = true;
+            return $this->lblNombreCompleto;
+        }
+
+        /**
+         * Create and setup QTextBox txtReparticion
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtReparticion_Create($strControlId = null) {
+            $this->txtReparticion = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtReparticion->Name = QApplication::Translate('Reparticion');
+            $this->txtReparticion->Text = $this->objUsuario->Reparticion;
+            $this->txtReparticion->Required = true;
+            
+            return $this->txtReparticion;
+        }
+
+        /**
+         * Create and setup QLabel lblReparticion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblReparticion_Create($strControlId = null) {
+            $this->lblReparticion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblReparticion->Name = QApplication::Translate('Reparticion');
+            $this->lblReparticion->Text = $this->objUsuario->Reparticion;
+            $this->lblReparticion->Required = true;
+            return $this->lblReparticion;
         }
 
 
@@ -521,20 +467,14 @@
             }
             if ($this->lblIdPerfil) $this->lblIdPerfil->Text = ($this->objUsuario->IdPerfilObject) ? $this->objUsuario->IdPerfilObject->__toString() : null;
 
-            if ($this->txtRespuestaA) $this->txtRespuestaA->Text = $this->objUsuario->RespuestaA;
-            if ($this->lblRespuestaA) $this->lblRespuestaA->Text = $this->objUsuario->RespuestaA;
-
-            if ($this->txtRespuestaB) $this->txtRespuestaB->Text = $this->objUsuario->RespuestaB;
-            if ($this->lblRespuestaB) $this->lblRespuestaB->Text = $this->objUsuario->RespuestaB;
-
-            if ($this->txtPreguntaSecretaA) $this->txtPreguntaSecretaA->Text = $this->objUsuario->PreguntaSecretaA;
-            if ($this->lblPreguntaSecretaA) $this->lblPreguntaSecretaA->Text = $this->objUsuario->PreguntaSecretaA;
-
-            if ($this->txtPreguntaSecretaB) $this->txtPreguntaSecretaB->Text = $this->objUsuario->PreguntaSecretaB;
-            if ($this->lblPreguntaSecretaB) $this->lblPreguntaSecretaB->Text = $this->objUsuario->PreguntaSecretaB;
-
             if ($this->txtCodPartido) $this->txtCodPartido->Text = $this->objUsuario->CodPartido;
             if ($this->lblCodPartido) $this->lblCodPartido->Text = $this->objUsuario->CodPartido;
+
+            if ($this->txtNombreCompleto) $this->txtNombreCompleto->Text = $this->objUsuario->NombreCompleto;
+            if ($this->lblNombreCompleto) $this->lblNombreCompleto->Text = $this->objUsuario->NombreCompleto;
+
+            if ($this->txtReparticion) $this->txtReparticion->Text = $this->objUsuario->Reparticion;
+            if ($this->lblReparticion) $this->lblReparticion->Text = $this->objUsuario->Reparticion;
 
         }
 
@@ -560,11 +500,9 @@
                 if ($this->calFechaActivacion) $this->objUsuario->FechaActivacion = $this->calFechaActivacion->DateTime;
                 if ($this->txtNombre) $this->objUsuario->Nombre = $this->txtNombre->Text;
                 if ($this->lstIdPerfilObject) $this->objUsuario->IdPerfil = $this->lstIdPerfilObject->SelectedValue;
-                if ($this->txtRespuestaA) $this->objUsuario->RespuestaA = $this->txtRespuestaA->Text;
-                if ($this->txtRespuestaB) $this->objUsuario->RespuestaB = $this->txtRespuestaB->Text;
-                if ($this->txtPreguntaSecretaA) $this->objUsuario->PreguntaSecretaA = $this->txtPreguntaSecretaA->Text;
-                if ($this->txtPreguntaSecretaB) $this->objUsuario->PreguntaSecretaB = $this->txtPreguntaSecretaB->Text;
                 if ($this->txtCodPartido) $this->objUsuario->CodPartido = $this->txtCodPartido->Text;
+                if ($this->txtNombreCompleto) $this->objUsuario->NombreCompleto = $this->txtNombreCompleto->Text;
+                if ($this->txtReparticion) $this->objUsuario->Reparticion = $this->txtReparticion->Text;
 
 
         }
@@ -663,36 +601,24 @@
                 case 'IdPerfilLabel':
                     if (!$this->lblIdPerfil) return $this->lblIdPerfil_Create();
                     return $this->lblIdPerfil;
-                case 'RespuestaAControl':
-                    if (!$this->txtRespuestaA) return $this->txtRespuestaA_Create();
-                    return $this->txtRespuestaA;
-                case 'RespuestaALabel':
-                    if (!$this->lblRespuestaA) return $this->lblRespuestaA_Create();
-                    return $this->lblRespuestaA;
-                case 'RespuestaBControl':
-                    if (!$this->txtRespuestaB) return $this->txtRespuestaB_Create();
-                    return $this->txtRespuestaB;
-                case 'RespuestaBLabel':
-                    if (!$this->lblRespuestaB) return $this->lblRespuestaB_Create();
-                    return $this->lblRespuestaB;
-                case 'PreguntaSecretaAControl':
-                    if (!$this->txtPreguntaSecretaA) return $this->txtPreguntaSecretaA_Create();
-                    return $this->txtPreguntaSecretaA;
-                case 'PreguntaSecretaALabel':
-                    if (!$this->lblPreguntaSecretaA) return $this->lblPreguntaSecretaA_Create();
-                    return $this->lblPreguntaSecretaA;
-                case 'PreguntaSecretaBControl':
-                    if (!$this->txtPreguntaSecretaB) return $this->txtPreguntaSecretaB_Create();
-                    return $this->txtPreguntaSecretaB;
-                case 'PreguntaSecretaBLabel':
-                    if (!$this->lblPreguntaSecretaB) return $this->lblPreguntaSecretaB_Create();
-                    return $this->lblPreguntaSecretaB;
                 case 'CodPartidoControl':
                     if (!$this->txtCodPartido) return $this->txtCodPartido_Create();
                     return $this->txtCodPartido;
                 case 'CodPartidoLabel':
                     if (!$this->lblCodPartido) return $this->lblCodPartido_Create();
                     return $this->lblCodPartido;
+                case 'NombreCompletoControl':
+                    if (!$this->txtNombreCompleto) return $this->txtNombreCompleto_Create();
+                    return $this->txtNombreCompleto;
+                case 'NombreCompletoLabel':
+                    if (!$this->lblNombreCompleto) return $this->lblNombreCompleto_Create();
+                    return $this->lblNombreCompleto;
+                case 'ReparticionControl':
+                    if (!$this->txtReparticion) return $this->txtReparticion_Create();
+                    return $this->txtReparticion;
+                case 'ReparticionLabel':
+                    if (!$this->lblReparticion) return $this->lblReparticion_Create();
+                    return $this->lblReparticion;
                 default:
                     try {
                         return parent::__get($strName);
@@ -729,16 +655,12 @@
                         return ($this->txtNombre = QType::Cast($mixValue, 'QControl'));
                     case 'IdPerfilControl':
                         return ($this->lstIdPerfilObject = QType::Cast($mixValue, 'QControl'));
-                    case 'RespuestaAControl':
-                        return ($this->txtRespuestaA = QType::Cast($mixValue, 'QControl'));
-                    case 'RespuestaBControl':
-                        return ($this->txtRespuestaB = QType::Cast($mixValue, 'QControl'));
-                    case 'PreguntaSecretaAControl':
-                        return ($this->txtPreguntaSecretaA = QType::Cast($mixValue, 'QControl'));
-                    case 'PreguntaSecretaBControl':
-                        return ($this->txtPreguntaSecretaB = QType::Cast($mixValue, 'QControl'));
                     case 'CodPartidoControl':
                         return ($this->txtCodPartido = QType::Cast($mixValue, 'QControl'));
+                    case 'NombreCompletoControl':
+                        return ($this->txtNombreCompleto = QType::Cast($mixValue, 'QControl'));
+                    case 'ReparticionControl':
+                        return ($this->txtReparticion = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

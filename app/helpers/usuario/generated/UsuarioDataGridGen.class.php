@@ -27,11 +27,9 @@ class UsuarioDataGridGen extends QFilteredDataGrid {
         'FechaActivacion' => true,
         'Nombre' => true,
         'IdPerfilObject' => true,
-        'RespuestaA' => true,
-        'RespuestaB' => true,
-        'PreguntaSecretaA' => true,
-        'PreguntaSecretaB' => true,
         'CodPartido' => true,
+        'NombreCompleto' => true,
+        'Reparticion' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -71,11 +69,9 @@ class UsuarioDataGridGen extends QFilteredDataGrid {
         if (UsuarioDataGrid::$strColumnsArray['FechaActivacion']) $this->MetaAddColumn('FechaActivacion')->Title = QApplication::Translate('FechaActivacion');
         if (UsuarioDataGrid::$strColumnsArray['Nombre']) $this->MetaAddColumn('Nombre')->Title = QApplication::Translate('Nombre');
         if (UsuarioDataGrid::$strColumnsArray['IdPerfilObject']) $this->MetaAddColumn(QQN::Usuario()->IdPerfilObject)->Title = QApplication::Translate('IdPerfilObject');
-        if (UsuarioDataGrid::$strColumnsArray['RespuestaA']) $this->MetaAddColumn('RespuestaA')->Title = QApplication::Translate('RespuestaA');
-        if (UsuarioDataGrid::$strColumnsArray['RespuestaB']) $this->MetaAddColumn('RespuestaB')->Title = QApplication::Translate('RespuestaB');
-        if (UsuarioDataGrid::$strColumnsArray['PreguntaSecretaA']) $this->MetaAddColumn('PreguntaSecretaA')->Title = QApplication::Translate('PreguntaSecretaA');
-        if (UsuarioDataGrid::$strColumnsArray['PreguntaSecretaB']) $this->MetaAddColumn('PreguntaSecretaB')->Title = QApplication::Translate('PreguntaSecretaB');
         if (UsuarioDataGrid::$strColumnsArray['CodPartido']) $this->MetaAddColumn('CodPartido')->Title = QApplication::Translate('CodPartido');
+        if (UsuarioDataGrid::$strColumnsArray['NombreCompleto']) $this->MetaAddColumn('NombreCompleto')->Title = QApplication::Translate('NombreCompleto');
+        if (UsuarioDataGrid::$strColumnsArray['Reparticion']) $this->MetaAddColumn('Reparticion')->Title = QApplication::Translate('Reparticion');
     }
 
 /**
@@ -230,11 +226,9 @@ class UsuarioDataGridGen extends QFilteredDataGrid {
 				case 'Nombre': return QQN::Usuario()->Nombre;
 				case 'IdPerfil': return QQN::Usuario()->IdPerfil;
 				case 'IdPerfilObject': return QQN::Usuario()->IdPerfilObject;
-				case 'RespuestaA': return QQN::Usuario()->RespuestaA;
-				case 'RespuestaB': return QQN::Usuario()->RespuestaB;
-				case 'PreguntaSecretaA': return QQN::Usuario()->PreguntaSecretaA;
-				case 'PreguntaSecretaB': return QQN::Usuario()->PreguntaSecretaB;
 				case 'CodPartido': return QQN::Usuario()->CodPartido;
+				case 'NombreCompleto': return QQN::Usuario()->NombreCompleto;
+				case 'Reparticion': return QQN::Usuario()->Reparticion;
 				default: throw new QCallerException('Simple Property not found in UsuarioDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

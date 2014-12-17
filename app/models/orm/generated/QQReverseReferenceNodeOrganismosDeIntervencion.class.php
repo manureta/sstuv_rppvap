@@ -21,8 +21,6 @@ class QQReverseReferenceNodeOrganismosDeIntervencion extends QQReverseReferenceN
 					return new QQNode('fecha_intervencion', 'FechaIntervencion', 'QDateTime', $this);
 				case 'Programas':
 					return new QQNode('programas', 'Programas', 'string', $this);
-				case 'Observaciones':
-					return new QQNode('observaciones', 'Observaciones', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

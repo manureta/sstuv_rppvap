@@ -19,6 +19,7 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         'chkLey14449' => true,
         'txtExpropiacion' => true,
         'txtOtros' => true,
+        'chkTieneExpropiacion' => true
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -68,6 +69,8 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         if (in_array('chkLey14449',$strControlsArray)) 
             $this->objControlsArray['chkLey14449']= $this->mctEncuadreLegal->chkLey14449_Create();    
             $this->objControlsArray['chkLey14449']->Name="Ley 14119";
+        if (in_array('chkTieneExpropiacion',$strControlsArray)) 
+            $this->objControlsArray['chkTieneExpropiacion'] = $this->mctEncuadreLegal->chkTieneExpropiacion_Create();
         if (in_array('txtExpropiacion',$strControlsArray)) 
             $this->objControlsArray['txtExpropiacion'] = $this->mctEncuadreLegal->txtExpropiacion_Create();
             $this->objControlsArray['txtExpropiacion']->Name="Expropiación";

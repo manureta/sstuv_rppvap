@@ -31,7 +31,6 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         'Mza' => true,
         'Parc' => true,
         'InscripcionDominio' => true,
-        'TitularRegPropiedad' => true,
         'Partido' => true,
         'DatoVerificadoRegPropiedad' => true,
         'EstadoGeografico' => true,
@@ -78,7 +77,6 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
         if (NomenclaturaDataGrid::$strColumnsArray['Mza']) $this->MetaAddColumn('Mza')->Title = QApplication::Translate('Mza');
         if (NomenclaturaDataGrid::$strColumnsArray['Parc']) $this->MetaAddColumn('Parc')->Title = QApplication::Translate('Parc');
         if (NomenclaturaDataGrid::$strColumnsArray['InscripcionDominio']) $this->MetaAddColumn('InscripcionDominio')->Title = QApplication::Translate('InscripcionDominio');
-        if (NomenclaturaDataGrid::$strColumnsArray['TitularRegPropiedad']) $this->MetaAddColumn('TitularRegPropiedad')->Title = QApplication::Translate('TitularRegPropiedad');
         if (NomenclaturaDataGrid::$strColumnsArray['Partido']) $this->MetaAddColumn('Partido')->Title = QApplication::Translate('Partido');
         if (NomenclaturaDataGrid::$strColumnsArray['DatoVerificadoRegPropiedad']) $this->MetaAddColumn('DatoVerificadoRegPropiedad')->Title = QApplication::Translate('DatoVerificadoRegPropiedad');
         if (NomenclaturaDataGrid::$strColumnsArray['EstadoGeografico']) $this->MetaAddColumn('EstadoGeografico')->Title = QApplication::Translate('EstadoGeografico');
@@ -240,7 +238,6 @@ class NomenclaturaDataGridGen extends QFilteredDataGrid {
 				case 'Mza': return QQN::Nomenclatura()->Mza;
 				case 'Parc': return QQN::Nomenclatura()->Parc;
 				case 'InscripcionDominio': return QQN::Nomenclatura()->InscripcionDominio;
-				case 'TitularRegPropiedad': return QQN::Nomenclatura()->TitularRegPropiedad;
 				case 'Partido': return QQN::Nomenclatura()->Partido;
 				case 'DatoVerificadoRegPropiedad': return QQN::Nomenclatura()->DatoVerificadoRegPropiedad;
 				case 'EstadoGeografico': return QQN::Nomenclatura()->EstadoGeografico;

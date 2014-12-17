@@ -18,6 +18,7 @@
 	 * @property-read integer $Id the value for intId (Read-Only PK)
 	 * @property integer $IdFolio the value for intIdFolio (Unique)
 	 * @property boolean $ProcesoIniciado the value for blnProcesoIniciado 
+	 * @property string $Observaciones the value for strObservaciones 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (Unique)
 	 * @property Antecedentes $AntecedentesAsIdFolio the value for the Antecedentes object that uniquely references this Regularizacion
 	 * @property-read EncuadreLegal $EncuadreLegalAsIdFolio the value for the private _objEncuadreLegalAsIdFolio (Read-Only) if set due to an expansion on the encuadre_legal.id_folio reverse relationship
@@ -63,6 +64,14 @@ class RegularizacionGen extends QBaseClass {
      */
     protected $blnProcesoIniciado;
     const ProcesoIniciadoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column regularizacion.observaciones
+     * @var string strObservaciones
+     */
+    protected $strObservaciones;
+    const ObservacionesDefault = null;
 
 
     /**
@@ -450,6 +459,7 @@ class RegularizacionGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'id', $strAliasPrefix . 'id');
 			$objBuilder->AddSelectItem($strTableName, 'id_folio', $strAliasPrefix . 'id_folio');
 			$objBuilder->AddSelectItem($strTableName, 'proceso_iniciado', $strAliasPrefix . 'proceso_iniciado');
+			$objBuilder->AddSelectItem($strTableName, 'observaciones', $strAliasPrefix . 'observaciones');
 		}
 
 //instantiation_methods
@@ -523,6 +533,8 @@ class RegularizacionGen extends QBaseClass {
 			$objToReturn->intIdFolio = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'proceso_iniciado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'proceso_iniciado'] : $strAliasPrefix . 'proceso_iniciado';
 			$objToReturn->blnProcesoIniciado = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'observaciones', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'observaciones'] : $strAliasPrefix . 'observaciones';
+			$objToReturn->strObservaciones = $objDbRow->GetColumn($strAliasName, 'Blob');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -714,10 +726,12 @@ class RegularizacionGen extends QBaseClass {
                     $objDatabase->NonQuery('
                         INSERT INTO "regularizacion" (
                             "id_folio",
-                            "proceso_iniciado"
+                            "proceso_iniciado",
+                            "observaciones"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
-                            ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . '
+                            ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . ',
+                            ' . $objDatabase->SqlVariable($this->strObservaciones) . '
                         )
                     ');
 
@@ -734,7 +748,8 @@ class RegularizacionGen extends QBaseClass {
                             "regularizacion"
                         SET
                             "id_folio" = ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
-                            "proceso_iniciado" = ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . '
+                            "proceso_iniciado" = ' . $objDatabase->SqlVariable($this->blnProcesoIniciado) . ',
+                            "observaciones" = ' . $objDatabase->SqlVariable($this->strObservaciones) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -850,6 +865,7 @@ class RegularizacionGen extends QBaseClass {
 			// Update $this's local variables to match
 			$this->IdFolio = $objReloaded->IdFolio;
 			$this->blnProcesoIniciado = $objReloaded->blnProcesoIniciado;
+			$this->strObservaciones = $objReloaded->strObservaciones;
 		}
 
 
@@ -891,6 +907,13 @@ class RegularizacionGen extends QBaseClass {
                  * @return boolean
                  */
                 return $this->blnProcesoIniciado;
+
+            case 'Observaciones':
+                /**
+                 * Gets the value for strObservaciones 
+                 * @return string
+                 */
+                return $this->strObservaciones;
 
 
             ///////////////////
@@ -1007,6 +1030,21 @@ class RegularizacionGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->blnProcesoIniciado = QType::Cast($mixValue, QType::Boolean));
                                                 return ($this->blnProcesoIniciado = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Observaciones':
+					/**
+					 * Sets the value for strObservaciones 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strObservaciones = QType::Cast($mixValue, QType::String));
+                                                return ($this->strObservaciones = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1325,6 +1363,7 @@ class RegularizacionGen extends QBaseClass {
 			$strToReturn .= '<element name="Id" type="xsd:int"/>';
 			$strToReturn .= '<element name="IdFolioObject" type="xsd1:Folio"/>';
 			$strToReturn .= '<element name="ProcesoIniciado" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="Observaciones" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1357,6 +1396,9 @@ class RegularizacionGen extends QBaseClass {
 				$objToReturn->IdFolioObject = Folio::GetObjectFromSoapObject($objSoapObject->IdFolioObject);
 			if (property_exists($objSoapObject, 'ProcesoIniciado')) {
 				$objToReturn->blnProcesoIniciado = $objSoapObject->ProcesoIniciado;
+            }
+			if (property_exists($objSoapObject, 'Observaciones')) {
+				$objToReturn->strObservaciones = $objSoapObject->Observaciones;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

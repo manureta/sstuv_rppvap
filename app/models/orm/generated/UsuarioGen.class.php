@@ -22,11 +22,9 @@
 	 * @property QDateTime $FechaActivacion the value for dttFechaActivacion (Not Null)
 	 * @property string $Nombre the value for strNombre (Unique)
 	 * @property integer $IdPerfil the value for intIdPerfil 
-	 * @property string $RespuestaA the value for strRespuestaA 
-	 * @property string $RespuestaB the value for strRespuestaB 
-	 * @property string $PreguntaSecretaA the value for strPreguntaSecretaA 
-	 * @property string $PreguntaSecretaB the value for strPreguntaSecretaB 
 	 * @property string $CodPartido the value for strCodPartido 
+	 * @property string $NombreCompleto the value for strNombreCompleto (Not Null)
+	 * @property string $Reparticion the value for strReparticion (Not Null)
 	 * @property Perfil $IdPerfilObject the value for the Perfil object referenced by intIdPerfil 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -104,44 +102,28 @@ class UsuarioGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column usuario.respuesta_a
-     * @var string strRespuestaA
-     */
-    protected $strRespuestaA;
-    const RespuestaADefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column usuario.respuesta_b
-     * @var string strRespuestaB
-     */
-    protected $strRespuestaB;
-    const RespuestaBDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column usuario.pregunta_secreta_a
-     * @var string strPreguntaSecretaA
-     */
-    protected $strPreguntaSecretaA;
-    const PreguntaSecretaADefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column usuario.pregunta_secreta_b
-     * @var string strPreguntaSecretaB
-     */
-    protected $strPreguntaSecretaB;
-    const PreguntaSecretaBDefault = null;
-
-
-    /**
      * Protected member variable that maps to the database column usuario.cod_partido
      * @var string strCodPartido
      */
     protected $strCodPartido;
     const CodPartidoMaxLength = 3;
     const CodPartidoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column usuario.nombre_completo
+     * @var string strNombreCompleto
+     */
+    protected $strNombreCompleto;
+    const NombreCompletoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column usuario.reparticion
+     * @var string strReparticion
+     */
+    protected $strReparticion;
+    const ReparticionDefault = null;
 
 
     /**
@@ -500,11 +482,9 @@ class UsuarioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'fecha_activacion', $strAliasPrefix . 'fecha_activacion');
 			$objBuilder->AddSelectItem($strTableName, 'nombre', $strAliasPrefix . 'nombre');
 			$objBuilder->AddSelectItem($strTableName, 'id_perfil', $strAliasPrefix . 'id_perfil');
-			$objBuilder->AddSelectItem($strTableName, 'respuesta_a', $strAliasPrefix . 'respuesta_a');
-			$objBuilder->AddSelectItem($strTableName, 'respuesta_b', $strAliasPrefix . 'respuesta_b');
-			$objBuilder->AddSelectItem($strTableName, 'pregunta_secreta_a', $strAliasPrefix . 'pregunta_secreta_a');
-			$objBuilder->AddSelectItem($strTableName, 'pregunta_secreta_b', $strAliasPrefix . 'pregunta_secreta_b');
 			$objBuilder->AddSelectItem($strTableName, 'cod_partido', $strAliasPrefix . 'cod_partido');
+			$objBuilder->AddSelectItem($strTableName, 'nombre_completo', $strAliasPrefix . 'nombre_completo');
+			$objBuilder->AddSelectItem($strTableName, 'reparticion', $strAliasPrefix . 'reparticion');
 		}
 
 //instantiation_methods
@@ -548,16 +528,12 @@ class UsuarioGen extends QBaseClass {
 			$objToReturn->strNombre = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'id_perfil', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_perfil'] : $strAliasPrefix . 'id_perfil';
 			$objToReturn->intIdPerfil = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . 'respuesta_a', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'respuesta_a'] : $strAliasPrefix . 'respuesta_a';
-			$objToReturn->strRespuestaA = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'respuesta_b', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'respuesta_b'] : $strAliasPrefix . 'respuesta_b';
-			$objToReturn->strRespuestaB = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'pregunta_secreta_a', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'pregunta_secreta_a'] : $strAliasPrefix . 'pregunta_secreta_a';
-			$objToReturn->strPreguntaSecretaA = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'pregunta_secreta_b', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'pregunta_secreta_b'] : $strAliasPrefix . 'pregunta_secreta_b';
-			$objToReturn->strPreguntaSecretaB = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'cod_partido', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'cod_partido'] : $strAliasPrefix . 'cod_partido';
 			$objToReturn->strCodPartido = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'nombre_completo', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nombre_completo'] : $strAliasPrefix . 'nombre_completo';
+			$objToReturn->strNombreCompleto = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'reparticion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'reparticion'] : $strAliasPrefix . 'reparticion';
+			$objToReturn->strReparticion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -758,11 +734,9 @@ class UsuarioGen extends QBaseClass {
                             "fecha_activacion",
                             "nombre",
                             "id_perfil",
-                            "respuesta_a",
-                            "respuesta_b",
-                            "pregunta_secreta_a",
-                            "pregunta_secreta_b",
-                            "cod_partido"
+                            "cod_partido",
+                            "nombre_completo",
+                            "reparticion"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strPassword) . ',
                             ' . $objDatabase->SqlVariable($this->strEmail) . ',
@@ -770,11 +744,9 @@ class UsuarioGen extends QBaseClass {
                             ' . (!is_null($this->dttFechaActivacion)?$objDatabase->SqlVariable($this->dttFechaActivacion):self::FechaActivacionDefault) . ',
                             ' . $objDatabase->SqlVariable($this->strNombre) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPerfil) . ',
-                            ' . $objDatabase->SqlVariable($this->strRespuestaA) . ',
-                            ' . $objDatabase->SqlVariable($this->strRespuestaB) . ',
-                            ' . $objDatabase->SqlVariable($this->strPreguntaSecretaA) . ',
-                            ' . $objDatabase->SqlVariable($this->strPreguntaSecretaB) . ',
-                            ' . $objDatabase->SqlVariable($this->strCodPartido) . '
+                            ' . $objDatabase->SqlVariable($this->strCodPartido) . ',
+                            ' . $objDatabase->SqlVariable($this->strNombreCompleto) . ',
+                            ' . $objDatabase->SqlVariable($this->strReparticion) . '
                         )
                     ');
 
@@ -796,11 +768,9 @@ class UsuarioGen extends QBaseClass {
                             "fecha_activacion" = ' . $objDatabase->SqlVariable($this->dttFechaActivacion) . ',
                             "nombre" = ' . $objDatabase->SqlVariable($this->strNombre) . ',
                             "id_perfil" = ' . $objDatabase->SqlVariable($this->intIdPerfil) . ',
-                            "respuesta_a" = ' . $objDatabase->SqlVariable($this->strRespuestaA) . ',
-                            "respuesta_b" = ' . $objDatabase->SqlVariable($this->strRespuestaB) . ',
-                            "pregunta_secreta_a" = ' . $objDatabase->SqlVariable($this->strPreguntaSecretaA) . ',
-                            "pregunta_secreta_b" = ' . $objDatabase->SqlVariable($this->strPreguntaSecretaB) . ',
-                            "cod_partido" = ' . $objDatabase->SqlVariable($this->strCodPartido) . '
+                            "cod_partido" = ' . $objDatabase->SqlVariable($this->strCodPartido) . ',
+                            "nombre_completo" = ' . $objDatabase->SqlVariable($this->strNombreCompleto) . ',
+                            "reparticion" = ' . $objDatabase->SqlVariable($this->strReparticion) . '
                         WHERE
                             "id_usuario" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
                     ');
@@ -890,11 +860,9 @@ class UsuarioGen extends QBaseClass {
 			$this->dttFechaActivacion = $objReloaded->dttFechaActivacion;
 			$this->strNombre = $objReloaded->strNombre;
 			$this->IdPerfil = $objReloaded->IdPerfil;
-			$this->strRespuestaA = $objReloaded->strRespuestaA;
-			$this->strRespuestaB = $objReloaded->strRespuestaB;
-			$this->strPreguntaSecretaA = $objReloaded->strPreguntaSecretaA;
-			$this->strPreguntaSecretaB = $objReloaded->strPreguntaSecretaB;
 			$this->strCodPartido = $objReloaded->strCodPartido;
+			$this->strNombreCompleto = $objReloaded->strNombreCompleto;
+			$this->strReparticion = $objReloaded->strReparticion;
 		}
 
 
@@ -965,40 +933,26 @@ class UsuarioGen extends QBaseClass {
                  */
                 return $this->intIdPerfil;
 
-            case 'RespuestaA':
-                /**
-                 * Gets the value for strRespuestaA 
-                 * @return string
-                 */
-                return $this->strRespuestaA;
-
-            case 'RespuestaB':
-                /**
-                 * Gets the value for strRespuestaB 
-                 * @return string
-                 */
-                return $this->strRespuestaB;
-
-            case 'PreguntaSecretaA':
-                /**
-                 * Gets the value for strPreguntaSecretaA 
-                 * @return string
-                 */
-                return $this->strPreguntaSecretaA;
-
-            case 'PreguntaSecretaB':
-                /**
-                 * Gets the value for strPreguntaSecretaB 
-                 * @return string
-                 */
-                return $this->strPreguntaSecretaB;
-
             case 'CodPartido':
                 /**
                  * Gets the value for strCodPartido 
                  * @return string
                  */
                 return $this->strCodPartido;
+
+            case 'NombreCompleto':
+                /**
+                 * Gets the value for strNombreCompleto (Not Null)
+                 * @return string
+                 */
+                return $this->strNombreCompleto;
+
+            case 'Reparticion':
+                /**
+                 * Gets the value for strReparticion (Not Null)
+                 * @return string
+                 */
+                return $this->strReparticion;
 
 
             ///////////////////
@@ -1142,66 +1096,6 @@ class UsuarioGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'RespuestaA':
-					/**
-					 * Sets the value for strRespuestaA 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strRespuestaA = QType::Cast($mixValue, QType::String));
-                                                return ($this->strRespuestaA = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'RespuestaB':
-					/**
-					 * Sets the value for strRespuestaB 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strRespuestaB = QType::Cast($mixValue, QType::String));
-                                                return ($this->strRespuestaB = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'PreguntaSecretaA':
-					/**
-					 * Sets the value for strPreguntaSecretaA 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strPreguntaSecretaA = QType::Cast($mixValue, QType::String));
-                                                return ($this->strPreguntaSecretaA = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'PreguntaSecretaB':
-					/**
-					 * Sets the value for strPreguntaSecretaB 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strPreguntaSecretaB = QType::Cast($mixValue, QType::String));
-                                                return ($this->strPreguntaSecretaB = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 				case 'CodPartido':
 					/**
 					 * Sets the value for strCodPartido 
@@ -1212,6 +1106,36 @@ class UsuarioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strCodPartido = QType::Cast($mixValue, QType::String));
                                                 return ($this->strCodPartido = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'NombreCompleto':
+					/**
+					 * Sets the value for strNombreCompleto (Not Null)
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strNombreCompleto = QType::Cast($mixValue, QType::String));
+                                                return ($this->strNombreCompleto = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Reparticion':
+					/**
+					 * Sets the value for strReparticion (Not Null)
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strReparticion = QType::Cast($mixValue, QType::String));
+                                                return ($this->strReparticion = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1300,11 +1224,9 @@ class UsuarioGen extends QBaseClass {
 			$strToReturn .= '<element name="FechaActivacion" type="xsd:dateTime"/>';
 			$strToReturn .= '<element name="Nombre" type="xsd:string"/>';
 			$strToReturn .= '<element name="IdPerfilObject" type="xsd1:Perfil"/>';
-			$strToReturn .= '<element name="RespuestaA" type="xsd:string"/>';
-			$strToReturn .= '<element name="RespuestaB" type="xsd:string"/>';
-			$strToReturn .= '<element name="PreguntaSecretaA" type="xsd:string"/>';
-			$strToReturn .= '<element name="PreguntaSecretaB" type="xsd:string"/>';
 			$strToReturn .= '<element name="CodPartido" type="xsd:string"/>';
+			$strToReturn .= '<element name="NombreCompleto" type="xsd:string"/>';
+			$strToReturn .= '<element name="Reparticion" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1350,20 +1272,14 @@ class UsuarioGen extends QBaseClass {
 			if ((property_exists($objSoapObject, 'IdPerfilObject')) &&
 				($objSoapObject->IdPerfilObject))
 				$objToReturn->IdPerfilObject = Perfil::GetObjectFromSoapObject($objSoapObject->IdPerfilObject);
-			if (property_exists($objSoapObject, 'RespuestaA')) {
-				$objToReturn->strRespuestaA = $objSoapObject->RespuestaA;
-            }
-			if (property_exists($objSoapObject, 'RespuestaB')) {
-				$objToReturn->strRespuestaB = $objSoapObject->RespuestaB;
-            }
-			if (property_exists($objSoapObject, 'PreguntaSecretaA')) {
-				$objToReturn->strPreguntaSecretaA = $objSoapObject->PreguntaSecretaA;
-            }
-			if (property_exists($objSoapObject, 'PreguntaSecretaB')) {
-				$objToReturn->strPreguntaSecretaB = $objSoapObject->PreguntaSecretaB;
-            }
 			if (property_exists($objSoapObject, 'CodPartido')) {
 				$objToReturn->strCodPartido = $objSoapObject->CodPartido;
+            }
+			if (property_exists($objSoapObject, 'NombreCompleto')) {
+				$objToReturn->strNombreCompleto = $objSoapObject->NombreCompleto;
+            }
+			if (property_exists($objSoapObject, 'Reparticion')) {
+				$objToReturn->strReparticion = $objSoapObject->Reparticion;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

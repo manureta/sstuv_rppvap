@@ -20,6 +20,7 @@ class EncuadreLegalModalPanelGen extends EditPanelBase {
         'txtExpropiacion' => true,
         'txtOtros' => true,
         'chkLey14449' => true,
+        'chkTieneExpropiacion' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objEncuadreLegal = null, $strControlId = null) {
@@ -70,6 +71,8 @@ class EncuadreLegalModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtOtros'] = $this->mctEncuadreLegal->txtOtros_Create();
         if (in_array('chkLey14449',$strControlsArray)) 
             $this->objControlsArray['chkLey14449'] = $this->mctEncuadreLegal->chkLey14449_Create();
+        if (in_array('chkTieneExpropiacion',$strControlsArray)) 
+            $this->objControlsArray['chkTieneExpropiacion'] = $this->mctEncuadreLegal->chkTieneExpropiacion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

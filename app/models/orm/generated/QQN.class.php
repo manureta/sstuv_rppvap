@@ -31,6 +31,12 @@
 			return new QQNodeEquipamiento('equipamiento', null, null);
 		}
 		/**
+		 * @return QQNodeEstadoFolio
+		 */
+		static public function EstadoFolio() {
+			return new QQNodeEstadoFolio('estado_folio', null, null);
+		}
+		/**
 		 * @return QQNodeEstadoProceso
 		 */
 		static public function EstadoProceso() {
@@ -41,12 +47,6 @@
 		 */
 		static public function Folio() {
 			return new QQNodeFolio('folio', null, null);
-		}
-		/**
-		 * @return QQNodeGeometryColumns
-		 */
-		static public function GeometryColumns() {
-			return new QQNodeGeometryColumns('geometry_columns', null, null);
 		}
 		/**
 		 * @return QQNodeInfraestructura
@@ -113,12 +113,6 @@
 		 */
 		static public function SituacionAmbiental() {
 			return new QQNodeSituacionAmbiental('situacion_ambiental', null, null);
-		}
-		/**
-		 * @return QQNodeSpatialRefSys
-		 */
-		static public function SpatialRefSys() {
-			return new QQNodeSpatialRefSys('spatial_ref_sys', null, null);
 		}
 		/**
 		 * @return QQNodeTipoBarrio

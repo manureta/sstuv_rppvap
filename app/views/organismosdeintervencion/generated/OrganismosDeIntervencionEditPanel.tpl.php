@@ -11,7 +11,6 @@
 		<?php $_CONTROL->chkMunicipal->RenderWithName(); ?>
 		<?php $_CONTROL->calFechaIntervencion->RenderWithName(); ?>
 		<?php $_CONTROL->txtProgramas->RenderWithName(); ?>
-		<?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

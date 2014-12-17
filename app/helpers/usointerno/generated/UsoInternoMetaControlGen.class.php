@@ -60,6 +60,8 @@
      * property-read QLabel $GeodesiaPartidoLabel
      * property QCheckBox $Ley14449Control
      * property-read QLabel $Ley14449Label
+     * property QListBox $EstadoFolioControl
+     * property-read QLabel $EstadoFolioLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -98,6 +100,7 @@
         protected $txtFechaCenso;
         protected $txtGeodesiaPartido;
         protected $chkLey14449;
+        protected $lstEstadoFolioObject;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -122,6 +125,7 @@
         protected $lblFechaCenso;
         protected $lblGeodesiaPartido;
         protected $lblLey14449;
+        protected $lblEstadoFolio;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -785,6 +789,33 @@
             return $this->lblLey14449;
         }
 
+        /**
+         * Create and setup QAjaxAutoCompleteEntidadTextBox lstEstadoFolioObject
+         * @param string $strControlId optional ControlId to use
+         * @return QAjaxAutoCompleteEntidadTextBox
+         */
+        public function lstEstadoFolioObject_Create($strControlId = null) {
+            $this->lstEstadoFolioObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'EstadoFolio', 'Id' , $strControlId);
+            if($this->objUsoInterno->EstadoFolioObject){
+                $this->lstEstadoFolioObject->Text = $this->objUsoInterno->EstadoFolioObject->__toString();
+                $this->lstEstadoFolioObject->Value = $this->objUsoInterno->EstadoFolioObject->Id;
+            }
+            $this->lstEstadoFolioObject->Name = QApplication::Translate('EstadoFolioObject');
+            return $this->lstEstadoFolioObject;
+        }
+
+        /**
+         * Create and setup QLabel lblEstadoFolio
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblEstadoFolio_Create($strControlId = null) {
+            $this->lblEstadoFolio = new QLabel($this->objParentObject, $strControlId);
+            $this->lblEstadoFolio->Name = QApplication::Translate('EstadoFolioObject');
+            $this->lblEstadoFolio->Text = ($this->objUsoInterno->EstadoFolioObject) ? $this->objUsoInterno->EstadoFolioObject->__toString() : null;
+            return $this->lblEstadoFolio;
+        }
+
 
 
 
@@ -874,6 +905,14 @@
             if ($this->chkLey14449) $this->chkLey14449->Checked = $this->objUsoInterno->Ley14449;
             if ($this->lblLey14449) $this->lblLey14449->Text = ($this->objUsoInterno->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
+            if ($this->lstEstadoFolioObject) {
+                if($this->objUsoInterno->EstadoFolioObject){
+                    $this->lstEstadoFolioObject->Text = $this->objUsoInterno->EstadoFolioObject->__toString();
+                    $this->lstEstadoFolioObject->Value = $this->objUsoInterno->EstadoFolio->Id;
+                }                
+            }
+            if ($this->lblEstadoFolio) $this->lblEstadoFolio->Text = ($this->objUsoInterno->EstadoFolioObject) ? $this->objUsoInterno->EstadoFolioObject->__toString() : null;
+
         }
 
 
@@ -914,6 +953,7 @@
                 if ($this->txtFechaCenso) $this->objUsoInterno->FechaCenso = $this->txtFechaCenso->Text;
                 if ($this->txtGeodesiaPartido) $this->objUsoInterno->GeodesiaPartido = $this->txtGeodesiaPartido->Text;
                 if ($this->chkLey14449) $this->objUsoInterno->Ley14449 = $this->chkLey14449->Checked;
+                if ($this->lstEstadoFolioObject) $this->objUsoInterno->EstadoFolio = $this->lstEstadoFolioObject->SelectedValue;
 
 
         }
@@ -1102,6 +1142,12 @@
                 case 'Ley14449Label':
                     if (!$this->lblLey14449) return $this->lblLey14449_Create();
                     return $this->lblLey14449;
+                case 'EstadoFolioControl':
+                    if (!$this->lstEstadoFolioObject) return $this->lstEstadoFolioObject_Create();
+                    return $this->lstEstadoFolioObject;
+                case 'EstadoFolioLabel':
+                    if (!$this->lblEstadoFolio) return $this->lblEstadoFolio_Create();
+                    return $this->lblEstadoFolio;
                 default:
                     try {
                         return parent::__get($strName);
@@ -1168,6 +1214,8 @@
                         return ($this->txtGeodesiaPartido = QType::Cast($mixValue, 'QControl'));
                     case 'Ley14449Control':
                         return ($this->chkLey14449 = QType::Cast($mixValue, 'QControl'));
+                    case 'EstadoFolioControl':
+                        return ($this->lstEstadoFolioObject = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

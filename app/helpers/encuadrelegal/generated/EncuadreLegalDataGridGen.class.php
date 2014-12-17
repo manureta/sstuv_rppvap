@@ -30,6 +30,7 @@ class EncuadreLegalDataGridGen extends QFilteredDataGrid {
         'Expropiacion' => true,
         'Otros' => true,
         'Ley14449' => true,
+        'TieneExpropiacion' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -72,6 +73,7 @@ class EncuadreLegalDataGridGen extends QFilteredDataGrid {
         if (EncuadreLegalDataGrid::$strColumnsArray['Expropiacion']) $this->MetaAddColumn('Expropiacion')->Title = QApplication::Translate('Expropiacion');
         if (EncuadreLegalDataGrid::$strColumnsArray['Otros']) $this->MetaAddColumn('Otros')->Title = QApplication::Translate('Otros');
         if (EncuadreLegalDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
+        if (EncuadreLegalDataGrid::$strColumnsArray['TieneExpropiacion']) $this->MetaAddColumn('TieneExpropiacion')->Title = QApplication::Translate('TieneExpropiacion');
     }
 
 /**
@@ -229,6 +231,7 @@ class EncuadreLegalDataGridGen extends QFilteredDataGrid {
 				case 'Expropiacion': return QQN::EncuadreLegal()->Expropiacion;
 				case 'Otros': return QQN::EncuadreLegal()->Otros;
 				case 'Ley14449': return QQN::EncuadreLegal()->Ley14449;
+				case 'TieneExpropiacion': return QQN::EncuadreLegal()->TieneExpropiacion;
 				default: throw new QCallerException('Simple Property not found in EncuadreLegalDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

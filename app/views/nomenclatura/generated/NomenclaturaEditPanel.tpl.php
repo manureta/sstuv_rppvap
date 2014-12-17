@@ -15,7 +15,6 @@
 		<?php $_CONTROL->txtMza->RenderWithName(); ?>
 		<?php $_CONTROL->txtParc->RenderWithName(); ?>
 		<?php $_CONTROL->txtInscripcionDominio->RenderWithName(); ?>
-		<?php $_CONTROL->txtTitularRegPropiedad->RenderWithName(); ?>
 		<?php $_CONTROL->txtPartido->RenderWithName(); ?>
 		<?php $_CONTROL->chkDatoVerificadoRegPropiedad->RenderWithName(); ?>
 		<?php $_CONTROL->txtEstadoGeografico->RenderWithName(); ?>
