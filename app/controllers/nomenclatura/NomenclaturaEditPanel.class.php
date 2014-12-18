@@ -34,10 +34,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
             throw $objExc;
         }
          $this->intId = $intId;
-        
-         $this->metaControl_Create($strControlsArray);
-        
-         $this->buttons_Create();
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+             
          
         $this->blnAutoRenderChildrenWithName = true;
        
