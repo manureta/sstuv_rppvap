@@ -826,38 +826,6 @@ class UsoInternoGen extends QBaseClass {
 			
 		/**
 		 * Load an array of UsoInterno objects,
-		 * by RegularizacionEstadoProceso Index(es)
-		 * @param integer $intRegularizacionEstadoProceso
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return UsoInterno[]
-		*/
-		public static function LoadArrayByRegularizacionEstadoProceso($intRegularizacionEstadoProceso, $objOptionalClauses = null) {
-			// Call UsoInterno::QueryArray to perform the LoadArrayByRegularizacionEstadoProceso query
-			try {
-				return UsoInterno::QueryArray(
-					QQ::Equal(QQN::UsoInterno()->RegularizacionEstadoProceso, $intRegularizacionEstadoProceso),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count UsoInternos
-		 * by RegularizacionEstadoProceso Index(es)
-		 * @param integer $intRegularizacionEstadoProceso
-		 * @return int
-		*/
-		public static function CountByRegularizacionEstadoProceso($intRegularizacionEstadoProceso) {
-			// Call UsoInterno::QueryCount to perform the CountByRegularizacionEstadoProceso query
-			return UsoInterno::QueryCount(
-				QQ::Equal(QQN::UsoInterno()->RegularizacionEstadoProceso, $intRegularizacionEstadoProceso)
-			);
-		}
-			
-		/**
-		 * Load an array of UsoInterno objects,
 		 * by EstadoFolio Index(es)
 		 * @param integer $intEstadoFolio
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -885,6 +853,38 @@ class UsoInternoGen extends QBaseClass {
 			// Call UsoInterno::QueryCount to perform the CountByEstadoFolio query
 			return UsoInterno::QueryCount(
 				QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio)
+			);
+		}
+			
+		/**
+		 * Load an array of UsoInterno objects,
+		 * by RegularizacionEstadoProceso Index(es)
+		 * @param integer $intRegularizacionEstadoProceso
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return UsoInterno[]
+		*/
+		public static function LoadArrayByRegularizacionEstadoProceso($intRegularizacionEstadoProceso, $objOptionalClauses = null) {
+			// Call UsoInterno::QueryArray to perform the LoadArrayByRegularizacionEstadoProceso query
+			try {
+				return UsoInterno::QueryArray(
+					QQ::Equal(QQN::UsoInterno()->RegularizacionEstadoProceso, $intRegularizacionEstadoProceso),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count UsoInternos
+		 * by RegularizacionEstadoProceso Index(es)
+		 * @param integer $intRegularizacionEstadoProceso
+		 * @return int
+		*/
+		public static function CountByRegularizacionEstadoProceso($intRegularizacionEstadoProceso) {
+			// Call UsoInterno::QueryCount to perform the CountByRegularizacionEstadoProceso query
+			return UsoInterno::QueryCount(
+				QQ::Equal(QQN::UsoInterno()->RegularizacionEstadoProceso, $intRegularizacionEstadoProceso)
 			);
 		}
 

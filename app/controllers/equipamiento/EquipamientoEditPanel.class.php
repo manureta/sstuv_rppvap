@@ -33,11 +33,11 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
 
         $this->intId = $intId;
       
-        $this->metaControl_Create($strControlsArray);
 
-        //$this->buttons_Create();
         $this->blnAutoRenderChildrenWithName = true;
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
     }
+    protected function buttons_Create(){}
 
     protected function metaControl_Create($strControlsArray){
         // Construct the EquipamientoMetaControl

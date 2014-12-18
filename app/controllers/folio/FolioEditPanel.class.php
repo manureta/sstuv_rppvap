@@ -47,17 +47,16 @@ class FolioEditPanel extends FolioEditPanelGen {
 
         // Call the Parent
         try {
-            parent::__construct($objParentObject, $strControlId);
+            parent::__construct($objParentObject, $strControlsArray, $intId, $strControlId);
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;
         }
         
         $this->intId = $intId;
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
         
         
-        $this->metaControl_Create($strControlsArray);
-        $this->buttons_Create();
         $this->objControlsArray['txtCodFolio']->Visible = null;
         // SI SE ELIJE PARTIDO QUE SE PONGA LA MATRICULA AUTOMATICAMENTE
         $this->lstIdPartidoObject->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstPartido_Change'));

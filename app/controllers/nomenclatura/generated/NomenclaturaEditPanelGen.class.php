@@ -6,7 +6,80 @@ class NomenclaturaEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intId;
 
-   
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+    public static $strControlsArray = array(
+        'lblId' => false,
+        'lstIdFolioObject' => true,
+        'txtPartidaInmobiliaria' => true,
+        'txtTitularDominio' => true,
+        'txtCirc' => true,
+        'txtSecc' => true,
+        'txtChacQuinta' => true,
+        'txtFrac' => true,
+        'txtMza' => true,
+        'txtParc' => true,
+        'txtInscripcionDominio' => true,
+        'txtPartido' => true,
+        'chkDatoVerificadoRegPropiedad' => true,
+        'txtEstadoGeografico' => true,
+    );
+
+    public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
+
+        $strControlsArray = empty($strControlsArray) ? array_keys(NomenclaturaEditPanel::$strControlsArray, true) : $strControlsArray;
+
+        // Call the Parent
+        try {
+            parent::__construct($objParentObject, $strControlId);
+        } catch (QCallerException $objExc) {
+            $objExc->IncrementOffset();
+            throw $objExc;
+        }
+
+        $this->intId = $intId;
+        $this->pnlTabs = new QTabPanel($this);
+        $this->pnlTabs->AddTab(Nomenclatura::Noun());
+        $this->metaControl_Create($strControlsArray);
+        $this->buttons_Create();
+    }
+
+    protected function metaControl_Create($strControlsArray){
+        // Construct the NomenclaturaMetaControl
+        // MAKE SURE we specify "$this" as the MetaControl's (and thus all subsequent controls') parent
+        $this->mctNomenclatura = NomenclaturaMetaControl::Create($this, $this->intId);
+
+        // Call MetaControl's methods to create qcontrols based on Nomenclatura's data fields
+        if (in_array('lblId',$strControlsArray)) 
+            $this->objControlsArray['lblId'] = $this->mctNomenclatura->lblId_Create();
+        if (in_array('lstIdFolioObject',$strControlsArray)) 
+            $this->objControlsArray['lstIdFolioObject'] = $this->mctNomenclatura->lstIdFolioObject_Create();
+        if (in_array('txtPartidaInmobiliaria',$strControlsArray)) 
+            $this->objControlsArray['txtPartidaInmobiliaria'] = $this->mctNomenclatura->txtPartidaInmobiliaria_Create();
+        if (in_array('txtTitularDominio',$strControlsArray)) 
+            $this->objControlsArray['txtTitularDominio'] = $this->mctNomenclatura->txtTitularDominio_Create();
+        if (in_array('txtCirc',$strControlsArray)) 
+            $this->objControlsArray['txtCirc'] = $this->mctNomenclatura->txtCirc_Create();
+        if (in_array('txtSecc',$strControlsArray)) 
+            $this->objControlsArray['txtSecc'] = $this->mctNomenclatura->txtSecc_Create();
+        if (in_array('txtChacQuinta',$strControlsArray)) 
+            $this->objControlsArray['txtChacQuinta'] = $this->mctNomenclatura->txtChacQuinta_Create();
+        if (in_array('txtFrac',$strControlsArray)) 
+            $this->objControlsArray['txtFrac'] = $this->mctNomenclatura->txtFrac_Create();
+        if (in_array('txtMza',$strControlsArray)) 
+            $this->objControlsArray['txtMza'] = $this->mctNomenclatura->txtMza_Create();
+        if (in_array('txtParc',$strControlsArray)) 
+            $this->objControlsArray['txtParc'] = $this->mctNomenclatura->txtParc_Create();
+        if (in_array('txtInscripcionDominio',$strControlsArray)) 
+            $this->objControlsArray['txtInscripcionDominio'] = $this->mctNomenclatura->txtInscripcionDominio_Create();
+        if (in_array('txtPartido',$strControlsArray)) 
+            $this->objControlsArray['txtPartido'] = $this->mctNomenclatura->txtPartido_Create();
+        if (in_array('chkDatoVerificadoRegPropiedad',$strControlsArray)) 
+            $this->objControlsArray['chkDatoVerificadoRegPropiedad'] = $this->mctNomenclatura->chkDatoVerificadoRegPropiedad_Create();
+        if (in_array('txtEstadoGeografico',$strControlsArray)) 
+            $this->objControlsArray['txtEstadoGeografico'] = $this->mctNomenclatura->txtEstadoGeografico_Create();
+
+        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+    }
     
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);

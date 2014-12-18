@@ -37,8 +37,6 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         }
 
         $this->intId = $intId;
-        $this->metaControl_Create($strControlsArray);
-        $this->buttons_Create();
 
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
@@ -84,6 +82,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlOrganismos->lstIdFolioObject->Visible = false;                
         
 
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
         //$this->blnAutoRenderChildrenWithName = true;
     }

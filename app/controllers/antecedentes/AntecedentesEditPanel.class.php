@@ -34,9 +34,9 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
         $this->intId = $intId;
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(Antecedentes::Noun());
-        $this->metaControl_Create($strControlsArray);
-        //$this->buttons_Create();
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
     }
+    protected function buttons_Create(){}
 
     protected function metaControl_Create($strControlsArray){
         // Construct the AntecedentesMetaControl

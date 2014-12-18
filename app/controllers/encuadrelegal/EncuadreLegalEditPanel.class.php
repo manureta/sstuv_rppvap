@@ -37,9 +37,10 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         $this->intId = $intId;
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(EncuadreLegal::Noun());
-        $this->metaControl_Create($strControlsArray);
-        //$this->buttons_Create();
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
     }
+
+    protected function buttons_Create(){}
 
  
     protected function metaControl_Create($strControlsArray){

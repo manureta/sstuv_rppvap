@@ -6,7 +6,60 @@ class OrganismosDeIntervencionEditPanelGen extends EditPanelBase {
     //id variables for meta_create
     protected $intId;
 
-   
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+    public static $strControlsArray = array(
+        'lblId' => false,
+        'lstIdFolioObject' => true,
+        'chkNacional' => true,
+        'chkProvincial' => true,
+        'chkMunicipal' => true,
+        'calFechaIntervencion' => true,
+        'txtProgramas' => true,
+    );
+
+    public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
+
+        $strControlsArray = empty($strControlsArray) ? array_keys(OrganismosDeIntervencionEditPanel::$strControlsArray, true) : $strControlsArray;
+
+        // Call the Parent
+        try {
+            parent::__construct($objParentObject, $strControlId);
+        } catch (QCallerException $objExc) {
+            $objExc->IncrementOffset();
+            throw $objExc;
+        }
+
+        $this->intId = $intId;
+        $this->pnlTabs = new QTabPanel($this);
+        $this->pnlTabs->AddTab(OrganismosDeIntervencion::Noun());
+        $this->metaControl_Create($strControlsArray);
+        $this->buttons_Create();
+    }
+
+    protected function metaControl_Create($strControlsArray){
+        // Construct the OrganismosDeIntervencionMetaControl
+        // MAKE SURE we specify "$this" as the MetaControl's (and thus all subsequent controls') parent
+        $this->mctOrganismosDeIntervencion = OrganismosDeIntervencionMetaControl::Create($this, $this->intId);
+
+        // Call MetaControl's methods to create qcontrols based on OrganismosDeIntervencion's data fields
+        if (in_array('lblId',$strControlsArray)) 
+            $this->objControlsArray['lblId'] = $this->mctOrganismosDeIntervencion->lblId_Create();
+        if (in_array('lstIdFolioObject',$strControlsArray)) 
+            $this->objControlsArray['lstIdFolioObject'] = $this->mctOrganismosDeIntervencion->lstIdFolioObject_Create();
+        if (in_array('chkNacional',$strControlsArray)) 
+            $this->objControlsArray['chkNacional'] = $this->mctOrganismosDeIntervencion->chkNacional_Create();
+        if (in_array('chkProvincial',$strControlsArray)) 
+            $this->objControlsArray['chkProvincial'] = $this->mctOrganismosDeIntervencion->chkProvincial_Create();
+        if (in_array('chkMunicipal',$strControlsArray)) 
+            $this->objControlsArray['chkMunicipal'] = $this->mctOrganismosDeIntervencion->chkMunicipal_Create();
+        if (in_array('calFechaIntervencion',$strControlsArray)) 
+            $this->objControlsArray['calFechaIntervencion'] = $this->mctOrganismosDeIntervencion->calFechaIntervencion_Create();
+        if (in_array('txtProgramas',$strControlsArray)) 
+            $this->objControlsArray['txtProgramas'] = $this->mctOrganismosDeIntervencion->txtProgramas_Create();
+
+        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+    }
+    
     protected function buttons_Create($blnDelete = true) {
         parent::buttons_Create($blnDelete);
         if ($blnDelete) {

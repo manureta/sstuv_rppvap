@@ -36,10 +36,11 @@ class SituacionAmbientalEditPanel extends SituacionAmbientalEditPanelGen {
         $this->intId = $intId;
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(SituacionAmbiental::Noun());
-        $this->metaControl_Create($strControlsArray);
-        //$this->buttons_Create();
         $this->blnAutoRenderChildrenWithName = true;
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
     }
+    
+    protected function buttons_Create(){}
 
     protected function metaControl_Create($strControlsArray){
         // Construct the SituacionAmbientalMetaControl

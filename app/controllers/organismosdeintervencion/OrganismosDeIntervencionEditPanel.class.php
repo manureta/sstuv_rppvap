@@ -34,9 +34,10 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         $this->intId = $intId;
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(OrganismosDeIntervencion::Noun());
-        $this->metaControl_Create($strControlsArray);
         //$this->buttons_Create();
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
     }
+    protected function buttons_Create(){}
 
     protected function metaControl_Create($strControlsArray){
         // Construct the OrganismosDeIntervencionMetaControl

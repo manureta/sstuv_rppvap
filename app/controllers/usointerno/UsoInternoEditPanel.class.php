@@ -51,7 +51,6 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
          
 
-        $this->metaControl_Create($strControlsArray);
         
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
@@ -85,8 +84,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if($this->txtGeodesiaPartido->Text=="") $this->txtGeodesiaPartido->Text=$this->objFolio->IdPartidoObject->CodPartido;
         //$this->txtGeodesiaPartido->Text=$this->objFolio->IdPartidoObject->CodPartido;
 
-        $this->buttons_Create();
         $this->blnAutoRenderChildrenWithName = false;
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
     }
 
     protected function metaControl_Create($strControlsArray){
