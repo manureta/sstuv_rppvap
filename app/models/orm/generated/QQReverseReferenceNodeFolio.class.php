@@ -17,8 +17,6 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('matricula', 'Matricula', 'string', $this);
 				case 'Fecha':
 					return new QQNode('fecha', 'Fecha', 'QDateTime', $this);
-				case 'Encargado':
-					return new QQNode('encargado', 'Encargado', 'string', $this);
 				case 'NombreBarrioOficial':
 					return new QQNode('nombre_barrio_oficial', 'NombreBarrioOficial', 'string', $this);
 				case 'NombreBarrioAlternativo1':
@@ -45,8 +43,10 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('judicializado', 'Judicializado', 'string', $this);
 				case 'Localidad':
 					return new QQNode('localidad', 'Localidad', 'string', $this);
-				case 'ReparticionPublica':
-					return new QQNode('reparticion_publica', 'ReparticionPublica', 'string', $this);
+				case 'Creador':
+					return new QQNode('creador', 'Creador', 'integer', $this);
+				case 'CreadorObject':
+					return new QQNodeUsuario('creador', 'CreadorObject', 'integer', $this);
 				case 'ArchivosAdjuntosAsId':
 					return new QQReverseReferenceNodeArchivosAdjuntos($this, 'archivosadjuntosasid', 'reverse_reference', 'id_folio');
 				case 'CondicionesSocioUrbanisticasAsId':

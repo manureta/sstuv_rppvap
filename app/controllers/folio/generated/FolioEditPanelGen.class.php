@@ -13,7 +13,6 @@ class FolioEditPanelGen extends EditPanelBase {
         'lstIdPartidoObject' => true,
         'txtMatricula' => true,
         'calFecha' => true,
-        'txtEncargado' => true,
         'txtNombreBarrioOficial' => true,
         'txtNombreBarrioAlternativo1' => true,
         'txtNombreBarrioAlternativo2' => true,
@@ -26,7 +25,7 @@ class FolioEditPanelGen extends EditPanelBase {
         'txtGeom' => true,
         'txtJudicializado' => true,
         'txtLocalidad' => true,
-        'txtReparticionPublica' => true,
+        'lstCreadorObject' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -69,8 +68,6 @@ class FolioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
             $this->objControlsArray['calFecha'] = $this->mctFolio->calFecha_Create();
-        if (in_array('txtEncargado',$strControlsArray)) 
-            $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
         if (in_array('txtNombreBarrioOficial',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();
         if (in_array('txtNombreBarrioAlternativo1',$strControlsArray)) 
@@ -95,8 +92,8 @@ class FolioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();
         if (in_array('txtLocalidad',$strControlsArray)) 
             $this->objControlsArray['txtLocalidad'] = $this->mctFolio->txtLocalidad_Create();
-        if (in_array('txtReparticionPublica',$strControlsArray)) 
-            $this->objControlsArray['txtReparticionPublica'] = $this->mctFolio->txtReparticionPublica_Create();
+        if (in_array('lstCreadorObject',$strControlsArray)) 
+            $this->objControlsArray['lstCreadorObject'] = $this->mctFolio->lstCreadorObject_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

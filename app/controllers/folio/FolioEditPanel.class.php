@@ -16,9 +16,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'txtCodFolio' => true,
         'lstIdPartidoObject' => true,
         'txtMatricula' => true,
-        'calFecha' => true,
-        'txtEncargado' => true,
-        'txtReparticionPublica' => true,
+        'calFecha' => true,              
         'txtNombreBarrioOficial' => true,
         'txtNombreBarrioAlternativo1' => true,
         'txtNombreBarrioAlternativo2' => true,
@@ -36,6 +34,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstUsoInterno' => false,
         'lstArchivosAdjuntosAsId' => false,
         'lstNomenclaturaAsId' => false,
+        'lstCreadorObject' => true,
     );
     public $objPartido;
 
@@ -70,6 +69,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         if(!$this->folioExistente){
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
+            $this->lstCreadorObject->Value=Session::GetObjUsuario()->IdUsuario;
             if($objPartido){
                 //seteo partido
                 $this->lstIdPartidoObject->Value = $objPartido->Id;
@@ -132,7 +132,10 @@ class FolioEditPanel extends FolioEditPanelGen {
         // escondo el judicializado original
         $this->txtJudicializado->Visible=false;
 
-
+        // Escondo el creador del folio
+        $this->lstCreadorObject->Enabled=false;
+        $this->lstCreadorObject->Visible=false;
+            
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -154,11 +157,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('calFecha',$strControlsArray)) 
             $this->objControlsArray['calFecha'] = $this->mctFolio->calFecha_Create();
             $this->objControlsArray['calFecha']->Name="Fecha de carga <span class='add-on'><i class='icon-calendar'></i></span>";
-        if (in_array('txtEncargado',$strControlsArray)) 
-            $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
-        if (in_array('txtReparticionPublica',$strControlsArray)) 
-            $this->objControlsArray['txtReparticionPublica'] = $this->mctFolio->txtReparticionPublica_Create();
-            $this->objControlsArray['txtReparticionPublica']->Name="Repartición pública";
+        
+        
         if (in_array('txtNombreBarrioOficial',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();    
             $this->objControlsArray['txtNombreBarrioOficial']->Name="Nombre oficial del barrio";        
@@ -183,6 +183,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtObservacionCasoDudoso',$strControlsArray)) 
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
             $this->objControlsArray['txtObservacionCasoDudoso']->Name="Observación de otro caso";
+        if (in_array('lstCreadorObject',$strControlsArray)) 
+            $this->objControlsArray['lstCreadorObject'] = $this->mctFolio->lstCreadorObject_Create();    
         
         if (in_array('txtJudicializado',$strControlsArray)) 
             $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();            

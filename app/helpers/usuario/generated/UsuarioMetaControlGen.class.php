@@ -431,6 +431,64 @@
 
 
 
+    public $lstFolioAsCreador;
+    /**
+     * Gets all associated FoliosAsCreador as an array of Folio objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Folio[]
+    */ 
+    public function lstFolioAsCreador_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Folio';
+        $strConfigArray['strRefreshMethod'] = 'FolioAsCreadorArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'Creador';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddFolioAsCreador';
+        $strConfigArray['strRemoveMethod'] = 'RemoveFolioAsCreador';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['CodFolio'] = QApplication::Translate('CodFolio');
+        $strConfigArray['Columns']['IdPartidoObject'] = QApplication::Translate('IdPartidoObject');
+        $strConfigArray['Columns']['Matricula'] = QApplication::Translate('Matricula');
+        $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
+        $strConfigArray['Columns']['NombreBarrioOficial'] = QApplication::Translate('NombreBarrioOficial');
+        $strConfigArray['Columns']['NombreBarrioAlternativo1'] = QApplication::Translate('NombreBarrioAlternativo1');
+        $strConfigArray['Columns']['NombreBarrioAlternativo2'] = QApplication::Translate('NombreBarrioAlternativo2');
+        $strConfigArray['Columns']['AnioOrigen'] = QApplication::Translate('AnioOrigen');
+        $strConfigArray['Columns']['Superficie'] = QApplication::Translate('Superficie');
+        $strConfigArray['Columns']['CantidadFamilias'] = QApplication::Translate('CantidadFamilias');
+        $strConfigArray['Columns']['TipoBarrioObject'] = QApplication::Translate('TipoBarrioObject');
+        $strConfigArray['Columns']['ObservacionCasoDudoso'] = QApplication::Translate('ObservacionCasoDudoso');
+        $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
+        $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
+        $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
+        $strConfigArray['Columns']['Localidad'] = QApplication::Translate('Localidad');
+
+        $this->lstFolioAsCreador = new QListPanel($this->objParentObject, $this->objUsuario, $strConfigArray, $strControlId);
+        $this->lstFolioAsCreador->Name = Folio::Noun();
+        $this->lstFolioAsCreador->SetNewMethod($this, "lstFolioAsCreador_New");
+        $this->lstFolioAsCreador->SetEditMethod($this, "lstFolioAsCreador_Edit");
+        return $this->lstFolioAsCreador;
+    }
+
+    public function lstFolioAsCreador_New() {
+        FolioModalPanel::$strControlsArray['lstCreadorObject'] = false;
+        $strControlsArray = array_keys(FolioModalPanel::$strControlsArray, true);
+        $this->lstFolioAsCreador->ModalPanel = new FolioModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstFolioAsCreador->ModalPanel->objCallerControl = $this->lstFolioAsCreador;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstFolioAsCreador_Edit($intKey) {
+        FolioModalPanel::$strControlsArray['lstCreadorObject'] = false;
+        $strControlsArray = array_keys(FolioModalPanel::$strControlsArray, true);
+        $obj = $this->objUsuario->FolioAsCreadorArray[$intKey];
+        $this->lstFolioAsCreador->ModalPanel = new FolioModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstFolioAsCreador->ModalPanel->objCallerControl = $this->lstFolioAsCreador;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
 
 
         /**

@@ -233,7 +233,6 @@
         $strConfigArray['Columns']['CodFolio'] = QApplication::Translate('CodFolio');
         $strConfigArray['Columns']['Matricula'] = QApplication::Translate('Matricula');
         $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
-        $strConfigArray['Columns']['Encargado'] = QApplication::Translate('Encargado');
         $strConfigArray['Columns']['NombreBarrioOficial'] = QApplication::Translate('NombreBarrioOficial');
         $strConfigArray['Columns']['NombreBarrioAlternativo1'] = QApplication::Translate('NombreBarrioAlternativo1');
         $strConfigArray['Columns']['NombreBarrioAlternativo2'] = QApplication::Translate('NombreBarrioAlternativo2');
@@ -246,7 +245,7 @@
         $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Localidad'] = QApplication::Translate('Localidad');
-        $strConfigArray['Columns']['ReparticionPublica'] = QApplication::Translate('ReparticionPublica');
+        $strConfigArray['Columns']['CreadorObject'] = QApplication::Translate('CreadorObject');
 
         $this->lstFolioAsId = new QListPanel($this->objParentObject, $this->objPartido, $strConfigArray, $strControlId);
         $this->lstFolioAsId->Name = Folio::Noun();

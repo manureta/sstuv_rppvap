@@ -18,6 +18,7 @@ class UsuarioEditPanelGen extends EditPanelBase {
         'txtCodPartido' => true,
         'txtNombreCompleto' => true,
         'txtReparticion' => true,
+        'lstFolioAsCreador' => false,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdUsuario = null, $strControlId = null) {
@@ -65,6 +66,8 @@ class UsuarioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombreCompleto'] = $this->mctUsuario->txtNombreCompleto_Create();
         if (in_array('txtReparticion',$strControlsArray)) 
             $this->objControlsArray['txtReparticion'] = $this->mctUsuario->txtReparticion_Create();
+        if (in_array('lstFolioAsCreador',$strControlsArray))
+            $this->objControlsArray['lstFolioAsCreador'] = $this->mctUsuario->lstFolioAsCreador_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
@@ -83,6 +86,10 @@ class UsuarioEditPanelGen extends EditPanelBase {
         parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the UsuarioMetaControl
         $this->mctUsuario->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
 

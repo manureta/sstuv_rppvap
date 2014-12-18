@@ -20,7 +20,6 @@
 	 * @property integer $IdPartido the value for intIdPartido (Not Null)
 	 * @property string $Matricula the value for strMatricula (Not Null)
 	 * @property QDateTime $Fecha the value for dttFecha (Not Null)
-	 * @property string $Encargado the value for strEncargado (Not Null)
 	 * @property string $NombreBarrioOficial the value for strNombreBarrioOficial 
 	 * @property string $NombreBarrioAlternativo1 the value for strNombreBarrioAlternativo1 
 	 * @property string $NombreBarrioAlternativo2 the value for strNombreBarrioAlternativo2 
@@ -33,9 +32,10 @@
 	 * @property string $Geom the value for strGeom (Not Null)
 	 * @property string $Judicializado the value for strJudicializado 
 	 * @property string $Localidad the value for strLocalidad 
-	 * @property string $ReparticionPublica the value for strReparticionPublica 
+	 * @property integer $Creador the value for intCreador 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
+	 * @property Usuario $CreadorObject the value for the Usuario object referenced by intCreador 
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
 	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
@@ -102,15 +102,6 @@ class FolioGen extends QBaseClass {
      */
     protected $dttFecha;
     const FechaDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column folio.encargado
-     * @var string strEncargado
-     */
-    protected $strEncargado;
-    const EncargadoMaxLength = 128;
-    const EncargadoDefault = null;
 
 
     /**
@@ -217,11 +208,11 @@ class FolioGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column folio.reparticion_publica
-     * @var string strReparticionPublica
+     * Protected member variable that maps to the database column folio.creador
+     * @var integer intCreador
      */
-    protected $strReparticionPublica;
-    const ReparticionPublicaDefault = null;
+    protected $intCreador;
+    const CreadorDefault = null;
 
 
     /**
@@ -296,6 +287,16 @@ class FolioGen extends QBaseClass {
 		 * @var TipoBarrio objTipoBarrioObject
 		 */
 		protected $objTipoBarrioObject;
+
+		/**
+		 * Protected member variable that contains the object pointed by the reference
+		 * in the database column folio.creador.
+		 *
+		 * NOTE: Always use the CreadorObject property getter to correctly retrieve this Usuario object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var Usuario objCreadorObject
+		 */
+		protected $objCreadorObject;
 
 		/**
 		 * Protected member variable that contains the object which points to
@@ -674,7 +675,6 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'id_partido', $strAliasPrefix . 'id_partido');
 			$objBuilder->AddSelectItem($strTableName, 'matricula', $strAliasPrefix . 'matricula');
 			$objBuilder->AddSelectItem($strTableName, 'fecha', $strAliasPrefix . 'fecha');
-			$objBuilder->AddSelectItem($strTableName, 'encargado', $strAliasPrefix . 'encargado');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_barrio_oficial', $strAliasPrefix . 'nombre_barrio_oficial');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_barrio_alternativo_1', $strAliasPrefix . 'nombre_barrio_alternativo_1');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_barrio_alternativo_2', $strAliasPrefix . 'nombre_barrio_alternativo_2');
@@ -687,7 +687,7 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'geom', $strAliasPrefix . 'geom');
 			$objBuilder->AddSelectItem($strTableName, 'judicializado', $strAliasPrefix . 'judicializado');
 			$objBuilder->AddSelectItem($strTableName, 'localidad', $strAliasPrefix . 'localidad');
-			$objBuilder->AddSelectItem($strTableName, 'reparticion_publica', $strAliasPrefix . 'reparticion_publica');
+			$objBuilder->AddSelectItem($strTableName, 'creador', $strAliasPrefix . 'creador');
 		}
 
 //instantiation_methods
@@ -782,8 +782,6 @@ class FolioGen extends QBaseClass {
 			$objToReturn->strMatricula = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha'] : $strAliasPrefix . 'fecha';
 			$objToReturn->dttFecha = $objDbRow->GetColumn($strAliasName, 'Date');
-			$strAliasName = array_key_exists($strAliasPrefix . 'encargado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'encargado'] : $strAliasPrefix . 'encargado';
-			$objToReturn->strEncargado = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'nombre_barrio_oficial', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nombre_barrio_oficial'] : $strAliasPrefix . 'nombre_barrio_oficial';
 			$objToReturn->strNombreBarrioOficial = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'nombre_barrio_alternativo_1', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nombre_barrio_alternativo_1'] : $strAliasPrefix . 'nombre_barrio_alternativo_1';
@@ -808,8 +806,8 @@ class FolioGen extends QBaseClass {
 			$objToReturn->strJudicializado = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'localidad', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'localidad'] : $strAliasPrefix . 'localidad';
 			$objToReturn->strLocalidad = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'reparticion_publica', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'reparticion_publica'] : $strAliasPrefix . 'reparticion_publica';
-			$objToReturn->strReparticionPublica = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'creador', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'creador'] : $strAliasPrefix . 'creador';
+			$objToReturn->intCreador = $objDbRow->GetColumn($strAliasName, 'Integer');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -860,6 +858,12 @@ class FolioGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName)))
 				$objToReturn->objTipoBarrioObject = TipoBarrio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'tipo_barrio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+
+			// Check for CreadorObject Early Binding
+			$strAlias = $strAliasPrefix . 'creador__id_usuario';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName)))
+				$objToReturn->objCreadorObject = Usuario::InstantiateDbRow($objDbRow, $strAliasPrefix . 'creador__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 
 
 			// Check for CondicionesSocioUrbanisticasAsId Unique ReverseReference Binding
@@ -1057,6 +1061,38 @@ class FolioGen extends QBaseClass {
 				QQ::Equal(QQN::Folio()->TipoBarrio, $intTipoBarrio)
 			);
 		}
+			
+		/**
+		 * Load an array of Folio objects,
+		 * by Creador Index(es)
+		 * @param integer $intCreador
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Folio[]
+		*/
+		public static function LoadArrayByCreador($intCreador, $objOptionalClauses = null) {
+			// Call Folio::QueryArray to perform the LoadArrayByCreador query
+			try {
+				return Folio::QueryArray(
+					QQ::Equal(QQN::Folio()->Creador, $intCreador),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count Folios
+		 * by Creador Index(es)
+		 * @param integer $intCreador
+		 * @return int
+		*/
+		public static function CountByCreador($intCreador) {
+			// Call Folio::QueryCount to perform the CountByCreador query
+			return Folio::QueryCount(
+				QQ::Equal(QQN::Folio()->Creador, $intCreador)
+			);
+		}
 
 
 
@@ -1114,6 +1150,20 @@ class FolioGen extends QBaseClass {
 			throw $objExc;
                 }
             }
+            // ver si objCreadorObject esta Guardado
+            if(is_null($this->intCreador)){
+                //Si el objeto esta seteado lo grabo sino no hago NADA.
+                if(!is_null($this->CreadorObject))
+                try{
+                    if(!is_null($this->CreadorObject->Creador))
+                        $this->intCreador = $this->CreadorObject->Creador;
+                    else
+                        $this->intCreador = $this->CreadorObject->Save();
+                }catch(Exception $objExc){
+                    	$objExc->IncrementOffset();
+			throw $objExc;
+                }
+            }
 
                     if ($this->intId && ($this->intId > QDatabaseNumberFieldMax::Integer || $this->intId < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intId', QDatabaseFieldType::Integer);
@@ -1127,6 +1177,9 @@ class FolioGen extends QBaseClass {
                     if ($this->intTipoBarrio && ($this->intTipoBarrio > QDatabaseNumberFieldMax::Integer || $this->intTipoBarrio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intTipoBarrio', QDatabaseFieldType::Integer);
                     }
+                    if ($this->intCreador && ($this->intCreador > QDatabaseNumberFieldMax::Integer || $this->intCreador < QDatabaseNumberFieldMin::Integer)) {
+                        throw new NumberOutOfRangeException('intCreador', QDatabaseFieldType::Integer);
+                    }
 
             try {
                 if (((!$this->__blnRestored) && (!$blnForceUpdate)) || ($blnForceInsert)) {
@@ -1137,7 +1190,6 @@ class FolioGen extends QBaseClass {
                             "id_partido",
                             "matricula",
                             "fecha",
-                            "encargado",
                             "nombre_barrio_oficial",
                             "nombre_barrio_alternativo_1",
                             "nombre_barrio_alternativo_2",
@@ -1150,13 +1202,12 @@ class FolioGen extends QBaseClass {
                             "geom",
                             "judicializado",
                             "localidad",
-                            "reparticion_publica"
+                            "creador"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
                             ' . $objDatabase->SqlVariable($this->strMatricula) . ',
                             ' . $objDatabase->SqlVariable($this->dttFecha) . ',
-                            ' . $objDatabase->SqlVariable($this->strEncargado) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreBarrioOficial) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo1) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo2) . ',
@@ -1169,7 +1220,7 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strGeom) . ',
                             ' . $objDatabase->SqlVariable($this->strJudicializado) . ',
                             ' . $objDatabase->SqlVariable($this->strLocalidad) . ',
-                            ' . $objDatabase->SqlVariable($this->strReparticionPublica) . '
+                            ' . $objDatabase->SqlVariable($this->intCreador) . '
                         )
                     ');
 
@@ -1189,7 +1240,6 @@ class FolioGen extends QBaseClass {
                             "id_partido" = ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
                             "matricula" = ' . $objDatabase->SqlVariable($this->strMatricula) . ',
                             "fecha" = ' . $objDatabase->SqlVariable($this->dttFecha) . ',
-                            "encargado" = ' . $objDatabase->SqlVariable($this->strEncargado) . ',
                             "nombre_barrio_oficial" = ' . $objDatabase->SqlVariable($this->strNombreBarrioOficial) . ',
                             "nombre_barrio_alternativo_1" = ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo1) . ',
                             "nombre_barrio_alternativo_2" = ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo2) . ',
@@ -1202,7 +1252,7 @@ class FolioGen extends QBaseClass {
                             "geom" = ' . $objDatabase->SqlVariable($this->strGeom) . ',
                             "judicializado" = ' . $objDatabase->SqlVariable($this->strJudicializado) . ',
                             "localidad" = ' . $objDatabase->SqlVariable($this->strLocalidad) . ',
-                            "reparticion_publica" = ' . $objDatabase->SqlVariable($this->strReparticionPublica) . '
+                            "creador" = ' . $objDatabase->SqlVariable($this->intCreador) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -1378,7 +1428,6 @@ class FolioGen extends QBaseClass {
 			$this->IdPartido = $objReloaded->IdPartido;
 			$this->strMatricula = $objReloaded->strMatricula;
 			$this->dttFecha = $objReloaded->dttFecha;
-			$this->strEncargado = $objReloaded->strEncargado;
 			$this->strNombreBarrioOficial = $objReloaded->strNombreBarrioOficial;
 			$this->strNombreBarrioAlternativo1 = $objReloaded->strNombreBarrioAlternativo1;
 			$this->strNombreBarrioAlternativo2 = $objReloaded->strNombreBarrioAlternativo2;
@@ -1391,7 +1440,7 @@ class FolioGen extends QBaseClass {
 			$this->strGeom = $objReloaded->strGeom;
 			$this->strJudicializado = $objReloaded->strJudicializado;
 			$this->strLocalidad = $objReloaded->strLocalidad;
-			$this->strReparticionPublica = $objReloaded->strReparticionPublica;
+			$this->Creador = $objReloaded->Creador;
 		}
 
 
@@ -1447,13 +1496,6 @@ class FolioGen extends QBaseClass {
                  * @return QDateTime
                  */
                 return $this->dttFecha;
-
-            case 'Encargado':
-                /**
-                 * Gets the value for strEncargado (Not Null)
-                 * @return string
-                 */
-                return $this->strEncargado;
 
             case 'NombreBarrioOficial':
                 /**
@@ -1539,12 +1581,12 @@ class FolioGen extends QBaseClass {
                  */
                 return $this->strLocalidad;
 
-            case 'ReparticionPublica':
+            case 'Creador':
                 /**
-                 * Gets the value for strReparticionPublica 
-                 * @return string
+                 * Gets the value for intCreador 
+                 * @return integer
                  */
-                return $this->strReparticionPublica;
+                return $this->intCreador;
 
 
             ///////////////////
@@ -1573,6 +1615,20 @@ class FolioGen extends QBaseClass {
                     if ((!$this->objTipoBarrioObject) && (!is_null($this->intTipoBarrio)))
                         $this->objTipoBarrioObject = TipoBarrio::Load($this->intTipoBarrio);
                     return $this->objTipoBarrioObject;
+                } catch (QCallerException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
+
+            case 'CreadorObject':
+                /**
+                 * Gets the value for the Usuario object referenced by intCreador 
+                 * @return Usuario
+                 */
+                try {
+                    if ((!$this->objCreadorObject) && (!is_null($this->intCreador)))
+                        $this->objCreadorObject = Usuario::Load($this->intCreador);
+                    return $this->objCreadorObject;
                 } catch (QCallerException $objExc) {
                     $objExc->IncrementOffset();
                     throw $objExc;
@@ -1768,21 +1824,6 @@ class FolioGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'Encargado':
-					/**
-					 * Sets the value for strEncargado (Not Null)
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strEncargado = QType::Cast($mixValue, QType::String));
-                                                return ($this->strEncargado = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 				case 'NombreBarrioOficial':
 					/**
 					 * Sets the value for strNombreBarrioOficial 
@@ -1964,16 +2005,17 @@ class FolioGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'ReparticionPublica':
+				case 'Creador':
 					/**
-					 * Sets the value for strReparticionPublica 
-					 * @param string $mixValue
-					 * @return string
+					 * Sets the value for intCreador 
+					 * @param integer $mixValue
+					 * @return integer
 					 */
 					try {
+						$this->objCreadorObject = null;
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strReparticionPublica = QType::Cast($mixValue, QType::String));
-                                                return ($this->strReparticionPublica = $mixValue);
+                                                //return ($this->intCreador = QType::Cast($mixValue, QType::Integer));
+                                                return ($this->intCreador = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2043,6 +2085,39 @@ class FolioGen extends QBaseClass {
 						// Update Local Member Variables
 						$this->objTipoBarrioObject = $mixValue;
 						$this->intTipoBarrio = $mixValue->Id;
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
+				case 'CreadorObject':
+					/**
+					 * Sets the value for the Usuario object referenced by intCreador 
+					 * @param Usuario $mixValue
+					 * @return Usuario
+					 */
+					if (is_null($mixValue)) {
+						$this->intCreador = null;
+						$this->objCreadorObject = null;
+						return null;
+					} else {
+						// Make sure $mixValue actually is a Usuario object
+						//try {
+						//	$mixValue = QType::Cast($mixValue, 'Usuario');
+						//} catch (QInvalidCastException $objExc) {
+						//	$objExc->IncrementOffset();
+						//	throw $objExc;
+						//}
+
+						// DEPRECATED
+                                                // Make sure $mixValue is a SAVED Usuario object
+						//if (is_null($mixValue->IdUsuario))
+						//	throw new QCallerException('Unable to set an unsaved CreadorObject for this Folio');
+
+						// Update Local Member Variables
+						$this->objCreadorObject = $mixValue;
+						$this->intCreador = $mixValue->IdUsuario;
 
 						// Return $mixValue
 						return $mixValue;
@@ -2600,7 +2675,6 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="IdPartidoObject" type="xsd1:Partido"/>';
 			$strToReturn .= '<element name="Matricula" type="xsd:string"/>';
 			$strToReturn .= '<element name="Fecha" type="xsd:dateTime"/>';
-			$strToReturn .= '<element name="Encargado" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreBarrioOficial" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreBarrioAlternativo1" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreBarrioAlternativo2" type="xsd:string"/>';
@@ -2613,7 +2687,7 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="Geom" type="xsd:string"/>';
 			$strToReturn .= '<element name="Judicializado" type="xsd:string"/>';
 			$strToReturn .= '<element name="Localidad" type="xsd:string"/>';
-			$strToReturn .= '<element name="ReparticionPublica" type="xsd:string"/>';
+			$strToReturn .= '<element name="CreadorObject" type="xsd1:Usuario"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2624,6 +2698,7 @@ class FolioGen extends QBaseClass {
 				$strComplexTypeArray['Folio'] = Folio::GetSoapComplexTypeXml();
 				$strComplexTypeArray = Partido::AlterSoapComplexTypeArray($strComplexTypeArray);
 				$strComplexTypeArray = TipoBarrio::AlterSoapComplexTypeArray($strComplexTypeArray);
+				$strComplexTypeArray = Usuario::AlterSoapComplexTypeArray($strComplexTypeArray);
 			}
             return $strComplexTypeArray;
 		}
@@ -2653,9 +2728,6 @@ class FolioGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Fecha')) {
 				$objToReturn->dttFecha = new QDateTime($objSoapObject->Fecha);
-            }
-			if (property_exists($objSoapObject, 'Encargado')) {
-				$objToReturn->strEncargado = $objSoapObject->Encargado;
             }
 			if (property_exists($objSoapObject, 'NombreBarrioOficial')) {
 				$objToReturn->strNombreBarrioOficial = $objSoapObject->NombreBarrioOficial;
@@ -2693,9 +2765,9 @@ class FolioGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Localidad')) {
 				$objToReturn->strLocalidad = $objSoapObject->Localidad;
             }
-			if (property_exists($objSoapObject, 'ReparticionPublica')) {
-				$objToReturn->strReparticionPublica = $objSoapObject->ReparticionPublica;
-            }
+			if ((property_exists($objSoapObject, 'CreadorObject')) &&
+				($objSoapObject->CreadorObject))
+				$objToReturn->CreadorObject = Usuario::GetObjectFromSoapObject($objSoapObject->CreadorObject);
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
 			return $objToReturn;
@@ -2724,6 +2796,10 @@ class FolioGen extends QBaseClass {
 				$objObject->objTipoBarrioObject = TipoBarrio::GetSoapObjectFromObject($objObject->objTipoBarrioObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intTipoBarrio = null;
+			if ($objObject->objCreadorObject)
+				$objObject->objCreadorObject = Usuario::GetSoapObjectFromObject($objObject->objCreadorObject, false);
+			else if (!$blnBindRelatedObjects)
+				$objObject->intCreador = null;
 			return $objObject;
 		}
 

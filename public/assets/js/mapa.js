@@ -32,7 +32,7 @@ function mostrarMapa(cod_partido,editar){
 	  	
 	  	map.addLayer(mapquestOSM);
 	  	
-	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), partidos[cod_partido][3]);
+	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), partidos[cod_partido][2]);
 
 	  	// EDITOR
 

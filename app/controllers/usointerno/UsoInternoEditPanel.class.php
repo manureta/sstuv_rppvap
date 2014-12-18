@@ -149,6 +149,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtGeodesiaPartido'] = $this->mctUsoInterno->txtGeodesiaPartido_Create();    
         if (in_array('lstEstadoFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
+            $this->objControlsArray['lstEstadoFolioObject']->Name="Estado del Folio";
     }
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       

@@ -26,8 +26,6 @@
      * property-read QLabel $MatriculaLabel
      * property QDateTimePicker $FechaControl
      * property-read QLabel $FechaLabel
-     * property QTextBox $EncargadoControl
-     * property-read QLabel $EncargadoLabel
      * property QTextBox $NombreBarrioOficialControl
      * property-read QLabel $NombreBarrioOficialLabel
      * property QTextBox $NombreBarrioAlternativo1Control
@@ -52,8 +50,8 @@
      * property-read QLabel $JudicializadoLabel
      * property QTextBox $LocalidadControl
      * property-read QLabel $LocalidadLabel
-     * property QTextBox $ReparticionPublicaControl
-     * property-read QLabel $ReparticionPublicaLabel
+     * property QListBox $CreadorControl
+     * property-read QLabel $CreadorLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -81,7 +79,6 @@
         protected $lstIdPartidoObject;
         protected $txtMatricula;
         protected $calFecha;
-        protected $txtEncargado;
         protected $txtNombreBarrioOficial;
         protected $txtNombreBarrioAlternativo1;
         protected $txtNombreBarrioAlternativo2;
@@ -94,14 +91,13 @@
         protected $txtGeom;
         protected $txtJudicializado;
         protected $txtLocalidad;
-        protected $txtReparticionPublica;
+        protected $lstCreadorObject;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
         protected $lblIdPartido;
         protected $lblMatricula;
         protected $lblFecha;
-        protected $lblEncargado;
         protected $lblNombreBarrioOficial;
         protected $lblNombreBarrioAlternativo1;
         protected $lblNombreBarrioAlternativo2;
@@ -114,7 +110,7 @@
         protected $lblGeom;
         protected $lblJudicializado;
         protected $lblLocalidad;
-        protected $lblReparticionPublica;
+        protected $lblCreador;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -351,34 +347,6 @@
 
         protected $strFechaDateTimeFormat;
 
-
-        /**
-         * Create and setup QTextBox txtEncargado
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtEncargado_Create($strControlId = null) {
-            $this->txtEncargado = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtEncargado->Name = QApplication::Translate('Encargado');
-            $this->txtEncargado->Text = $this->objFolio->Encargado;
-            $this->txtEncargado->Required = true;
-            $this->txtEncargado->MaxLength = Folio::EncargadoMaxLength;
-            
-            return $this->txtEncargado;
-        }
-
-        /**
-         * Create and setup QLabel lblEncargado
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblEncargado_Create($strControlId = null) {
-            $this->lblEncargado = new QLabel($this->objParentObject, $strControlId);
-            $this->lblEncargado->Name = QApplication::Translate('Encargado');
-            $this->lblEncargado->Text = $this->objFolio->Encargado;
-            $this->lblEncargado->Required = true;
-            return $this->lblEncargado;
-        }
 
         /**
          * Create and setup QTextBox txtNombreBarrioOficial
@@ -700,28 +668,30 @@
         }
 
         /**
-         * Create and setup QTextBox txtReparticionPublica
+         * Create and setup QAjaxAutoCompleteEntidadTextBox lstCreadorObject
          * @param string $strControlId optional ControlId to use
-         * @return QTextBox
+         * @return QAjaxAutoCompleteEntidadTextBox
          */
-        public function txtReparticionPublica_Create($strControlId = null) {
-            $this->txtReparticionPublica = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtReparticionPublica->Name = QApplication::Translate('ReparticionPublica');
-            $this->txtReparticionPublica->Text = $this->objFolio->ReparticionPublica;
-            
-            return $this->txtReparticionPublica;
+        public function lstCreadorObject_Create($strControlId = null) {
+            $this->lstCreadorObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'Usuario', 'IdUsuario' , $strControlId);
+            if($this->objFolio->CreadorObject){
+                $this->lstCreadorObject->Text = $this->objFolio->CreadorObject->__toString();
+                $this->lstCreadorObject->Value = $this->objFolio->CreadorObject->IdUsuario;
+            }
+            $this->lstCreadorObject->Name = QApplication::Translate('CreadorObject');
+            return $this->lstCreadorObject;
         }
 
         /**
-         * Create and setup QLabel lblReparticionPublica
+         * Create and setup QLabel lblCreador
          * @param string $strControlId optional ControlId to use
          * @return QLabel
          */
-        public function lblReparticionPublica_Create($strControlId = null) {
-            $this->lblReparticionPublica = new QLabel($this->objParentObject, $strControlId);
-            $this->lblReparticionPublica->Name = QApplication::Translate('ReparticionPublica');
-            $this->lblReparticionPublica->Text = $this->objFolio->ReparticionPublica;
-            return $this->lblReparticionPublica;
+        public function lblCreador_Create($strControlId = null) {
+            $this->lblCreador = new QLabel($this->objParentObject, $strControlId);
+            $this->lblCreador->Name = QApplication::Translate('CreadorObject');
+            $this->lblCreador->Text = ($this->objFolio->CreadorObject) ? $this->objFolio->CreadorObject->__toString() : null;
+            return $this->lblCreador;
         }
 
         /**
@@ -953,9 +923,6 @@
             if ($this->calFecha) $this->calFecha->DateTime = $this->objFolio->Fecha;
             if ($this->lblFecha) $this->lblFecha->Text = sprintf($this->objFolio->Fecha) ? $this->objFolio->Fecha->__toString($this->strFechaDateTimeFormat) : null;
 
-            if ($this->txtEncargado) $this->txtEncargado->Text = $this->objFolio->Encargado;
-            if ($this->lblEncargado) $this->lblEncargado->Text = $this->objFolio->Encargado;
-
             if ($this->txtNombreBarrioOficial) $this->txtNombreBarrioOficial->Text = $this->objFolio->NombreBarrioOficial;
             if ($this->lblNombreBarrioOficial) $this->lblNombreBarrioOficial->Text = $this->objFolio->NombreBarrioOficial;
 
@@ -997,8 +964,13 @@
             if ($this->txtLocalidad) $this->txtLocalidad->Text = $this->objFolio->Localidad;
             if ($this->lblLocalidad) $this->lblLocalidad->Text = $this->objFolio->Localidad;
 
-            if ($this->txtReparticionPublica) $this->txtReparticionPublica->Text = $this->objFolio->ReparticionPublica;
-            if ($this->lblReparticionPublica) $this->lblReparticionPublica->Text = $this->objFolio->ReparticionPublica;
+            if ($this->lstCreadorObject) {
+                if($this->objFolio->CreadorObject){
+                    $this->lstCreadorObject->Text = $this->objFolio->CreadorObject->__toString();
+                    $this->lstCreadorObject->Value = $this->objFolio->Creador->IdUsuario;
+                }                
+            }
+            if ($this->lblCreador) $this->lblCreador->Text = ($this->objFolio->CreadorObject) ? $this->objFolio->CreadorObject->__toString() : null;
 
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
@@ -1071,7 +1043,6 @@
                 if ($this->lstIdPartidoObject) $this->objFolio->IdPartido = $this->lstIdPartidoObject->SelectedValue;
                 if ($this->txtMatricula) $this->objFolio->Matricula = $this->txtMatricula->Text;
                 if ($this->calFecha) $this->objFolio->Fecha = $this->calFecha->DateTime;
-                if ($this->txtEncargado) $this->objFolio->Encargado = $this->txtEncargado->Text;
                 if ($this->txtNombreBarrioOficial) $this->objFolio->NombreBarrioOficial = $this->txtNombreBarrioOficial->Text;
                 if ($this->txtNombreBarrioAlternativo1) $this->objFolio->NombreBarrioAlternativo1 = $this->txtNombreBarrioAlternativo1->Text;
                 if ($this->txtNombreBarrioAlternativo2) $this->objFolio->NombreBarrioAlternativo2 = $this->txtNombreBarrioAlternativo2->Text;
@@ -1084,7 +1055,7 @@
                 if ($this->txtGeom) $this->objFolio->Geom = $this->txtGeom->Text;
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
                 if ($this->txtLocalidad) $this->objFolio->Localidad = $this->txtLocalidad->Text;
-                if ($this->txtReparticionPublica) $this->objFolio->ReparticionPublica = $this->txtReparticionPublica->Text;
+                if ($this->lstCreadorObject) $this->objFolio->Creador = $this->lstCreadorObject->SelectedValue;
 
 
         }
@@ -1174,12 +1145,6 @@
                 case 'FechaLabel':
                     if (!$this->lblFecha) return $this->lblFecha_Create();
                     return $this->lblFecha;
-                case 'EncargadoControl':
-                    if (!$this->txtEncargado) return $this->txtEncargado_Create();
-                    return $this->txtEncargado;
-                case 'EncargadoLabel':
-                    if (!$this->lblEncargado) return $this->lblEncargado_Create();
-                    return $this->lblEncargado;
                 case 'NombreBarrioOficialControl':
                     if (!$this->txtNombreBarrioOficial) return $this->txtNombreBarrioOficial_Create();
                     return $this->txtNombreBarrioOficial;
@@ -1252,12 +1217,12 @@
                 case 'LocalidadLabel':
                     if (!$this->lblLocalidad) return $this->lblLocalidad_Create();
                     return $this->lblLocalidad;
-                case 'ReparticionPublicaControl':
-                    if (!$this->txtReparticionPublica) return $this->txtReparticionPublica_Create();
-                    return $this->txtReparticionPublica;
-                case 'ReparticionPublicaLabel':
-                    if (!$this->lblReparticionPublica) return $this->lblReparticionPublica_Create();
-                    return $this->lblReparticionPublica;
+                case 'CreadorControl':
+                    if (!$this->lstCreadorObject) return $this->lstCreadorObject_Create();
+                    return $this->lstCreadorObject;
+                case 'CreadorLabel':
+                    if (!$this->lblCreador) return $this->lblCreador_Create();
+                    return $this->lblCreador;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1308,8 +1273,6 @@
                         return ($this->txtMatricula = QType::Cast($mixValue, 'QControl'));
                     case 'FechaControl':
                         return ($this->calFecha = QType::Cast($mixValue, 'QControl'));
-                    case 'EncargadoControl':
-                        return ($this->txtEncargado = QType::Cast($mixValue, 'QControl'));
                     case 'NombreBarrioOficialControl':
                         return ($this->txtNombreBarrioOficial = QType::Cast($mixValue, 'QControl'));
                     case 'NombreBarrioAlternativo1Control':
@@ -1334,8 +1297,8 @@
                         return ($this->txtJudicializado = QType::Cast($mixValue, 'QControl'));
                     case 'LocalidadControl':
                         return ($this->txtLocalidad = QType::Cast($mixValue, 'QControl'));
-                    case 'ReparticionPublicaControl':
-                        return ($this->txtReparticionPublica = QType::Cast($mixValue, 'QControl'));
+                    case 'CreadorControl':
+                        return ($this->lstCreadorObject = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

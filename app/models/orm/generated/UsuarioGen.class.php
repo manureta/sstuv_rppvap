@@ -26,6 +26,8 @@
 	 * @property string $NombreCompleto the value for strNombreCompleto (Not Null)
 	 * @property string $Reparticion the value for strReparticion (Not Null)
 	 * @property Perfil $IdPerfilObject the value for the Perfil object referenced by intIdPerfil 
+	 * @property-read Folio $FolioAsCreador the value for the private _objFolioAsCreador (Read-Only) if set due to an expansion on the folio.creador reverse relationship
+	 * @property-read Folio[] $FolioAsCreadorArray the value for the private _objFolioAsCreadorArray (Read-Only) if set due to an ExpandAsArray on the folio.creador reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class UsuarioGen extends QBaseClass {
@@ -125,6 +127,22 @@ class UsuarioGen extends QBaseClass {
     protected $strReparticion;
     const ReparticionDefault = null;
 
+
+    /**
+     * Private member variable that stores a reference to a single FolioAsCreador object
+     * (of type Folio), if this Usuario object was restored with
+     * an expansion on the folio association table.
+     * @var Folio _objFolioAsCreador;
+     */
+    protected $objFolioAsCreador;
+
+    /**
+     * Private member variable that stores a reference to an array of FolioAsCreador objects
+     * (of type Folio[]), if this Usuario object was restored with
+     * an ExpandAsArray on the folio association table.
+     * @var Folio[] _objFolioAsCreadorArray;
+     */
+    protected $objFolioAsCreadorArray;
 
     /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
@@ -509,6 +527,44 @@ class UsuarioGen extends QBaseClass {
 			if (!$objDbRow) {
 				return null;
 			}
+			// See if we're doing an array expansion on the previous item
+			$strAlias = $strAliasPrefix . 'id_usuario';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (($strExpandAsArrayNodes) && is_array($arrPreviousItems) && count($arrPreviousItems)) {
+				foreach ($arrPreviousItems as $objPreviousItem) {            
+					if ($objPreviousItem->intIdUsuario == $objDbRow->GetColumn($strAliasName, 'Integer')) {        
+						// We are.  Now, prepare to check for ExpandAsArray clauses
+						$blnExpandedViaArray = false;
+						if (!$strAliasPrefix)
+							$strAliasPrefix = 'usuario__';
+
+
+						// Expanding reverse references: FolioAsCreador
+						$strAlias = $strAliasPrefix . 'folioascreador__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objFolioAsCreadorArray)) {
+								$objPreviousChildItems = $objPreviousItem->objFolioAsCreadorArray;
+								$objChildItem = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioascreador__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objFolioAsCreadorArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objFolioAsCreadorArray[] = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioascreador__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
+						// Either return false to signal array expansion, or check-to-reset the Alias prefix and move on
+						if ($blnExpandedViaArray) {
+							return false;
+						} else if ($strAliasPrefix == 'usuario__') {
+							$strAliasPrefix = null;
+						}
+					}
+				}
+			}
 
 			// Create a new instance of the Usuario object
 			$objToReturn = new Usuario();
@@ -540,6 +596,9 @@ class UsuarioGen extends QBaseClass {
 					if ($objToReturn->IdUsuario != $objPreviousItem->IdUsuario) {
 						continue;
 					}
+					if (array_diff($objPreviousItem->objFolioAsCreadorArray, $objToReturn->objFolioAsCreadorArray) != null) {
+						continue;
+					}
 
 					// complete match - all primary key columns are the same
 					return null;
@@ -566,6 +625,16 @@ class UsuarioGen extends QBaseClass {
 
 
 
+
+			// Check for FolioAsCreador Virtual Binding
+			$strAlias = $strAliasPrefix . 'folioascreador__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objFolioAsCreadorArray[] = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioascreador__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objFolioAsCreador = Folio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'folioascreador__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
 
 			return $objToReturn;
 		}
@@ -978,6 +1047,24 @@ class UsuarioGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
+            case 'FolioAsCreador':
+                /**
+                 * Gets the value for the private _objFolioAsCreador (Read-Only)
+                 * if set due to an expansion on the folio.creador reverse relationship
+                 * @return Folio
+                 */
+                return $this->objFolioAsCreador;
+
+            case 'FolioAsCreadorArray':
+                /**
+                 * Gets the value for the private _objFolioAsCreadorArray (Read-Only)
+                 * if set due to an ExpandAsArray on the folio.creador reverse relationship
+                 * @return Folio[]
+                 */
+                if(is_null($this->objFolioAsCreadorArray))
+                    $this->objFolioAsCreadorArray = $this->GetFolioAsCreadorArray();
+                return (array) $this->objFolioAsCreadorArray;
+
 
             case '__Restored':
                 return $this->__blnRestored;
@@ -1207,6 +1294,201 @@ class UsuarioGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
+			
+		
+		// Related Objects' Methods for FolioAsCreador
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _FolioAsCreadorArray
+                /**
+                * Add a Item to the _FolioAsCreadorArray
+                * @param Folio $objItem
+                * @return Folio[]
+                */
+                public function AddFolioAsCreador(Folio $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->CreadorObject = $this;
+                    $this->objFolioAsCreadorArray = $this->FolioAsCreadorArray;
+                    $this->objFolioAsCreadorArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateFolioAsCreador($objItem);
+
+                    return $this->FolioAsCreadorArray;
+                }
+
+                /**
+                * Remove a Item to the _FolioAsCreadorArray
+                * @param Folio $objItem
+                * @return Folio[]
+                */
+                public function RemoveFolioAsCreador(Folio $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objFolioAsCreadorArray;
+                    $this->objFolioAsCreadorArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objFolioAsCreadorArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->CreadorObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedFolioAsCreador($objItem);
+                        }
+
+                    return $this->objFolioAsCreadorArray;
+                }
+
+		/**
+		 * Gets all associated FoliosAsCreador as an array of Folio objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Folio[]
+		*/ 
+		public function GetFolioAsCreadorArray($objOptionalClauses = null) {
+			if ((is_null($this->intIdUsuario)))
+				return array();
+
+			try {
+				return Folio::LoadArrayByCreador($this->intIdUsuario, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated FoliosAsCreador
+		 * @return int
+		*/ 
+		public function CountFoliosAsCreador() {
+			if ((is_null($this->intIdUsuario)))
+				return 0;
+
+			return Folio::CountByCreador($this->intIdUsuario);
+		}
+
+		/**
+		 * Associates a FolioAsCreador
+		 * @param Folio $objFolio
+		 * @return void
+		*/ 
+		public function AssociateFolioAsCreador(Folio $objFolio) {
+			if ((is_null($this->intIdUsuario)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateFolioAsCreador on this unsaved Usuario.');
+			if ((is_null($objFolio->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateFolioAsCreador on this Usuario with an unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Usuario::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"folio"
+				SET
+					"creador" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objFolio->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a FolioAsCreador
+		 * @param Folio $objFolio
+		 * @return void
+		*/ 
+		public function UnassociateFolioAsCreador(Folio $objFolio) {
+			if ((is_null($this->intIdUsuario)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsCreador on this unsaved Usuario.');
+			if ((is_null($objFolio->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsCreador on this Usuario with an unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Usuario::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"folio"
+				SET
+					"creador" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objFolio->Id) . ' AND
+					"creador" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
+			');
+		}
+
+		/**
+		 * Unassociates all FoliosAsCreador
+		 * @return void
+		*/ 
+		public function UnassociateAllFoliosAsCreador() {
+			if ((is_null($this->intIdUsuario)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsCreador on this unsaved Usuario.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Usuario::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"folio"
+				SET
+					"creador" = null
+				WHERE
+					"creador" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated FolioAsCreador
+		 * @param Folio $objFolio
+		 * @return void
+		*/ 
+		public function DeleteAssociatedFolioAsCreador(Folio $objFolio) {
+			if ((is_null($this->intIdUsuario)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsCreador on this unsaved Usuario.');
+			if ((is_null($objFolio->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsCreador on this Usuario with an unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Usuario::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"folio"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objFolio->Id) . ' AND
+					"creador" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated FoliosAsCreador
+		 * @return void
+		*/ 
+		public function DeleteAllFoliosAsCreador() {
+			if ((is_null($this->intIdUsuario)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateFolioAsCreador on this unsaved Usuario.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Usuario::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"folio"
+				WHERE
+					"creador" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
+			');
+		}
+
 
 
 

@@ -9,7 +9,6 @@
 		<?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
 		<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
 		<?php $_CONTROL->calFecha->RenderWithName(); ?>
-		<?php $_CONTROL->txtEncargado->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombreBarrioAlternativo1->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombreBarrioAlternativo2->RenderWithName(); ?>
@@ -22,7 +21,7 @@
 		<?php $_CONTROL->txtGeom->RenderWithName(); ?>
 		<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
 		<?php $_CONTROL->txtLocalidad->RenderWithName(); ?>
-		<?php $_CONTROL->txtReparticionPublica->RenderWithName(); ?>
+		<?php $_CONTROL->lstCreadorObject->RenderWithName(); ?>
 		<?php $_CONTROL->lstCondicionesSocioUrbanisticasAsId->RenderWithName(); ?>
 
 		<?php $_CONTROL->lstRegularizacionAsId->RenderWithName(); ?>

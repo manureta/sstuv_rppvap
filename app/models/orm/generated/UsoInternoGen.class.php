@@ -826,38 +826,6 @@ class UsoInternoGen extends QBaseClass {
 			
 		/**
 		 * Load an array of UsoInterno objects,
-		 * by EstadoFolio Index(es)
-		 * @param integer $intEstadoFolio
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return UsoInterno[]
-		*/
-		public static function LoadArrayByEstadoFolio($intEstadoFolio, $objOptionalClauses = null) {
-			// Call UsoInterno::QueryArray to perform the LoadArrayByEstadoFolio query
-			try {
-				return UsoInterno::QueryArray(
-					QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count UsoInternos
-		 * by EstadoFolio Index(es)
-		 * @param integer $intEstadoFolio
-		 * @return int
-		*/
-		public static function CountByEstadoFolio($intEstadoFolio) {
-			// Call UsoInterno::QueryCount to perform the CountByEstadoFolio query
-			return UsoInterno::QueryCount(
-				QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio)
-			);
-		}
-			
-		/**
-		 * Load an array of UsoInterno objects,
 		 * by RegularizacionEstadoProceso Index(es)
 		 * @param integer $intRegularizacionEstadoProceso
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -885,6 +853,38 @@ class UsoInternoGen extends QBaseClass {
 			// Call UsoInterno::QueryCount to perform the CountByRegularizacionEstadoProceso query
 			return UsoInterno::QueryCount(
 				QQ::Equal(QQN::UsoInterno()->RegularizacionEstadoProceso, $intRegularizacionEstadoProceso)
+			);
+		}
+			
+		/**
+		 * Load an array of UsoInterno objects,
+		 * by EstadoFolio Index(es)
+		 * @param integer $intEstadoFolio
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return UsoInterno[]
+		*/
+		public static function LoadArrayByEstadoFolio($intEstadoFolio, $objOptionalClauses = null) {
+			// Call UsoInterno::QueryArray to perform the LoadArrayByEstadoFolio query
+			try {
+				return UsoInterno::QueryArray(
+					QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count UsoInternos
+		 * by EstadoFolio Index(es)
+		 * @param integer $intEstadoFolio
+		 * @return int
+		*/
+		public static function CountByEstadoFolio($intEstadoFolio) {
+			// Call UsoInterno::QueryCount to perform the CountByEstadoFolio query
+			return UsoInterno::QueryCount(
+				QQ::Equal(QQN::UsoInterno()->EstadoFolio, $intEstadoFolio)
 			);
 		}
 

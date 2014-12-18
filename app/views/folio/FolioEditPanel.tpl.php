@@ -52,8 +52,7 @@
         <div>                
             <div class="well bs-component">
                 <?php $_CONTROL->calFecha->RenderWithName(); ?> 
-                <?php $_CONTROL->txtEncargado->RenderWithName(); ?>
-                <?php $_CONTROL->txtReparticionPublica->RenderWithName(); ?>                      
+                                     
              </div>
         </div>
     

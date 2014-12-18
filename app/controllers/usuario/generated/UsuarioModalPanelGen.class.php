@@ -20,6 +20,7 @@ class UsuarioModalPanelGen extends EditPanelBase {
         'txtCodPartido' => true,
         'txtNombreCompleto' => true,
         'txtReparticion' => true,
+        'lstFolioAsCreador' => false,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsuario = null, $strControlId = null) {
@@ -70,6 +71,8 @@ class UsuarioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombreCompleto'] = $this->mctUsuario->txtNombreCompleto_Create();
         if (in_array('txtReparticion',$strControlsArray)) 
             $this->objControlsArray['txtReparticion'] = $this->mctUsuario->txtReparticion_Create();
+        if (in_array('lstFolioAsCreador',$strControlsArray))
+            $this->objControlsArray['lstFolioAsCreador'] = $this->mctUsuario->lstFolioAsCreador_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
