@@ -26,9 +26,8 @@ class FolioDataGrid extends FolioDataGridGen {
         //if (FolioDataGrid::$strColumnsArray['CondicionesSocioUrbanisticasAsId']) $this->MetaAddColumn(QQN::Folio()->CondicionesSocioUrbanisticasAsId)->Title = QApplication::Translate('CondicionesSocioUrbanisticasAsId');
         //if (FolioDataGrid::$strColumnsArray['RegularizacionAsId']) $this->MetaAddColumn(QQN::Folio()->RegularizacionAsId)->Title = QApplication::Translate('RegularizacionAsId');
         //if (FolioDataGrid::$strColumnsArray['UsoInterno']) $this->MetaAddColumn(QQN::Folio()->UsoInterno)->Title = QApplication::Translate('UsoInterno');
-        $objColumnEstado=new QFilteredDataGridColumn("Estado",'<?= $_CONTROL->GetEstado($_ITEM)->Render(false)?>', 'Width=10%', 'HorizontalAlign=center', 'HtmlEntities=false');
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetPrintButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false); ?>', 'Width=20%', 'HorizontalAlign=center', 'HtmlEntities=false');
-        $this->AddColumn($objColumnEstado);
+        $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetPrintButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false);?>', 'Width=20%', 'HorizontalAlign=center', 'HtmlEntities=false');
         $this->AddColumn($objColumnAcciones);
     }
 
@@ -81,7 +80,57 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }                 
        
-      
+     public function GetConfirmarButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-success');
+        $objButton->Icon = 'ok';
+        $objButton->ToolTip = 'Confirmar Folio';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnConfirmar_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION);
+        return $objButton;
+    }                 
+    public function GetCancelarButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-warning');
+        $objButton->Icon = 'remove';
+        $objButton->ToolTip = 'Cancelar Folio';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnCancelar_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION);
+        return $objButton;
+    }                 
+     public function GetEnviarButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-success');
+        $objButton->Icon = 'circle-arrow-right';
+        $objButton->ToolTip = 'Enviar Folio';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnEnviar_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::CARGA);
+        return $objButton;
+    }                 
+    public function btnConfirmar_Click($strFormId, $strControlId, $strParameter){
+        $objUsoInterno = Folio::Load($strParameter)->UsoInterno;
+        $objUsoInterno->EstadoFolio = EstadoFolio::CONFIRMACION;
+        $objUsoInterno->Save();
+        $this->MarkAsModified();
+    }
+    public function btnCancelar_Click($strFormId, $strControlId, $strParameter){
+        $objUsoInterno = Folio::Load($strParameter)->UsoInterno;
+        $objUsoInterno->EstadoFolio = EstadoFolio::CARGA;
+        $objUsoInterno->Save();
+        $this->MarkAsModified();
+    }
+     public function btnEnviar_Click($strFormId, $strControlId, $strParameter){
+        $objUsoInterno = Folio::Load($strParameter)->UsoInterno;
+        $objUsoInterno->EstadoFolio = EstadoFolio::ENVIADO_ESPERA;
+        $objUsoInterno->Save();
+        $this->MarkAsModified();
+    }
    
    public function PrintClick($strFormId, $strControlId, $strParameter) {
         $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";
