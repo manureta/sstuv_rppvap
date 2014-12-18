@@ -45,7 +45,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         try {
             parent::__construct($objParentObject, $strControlId);
             $this->objFolio = Folio::Load(QApplication::QueryString("id"));
-              $this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasFolioPanel.tpl.php";
+            $this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasFolioPanel.tpl.php";
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;
@@ -55,6 +55,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->intIdFolio = $this->objFolio->Id;
 
         //$this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        //$this->metaControl_Create($strControlsArray);
         
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
@@ -92,7 +93,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlAmbiental->lstIdFolioObject->Visible = false;                
         
         $this->blnAutoRenderChildrenWithName = false;
-        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+        //$this->Form->RemoveControl($this->pnlTabs->ControlId, true);
        
     }
 
