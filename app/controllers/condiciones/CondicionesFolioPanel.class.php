@@ -15,7 +15,7 @@ class CondicionesFolioPanel extends CondicionesSocioUrbanisticasEditPanel {
         try {
             $this->objCond=CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
             $editar_o_nuevo=($this->objCond->Id)? $this->objCond->Id : null;
-            parent::__construct($objParentObject, $strControlsArray,$editar_o_nuevo);
+            parent::__construct($objParentObject,$strControlsArray,$editar_o_nuevo,QApplication::QueryString("id"));
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;

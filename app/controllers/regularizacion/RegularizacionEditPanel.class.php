@@ -30,7 +30,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
 
         // Call the Parent
         try {
-            parent::__construct($objParentObject, $strControlId);
+            parent::__construct($objParentObject, $strControlsArray,$intId,$strControlId);
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;

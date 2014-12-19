@@ -39,7 +39,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
         // Call the Parent
         try {
-            parent::__construct($objParentObject, $strControlId);
+            parent::__construct($objParentObject, $strControlsArray, $intIdFolio, $strControlId);
             $this->objFolio = Folio::Load(QApplication::QueryString("id"));
             $this->strTemplate=__VIEW_DIR__."/usointerno/UsoInternoFolioPanel.tpl.php";
         } catch (QCallerException $objExc) {

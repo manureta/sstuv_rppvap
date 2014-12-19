@@ -5,7 +5,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
     public $mctCondicionesSocioUrbanisticas;
 
     //id variables for meta_create
-  	protected $intId;
+    protected $intId;
     protected $intIdFolio;
     
     protected $objFolio;
@@ -43,7 +43,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
 
         // Call the Parent
         try {
-            parent::__construct($objParentObject, $strControlId);
+            parent::__construct($objParentObject, $strControlsArray,$intId,$intIdFolio,$strControlId);
             $this->objFolio = Folio::Load(QApplication::QueryString("id"));
             $this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasFolioPanel.tpl.php";
         } catch (QCallerException $objExc) {
@@ -93,7 +93,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlAmbiental->lstIdFolioObject->Visible = false;                
         
         $this->blnAutoRenderChildrenWithName = false;
-        //$this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
        
     }
 
