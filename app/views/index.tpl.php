@@ -168,6 +168,16 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
           min-height: 500px;
         }
         </style>
+        <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/upload/jquery.fileupload.css">
+
+        <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/vendor/jquery.ui.widget.js"></script>
+        <!-- The Templates plugin is included to render the upload/download listings -->
+        
+       
+        <!-- The basic File Upload plugin -->
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/jquery.fileupload.js"></script>
+        <!-- The File Upload processing plugin --></script>
 
         <?php $this->RenderEnd(); ?>
         <?php if (QApplication::$Database[1] && QApplication::$Database[1]->EnableProfiling) QApplication::$Database[1]->OutputProfiling(); ?>

@@ -79,14 +79,75 @@
 
 			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
             <?php $_CONTROL->txtGeom->RenderWithName(); ?>
-			<p> *Adjuntar</p>
-        </div>
+			
+
+
+            <div class="well bs-component">
+                <div class="container">
+   
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus"></i>
+                        <span>Adjuntar...</span>
+                        <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileupload" type="file" name="files[]" multiple>
+                    </span>
+                    <br>
+                    <br>
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-success"></div>
+                    </div>
+                    <!-- The container for the uploaded files -->
+                    <div id="files" class="files"></div>
+                    <br>
+                </div>
+            </div>
+
 
     </div>
+
+ </div>
 </div>
 
   
-	
+	<script type="text/javascript">
 
+    var url = '/registro/upload.php?idfolio=<?php echo $folio;?>&tipo=test';    
 
+    $.ajax({
+            // Uncomment the following to send cross-domain cookies:
+            //xhrFields: {withCredentials: true},
+            url: url,
+            dataType: 'json'            
+        }).done(function (data) {
+            console.log("entro");
+            $.each(data.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        });      
+
+    $(function () {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    });
+
+    </script>
 
