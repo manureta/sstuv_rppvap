@@ -39,6 +39,7 @@ class UserMenuPanel extends QPanel {
         //$btnFolio->Visible = Permission::EsDirector();
 
         
+        /*
         if(Permission::EsSupervisor()){
             $btnIncidente = new QButton($this);
             $btnIncidente->Text = 'Desvinculación';
@@ -46,13 +47,13 @@ class UserMenuPanel extends QPanel {
             $btnIncidente->AddCssClass('btn-grey');
             $btnIncidente->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnDesvinculacion_Click'));
         }
-        /*
         $btnCedula = new QButton($this);
         
         $btnCedula->Icon = 'edit';
         $btnCedula->AddCssClass('btn-white');
         */
         //El operador, en vez de acceso a Cedula, tiene acceso a pantalla Reseteo de Contraseñas
+/*
         if(Permission::EsOperador() || Permission::EsSupervisor()){
             $btnInformacionGeneral = new QButton($this);
             $btnInformacionGeneral->Text = 'Información Global';
@@ -66,7 +67,6 @@ class UserMenuPanel extends QPanel {
             $btnAdmNominas->AddCssClass('btn-white');
             $btnAdmNominas->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnAdmNominas_Click'));
         }
-/*
         if(Permission::EsOperador() || Permission::EsSupervisor()){
             $btnCedula->Text = 'Resetear Passwords';
             $btnCedula->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnResetearPassword_Click'));

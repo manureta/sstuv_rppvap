@@ -86,6 +86,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
         $this->blnAutoRenderChildrenWithName = false;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+        
+        $this->SetEstadoCondition();
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -165,5 +167,41 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         }
     }
 
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        $this->SetEstadoCondition();
+    }
+    public function SetEstadoCondition(){
+            if(Permission::EsAdministrador()) return;
+            $this->lstEstadoFolioObject->MarkAsModified();
+            switch($this->mctUsoInterno->UsoInterno->EstadoFolio){
+                case NULL:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::CARGA));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;
+                case EstadoFolio::CARGA:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::CARGA,EstadoFolio::ENVIADO_ESPERA));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;
+                case EstadoFolio::ENVIADO_ESPERA:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::VALIDACION,EstadoFolio::ENVIADO_ESPERA));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;
+                case EstadoFolio::VALIDACION:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::VALIDACION,EstadoFolio::NOTIFICACION));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;
+                case EstadoFolio::NOTIFICACION:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::CONFIRMACION,EstadoFolio::NOTIFICACION, EstadoFolio::CARGA));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;
+                case EstadoFolio::CONFIRMACION:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::CONFIRMACION,EstadoFolio::INSCRIPCION));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;
+                    
+            }
+ 
+    }
 }
 ?>
