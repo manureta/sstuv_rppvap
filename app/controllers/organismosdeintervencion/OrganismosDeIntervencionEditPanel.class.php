@@ -36,6 +36,13 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         //$this->pnlTabs->AddTab(OrganismosDeIntervencion::Noun());
         //$this->buttons_Create();
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+
+        if(!Permission::PuedeEditar1A4($this->mctOrganismosDeIntervencion->OrganismosDeIntervencion->IdFolioObject->IdFolioObject->IdFolioObject)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
+
     }
     protected function buttons_Create(){}
 

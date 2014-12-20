@@ -94,7 +94,13 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         
         $this->blnAutoRenderChildrenWithName = false;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
-       
+ 
+        if(!Permission::PuedeEditar1A4($this->objFolio)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
+      
     }
 
     protected function metaControl_Create($strControlsArray){

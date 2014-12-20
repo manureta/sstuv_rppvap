@@ -38,6 +38,13 @@ class SituacionAmbientalEditPanel extends SituacionAmbientalEditPanelGen {
         //$this->pnlTabs->AddTab(SituacionAmbiental::Noun());
         $this->blnAutoRenderChildrenWithName = true;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+
+        if(!Permission::PuedeEditar1A4($objParentObject->objFolio)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
+ 
     }
     
     protected function buttons_Create(){}

@@ -20,7 +20,7 @@ class CondicionesFolioPanel extends CondicionesSocioUrbanisticasEditPanel {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        //$this->objFolio = Folio::Load(QApplication::QueryString("id"));
+       // $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         //$this->dtgCondicionesSocioUrbanisticases->AddCondition(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
 
         

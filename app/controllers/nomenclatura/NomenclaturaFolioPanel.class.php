@@ -29,7 +29,10 @@ class NomenclaturaFolioPanel extends NomenclaturaIndexPanel {
 
         
 
-
+        if(!Permission::PuedeEditar1A4($this->objFolio)){
+                $this->btnCreateNew->Enabled = false;
+        }
+ 
     }
 
     public function NomenclaturaEditPanel_Create($intId = null) {

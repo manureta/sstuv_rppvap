@@ -46,6 +46,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
+        if(!Permission::EsUsoInterno())
+            QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
 
         $this->intIdFolio = $intIdFolio;
 
