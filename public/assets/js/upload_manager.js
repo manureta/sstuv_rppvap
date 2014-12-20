@@ -11,7 +11,7 @@ function uploadManager(url)
             
             $.each(data.files, function (index, file) {
                 var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";
-                var borrar = "<a href=# class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i><span>Borrar</span></a>";
+                var borrar = "<button class='btn-sm btn-danger delete' href=# class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i></button>";
                 $('#files').append("<p>"+link+borrar+"</p>");
 
             });
