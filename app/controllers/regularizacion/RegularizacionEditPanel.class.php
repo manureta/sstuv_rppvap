@@ -85,6 +85,12 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
         //$this->blnAutoRenderChildrenWithName = true;
+        if(!Permission::PuedeEditar1A4($this->mctRegularizacion->Regularizacion->IdFolioObject)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
+
     }
 
    

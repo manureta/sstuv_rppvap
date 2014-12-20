@@ -120,6 +120,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                     break;                
             }
         }
+        $this->objControlsArray["Judicializado"] = $this->lstJudicializado;
 
         $btnUpdateGeom = new QButton($this);
         $btnUpdateGeom->Text = 'Actualizar Geometría';
@@ -135,6 +136,12 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Escondo el creador del folio
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
+
+        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
             
     }
 

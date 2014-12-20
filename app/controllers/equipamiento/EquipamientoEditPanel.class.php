@@ -25,7 +25,7 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
 
         // Call the Parent
         try {
-            parent::__construct($objParentObject, $strControlId);
+            parent::__construct($objParentObject, $strControlId, $intId, $strControlId);
         } catch (QCallerException $objExc) {
             $objExc->IncrementOffset();
             throw $objExc;
@@ -36,6 +36,12 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
 
         $this->blnAutoRenderChildrenWithName = true;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+
+        if(!Permission::PuedeEditar1A4($objParentObject->objFolio)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
     }
     protected function buttons_Create(){}
 

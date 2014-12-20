@@ -22,11 +22,13 @@
                     <span class="number">4.</span> Integración socio-urbana
                 </a>
             </li>
+<?php if(Permission::EsUsoInterno()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
                     <span class="number">5.</span> Uso Interno
                 </a>
             </li>
+<?php } ?>
         </ul>
     </div>
     <div class="index_nomenclaturas">

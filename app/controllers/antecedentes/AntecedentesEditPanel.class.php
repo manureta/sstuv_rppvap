@@ -35,6 +35,12 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(Antecedentes::Noun());
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+        if(!Permission::PuedeEditar1A4($this->mctAntecedentes->Antecedentes->IdFolioObject->IdFolioObject)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
+
     }
     protected function buttons_Create(){}
 

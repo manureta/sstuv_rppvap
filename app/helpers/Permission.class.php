@@ -25,6 +25,26 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return (isset($arrUsuarioInfo['PerfilesLocalizaciones'][$intIdLocalizacion]) && in_array('Supervisor', $arrUsuarioInfo['PerfilesLocalizaciones'][$intIdLocalizacion]));
     }
+    public static function EsOperador() {
+        if (!Authentication::EstaConectado())
+            return false;
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Operador', $arrUsuarioInfo['Perfiles']);
+    }
+    public static function EsPersonal() {
+        if (!Authentication::EstaConectado())
+            return false;
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Personal', $arrUsuarioInfo['Perfiles']);
+    }
+
+    public static function EsDirectorEstablecimiento($intIdEstablcimiento) {
+        if (!Authentication::EstaConectado())
+            return false;
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        return (isset($arrUsuarioInfo['PerfilesEstablecimiento'][$intIdEstablcimiento]) && in_array('Director', $arrUsuarioInfo['PerfilesEstablecimiento'][$intIdEstablcimiento]));
+    }
+
 
 
 
@@ -76,40 +96,53 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return in_array('Editor', $arrUsuarioInfo['Perfiles']);
     }
-
-    public static function EsDirector() {
+    public static function EsCarga() {
         if (!Authentication::EstaConectado())
             return false;
+        if(self::EsAdministrador()) return true;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Director', $arrUsuarioInfo['Perfiles']);
+        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('carga', $arrUsuarioInfo['Perfiles']);
     }
-    public static function EsOperador() {
+ 
+    public static function EsUsoInterno() {
         if (!Authentication::EstaConectado())
             return false;
+        if(self::EsAdministrador()) return true;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Operador', $arrUsuarioInfo['Perfiles']);
+        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('uso_interno', $arrUsuarioInfo['Perfiles']);
     }
-    public static function EsPersonal() {
+    public static function EsVisualizadorGeneral() {
         if (!Authentication::EstaConectado())
             return false;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Personal', $arrUsuarioInfo['Perfiles']);
-    }
-
-    public static function EsDirectorEstablecimiento($intIdEstablcimiento) {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return (isset($arrUsuarioInfo['PerfilesEstablecimiento'][$intIdEstablcimiento]) && in_array('Director', $arrUsuarioInfo['PerfilesEstablecimiento'][$intIdEstablcimiento]));
-    }
-
-    public static function EsSoloLectura() {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('InspectorSoloLectura', $arrUsuarioInfo['Perfiles']);
+        return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_general', $arrUsuarioInfo['Perfiles']);
     }    
-    
+    public static function EsVisualizadorBasico() {
+        if (!Authentication::EstaConectado())
+            return false;
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_basico', $arrUsuarioInfo['Perfiles']);
+    }    
+    public static function EsVisualizador(){
+        return self::EsVisualizadorBasico() || self::EsVisualizadorGeneral();
+    }
+    public static function PuedeEditar1A4(Folio $objFolio){  
+        return !(self::EsVisualizador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio != EstadoFolio::CARGA));
+    }
+
+    public static function PuedeAdjuntar(Folio $objFolio){
+        return (self::EsUsoInterno() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
+    }
+    public static function PuedeVerAdjuntatos(Folio $objFolio){
+        return !(self::EsVisualizadorBasico());
+    }
+
+
+
+
+
+
+
     public static function GetPerfilesUsuario(Usuario $objUsuario) {
         $arrUsuarioInfo = null;
         return array($objUsuario->IdPerfil => $objUsuario->IdPerfilObject->Nombre);
