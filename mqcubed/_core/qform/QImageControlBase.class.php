@@ -586,10 +586,10 @@
 				case "ImagePath":
 					try {
 						$this->strImagePath = QType::Cast($mixValue, QType::String);
-
+						error_log($this->strImagePath);
 						if (!$this->strImagePath || !is_file($this->strImagePath))
-							throw new QCallerException('ImagePath is not defined or does not exist');
-
+							throw new QCallerException('ImagePath is not defined or does not exist!');
+							
 						$this->strImagePath = realpath($this->strImagePath);
 
 						$strSourceImageType = trim(strtolower(substr($this->strImagePath, strrpos($this->strImagePath, '.') + 1)));
