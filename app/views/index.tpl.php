@@ -177,7 +177,8 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
        
         <!-- The basic File Upload plugin -->
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/jquery.fileupload.js"></script>
-        <!-- The File Upload processing plugin --></script>
+        
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload_manager.js"></script>
 
         <?php $this->RenderEnd(); ?>
         <?php if (QApplication::$Database[1] && QApplication::$Database[1]->EnableProfiling) QApplication::$Database[1]->OutputProfiling(); ?>

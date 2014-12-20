@@ -39,14 +39,8 @@ class FolioDataGrid extends FolioDataGridGen {
 
     public function btnEdit_Click($strFormId, $strControlId, $strParameter) {
 
-                         if ($this->ParentControl instanceof FolioIndexPanelGen){
-                             $this->ParentControl->pnlEditFolio = new FolioEditPanel($this->ParentControl,null,$strParameter);
-                             $this->ParentControl->pnlEditFolio->Visible=true;
-                             $this->ParentControl->dtgFolios->Visible=false;
-                             $this->ParentControl->btnCreateNew->Visible=false;
-                          }else{
                              QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
-                          }
+                          
                  }
 
     

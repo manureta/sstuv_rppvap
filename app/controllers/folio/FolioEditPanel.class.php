@@ -9,6 +9,8 @@ class FolioEditPanel extends FolioEditPanelGen {
     public $folioExistente;
     //id variables for meta_create
     protected $intId;
+
+    
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
@@ -43,6 +45,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
         $strControlsArray = empty($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
         $this->strTemplate=__VIEW_DIR__."/folio/FolioEditPanel.tpl.php";
+
 
         // Call the Parent
         try {
@@ -137,6 +140,10 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
 
+        //seteo upload manager
+        $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=test";
+        QApplication::ExecuteJavascript("uploadManager('$url_upload_manager')");
+
         if(!Permission::PuedeEditar1A4($this->mctFolio->Folio)){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
@@ -144,6 +151,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         }
             
     }
+
+
 
     protected function metaControl_Create($strControlsArray){
         // Construct the FolioMetaControl
@@ -338,6 +347,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->setearValorMatricula($strCodPartido);
 
     }
+
 
 }
 ?>

@@ -1,7 +1,7 @@
 <?php 
 
 $upload_handler = new UploadHandler($this->intIdFolio,$this->strTipo); 
-die();
+exit();
 
 ?>
 
