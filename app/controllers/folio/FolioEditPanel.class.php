@@ -139,13 +139,10 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Escondo el creador del folio
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
-<<<<<<< HEAD
-        
+
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=test";
         QApplication::ExecuteJavascript("uploadManager('$url_upload_manager')");
-
-=======
 
         if(!Permission::PuedeEditar1A4($this->mctFolio->Folio)){
             foreach($this->objControlsArray as $objControl){
@@ -153,7 +150,6 @@ class FolioEditPanel extends FolioEditPanelGen {
             }
         }
             
->>>>>>> b39f822a8939a35c4b38c369433ebfab6d59b827
     }
 
 
