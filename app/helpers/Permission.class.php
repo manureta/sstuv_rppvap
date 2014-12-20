@@ -140,8 +140,8 @@ abstract class Permission extends PermissionBase {
     public static function PuedeBorrarFolio(Folio $objFolio){
         return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
-    public static function PuedeBorrarConfirmarFolio(Folio $objFolio){
-        return (self::EsUsoInterno());
+    public static function PuedeConfirmarFolio(Folio $objFolio){
+        return (self::EsCarga());
     }
     public static function PuedeEnviarFolio(Folio $objFolio){
         return (self::EsAdministrador() || self::EsCarga());

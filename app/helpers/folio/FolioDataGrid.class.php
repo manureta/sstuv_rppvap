@@ -3,7 +3,7 @@ class FolioDataGrid extends FolioDataGridGen {
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
         parent::__construct($objParentObject, $strColumnsArray, $strControlId);
         
-        if(Permission::EsCarga())
+        if(Permission::EsCarga() && !Permission::EsAdministrador())
             $this->AddCondition(QQ::Equal(QQN::Folio()->Creador,Session::GetObjUsuario()->IdUsuario));
     } 
    public $mdlPanel;
