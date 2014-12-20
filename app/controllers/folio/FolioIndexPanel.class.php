@@ -59,6 +59,10 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         if (isset($this->pnlEditFolio)) {
             $this->Form->RemoveControl($this->pnlEditFolio->ControlId);
         }
+        if(Permission::EsVisualizador() || (Permission::EsUsoInterno() && !Permission::EsAdministrador())) {
+            $this->btnCreateNew->Enabled = false;
+        }
+        
 
         
     }
