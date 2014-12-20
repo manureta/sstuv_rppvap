@@ -11,10 +11,23 @@ function uploadManager(url)
             
             $.each(data.files, function (index, file) {
                 var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";
-                var borrar = "<button class='btn-sm btn-danger delete' href=# class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i></button>";
+                var borrar = "<button class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i></button>";
                 $('#files').append("<p>"+link+borrar+"</p>");
 
             });
+
+            $('.borrar_archivo').on('click', function(e) {
+              e.preventDefault();
+              var url_file=$(this).data("url");
+              var file_method=$(this).data("type"); 
+                $.ajax({
+                         url: url_file,
+                         method: file_method
+                        });
+                $(this).parent().fadeOut();
+
+            });
+
         });      
 
     $(function () {
@@ -24,15 +37,18 @@ function uploadManager(url)
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
-        done: function (e, data) {
-            /*
-            $.each(data.result.files, function (index, file) {
-            var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";
-            var borrar = "<div class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i><span>Borrar</span></div>";
-            $('#files').append("<p>"+link+borrar+"</p>");
-
-            });
-            */
+        done: function (e,data) {
+            
+            if(data._response.result.files[0].error){
+                    alert(data._response.result.files[0].error);
+            }else{
+                $.each(data.files, function (index, file) {
+                    
+                        var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";
+                        var borrar = "<button class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i></button>";
+                        $('#files').append("<p>"+link+borrar+"</p>");    
+                });
+            }
         },
         progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -46,9 +62,7 @@ function uploadManager(url)
     });
 
 
-   $('.borrar_archivo').on('click', function(event) {
-    event.preventDefault(); // To prevent following the link (optional)
-        alert("xx");
-    });
 
 }
+
+   

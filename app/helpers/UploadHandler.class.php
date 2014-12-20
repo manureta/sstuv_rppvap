@@ -47,6 +47,7 @@ class UploadHandler
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
             'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$idFolio.'/'.$tipo.'/',
+            'base_dir' =>$this->get_full_url().'/upload.php?idfolio='.$idFolio.'&tipo='.$tipo.'',
             'upload_url' => $this->get_full_url().'/files/'.$idFolio.'/'.$tipo.'/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
@@ -256,8 +257,8 @@ class UploadHandler
     }
 
     protected function set_additional_file_properties($file) {
-        $file->deleteUrl = $this->options['script_url']
-            .$this->get_query_separator($this->options['script_url'])
+        $file->deleteUrl = $this->options['base_dir']
+            .$this->get_query_separator($this->options['base_dir'])
             .$this->get_singular_param_name()
             .'='.rawurlencode($file->name);
         $file->deleteType = $this->options['delete_type'];
