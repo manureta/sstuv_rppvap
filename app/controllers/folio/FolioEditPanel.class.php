@@ -141,7 +141,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->lstCreadorObject->Visible=false;
 
         //seteo upload manager
-        $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=test";
+        $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
             $this->boolPuedeAdjuntar=true;    
             QApplication::ExecuteJavascript("uploadManager('$url_upload_manager')");
@@ -245,17 +245,23 @@ class FolioEditPanel extends FolioEditPanelGen {
             $obj->Save();
         }
         $this->objModifiedChildsArray = array();
-        QApplication::DisplayNotification('Los datos se guardaron correctamente');
-        //
+        QApplication::DisplayNotification('Los datos se guardaron correctamente');        
         
         if(!$this->folioExistente){        	    	
+            // Creo UsoInterno y pongo el folio en CARGA
+            $ui = new UsoInterno();
+            $ui->IdFolio = $this->mctFolio->Folio->Id;
+            $ui->EstadoFolio=EstadoFolio::CARGA;
+            $ui->save();
+            //Calculo las nomenclaturas
         	$this->calcular_nomenclaturas();
-        	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
+            QApplication::DisplayAlert("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>");
+        	//QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
         }else{
-            $this->actualizarEstadoNomenclaturas();
-        	QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id); 
+
+            $this->actualizarEstadoNomenclaturas();        	 
         }
-        
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id);
          
     }
 
