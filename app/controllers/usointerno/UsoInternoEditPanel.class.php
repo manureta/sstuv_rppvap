@@ -9,6 +9,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     protected $objFolio;
     public $lstInformeUrbanistico;
 
+    //Adjuntos
+    public $boolPuedeAdjuntar;
+
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
         'txtInformeUrbanisticoFecha' => true,

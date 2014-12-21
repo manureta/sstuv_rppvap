@@ -1,4 +1,4 @@
-function uploadManager(url)
+function uploadManager(url,div_files)
 {
 
 
@@ -12,25 +12,11 @@ function uploadManager(url)
             $.each(data.files, function (index, file) {
                 var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";
                 var borrar = "<button class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i></button>";
-                $('#files').append("<p>"+link+borrar+"</p>");
+                $(div_files).append("<p>"+link+borrar+"</p>");
 
             });
 
-            $('.borrar_archivo').on('click', function(e) {                
-              e.preventDefault();
-              var accion_borrar=confirm("Está seguro de borrar este archivo?. Esta acción no se puede deshacer");
-              if(accion_borrar){
-                // borrar archivo
-                var url_file=$(this).data("url");
-                var file_method=$(this).data("type"); 
-                $.ajax({
-                         url: url_file,
-                         method: file_method
-                        });
-                // quitar de la lista
-                $(this).parent().fadeOut();  
-              }
-            });
+            $('.borrar_archivo').on('click', Borrar);
 
         });      
 
@@ -42,16 +28,14 @@ function uploadManager(url)
         url: url,
         dataType: 'json',
         done: function (e,data) {
-            
-            if(data._response.result.files[0].error){
-                    alert(data._response.result.files[0].error);
+            var archivo=data._response.result.files[0];
+            if(archivo.error){
+                    alert(archivo.error);
             }else{
-                $.each(data.files, function (index, file) {
-                    
-                        var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";
-                        var borrar = "<button class='borrar_archivo' data-type="+file.deleteType+" data-url="+file.deleteUrl+"><i class='icon icon-trash'></i></button>";
-                        $('#files').append("<p>"+link+borrar+"</p>");    
-                });
+                var link ="<a href="+archivo.url+" title="+archivo.name+" download="+archivo.name+">"+archivo.name+"</a>";
+                var borrar = "<button class='borrar_archivo' data-type="+archivo.deleteType+" data-url="+archivo.deleteUrl+"><i class='icon icon-trash'></i></button>";
+                $(div_files).append("<p>"+link+borrar+"</p>");    
+                $('.borrar_archivo').on('click', Borrar);
             }
         },
         progressall: function (e, data) {
@@ -70,7 +54,7 @@ function uploadManager(url)
 }
 
    
-function verAdjuntados(url){
+function verAdjuntados(url,div_files){
 $.ajax({
             url: url,
             dataType: 'json'            
@@ -78,8 +62,24 @@ $.ajax({
             
             $.each(data.files, function (index, file) {
                 var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";                
-                $('#files').append("<p>"+link+"</p>");
+                $(div_files).append("<p>"+link+"</p>");
 
             });            
         });
+}
+
+function Borrar(e) {                
+  e.preventDefault();
+  var accion_borrar=confirm("Está seguro de borrar este archivo?. Esta acción no se puede deshacer");
+  if(accion_borrar){
+    // borrar archivo
+    var url_file=$(this).data("url");
+    var file_method=$(this).data("type"); 
+    $.ajax({
+             url: url_file,
+             method: file_method
+            });
+    // quitar de la lista
+    $(this).parent().fadeOut();  
+  }
 }

@@ -144,10 +144,10 @@ class FolioEditPanel extends FolioEditPanelGen {
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
             $this->boolPuedeAdjuntar=true;    
-            QApplication::ExecuteJavascript("uploadManager('$url_upload_manager')");
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#files')");
         }else{
             if(Permission::PuedeVerAdjuntados($this->mctFolio->Folio)){                
-                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager')");         
+                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager','#files')");         
             }
         }
         
