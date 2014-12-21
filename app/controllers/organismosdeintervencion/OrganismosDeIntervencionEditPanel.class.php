@@ -37,7 +37,7 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         //$this->buttons_Create();
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
-        if(!Permission::PuedeEditar1A4($this->mctOrganismosDeIntervencion->OrganismosDeIntervencion->IdFolioObject->IdFolioObject->IdFolioObject)){
+        if(!Permission::PuedeEditar1A4($objParentObject->objFolio)){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }

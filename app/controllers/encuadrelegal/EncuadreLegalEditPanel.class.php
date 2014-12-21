@@ -38,7 +38,7 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(EncuadreLegal::Noun());
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
-        if(!Permission::PuedeEditar1A4($this->mctEncuadreLegal->EncuadreLegal->IdFolioObject->IdFolioObject)){
+        if(!Permission::PuedeEditar1A4($objParentObject->objFolio)){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
