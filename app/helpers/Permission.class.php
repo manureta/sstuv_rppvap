@@ -133,7 +133,7 @@ abstract class Permission extends PermissionBase {
     public static function PuedeAdjuntar(Folio $objFolio){
         return (self::EsUsoInterno() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
-    public static function PuedeVerAdjuntatos(Folio $objFolio){
+    public static function PuedeVerAdjuntados(Folio $objFolio){
         return !(self::EsVisualizadorBasico());
     }
 

@@ -16,15 +16,21 @@ function uploadManager(url)
 
             });
 
-            $('.borrar_archivo').on('click', function(e) {
+            $('.borrar_archivo').on('click', function(e) {                
               e.preventDefault();
-              var url_file=$(this).data("url");
-              var file_method=$(this).data("type"); 
+              var accion_borrar=confirm("Está seguro de borrar este archivo?. Esta acción no se puede deshacer");
+              if(accion_borrar){
+                // borrar archivo
+                var url_file=$(this).data("url");
+                var file_method=$(this).data("type"); 
                 $.ajax({
                          url: url_file,
                          method: file_method
                         });
-                $(this).parent().fadeOut();
+                // quitar de la lista
+                $(this).parent().fadeOut();  
+              }
+              
 
             });
 

@@ -78,3 +78,11 @@ span.nombre-usuario {
  float:right;
  margin-left: 10px;
 }
+
+.borrar_archivo{
+  margin-left: 15px!IMPORTANT;
+}
+
+body{
+  font-family: arial !IMPORTANT;
+}
