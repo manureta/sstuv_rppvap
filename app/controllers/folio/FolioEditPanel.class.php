@@ -9,7 +9,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public $folioExistente;
     //id variables for meta_create
     protected $intId;
-
+    public $boolPuedeAdjuntar;
     
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
@@ -142,7 +142,17 @@ class FolioEditPanel extends FolioEditPanelGen {
 
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=test";
-        QApplication::ExecuteJavascript("uploadManager('$url_upload_manager')");
+        if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
+            $this->boolPuedeAdjuntar=true;    
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_manager')");
+        }else{
+            if(Permission::PuedeVerAdjuntados($this->mctFolio->Folio)){                
+                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager')");         
+            }
+        }
+        
+        
+        
 
         if(!Permission::PuedeEditar1A4($this->mctFolio->Folio)){
             foreach($this->objControlsArray as $objControl){

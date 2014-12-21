@@ -30,8 +30,6 @@ function uploadManager(url)
                 // quitar de la lista
                 $(this).parent().fadeOut();  
               }
-              
-
             });
 
         });      
@@ -72,3 +70,16 @@ function uploadManager(url)
 }
 
    
+function verAdjuntados(url){
+$.ajax({
+            url: url,
+            dataType: 'json'            
+        }).done(function (data) {
+            
+            $.each(data.files, function (index, file) {
+                var link ="<a href="+file.url+" title="+file.name+" download="+file.name+">"+file.name+"</a>";                
+                $('#files').append("<p>"+link+"</p>");
+
+            });            
+        });
+}

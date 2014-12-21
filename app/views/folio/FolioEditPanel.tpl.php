@@ -83,7 +83,7 @@
             <?php $_CONTROL->txtGeom->RenderWithName(); ?>
 			
 
-
+            <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component">
                 <div class="container">
    
@@ -104,8 +104,14 @@
                     <br>
                 </div>
             </div>
-
-
+            <?php } else {?>
+            <div class="titulos"><i class="icon-chevron-right"> Archivos Adjuntos</i></div>  
+            <div>
+                <div class="well bs-component">
+                    <div id="files" class="files"></div>
+                </div>
+            </div>       
+            <?php } ?>
     </div>
 
  </div>
