@@ -285,7 +285,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         try {
             $cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
             $gid=$this->mctFolio->Folio->Id;
-            $strQuery = "select gid,nomencla from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
+            $strQuery = "select gid,nomencla,partida from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
             
             $objDatabase = QApplication::$Database[1];
 
@@ -295,9 +295,10 @@ class FolioEditPanel extends FolioEditPanelGen {
             while ($row = $objDbResult->FetchArray()) {
                
                 $nomencla=$row['nomencla'];
+                $partida=$row['partida'];
                 $nom = new Nomenclatura();
                 $nom->IdFolio = $this->mctFolio->Folio->Id;
-                $nom->PartidaInmobiliaria = '';
+                $nom->PartidaInmobiliaria = $partida;
                 $nom->TitularDominio = '';
                 $nom->Partido = substr($nomencla,0,3);
                 $nom->Circ = substr($nomencla,3,2);//2
