@@ -81,7 +81,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     $this->txtInformeUrbanisticoFecha->Text='sin_dato'; // para inicializarlo           
                     break;                    
             }
-        $this->lstInformeUrbanistico->Name="¿Cuenta con informe urbanístico?";    
+        $this->lstInformeUrbanistico->Name="Cuenta con informe urbanístico";    
         $this->lstInformeUrbanistico->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstInforme_Change'));
         $this->txtInformeUrbanisticoFecha->Visible=false;
 
@@ -93,6 +93,26 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
         
         $this->SetEstadoCondition();
+
+        //Archivos adjuntos de sisteme registral
+        
+        $url_upload_resolucion="/registro/upload.php?idfolio=".$this->objFolio->Id."&tipo=resolucion";
+        $url_upload_informe="/registro/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
+        $url_upload_habitat="/registro/upload.php?idfolio=".$this->objFolio->Id."&tipo=habitat";
+        if(Permission::PuedeAdjuntar($this->objFolio)){
+            $this->boolPuedeAdjuntar=true;    
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_resolucion','#fileupload2','#files_resolucion')");
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_habitat','#fileupload4','#files_habitat')");
+        }else{
+            if(Permission::PuedeVerAdjuntados($this->objFolio)){                
+                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_resolucion','#files_resolucion')");
+                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
+                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_habitat','#files_habitat')");         
+            }
+        }
+
+
     }
 
     protected function metaControl_Create($strControlsArray){

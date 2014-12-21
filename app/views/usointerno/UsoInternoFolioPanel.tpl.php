@@ -46,13 +46,72 @@
             <?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
             <?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
             
+            <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
+            <div class="well bs-component">
+                <div class="container">
+   
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus"></i>
+                        <span>Adjuntar Resolución</span>
+                        <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileupload2" type="file" name="files[]">
+                    </span>
+                    <br>
+                    <br>
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-success"></div>
+                    </div>
+                    <!-- The container for the uploaded files -->
+                    <div id="files_resolucion" class="files"></div>
+                    <br>
+                </div>
+            </div>
+            <?php } else {?>
+            <div class="titulos"><i class="icon-chevron-right"> Archivos Adjuntos</i></div>  
+            <div>
+                <div class="well bs-component">
+                    <div id="files_resolucion" class="files"></div>
+                </div>
+            </div>       
+            <?php } ?>
+
          </div>    
         
         <div class="titulos"><i class="icon-chevron-right"> Informe Urbanístico</i></div> 
         <div class="well bs-component">
-            <?php //$_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
+            
             <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
-            <p>* adjuntar</p>
+            
+            <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
+            <div class="well bs-component">
+                <div class="container">
+   
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus"></i>
+                        <span>Adjuntar Informe</span>
+                        <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileupload3" type="file" name="files[]">
+                    </span>
+                    <br>
+                    <br>
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-success"></div>
+                    </div>
+                    <!-- The container for the uploaded files -->
+                    <div id="files_informe" class="files"></div>
+                    <br>
+                </div>
+            </div>
+            <?php } else {?>
+            <div class="titulos"><i class="icon-chevron-right"> Informes Adjuntos</i></div>  
+            <div>
+                <div class="well bs-component">
+                    <div id="files_informe" class="files"></div>
+                </div>
+            </div>       
+            <?php } ?>
         </div>
 
         <div class="titulos"><i class="icon-chevron-right"> Regularización</i></div>   
@@ -86,7 +145,36 @@
         <div class="titulos"><i class="icon-chevron-right"> Ley de acceso justo al hábitat</i></div> 
         <div class="well bs-component">
             <?php $_CONTROL->chkLey14449->RenderWithName(); ?>
-            <p>* Adjuntar</p>
+            
+            <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
+            <div class="well bs-component">
+                <div class="container">
+   
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus"></i>
+                        <span>Adjuntar Archivo</span>
+                        <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileupload4" type="file" name="files[]">
+                    </span>
+                    <br>
+                    <br>
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar progress-bar-success"></div>
+                    </div>
+                    <!-- The container for the uploaded files -->
+                    <div id="files_habitat" class="files"></div>
+                    <br>
+                </div>
+            </div>
+            <?php } else {?>
+            <div class="titulos"><i class="icon-chevron-right"> Archivos Adjuntos</i></div>  
+            <div>
+                <div class="well bs-component">
+                    <div id="files_habitat" class="files"></div>
+                </div>
+            </div>       
+            <?php } ?>
             
         </div>    
 

@@ -1,4 +1,4 @@
-function uploadManager(url,div_files)
+function uploadManager(url,div,div_files)
 {
 
 
@@ -24,7 +24,7 @@ function uploadManager(url,div_files)
     'use strict';
     // Change this to the location of your server-side upload handler:
     
-    $('#fileupload').fileupload({
+    $(div).fileupload({
         url: url,
         dataType: 'json',
         done: function (e,data) {
@@ -70,7 +70,7 @@ $.ajax({
 
 function Borrar(e) {                
   e.preventDefault();
-  var accion_borrar=confirm("Está seguro de borrar este archivo?. Esta acción no se puede deshacer");
+  var accion_borrar=confirm("Esta acción no se puede deshacer, está seguro ?");
   if(accion_borrar){
     // borrar archivo
     var url_file=$(this).data("url");
