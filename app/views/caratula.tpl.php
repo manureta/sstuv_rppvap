@@ -2,15 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title></title>
 <style type="text/css">
 	td img {display: block;}td img {display: block;}
+  body{
+    font-family: arial;
+    font-size: 12px;
+  }
 </style>
 </head>
 	<body>
 		<?php $this->RenderBegin(); ?>
 		
-		<table width="759" border="0" align="center">
+		<table width="759" border="1" align="center">
   <tr>
     <td><table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="759">
       <!-- fwtable fwsrc="assets/caratula/caratula-editable.fw.png" fwpage="Página 1" fwbase="caratula-nueva.jpg" fwstyle="Dreamweaver" fwdocid = "1063794813" fwnested="0" -->
@@ -170,7 +174,7 @@
         <td><img src="assets/caratula/spacer.gif" width="1" height="20" alt="" /></td>
       </tr>
       <tr>
-        <td colspan="32">tit</td>
+        <td colspan="32"></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="31" alt="" /></td>
       </tr>
       <tr>
@@ -201,7 +205,7 @@
         <td><img src="assets/caratula/spacer.gif" width="1" height="20" alt="" /></td>
       </tr>
       <tr>
-        <td colspan="32">tit</td>
+        <td colspan="32"></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="31" alt="" /></td>
       </tr>
       <tr>
@@ -232,7 +236,7 @@
         <td><img src="assets/caratula/spacer.gif" width="1" height="20" alt="" /></td>
       </tr>
       <tr>
-        <td colspan="32">tit</td>
+        <td colspan="32"></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="31" alt="" /></td>
       </tr>
       <tr>
@@ -263,7 +267,7 @@
         <td><img src="assets/caratula/spacer.gif" width="1" height="20" alt="" /></td>
       </tr>
       <tr>
-        <td colspan="32">tit</td>
+        <td colspan="32"></td>
         <td><img src="assets/caratula/spacer.gif" width="1" height="31" alt="" /></td>
       </tr>
       <tr>
@@ -272,7 +276,7 @@
         <td><img src="assets/caratula/spacer.gif" width="1" height="71" alt="" /></td>
       </tr>
       <tr>
-        <td rowspan="13" colspan="17"><img name="caratulanueva_r30_c1" src="assets/caratula/caratula-nueva_r30_c1.jpg" width="371" height="205" id="caratulanueva_r30_c1" alt="" /></td>
+        <td rowspan="13" colspan="17"><img name="caratulanueva_r30_c1" src="assets/caratula/caratula-nueva_r30_c1.jpg" width="370" height="206" id="caratulanueva_r30_c1" alt="" /></td>
         <td colspan="2"><?php echo (($this->objInfraestructura->EnergiaElectricaMedidorIndividual==1)?'&#10004;':'&nbsp;');?></td>
         <td rowspan="11" colspan="9"><img name="caratulanueva_r30_c20" src="assets/caratula/caratula-nueva_r30_c20.jpg" width="120" height="135" id="caratulanueva_r30_c20" alt="" /></td>
         <td><?php echo (($this->objInfraestructura->EnergiaElectricaMedidorIndividual==2)?'&#10004;':'&nbsp;');?></td>
