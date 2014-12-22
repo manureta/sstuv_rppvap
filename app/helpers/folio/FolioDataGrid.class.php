@@ -100,9 +100,9 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-warning');
         $objButton->Icon = 'remove';
-        $objButton->ToolTip = 'Cancelar Folio';
+        $objButton->ToolTip = 'El Folio necesita correcciones';
         $objButton->ActionParameter = $obj->Id;
-        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere CANCELAR este FOLIO?")));
+        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que este FOLIO necesita correcciones?")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnCancelar_Click"));
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeConfirmarFolio($obj));
@@ -114,7 +114,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->Icon = 'circle-arrow-right';
         $objButton->ToolTip = 'Enviar Folio';
         $objButton->ActionParameter = $obj->Id;
-        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere ENVIAR este FOLIO?")));
+        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere ENVIAR este FOLIO?\\r\\n El Folio cambiará de estado y dejará de ser editable por usted hasta nuevo aviso")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnEnviar_Click"));
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::CARGA && Permission::PuedeEnviarFolio($obj));
