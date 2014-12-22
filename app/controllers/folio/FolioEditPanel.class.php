@@ -144,7 +144,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         //Escondo fecha
         $this->calFecha->Enabled=false;
         //Escondo geometria
-        $this->txtGeom->Visible=false;
+        $this->txtGeom->Enabled=false;
+        
 
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";

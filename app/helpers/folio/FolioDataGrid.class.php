@@ -140,16 +140,10 @@ class FolioDataGrid extends FolioDataGridGen {
    
    public function PrintClick($strFormId, $strControlId, $strParameter) {
         $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";
-        error_log($url);
         QApplication::DisplayAlert("<iframe src='$url' width='100%' height='400'></iframe>");
 
     }
 
-    public function GetEstado(Folio $obj) {
-        $objLink=new QLinkButton($this);
-        $objLink->Text="xxx";
-        return $objLink;
-    }
 
  
 
