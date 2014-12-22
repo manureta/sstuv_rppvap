@@ -66,7 +66,7 @@
 
     
  
-    <div class="titulos"><i class="icon-chevron-right">Antecedentes de intervención en materia</i></div>    
+    <div class="titulos"><i class="icon-chevron-right">Antecedentes de intervención en materia habitacional</i></div>    
     <div> 
                 <div class="well bs-component">     
                         
