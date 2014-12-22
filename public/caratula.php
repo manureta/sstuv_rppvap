@@ -20,8 +20,11 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
         $this->objInfraestructura=Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,$this->id));
         $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,$this->id));
         $this->arrNom= Nomenclatura::QueryArray(
-         QQ::Equal(QQN::Nomenclatura()->IdFolio,$this->id),QQ::LimitInfo(4)
-        );
+                        QQ::AndCondition(
+                            QQ::Equal(QQN::Nomenclatura()->IdFolio,$this->id),
+                            QQ::Equal(QQN::Nomenclatura()->EstadoGeografico,'completo')
+                        ),QQ::LimitInfo(4)   
+                        );
 
         
     }catch(Exception $exception) {
