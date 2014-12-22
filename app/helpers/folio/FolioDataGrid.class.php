@@ -145,7 +145,9 @@ class FolioDataGrid extends FolioDataGridGen {
 
     }
 
-
+    public function btnDelete_Click($strFormId,$strControlId,$strParameter){
+        QApplication::DisplayAlert("todavia no hice este boton");
+    }
  
 
 }
