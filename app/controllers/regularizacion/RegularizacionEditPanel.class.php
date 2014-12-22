@@ -46,7 +46,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         // Si proceso iniciado esta tildado hay que mostrar encuadre legal
         $valor=($this->chkProcesoIniciado->Checked==1)? true: false;
         if($valor)QApplication::ExecuteJavascript("mostrarEncuadre(true)");
-        $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QJavascriptAction ("mostrarEncuadre()"));
+        $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al cambiar el estado de 'Proceso Iniciado'\\r\\n se inicializan o borran todas las opciones de 'Encuadre Legal' de acuerdo al caso.\\r\\n ¿Está seguro?")));        
+        $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QAjaxControlAction($this,"ProcesoIniciado_chk"));
+        
 
         $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));                        
         $this->pnlEncuadre = new EncuadreLegalEditPanel($this,EncuadreLegalEditPanel::$strControlsArray,$this->objEncuadre->Id);
@@ -67,6 +69,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;        
         if($sinintervencion)QApplication::ExecuteJavascript("SinIntervencion(true)");
         
+        $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(),new QConfirmAction(sprintf("Al tildar 'Sin Intervención' se anulan las demas opciones \\r\\n y se deshabilitan las opciones de 'Organismos de intervención'.\\r\\n ¿Está seguro?")));
         $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"sinintervencion_chk"));
         $this->pnlAntecedentes->chkObrasInfraestructura->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
         $this->pnlAntecedentes->chkEquipamientos->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
@@ -141,14 +144,38 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlAntecedentes->chkObrasInfraestructura->Checked=false;
             $this->pnlAntecedentes->chkEquipamientos->Checked=false;
             $this->pnlAntecedentes->chkIntervencionesEnViviendas->Checked=false;
-            $this->pnlAntecedentes->txtOtros->Text="";                
+            $this->pnlAntecedentes->txtOtros->Text="";    
+            
+            // reseteo organismos
+            $this->pnlOrganismos->chkNacional->Checked=false;
+            $this->pnlOrganismos->chkProvincial->Checked=false;
+            $this->pnlOrganismos->chkMunicipal->Checked=false;
+            //$this->pnlOrganismos->calFechaIntervencion' => true,
+            $this->pnlOrganismos->txtProgramas->Text="";
             QApplication::ExecuteJavascript("SinIntervencion(true)");
         }else{
             QApplication::ExecuteJavascript("SinIntervencion(false)");
         }
-        
-        
+                
     }
+
+    public function ProcesoIniciado_chk($strFormId, $strControlId, $strParameter){
+        
+        if(!$this->chkProcesoIniciado->Checked){            
+            $this->pnlEncuadre->chkDecreto222595->Checked=false;
+            $this->pnlEncuadre->chkLey24374->Checked=false;
+            $this->pnlEncuadre->chkDecreto81588->Checked=false;
+            $this->pnlEncuadre->chkLey23073->Checked=false;
+            $this->pnlEncuadre->chkDecreto468696->Checked=false;
+            $this->pnlEncuadre->chkLey14449->Checked=false;
+            $this->pnlEncuadre->txtExpropiacion->Text='';
+            $this->pnlEncuadre->txtOtros->Text='';
+            $this->pnlEncuadre->chkTieneExpropiacion->Checked=false;                           
+        }
+        QApplication::ExecuteJavascript("mostrarEncuadre()");
+                
+    }
+
 
     public function deshabilitar_sinintervencion(){
         $this->pnlAntecedentes->chkSinIntervencion->Checked=false;
