@@ -37,7 +37,7 @@
             </li>
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?=$link_regularizacion;?>">
-                    <span class="number">4.</span> Integración socio-urbana
+                    <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
 <?php if(Permission::EsUsoInterno()){ ?>

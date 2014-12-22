@@ -19,7 +19,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="/registro/regularizacion/folio/<?=$folio;?>">
-                    <span class="number">4.</span> Integración socio-urbana
+                    <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
 <?php if(Permission::EsUsoInterno()){ ?>

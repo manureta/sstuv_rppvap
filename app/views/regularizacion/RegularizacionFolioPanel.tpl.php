@@ -20,7 +20,7 @@
             </li>
             <li role="tab" class="current" aria-selected="true">
                 <a aria-controls="wizard-p-3" href="#" id="wizard-t-3">
-                    <span class="number">4.</span> Integración socio-urbana
+                    <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
 <?php if(Permission::EsUsoInterno()){ ?>
