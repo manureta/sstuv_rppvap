@@ -315,7 +315,6 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $nom->Mza = substr($nomencla,28,7);//7;
                 $nom->Parc = substr($nomencla,35,7);//7;
                 $nom->InscripcionDominio = '';
-                $nom->TitularRegPropiedad = '';
                 $nom->EstadoGeografico='';
                 $nom->DatoVerificadoRegPropiedad = false;
                 $nom->Save();
