@@ -92,6 +92,8 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->txtJudicializado->Text='sin_dato';            
             
             //Fecha 
+            $this->calFecha->DateTime=QDateTime::Now();
+
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
@@ -139,7 +141,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Escondo el creador del folio
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
-
+        $this->calFecha->Enabled=false;
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
@@ -276,7 +278,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
      // Handle the changing of the listbox
     public function lstJudicializado_Change($strFormId, $strControlId, $strParameter) {       
-        $this->txtJudicializado->Text=$this->lstJudicializado->SelectedValue;
+        $this->txtJudicializado->Text=$this->lstJudicializado->SelectedValue;        
 
     }
 
