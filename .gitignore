@@ -1,4 +1,4 @@
-app/*/*/generated
+
 app/*/geometrycolumns
 app/*/spatialrefsys
 app/*/*/GeometryColumns.class.php
