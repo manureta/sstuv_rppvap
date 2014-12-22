@@ -141,7 +141,11 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Escondo el creador del folio
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
+        //Escondo fecha
         $this->calFecha->Enabled=false;
+        //Escondo geometria
+        $this->txtGeom->Visible=false;
+
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
