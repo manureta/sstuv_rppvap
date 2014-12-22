@@ -30,7 +30,15 @@ function mostrarMapa(cod_partido,editar){
 	        attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
 	      });
 	  	
+	  	var capa_folios = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
+		    layers: 'registro:folios',
+		    format: 'image/png',
+		    transparent: true,
+		    attribution: ""
+		});
+
 	  	map.addLayer(mapquestOSM);
+	  	map.addLayer(capa_folios);
 	  	
 	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), partidos[cod_partido][2]);
 
