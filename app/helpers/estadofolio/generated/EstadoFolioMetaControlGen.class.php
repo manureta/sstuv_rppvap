@@ -234,7 +234,6 @@
         $strConfigArray['Columns']['ResolucionInscripcionProvisoria'] = QApplication::Translate('ResolucionInscripcionProvisoria');
         $strConfigArray['Columns']['ResolucionInscripcionDefinitiva'] = QApplication::Translate('ResolucionInscripcionDefinitiva');
         $strConfigArray['Columns']['RegularizacionFechaInicio'] = QApplication::Translate('RegularizacionFechaInicio');
-        $strConfigArray['Columns']['RegularizacionTienePlano'] = QApplication::Translate('RegularizacionTienePlano');
         $strConfigArray['Columns']['RegularizacionCircular10Catastro'] = QApplication::Translate('RegularizacionCircular10Catastro');
         $strConfigArray['Columns']['RegularizacionAprobacionGeodesia'] = QApplication::Translate('RegularizacionAprobacionGeodesia');
         $strConfigArray['Columns']['RegularizacionRegistracion'] = QApplication::Translate('RegularizacionRegistracion');
@@ -245,9 +244,10 @@
         $strConfigArray['Columns']['RegistracionFolio'] = QApplication::Translate('RegistracionFolio');
         $strConfigArray['Columns']['GeodesiaNum'] = QApplication::Translate('GeodesiaNum');
         $strConfigArray['Columns']['GeodesiaAnio'] = QApplication::Translate('GeodesiaAnio');
-        $strConfigArray['Columns']['TieneCenso'] = QApplication::Translate('TieneCenso');
         $strConfigArray['Columns']['FechaCenso'] = QApplication::Translate('FechaCenso');
         $strConfigArray['Columns']['GeodesiaPartido'] = QApplication::Translate('GeodesiaPartido');
+        $strConfigArray['Columns']['RegularizacionTienePlano'] = QApplication::Translate('RegularizacionTienePlano');
+        $strConfigArray['Columns']['TieneCenso'] = QApplication::Translate('TieneCenso');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
 
         $this->lstUsoInterno = new QListPanel($this->objParentObject, $this->objEstadoFolio, $strConfigArray, $strControlId);

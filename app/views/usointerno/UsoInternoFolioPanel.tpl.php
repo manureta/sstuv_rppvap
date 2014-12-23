@@ -116,7 +116,7 @@
 
         <div class="titulos"><i class="icon-chevron-right"> Regularización</i></div>   
         	<div class="well bs-component"> 
-            <?php $_CONTROL->chkRegularizacionTienePlano->RenderWithName(); ?>
+            <?php $_CONTROL->lstRegularizacionTienePlano->RenderWithName(); ?>
             <?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>            
             <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
             <div class="renderWithName">
@@ -133,7 +133,7 @@
                 Legajo <?php $_CONTROL->txtRegistracionLegajo->Render(); ?> Folio <?php $_CONTROL->txtRegistracionFolio->Render(); ?>  Fecha <?php $_CONTROL->txtRegistracionFecha->Render(); ?>
             </div>  
             
-            <?php $_CONTROL->chkTieneCenso->RenderWithName(); ?>
+            <?php $_CONTROL->lstTieneCenso->RenderWithName(); ?>
             <?php $_CONTROL->txtFechaCenso->RenderWithName(); ?>
             
             
@@ -144,7 +144,7 @@
 
         <div class="titulos"><i class="icon-chevron-right"> Ley de acceso justo al hábitat</i></div> 
         <div class="well bs-component">
-            <?php $_CONTROL->chkLey14449->RenderWithName(); ?>
+            <?php $_CONTROL->lstLey14449->RenderWithName(); ?>
             
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component">

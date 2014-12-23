@@ -15,7 +15,6 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'txtResolucionInscripcionProvisoria' => true,
         'txtResolucionInscripcionDefinitiva' => true,
         'calRegularizacionFechaInicio' => true,
-        'chkRegularizacionTienePlano' => true,
         'chkRegularizacionCircular10Catastro' => true,
         'txtRegularizacionAprobacionGeodesia' => true,
         'txtRegularizacionRegistracion' => true,
@@ -26,11 +25,12 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'txtRegistracionFolio' => true,
         'txtGeodesiaNum' => true,
         'txtGeodesiaAnio' => true,
-        'chkTieneCenso' => true,
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
-        'chkLey14449' => true,
         'lstEstadoFolioObject' => true,
+        'txtRegularizacionTienePlano' => true,
+        'txtTieneCenso' => true,
+        'txtLey14449' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -72,8 +72,6 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtResolucionInscripcionDefinitiva'] = $this->mctUsoInterno->txtResolucionInscripcionDefinitiva_Create();
         if (in_array('calRegularizacionFechaInicio',$strControlsArray)) 
             $this->objControlsArray['calRegularizacionFechaInicio'] = $this->mctUsoInterno->calRegularizacionFechaInicio_Create();
-        if (in_array('chkRegularizacionTienePlano',$strControlsArray)) 
-            $this->objControlsArray['chkRegularizacionTienePlano'] = $this->mctUsoInterno->chkRegularizacionTienePlano_Create();
         if (in_array('chkRegularizacionCircular10Catastro',$strControlsArray)) 
             $this->objControlsArray['chkRegularizacionCircular10Catastro'] = $this->mctUsoInterno->chkRegularizacionCircular10Catastro_Create();
         if (in_array('txtRegularizacionAprobacionGeodesia',$strControlsArray)) 
@@ -94,16 +92,18 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtGeodesiaNum'] = $this->mctUsoInterno->txtGeodesiaNum_Create();
         if (in_array('txtGeodesiaAnio',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaAnio'] = $this->mctUsoInterno->txtGeodesiaAnio_Create();
-        if (in_array('chkTieneCenso',$strControlsArray)) 
-            $this->objControlsArray['chkTieneCenso'] = $this->mctUsoInterno->chkTieneCenso_Create();
         if (in_array('txtFechaCenso',$strControlsArray)) 
             $this->objControlsArray['txtFechaCenso'] = $this->mctUsoInterno->txtFechaCenso_Create();
         if (in_array('txtGeodesiaPartido',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaPartido'] = $this->mctUsoInterno->txtGeodesiaPartido_Create();
-        if (in_array('chkLey14449',$strControlsArray)) 
-            $this->objControlsArray['chkLey14449'] = $this->mctUsoInterno->chkLey14449_Create();
         if (in_array('lstEstadoFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
+        if (in_array('txtRegularizacionTienePlano',$strControlsArray)) 
+            $this->objControlsArray['txtRegularizacionTienePlano'] = $this->mctUsoInterno->txtRegularizacionTienePlano_Create();
+        if (in_array('txtTieneCenso',$strControlsArray)) 
+            $this->objControlsArray['txtTieneCenso'] = $this->mctUsoInterno->txtTieneCenso_Create();
+        if (in_array('txtLey14449',$strControlsArray)) 
+            $this->objControlsArray['txtLey14449'] = $this->mctUsoInterno->txtLey14449_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

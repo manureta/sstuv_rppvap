@@ -21,8 +21,6 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('resolucion_inscripcion_definitiva', 'ResolucionInscripcionDefinitiva', 'string', $this);
 				case 'RegularizacionFechaInicio':
 					return new QQNode('regularizacion_fecha_inicio', 'RegularizacionFechaInicio', 'QDateTime', $this);
-				case 'RegularizacionTienePlano':
-					return new QQNode('regularizacion_tiene_plano', 'RegularizacionTienePlano', 'boolean', $this);
 				case 'RegularizacionCircular10Catastro':
 					return new QQNode('regularizacion_circular_10_catastro', 'RegularizacionCircular10Catastro', 'boolean', $this);
 				case 'RegularizacionAprobacionGeodesia':
@@ -45,18 +43,20 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('geodesia_num', 'GeodesiaNum', 'string', $this);
 				case 'GeodesiaAnio':
 					return new QQNode('geodesia_anio', 'GeodesiaAnio', 'string', $this);
-				case 'TieneCenso':
-					return new QQNode('tiene_censo', 'TieneCenso', 'boolean', $this);
 				case 'FechaCenso':
 					return new QQNode('fecha_censo', 'FechaCenso', 'string', $this);
 				case 'GeodesiaPartido':
 					return new QQNode('geodesia_partido', 'GeodesiaPartido', 'string', $this);
-				case 'Ley14449':
-					return new QQNode('ley_14449', 'Ley14449', 'boolean', $this);
 				case 'EstadoFolio':
 					return new QQNode('estado_folio', 'EstadoFolio', 'integer', $this);
 				case 'EstadoFolioObject':
 					return new QQNodeEstadoFolio('estado_folio', 'EstadoFolioObject', 'integer', $this);
+				case 'RegularizacionTienePlano':
+					return new QQNode('regularizacion_tiene_plano', 'RegularizacionTienePlano', 'string', $this);
+				case 'TieneCenso':
+					return new QQNode('tiene_censo', 'TieneCenso', 'string', $this);
+				case 'Ley14449':
+					return new QQNode('ley_14449', 'Ley14449', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

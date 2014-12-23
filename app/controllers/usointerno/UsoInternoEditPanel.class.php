@@ -7,7 +7,11 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     //id variables for meta_create
     protected $intIdFolio;
     protected $objFolio;
+    
     public $lstInformeUrbanistico;
+    public $lstRegularizacionTienePlano;
+    public $lstLey14449;
+    public $lstTieneCenso;
 
     //Adjuntos
     public $boolPuedeAdjuntar;
@@ -20,7 +24,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'txtResolucionInscripcionProvisoria' => true,
         'txtResolucionInscripcionDefinitiva' => true,
         'calRegularizacionFechaInicio' => true,
-        'chkRegularizacionTienePlano' => true,
+        'txtRegularizacionTienePlano' => true,
         'chkRegularizacionCircular10Catastro' => true,
         'lstRegularizacionEstadoProcesoObject' => true,
         'txtNumExpediente' => true,
@@ -29,8 +33,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'txtRegistracionFolio' => true,
         'txtGeodesiaNum' => true,
         'txtGeodesiaAnio' => true,
-        'chkLey14449' => true,
-        'chkTieneCenso' => true,
+        'txtLey14449' => true,
+        'txtTieneCenso' => true,
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
         'lstEstadoFolioObject' => true
@@ -84,6 +88,87 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstInformeUrbanistico->Name="Cuenta con informe urbanístico";    
         $this->lstInformeUrbanistico->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstInforme_Change'));
         $this->txtInformeUrbanisticoFecha->Visible=false;
+
+
+        // TIENE PLANO
+        $this->lstRegularizacionTienePlano=new QListBox($this);
+        switch ($this->txtRegularizacionTienePlano->Text) {                
+                case 'si':
+                    $this->lstRegularizacionTienePlano->AddItem(' Si ', 'si');
+                    $this->lstRegularizacionTienePlano->AddItem(' No ', 'no');
+                    $this->lstRegularizacionTienePlano->AddItem(' Sin Dato ', 'sin_dato');                
+                    break;
+                case 'no':    
+                    $this->lstRegularizacionTienePlano->AddItem(' No ', 'no');
+                    $this->lstRegularizacionTienePlano->AddItem(' Sin Dato ', 'sin_dato');                
+                    $this->lstRegularizacionTienePlano->AddItem(' Si ', 'si');
+                    break;
+                default:
+                    $this->lstRegularizacionTienePlano->AddItem(' Sin Dato ', 'sin_dato');
+                    $this->lstRegularizacionTienePlano->AddItem(' Si ', 'si');
+                    $this->lstRegularizacionTienePlano->AddItem(' No ', 'no'); 
+                    $this->txtRegularizacionTienePlano->Text='sin_dato'; // para inicializarlo           
+                    break;                    
+            }
+
+        $this->lstRegularizacionTienePlano->Name="Plano en trámite";    
+        $this->lstRegularizacionTienePlano->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstRegularizacionTienePlano_Change'));
+        $this->txtRegularizacionTienePlano->Visible=false;
+
+        // TIENE CENSO
+
+        $this->lstTieneCenso=new QListBox($this);
+        switch ($this->txtTieneCenso->Text) {                
+                case 'si':
+                    $this->lstTieneCenso->AddItem(' Si ', 'si');
+                    $this->lstTieneCenso->AddItem(' No ', 'no');
+                    $this->lstTieneCenso->AddItem(' Sin Dato ', 'sin_dato');                
+                    break;
+                case 'no':    
+                    $this->lstTieneCenso->AddItem(' No ', 'no');
+                    $this->lstTieneCenso->AddItem(' Sin Dato ', 'sin_dato');                
+                    $this->lstTieneCenso->AddItem(' Si ', 'si');
+                    break;
+                default:
+                    $this->lstTieneCenso->AddItem(' Sin Dato ', 'sin_dato');
+                    $this->lstTieneCenso->AddItem(' Si ', 'si');
+                    $this->lstTieneCenso->AddItem(' No ', 'no'); 
+                    $this->txtTieneCenso->Text='sin_dato'; // para inicializarlo           
+                    break;                    
+            }
+
+        $this->lstTieneCenso->Name="Tiene censo de la SSTUV";
+        $this->lstTieneCenso->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTieneCenso_Change'));
+        $this->txtTieneCenso->Visible=false;
+
+
+        // LEY 14449
+
+        $this->lstLey14449=new QListBox($this);
+        switch ($this->txtLey14449->Text) {                
+                case 'si':
+                    $this->lstLey14449->AddItem(' Si ', 'si');
+                    $this->lstLey14449->AddItem(' No ', 'no');
+                    $this->lstLey14449->AddItem(' Sin Dato ', 'sin_dato');                
+                    break;
+                case 'no':    
+                    $this->lstLey14449->AddItem(' No ', 'no');
+                    $this->lstLey14449->AddItem(' Sin Dato ', 'sin_dato');                
+                    $this->lstLey14449->AddItem(' Si ', 'si');
+                    break;
+                default:
+                    $this->lstLey14449->AddItem(' Sin Dato ', 'sin_dato');
+                    $this->lstLey14449->AddItem(' Si ', 'si');
+                    $this->lstLey14449->AddItem(' No ', 'no'); 
+                    $this->txtLey14449->Text='sin_dato'; // para inicializarlo           
+                    break;                    
+            }
+
+        $this->lstLey14449->Name="Intervención en el marco de la ley 14.449";
+        $this->lstLey14449->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstLey14449_Change'));
+        $this->txtLey14449->Visible=false;
+
+        
 
         // Partido de Geodesia
         if($this->txtGeodesiaPartido->Text=="") $this->txtGeodesiaPartido->Text=$this->objFolio->IdPartidoObject->CodPartido;
@@ -141,9 +226,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('calRegularizacionFechaInicio',$strControlsArray)) 
             $this->objControlsArray['calRegularizacionFechaInicio'] = $this->mctUsoInterno->calRegularizacionFechaInicio_Create();
             $this->objControlsArray['calRegularizacionFechaInicio']->Name="Fecha Inicio";
-        if (in_array('chkRegularizacionTienePlano',$strControlsArray)) 
-            $this->objControlsArray['chkRegularizacionTienePlano'] = $this->mctUsoInterno->chkRegularizacionTienePlano_Create();
-            $this->objControlsArray['chkRegularizacionTienePlano']->Name="¿Plano en trámite?";
+        if (in_array('txtRegularizacionTienePlano',$strControlsArray)) 
+            $this->objControlsArray['txtRegularizacionTienePlano'] = $this->mctUsoInterno->txtRegularizacionTienePlano_Create();            
         if (in_array('chkRegularizacionCircular10Catastro',$strControlsArray)) 
             $this->objControlsArray['chkRegularizacionCircular10Catastro'] = $this->mctUsoInterno->chkRegularizacionCircular10Catastro_Create();
             $this->objControlsArray['chkRegularizacionCircular10Catastro']->Name="Circular 10 Catastro";                
@@ -163,12 +247,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtGeodesiaNum'] = $this->mctUsoInterno->txtGeodesiaNum_Create();
         if (in_array('txtGeodesiaAnio',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaAnio'] = $this->mctUsoInterno->txtGeodesiaAnio_Create();                
-        if (in_array('chkLey14449',$strControlsArray)) 
-            $this->objControlsArray['chkLey14449'] = $this->mctUsoInterno->chkLey14449_Create();
-            $this->objControlsArray['chkLey14449']->Name="Intervención en el marco de la ley 14.449";
-        if (in_array('chkTieneCenso',$strControlsArray)) 
-            $this->objControlsArray['chkTieneCenso'] = $this->mctUsoInterno->chkTieneCenso_Create();
-            $this->objControlsArray['chkTieneCenso']->Name="¿Tiene censo de la SSTUV ?";
+        if (in_array('txtLey14449',$strControlsArray)) 
+            $this->objControlsArray['txtLey14449'] = $this->mctUsoInterno->txtLey14449_Create();
+        if (in_array('txtTieneCenso',$strControlsArray)) 
+            $this->objControlsArray['txtTieneCenso'] = $this->mctUsoInterno->txtTieneCenso_Create();
         if (in_array('txtFechaCenso',$strControlsArray)) 
             $this->objControlsArray['txtFechaCenso'] = $this->mctUsoInterno->txtFechaCenso_Create();
             $this->objControlsArray['txtFechaCenso']->Name="Fecha del último censo";
@@ -181,6 +263,18 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       
         $this->txtInformeUrbanisticoFecha->Text=$this->lstInformeUrbanistico->SelectedValue;
+    }
+
+    public function lstRegularizacionTienePlano_Change($strFormId, $strControlId, $strParameter) {       
+        $this->txtRegularizacionTienePlano->Text=$this->lstRegularizacionTienePlano->SelectedValue;
+    }
+
+    public function lstTieneCenso_Change($strFormId, $strControlId, $strParameter) {       
+        $this->txtTieneCenso->Text=$this->lstTieneCenso->SelectedValue;
+    }
+
+    public function lstLey14449_Change($strFormId, $strControlId, $strParameter) {       
+        $this->txtLey14449->Text=$this->lstLey14449->SelectedValue;
     }
 
     protected function buttons_Create($blnDelete = false) {
