@@ -127,6 +127,7 @@ abstract class Permission extends PermissionBase {
         return self::EsVisualizadorBasico() || self::EsVisualizadorGeneral();
     }
     public static function PuedeEditar1A4(Folio $objFolio){  
+        if(self::EsAdministrador()) return true;
         return !(self::EsVisualizador() || (self::EsCarga() && !in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::CARGA,NULL))));
     }
 
