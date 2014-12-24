@@ -11,10 +11,7 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
     try{
         
         $this->intIdFolio=$_GET['idfolio'];
-        $this->strTipo=$_GET['tipo'];
-        
-        //$upload_handler = new UploadHandler();
-        //$this->RemoveControl($this->Form);
+        $this->strTipo=$_GET['tipo'];        
         
     }catch(Exception $exception) {
             error_log($exception->getMessage());

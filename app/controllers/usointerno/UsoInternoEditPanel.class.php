@@ -239,14 +239,19 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtNumExpediente']->Name="N° Expediente";
         if (in_array('txtRegistracionLegajo',$strControlsArray)) 
             $this->objControlsArray['txtRegistracionLegajo'] = $this->mctUsoInterno->txtRegistracionLegajo_Create();
+            $this->objControlsArray['txtRegistracionLegajo']->addCssClass("registracion_legajo");
         if (in_array('txtRegistracionFecha',$strControlsArray)) 
             $this->objControlsArray['txtRegistracionFecha'] = $this->mctUsoInterno->txtRegistracionFecha_Create();
+            $this->objControlsArray['txtRegistracionFecha']->addCssClass("registracion_fecha");
         if (in_array('txtRegistracionFolio',$strControlsArray)) 
             $this->objControlsArray['txtRegistracionFolio'] = $this->mctUsoInterno->txtRegistracionFolio_Create();
+            $this->objControlsArray['txtRegistracionFolio']->addCssClass("registracion_folio");
         if (in_array('txtGeodesiaNum',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaNum'] = $this->mctUsoInterno->txtGeodesiaNum_Create();
+            $this->objControlsArray['txtGeodesiaNum']->addCssClass("geodesia_num");
         if (in_array('txtGeodesiaAnio',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaAnio'] = $this->mctUsoInterno->txtGeodesiaAnio_Create();                
+            $this->objControlsArray['txtGeodesiaAnio']->addCssClass("geodesia_anio");
         if (in_array('txtLey14449',$strControlsArray)) 
             $this->objControlsArray['txtLey14449'] = $this->mctUsoInterno->txtLey14449_Create();
         if (in_array('txtTieneCenso',$strControlsArray)) 
@@ -256,6 +261,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtFechaCenso']->Name="Fecha del último censo";
         if (in_array('txtGeodesiaPartido',$strControlsArray)) 
             $this->objControlsArray['txtGeodesiaPartido'] = $this->mctUsoInterno->txtGeodesiaPartido_Create();    
+            $this->objControlsArray['txtGeodesiaPartido']->addCssClass("geodesia_partido");
         if (in_array('lstEstadoFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
             $this->objControlsArray['lstEstadoFolioObject']->Name="Estado del Folio";

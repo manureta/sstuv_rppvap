@@ -121,16 +121,22 @@
             <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
             <div class="renderWithName">
                 <div class="left">
-                    <label>N° plano aprobacion de Geodesia</label>
+                    <label>N° plano aprobacion de Geodesia </label>
                 </div>
-                Partido <?php $_CONTROL->txtGeodesiaPartido->Render(); ?> N° <?php $_CONTROL->txtGeodesiaNum->Render(); ?>  Año <?php $_CONTROL->txtGeodesiaAnio->Render(); ?>
+                
+                 <?php $_CONTROL->txtGeodesiaPartido->Render(); ?>
+                 <?php $_CONTROL->txtGeodesiaNum->Render(); ?>
+                 <?php $_CONTROL->txtGeodesiaAnio->Render(); ?>
+                    
             </div>
             
             <div class="renderWithName">
                 <div class="left">
                     <label>Registración</label>
                 </div>
-                Legajo <?php $_CONTROL->txtRegistracionLegajo->Render(); ?> Folio <?php $_CONTROL->txtRegistracionFolio->Render(); ?>  Fecha <?php $_CONTROL->txtRegistracionFecha->Render(); ?>
+                <?php $_CONTROL->txtRegistracionLegajo->Render(); ?>
+                <?php $_CONTROL->txtRegistracionFolio->Render(); ?>
+                <?php $_CONTROL->txtRegistracionFecha->Render(); ?>
             </div>  
             
             <?php $_CONTROL->lstTieneCenso->RenderWithName(); ?>
@@ -180,6 +186,17 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".geodesia_partido").attr("placeholder","Partido");
+    $(".geodesia_num").attr("placeholder","N° ");
+    $(".geodesia_anio").attr("placeholder","Año");
+
+    $(".registracion_folio").attr("placeholder","Folio");
+    $(".registracion_legajo").attr("placeholder","Legajo");
+    $(".registracion_fecha").attr("placeholder","Fecha");
+
+</script>
 
   
 	
