@@ -16,6 +16,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     //Adjuntos
     public $boolPuedeAdjuntar;
 
+    // mensaje para inscripcion definitiba
+
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
         'txtInformeUrbanisticoFecha' => true,

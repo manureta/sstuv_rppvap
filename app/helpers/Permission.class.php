@@ -176,9 +176,7 @@ abstract class Permission extends PermissionBase {
             // mandar mail
             error_log($e);
         }
-        $this->actualizarEstadoNomenclaturas();
-                               
-      
+                                    
     }
 
 
