@@ -145,7 +145,40 @@ abstract class Permission extends PermissionBase {
         return (self::EsCarga());
     }
     public static function PuedeEnviarFolio(Folio $objFolio){
-        return (self::EsAdministrador() || self::EsCarga());
+        return ((self::EsAdministrador() || self::EsCarga()) && self::InscripcionProvisoria($objFolio));
+    }
+    public static function InscripcionProvisoria(Folio $objFolio){
+          try {
+            $id=$objFolio->Id;
+            $strQuery = "select f.id from folio f 
+                        join infraestructura i on f.id=i.id_folio
+                        join nomenclatura n on f.id=n.id_folio 
+                        where f.tipo_barrio > 0 and f.creador > 0 and f.id_partido > 0 and f.matricula <> ''
+                        and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie <> ''
+                        and f.cantidad_familias > 0
+                        and i.energia_electrica_medidor_individual < 4 and
+                          i.agua_corriente < 4 and
+                          i.red_cloacal <4 and
+                          i.red_gas <4 and
+                          i.pavimento <4
+                          and ((n.partido <> '' and n.circ <> '' and n.parc <> '') or
+                        (n.partido <> '' and n.circ <> '' and n.secc <> '') or
+                        (n.partido <> '' and n.circ <> '' and n.secc <> ''  and n.chac_quinta <> '') or
+                        (n.partido <> '' and n.circ <> '' and n.secc <> '' and n.frac <> ''))
+                          
+                        and f.id=$id";
+            $objDatabase = QApplication::$Database[1];
+            $objDbResult = $objDatabase->Query($strQuery);
+            $row = $objDbResult->FetchArray();            
+            return (count($row)>0 && $row['id']==$id);          
+        } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>Error al determinar si el Folio esta habilitado para enviarse</p>");
+            // mandar mail
+            error_log($e);
+        }
+        $this->actualizarEstadoNomenclaturas();
+                               
+      
     }
 
 
