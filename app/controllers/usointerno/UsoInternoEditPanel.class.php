@@ -17,6 +17,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     public $boolPuedeAdjuntar;
 
     // mensaje para inscripcion definitiba
+    public $blnMensajeInscripcion;
 
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
@@ -199,7 +200,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             }
         }
 
-
+        $this->blnMensajeInscripcion=Permission::inscripcionDefinitiva($this->objFolio);
     }
 
     protected function metaControl_Create($strControlsArray){

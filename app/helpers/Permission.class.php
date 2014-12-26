@@ -179,6 +179,69 @@ abstract class Permission extends PermissionBase {
                                     
     }
 
+    public static function InscripcionDefinitiva(Folio $objFolio){
+          try {
+            $id=$objFolio->Id;
+            $strQuery = "select f.id from folio f 
+            join infraestructura i on f.id=i.id_folio
+            join equipamiento e on f.id=e.id_folio 
+            join regularizacion r on f.id=r.id_folio 
+            join encuadre_legal l on f.id=l.id_folio
+            join situacion_ambiental s on f.id=s.id_folio  
+            join antecedentes a on f.id=a.id_folio
+            join nomenclatura n on f.id=n.id_folio
+            join uso_interno u on f.id=u.id_folio
+            where f.tipo_barrio > 0 and f.creador > 0 and f.id_partido > 0 and f.matricula <> ''
+            and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie <> ''
+            and f.cantidad_familias > 0  and f.tipo_barrio > 0
+            and i.energia_electrica_medidor_individual < 4 and
+              i.agua_corriente < 4 and
+              i.red_cloacal <4 and
+              i.red_gas <4 and
+              i.pavimento <4
+            and ((n.partido <> '' and n.circ <> '' and n.parc <> '') or
+            (n.partido <> '' and n.circ <> '' and n.secc <> '') or
+            (n.partido <> '' and n.circ <> '' and n.secc <> ''  and n.chac_quinta <> '') or
+            (n.partido <> '' and n.circ <> '' and n.secc <> '' and n.frac <> ''))
+            and e.unidad_sanitaria < 5 and
+              e.jardin_infantes < 5 and
+              e.escuela_primaria < 5 and   
+              e.escuela_secundaria < 5  
+            and r.proceso_iniciado=true and
+             (l.decreto_2225_95=true or
+             l.ley_24374=true or
+             l.decreto_815_88=true or
+             l.ley_23073=true or
+             l.expropiacion <> '' or
+             l.otros <> '' or
+             l.ley_14449=true)
+            and (s.sin_problemas = TRUE or
+             s.reserva_electroducto = TRUE or
+             s.inundable = TRUE OR
+             s.sobre_terraplen_ferroviario = TRUE OR
+             s.sobre_camino_sirga = TRUE or
+             s.expuesto_contaminacion_industrial = TRUE OR
+             s.sobre_suelo_degradado = TRUE OR
+             s.otro <> '')
+            and (a.sin_intervencion = TRUE or
+             a.obras_infraestructura = TRUE or
+             a.equipamientos = TRUE OR
+             a.intervenciones_en_viviendas = TRUE OR
+             a.otros <> '')
+            and u.estado_folio=6
+             and f.id=$id";
+            $objDatabase = QApplication::$Database[1];
+            $objDbResult = $objDatabase->Query($strQuery);
+            $row = $objDbResult->FetchArray();            
+            return (count($row)>0 && $row['id']==$id);          
+        } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>Error al determinar si el Folio esta habilitado para inscripcion definitiba</p>");
+            // mandar mail
+            error_log($e);
+        }
+                                    
+    }
+
 
 
 

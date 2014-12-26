@@ -35,6 +35,17 @@
         <div class="titulos"><i class="icon-chevron-right"> Administración</i></div>        
         <div class="well bs-component">
             <?php $_CONTROL->lstEstadoFolioObject->RenderWithName(); ?>            
+            <?php if($_CONTROL->blnMensajeInscripcion){ ?>
+            <div class="alert alert-success" role="alert">
+              <span class="icon-exclamation-sign" aria-hidden="true"></span>              
+              Este Folio califica para inscripcion Definitiva
+            </div>
+            <?php }else{ ?>
+                <div class="alert alert-danger" role="alert">
+                  <span class="icon-exclamation-sign" aria-hidden="true"></span>              
+                  Este Folio no califica para inscripcion Definitiva
+                </div>
+                <?php } ?>
          </div>
 
         <div class="titulos"><i class="icon-chevron-right"> Situación Registral</i></div>        
