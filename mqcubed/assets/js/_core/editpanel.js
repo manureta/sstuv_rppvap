@@ -84,7 +84,7 @@ qcEP.Init = function(editId) {
     var editPanelControl = $('#' + editId);
     editPanelControl.addClass('qceditpanel');
     editPanelControl.data('modified_controls', new Array());
-    var controls = editPanelControl.find('input, textarea, button');
+    var controls = editPanelControl.find('input, textarea, button, select');
     controls.each(function() {
         $(this).attr('original_value', qc.EditPanel.ControlGetValue(this));
     });

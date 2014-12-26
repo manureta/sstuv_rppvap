@@ -56,14 +56,16 @@ class AntecedentesEditPanel extends AntecedentesEditPanelGen {
         if (in_array('chkSinIntervencion',$strControlsArray)) 
             $this->objControlsArray['chkSinIntervencion'] = $this->mctAntecedentes->chkSinIntervencion_Create();
             $this->objControlsArray['chkSinIntervencion']->Name="Sin intervención";
-        if (in_array('chkObrasInfraestructura',$strControlsArray)) 
+        if (in_array('chkObrasInfraestructura',$strControlsArray)) {
             $this->objControlsArray['chkObrasInfraestructura'] = $this->mctAntecedentes->chkObrasInfraestructura_Create();
             $this->objControlsArray['chkObrasInfraestructura']->Name="Obras de infraestructuras";
+            }
         if (in_array('chkEquipamientos',$strControlsArray)) 
             $this->objControlsArray['chkEquipamientos'] = $this->mctAntecedentes->chkEquipamientos_Create();
-        if (in_array('chkIntervencionesEnViviendas',$strControlsArray)) 
+        if (in_array('chkIntervencionesEnViviendas',$strControlsArray)){ 
             $this->objControlsArray['chkIntervencionesEnViviendas'] = $this->mctAntecedentes->chkIntervencionesEnViviendas_Create();
             $this->objControlsArray['chkIntervencionesEnViviendas']->Name="Intervención en viviendas";
+            }
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctAntecedentes->txtOtros_Create();
         //if (in_array('lstOrganismosDeIntervencionAsIdFolio',$strControlsArray))
