@@ -39,8 +39,8 @@
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
 	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
-	 * @property-read ArchivosAdjuntos $ArchivosAdjuntosAsId the value for the private _objArchivosAdjuntosAsId (Read-Only) if set due to an expansion on the archivos_adjuntos.id_folio reverse relationship
-	 * @property-read ArchivosAdjuntos[] $ArchivosAdjuntosAsIdArray the value for the private _objArchivosAdjuntosAsIdArray (Read-Only) if set due to an ExpandAsArray on the archivos_adjuntos.id_folio reverse relationship
+	 * @property-read EvolucionFolio $EvolucionFolioAsId the value for the private _objEvolucionFolioAsId (Read-Only) if set due to an expansion on the evolucion_folio.id_folio reverse relationship
+	 * @property-read EvolucionFolio[] $EvolucionFolioAsIdArray the value for the private _objEvolucionFolioAsIdArray (Read-Only) if set due to an ExpandAsArray on the evolucion_folio.id_folio reverse relationship
 	 * @property-read Nomenclatura $NomenclaturaAsId the value for the private _objNomenclaturaAsId (Read-Only) if set due to an expansion on the nomenclatura.id_folio reverse relationship
 	 * @property-read Nomenclatura[] $NomenclaturaAsIdArray the value for the private _objNomenclaturaAsIdArray (Read-Only) if set due to an ExpandAsArray on the nomenclatura.id_folio reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
@@ -216,20 +216,20 @@ class FolioGen extends QBaseClass {
 
 
     /**
-     * Private member variable that stores a reference to a single ArchivosAdjuntosAsId object
-     * (of type ArchivosAdjuntos), if this Folio object was restored with
-     * an expansion on the archivos_adjuntos association table.
-     * @var ArchivosAdjuntos _objArchivosAdjuntosAsId;
+     * Private member variable that stores a reference to a single EvolucionFolioAsId object
+     * (of type EvolucionFolio), if this Folio object was restored with
+     * an expansion on the evolucion_folio association table.
+     * @var EvolucionFolio _objEvolucionFolioAsId;
      */
-    protected $objArchivosAdjuntosAsId;
+    protected $objEvolucionFolioAsId;
 
     /**
-     * Private member variable that stores a reference to an array of ArchivosAdjuntosAsId objects
-     * (of type ArchivosAdjuntos[]), if this Folio object was restored with
-     * an ExpandAsArray on the archivos_adjuntos association table.
-     * @var ArchivosAdjuntos[] _objArchivosAdjuntosAsIdArray;
+     * Private member variable that stores a reference to an array of EvolucionFolioAsId objects
+     * (of type EvolucionFolio[]), if this Folio object was restored with
+     * an ExpandAsArray on the evolucion_folio association table.
+     * @var EvolucionFolio[] _objEvolucionFolioAsIdArray;
      */
-    protected $objArchivosAdjuntosAsIdArray;
+    protected $objEvolucionFolioAsIdArray;
 
     /**
      * Private member variable that stores a reference to a single NomenclaturaAsId object
@@ -724,19 +724,19 @@ class FolioGen extends QBaseClass {
 							$strAliasPrefix = 'folio__';
 
 
-						// Expanding reverse references: ArchivosAdjuntosAsId
-						$strAlias = $strAliasPrefix . 'archivosadjuntosasid__id';
+						// Expanding reverse references: EvolucionFolioAsId
+						$strAlias = $strAliasPrefix . 'evolucionfolioasid__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
 							(!is_null($objDbRow->GetColumn($strAliasName)))) {
-							if ($intPreviousChildItemCount = count($objPreviousItem->objArchivosAdjuntosAsIdArray)) {
-								$objPreviousChildItems = $objPreviousItem->objArchivosAdjuntosAsIdArray;
-								$objChildItem = ArchivosAdjuntos::InstantiateDbRow($objDbRow, $strAliasPrefix . 'archivosadjuntosasid__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+							if ($intPreviousChildItemCount = count($objPreviousItem->objEvolucionFolioAsIdArray)) {
+								$objPreviousChildItems = $objPreviousItem->objEvolucionFolioAsIdArray;
+								$objChildItem = EvolucionFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'evolucionfolioasid__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
 								if ($objChildItem) {
-									$objPreviousItem->objArchivosAdjuntosAsIdArray[] = $objChildItem;
+									$objPreviousItem->objEvolucionFolioAsIdArray[] = $objChildItem;
 								}
 							} else {
-								$objPreviousItem->objArchivosAdjuntosAsIdArray[] = ArchivosAdjuntos::InstantiateDbRow($objDbRow, $strAliasPrefix . 'archivosadjuntosasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+								$objPreviousItem->objEvolucionFolioAsIdArray[] = EvolucionFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'evolucionfolioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 							}
 							$blnExpandedViaArray = true;
 						}
@@ -814,10 +814,10 @@ class FolioGen extends QBaseClass {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objArchivosAdjuntosAsIdArray, $objToReturn->objArchivosAdjuntosAsIdArray) != null) {
+					if (array_diff($objPreviousItem->objCondicionesSocioUrbanisticasAsIdArray, $objToReturn->objCondicionesSocioUrbanisticasAsIdArray) != null) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objCondicionesSocioUrbanisticasAsIdArray, $objToReturn->objCondicionesSocioUrbanisticasAsIdArray) != null) {
+					if (array_diff($objPreviousItem->objEvolucionFolioAsIdArray, $objToReturn->objEvolucionFolioAsIdArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objNomenclaturaAsIdArray, $objToReturn->objNomenclaturaAsIdArray) != null) {
@@ -904,14 +904,14 @@ class FolioGen extends QBaseClass {
 
 
 
-			// Check for ArchivosAdjuntosAsId Virtual Binding
-			$strAlias = $strAliasPrefix . 'archivosadjuntosasid__id';
+			// Check for EvolucionFolioAsId Virtual Binding
+			$strAlias = $strAliasPrefix . 'evolucionfolioasid__id';
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName))) {
 				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
-					$objToReturn->objArchivosAdjuntosAsIdArray[] = ArchivosAdjuntos::InstantiateDbRow($objDbRow, $strAliasPrefix . 'archivosadjuntosasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEvolucionFolioAsIdArray[] = EvolucionFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'evolucionfolioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
-					$objToReturn->objArchivosAdjuntosAsId = ArchivosAdjuntos::InstantiateDbRow($objDbRow, $strAliasPrefix . 'archivosadjuntosasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+					$objToReturn->objEvolucionFolioAsId = EvolucionFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'evolucionfolioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			// Check for NomenclaturaAsId Virtual Binding
@@ -1700,23 +1700,23 @@ class FolioGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
-            case 'ArchivosAdjuntosAsId':
+            case 'EvolucionFolioAsId':
                 /**
-                 * Gets the value for the private _objArchivosAdjuntosAsId (Read-Only)
-                 * if set due to an expansion on the archivos_adjuntos.id_folio reverse relationship
-                 * @return ArchivosAdjuntos
+                 * Gets the value for the private _objEvolucionFolioAsId (Read-Only)
+                 * if set due to an expansion on the evolucion_folio.id_folio reverse relationship
+                 * @return EvolucionFolio
                  */
-                return $this->objArchivosAdjuntosAsId;
+                return $this->objEvolucionFolioAsId;
 
-            case 'ArchivosAdjuntosAsIdArray':
+            case 'EvolucionFolioAsIdArray':
                 /**
-                 * Gets the value for the private _objArchivosAdjuntosAsIdArray (Read-Only)
-                 * if set due to an ExpandAsArray on the archivos_adjuntos.id_folio reverse relationship
-                 * @return ArchivosAdjuntos[]
+                 * Gets the value for the private _objEvolucionFolioAsIdArray (Read-Only)
+                 * if set due to an ExpandAsArray on the evolucion_folio.id_folio reverse relationship
+                 * @return EvolucionFolio[]
                  */
-                if(is_null($this->objArchivosAdjuntosAsIdArray))
-                    $this->objArchivosAdjuntosAsIdArray = $this->GetArchivosAdjuntosAsIdArray();
-                return (array) $this->objArchivosAdjuntosAsIdArray;
+                if(is_null($this->objEvolucionFolioAsIdArray))
+                    $this->objEvolucionFolioAsIdArray = $this->GetEvolucionFolioAsIdArray();
+                return (array) $this->objEvolucionFolioAsIdArray;
 
             case 'NomenclaturaAsId':
                 /**
@@ -2272,41 +2272,41 @@ class FolioGen extends QBaseClass {
         
 			
 		
-		// Related Objects' Methods for ArchivosAdjuntosAsId
+		// Related Objects' Methods for EvolucionFolioAsId
 		//-------------------------------------------------------------------
 
-                //Public Model methods for add and remove Items from the _ArchivosAdjuntosAsIdArray
+                //Public Model methods for add and remove Items from the _EvolucionFolioAsIdArray
                 /**
-                * Add a Item to the _ArchivosAdjuntosAsIdArray
-                * @param ArchivosAdjuntos $objItem
-                * @return ArchivosAdjuntos[]
+                * Add a Item to the _EvolucionFolioAsIdArray
+                * @param EvolucionFolio $objItem
+                * @return EvolucionFolio[]
                 */
-                public function AddArchivosAdjuntosAsId(ArchivosAdjuntos $objItem){
+                public function AddEvolucionFolioAsId(EvolucionFolio $objItem){
                    //add to the collection and add me as a parent
                     $objItem->IdFolioObject = $this;
-                    $this->objArchivosAdjuntosAsIdArray = $this->ArchivosAdjuntosAsIdArray;
-                    $this->objArchivosAdjuntosAsIdArray[] = $objItem;
+                    $this->objEvolucionFolioAsIdArray = $this->EvolucionFolioAsIdArray;
+                    $this->objEvolucionFolioAsIdArray[] = $objItem;
 
                     if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
                     
                     //automatic persistence to de DB DEPRECATED
-                    //$this->AssociateArchivosAdjuntosAsId($objItem);
+                    //$this->AssociateEvolucionFolioAsId($objItem);
 
-                    return $this->ArchivosAdjuntosAsIdArray;
+                    return $this->EvolucionFolioAsIdArray;
                 }
 
                 /**
-                * Remove a Item to the _ArchivosAdjuntosAsIdArray
-                * @param ArchivosAdjuntos $objItem
-                * @return ArchivosAdjuntos[]
+                * Remove a Item to the _EvolucionFolioAsIdArray
+                * @param EvolucionFolio $objItem
+                * @return EvolucionFolio[]
                 */
-                public function RemoveArchivosAdjuntosAsId(ArchivosAdjuntos $objItem){
+                public function RemoveEvolucionFolioAsId(EvolucionFolio $objItem){
                     //remove Item from the collection
-                    $arrAux = $this->objArchivosAdjuntosAsIdArray;
-                    $this->objArchivosAdjuntosAsIdArray = array();
+                    $arrAux = $this->objEvolucionFolioAsIdArray;
+                    $this->objEvolucionFolioAsIdArray = array();
                     foreach ($arrAux as $obj) {
                         if ($obj !== $objItem) 
-                            array_push($this->objArchivosAdjuntosAsIdArray,$obj);
+                            array_push($this->objEvolucionFolioAsIdArray,$obj);
                     }
                     //automatic persistence to de DB if necesary
                     if(!is_null($objItem->Id))
@@ -2314,23 +2314,23 @@ class FolioGen extends QBaseClass {
                             $objItem->IdFolioObject = null;
                             $objItem->Save();
                         }catch(Exception $e){
-                            $this->DeleteAssociatedArchivosAdjuntosAsId($objItem);
+                            $this->DeleteAssociatedEvolucionFolioAsId($objItem);
                         }
 
-                    return $this->objArchivosAdjuntosAsIdArray;
+                    return $this->objEvolucionFolioAsIdArray;
                 }
 
 		/**
-		 * Gets all associated ArchivosAdjuntosesAsId as an array of ArchivosAdjuntos objects
+		 * Gets all associated EvolucionFoliosAsId as an array of EvolucionFolio objects
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return ArchivosAdjuntos[]
+		 * @return EvolucionFolio[]
 		*/ 
-		public function GetArchivosAdjuntosAsIdArray($objOptionalClauses = null) {
+		public function GetEvolucionFolioAsIdArray($objOptionalClauses = null) {
 			if ((is_null($this->intId)))
 				return array();
 
 			try {
-				return ArchivosAdjuntos::LoadArrayByIdFolio($this->intId, $objOptionalClauses);
+				return EvolucionFolio::LoadArrayByIdFolio($this->intId, $objOptionalClauses);
 			} catch (QCallerException $objExc) {
 				$objExc->IncrementOffset();
 				throw $objExc;
@@ -2338,26 +2338,26 @@ class FolioGen extends QBaseClass {
 		}
 
 		/**
-		 * Counts all associated ArchivosAdjuntosesAsId
+		 * Counts all associated EvolucionFoliosAsId
 		 * @return int
 		*/ 
-		public function CountArchivosAdjuntosesAsId() {
+		public function CountEvolucionFoliosAsId() {
 			if ((is_null($this->intId)))
 				return 0;
 
-			return ArchivosAdjuntos::CountByIdFolio($this->intId);
+			return EvolucionFolio::CountByIdFolio($this->intId);
 		}
 
 		/**
-		 * Associates a ArchivosAdjuntosAsId
-		 * @param ArchivosAdjuntos $objArchivosAdjuntos
+		 * Associates a EvolucionFolioAsId
+		 * @param EvolucionFolio $objEvolucionFolio
 		 * @return void
 		*/ 
-		public function AssociateArchivosAdjuntosAsId(ArchivosAdjuntos $objArchivosAdjuntos) {
+		public function AssociateEvolucionFolioAsId(EvolucionFolio $objEvolucionFolio) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateArchivosAdjuntosAsId on this unsaved Folio.');
-			if ((is_null($objArchivosAdjuntos->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call AssociateArchivosAdjuntosAsId on this Folio with an unsaved ArchivosAdjuntos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEvolucionFolioAsId on this unsaved Folio.');
+			if ((is_null($objEvolucionFolio->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateEvolucionFolioAsId on this Folio with an unsaved EvolucionFolio.');
 
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
@@ -2365,24 +2365,24 @@ class FolioGen extends QBaseClass {
 			// Perform the SQL Query
 			$objDatabase->NonQuery('
 				UPDATE
-					"archivos_adjuntos"
+					"evolucion_folio"
 				SET
 					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
 				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objArchivosAdjuntos->Id) . '
+					"id" = ' . $objDatabase->SqlVariable($objEvolucionFolio->Id) . '
 			');
 		}
 
 		/**
-		 * Unassociates a ArchivosAdjuntosAsId
-		 * @param ArchivosAdjuntos $objArchivosAdjuntos
+		 * Unassociates a EvolucionFolioAsId
+		 * @param EvolucionFolio $objEvolucionFolio
 		 * @return void
 		*/ 
-		public function UnassociateArchivosAdjuntosAsId(ArchivosAdjuntos $objArchivosAdjuntos) {
+		public function UnassociateEvolucionFolioAsId(EvolucionFolio $objEvolucionFolio) {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateArchivosAdjuntosAsId on this unsaved Folio.');
-			if ((is_null($objArchivosAdjuntos->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateArchivosAdjuntosAsId on this Folio with an unsaved ArchivosAdjuntos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEvolucionFolioAsId on this unsaved Folio.');
+			if ((is_null($objEvolucionFolio->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEvolucionFolioAsId on this Folio with an unsaved EvolucionFolio.');
 
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
@@ -2390,47 +2390,47 @@ class FolioGen extends QBaseClass {
 			// Perform the SQL Query
 			$objDatabase->NonQuery('
 				UPDATE
-					"archivos_adjuntos"
-				SET
-					"id_folio" = null
-				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objArchivosAdjuntos->Id) . ' AND
-					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
-			');
-		}
-
-		/**
-		 * Unassociates all ArchivosAdjuntosesAsId
-		 * @return void
-		*/ 
-		public function UnassociateAllArchivosAdjuntosesAsId() {
-			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateArchivosAdjuntosAsId on this unsaved Folio.');
-
-			// Get the Database Object for this Class
-			$objDatabase = Folio::GetDatabase();
-
-			// Perform the SQL Query
-			$objDatabase->NonQuery('
-				UPDATE
-					"archivos_adjuntos"
+					"evolucion_folio"
 				SET
 					"id_folio" = null
 				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objEvolucionFolio->Id) . ' AND
 					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes an associated ArchivosAdjuntosAsId
-		 * @param ArchivosAdjuntos $objArchivosAdjuntos
+		 * Unassociates all EvolucionFoliosAsId
 		 * @return void
 		*/ 
-		public function DeleteAssociatedArchivosAdjuntosAsId(ArchivosAdjuntos $objArchivosAdjuntos) {
+		public function UnassociateAllEvolucionFoliosAsId() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateArchivosAdjuntosAsId on this unsaved Folio.');
-			if ((is_null($objArchivosAdjuntos->Id)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateArchivosAdjuntosAsId on this Folio with an unsaved ArchivosAdjuntos.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEvolucionFolioAsId on this unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"evolucion_folio"
+				SET
+					"id_folio" = null
+				WHERE
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated EvolucionFolioAsId
+		 * @param EvolucionFolio $objEvolucionFolio
+		 * @return void
+		*/ 
+		public function DeleteAssociatedEvolucionFolioAsId(EvolucionFolio $objEvolucionFolio) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEvolucionFolioAsId on this unsaved Folio.');
+			if ((is_null($objEvolucionFolio->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEvolucionFolioAsId on this Folio with an unsaved EvolucionFolio.');
 
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
@@ -2438,20 +2438,20 @@ class FolioGen extends QBaseClass {
 			// Perform the SQL Query
 			$objDatabase->NonQuery('
 				DELETE FROM
-					"archivos_adjuntos"
+					"evolucion_folio"
 				WHERE
-					"id" = ' . $objDatabase->SqlVariable($objArchivosAdjuntos->Id) . ' AND
+					"id" = ' . $objDatabase->SqlVariable($objEvolucionFolio->Id) . ' AND
 					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');
 		}
 
 		/**
-		 * Deletes all associated ArchivosAdjuntosesAsId
+		 * Deletes all associated EvolucionFoliosAsId
 		 * @return void
 		*/ 
-		public function DeleteAllArchivosAdjuntosesAsId() {
+		public function DeleteAllEvolucionFoliosAsId() {
 			if ((is_null($this->intId)))
-				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateArchivosAdjuntosAsId on this unsaved Folio.');
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateEvolucionFolioAsId on this unsaved Folio.');
 
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
@@ -2459,7 +2459,7 @@ class FolioGen extends QBaseClass {
 			// Perform the SQL Query
 			$objDatabase->NonQuery('
 				DELETE FROM
-					"archivos_adjuntos"
+					"evolucion_folio"
 				WHERE
 					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');

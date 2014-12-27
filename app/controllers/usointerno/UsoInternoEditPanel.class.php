@@ -18,6 +18,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
     // mensaje para inscripcion definitiba
     public $blnMensajeInscripcion;
+    
+    // Para identificar si el folio cambio de estado
+    public $intEstadoOriginal;
 
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
@@ -201,6 +204,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         }
 
         $this->blnMensajeInscripcion=Permission::inscripcionDefinitiva($this->objFolio);
+        // para comprarar si el valor cambio o no
+        $this->intEstadoOriginal=$this->lstEstadoFolioObject->Value;
+        
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -296,7 +302,11 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     }
 
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        parent::btnSave_Click($strFormId, $strControlId, $strParameter);        
+        if(intval($this->intEstadoOriginal) !== intval($this->lstEstadoFolioObject->Value)){         
+            Folio::CambioEstadoFolio($this->objFolio);
+            $this->intEstadoOriginal=$this->lstEstadoFolioObject->Value;//por si no se recarga la pagina
+        }    
         $this->SetEstadoCondition();
     }
     public function SetEstadoCondition(){
@@ -331,5 +341,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             }
  
     }
+
+
+    
 }
 ?>

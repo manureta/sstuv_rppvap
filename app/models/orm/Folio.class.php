@@ -38,5 +38,37 @@ class Folio extends FolioGen {
             parent::Delete();
 		}
 
+		public static function CambioEstadoFolio(Folio $objFolio){
+	        $id=$objFolio->Id;
+	        $strQuery = "select * from folio f 
+	                    join condiciones_socio_urbanisticas c on f.id=c.id_folio
+	                    join equipamiento e on f.id=e.id_folio
+	                    join transporte t on f.id=t.id_folio
+	                    join infraestructura i on f.id=i.id_folio
+	                    join situacion_ambiental sa on f.id=sa.id_folio
+	                    join regularizacion r on f.id=r.id_folio
+	                    join encuadre_legal el on f.id=el.id_folio
+	                    join antecedentes a on f.id=a.id_folio
+	                    join organismos_de_intervencion oi on f.id=oi.id_folio
+	                    join uso_interno ui on f.id=ui.id_folio where f.id=$id";
+	        $objDatabase = QApplication::$Database[1];
+
+	        // Perform the Query
+	        $objDbResult = $objDatabase->Query($strQuery);
+	        $row = $objDbResult->FetchArray();
+	        foreach ($row as $key => $value) {
+	            if (is_int($key)) {
+	                unset($row[$key]);
+	            }
+	        }
+
+	        $reg_evolucion= new EvolucionFolio();
+	        $reg_evolucion->Fecha=QDateTime::Now();
+	        $reg_evolucion->IdFolio=$objFolio->Id;
+	        $reg_evolucion->Contenido=json_encode($row);
+	        $reg_evolucion->Estado=$row['estado_folio'];
+	        $reg_evolucion->save();
+    }
+
 }
 ?>

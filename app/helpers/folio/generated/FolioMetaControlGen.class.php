@@ -795,46 +795,47 @@
 
 
 
-    public $lstArchivosAdjuntosAsId;
+    public $lstEvolucionFolioAsId;
     /**
-     * Gets all associated ArchivosAdjuntosesAsId as an array of ArchivosAdjuntos objects
+     * Gets all associated EvolucionFoliosAsId as an array of EvolucionFolio objects
      * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-     * @return ArchivosAdjuntos[]
+     * @return EvolucionFolio[]
     */ 
-    public function lstArchivosAdjuntosAsId_Create($strControlId = null) {
+    public function lstEvolucionFolioAsId_Create($strControlId = null) {
 
         $strConfigArray = array();
-        $strConfigArray['strEntity'] = 'ArchivosAdjuntos';
-        $strConfigArray['strRefreshMethod'] = 'ArchivosAdjuntosAsIdArray';
+        $strConfigArray['strEntity'] = 'EvolucionFolio';
+        $strConfigArray['strRefreshMethod'] = 'EvolucionFolioAsIdArray';
         $strConfigArray['strParentPrimaryKeyProperty'] = 'IdFolio';
         $strConfigArray['strPrimaryKeyProperty'] = 'Id';
-        $strConfigArray['strAddMethod'] = 'AddArchivosAdjuntosAsId';
-        $strConfigArray['strRemoveMethod'] = 'RemoveArchivosAdjuntosAsId';
+        $strConfigArray['strAddMethod'] = 'AddEvolucionFolioAsId';
+        $strConfigArray['strRemoveMethod'] = 'RemoveEvolucionFolioAsId';
         $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['Tipo'] = QApplication::Translate('Tipo');
-        $strConfigArray['Columns']['PathFile'] = QApplication::Translate('PathFile');
+        $strConfigArray['Columns']['Contenido'] = QApplication::Translate('Contenido');
+        $strConfigArray['Columns']['Fecha'] = QApplication::Translate('Fecha');
+        $strConfigArray['Columns']['Estado'] = QApplication::Translate('Estado');
 
-        $this->lstArchivosAdjuntosAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
-        $this->lstArchivosAdjuntosAsId->Name = ArchivosAdjuntos::Noun();
-        $this->lstArchivosAdjuntosAsId->SetNewMethod($this, "lstArchivosAdjuntosAsId_New");
-        $this->lstArchivosAdjuntosAsId->SetEditMethod($this, "lstArchivosAdjuntosAsId_Edit");
-        return $this->lstArchivosAdjuntosAsId;
+        $this->lstEvolucionFolioAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
+        $this->lstEvolucionFolioAsId->Name = EvolucionFolio::Noun();
+        $this->lstEvolucionFolioAsId->SetNewMethod($this, "lstEvolucionFolioAsId_New");
+        $this->lstEvolucionFolioAsId->SetEditMethod($this, "lstEvolucionFolioAsId_Edit");
+        return $this->lstEvolucionFolioAsId;
     }
 
-    public function lstArchivosAdjuntosAsId_New() {
-        ArchivosAdjuntosModalPanel::$strControlsArray['lstIdFolioObject'] = false;
-        $strControlsArray = array_keys(ArchivosAdjuntosModalPanel::$strControlsArray, true);
-        $this->lstArchivosAdjuntosAsId->ModalPanel = new ArchivosAdjuntosModalPanel($this->objParentObject->Modal,$strControlsArray);
-        $this->lstArchivosAdjuntosAsId->ModalPanel->objCallerControl = $this->lstArchivosAdjuntosAsId;
+    public function lstEvolucionFolioAsId_New() {
+        EvolucionFolioModalPanel::$strControlsArray['lstIdFolioObject'] = false;
+        $strControlsArray = array_keys(EvolucionFolioModalPanel::$strControlsArray, true);
+        $this->lstEvolucionFolioAsId->ModalPanel = new EvolucionFolioModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstEvolucionFolioAsId->ModalPanel->objCallerControl = $this->lstEvolucionFolioAsId;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 
-    public function lstArchivosAdjuntosAsId_Edit($intKey) {
-        ArchivosAdjuntosModalPanel::$strControlsArray['lstIdFolioObject'] = false;
-        $strControlsArray = array_keys(ArchivosAdjuntosModalPanel::$strControlsArray, true);
-        $obj = $this->objFolio->ArchivosAdjuntosAsIdArray[$intKey];
-        $this->lstArchivosAdjuntosAsId->ModalPanel = new ArchivosAdjuntosModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
-        $this->lstArchivosAdjuntosAsId->ModalPanel->objCallerControl = $this->lstArchivosAdjuntosAsId;
+    public function lstEvolucionFolioAsId_Edit($intKey) {
+        EvolucionFolioModalPanel::$strControlsArray['lstIdFolioObject'] = false;
+        $strControlsArray = array_keys(EvolucionFolioModalPanel::$strControlsArray, true);
+        $obj = $this->objFolio->EvolucionFolioAsIdArray[$intKey];
+        $this->lstEvolucionFolioAsId->ModalPanel = new EvolucionFolioModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstEvolucionFolioAsId->ModalPanel->objCallerControl = $this->lstEvolucionFolioAsId;
         $this->objParentObject->Modal->ShowDialogBox();
     }
 

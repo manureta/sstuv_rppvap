@@ -47,10 +47,10 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('creador', 'Creador', 'integer', $this);
 				case 'CreadorObject':
 					return new QQNodeUsuario('creador', 'CreadorObject', 'integer', $this);
-				case 'ArchivosAdjuntosAsId':
-					return new QQReverseReferenceNodeArchivosAdjuntos($this, 'archivosadjuntosasid', 'reverse_reference', 'id_folio');
 				case 'CondicionesSocioUrbanisticasAsId':
 					return new QQReverseReferenceNodeCondicionesSocioUrbanisticas($this, 'condicionessociourbanisticasasid', 'reverse_reference', 'id_folio', 'CondicionesSocioUrbanisticasAsId');
+				case 'EvolucionFolioAsId':
+					return new QQReverseReferenceNodeEvolucionFolio($this, 'evolucionfolioasid', 'reverse_reference', 'id_folio');
 				case 'NomenclaturaAsId':
 					return new QQReverseReferenceNodeNomenclatura($this, 'nomenclaturaasid', 'reverse_reference', 'id_folio');
 				case 'RegularizacionAsId':

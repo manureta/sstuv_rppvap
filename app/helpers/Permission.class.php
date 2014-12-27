@@ -55,7 +55,7 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo = array();
 //        $arrUsuarioInfo['IdPersonal'] = Authentication::$objUsuarioLocal->IdPersonal;
 //        $objPersonal = Authentication::$objUsuarioLocal->IdPersonalObject;
-        $arrUsuarioInfo["Nombre"] = sprintf('%s %s', $objPersonal->Nombre, $objPersonal->Apellido);
+        $arrUsuarioInfo["Nombre"] = sprintf('%s', $objPersonal->NombreCompleto);
         $arrUsuarioInfo['Perfiles'][] = Authentication::$objUsuarioLocal->IdPerfilObject->Nombre;
         if (Authentication::$objUsuarioLocal->SuperAdmin) {
             $arrUsuarioInfo["Perfiles"] = array("Administrador");
@@ -63,7 +63,7 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo["Email"] = Authentication::$objUsuarioLocal->Email;
         //$arrUsuarioInfo["IdPersonal"] = Authentication::$objUsuarioLocal->IdPersonal;
         $arrUsuarioInfo["IdUsuario"] = Authentication::$objUsuarioLocal->IdUsuario;
-        $arrUsuarioInfo["Cuit"] = $objPersonal->Cuit;
+        //$arrUsuarioInfo["Cuit"] = $objPersonal->Cuit;
         $arrUsuarioInfo["NombreUsuario"] = Authentication::$objUsuarioLocal->Nombre;
         self::$arrUsuarioInfo = $arrUsuarioInfo;
         Session::setObjUsuario(Authentication::$objUsuarioLocal);

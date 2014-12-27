@@ -22,27 +22,6 @@
     QApplication::$ClassFile['qqreversereferencenodeantecedentes'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeAntecedentes.class.php';
 
 
-    // ClassPaths for the ArchivosAdjuntos class
-    QApplication::$ClassFile['archivosadjuntosindexpanelgen'] = __CONTROLLER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosIndexPanelGen.class.php';
-    QApplication::$ClassFile['archivosadjuntoseditpanelgen'] = __CONTROLLER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosEditPanelGen.class.php';
-
-    QApplication::$ClassFile['archivosadjuntosindexpanel'] = __CONTROLLER_DIR__.'/archivosadjuntos/ArchivosAdjuntosIndexPanel.class.php';
-    QApplication::$ClassFile['archivosadjuntoseditpanel'] = __CONTROLLER_DIR__.'/archivosadjuntos/ArchivosAdjuntosEditPanel.class.php';
-
-    QApplication::$ClassFile['archivosadjuntosmodalpanel'] = __CONTROLLER_DIR__.'/archivosadjuntos/ArchivosAdjuntosModalPanel.class.php';
-    QApplication::$ClassFile['archivosadjuntosmodalpanelgen'] = __CONTROLLER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosModalPanelGen.class.php';
-
-    QApplication::$ClassFile['archivosadjuntosdatagridgen'] = __HELPER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosDataGridGen.class.php';
-    QApplication::$ClassFile['archivosadjuntosmetacontrolgen'] = __HELPER_DIR__.'/archivosadjuntos/generated/ArchivosAdjuntosMetaControlGen.class.php';
-    QApplication::$ClassFile['archivosadjuntosdatagrid'] = __HELPER_DIR__.'/archivosadjuntos/ArchivosAdjuntosDataGrid.class.php';
-    QApplication::$ClassFile['archivosadjuntosmetacontrol'] = __HELPER_DIR__.'/archivosadjuntos/ArchivosAdjuntosMetaControl.class.php';
-
-    QApplication::$ClassFile['archivosadjuntosgen'] = __MODEL_DIR__.'/orm/generated/ArchivosAdjuntosGen.class.php';
-    QApplication::$ClassFile['archivosadjuntos'] = __MODEL_DIR__.'/orm/ArchivosAdjuntos.class.php';
-    QApplication::$ClassFile['qqnodearchivosadjuntos'] = __MODEL_DIR__.'/orm/generated/QQNodeArchivosAdjuntos.class.php';
-    QApplication::$ClassFile['qqreversereferencenodearchivosadjuntos'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeArchivosAdjuntos.class.php';
-
-
     // ClassPaths for the CondicionesSocioUrbanisticas class
     QApplication::$ClassFile['condicionessociourbanisticasindexpanelgen'] = __CONTROLLER_DIR__.'/condicionessociourbanisticas/generated/CondicionesSocioUrbanisticasIndexPanelGen.class.php';
     QApplication::$ClassFile['condicionessociourbanisticaseditpanelgen'] = __CONTROLLER_DIR__.'/condicionessociourbanisticas/generated/CondicionesSocioUrbanisticasEditPanelGen.class.php';
@@ -146,6 +125,27 @@
     QApplication::$ClassFile['estadoproceso'] = __MODEL_DIR__.'/orm/EstadoProceso.class.php';
     QApplication::$ClassFile['qqnodeestadoproceso'] = __MODEL_DIR__.'/orm/generated/QQNodeEstadoProceso.class.php';
     QApplication::$ClassFile['qqreversereferencenodeestadoproceso'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeEstadoProceso.class.php';
+
+
+    // ClassPaths for the EvolucionFolio class
+    QApplication::$ClassFile['evolucionfolioindexpanelgen'] = __CONTROLLER_DIR__.'/evolucionfolio/generated/EvolucionFolioIndexPanelGen.class.php';
+    QApplication::$ClassFile['evolucionfolioeditpanelgen'] = __CONTROLLER_DIR__.'/evolucionfolio/generated/EvolucionFolioEditPanelGen.class.php';
+
+    QApplication::$ClassFile['evolucionfolioindexpanel'] = __CONTROLLER_DIR__.'/evolucionfolio/EvolucionFolioIndexPanel.class.php';
+    QApplication::$ClassFile['evolucionfolioeditpanel'] = __CONTROLLER_DIR__.'/evolucionfolio/EvolucionFolioEditPanel.class.php';
+
+    QApplication::$ClassFile['evolucionfoliomodalpanel'] = __CONTROLLER_DIR__.'/evolucionfolio/EvolucionFolioModalPanel.class.php';
+    QApplication::$ClassFile['evolucionfoliomodalpanelgen'] = __CONTROLLER_DIR__.'/evolucionfolio/generated/EvolucionFolioModalPanelGen.class.php';
+
+    QApplication::$ClassFile['evolucionfoliodatagridgen'] = __HELPER_DIR__.'/evolucionfolio/generated/EvolucionFolioDataGridGen.class.php';
+    QApplication::$ClassFile['evolucionfoliometacontrolgen'] = __HELPER_DIR__.'/evolucionfolio/generated/EvolucionFolioMetaControlGen.class.php';
+    QApplication::$ClassFile['evolucionfoliodatagrid'] = __HELPER_DIR__.'/evolucionfolio/EvolucionFolioDataGrid.class.php';
+    QApplication::$ClassFile['evolucionfoliometacontrol'] = __HELPER_DIR__.'/evolucionfolio/EvolucionFolioMetaControl.class.php';
+
+    QApplication::$ClassFile['evolucionfoliogen'] = __MODEL_DIR__.'/orm/generated/EvolucionFolioGen.class.php';
+    QApplication::$ClassFile['evolucionfolio'] = __MODEL_DIR__.'/orm/EvolucionFolio.class.php';
+    QApplication::$ClassFile['qqnodeevolucionfolio'] = __MODEL_DIR__.'/orm/generated/QQNodeEvolucionFolio.class.php';
+    QApplication::$ClassFile['qqreversereferencenodeevolucionfolio'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeEvolucionFolio.class.php';
 
 
     // ClassPaths for the Folio class

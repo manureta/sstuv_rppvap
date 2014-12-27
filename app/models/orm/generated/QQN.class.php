@@ -7,12 +7,6 @@
 			return new QQNodeAntecedentes('antecedentes', null, null);
 		}
 		/**
-		 * @return QQNodeArchivosAdjuntos
-		 */
-		static public function ArchivosAdjuntos() {
-			return new QQNodeArchivosAdjuntos('archivos_adjuntos', null, null);
-		}
-		/**
 		 * @return QQNodeCondicionesSocioUrbanisticas
 		 */
 		static public function CondicionesSocioUrbanisticas() {
@@ -41,6 +35,12 @@
 		 */
 		static public function EstadoProceso() {
 			return new QQNodeEstadoProceso('estado_proceso', null, null);
+		}
+		/**
+		 * @return QQNodeEvolucionFolio
+		 */
+		static public function EvolucionFolio() {
+			return new QQNodeEvolucionFolio('evolucion_folio', null, null);
 		}
 		/**
 		 * @return QQNodeFolio
