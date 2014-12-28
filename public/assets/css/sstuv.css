@@ -86,3 +86,7 @@ span.nombre-usuario {
 body{
   font-family: arial !IMPORTANT;
 }
+
+.boton_evolucion{
+  margin-left: 20px;
+}

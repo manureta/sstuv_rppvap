@@ -22,6 +22,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     // Para identificar si el folio cambio de estado
     public $intEstadoOriginal;
 
+    // boton para descargar evolucion
+    public $btnEvolucion;
+
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
         'txtInformeUrbanisticoFecha' => true,
@@ -206,7 +209,13 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->blnMensajeInscripcion=Permission::inscripcionDefinitiva($this->objFolio);
         // para comprarar si el valor cambio o no
         $this->intEstadoOriginal=$this->lstEstadoFolioObject->Value;
-        
+        // boton de evolucion
+        $this->btnEvolucion = new QButton($this);
+        $this->btnEvolucion->Text = 'Evolucion';
+        $this->btnEvolucion->Icon = 'download';
+        $this->btnEvolucion->AddCssClass('btn-info boton_evolucion');
+        $this->btnEvolucion->AddAction(new QClickEvent(),  new QAjaxControlAction($this,"btnEvolucion_Click"));
+
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -340,6 +349,25 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     
             }
  
+    }
+
+    public function btnEvolucion_Click($strFormId, $strControlId, $strParameter){
+        $arrEvolucionFolio=EvolucionFolio::QueryArray(QQ::Equal(QQN::EvolucionFolio()->IdFolio,$this->objFolio->Id));
+        
+        $fn = 'evoluvion_'.$this->objFolio->CodFolio.'.csv';
+        $f = fopen ($fn, 'w+');
+        foreach ($arrEvolucionFolio as $folio) {            
+            $json_obj = json_decode($folio->Contenido,true);
+            fputcsv($f,$json_obj);
+        }
+        
+        header("Content-type: text/csv");
+        header("Content-Disposition: attachment; filename=".$fn);
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        readfile($fn);
+
+        //fclose($fp);
     }
 
 
