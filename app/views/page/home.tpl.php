@@ -1,6 +1,9 @@
-<h2>Bienvenido <?= Session::GetNombreUsuarioLogueado() ?>!</h2>
-<p>Para comenzar la carga haga <a href="<?php echo __VIRTUAL_DIRECTORY__.'/folio/'; ?>">clic aquí</a> o haga un clic en el botón “Folios”.</p>
-<p>Puede consultar la Guía de Carga presionando el recuadro <a href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/docs/Instructivo.pdf"> “INSTRUCTIVO DE CARGA”.</a></p>
-<p>Muchas gracias por su colaboración</p>
 
+<p>Bienvenido al Registro Público Provincial de Villas y Asentamientos Precarios!</p>
+
+<p>Este Registro constituye una herramienta única y centralizada de relevamiento, captación y administración de datos para la implementación del régimen de integración socio-urbana de villas y asentamiento precarios en el marco de la ley 14449.</p>
+
+<p>Para comenzar la carga de la información catastral, dominial, social y urbanística de un barrio haga clic aquí o en el botón “Folios”. Le sugerimos consulte el instructivo de carga y ante cualquier duda o dificultad no deje de escribirnos a registrovillasyasentamientos@gmail.com</p>
+
+<p>Muchas gracias por su colaboración.</p>
 
