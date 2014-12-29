@@ -356,6 +356,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         
         $fn = 'evoluvion_'.$this->objFolio->CodFolio.'.csv';
         $f = fopen ($fn, 'w+');
+        $keys=array_keys(json_decode($arrEvolucionFolio[0]->Contenido,true));
+        fputcsv($f,$keys);
         foreach ($arrEvolucionFolio as $folio) {            
             $json_obj = json_decode($folio->Contenido,true);
             fputcsv($f,$json_obj);
