@@ -81,6 +81,9 @@ class FolioEditPanel extends FolioEditPanelGen {
                 
                 $this->setearValorMatricula($partido_usuario);
                 
+            }else{
+                //Cargo todos los partidos
+                    
             }
             // Judicializado
             $this->lstJudicializado=new QListBox($this);
@@ -93,6 +96,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             
             //Fecha 
             $this->calFecha->DateTime=QDateTime::Now();
+            
 
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");

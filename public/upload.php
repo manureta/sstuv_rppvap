@@ -7,7 +7,8 @@ class Upload extends FrontControllerBase {
 public $intIdFolio;
 public $strTipo;
 
-public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
+//public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
+  public function __construct() {
     try{
         
         $this->intIdFolio=$_GET['idfolio'];
