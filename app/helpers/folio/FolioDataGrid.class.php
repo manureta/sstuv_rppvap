@@ -121,22 +121,28 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }                 
     public function btnConfirmar_Click($strFormId, $strControlId, $strParameter){
-        $objUsoInterno = Folio::Load($strParameter)->UsoInterno;
+        $objFolio=Folio::Load($strParameter);
+        $objUsoInterno = $objFolio->UsoInterno;
         $objUsoInterno->EstadoFolio = EstadoFolio::CONFIRMACION;
         $objUsoInterno->Save();
         $this->MarkAsModified();
+        Folio::CambioEstadoFolio($objFolio);
     }
     public function btnCancelar_Click($strFormId, $strControlId, $strParameter){
-        $objUsoInterno = Folio::Load($strParameter)->UsoInterno;
+        $objFolio=Folio::Load($strParameter);
+        $objUsoInterno = $objFolio->UsoInterno;
         $objUsoInterno->EstadoFolio = EstadoFolio::CARGA;
         $objUsoInterno->Save();
         $this->MarkAsModified();
+        Folio::CambioEstadoFolio($objFolio);
     }
      public function btnEnviar_Click($strFormId, $strControlId, $strParameter){
-        $objUsoInterno = Folio::Load($strParameter)->UsoInterno;
+        $objFolio=Folio::Load($strParameter);
+        $objUsoInterno = $objFolio->UsoInterno;
         $objUsoInterno->EstadoFolio = EstadoFolio::ENVIADO_ESPERA;
         $objUsoInterno->Save();
         $this->MarkAsModified();
+        Folio::CambioEstadoFolio($objFolio);
     }
    
    public function PrintClick($strFormId, $strControlId, $strParameter) {
