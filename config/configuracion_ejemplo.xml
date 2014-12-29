@@ -4,11 +4,11 @@
     <Path/>
     <DbConn>
         <Adapter>PostgreSqlPdo</Adapter>
-        <Server>190.188.234.6</Server>
+        <Server>localhost</Server>
         <Port>5432</Port>
         <Database>sstuv_app</Database>
-        <Username>sstuv_app</Username>
-        <Password>variosmonosconnavajas</Password>
+        <Username>postgres</Username>
+        <Password>password</Password>
         <Profiling>false</Profiling>
         <Inicializada>1</Inicializada>
     </DbConn>
