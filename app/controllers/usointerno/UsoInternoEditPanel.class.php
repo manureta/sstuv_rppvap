@@ -354,7 +354,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
     public function btnEvolucion_Click($strFormId, $strControlId, $strParameter){
         $arrEvolucionFolio=EvolucionFolio::QueryArray(QQ::Equal(QQN::EvolucionFolio()->IdFolio,$this->objFolio->Id));
         
-        $fn = 'evoluvion_'.$this->objFolio->CodFolio.'.csv';
+        $fn = tempnam(sys_get_temp_dir(), $this->objFolio->CodFolio);
+        
+        if(isset($_SESSION[$fn]))unset($_SESSION[$fn]);
+    
         $f = fopen ($fn, 'w+');
         $keys=array_keys(json_decode($arrEvolucionFolio[0]->Contenido,true));
         fputcsv($f,$keys);
@@ -362,14 +365,13 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $json_obj = json_decode($folio->Contenido,true);
             fputcsv($f,$json_obj);
         }
-        
-        header("Content-type: text/csv");
-        header("Content-Disposition: attachment; filename=".$fn);
-        header("Pragma: no-cache");
-        header("Expires: 0");
-        readfile($fn);
+  
+        rewind($f);
+        fclose($f);
 
-        //fclose($fp);
+        $url=__VIRTUAL_DIRECTORY__."/evolucion.php?file=".$fn."&cod=".$this->objFolio->CodFolio;
+        QApplication::ExecuteJavascript("window.open('$url','_blank')");
+ 
     }
 
 
