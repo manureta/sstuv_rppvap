@@ -57,8 +57,10 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
         $this->pnlEncuadre->lstIdFolioObject->Visible = false;
-        
-        
+        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk"));
+        $this->TieneExpropiacion_chk();
+
+
         $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
         $this->pnlAntecedentes = new AntecedentesEditPanel($this,AntecedentesEditPanel::$strControlsArray,$this->objAntecedentes->Id);
         $this->pnlAntecedentes->lstIdFolioObject->Value = $this->objFolio->Id;
@@ -192,6 +194,18 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Regularizacion::GenderMale() ? 'e' : 'a'), Regularizacion::Noun())));
             $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
             $this->btnDelete->Visible = $this->mctRegularizacion->EditMode;
+        }
+    }
+
+    public function TieneExpropiacion_chk(){
+        if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
+            $this->pnlEncuadre->txtExpropiacion->Enabled=true;
+            $this->pnlEncuadre->txtExpropiacion->Visible=true;
+
+        }else{
+            $this->pnlEncuadre->txtExpropiacion->Text='';
+            $this->pnlEncuadre->txtExpropiacion->Visible=false;
+            $this->pnlEncuadre->txtExpropiacion->Enabled=false;
         }
     }
 
