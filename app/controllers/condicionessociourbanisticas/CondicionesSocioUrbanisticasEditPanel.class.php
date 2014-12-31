@@ -92,6 +92,9 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->pnlAmbiental->lstIdFolioObject->Enabled = false;
         $this->pnlAmbiental->lstIdFolioObject->Visible = false;                
         
+        $this->pnlAmbiental->chkSinProblemas->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al seleccionar 'Sin problemas' se anularán las otras variables de 'Situación Ambiental'.\\r\\n ¿Está seguro?")));
+        $this->pnlAmbiental->chkSinProblemas->AddAction(new QClickEvent(),new QAjaxControlAction($this,"SinProblemas_chk"));
+
         $this->blnAutoRenderChildrenWithName = false;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
  
@@ -202,6 +205,38 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
             $objExc->IncrementOffset();
             throw $objExc;
         }
+    }
+
+    public function SinProblemas_chk($strFormId, $strControlId, $strParameter){
+        if($this->pnlAmbiental->chkSinProblemas->Checked){            
+           $this->pnlAmbiental->chkReservaElectroducto->Checked=false;
+           $this->pnlAmbiental->chkInundable->Checked=false;
+           $this->pnlAmbiental->chkSobreTerraplenFerroviario->Checked=false;
+           $this->pnlAmbiental->chkSobreCaminoSirga->Checked=false;
+           $this->pnlAmbiental->chkExpuestoContaminacionIndustrial->Checked=false;
+           $this->pnlAmbiental->chkSobreSueloDegradado->Checked=false;
+           $this->pnlAmbiental->txtOtro->Text='';
+
+           // las deshabilito
+           $this->pnlAmbiental->chkReservaElectroducto->Enabled=false;
+           $this->pnlAmbiental->chkInundable->Enabled=false;
+           $this->pnlAmbiental->chkSobreTerraplenFerroviario->Enabled=false;
+           $this->pnlAmbiental->chkSobreCaminoSirga->Enabled=false;
+           $this->pnlAmbiental->chkExpuestoContaminacionIndustrial->Enabled=false;
+           $this->pnlAmbiental->chkSobreSueloDegradado->Enabled=false;
+           $this->pnlAmbiental->txtOtro->Enabled=false;
+        }else{
+
+           $this->pnlAmbiental->chkReservaElectroducto->Enabled=true;
+           $this->pnlAmbiental->chkInundable->Enabled=true;
+           $this->pnlAmbiental->chkSobreTerraplenFerroviario->Enabled=true;
+           $this->pnlAmbiental->chkSobreCaminoSirga->Enabled=true;
+           $this->pnlAmbiental->chkExpuestoContaminacionIndustrial->Enabled=true;
+           $this->pnlAmbiental->chkSobreSueloDegradado->Enabled=true;
+           $this->pnlAmbiental->txtOtro->Enabled=true;
+
+        }
+                        
     }
 
 
