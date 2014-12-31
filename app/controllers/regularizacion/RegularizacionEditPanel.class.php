@@ -44,8 +44,8 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Enabled = false;
         
         // Si proceso iniciado esta tildado hay que mostrar encuadre legal
-        $valor=($this->chkProcesoIniciado->Checked==1)? true: false;
-        if($valor)QApplication::ExecuteJavascript("mostrarEncuadre(true)");
+        $checked=($this->chkProcesoIniciado->Checked==1)? true: false;
+        if($checked)QApplication::ExecuteJavascript("mostrarEncuadre(true)");
         $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al cambiar el estado de 'Proceso Iniciado'\\r\\n se inicializan o borran todas las opciones de 'Encuadre Legal' de acuerdo al caso.\\r\\n ¿Está seguro?")));        
         $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QAjaxControlAction($this,"ProcesoIniciado_chk"));
         
@@ -111,7 +111,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->objControlsArray['lstIdFolioObject'] = $this->mctRegularizacion->lstIdFolioObject_Create();
         if (in_array('chkProcesoIniciado',$strControlsArray)) 
             $this->objControlsArray['chkProcesoIniciado'] = $this->mctRegularizacion->chkProcesoIniciado_Create();
-            $this->objControlsArray['chkProcesoIniciado']->Name="Proceso iniciado"; 
+            $this->objControlsArray['chkProcesoIniciado']->Name="¿Se inició un proceso de regularización?"; 
         if (in_array('lstAntecedentesAsIdFolio',$strControlsArray)) 
             $this->objControlsArray['lstAntecedentesAsIdFolio'] = $this->mctRegularizacion->lstAntecedentesAsIdFolio_Create();
         if (in_array('lstEncuadreLegalAsIdFolio',$strControlsArray))
@@ -160,20 +160,23 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
     }
 
     public function ProcesoIniciado_chk($strFormId, $strControlId, $strParameter){
-        
         if(!$this->chkProcesoIniciado->Checked){            
-            $this->pnlEncuadre->chkDecreto222595->Checked=false;
-            $this->pnlEncuadre->chkLey24374->Checked=false;
-            $this->pnlEncuadre->chkDecreto81588->Checked=false;
-            $this->pnlEncuadre->chkLey23073->Checked=false;
-            $this->pnlEncuadre->chkDecreto468696->Checked=false;
-            $this->pnlEncuadre->chkLey14449->Checked=false;
-            $this->pnlEncuadre->txtExpropiacion->Text='';
-            $this->pnlEncuadre->txtOtros->Text='';
-            $this->pnlEncuadre->chkTieneExpropiacion->Checked=false;                           
+          $this->ResetearEncuadreLegal();           
         }
         QApplication::ExecuteJavascript("mostrarEncuadre()");
                 
+    }
+
+    public function ResetearEncuadreLegal(){
+        $this->pnlEncuadre->chkDecreto222595->Checked=false;
+        $this->pnlEncuadre->chkLey24374->Checked=false;
+        $this->pnlEncuadre->chkDecreto81588->Checked=false;
+        $this->pnlEncuadre->chkLey23073->Checked=false;
+        $this->pnlEncuadre->chkDecreto468696->Checked=false;
+        $this->pnlEncuadre->chkLey14449->Checked=false;
+        $this->pnlEncuadre->txtExpropiacion->Text='';
+        $this->pnlEncuadre->txtOtros->Text='';
+        $this->pnlEncuadre->chkTieneExpropiacion->Checked=false;
     }
 
 
