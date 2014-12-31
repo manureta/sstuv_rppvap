@@ -14,6 +14,7 @@
 		<?php $_CONTROL->txtCodPartido->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombreCompleto->RenderWithName(); ?>
 		<?php $_CONTROL->txtReparticion->RenderWithName(); ?>
+		<?php $_CONTROL->txtTelefono->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

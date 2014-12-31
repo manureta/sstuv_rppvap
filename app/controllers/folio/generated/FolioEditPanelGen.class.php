@@ -17,7 +17,6 @@ class FolioEditPanelGen extends EditPanelBase {
         'txtNombreBarrioAlternativo1' => true,
         'txtNombreBarrioAlternativo2' => true,
         'txtAnioOrigen' => true,
-        'txtSuperficie' => true,
         'txtCantidadFamilias' => true,
         'lstTipoBarrioObject' => true,
         'txtObservacionCasoDudoso' => true,
@@ -26,6 +25,7 @@ class FolioEditPanelGen extends EditPanelBase {
         'txtJudicializado' => true,
         'txtLocalidad' => true,
         'lstCreadorObject' => true,
+        'txtSuperficie' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -76,8 +76,6 @@ class FolioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombreBarrioAlternativo2'] = $this->mctFolio->txtNombreBarrioAlternativo2_Create();
         if (in_array('txtAnioOrigen',$strControlsArray)) 
             $this->objControlsArray['txtAnioOrigen'] = $this->mctFolio->txtAnioOrigen_Create();
-        if (in_array('txtSuperficie',$strControlsArray)) 
-            $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
         if (in_array('txtCantidadFamilias',$strControlsArray)) 
             $this->objControlsArray['txtCantidadFamilias'] = $this->mctFolio->txtCantidadFamilias_Create();
         if (in_array('lstTipoBarrioObject',$strControlsArray)) 
@@ -94,6 +92,8 @@ class FolioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtLocalidad'] = $this->mctFolio->txtLocalidad_Create();
         if (in_array('lstCreadorObject',$strControlsArray)) 
             $this->objControlsArray['lstCreadorObject'] = $this->mctFolio->lstCreadorObject_Create();
+        if (in_array('txtSuperficie',$strControlsArray)) 
+            $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

@@ -43,7 +43,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $this->btnAnalizar->AddAction(new QClickEvent(), new QAjaxControlAction($this,'analizar_nomenclatura'));
 
         $this->btnMapa = new QLinkButton($this);
-        $this->btnMapa->Text = 'Mostrar Mapa';               
+        $this->btnMapa->Text = 'Mostrar Perímetro Barrio';               
         $this->btnMapa->AddAction(new QClickEvent(), new QAjaxControlAction($this,'mostrar_mapa'));
 
 

@@ -25,8 +25,6 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('nombre_barrio_alternativo_2', 'NombreBarrioAlternativo2', 'string', $this);
 				case 'AnioOrigen':
 					return new QQNode('anio_origen', 'AnioOrigen', 'string', $this);
-				case 'Superficie':
-					return new QQNode('superficie', 'Superficie', 'string', $this);
 				case 'CantidadFamilias':
 					return new QQNode('cantidad_familias', 'CantidadFamilias', 'integer', $this);
 				case 'TipoBarrio':
@@ -47,6 +45,8 @@ class QQReverseReferenceNodeFolio extends QQReverseReferenceNode {
 					return new QQNode('creador', 'Creador', 'integer', $this);
 				case 'CreadorObject':
 					return new QQNodeUsuario('creador', 'CreadorObject', 'integer', $this);
+				case 'Superficie':
+					return new QQNode('superficie', 'Superficie', 'double', $this);
 				case 'CondicionesSocioUrbanisticasAsId':
 					return new QQReverseReferenceNodeCondicionesSocioUrbanisticas($this, 'condicionessociourbanisticasasid', 'reverse_reference', 'id_folio', 'CondicionesSocioUrbanisticasAsId');
 				case 'EvolucionFolioAsId':

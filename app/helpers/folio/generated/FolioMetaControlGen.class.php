@@ -34,8 +34,6 @@
      * property-read QLabel $NombreBarrioAlternativo2Label
      * property QTextBox $AnioOrigenControl
      * property-read QLabel $AnioOrigenLabel
-     * property QTextBox $SuperficieControl
-     * property-read QLabel $SuperficieLabel
      * property QIntegerTextBox $CantidadFamiliasControl
      * property-read QLabel $CantidadFamiliasLabel
      * property QListBox $TipoBarrioControl
@@ -52,6 +50,8 @@
      * property-read QLabel $LocalidadLabel
      * property QListBox $CreadorControl
      * property-read QLabel $CreadorLabel
+     * property QFloatTextBox $SuperficieControl
+     * property-read QLabel $SuperficieLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -83,7 +83,6 @@
         protected $txtNombreBarrioAlternativo1;
         protected $txtNombreBarrioAlternativo2;
         protected $txtAnioOrigen;
-        protected $txtSuperficie;
         protected $txtCantidadFamilias;
         protected $lstTipoBarrioObject;
         protected $txtObservacionCasoDudoso;
@@ -92,6 +91,7 @@
         protected $txtJudicializado;
         protected $txtLocalidad;
         protected $lstCreadorObject;
+        protected $txtSuperficie;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -102,7 +102,6 @@
         protected $lblNombreBarrioAlternativo1;
         protected $lblNombreBarrioAlternativo2;
         protected $lblAnioOrigen;
-        protected $lblSuperficie;
         protected $lblCantidadFamilias;
         protected $lblTipoBarrio;
         protected $lblObservacionCasoDudoso;
@@ -111,6 +110,7 @@
         protected $lblJudicializado;
         protected $lblLocalidad;
         protected $lblCreador;
+        protected $lblSuperficie;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -357,6 +357,7 @@
             $this->txtNombreBarrioOficial = new QTextBox($this->objParentObject, $strControlId);
             $this->txtNombreBarrioOficial->Name = QApplication::Translate('NombreBarrioOficial');
             $this->txtNombreBarrioOficial->Text = $this->objFolio->NombreBarrioOficial;
+            $this->txtNombreBarrioOficial->Required = true;
             $this->txtNombreBarrioOficial->MaxLength = Folio::NombreBarrioOficialMaxLength;
             
             return $this->txtNombreBarrioOficial;
@@ -371,6 +372,7 @@
             $this->lblNombreBarrioOficial = new QLabel($this->objParentObject, $strControlId);
             $this->lblNombreBarrioOficial->Name = QApplication::Translate('NombreBarrioOficial');
             $this->lblNombreBarrioOficial->Text = $this->objFolio->NombreBarrioOficial;
+            $this->lblNombreBarrioOficial->Required = true;
             return $this->lblNombreBarrioOficial;
         }
 
@@ -452,32 +454,6 @@
             $this->lblAnioOrigen->Text = $this->objFolio->AnioOrigen;
             $this->lblAnioOrigen->Required = true;
             return $this->lblAnioOrigen;
-        }
-
-        /**
-         * Create and setup QTextBox txtSuperficie
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtSuperficie_Create($strControlId = null) {
-            $this->txtSuperficie = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtSuperficie->Name = QApplication::Translate('Superficie');
-            $this->txtSuperficie->Text = $this->objFolio->Superficie;
-            $this->txtSuperficie->MaxLength = Folio::SuperficieMaxLength;
-            
-            return $this->txtSuperficie;
-        }
-
-        /**
-         * Create and setup QLabel lblSuperficie
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblSuperficie_Create($strControlId = null) {
-            $this->lblSuperficie = new QLabel($this->objParentObject, $strControlId);
-            $this->lblSuperficie->Name = QApplication::Translate('Superficie');
-            $this->lblSuperficie->Text = $this->objFolio->Superficie;
-            return $this->lblSuperficie;
         }
 
         /**
@@ -692,6 +668,32 @@
             $this->lblCreador->Name = QApplication::Translate('CreadorObject');
             $this->lblCreador->Text = ($this->objFolio->CreadorObject) ? $this->objFolio->CreadorObject->__toString() : null;
             return $this->lblCreador;
+        }
+
+        /**
+         * Create and setup QFloatTextBox txtSuperficie
+         * @param string $strControlId optional ControlId to use
+         * @return QFloatTextBox
+         */
+        public function txtSuperficie_Create($strControlId = null) {
+            $this->txtSuperficie = new QFloatTextBox($this->objParentObject, $strControlId);
+            $this->txtSuperficie->Name = QApplication::Translate('Superficie');
+            $this->txtSuperficie->Text = $this->objFolio->Superficie;
+            return $this->txtSuperficie;
+        }
+
+        /**
+         * Create and setup QLabel lblSuperficie
+         * @param string $strControlId optional ControlId to use
+         * @param string $strFormat optional sprintf format to use
+         * @return QLabel
+         */
+        public function lblSuperficie_Create($strControlId = null, $strFormat = null) {
+            $this->lblSuperficie = new QLabel($this->objParentObject, $strControlId);
+            $this->lblSuperficie->Name = QApplication::Translate('Superficie');
+            $this->lblSuperficie->Text = $this->objFolio->Superficie;
+            $this->lblSuperficie->Format = $strFormat;
+            return $this->lblSuperficie;
         }
 
         /**
@@ -936,9 +938,6 @@
             if ($this->txtAnioOrigen) $this->txtAnioOrigen->Text = $this->objFolio->AnioOrigen;
             if ($this->lblAnioOrigen) $this->lblAnioOrigen->Text = $this->objFolio->AnioOrigen;
 
-            if ($this->txtSuperficie) $this->txtSuperficie->Text = $this->objFolio->Superficie;
-            if ($this->lblSuperficie) $this->lblSuperficie->Text = $this->objFolio->Superficie;
-
             if ($this->txtCantidadFamilias) $this->txtCantidadFamilias->Text = $this->objFolio->CantidadFamilias;
             if ($this->lblCantidadFamilias) $this->lblCantidadFamilias->Text = $this->objFolio->CantidadFamilias;
 
@@ -972,6 +971,9 @@
                 }                
             }
             if ($this->lblCreador) $this->lblCreador->Text = ($this->objFolio->CreadorObject) ? $this->objFolio->CreadorObject->__toString() : null;
+
+            if ($this->txtSuperficie) $this->txtSuperficie->Text = $this->objFolio->Superficie;
+            if ($this->lblSuperficie) $this->lblSuperficie->Text = $this->objFolio->Superficie;
 
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
@@ -1048,7 +1050,6 @@
                 if ($this->txtNombreBarrioAlternativo1) $this->objFolio->NombreBarrioAlternativo1 = $this->txtNombreBarrioAlternativo1->Text;
                 if ($this->txtNombreBarrioAlternativo2) $this->objFolio->NombreBarrioAlternativo2 = $this->txtNombreBarrioAlternativo2->Text;
                 if ($this->txtAnioOrigen) $this->objFolio->AnioOrigen = $this->txtAnioOrigen->Text;
-                if ($this->txtSuperficie) $this->objFolio->Superficie = $this->txtSuperficie->Text;
                 if ($this->txtCantidadFamilias) $this->objFolio->CantidadFamilias = $this->txtCantidadFamilias->Text;
                 if ($this->lstTipoBarrioObject) $this->objFolio->TipoBarrio = $this->lstTipoBarrioObject->SelectedValue;
                 if ($this->txtObservacionCasoDudoso) $this->objFolio->ObservacionCasoDudoso = $this->txtObservacionCasoDudoso->Text;
@@ -1057,6 +1058,7 @@
                 if ($this->txtJudicializado) $this->objFolio->Judicializado = $this->txtJudicializado->Text;
                 if ($this->txtLocalidad) $this->objFolio->Localidad = $this->txtLocalidad->Text;
                 if ($this->lstCreadorObject) $this->objFolio->Creador = $this->lstCreadorObject->SelectedValue;
+                if ($this->txtSuperficie) $this->objFolio->Superficie = $this->txtSuperficie->Text;
 
 
         }
@@ -1170,12 +1172,6 @@
                 case 'AnioOrigenLabel':
                     if (!$this->lblAnioOrigen) return $this->lblAnioOrigen_Create();
                     return $this->lblAnioOrigen;
-                case 'SuperficieControl':
-                    if (!$this->txtSuperficie) return $this->txtSuperficie_Create();
-                    return $this->txtSuperficie;
-                case 'SuperficieLabel':
-                    if (!$this->lblSuperficie) return $this->lblSuperficie_Create();
-                    return $this->lblSuperficie;
                 case 'CantidadFamiliasControl':
                     if (!$this->txtCantidadFamilias) return $this->txtCantidadFamilias_Create();
                     return $this->txtCantidadFamilias;
@@ -1224,6 +1220,12 @@
                 case 'CreadorLabel':
                     if (!$this->lblCreador) return $this->lblCreador_Create();
                     return $this->lblCreador;
+                case 'SuperficieControl':
+                    if (!$this->txtSuperficie) return $this->txtSuperficie_Create();
+                    return $this->txtSuperficie;
+                case 'SuperficieLabel':
+                    if (!$this->lblSuperficie) return $this->lblSuperficie_Create();
+                    return $this->lblSuperficie;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1282,8 +1284,6 @@
                         return ($this->txtNombreBarrioAlternativo2 = QType::Cast($mixValue, 'QControl'));
                     case 'AnioOrigenControl':
                         return ($this->txtAnioOrigen = QType::Cast($mixValue, 'QControl'));
-                    case 'SuperficieControl':
-                        return ($this->txtSuperficie = QType::Cast($mixValue, 'QControl'));
                     case 'CantidadFamiliasControl':
                         return ($this->txtCantidadFamilias = QType::Cast($mixValue, 'QControl'));
                     case 'TipoBarrioControl':
@@ -1300,6 +1300,8 @@
                         return ($this->txtLocalidad = QType::Cast($mixValue, 'QControl'));
                     case 'CreadorControl':
                         return ($this->lstCreadorObject = QType::Cast($mixValue, 'QControl'));
+                    case 'SuperficieControl':
+                        return ($this->txtSuperficie = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

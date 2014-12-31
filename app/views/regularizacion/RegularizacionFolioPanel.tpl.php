@@ -33,7 +33,7 @@
         </ul>
     </div>
     
-    <div class="titulos"><i class="icon-chevron-right"> Regularización Dominial</i></div>  
+    <div class="titulos"><i class="icon-chevron-right"> </i>Regularización Dominial</div>  
     <div>
                 
             <div class="well bs-component">           				        
@@ -42,7 +42,7 @@
 
                 <div class="panel_encuadre_legal" style="display:none">
         		<br>
-        		<div class="titulos"><i class="icon-tag"> Encuadre Legal</i></div> 
+        		<div class="titulos"><i class="icon-tag"></i> Encuadre Legal</div> 
 		        <br>
 		        	<div class="well bs-component">
 		                                         
@@ -66,7 +66,7 @@
 
     
  
-    <div class="titulos"><i class="icon-chevron-right">Antecedentes de intervención en materia habitacional</i></div>    
+    <div class="titulos"><i class="icon-chevron-right"></i>Antecedentes de intervención en materia habitacional</div>    
     <div> 
                 <div class="well bs-component">     
                         
@@ -79,7 +79,7 @@
 
                         <div class="panel_organismos">
 					        <br>					        
-                            <div class="titulos"><i class="icon-tag"> Organismos de intervención</i></div>    
+                            <div class="titulos"><i class="icon-tag"></i> Organismos de intervención</div>    
 					        <br>
 					        <div class="well bs-component">                                                    
 					                <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>

@@ -13,7 +13,6 @@
 		<?php $_CONTROL->txtNombreBarrioAlternativo1->RenderWithName(); ?>
 		<?php $_CONTROL->txtNombreBarrioAlternativo2->RenderWithName(); ?>
 		<?php $_CONTROL->txtAnioOrigen->RenderWithName(); ?>
-		<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
 		<?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
 		<?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
 		<?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
@@ -22,6 +21,7 @@
 		<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
 		<?php $_CONTROL->txtLocalidad->RenderWithName(); ?>
 		<?php $_CONTROL->lstCreadorObject->RenderWithName(); ?>
+		<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
 		<?php $_CONTROL->lstCondicionesSocioUrbanisticasAsId->RenderWithName(); ?>
 
 		<?php $_CONTROL->lstRegularizacionAsId->RenderWithName(); ?>

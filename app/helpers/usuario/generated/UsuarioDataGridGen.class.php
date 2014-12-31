@@ -30,6 +30,7 @@ class UsuarioDataGridGen extends QFilteredDataGrid {
         'CodPartido' => true,
         'NombreCompleto' => true,
         'Reparticion' => true,
+        'Telefono' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -72,6 +73,7 @@ class UsuarioDataGridGen extends QFilteredDataGrid {
         if (UsuarioDataGrid::$strColumnsArray['CodPartido']) $this->MetaAddColumn('CodPartido')->Title = QApplication::Translate('CodPartido');
         if (UsuarioDataGrid::$strColumnsArray['NombreCompleto']) $this->MetaAddColumn('NombreCompleto')->Title = QApplication::Translate('NombreCompleto');
         if (UsuarioDataGrid::$strColumnsArray['Reparticion']) $this->MetaAddColumn('Reparticion')->Title = QApplication::Translate('Reparticion');
+        if (UsuarioDataGrid::$strColumnsArray['Telefono']) $this->MetaAddColumn('Telefono')->Title = QApplication::Translate('Telefono');
     }
 
 /**
@@ -229,6 +231,7 @@ class UsuarioDataGridGen extends QFilteredDataGrid {
 				case 'CodPartido': return QQN::Usuario()->CodPartido;
 				case 'NombreCompleto': return QQN::Usuario()->NombreCompleto;
 				case 'Reparticion': return QQN::Usuario()->Reparticion;
+				case 'Telefono': return QQN::Usuario()->Telefono;
 				default: throw new QCallerException('Simple Property not found in UsuarioDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

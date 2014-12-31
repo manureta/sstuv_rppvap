@@ -20,11 +20,10 @@
 	 * @property integer $IdPartido the value for intIdPartido (Not Null)
 	 * @property string $Matricula the value for strMatricula (Not Null)
 	 * @property QDateTime $Fecha the value for dttFecha (Not Null)
-	 * @property string $NombreBarrioOficial the value for strNombreBarrioOficial 
+	 * @property string $NombreBarrioOficial the value for strNombreBarrioOficial (Not Null)
 	 * @property string $NombreBarrioAlternativo1 the value for strNombreBarrioAlternativo1 
 	 * @property string $NombreBarrioAlternativo2 the value for strNombreBarrioAlternativo2 
 	 * @property string $AnioOrigen the value for strAnioOrigen (Not Null)
-	 * @property string $Superficie the value for strSuperficie 
 	 * @property integer $CantidadFamilias the value for intCantidadFamilias 
 	 * @property integer $TipoBarrio the value for intTipoBarrio (Not Null)
 	 * @property string $ObservacionCasoDudoso the value for strObservacionCasoDudoso 
@@ -33,6 +32,7 @@
 	 * @property string $Judicializado the value for strJudicializado 
 	 * @property string $Localidad the value for strLocalidad 
 	 * @property integer $Creador the value for intCreador 
+	 * @property double $Superficie the value for fltSuperficie 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
 	 * @property Usuario $CreadorObject the value for the Usuario object referenced by intCreador 
@@ -141,15 +141,6 @@ class FolioGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column folio.superficie
-     * @var string strSuperficie
-     */
-    protected $strSuperficie;
-    const SuperficieMaxLength = 45;
-    const SuperficieDefault = null;
-
-
-    /**
      * Protected member variable that maps to the database column folio.cantidad_familias
      * @var integer intCantidadFamilias
      */
@@ -213,6 +204,14 @@ class FolioGen extends QBaseClass {
      */
     protected $intCreador;
     const CreadorDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column folio.superficie
+     * @var double fltSuperficie
+     */
+    protected $fltSuperficie;
+    const SuperficieDefault = null;
 
 
     /**
@@ -679,7 +678,6 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'nombre_barrio_alternativo_1', $strAliasPrefix . 'nombre_barrio_alternativo_1');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_barrio_alternativo_2', $strAliasPrefix . 'nombre_barrio_alternativo_2');
 			$objBuilder->AddSelectItem($strTableName, 'anio_origen', $strAliasPrefix . 'anio_origen');
-			$objBuilder->AddSelectItem($strTableName, 'superficie', $strAliasPrefix . 'superficie');
 			$objBuilder->AddSelectItem($strTableName, 'cantidad_familias', $strAliasPrefix . 'cantidad_familias');
 			$objBuilder->AddSelectItem($strTableName, 'tipo_barrio', $strAliasPrefix . 'tipo_barrio');
 			$objBuilder->AddSelectItem($strTableName, 'observacion_caso_dudoso', $strAliasPrefix . 'observacion_caso_dudoso');
@@ -688,6 +686,7 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'judicializado', $strAliasPrefix . 'judicializado');
 			$objBuilder->AddSelectItem($strTableName, 'localidad', $strAliasPrefix . 'localidad');
 			$objBuilder->AddSelectItem($strTableName, 'creador', $strAliasPrefix . 'creador');
+			$objBuilder->AddSelectItem($strTableName, 'superficie', $strAliasPrefix . 'superficie');
 		}
 
 //instantiation_methods
@@ -790,8 +789,6 @@ class FolioGen extends QBaseClass {
 			$objToReturn->strNombreBarrioAlternativo2 = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'anio_origen', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'anio_origen'] : $strAliasPrefix . 'anio_origen';
 			$objToReturn->strAnioOrigen = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'superficie', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'superficie'] : $strAliasPrefix . 'superficie';
-			$objToReturn->strSuperficie = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'cantidad_familias', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'cantidad_familias'] : $strAliasPrefix . 'cantidad_familias';
 			$objToReturn->intCantidadFamilias = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$strAliasName = array_key_exists($strAliasPrefix . 'tipo_barrio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tipo_barrio'] : $strAliasPrefix . 'tipo_barrio';
@@ -808,6 +805,8 @@ class FolioGen extends QBaseClass {
 			$objToReturn->strLocalidad = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'creador', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'creador'] : $strAliasPrefix . 'creador';
 			$objToReturn->intCreador = $objDbRow->GetColumn($strAliasName, 'Integer');
+			$strAliasName = array_key_exists($strAliasPrefix . 'superficie', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'superficie'] : $strAliasPrefix . 'superficie';
+			$objToReturn->fltSuperficie = $objDbRow->GetColumn($strAliasName, 'Float');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -1194,7 +1193,6 @@ class FolioGen extends QBaseClass {
                             "nombre_barrio_alternativo_1",
                             "nombre_barrio_alternativo_2",
                             "anio_origen",
-                            "superficie",
                             "cantidad_familias",
                             "tipo_barrio",
                             "observacion_caso_dudoso",
@@ -1202,7 +1200,8 @@ class FolioGen extends QBaseClass {
                             "geom",
                             "judicializado",
                             "localidad",
-                            "creador"
+                            "creador",
+                            "superficie"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
@@ -1212,7 +1211,6 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo1) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo2) . ',
                             ' . $objDatabase->SqlVariable($this->strAnioOrigen) . ',
-                            ' . $objDatabase->SqlVariable($this->strSuperficie) . ',
                             ' . $objDatabase->SqlVariable($this->intCantidadFamilias) . ',
                             ' . $objDatabase->SqlVariable($this->intTipoBarrio) . ',
                             ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
@@ -1220,7 +1218,8 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strGeom) . ',
                             ' . $objDatabase->SqlVariable($this->strJudicializado) . ',
                             ' . $objDatabase->SqlVariable($this->strLocalidad) . ',
-                            ' . $objDatabase->SqlVariable($this->intCreador) . '
+                            ' . $objDatabase->SqlVariable($this->intCreador) . ',
+                            ' . $objDatabase->SqlVariable($this->fltSuperficie) . '
                         )
                     ');
 
@@ -1244,7 +1243,6 @@ class FolioGen extends QBaseClass {
                             "nombre_barrio_alternativo_1" = ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo1) . ',
                             "nombre_barrio_alternativo_2" = ' . $objDatabase->SqlVariable($this->strNombreBarrioAlternativo2) . ',
                             "anio_origen" = ' . $objDatabase->SqlVariable($this->strAnioOrigen) . ',
-                            "superficie" = ' . $objDatabase->SqlVariable($this->strSuperficie) . ',
                             "cantidad_familias" = ' . $objDatabase->SqlVariable($this->intCantidadFamilias) . ',
                             "tipo_barrio" = ' . $objDatabase->SqlVariable($this->intTipoBarrio) . ',
                             "observacion_caso_dudoso" = ' . $objDatabase->SqlVariable($this->strObservacionCasoDudoso) . ',
@@ -1252,7 +1250,8 @@ class FolioGen extends QBaseClass {
                             "geom" = ' . $objDatabase->SqlVariable($this->strGeom) . ',
                             "judicializado" = ' . $objDatabase->SqlVariable($this->strJudicializado) . ',
                             "localidad" = ' . $objDatabase->SqlVariable($this->strLocalidad) . ',
-                            "creador" = ' . $objDatabase->SqlVariable($this->intCreador) . '
+                            "creador" = ' . $objDatabase->SqlVariable($this->intCreador) . ',
+                            "superficie" = ' . $objDatabase->SqlVariable($this->fltSuperficie) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -1432,7 +1431,6 @@ class FolioGen extends QBaseClass {
 			$this->strNombreBarrioAlternativo1 = $objReloaded->strNombreBarrioAlternativo1;
 			$this->strNombreBarrioAlternativo2 = $objReloaded->strNombreBarrioAlternativo2;
 			$this->strAnioOrigen = $objReloaded->strAnioOrigen;
-			$this->strSuperficie = $objReloaded->strSuperficie;
 			$this->intCantidadFamilias = $objReloaded->intCantidadFamilias;
 			$this->TipoBarrio = $objReloaded->TipoBarrio;
 			$this->strObservacionCasoDudoso = $objReloaded->strObservacionCasoDudoso;
@@ -1441,6 +1439,7 @@ class FolioGen extends QBaseClass {
 			$this->strJudicializado = $objReloaded->strJudicializado;
 			$this->strLocalidad = $objReloaded->strLocalidad;
 			$this->Creador = $objReloaded->Creador;
+			$this->fltSuperficie = $objReloaded->fltSuperficie;
 		}
 
 
@@ -1499,7 +1498,7 @@ class FolioGen extends QBaseClass {
 
             case 'NombreBarrioOficial':
                 /**
-                 * Gets the value for strNombreBarrioOficial 
+                 * Gets the value for strNombreBarrioOficial (Not Null)
                  * @return string
                  */
                 return $this->strNombreBarrioOficial;
@@ -1524,13 +1523,6 @@ class FolioGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strAnioOrigen;
-
-            case 'Superficie':
-                /**
-                 * Gets the value for strSuperficie 
-                 * @return string
-                 */
-                return $this->strSuperficie;
 
             case 'CantidadFamilias':
                 /**
@@ -1587,6 +1579,13 @@ class FolioGen extends QBaseClass {
                  * @return integer
                  */
                 return $this->intCreador;
+
+            case 'Superficie':
+                /**
+                 * Gets the value for fltSuperficie 
+                 * @return double
+                 */
+                return $this->fltSuperficie;
 
 
             ///////////////////
@@ -1826,7 +1825,7 @@ class FolioGen extends QBaseClass {
 
 				case 'NombreBarrioOficial':
 					/**
-					 * Sets the value for strNombreBarrioOficial 
+					 * Sets the value for strNombreBarrioOficial (Not Null)
 					 * @param string $mixValue
 					 * @return string
 					 */
@@ -1879,21 +1878,6 @@ class FolioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strAnioOrigen = QType::Cast($mixValue, QType::String));
                                                 return ($this->strAnioOrigen = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'Superficie':
-					/**
-					 * Sets the value for strSuperficie 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strSuperficie = QType::Cast($mixValue, QType::String));
-                                                return ($this->strSuperficie = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2016,6 +2000,21 @@ class FolioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->intCreador = QType::Cast($mixValue, QType::Integer));
                                                 return ($this->intCreador = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Superficie':
+					/**
+					 * Sets the value for fltSuperficie 
+					 * @param double $mixValue
+					 * @return double
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->fltSuperficie = QType::Cast($mixValue, QType::Float));
+                                                return ($this->fltSuperficie = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2679,7 +2678,6 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="NombreBarrioAlternativo1" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreBarrioAlternativo2" type="xsd:string"/>';
 			$strToReturn .= '<element name="AnioOrigen" type="xsd:string"/>';
-			$strToReturn .= '<element name="Superficie" type="xsd:string"/>';
 			$strToReturn .= '<element name="CantidadFamilias" type="xsd:int"/>';
 			$strToReturn .= '<element name="TipoBarrioObject" type="xsd1:TipoBarrio"/>';
 			$strToReturn .= '<element name="ObservacionCasoDudoso" type="xsd:string"/>';
@@ -2688,6 +2686,7 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="Judicializado" type="xsd:string"/>';
 			$strToReturn .= '<element name="Localidad" type="xsd:string"/>';
 			$strToReturn .= '<element name="CreadorObject" type="xsd1:Usuario"/>';
+			$strToReturn .= '<element name="Superficie" type="xsd:float"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2741,9 +2740,6 @@ class FolioGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'AnioOrigen')) {
 				$objToReturn->strAnioOrigen = $objSoapObject->AnioOrigen;
             }
-			if (property_exists($objSoapObject, 'Superficie')) {
-				$objToReturn->strSuperficie = $objSoapObject->Superficie;
-            }
 			if (property_exists($objSoapObject, 'CantidadFamilias')) {
 				$objToReturn->intCantidadFamilias = $objSoapObject->CantidadFamilias;
             }
@@ -2768,6 +2764,9 @@ class FolioGen extends QBaseClass {
 			if ((property_exists($objSoapObject, 'CreadorObject')) &&
 				($objSoapObject->CreadorObject))
 				$objToReturn->CreadorObject = Usuario::GetObjectFromSoapObject($objSoapObject->CreadorObject);
+			if (property_exists($objSoapObject, 'Superficie')) {
+				$objToReturn->fltSuperficie = $objSoapObject->Superficie;
+            }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
 			return $objToReturn;

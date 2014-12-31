@@ -25,6 +25,7 @@
 	 * @property string $CodPartido the value for strCodPartido 
 	 * @property string $NombreCompleto the value for strNombreCompleto (Not Null)
 	 * @property string $Reparticion the value for strReparticion (Not Null)
+	 * @property string $Telefono the value for strTelefono 
 	 * @property Perfil $IdPerfilObject the value for the Perfil object referenced by intIdPerfil 
 	 * @property-read Folio $FolioAsCreador the value for the private _objFolioAsCreador (Read-Only) if set due to an expansion on the folio.creador reverse relationship
 	 * @property-read Folio[] $FolioAsCreadorArray the value for the private _objFolioAsCreadorArray (Read-Only) if set due to an ExpandAsArray on the folio.creador reverse relationship
@@ -126,6 +127,14 @@ class UsuarioGen extends QBaseClass {
      */
     protected $strReparticion;
     const ReparticionDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column usuario.telefono
+     * @var string strTelefono
+     */
+    protected $strTelefono;
+    const TelefonoDefault = null;
 
 
     /**
@@ -503,6 +512,7 @@ class UsuarioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'cod_partido', $strAliasPrefix . 'cod_partido');
 			$objBuilder->AddSelectItem($strTableName, 'nombre_completo', $strAliasPrefix . 'nombre_completo');
 			$objBuilder->AddSelectItem($strTableName, 'reparticion', $strAliasPrefix . 'reparticion');
+			$objBuilder->AddSelectItem($strTableName, 'telefono', $strAliasPrefix . 'telefono');
 		}
 
 //instantiation_methods
@@ -590,6 +600,8 @@ class UsuarioGen extends QBaseClass {
 			$objToReturn->strNombreCompleto = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'reparticion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'reparticion'] : $strAliasPrefix . 'reparticion';
 			$objToReturn->strReparticion = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'telefono', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'telefono'] : $strAliasPrefix . 'telefono';
+			$objToReturn->strTelefono = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -805,7 +817,8 @@ class UsuarioGen extends QBaseClass {
                             "id_perfil",
                             "cod_partido",
                             "nombre_completo",
-                            "reparticion"
+                            "reparticion",
+                            "telefono"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strPassword) . ',
                             ' . $objDatabase->SqlVariable($this->strEmail) . ',
@@ -815,7 +828,8 @@ class UsuarioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->intIdPerfil) . ',
                             ' . $objDatabase->SqlVariable($this->strCodPartido) . ',
                             ' . $objDatabase->SqlVariable($this->strNombreCompleto) . ',
-                            ' . $objDatabase->SqlVariable($this->strReparticion) . '
+                            ' . $objDatabase->SqlVariable($this->strReparticion) . ',
+                            ' . $objDatabase->SqlVariable($this->strTelefono) . '
                         )
                     ');
 
@@ -839,7 +853,8 @@ class UsuarioGen extends QBaseClass {
                             "id_perfil" = ' . $objDatabase->SqlVariable($this->intIdPerfil) . ',
                             "cod_partido" = ' . $objDatabase->SqlVariable($this->strCodPartido) . ',
                             "nombre_completo" = ' . $objDatabase->SqlVariable($this->strNombreCompleto) . ',
-                            "reparticion" = ' . $objDatabase->SqlVariable($this->strReparticion) . '
+                            "reparticion" = ' . $objDatabase->SqlVariable($this->strReparticion) . ',
+                            "telefono" = ' . $objDatabase->SqlVariable($this->strTelefono) . '
                         WHERE
                             "id_usuario" = ' . $objDatabase->SqlVariable($this->intIdUsuario) . '
                     ');
@@ -932,6 +947,7 @@ class UsuarioGen extends QBaseClass {
 			$this->strCodPartido = $objReloaded->strCodPartido;
 			$this->strNombreCompleto = $objReloaded->strNombreCompleto;
 			$this->strReparticion = $objReloaded->strReparticion;
+			$this->strTelefono = $objReloaded->strTelefono;
 		}
 
 
@@ -1022,6 +1038,13 @@ class UsuarioGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strReparticion;
+
+            case 'Telefono':
+                /**
+                 * Gets the value for strTelefono 
+                 * @return string
+                 */
+                return $this->strTelefono;
 
 
             ///////////////////
@@ -1223,6 +1246,21 @@ class UsuarioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strReparticion = QType::Cast($mixValue, QType::String));
                                                 return ($this->strReparticion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Telefono':
+					/**
+					 * Sets the value for strTelefono 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strTelefono = QType::Cast($mixValue, QType::String));
+                                                return ($this->strTelefono = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1509,6 +1547,7 @@ class UsuarioGen extends QBaseClass {
 			$strToReturn .= '<element name="CodPartido" type="xsd:string"/>';
 			$strToReturn .= '<element name="NombreCompleto" type="xsd:string"/>';
 			$strToReturn .= '<element name="Reparticion" type="xsd:string"/>';
+			$strToReturn .= '<element name="Telefono" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1562,6 +1601,9 @@ class UsuarioGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Reparticion')) {
 				$objToReturn->strReparticion = $objSoapObject->Reparticion;
+            }
+			if (property_exists($objSoapObject, 'Telefono')) {
+				$objToReturn->strTelefono = $objSoapObject->Telefono;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

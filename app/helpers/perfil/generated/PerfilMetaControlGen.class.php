@@ -236,6 +236,7 @@
         $strConfigArray['Columns']['CodPartido'] = QApplication::Translate('CodPartido');
         $strConfigArray['Columns']['NombreCompleto'] = QApplication::Translate('NombreCompleto');
         $strConfigArray['Columns']['Reparticion'] = QApplication::Translate('Reparticion');
+        $strConfigArray['Columns']['Telefono'] = QApplication::Translate('Telefono');
 
         $this->lstUsuarioAsId = new QListPanel($this->objParentObject, $this->objPerfil, $strConfigArray, $strControlId);
         $this->lstUsuarioAsId->Name = Usuario::Noun();

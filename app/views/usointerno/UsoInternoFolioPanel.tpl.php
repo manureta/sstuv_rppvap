@@ -32,7 +32,7 @@
     </div>
 
     <div>
-        <div class="titulos"><i class="icon-chevron-right"> Administración</i></div>        
+        <div class="titulos"><i class="icon-chevron-right"> </i>Administración</div>        
         <div class="well bs-component">
             <div class="renderWithName">
                 <div class="left">
@@ -56,7 +56,7 @@
                 <?php } ?>
          </div>
 
-        <div class="titulos"><i class="icon-chevron-right"> Situación Registral</i></div>        
+        <div class="titulos"><i class="icon-chevron-right"></i> Situación Registral</div>        
         <div class="well bs-component">
 			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
             <?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"> Archivos Adjuntos</i></div>  
+            <div class="titulos"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>  
             <div>
                 <div class="well bs-component">
                     <div id="files_resolucion" class="files"></div>
@@ -97,7 +97,7 @@
 
          </div>    
         
-        <div class="titulos"><i class="icon-chevron-right"> Informe Urbanístico</i></div> 
+        <div class="titulos"><i class="icon-chevron-right"> </i>Informe Urbanístico</div> 
         <div class="well bs-component">
             
             <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"> Informes Adjuntos</i></div>  
+            <div class="titulos"><i class="icon-chevron-right"> </i>Informes Adjuntos</div>  
             <div>
                 <div class="well bs-component">
                     <div id="files_informe" class="files"></div>
@@ -133,7 +133,7 @@
             <?php } ?>
         </div>
 
-        <div class="titulos"><i class="icon-chevron-right"> Regularización</i></div>   
+        <div class="titulos"><i class="icon-chevron-right"></i> Regularización</div>   
         	<div class="well bs-component"> 
             <?php $_CONTROL->lstRegularizacionTienePlano->RenderWithName(); ?>
             <?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>            
@@ -167,7 +167,7 @@
             
        		</div>
 
-        <div class="titulos"><i class="icon-chevron-right"> Ley de acceso justo al hábitat</i></div> 
+        <div class="titulos"><i class="icon-chevron-right"></i> Ley de acceso justo al hábitat</div> 
         <div class="well bs-component">
             <?php $_CONTROL->lstLey14449->RenderWithName(); ?>
             
@@ -193,7 +193,7 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"> Archivos Adjuntos</i></div>  
+            <div class="titulos"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>  
             <div>
                 <div class="well bs-component">
                     <div id="files_habitat" class="files"></div>

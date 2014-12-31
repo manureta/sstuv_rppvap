@@ -18,6 +18,7 @@ class UsuarioEditPanelGen extends EditPanelBase {
         'txtCodPartido' => true,
         'txtNombreCompleto' => true,
         'txtReparticion' => true,
+        'txtTelefono' => true,
         'lstFolioAsCreador' => false,
     );
 
@@ -66,6 +67,8 @@ class UsuarioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNombreCompleto'] = $this->mctUsuario->txtNombreCompleto_Create();
         if (in_array('txtReparticion',$strControlsArray)) 
             $this->objControlsArray['txtReparticion'] = $this->mctUsuario->txtReparticion_Create();
+        if (in_array('txtTelefono',$strControlsArray)) 
+            $this->objControlsArray['txtTelefono'] = $this->mctUsuario->txtTelefono_Create();
         if (in_array('lstFolioAsCreador',$strControlsArray))
             $this->objControlsArray['lstFolioAsCreador'] = $this->mctUsuario->lstFolioAsCreador_Create();
 

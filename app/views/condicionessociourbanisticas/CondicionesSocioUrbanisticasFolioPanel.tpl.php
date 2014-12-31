@@ -34,7 +34,7 @@
     </div>
         
 
-    <div class="titulos"><i class="icon-chevron-right"> Espacios públicos y equipamientos comunitarios</i></div> 
+    <div class="titulos"><i class="icon-chevron-right"></i> Espacios públicos y equipamientos comunitarios</div> 
     <div>
                     <div class="well bs-component">                            
                         <?php $_CONTROL->pnlEquipamiento->lstIdFolioObject->RenderWithName(); ?>
@@ -50,7 +50,7 @@
     </div>
 
 
-    <div class="titulos"><i class="icon-chevron-right">Transporte</i></div> 
+    <div class="titulos"><i class="icon-chevron-right"></i>Transporte</div> 
     <div>
                     <div class="well bs-component">                            
 
@@ -61,7 +61,7 @@
                     </div>
     </div>
 
-    <div class="titulos"><i class="icon-chevron-right"> Infraestructura</i></div> 
+    <div class="titulos"><i class="icon-chevron-right"></i> Infraestructura</div> 
     <div>
                     <div class="well bs-component">                                                          
 
@@ -82,7 +82,7 @@
     </div>
 
     
-    <div class="titulos"><i class="icon-chevron-right"> Situacion Ambiental</i></div>
+    <div class="titulos"><i class="icon-chevron-right"></i> Situación Ambiental</div>
     <div>
                    <div class="well bs-component">                                                     
 
@@ -99,7 +99,7 @@
 
 				</div>                
     </div>
-    <div class="titulos"><i class="icon-chevron-right"> Organizaciones Sociales</i></div>  
+    <div class="titulos"><i class="icon-chevron-right"></i> Organizaciones Sociales</div>  
     <div>                
                 <div class="well bs-component">                                                                     
                         <?php //$_CONTROL->lstIdFolioObject->RenderWithName(); ?>                        

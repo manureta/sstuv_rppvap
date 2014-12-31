@@ -50,7 +50,7 @@
         </ul>
     </div>
 
-    <div class="titulos"><i class="icon-chevron-right"> Datos de carga</i></div>  
+    <div class="titulos"><i class="icon-chevron-right"> </i>Datos de carga</div>  
         <div>                
             <div class="well bs-component">
                 <?php $_CONTROL->calFecha->RenderWithName(); ?> 
@@ -58,7 +58,7 @@
              </div>
         </div>
     
-    <div class="titulos"><i class="icon-chevron-right"> Datos generales del barrio</i></div>  
+    <div class="titulos"><i class="icon-chevron-right"> </i>Datos generales del barrio</div>  
         <div>                
             <div class="well bs-component">            
             <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>			
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"> Archivos Adjuntos</i></div>  
+            <div class="titulos"><i class="icon-chevron-right"></i>Archivos Adjuntos</div>  
             <div>
                 <div class="well bs-component">
                     <div id="files" class="files"></div>

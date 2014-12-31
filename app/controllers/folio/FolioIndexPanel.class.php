@@ -48,13 +48,9 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         $this->strColumnsArray = is_null($strColumnsArray) ? FolioDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
 
-        //Creo el datagrid
-        //$this->dtgFolio_Create();
-
-        //Botón de creación
-        //$this->btnCreateNew_Create();
-
-        //$this->blnAutoRenderChildren = true;
+        if(!Permission::EsAdministrador() && !Permission::EsUsoInterno()){
+            $this->dtgFolios->AddCondition(QQ::NotEqual(QQN::Folio()->UsoInterno->EstadoFolio,EstadoFolio::NO_CORRESPONDE));    
+        }
         
         if (isset($this->pnlEditFolio)) {
             $this->Form->RemoveControl($this->pnlEditFolio->ControlId);

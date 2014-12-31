@@ -36,6 +36,8 @@
      * property-read QLabel $NombreCompletoLabel
      * property QTextBox $ReparticionControl
      * property-read QLabel $ReparticionLabel
+     * property QTextBox $TelefonoControl
+     * property-read QLabel $TelefonoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -62,6 +64,7 @@
         protected $txtCodPartido;
         protected $txtNombreCompleto;
         protected $txtReparticion;
+        protected $txtTelefono;
 
         // Controls that allow the viewing of Usuario's individual data fields
         protected $lblPassword;
@@ -73,6 +76,7 @@
         protected $lblCodPartido;
         protected $lblNombreCompleto;
         protected $lblReparticion;
+        protected $lblTelefono;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -429,6 +433,31 @@
             return $this->lblReparticion;
         }
 
+        /**
+         * Create and setup QTextBox txtTelefono
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtTelefono_Create($strControlId = null) {
+            $this->txtTelefono = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtTelefono->Name = QApplication::Translate('Telefono');
+            $this->txtTelefono->Text = $this->objUsuario->Telefono;
+            
+            return $this->txtTelefono;
+        }
+
+        /**
+         * Create and setup QLabel lblTelefono
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblTelefono_Create($strControlId = null) {
+            $this->lblTelefono = new QLabel($this->objParentObject, $strControlId);
+            $this->lblTelefono->Name = QApplication::Translate('Telefono');
+            $this->lblTelefono->Text = $this->objUsuario->Telefono;
+            return $this->lblTelefono;
+        }
+
 
 
     public $lstFolioAsCreador;
@@ -455,7 +484,6 @@
         $strConfigArray['Columns']['NombreBarrioAlternativo1'] = QApplication::Translate('NombreBarrioAlternativo1');
         $strConfigArray['Columns']['NombreBarrioAlternativo2'] = QApplication::Translate('NombreBarrioAlternativo2');
         $strConfigArray['Columns']['AnioOrigen'] = QApplication::Translate('AnioOrigen');
-        $strConfigArray['Columns']['Superficie'] = QApplication::Translate('Superficie');
         $strConfigArray['Columns']['CantidadFamilias'] = QApplication::Translate('CantidadFamilias');
         $strConfigArray['Columns']['TipoBarrioObject'] = QApplication::Translate('TipoBarrioObject');
         $strConfigArray['Columns']['ObservacionCasoDudoso'] = QApplication::Translate('ObservacionCasoDudoso');
@@ -463,6 +491,7 @@
         $strConfigArray['Columns']['Geom'] = QApplication::Translate('Geom');
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Localidad'] = QApplication::Translate('Localidad');
+        $strConfigArray['Columns']['Superficie'] = QApplication::Translate('Superficie');
 
         $this->lstFolioAsCreador = new QListPanel($this->objParentObject, $this->objUsuario, $strConfigArray, $strControlId);
         $this->lstFolioAsCreador->Name = Folio::Noun();
@@ -534,6 +563,9 @@
             if ($this->txtReparticion) $this->txtReparticion->Text = $this->objUsuario->Reparticion;
             if ($this->lblReparticion) $this->lblReparticion->Text = $this->objUsuario->Reparticion;
 
+            if ($this->txtTelefono) $this->txtTelefono->Text = $this->objUsuario->Telefono;
+            if ($this->lblTelefono) $this->lblTelefono->Text = $this->objUsuario->Telefono;
+
         }
 
 
@@ -561,6 +593,7 @@
                 if ($this->txtCodPartido) $this->objUsuario->CodPartido = $this->txtCodPartido->Text;
                 if ($this->txtNombreCompleto) $this->objUsuario->NombreCompleto = $this->txtNombreCompleto->Text;
                 if ($this->txtReparticion) $this->objUsuario->Reparticion = $this->txtReparticion->Text;
+                if ($this->txtTelefono) $this->objUsuario->Telefono = $this->txtTelefono->Text;
 
 
         }
@@ -677,6 +710,12 @@
                 case 'ReparticionLabel':
                     if (!$this->lblReparticion) return $this->lblReparticion_Create();
                     return $this->lblReparticion;
+                case 'TelefonoControl':
+                    if (!$this->txtTelefono) return $this->txtTelefono_Create();
+                    return $this->txtTelefono;
+                case 'TelefonoLabel':
+                    if (!$this->lblTelefono) return $this->lblTelefono_Create();
+                    return $this->lblTelefono;
                 default:
                     try {
                         return parent::__get($strName);
@@ -719,6 +758,8 @@
                         return ($this->txtNombreCompleto = QType::Cast($mixValue, 'QControl'));
                     case 'ReparticionControl':
                         return ($this->txtReparticion = QType::Cast($mixValue, 'QControl'));
+                    case 'TelefonoControl':
+                        return ($this->txtTelefono = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }
