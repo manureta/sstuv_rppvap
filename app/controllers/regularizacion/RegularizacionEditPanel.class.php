@@ -42,6 +42,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
+        $this->lstIdFolioObject->Visible = false;
         
         // Si proceso iniciado esta tildado hay que mostrar encuadre legal
         $checked=($this->chkProcesoIniciado->Checked==1)? true: false;
