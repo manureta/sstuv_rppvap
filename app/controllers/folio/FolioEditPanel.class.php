@@ -34,11 +34,11 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstCondicionesSocioUrbanisticasAsId' => false,
         'lstRegularizacionAsId' => false,
         'lstUsoInterno' => false,
-        'lstArchivosAdjuntosAsId' => false,
         'lstNomenclaturaAsId' => false,
         'lstCreadorObject' => true,
     );
     public $objPartido;
+    public $strCreador;
 
     
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -73,6 +73,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $partido_usuario=Session::GetObjUsuario()->CodPartido;
             $objPartido=Partido::QuerySingle(QQ::Equal(QQN::Partido()->CodPartido,$partido_usuario));
             $this->lstCreadorObject->Value=Session::GetObjUsuario()->IdUsuario;
+
             if($objPartido){
                 //seteo partido
                 $this->lstIdPartidoObject->Value = $objPartido->Id;
@@ -145,6 +146,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Escondo el creador del folio
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
+        $this->strCreador=Usuario::load($this->lstCreadorObject->Value)->NombreCompleto;
+        
         //Escondo fecha
         $this->calFecha->Enabled=false;
         //Escondo geometria
@@ -221,19 +224,15 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtObservacionCasoDudoso'] = $this->mctFolio->txtObservacionCasoDudoso_Create();
             $this->objControlsArray['txtObservacionCasoDudoso']->Name="Observación de otro caso";
         if (in_array('lstCreadorObject',$strControlsArray)) 
-            $this->objControlsArray['lstCreadorObject'] = $this->mctFolio->lstCreadorObject_Create();    
-        
+            $this->objControlsArray['lstCreadorObject'] = $this->mctFolio->lstCreadorObject_Create();            
         if (in_array('txtJudicializado',$strControlsArray)) 
-            $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();            
-            
+            $this->objControlsArray['txtJudicializado'] = $this->mctFolio->txtJudicializado_Create();                        
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
-            $this->objControlsArray['txtDireccion']->Name="Dirección";
-        
-
+            $this->objControlsArray['txtDireccion']->Name="Dirección";        
         if (in_array('txtGeom',$strControlsArray)) 
             $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();
-            $this->objControlsArray['txtGeom']->Name="Geometría";  
+            $this->objControlsArray['txtGeom']->Name="";  
             $this->objControlsArray['txtGeom']->AddCssClass("geometria_barrio");    
             
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
