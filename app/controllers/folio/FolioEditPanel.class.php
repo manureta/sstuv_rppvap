@@ -10,6 +10,12 @@ class FolioEditPanel extends FolioEditPanelGen {
     //id variables for meta_create
     protected $intId;
     public $boolPuedeAdjuntar;
+
+    public $objPartido;
+    public $strCreador;
+
+    //para anio de origen
+    public $lstAnioOrigen; 
     
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
@@ -37,8 +43,6 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstNomenclaturaAsId' => false,
         'lstCreadorObject' => true,
     );
-    public $objPartido;
-    public $strCreador;
 
     
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -63,6 +67,12 @@ class FolioEditPanel extends FolioEditPanelGen {
         // SI SE ELIJE PARTIDO QUE SE PONGA LA MATRICULA AUTOMATICAMENTE
         $this->lstIdPartidoObject->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstPartido_Change'));
 
+        // Anio origen
+        $this->lstAnioOrigen=new QListBox($this);
+        $this->lstAnioOrigen->Name="Año de origen";
+        $this->CrearListadoDeAnios($this->txtAnioOrigen->Text);            
+        //escondo el txt de anio de origen
+        $this->txtAnioOrigen->Visible=false;
 
         $this->folioExistente=($this->mctFolio->Folio->CodFolio)? true: false;
         $partido_usuario="";
@@ -98,7 +108,6 @@ class FolioEditPanel extends FolioEditPanelGen {
             //Fecha 
             $this->calFecha->DateTime=QDateTime::Now();
             
-
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
@@ -129,6 +138,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                     $this->lstJudicializado->AddItem(' Si ', 'si');
                     break;                
             }
+
         }
         $this->objControlsArray["Judicializado"] = $this->lstJudicializado;
 
@@ -153,6 +163,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         //Escondo geometria
         $this->txtGeom->Enabled=false;
         
+        //Evento de cambio de anio de origen
+        $this->lstAnioOrigen->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstAnioOrigen_Change'));        
 
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
@@ -288,6 +300,27 @@ class FolioEditPanel extends FolioEditPanelGen {
     public function lstJudicializado_Change($strFormId, $strControlId, $strParameter) {       
         $this->txtJudicializado->Text=$this->lstJudicializado->SelectedValue;        
 
+    }
+
+    public function lstAnioOrigen_Change($strFormId, $strControlId, $strParameter) {       
+        $this->txtAnioOrigen->Text=$this->lstAnioOrigen->SelectedValue;        
+
+    }
+
+    protected function CrearListadoDeAnios($strValor){
+        for ($i=1901; $i < 2014 ; $i++) {
+            if(in_array($i, array(1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010))){
+                $texto="Década de ".strval($i);
+                $valor="decada_".strval($i);
+                $seleccionado=($strValor==$valor)?true:false;
+                $this->lstAnioOrigen->AddItem($texto,$valor,$seleccionado);    
+            }
+            $texto=strval($i);
+            $valor=strval($i);
+            $seleccionado=($strValor==$valor)?true:false;
+            $this->lstAnioOrigen->AddItem($texto,$valor,$seleccionado);
+        }
+        $this->lstAnioOrigen->AddItem("Década del 90 o anterior ","90_o_anterior",($strValor=="90_o_anterior"));
     }
 
     public function calcular_nomenclaturas(){

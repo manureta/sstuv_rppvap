@@ -80,6 +80,7 @@
             <?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
 
 			<?php $_CONTROL->txtAnioOrigen->RenderWithName(); ?>
+            <?php $_CONTROL->lstAnioOrigen->RenderWithName(); ?>
 			<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
 			<?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
 			
