@@ -104,6 +104,8 @@ function mostrarMapa(cod_partido,editar){
 
   			$(".geometria_barrio").val(wkt);
   			$(".leaflet-draw-draw-polygon").fadeOut();
+  			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs()).toFixed(2);
+        	$(".superficie_barrio").val(area/10000);
 		});
 
 		map.on('draw:edited', function (e) {
@@ -112,6 +114,9 @@ function mostrarMapa(cod_partido,editar){
         		var geojson = layer.toGeoJSON();
     			var wkt = Terraformer.WKT.convert(geojson.geometry);	
     			$(".geometria_barrio").val(wkt);
+    			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs()).toFixed(2);
+        		$(".superficie_barrio").val(area/10000);
+        		$(".boton_guardar").removeAttr("disabled");
     		});
 						  			
 		});

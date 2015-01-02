@@ -165,7 +165,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         
         //Evento de cambio de anio de origen
         $this->lstAnioOrigen->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstAnioOrigen_Change'));        
-
+        $this->txtGeom->AddAction(new QChangeEvent,new QAjaxControlAction($this,'txtSuperficie_Change'));
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
@@ -177,7 +177,8 @@ class FolioEditPanel extends FolioEditPanelGen {
             }
         }
         
-        
+        // agrego clase para cuando se edita la geometria
+        $this->btnSave->AddCssClass("boton_guardar");
         
 
         if(!Permission::PuedeEditar1A4($this->mctFolio->Folio)){
@@ -208,9 +209,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtMatricula'] = $this->mctFolio->txtMatricula_Create();
         if (in_array('calFecha',$strControlsArray)) 
             $this->objControlsArray['calFecha'] = $this->mctFolio->calFecha_Create();
-            $this->objControlsArray['calFecha']->Name="Fecha de carga <span class='add-on'><i class='icon-calendar'></i></span>";
-        
-        
+            $this->objControlsArray['calFecha']->Name="Fecha de carga <span class='add-on'><i class='icon-calendar'></i></span>";                
         if (in_array('txtNombreBarrioOficial',$strControlsArray)) 
             $this->objControlsArray['txtNombreBarrioOficial'] = $this->mctFolio->txtNombreBarrioOficial_Create();    
             $this->objControlsArray['txtNombreBarrioOficial']->Name="Nombre oficial del barrio";        
@@ -226,6 +225,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtSuperficie',$strControlsArray)) 
             $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
             $this->objControlsArray['txtSuperficie']->Name="Superficie (hectáreas)";
+            $this->objControlsArray['txtSuperficie']->AddCssClass("superficie_barrio");
         if (in_array('txtCantidadFamilias',$strControlsArray)) 
             $this->objControlsArray['txtCantidadFamilias'] = $this->mctFolio->txtCantidadFamilias_Create();
             $this->objControlsArray['txtCantidadFamilias']->Name="Cantidad de familias";
@@ -257,6 +257,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
+
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
@@ -306,6 +307,11 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->txtAnioOrigen->Text=$this->lstAnioOrigen->SelectedValue;        
 
     }
+
+    public function txtSuperficie_Change($strFormId,$strControlId,$strParameter){
+        QApplication::DisplayAlert("cambio geom");
+    }
+
 
     protected function CrearListadoDeAnios($strValor){
         for ($i=1901; $i < 2014 ; $i++) {
