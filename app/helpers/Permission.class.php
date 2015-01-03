@@ -192,7 +192,7 @@ abstract class Permission extends PermissionBase {
             join nomenclatura n on f.id=n.id_folio
             join uso_interno u on f.id=u.id_folio
             where f.tipo_barrio > 0 and f.creador > 0 and f.id_partido > 0 and f.matricula <> ''
-            and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie <> ''
+            and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie > 0
             and f.cantidad_familias > 0  and f.tipo_barrio > 0
             and i.energia_electrica_medidor_individual < 4 and
               i.agua_corriente < 4 and
