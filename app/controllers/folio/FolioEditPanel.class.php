@@ -70,6 +70,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Anio origen
         $this->lstAnioOrigen=new QListBox($this);
         $this->lstAnioOrigen->Name="Año de origen";
+        $this->lstAnioOrigen->Required=true;
         $this->CrearListadoDeAnios($this->txtAnioOrigen->Text);            
         //escondo el txt de anio de origen
         $this->txtAnioOrigen->Visible=false;
@@ -165,7 +166,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         
         //Evento de cambio de anio de origen
         $this->lstAnioOrigen->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstAnioOrigen_Change'));        
-        $this->txtGeom->AddAction(new QChangeEvent,new QAjaxControlAction($this,'txtSuperficie_Change'));
+        
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
@@ -261,31 +262,37 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
-        // Delegate "Save" processing to the FolioMetaControl                
-        $this->mctFolio->Save();
-        foreach ($this->objModifiedChildsArray as $obj) {
-            $obj->Save();
-        }
-        $this->objModifiedChildsArray = array();
-        QApplication::DisplayNotification('Los datos se guardaron correctamente');        
-        
-        if(!$this->folioExistente){        	    	
-            // Creo UsoInterno y pongo el folio en CARGA
-            $ui = new UsoInterno();
-            $ui->IdFolio = $this->mctFolio->Folio->Id;
-            $ui->EstadoFolio=EstadoFolio::CARGA;
-            $ui->save();
-            //Calculo las nomenclaturas
-        	$this->calcular_nomenclaturas();
-            QApplication::DisplayAlert("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>");
-        	//QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
-        }else{
+        if($this->txtSuperficie->Text=='')$this->txtSuperficie->Text=0;
+        if($this->GeometriaValida()){
+            parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+            // Delegate "Save" processing to the FolioMetaControl                
+            $this->mctFolio->Save();
+            foreach ($this->objModifiedChildsArray as $obj) {
+                $obj->Save();
+            }
+            $this->objModifiedChildsArray = array();
+            QApplication::DisplayNotification('Los datos se guardaron correctamente');        
+            
+            if(!$this->folioExistente){                 
+                // Creo UsoInterno y pongo el folio en CARGA
+                $ui = new UsoInterno();
+                $ui->IdFolio = $this->mctFolio->Folio->Id;
+                $ui->EstadoFolio=EstadoFolio::CARGA;
+                $ui->save();
+                //Calculo las nomenclaturas
+                $this->calcular_nomenclaturas();
+                QApplication::DisplayAlert("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>");
+                //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
+            }else{
 
-            $this->actualizarEstadoNomenclaturas();        	 
+                $this->actualizarEstadoNomenclaturas();          
+            }
+            QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id);                 
+        }else{
+            // LA GEOM NO ES VALIDA
+            QApplication::DisplayAlert("</p>La geometría del barrio no es válida o es inexistente.</p><p>Para crear o editar geometría seleccione el botón de <b>'Actualizar Geometría'</b></p>");
         }
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id);
-         
+        
     }
 
     protected function buttons_Create($blnDelete = true) {
@@ -308,12 +315,9 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     }
 
-    public function txtSuperficie_Change($strFormId,$strControlId,$strParameter){
-        QApplication::DisplayAlert("cambio geom");
-    }
-
 
     protected function CrearListadoDeAnios($strValor){
+        $this->lstAnioOrigen->AddItem('Seleccione año o década',null);
         for ($i=1901; $i < 2014 ; $i++) {
             if(in_array($i, array(1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010))){
                 $texto="Década de ".strval($i);
@@ -411,6 +415,11 @@ class FolioEditPanel extends FolioEditPanelGen {
         $strCodPartido=$this->objPartido->CodPartido;
         $this->setearValorMatricula($strCodPartido);
 
+    }
+
+    protected function GeometriaValida(){
+        return (!$this->txtGeom->Text=='');
+        // tambien habria que chequear que el geom este en el partido seleccionado
     }
 
 
