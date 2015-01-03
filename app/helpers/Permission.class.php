@@ -55,7 +55,7 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo = array();
 //        $arrUsuarioInfo['IdPersonal'] = Authentication::$objUsuarioLocal->IdPersonal;
 //        $objPersonal = Authentication::$objUsuarioLocal->IdPersonalObject;
-        $arrUsuarioInfo["Nombre"] = sprintf('%s', Authentication::$objUsuarioLocal->NombreCompleto);
+        $arrUsuarioInfo["Nombre"] = sprintf('%s', $objPersonal->NombreCompleto);
         $arrUsuarioInfo['Perfiles'][] = Authentication::$objUsuarioLocal->IdPerfilObject->Nombre;
         if (Authentication::$objUsuarioLocal->SuperAdmin) {
             $arrUsuarioInfo["Perfiles"] = array("Administrador");
@@ -133,6 +133,9 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeAdjuntar(Folio $objFolio){
         return (self::EsUsoInterno() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
+    }
+    public static function PuedeAdjuntarHoja1(Folio $objFolio){
+        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
     public static function PuedeVerAdjuntados(Folio $objFolio){
         return !(self::EsVisualizadorBasico());
@@ -297,8 +300,25 @@ abstract class Permission extends PermissionBase {
         */
     }
 
-    
+    public static function GetRecursosUsuarioRa($strUsuario) {
+        /*
+        $arrControladores = null;
+        $arrControladores['Definicioncuadro'][QControllerActionType::AllAction] = array();
+        $arrControladores['Defcuadrodefcolumnacodvalor'][QControllerActionType::AllAction] = array();
+        $arrControladores['Codigos'][QControllerActionType::AllAction] = array();
+        switch ($strUsuario) {
+            case 'supervisor':
+                array_push($arrControladores['Defcuadrodefcolumnacodvalor'][QControllerActionType::AllAction], QControllerActionType::AllAction);
+                array_push($arrControladores['Definicioncuadro'][QControllerActionType::AllAction], QControllerActionType::AllAction);
+                array_push($arrControladores['Codigos'][QControllerActionType::AllAction], QControllerActionType::AllAction);
+            break;
+        }
+        return $arrControladores;
+        */
+    }
+
     public static function GetEntidadesUsuario(Usuario $objUsuario) {
+        /*
         switch (strtolower($objUsuario->IdPerfilObject->Nombre)) {
             case 'supervisor':
             case 'sololectura':
@@ -316,13 +336,133 @@ abstract class Permission extends PermissionBase {
             break;
         }
         return $arrControladores;
+        */
     }
 
-    
+    public static function GetEntidadesUsuarioRa($strUsuario) {
+        /*
+        $arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction] = array();
+        $arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction] = array();
+        $arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction] = array();
+        switch ($strUsuario) {
+            case 'supervisor':
+            case 'sololectura':
+                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction], QControllerActionType::AllAction);
+            break;
+            case 'usuario1':
+                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction], 920001500);
+                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction], 920001500);
+                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction], 910012400);
+                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction], 910012400);
+            break;
+            case 'usuario2':
+                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction], QControllerActionType::AllAction);
+                //array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction], 920001500);
+            break;
+        }
+        return $arrControladores;
+        */
+    }
 
 
-    
-    
-    
+    public static function TienePermisoControllerActionColumna($strController, $strAction, $strColumna) {
+        /*
+        if (!Authentication::UsuarioLogueado() || self::EsAdministrador()) {
+            return true;
+        }
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+
+        return (
+        isset($arrUsuarioInfo["Recursos"]) &&
+        isset($arrUsuarioInfo["Recursos"][$strController]) &&
+        isset($arrUsuarioInfo["Recursos"][$strController][$strAction]) &&
+        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][$strController][$strAction]) ||
+        in_array($strColumna, $arrUsuarioInfo["Recursos"][$strController][$strAction])
+        )
+        ) || (
+        isset($arrUsuarioInfo["Recursos"]) &&
+        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction]) &&
+        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][QControllerActionType::AllAction]) &&
+        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][QControllerActionType::AllAction]) ||
+        in_array($strColumna, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][QControllerActionType::AllAction])
+        )
+        ) || (
+        isset($arrUsuarioInfo["Recursos"]) &&
+        isset($arrUsuarioInfo["Recursos"][$strController]) &&
+        isset($arrUsuarioInfo["Recursos"][$strController][QControllerActionType::AllAction]) &&
+        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][$strController][QControllerActionType::AllAction]) ||
+        in_array($strColumna, $arrUsuarioInfo["Recursos"][$strController][QControllerActionType::AllAction])
+        )
+        ) || (
+        isset($arrUsuarioInfo["Recursos"]) &&
+        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction]) &&
+        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][$strAction]) &&
+        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][$strAction]) ||
+        in_array($strColumna, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][$strAction])
+        )
+        );
+        */
+    }
+
+    public static function TieneAccesoEntidad($strController, $strColumna, $strAction, $mixValor) {
+        /*
+        if (!Authentication::UsuarioLogueado() || self::EsAdministrador()) {
+            return true;
+        }
+
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+
+        return (
+        isset($arrUsuarioInfo["Entidades"]) &&
+        isset($arrUsuarioInfo["Entidades"][$strController]) &&
+        isset($arrUsuarioInfo["Entidades"][$strController][$strColumna]) &&
+        isset($arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction]) &&
+        is_array($arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction]) &&
+        (in_array($mixValor, $arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction]) ||
+        in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction])
+        )
+        ) || (
+        isset($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction]) &&
+        isset($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction]) &&
+        isset($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction]) &&
+        is_array($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction]) &&
+        (in_array($mixValor, $arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction]) ||
+        in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction])
+        )
+        ) || (
+        isset($arrUsuarioInfo["Entidades"][$strController]) &&
+        isset($arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction]) &&
+        isset($arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction]) &&
+        is_array($arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction]) &&
+        (in_array($mixValor, $arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction]) ||
+        in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction])
+        )
+        );
+        */
+    }
+
+    public static function GetAccionColumnas($strEntidad, $strAccion) {
+        /*
+        if (self::EsAdministrador())
+            return array();
+        $arrColumnas = array();
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        if (isset($arrUsuarioInfo["Recursos"])) {
+            $arrUsuarioRecursos = $arrUsuarioInfo["Recursos"];
+            if (in_array(QControllerActionType::AllAction, array_keys($arrUsuarioRecursos))) {
+                return array();
+            }
+            if (isset($arrUsuarioRecursos[$strEntidad]) && isset($arrUsuarioRecursos[$strEntidad][$strAccion]) && is_array($arrUsuarioRecursos[$strEntidad][$strAccion])) {
+                if (in_array(QControllerActionType::AllAction, $arrUsuarioRecursos[$strEntidad][$strAccion])) {
+                    return array();
+                }
+                foreach ($arrUsuarioRecursos[$strEntidad][$strAccion] as $strColumna) {
+                    array_push($arrColumnas, $strColumna);
+                }
+            }
+        }
+        return $arrColumnas;
+        */
+    }
 }
 ?>

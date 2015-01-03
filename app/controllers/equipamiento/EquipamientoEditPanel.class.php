@@ -36,8 +36,7 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
 
         $this->blnAutoRenderChildrenWithName = true;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
-
-        if(!Permission::PuedeEditar1A4($objParentObject->objFolio)){
+        if(!Permission::PuedeEditar1A4($objParentObject->objFolio)|| (Permission::EsUsoInterno() && !Permission::EsAdministrador())) {
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }

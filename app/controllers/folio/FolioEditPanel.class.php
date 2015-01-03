@@ -142,6 +142,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
         }
         $this->objControlsArray["Judicializado"] = $this->lstJudicializado;
+        $this->objControlsArray['AnioOrigen']=$this->lstAnioOrigen;
 
         $btnUpdateGeom = new QButton($this);
         $btnUpdateGeom->Text = 'Actualizar Geometría';
@@ -169,7 +170,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
-        if(Permission::PuedeAdjuntar($this->mctFolio->Folio)){
+        if(Permission::PuedeAdjuntarHoja1($this->mctFolio->Folio)) {
             $this->boolPuedeAdjuntar=true;    
             QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload','#files')");
         }else{
@@ -182,7 +183,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->btnSave->AddCssClass("boton_guardar");
         
 
-        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio)){
+        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio) || (Permission::EsUsoInterno() && !Permission::EsAdministrador())){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }

@@ -216,6 +216,15 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->btnEvolucion->AddCssClass('btn-info boton_evolucion');
         $this->btnEvolucion->AddAction(new QClickEvent(),  new QAjaxControlAction($this,"btnEvolucion_Click"));
 
+        if(!Permission::EsAdministrador()){
+            $this->objControlsArray['lstEstadoFolioObject']->Enabled=false;
+            $this->objControlsArray['chkMapeoPreliminar']->Enabled=false;
+            $this->objControlsArray['txtResolucionInscripcionProvisoria']->Enabled=false;
+            $this->objControlsArray['txtResolucionInscripcionDefinitiva']->Enabled=false;
+            $this->objControlsArray['txtNumExpediente']->Enabled=false;
+            $this->objControlsArray['chkNoCorrespondeInscripcion']->Enabled=false;
+        }
+
     }
 
     protected function metaControl_Create($strControlsArray){

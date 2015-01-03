@@ -35,6 +35,14 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
          
         //$this->blnAutoRenderChildrenWithName = true;
        
+       if(Permission::EsUsoInterno() && !Permission::EsAdministrador()){
+            foreach($this->objControlsArray as $objControl){
+                    $objControl->Enabled = false;
+            }
+            $this->objControlsArray['txtInscripcionDominio']->Enabled=true;
+            $this->objControlsArray['txtTitularDominio']->Enabled=true;
+            $this->objControlsArray['chkDatoVerificadoRegPropiedad']->Enabled=true;
+       }
 
     }
 
