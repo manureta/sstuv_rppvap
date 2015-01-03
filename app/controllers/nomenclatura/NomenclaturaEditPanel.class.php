@@ -2,6 +2,7 @@
 class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
     //id variables for meta_create
     protected $intId;
+    public $objFolio;
 
     public static $strControlsArray = array(
         'lblId' => false,
@@ -31,10 +32,15 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         }
         $this->Template=__VIEW_DIR__."/nomenclatura/NomenclaturaEditPanel.tpl.php";
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
-             
+        $this->objFolio=Folio::load(QApplication::QueryString("id"));     
          
         //$this->blnAutoRenderChildrenWithName = true;
-       
+       if(!Permission::PuedeEditar1A4($this->objFolio)){
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
+
        if(Permission::EsUsoInterno() && !Permission::EsAdministrador()){
             foreach($this->objControlsArray as $objControl){
                     $objControl->Enabled = false;
