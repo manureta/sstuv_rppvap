@@ -99,3 +99,7 @@ body{
 .geometria_barrio{
   display: none;
 }
+
+.btn {
+    margin-left: 10px;
+}
