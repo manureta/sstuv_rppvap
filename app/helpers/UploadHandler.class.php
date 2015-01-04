@@ -28,9 +28,9 @@ class UploadHandler
         7 => 'Failed to write file to disk',
         8 => 'A PHP extension stopped the file upload',
         'post_max_size' => 'The uploaded file exceeds the post_max_size directive in php.ini',
-        'max_file_size' => 'File is too big',
+        'max_file_size' => 'El archivo es muy grande, no debe superar los 3mb',
         'min_file_size' => 'File is too small',
-        'accept_file_types' => 'Filetype not allowed',
+        'accept_file_types' => 'Tipo de archivo no permitido',
         'max_number_of_files' => 'Maximum number of files exceeded',
         'max_width' => 'Image exceeds maximum width',
         'min_width' => 'Image requires a minimum width',
@@ -84,10 +84,11 @@ class UploadHandler
             // Defines which files can be displayed inline when downloaded:
             'inline_file_types' => '/\.(gif|jpe?g|png)$/i',
             // Defines which files (based on their names) are accepted for upload:
-            'accept_file_types' => '/.+$/i',
+            //'accept_file_types' => '/.+$/i',
+            'accept_file_types' => '/\.(gif|jpe?g|png|pdf|xls|doc|docx|csv|zip|rar|txt)$/i',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
-            'max_file_size' => null,
+            'max_file_size' => 30000,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
             'max_number_of_files' => null,
