@@ -75,7 +75,8 @@ function mostrarMapa(cod_partido,editar){
 				featureGroup: drawnItems
 			}
 		});
-		map.addControl(drawControl);
+
+		if(editar!="solover")map.addControl(drawControl);
 
 		if(editar && ($(".geometria_barrio").val()!=="")){
 	  		var geojson = Terraformer.WKT.parse($(".geometria_barrio").val());
@@ -87,8 +88,9 @@ function mostrarMapa(cod_partido,editar){
 			  }
 			});
 	  		$(".leaflet-draw-draw-polygon").fadeOut();
-	  			
+	  		map.fitBounds(drawnItems.getBounds());	
 	  	}
+
 
 		map.on('draw:created', function (e) {
 			var type = e.layerType,

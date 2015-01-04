@@ -145,12 +145,10 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->objControlsArray['AnioOrigen']=$this->lstAnioOrigen;
 
         $btnUpdateGeom = new QButton($this);
-        $btnUpdateGeom->Text = 'Actualizar Geometría';
         $btnUpdateGeom->Icon = 'edit';
         $btnUpdateGeom->AddCssClass('btn-info');
-        $btnUpdateGeom->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario',true);"));
-
-
+        
+        
         $this->lstJudicializado->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstJudicializado_Change'));
         // escondo el judicializado original
         $this->txtJudicializado->Visible=false;
@@ -187,6 +185,11 @@ class FolioEditPanel extends FolioEditPanelGen {
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
+            $btnUpdateGeom->Text = 'Ver Geometría';
+            $btnUpdateGeom->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario','solover');"));
+        }else{
+            $btnUpdateGeom->Text = 'Actualizar Geometría';
+            $btnUpdateGeom->AddAction(new QClickEvent(),  new QJavascriptAction("mostrarMapa('$partido_usuario',true);"));
         }
             
     }
