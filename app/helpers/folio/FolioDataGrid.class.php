@@ -34,7 +34,7 @@ class FolioDataGrid extends FolioDataGridGen {
         //if (FolioDataGrid::$strColumnsArray['UsoInterno']) $this->MetaAddColumn(QQN::Folio()->UsoInterno)->Title = QApplication::Translate('UsoInterno');
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->CreadorObject->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetPrintButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false);?>', 'Width=20%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetPrintButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false);?>', 'Width=25%', 'HorizontalAlign=center', 'HtmlEntities=false');
         $this->AddColumn($objColumnAcciones);
     }
 
@@ -119,7 +119,30 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::CARGA && Permission::PuedeEnviarFolio($obj));
         return $objButton;
-    }                 
+    }
+    public function GetResolucionButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-yellow');
+        $objButton->Text = 'Resolución';
+        $objButton->ToolTip = 'Descargar resolución';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnResolucion_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = true;
+        return $objButton;
+    }
+    public function Get14449Button(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-yellow');
+        $objButton->Text = 'Ley 14.449';
+        $objButton->ToolTip = 'Ver documentación de intervención en el marco de la ley 14.449';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnLey_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = true;
+        return $objButton;
+    }
+
     public function btnConfirmar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $objUsoInterno = $objFolio->UsoInterno;
@@ -156,6 +179,41 @@ class FolioDataGrid extends FolioDataGridGen {
         $obj->Delete();
         $this->MarkAsModified();
 
+    }
+
+    public function btnResolucion_Click($strFormId,$strControlId,$strParameter){
+        $url=__VIRTUAL_DIRECTORY__.'/upload.php?tipo=resolucion&idfolio='.$strParameter;
+        
+        $response=file_get_contents("http://localhost/".$url);
+        $json=json_decode($response,true);
+        $links="";
+        foreach ($json['files'] as $key => $file) {
+            $link ="<p><a href=".$file['url']." title=".$file['name']." download=".$file['name'].">".$file['name']."</a></p>";
+            $links=$links.$link;
+        }
+        if($links!==""){
+            QApplication::DisplayAlert("<div id='files'>".$links."</div>");    
+        }else{
+            QApplication::DisplayAlert("No hay archivos disponibles");
+        }
+    }
+
+    public function btnLey_Click($strFormId,$strControlId,$strParameter){
+        $url=__VIRTUAL_DIRECTORY__.'/upload.php?tipo=habitat&idfolio='.$strParameter;
+        
+        $response=file_get_contents("http://localhost/".$url);
+        $json=json_decode($response,true);
+        $links="";
+        foreach ($json['files'] as $key => $file) {
+            $link ="<p><a href=".$file['url']." title=".$file['name']." download=".$file['name'].">".$file['name']."</a></p>";
+            $links=$links.$link;
+        }
+        if($links!==""){
+            QApplication::DisplayAlert("<div id='files'>".$links."</div>");    
+        }else{
+            QApplication::DisplayAlert("No hay archivos disponibles");
+        }
+        
     }
 
  
