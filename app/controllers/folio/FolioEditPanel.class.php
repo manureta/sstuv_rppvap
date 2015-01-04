@@ -296,13 +296,17 @@ class FolioEditPanel extends FolioEditPanelGen {
         
     }
 
-    protected function buttons_Create($blnDelete = true) {
+    protected function buttons_Create($blnDelete = false) {
         parent::buttons_Create($blnDelete);
         if ($blnDelete) {
             $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Folio::GenderMale() ? 'e' : 'a'), Folio::Noun())));
             $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
             $this->btnDelete->Visible = $this->mctFolio->EditMode;
         }
+    }
+    public function btnCancel_Click() {
+     QApplication::ExecuteJavascript("javascript:history.back()");   
+     //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/");
     }
 
      // Handle the changing of the listbox
