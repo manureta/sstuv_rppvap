@@ -128,7 +128,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnResolucion_Click"));
         $objButton->Enabled = true;
-        $objButton->Visible = true;
+        $objButton->Visible = Permission::PuedeDescargarResolucion($obj);
         return $objButton;
     }
     public function Get14449Button(Folio $obj) {
@@ -139,7 +139,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnLey_Click"));
         $objButton->Enabled = true;
-        $objButton->Visible = true;
+        $objButton->Visible = Permission::PuedeDescargarLey14449($obj);
         return $objButton;
     }
 

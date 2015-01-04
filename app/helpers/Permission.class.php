@@ -245,7 +245,13 @@ abstract class Permission extends PermissionBase {
                                     
     }
 
+    public static function PuedeDescargarResolucion(Folio $objFolio){
+        return self::EsAdministrador();
+    }
 
+    public static function PuedeDescargarLey14449(Folio $objFolio){
+        return self::EsAdministrador();
+    }
 
 
 
