@@ -4,7 +4,7 @@
         <div id="login-box" class="login-box visible widget-box no-border">
 
             <div class="widget-body">
-                <div class="widget-main"><div id="help-button"><?php $_CONTROL->btnAyuda->Render(); ?></div>
+                <div class="widget-main">
                 <h4 class="header blue lighter bigger">
                     <i class="icon-user green"></i>
                     Por favor ingrese los datos requeridos
@@ -31,10 +31,9 @@
 
                 <div class="toolbar clearfix">
                    
-                    <b><?php //$_CONTROL->btnRegistro->Render(); ?></b>
-                    
+                    <div></div>
 
-                    <?php $_CONTROL->btnOlvidoPassword->Render(); ?>
+                    
                 </div>
             </div><!-- /widget-body -->
         </div><!-- /login-box -->
