@@ -82,9 +82,13 @@ class SituacionAmbientalEditPanel extends SituacionAmbientalEditPanelGen {
             $this->objControlsArray['txtOtro'] = $this->mctSituacionAmbiental->txtOtro_Create();
             $this->objControlsArray['txtOtro']->Name="Otra";
 
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the SituacionAmbientalMetaControl
+        $this->mctSituacionAmbiental->Save();
+    }
 
 }
 ?>

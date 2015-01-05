@@ -55,8 +55,12 @@ class TransporteEditPanel extends TransporteEditPanelGen {
         if (in_array('lstRemisCombisObject',$strControlsArray)) 
             $this->objControlsArray['lstRemisCombisObject'] = $this->mctTransporte->lstRemisCombisObject_Create();
             $this->objControlsArray['lstRemisCombisObject']->Name="Remis/Combis";
+    }
 
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the TransporteMetaControl
+        $this->mctTransporte->Save();
     }
 
 

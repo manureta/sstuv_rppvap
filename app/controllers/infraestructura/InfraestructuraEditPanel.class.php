@@ -98,7 +98,11 @@ class InfraestructuraEditPanel extends InfraestructuraEditPanelGen {
             $this->objControlsArray['lstRecoleccionResiduosObject'] = $this->mctInfraestructura->lstRecoleccionResiduosObject_Create();
             $this->objControlsArray['lstRecoleccionResiduosObject']->Name="Recolección de residuos";
 
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+    }
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the InfraestructuraMetaControl
+        $this->mctInfraestructura->Save();
     }
     
 

@@ -74,12 +74,13 @@ class EquipamientoEditPanel extends EquipamientoEditPanelGen {
         if (in_array('txtOtro',$strControlsArray)) 
             $this->objControlsArray['txtOtro'] = $this->mctEquipamiento->txtOtro_Create();
 
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
-        //$this->AddControls($this->objControlsArray);
-        //$this->Resizable->AddControls($this->objControlsArray);
-
     }
-
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the EquipamientoMetaControl
+        $this->mctEquipamiento->Save();
+        //QApplication::DisplayNotification('Los datos se guardaron correctamente');
+    }
 
 }
 ?>

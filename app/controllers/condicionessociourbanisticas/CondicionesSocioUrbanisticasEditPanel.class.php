@@ -151,7 +151,7 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the CondicionesSocioUrbanisticasMetaControl
         
         $this->pnlInfraestructura->btnSave_Click($strFormId, $strControlId, $strParameter);

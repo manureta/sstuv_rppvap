@@ -68,8 +68,11 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
             $this->objControlsArray['txtProgramas'] = $this->mctOrganismosDeIntervencion->txtProgramas_Create();
             $this->objControlsArray['txtProgramas']->Name="A través de que programas";
         
-
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+    }
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the OrganismosDeIntervencionMetaControl
+        $this->mctOrganismosDeIntervencion->Save();
     }
 
 
