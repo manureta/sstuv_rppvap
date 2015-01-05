@@ -5,6 +5,9 @@ class FolioDataGrid extends FolioDataGridGen {
         
         if(Permission::EsCarga() && !Permission::EsAdministrador())
             $this->AddCondition(QQ::Equal(QQN::Folio()->Creador,Session::GetObjUsuario()->IdUsuario));
+
+        if(Permission::EsVisualizadorFiltrado())
+            $this->AddCondition(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,Session::GetObjUsuario()->CodPartido));
     } 
    public $mdlPanel;
    protected function addAllColumns() {
