@@ -27,9 +27,11 @@ function mostrarMapa(cod_partido,editar){
 	  	var mapquestOSM = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
 	        maxZoom: 19,
 	        subdomains: ["otile1", "otile2", "otile3", "otile4"],
-	        attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+	        attribution: ''
 	      });
-	  	
+	  	var gcallejero=new L.Google('ROADMAP');
+	  	var gsatelital=new L.Google('SATELLITE');
+
 	  	var capa_folios = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
 		    layers: 'registro:folios',
 		    format: 'image/png',
@@ -37,8 +39,43 @@ function mostrarMapa(cod_partido,editar){
 		    attribution: ""
 		});
 
+	  	var base_sstuv = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
+		    layers: 'registro:base',
+		    format: 'image/png',
+		    transparent: true,
+		    attribution: ""
+		});
+
+	  	var catastro = L.tileLayer.wms("http://cartoservices.arba.gov.ar/geoserver/cartoservice/wms", {
+		    layers: 'cartoservice:grupocapas',
+		    format: 'image/png',
+		    transparent: true,
+		    attribution: ""
+		});
+
+	  	var  geodesia = L.tileLayer.wms("http://www.mosp.gba.gov.ar/geoserver/Geodesia/wms?", {
+		    layers: 'Geodesia:parcelarioCompleto',
+		    format: 'image/png',
+		    transparent: true,
+		    attribution: ""
+		});
+
 	  	map.addLayer(mapquestOSM);
 	  	map.addLayer(capa_folios);
+
+	  	var baseMaps = {
+		    "OSM": mapquestOSM,
+		    "Google Satelital": gsatelital,
+		    "Google Callejero": gcallejero,
+		    "Catastro ARBA":catastro,
+		    "Parcelario Geodesia":geodesia,
+		    "Base complementaria":base_sstuv
+		};
+
+		var overlayMaps = {};
+		
+		L.control.layers(baseMaps, overlayMaps).addTo(map);
+
 	  	
 	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), partidos[cod_partido][2]);
 

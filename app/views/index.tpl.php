@@ -163,7 +163,9 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.css" />
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.css" />
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.js"></script>
-        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>        
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>  
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/tile/Google.js"></script>      
+        <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
         <style>
         #map {
           min-height: 500px;
