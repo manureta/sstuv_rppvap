@@ -73,6 +73,10 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the OrganismosDeIntervencionMetaControl
         $this->mctOrganismosDeIntervencion->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->objModifiedChildsArray = array();
     }
 
 

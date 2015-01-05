@@ -85,7 +85,15 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctEncuadreLegal->txtOtros_Create();
 
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+    }
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        // Delegate "Save" processing to the EncuadreLegalMetaControl
+        $this->mctEncuadreLegal->Save();
+        foreach ($this->objModifiedChildsArray as $obj) {
+            $obj->Save();
+        }
+        $this->objModifiedChildsArray = array();
     }
 
 

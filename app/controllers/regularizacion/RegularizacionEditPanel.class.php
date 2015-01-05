@@ -128,7 +128,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
     }
     
      public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        parent::btnSave_Click($strFormId, $strControlId, $strParameter);
+        //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the RegularizacionMetaControl
         $this->mctRegularizacion->Save();
         foreach ($this->objModifiedChildsArray as $obj) {
