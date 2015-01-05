@@ -154,11 +154,12 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the CondicionesSocioUrbanisticasMetaControl
         
+	$this->mctCondicionesSocioUrbanisticas->Save();
         $this->pnlInfraestructura->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlAmbiental->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlEquipamiento->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlTransporte->btnSave_Click($strFormId, $strControlId, $strParameter);
-        $this->mctCondicionesSocioUrbanisticas->Save();
+        //$this->mctCondicionesSocioUrbanisticas->Save();
         foreach ($this->objModifiedChildsArray as $obj) {
             $obj->Save();
         }
