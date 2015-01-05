@@ -29,9 +29,9 @@
 }
 
 span.nombre-usuario {
-    color: #2679b5;
+    color: #FFFFFF;
     float: left;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: lighter;
     margin: 0;
     padding: 12px;
@@ -44,7 +44,7 @@ span.nombre-usuario {
 
 
 #menu-usuario{
-    top:35px;
+    top:20px;
 }
 
 #menu-usuario span{
