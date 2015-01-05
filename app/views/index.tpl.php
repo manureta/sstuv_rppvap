@@ -179,6 +179,9 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/jquery.fileupload.js"></script>
         
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload_manager.js"></script>
+        <script type="text/javascript">
+            $(".inscripcion_provisoria").each(function(e){this.title='Variable necesaria para que se habilite el envio del Folio a la SSTUV'});
+        </script>
 
         <?php $this->RenderEnd(); ?>
         <?php if (QApplication::$Database[1] && QApplication::$Database[1]->EnableProfiling) QApplication::$Database[1]->OutputProfiling(); ?>

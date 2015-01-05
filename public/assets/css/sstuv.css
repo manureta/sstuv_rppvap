@@ -103,3 +103,18 @@ body{
 .btn {
     margin-left: 10px;
 }
+
+.inscripcion_provisoria{
+  background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    
+}
+
+.inscripcion_provisoria .icon-question-sign{
+  float: right;
+  bottom: 33px;
+  margin-right: 120px;
+  position: relative;
+  color: #3A87AD;
+  
+}

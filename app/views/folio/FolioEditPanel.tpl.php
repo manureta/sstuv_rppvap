@@ -70,24 +70,44 @@
             <div class="well bs-component">            
             <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>			
             <?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
-            <?php $_CONTROL->txtLocalidad->RenderWithName(); ?>            
+           <div class="inscripcion_provisoria"> 
+            <?php $_CONTROL->txtLocalidad->RenderWithName(); ?>                        
+            <span class="icon-question-sign" aria-hidden="true"></span>
+           </div> 
 			<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
             						
-			<?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
+			<div class="inscripcion_provisoria">
+                <?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
+            <span class="icon-question-sign" aria-hidden="true"></span>
+           </div>    
 			<?php $_CONTROL->txtNombreBarrioAlternativo1->RenderWithName(); ?>
 			<?php $_CONTROL->txtNombreBarrioAlternativo2->RenderWithName(); ?>
-            <?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
+            <div class="inscripcion_provisoria">
+                <?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
+            <span class="icon-question-sign" aria-hidden="true"></span>
+           </div>
             <?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
 
 			<?php $_CONTROL->txtAnioOrigen->RenderWithName(); ?>
-            <?php $_CONTROL->lstAnioOrigen->RenderWithName(); ?>
+            <div class="inscripcion_provisoria">
+              <?php $_CONTROL->lstAnioOrigen->RenderWithName(); ?>
+            <span class="icon-question-sign" aria-hidden="true"></span>
+           </div>
+            <div class="inscripcion_provisoria">  
 			<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
-			<?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
-			
+            <span class="icon-question-sign" aria-hidden="true"></span>
+           </div>
+            <div class="inscripcion_provisoria">
+			 <?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
+			<span class="icon-question-sign" aria-hidden="true"></span>
+           </div>
 			<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
             <?php $_CONTROL->lstJudicializado->RenderWithName(); ?>
 
+            <div class="inscripcion_provisoria">
 			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
+            <span class="icon-question-sign" aria-hidden="true"></span>
+           </div>
             <?php $_CONTROL->txtGeom->RenderWithName(); ?>
 			
 
