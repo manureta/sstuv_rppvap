@@ -234,6 +234,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtCantidadFamilias',$strControlsArray)) 
             $this->objControlsArray['txtCantidadFamilias'] = $this->mctFolio->txtCantidadFamilias_Create();
             $this->objControlsArray['txtCantidadFamilias']->Name="Cantidad de familias";
+            $this->objControlsArray['txtCantidadFamilias']->Required=true;
         if (in_array('lstTipoBarrioObject',$strControlsArray)) 
             $this->objControlsArray['lstTipoBarrioObject'] = $this->mctFolio->lstTipoBarrioObject_Create();
             $this->objControlsArray['lstTipoBarrioObject']->Name="Tipo de barrio";
@@ -247,6 +248,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtDireccion',$strControlsArray)) 
             $this->objControlsArray['txtDireccion'] = $this->mctFolio->txtDireccion_Create();
             $this->objControlsArray['txtDireccion']->Name="Dirección";        
+            $this->objControlsArray['txtDireccion']->Required=true;
         if (in_array('txtGeom',$strControlsArray)) 
             $this->objControlsArray['txtGeom'] = $this->mctFolio->txtGeom_Create();
             $this->objControlsArray['txtGeom']->Name="";  
