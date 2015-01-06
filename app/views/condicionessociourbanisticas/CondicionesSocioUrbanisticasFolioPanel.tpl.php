@@ -66,33 +66,17 @@
                     <div class="well bs-component">                                                          
 
                         <?php $_CONTROL->pnlInfraestructura->lstIdFolioObject->RenderWithName(); ?>
-                        <div class="inscripcion_provisoria">
-                            <?php $_CONTROL->pnlInfraestructura->lstEnergiaElectricaMedidorIndividualObject->RenderWithName(); ?>
-                            <span class="icon-question-sign" aria-hidden="true"></span>
-                        </div>
+                    
+                        <?php $_CONTROL->pnlInfraestructura->lstEnergiaElectricaMedidorIndividualObject->RenderWithName(); ?>
+                    
                         <?php $_CONTROL->pnlInfraestructura->lstEnergiaElectricaMedidorColectivoObject->RenderWithName(); ?>
-                        <div class="inscripcion_provisoria">
-                            <?php $_CONTROL->pnlInfraestructura->lstAlumbradoPublicoObject->RenderWithName(); ?>
-                            <span class="icon-question-sign" aria-hidden="true"></span>
-                        </div>
-                        <div class="inscripcion_provisoria">    
-                            <?php $_CONTROL->pnlInfraestructura->lstAguaCorrienteObject->RenderWithName(); ?>
-                            <span class="icon-question-sign" aria-hidden="true"></span>
-                        </div>
+                        <?php $_CONTROL->pnlInfraestructura->lstAlumbradoPublicoObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlInfraestructura->lstAguaCorrienteObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstAguaPotableObject->RenderWithName(); ?>
-                        <div class="inscripcion_provisoria">
-                            <?php $_CONTROL->pnlInfraestructura->lstRedCloacalObject->RenderWithName(); ?>
-                            <span class="icon-question-sign" aria-hidden="true"></span>
-                        </div>
+                        <?php $_CONTROL->pnlInfraestructura->lstRedCloacalObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstSistAlternativoEliminacionExcretasObject->RenderWithName(); ?>
-                        <div class="inscripcion_provisoria">
-                            <?php $_CONTROL->pnlInfraestructura->lstRedGasObject->RenderWithName(); ?>
-                            <span class="icon-question-sign" aria-hidden="true"></span>
-                        </div>
-                         <div class="inscripcion_provisoria">   
-                            <?php $_CONTROL->pnlInfraestructura->lstPavimentoObject->RenderWithName(); ?>
-                            <span class="icon-question-sign" aria-hidden="true"></span>
-                        </div>
+                        <?php $_CONTROL->pnlInfraestructura->lstRedGasObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlInfraestructura->lstPavimentoObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstCordonCunetaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstDesaguesPluvialesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstRecoleccionResiduosObject->RenderWithName(); ?>

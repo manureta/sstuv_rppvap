@@ -64,30 +64,36 @@ class InfraestructuraEditPanel extends InfraestructuraEditPanelGen {
         if (in_array('lstEnergiaElectricaMedidorIndividualObject',$strControlsArray)) 
             $this->objControlsArray['lstEnergiaElectricaMedidorIndividualObject'] = $this->mctInfraestructura->lstEnergiaElectricaMedidorIndividualObject_Create();
             $this->objControlsArray['lstEnergiaElectricaMedidorIndividualObject']->Name="Energía eléctrica medidor individual";
+            $this->objControlsArray['lstEnergiaElectricaMedidorIndividualObject']->Required=true;
         if (in_array('lstEnergiaElectricaMedidorColectivoObject',$strControlsArray)) 
             $this->objControlsArray['lstEnergiaElectricaMedidorColectivoObject'] = $this->mctInfraestructura->lstEnergiaElectricaMedidorColectivoObject_Create();
             $this->objControlsArray['lstEnergiaElectricaMedidorColectivoObject']->Name="Energía eléctrica medidor colectivo";
         if (in_array('lstAlumbradoPublicoObject',$strControlsArray)) 
             $this->objControlsArray['lstAlumbradoPublicoObject'] = $this->mctInfraestructura->lstAlumbradoPublicoObject_Create();
             $this->objControlsArray['lstAlumbradoPublicoObject']->Name="Alumbrado público";
+            $this->objControlsArray['lstAlumbradoPublicoObject']->Required=true;
         if (in_array('lstAguaCorrienteObject',$strControlsArray)) 
             $this->objControlsArray['lstAguaCorrienteObject'] = $this->mctInfraestructura->lstAguaCorrienteObject_Create();
             $this->objControlsArray['lstAguaCorrienteObject']->Name="Agua corriente";
+            $this->objControlsArray['lstAguaCorrienteObject']->Required=true;
         if (in_array('lstAguaPotableObject',$strControlsArray)) 
             $this->objControlsArray['lstAguaPotableObject'] = $this->mctInfraestructura->lstAguaPotableObject_Create();
             $this->objControlsArray['lstAguaPotableObject']->Name="Agua potable (no de red)";
         if (in_array('lstRedCloacalObject',$strControlsArray)) 
             $this->objControlsArray['lstRedCloacalObject'] = $this->mctInfraestructura->lstRedCloacalObject_Create();
             $this->objControlsArray['lstRedCloacalObject']->Name="Red cloacal";
+            $this->objControlsArray['lstRedCloacalObject']->Required=true;
         if (in_array('lstSistAlternativoEliminacionExcretasObject',$strControlsArray)) 
             $this->objControlsArray['lstSistAlternativoEliminacionExcretasObject'] = $this->mctInfraestructura->lstSistAlternativoEliminacionExcretasObject_Create();
             $this->objControlsArray['lstSistAlternativoEliminacionExcretasObject']->Name="Sistema alternativo de eliminación de excretas";
         if (in_array('lstRedGasObject',$strControlsArray)) 
             $this->objControlsArray['lstRedGasObject'] = $this->mctInfraestructura->lstRedGasObject_Create();
             $this->objControlsArray['lstRedGasObject']->Name="Red de gas";
+            $this->objControlsArray['lstRedGasObject']->Required=true;
         if (in_array('lstPavimentoObject',$strControlsArray)) 
             $this->objControlsArray['lstPavimentoObject'] = $this->mctInfraestructura->lstPavimentoObject_Create();
             $this->objControlsArray['lstPavimentoObject']->Name="Pavimento";
+            $this->objControlsArray['lstPavimentoObject']->Required=true;
         if (in_array('lstCordonCunetaObject',$strControlsArray)) 
             $this->objControlsArray['lstCordonCunetaObject'] = $this->mctInfraestructura->lstCordonCunetaObject_Create();
             $this->objControlsArray['lstCordonCunetaObject']->Name="Cordón cuneta";
