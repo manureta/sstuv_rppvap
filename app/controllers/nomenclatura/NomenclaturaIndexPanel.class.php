@@ -63,7 +63,34 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     }
 
     public function analizar_nomenclatura(){
-        QApplication::DisplayAlert("<p>analizando las nomanclaturas ...</p><p>Aca tendria que informar si hay parcelas que no estan dentro del dibujo o si faltan parcelas</p>");
+        $msj['completo']="nomenclaturas que están completamente dentro del barrio dibujado.";
+        $msj['parcial']="nomenclaturas que no están completamente dentro del barrio dibujado";
+        $msj['exterior']="nomenclaturas que están completamente fuera del dibujo del barrio";
+        $msj['error']="nomenclaturas que generan error en el cálculo de su ubicación";
+        $msj['vacio']="indeterminadas";
+
+        $class['completo']="alert-success";
+        $class['parcial']="alert-info";
+        $class['exterior']="alert-danger";
+        $class['vacio']="alert-danger";
+        $class['error']="alert-danger";
+
+        $intIdFolio=QApplication::QueryString("id");
+        $strQuery="select distinct(estado_geografico) as estado, count(*) as cantidad from nomenclatura where id_folio=$intIdFolio group by estado_geografico;";
+        try {
+                $objDatabase = QApplication::$Database[1];
+                $objDbResult = $objDatabase->Query($strQuery);
+                $text="";
+                while ($row = $objDbResult->FetchArray()) {
+                    $clase=$class[$row['estado']];
+                    if($row['estado']=='')$row['estado']='vacio';
+                    $text=$text."<div class=$clase><p class='text-center'>Hay <strong>".$row['cantidad']."</strong> ".$msj[$row['estado']]."</p></div>";
+
+                }
+                QApplication::DisplayAlert($text);
+                } catch (Exception $e) {
+                    QApplication::DisplayAlert("<div class='alert-danger'>Hubo un error al intentar analizar las parcelas del barrio.<div>");
+                }        
     }
 
     public function mostrar_mapa(){
@@ -76,7 +103,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
             $encuadre= array($row[0],$row[1],$row[2],$row[3]); //quick fix
             $bbox=implode(',',$encuadre);
             $mapa="http://190.188.234.6/geoserver/registro/wms?service=WMS&version=1.1.0&request=GetMap&layers=registro:folios,registro:parcelas_nomenclas&styles=&bbox=$bbox&width=512&height=465&srs=EPSG:4326&format=application/openlayers";
-            error_log($mapa);
+            
             QApplication::DisplayAlert("<iframe src='$mapa' width='100%' height='400'></iframe>");
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Hubo un error al calcular el encuadre geográfico del mapa.</p> Revisar geometría en 'Datos Generales'");
