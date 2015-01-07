@@ -17,7 +17,7 @@ class FolioDataGrid extends FolioDataGridGen {
         if (FolioDataGrid::$strColumnsArray['IdPartidoObject']) $this->MetaAddColumn(QQN::Folio()->IdPartidoObject)->Title = QApplication::Translate('IdPartidoObject');
         if (FolioDataGrid::$strColumnsArray['NombreBarrioOficial']) $this->MetaAddColumn('NombreBarrioOficial')->Title ='Nombre Oficial Barrio';
         if (FolioDataGrid::$strColumnsArray['TipoBarrioObject']) $this->MetaAddColumn(QQN::Folio()->TipoBarrioObject)->Title = "Tipo";
-        $objSituacionRegistral = new QFilteredDataGridColumn("Situacio Registral",'<?= $_CONTROL->CalcularSitRegistral($_ITEM);?>');
+        $objSituacionRegistral = new QFilteredDataGridColumn("Situación Registral",'<?= $_CONTROL->CalcularSitRegistral($_ITEM);?>');
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->CreadorObject->Reparticion)->Title = "Reparticion";
