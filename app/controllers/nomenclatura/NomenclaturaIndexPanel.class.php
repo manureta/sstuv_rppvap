@@ -67,7 +67,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $msj['parcial']="nomenclaturas que no están completamente dentro del barrio dibujado";
         $msj['exterior']="nomenclaturas que están completamente fuera del dibujo del barrio";
         $msj['error']="nomenclaturas que generan error en el cálculo de su ubicación";
-        $msj['vacio']="indeterminadas";
+        $msj['vacio']="valores indeterminados";
 
         $class['completo']="alert-success";
         $class['parcial']="alert-info";
@@ -82,8 +82,8 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
                 $objDbResult = $objDatabase->Query($strQuery);
                 $text="";
                 while ($row = $objDbResult->FetchArray()) {
-                    $clase=$class[$row['estado']];
                     if($row['estado']=='')$row['estado']='vacio';
+		    $clase=$class[$row['estado']];	
                     $text=$text."<div class=$clase><p class='text-center'>Hay <strong>".$row['cantidad']."</strong> ".$msj[$row['estado']]."</p></div>";
 
                 }
