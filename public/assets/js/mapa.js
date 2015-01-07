@@ -40,7 +40,7 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var base_sstuv = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
-		    layers: 'registro:base',
+		    layers: 'parcelas,macizos_pba,secciones,circunscripcion,partidos_pba_2014_cod_catastro',
 		    format: 'image/png',
 		    transparent: true,
 		    attribution: ""
@@ -54,14 +54,13 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var  geodesia = L.tileLayer.wms("http://www.mosp.gba.gov.ar/geoserver/Geodesia/wms?", {
-		    layers: 'Geodesia:parcelarioCompleto',
+		    layers: 'ParcelarioCompleto',
 		    format: 'image/png',
 		    transparent: true,
 		    attribution: ""
 		});
 
 	  	map.addLayer(mapquestOSM);
-	  	map.addLayer(capa_folios);
 
 	  	var baseMaps = {
 		    "OSM": mapquestOSM,
@@ -72,9 +71,12 @@ function mostrarMapa(cod_partido,editar){
 		    "Base complementaria":base_sstuv
 		};
 
-		var overlayMaps = {};
+		var overlayMaps = {
+			"Folios":capa_folios
+		};
 		
 		L.control.layers(baseMaps, overlayMaps).addTo(map);
+	  	map.addLayer(capa_folios);
 
 	  	
 	  	map.setView(new L.LatLng(partidos[cod_partido][1],partidos[cod_partido][0]), partidos[cod_partido][2]);
