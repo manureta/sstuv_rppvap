@@ -10,5 +10,9 @@ class OpcionesTransporte extends OpcionesTransporteGen {
         return sprintf('%s',  $this->strOpcion);
     }
 
+    public static function Noun() {
+        return 'valor';
+    }
+
 }
 ?>

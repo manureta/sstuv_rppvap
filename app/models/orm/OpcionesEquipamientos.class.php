@@ -10,5 +10,9 @@ class OpcionesEquipamientos extends OpcionesEquipamientosGen {
         return sprintf('%s',  $this->strOpcion);
     }
 
+    public static function Noun() {
+        return 'valor';
+    }
+
 }
 ?>

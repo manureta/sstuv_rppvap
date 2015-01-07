@@ -11,5 +11,9 @@ class EstadoProceso extends EstadoProcesoGen {
         return sprintf('EstadoProceso %s',  $this->intId);
     }
 
+    public static function Noun() {
+        return 'estado';
+    }
+
 }
 ?>

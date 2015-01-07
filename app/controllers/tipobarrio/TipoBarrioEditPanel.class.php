@@ -10,7 +10,6 @@ class TipoBarrioEditPanel extends TipoBarrioEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-
     }
 
 

@@ -10,6 +10,13 @@ class Partido extends PartidoGen {
         return sprintf('%s - %s',  $this->strNombre,$this->strCodPartido);
     }
 
+    public static function Noun() {
+        return 'partido';
+    }
+    public static function NounPlural() {
+        return 'Partidos';
+    }
+
 //class_query_method
     protected static $arrQueryTextFields = array(
         array("name"=>"Nombre","cod"=>"CodPartido","type"=>"string"),

@@ -10,5 +10,15 @@ class TipoBarrio extends TipoBarrioGen {
         return sprintf('%s',  $this->strTipo);
     }
 
+    public static function Noun() {
+        return 'tipo de barrio';
+    }
+    public static function NounPlural() {
+        return 'tipos de barrios';
+    }
+    public static function GenderMale() {
+        return true;
+    }
+
 }
 ?>

@@ -210,10 +210,8 @@ msgstr "Definido"
 msgid "Unset"
 msgstr "No Definido"
 
-
 msgid "CondicionesSocioUrbanisticasAsId"
 msgstr "Condiciones Socio Urbanisticas"
 
-
-
-
+MsgId "TipoBarrio"
+MsgStr "tipo de barrio"
