@@ -143,8 +143,8 @@ function mostrarMapa(cod_partido,editar){
 
   			$(".geometria_barrio").val(wkt);
   			$(".leaflet-draw-draw-polygon").fadeOut();
-  			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs()).toFixed(2);
-        	$(".superficie_barrio").val(area/10000);
+  			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs());
+        	$(".superficie_barrio").val(round(area/10000,2));
 		});
 
 		map.on('draw:edited', function (e) {
@@ -153,8 +153,8 @@ function mostrarMapa(cod_partido,editar){
         		var geojson = layer.toGeoJSON();
     			var wkt = Terraformer.WKT.convert(geojson.geometry);	
     			$(".geometria_barrio").val(wkt);
-    			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs()).toFixed(2);
-        		$(".superficie_barrio").val(area/10000);
+    			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs());
+        		$(".superficie_barrio").val(round(area/10000,2));
         		$(".boton_guardar").removeAttr("disabled");
     		});
 						  			
@@ -175,6 +175,10 @@ function mostrarMapa(cod_partido,editar){
 
 
 
+}
+
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
 function cargarPartidos(){
