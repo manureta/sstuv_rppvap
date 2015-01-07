@@ -88,7 +88,7 @@ class UploadHandler
             'accept_file_types' => '/\.(gif|jpe?g|png|pdf|xls|doc|docx|csv|zip|rar|txt)$/i',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
-            'max_file_size' => 30000,
+            'max_file_size' => 300000,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
             'max_number_of_files' => null,
