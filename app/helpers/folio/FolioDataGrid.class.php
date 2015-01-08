@@ -156,9 +156,10 @@ class FolioDataGrid extends FolioDataGridGen {
     }
    
    public function Caratula_Click($strFormId, $strControlId, $strParameter) {
-        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";
-        //QApplication::DisplayAlert("<iframe src='$url' width='100%' height='400'></iframe>");
-        QApplication::ExecuteJavascript("window.open('$url')");
+        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";        
+
+        QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
+        //QApplication::ExecuteJavascript("window.frames['printf'].focus();window.frames['printf'].print();");
 
     }
 

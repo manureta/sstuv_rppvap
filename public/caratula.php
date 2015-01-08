@@ -86,8 +86,12 @@ public function limpiar_ceros($intInd,$strTipo){
 
 public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
         try {
+            if(isset($_GET['foliocompleto'])){
+                parent::Run('Caratula', '../app/views/foliocompleto.tpl.php');
+            }else{
+                parent::Run('Caratula', '../app/views/caratula.tpl.php');    
+            }
             
-            parent::Run('Caratula', '../app/views/caratula.tpl.php');
             
         } catch (Exception $exception) {
             error_log($exception->getMessage());

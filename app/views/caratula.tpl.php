@@ -4,7 +4,10 @@
         <meta charset="LATIN1" />
 		<title>Carátula</title>
 		<!-- CSS -->
-		<link href="assets/css/print.css" rel="stylesheet">
+		<style>
+		<?=file_get_contents("http://localhost/registro/assets/css/print.css");?>
+		</style>
+		
 	</head>
 	
 	<body onload="hide()">
@@ -15,16 +18,17 @@
 			
 			<small style="margin-left:105px">Cod. partido</small>
 			<small style="margin-left:25px">Cod. matrícula</small></br>
-			
+			<div class="left">	
 			<h3>&#9658; Folio</h3>
-			<input style="width:90px" value='<?=$this->objFolio->IdPartidoObject->CodPartido;?>' >
-			<input style="width:118px" value='<?=$this->objFolio->Matricula;?>' >
-			
+			<input style="width:118px; margin-left:5px" value='<?=$this->objFolio->Matricula;?>' >
+			<input style="width:90px;" value='<?=$this->objFolio->IdPartidoObject->CodPartido;?>' >
+			</div>
+			<div class="right" style="margin-right:10px">
 			<h3>Fecha de carga del folio</h3>
 			<input style="width:50px" value=<?=$this->objFolio->Fecha->format('d');?>>
 			<input style="width:50px" value=<?=$this->objFolio->Fecha->format('m');?>>
 			<input style="width:50px" value=<?=$this->objFolio->Fecha->format('y');?>>
-			
+			</div>
 			<h3>&#9658; Partido</h3>
 			<input style="width:204px" value='<?=$this->objFolio->IdPartidoObject->Nombre;?>'>
 			
@@ -196,6 +200,7 @@
 			</div>
 		</div>
 	    <script type="text/javascript">
+
 	      function hide(){
 	      	var elems = document.getElementsByTagName('input');
 			var len = elems.length;
@@ -203,6 +208,7 @@
 			for (var i = 0; i < len; i++) {
 			    elems[i].disabled = true;
 			}
+			window.print();
 	      }
 	    </script>
 		<?php $this->RenderEnd(false); ?>
