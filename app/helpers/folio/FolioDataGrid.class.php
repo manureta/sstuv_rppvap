@@ -21,7 +21,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->CreadorObject->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetPrintButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false);?>', 'Width=25%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false);?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
         $this->AddColumn($objColumnAcciones);
     }
 
@@ -48,14 +48,14 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }
 
-    public function GetPrintButton(Folio $obj) {
+    public function GetCaratulaButton(Folio $obj) {
         $objButton = new QButton($this);
-        $objButton->AddCssClass('btn btn-xs btn-print');
+        $objButton->AddCssClass('btn btn-xs');
         $objButton->Icon = 'print';
         $objButton->Enabled = true;
-        $objButton->ToolTip = "Imprimir carátula";
+        $objButton->ToolTip = "Ver carátula";
         $objButton->ActionParameter = $obj->Id;
-        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "PrintClick"));
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "Caratula_Click"));
         return $objButton;
     }
 
@@ -155,9 +155,10 @@ class FolioDataGrid extends FolioDataGridGen {
         Folio::CambioEstadoFolio($objFolio);
     }
    
-   public function PrintClick($strFormId, $strControlId, $strParameter) {
+   public function Caratula_Click($strFormId, $strControlId, $strParameter) {
         $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";
-        QApplication::DisplayAlert("<iframe src='$url' width='100%' height='400'></iframe>");
+        //QApplication::DisplayAlert("<iframe src='$url' width='100%' height='400'></iframe>");
+        QApplication::ExecuteJavascript("window.open('$url')");
 
     }
 
