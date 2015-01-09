@@ -10,9 +10,10 @@
 		</style>
 		
 	</head>
-<?php include "hoja1.tpl.php"; 
-include "hoja2.tpl.php";
-//include "hoja3.tpl.php";
-//include "hoja4.tpl.php";
+<?php 
+	include "hoja1.tpl.php"; 
+	include "hoja2.tpl.php";
+	include "hoja3.tpl.php";
+	//include "hoja4.tpl.php";
 ?>
 <?php $this->RenderEnd(false); ?>

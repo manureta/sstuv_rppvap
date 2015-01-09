@@ -10,6 +10,11 @@ public $objPartido;
 public $objInfraestructura;
 public $arrNom;
 public $objUsoInterno;
+public $objCond;
+public $objEquip;
+public $objTransporte;
+public $objAmbiental;
+
 
 public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
     try{
@@ -25,8 +30,11 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
                             QQ::Equal(QQN::Nomenclatura()->EstadoGeografico,'completo')
                         ),QQ::LimitInfo(4)   
                         );
+        $this->objCond=CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,$this->id));
+        $this->objEquip=Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,$this->id));
+        $this->objTransporte=Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,$this->id));
+        $this->objAmbiental=SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,$this->id));
 
-        
     }catch(Exception $exception) {
             error_log($exception->getMessage());
             throw $exception;
