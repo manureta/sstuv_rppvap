@@ -24,7 +24,8 @@ class Folio extends FolioGen {
 
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
-			$objDatabase->NonQuery('DELETE FROM	"organismos_de_intervencion"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+			$objDatabase->NonQuery('DELETE FROM "organismos_de_intervencion" WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+			$objDatabase->NonQuery('DELETE FROM     "evolucion_folio"       WHERE "id_folio" = '. $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"antecedentes"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"equipamiento"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"nomenclatura"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
@@ -35,7 +36,8 @@ class Folio extends FolioGen {
 			$objDatabase->NonQuery('DELETE FROM	"encuadre_legal"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"regularizacion"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"uso_interno"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-            parent::Delete();
+			
+           		 parent::Delete();
 		}
 
 		public static function CambioEstadoFolio(Folio $objFolio){
