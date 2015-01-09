@@ -4,7 +4,12 @@ class FolioDataGrid extends FolioDataGridGen {
         parent::__construct($objParentObject, $strColumnsArray, $strControlId);
         
         if(Permission::EsCarga() && !Permission::EsAdministrador())
-            $this->AddCondition(QQ::Equal(QQN::Folio()->Creador,Session::GetObjUsuario()->IdUsuario));
+            $this->AddCondition(
+                QQ::OrCondition(
+                    QQ::Equal(QQN::Folio()->Creador,Session::GetObjUsuario()->IdUsuario),
+                    QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,Session::GetObjUsuario()->CodPartido)
+                )
+            );
 
         if(Permission::EsVisualizadorFiltrado())
             $this->AddCondition(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,Session::GetObjUsuario()->CodPartido));
