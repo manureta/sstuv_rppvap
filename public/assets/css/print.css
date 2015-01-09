@@ -1,7 +1,19 @@
+@cont {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+}
+
 body{
 	font-family:arial;
 	width:780px;
-	padding-left: 250px;
+	/*padding-left: 250px;*/
+	margin: 20px;
 	
 }
 
@@ -138,8 +150,8 @@ textarea{
    border: 1px solid black;
    margin-left: 40px;
    width:716px;
-   height:50px;
-   margin-bottom:20px;
+   height:35px;
+   margin-bottom:10px;
 }
 
 #sit_amb{
@@ -167,4 +179,9 @@ ol {
 .nomenclaturas input{
 	display:inline;
 	height: auto;
+}
+
+.judic {
+    float: right;
+    margin-right: 325px;
 }

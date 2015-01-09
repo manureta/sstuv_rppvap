@@ -60,12 +60,14 @@
 			<textarea><?=$this->objFolio->ObservacionCasoDudoso; ?></textarea>
 			
 			<h3>&#9658; Judicializado</h3>
-			<form>
-				<input type="checkbox" <?php echo (($this->objFolio->Judicializado=='si')?'checked':'');?>>
-				<span>Si</span>
-				<input type="checkbox" <?php echo (($this->objFolio->Judicializado=='no')?'checked':'');?>>
-				<span>No</span>	
-			</form>
+			<div class="judic">
+				<form>
+					<input type="checkbox" <?php echo (($this->objFolio->Judicializado=='si')?'checked':'');?>>
+					<span>Si</span>
+					<input type="checkbox" <?php echo (($this->objFolio->Judicializado=='no')?'checked':'');?>>
+					<span>No</span>	
+				</form>
+			</div> </br>
 			
 			<h3>&#9658; Dirección</h3>
 			<textarea><?=$this->objFolio->Direccion;?></textarea>
@@ -126,5 +128,6 @@
 				</div>
 			</div>
 		</div>
+		
 
 
