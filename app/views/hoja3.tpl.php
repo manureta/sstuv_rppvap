@@ -1,5 +1,5 @@
-</br>
-</br>
+
+<page size="A4">
 		<div class="cont">
 			<h2>Condiciones socio-urbanísticas</h2>
 			</br>
@@ -241,3 +241,4 @@
 		</div>
 	
 
+</page>

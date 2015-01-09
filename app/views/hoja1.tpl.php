@@ -1,5 +1,5 @@
-
-		<div class="cont">
+<page size="A4">
+		
 			<h1>Ley 14.449/folio</h1>
 			<h2>Datos de carga</h2>
 			
@@ -127,7 +127,7 @@
 					</table>
 				</div>
 			</div>
-		</div>
-		
 
+		
+</page>
 

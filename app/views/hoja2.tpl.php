@@ -1,5 +1,5 @@
-</br>
-</br>
+
+<page size="A4">
 <div class="cont">
 	<h2>Nomenclatura/partida/dominio</h2>
 	<div class="nomenclaturas">
@@ -48,3 +48,4 @@
 			</ol>
 		</div>
 </div>		
+</page>
