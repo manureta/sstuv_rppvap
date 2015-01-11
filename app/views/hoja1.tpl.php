@@ -1,5 +1,5 @@
 <page size="A4">
-		
+	<div class="cont">		
 			<h1>Ley 14.449/folio</h1>
 			<h2>Datos de carga</h2>
 			
@@ -75,8 +75,6 @@
 			<h3>&#9658; Otras referencias barriales necesarias para ubicar el barrio</h3>
 			<textarea></textarea>
 			
-			<h3>&#9658; Adjuntar foto</h3>
-			<input>
 			<div id="uso_int">
 				</br>
 				<h3>Uso interno</h3>
@@ -127,7 +125,7 @@
 					</table>
 				</div>
 			</div>
-
+	</div>		
 		
 </page>
 

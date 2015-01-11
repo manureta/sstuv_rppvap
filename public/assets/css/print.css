@@ -10,12 +10,13 @@
 }
 */
 page[size="A4"] {
-  background: #BBBBBB;
+  
   width: 21cm;
   height: 29.7cm;
   display: block;
   margin: 0 auto;
-  margin-bottom: 0.5cm;
+  margin-bottom: 1cm;
+  page-break-after: always;
   
 }
 @media print {
@@ -184,6 +185,13 @@ textarea{
     margin-top: 6px;
     width: 150px;
 }
+/* para antecedentes , hoja 4*/
+
+.antec > small {
+    display: inline-block;
+    margin-top: 6px;
+    width: 230px !important;
+}
 
 ol {
 	margin-top:-5px;
@@ -200,4 +208,36 @@ ol {
 .judic {
     float: right;
     margin-right: 325px;
+}
+
+/* tengo que bajar el tamano de hoja 3 */
+.cond{
+  font-size: 12px;
+}
+
+.cond h1{
+  text-transform:uppercase;
+  margin: 0;
+    padding: 15px 0 0 15px;
+  background-color:white;
+}
+
+.cond h2{
+  background-color:#100F1D;
+  color:white;
+  padding:7px 0 7px 25px;
+  margin:0;
+}
+
+.cond h3{
+  margin:0;
+  padding:3px 13px;
+  display: inline-block;
+}
+
+.cond input {
+    border: 1px solid black;
+    height: 15px;
+    margin-top: 2px;
+    padding: 4px;
 }

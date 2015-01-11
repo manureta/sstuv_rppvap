@@ -1,6 +1,6 @@
 
 <page size="A4">
-		<div class="cont">
+		<div class="cont cond">
 			<h2>Condiciones socio-urbanísticas</h2>
 			</br>
 			<h3>&#9658; ¿El barrio cuenta con espacio libre común?</h3>
@@ -233,8 +233,6 @@
 					<span>Fecha del informe</span>
 					<input style="width:50px;">
 					
-					<input>
-					<span>Adjuntar Archivo</span>
 					
 				</div>
 			</div>

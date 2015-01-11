@@ -14,7 +14,10 @@ public $objCond;
 public $objEquip;
 public $objTransporte;
 public $objAmbiental;
-
+public $objRegularizacion;
+public $objEncuadre;
+public $objAntecedentes;
+public $objOrg;
 
 public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
     try{
@@ -34,6 +37,10 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
         $this->objEquip=Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,$this->id));
         $this->objTransporte=Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,$this->id));
         $this->objAmbiental=SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,$this->id));
+        $this->objRegularizacion=Regularizacion::QuerySingle(QQ::Equal(QQN::Regularizacion()->IdFolio,$this->id));
+        $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$this->id));
+        $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,$this->id));
+        $this->objOrg=OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,$this->id));
 
     }catch(Exception $exception) {
             error_log($exception->getMessage());
