@@ -18,8 +18,8 @@
      * property-read UsoInterno $UsoInterno the actual UsoInterno data class being edited
      * property QListBox $IdFolioControl
      * property-read QLabel $IdFolioLabel
-     * property QTextBox $InformeUrbanisticoFechaControl
-     * property-read QLabel $InformeUrbanisticoFechaLabel
+     * property QTextBox $InformeUrbanisticoControl
+     * property-read QLabel $InformeUrbanisticoLabel
      * property QCheckBox $MapeoPreliminarControl
      * property-read QLabel $MapeoPreliminarLabel
      * property QCheckBox $NoCorrespondeInscripcionControl
@@ -62,6 +62,8 @@
      * property-read QLabel $TieneCensoLabel
      * property QTextBox $Ley14449Control
      * property-read QLabel $Ley14449Label
+     * property QDateTimePicker $FechaInformeUrbanisticoControl
+     * property-read QLabel $FechaInformeUrbanisticoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -79,7 +81,7 @@
 
         // Controls that allow the editing of UsoInterno's individual data fields
         protected $lstIdFolioObject;
-        protected $txtInformeUrbanisticoFecha;
+        protected $txtInformeUrbanistico;
         protected $chkMapeoPreliminar;
         protected $chkNoCorrespondeInscripcion;
         protected $txtResolucionInscripcionProvisoria;
@@ -101,10 +103,11 @@
         protected $txtRegularizacionTienePlano;
         protected $txtTieneCenso;
         protected $txtLey14449;
+        protected $calFechaInformeUrbanistico;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
-        protected $lblInformeUrbanisticoFecha;
+        protected $lblInformeUrbanistico;
         protected $lblMapeoPreliminar;
         protected $lblNoCorrespondeInscripcion;
         protected $lblResolucionInscripcionProvisoria;
@@ -126,6 +129,7 @@
         protected $lblRegularizacionTienePlano;
         protected $lblTieneCenso;
         protected $lblLey14449;
+        protected $lblFechaInformeUrbanistico;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -254,29 +258,29 @@
         }
 
         /**
-         * Create and setup QTextBox txtInformeUrbanisticoFecha
+         * Create and setup QTextBox txtInformeUrbanistico
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
          */
-        public function txtInformeUrbanisticoFecha_Create($strControlId = null) {
-            $this->txtInformeUrbanisticoFecha = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtInformeUrbanisticoFecha->Name = QApplication::Translate('InformeUrbanisticoFecha');
-            $this->txtInformeUrbanisticoFecha->Text = $this->objUsoInterno->InformeUrbanisticoFecha;
-            $this->txtInformeUrbanisticoFecha->MaxLength = UsoInterno::InformeUrbanisticoFechaMaxLength;
+        public function txtInformeUrbanistico_Create($strControlId = null) {
+            $this->txtInformeUrbanistico = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtInformeUrbanistico->Name = QApplication::Translate('InformeUrbanistico');
+            $this->txtInformeUrbanistico->Text = $this->objUsoInterno->InformeUrbanistico;
+            $this->txtInformeUrbanistico->MaxLength = UsoInterno::InformeUrbanisticoMaxLength;
             
-            return $this->txtInformeUrbanisticoFecha;
+            return $this->txtInformeUrbanistico;
         }
 
         /**
-         * Create and setup QLabel lblInformeUrbanisticoFecha
+         * Create and setup QLabel lblInformeUrbanistico
          * @param string $strControlId optional ControlId to use
          * @return QLabel
          */
-        public function lblInformeUrbanisticoFecha_Create($strControlId = null) {
-            $this->lblInformeUrbanisticoFecha = new QLabel($this->objParentObject, $strControlId);
-            $this->lblInformeUrbanisticoFecha->Name = QApplication::Translate('InformeUrbanisticoFecha');
-            $this->lblInformeUrbanisticoFecha->Text = $this->objUsoInterno->InformeUrbanisticoFecha;
-            return $this->lblInformeUrbanisticoFecha;
+        public function lblInformeUrbanistico_Create($strControlId = null) {
+            $this->lblInformeUrbanistico = new QLabel($this->objParentObject, $strControlId);
+            $this->lblInformeUrbanistico->Name = QApplication::Translate('InformeUrbanistico');
+            $this->lblInformeUrbanistico->Text = $this->objUsoInterno->InformeUrbanistico;
+            return $this->lblInformeUrbanistico;
         }
 
         /**
@@ -819,6 +823,37 @@
             return $this->lblLey14449;
         }
 
+        /**
+         * Create and setup QDateTimePicker calFechaInformeUrbanistico
+         * @param string $strControlId optional ControlId to use
+         * @return QDateTimePicker
+         */
+        public function calFechaInformeUrbanistico_Create($strControlId = null) {
+            $this->calFechaInformeUrbanistico = new QDateTimePicker($this->objParentObject, $strControlId);
+            $this->calFechaInformeUrbanistico->Name = QApplication::Translate('FechaInformeUrbanistico');
+            $this->calFechaInformeUrbanistico->DateTime = $this->objUsoInterno->FechaInformeUrbanistico;
+            $this->calFechaInformeUrbanistico->DateTimePickerType = QDateTimePickerType::Date;
+            
+            return $this->calFechaInformeUrbanistico;
+        }
+
+        /**
+         * Create and setup QLabel lblFechaInformeUrbanistico
+         * @param string $strControlId optional ControlId to use
+         * @param string $strDateTimeFormat optional DateTimeFormat to use
+         * @return QLabel
+         */
+        public function lblFechaInformeUrbanistico_Create($strControlId = null, $strDateTimeFormat = null) {
+            $this->lblFechaInformeUrbanistico = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFechaInformeUrbanistico->Name = QApplication::Translate('FechaInformeUrbanistico');
+            $this->strFechaInformeUrbanisticoDateTimeFormat = $strDateTimeFormat;
+            $this->lblFechaInformeUrbanistico->Text = sprintf($this->objUsoInterno->FechaInformeUrbanistico) ? $this->objUsoInterno->FechaInformeUrbanistico->__toString($this->strFechaInformeUrbanisticoDateTimeFormat) : null;
+            return $this->lblFechaInformeUrbanistico;
+        }
+
+        protected $strFechaInformeUrbanisticoDateTimeFormat;
+
+
 
 
 
@@ -840,8 +875,8 @@
             }
             if ($this->lblIdFolio) $this->lblIdFolio->Text = ($this->objUsoInterno->IdFolioObject) ? $this->objUsoInterno->IdFolioObject->__toString() : null;
 
-            if ($this->txtInformeUrbanisticoFecha) $this->txtInformeUrbanisticoFecha->Text = $this->objUsoInterno->InformeUrbanisticoFecha;
-            if ($this->lblInformeUrbanisticoFecha) $this->lblInformeUrbanisticoFecha->Text = $this->objUsoInterno->InformeUrbanisticoFecha;
+            if ($this->txtInformeUrbanistico) $this->txtInformeUrbanistico->Text = $this->objUsoInterno->InformeUrbanistico;
+            if ($this->lblInformeUrbanistico) $this->lblInformeUrbanistico->Text = $this->objUsoInterno->InformeUrbanistico;
 
             if ($this->chkMapeoPreliminar) $this->chkMapeoPreliminar->Checked = $this->objUsoInterno->MapeoPreliminar;
             if ($this->lblMapeoPreliminar) $this->lblMapeoPreliminar->Text = ($this->objUsoInterno->MapeoPreliminar) ? QApplication::Translate('Yes') : QApplication::Translate('No');
@@ -916,6 +951,9 @@
             if ($this->txtLey14449) $this->txtLey14449->Text = $this->objUsoInterno->Ley14449;
             if ($this->lblLey14449) $this->lblLey14449->Text = $this->objUsoInterno->Ley14449;
 
+            if ($this->calFechaInformeUrbanistico) $this->calFechaInformeUrbanistico->DateTime = $this->objUsoInterno->FechaInformeUrbanistico;
+            if ($this->lblFechaInformeUrbanistico) $this->lblFechaInformeUrbanistico->Text = sprintf($this->objUsoInterno->FechaInformeUrbanistico) ? $this->objUsoInterno->FechaInformeUrbanistico->__toString($this->strFechaInformeUrbanisticoDateTimeFormat) : null;
+
         }
 
 
@@ -935,7 +973,7 @@
         public function Bind(){
                 // Update any fields for controls that have been created
                 if ($this->lstIdFolioObject) $this->objUsoInterno->IdFolio = $this->lstIdFolioObject->SelectedValue;
-                if ($this->txtInformeUrbanisticoFecha) $this->objUsoInterno->InformeUrbanisticoFecha = $this->txtInformeUrbanisticoFecha->Text;
+                if ($this->txtInformeUrbanistico) $this->objUsoInterno->InformeUrbanistico = $this->txtInformeUrbanistico->Text;
                 if ($this->chkMapeoPreliminar) $this->objUsoInterno->MapeoPreliminar = $this->chkMapeoPreliminar->Checked;
                 if ($this->chkNoCorrespondeInscripcion) $this->objUsoInterno->NoCorrespondeInscripcion = $this->chkNoCorrespondeInscripcion->Checked;
                 if ($this->txtResolucionInscripcionProvisoria) $this->objUsoInterno->ResolucionInscripcionProvisoria = $this->txtResolucionInscripcionProvisoria->Text;
@@ -957,6 +995,7 @@
                 if ($this->txtRegularizacionTienePlano) $this->objUsoInterno->RegularizacionTienePlano = $this->txtRegularizacionTienePlano->Text;
                 if ($this->txtTieneCenso) $this->objUsoInterno->TieneCenso = $this->txtTieneCenso->Text;
                 if ($this->txtLey14449) $this->objUsoInterno->Ley14449 = $this->txtLey14449->Text;
+                if ($this->calFechaInformeUrbanistico) $this->objUsoInterno->FechaInformeUrbanistico = $this->calFechaInformeUrbanistico->DateTime;
 
 
         }
@@ -1019,12 +1058,12 @@
                 case 'IdFolioLabel':
                     if (!$this->lblIdFolio) return $this->lblIdFolio_Create();
                     return $this->lblIdFolio;
-                case 'InformeUrbanisticoFechaControl':
-                    if (!$this->txtInformeUrbanisticoFecha) return $this->txtInformeUrbanisticoFecha_Create();
-                    return $this->txtInformeUrbanisticoFecha;
-                case 'InformeUrbanisticoFechaLabel':
-                    if (!$this->lblInformeUrbanisticoFecha) return $this->lblInformeUrbanisticoFecha_Create();
-                    return $this->lblInformeUrbanisticoFecha;
+                case 'InformeUrbanisticoControl':
+                    if (!$this->txtInformeUrbanistico) return $this->txtInformeUrbanistico_Create();
+                    return $this->txtInformeUrbanistico;
+                case 'InformeUrbanisticoLabel':
+                    if (!$this->lblInformeUrbanistico) return $this->lblInformeUrbanistico_Create();
+                    return $this->lblInformeUrbanistico;
                 case 'MapeoPreliminarControl':
                     if (!$this->chkMapeoPreliminar) return $this->chkMapeoPreliminar_Create();
                     return $this->chkMapeoPreliminar;
@@ -1151,6 +1190,12 @@
                 case 'Ley14449Label':
                     if (!$this->lblLey14449) return $this->lblLey14449_Create();
                     return $this->lblLey14449;
+                case 'FechaInformeUrbanisticoControl':
+                    if (!$this->calFechaInformeUrbanistico) return $this->calFechaInformeUrbanistico_Create();
+                    return $this->calFechaInformeUrbanistico;
+                case 'FechaInformeUrbanisticoLabel':
+                    if (!$this->lblFechaInformeUrbanistico) return $this->lblFechaInformeUrbanistico_Create();
+                    return $this->lblFechaInformeUrbanistico;
                 default:
                     try {
                         return parent::__get($strName);
@@ -1175,8 +1220,8 @@
                     // Controls that point to UsoInterno fields
                     case 'IdFolioControl':
                         return ($this->lstIdFolioObject = QType::Cast($mixValue, 'QControl'));
-                    case 'InformeUrbanisticoFechaControl':
-                        return ($this->txtInformeUrbanisticoFecha = QType::Cast($mixValue, 'QControl'));
+                    case 'InformeUrbanisticoControl':
+                        return ($this->txtInformeUrbanistico = QType::Cast($mixValue, 'QControl'));
                     case 'MapeoPreliminarControl':
                         return ($this->chkMapeoPreliminar = QType::Cast($mixValue, 'QControl'));
                     case 'NoCorrespondeInscripcionControl':
@@ -1219,6 +1264,8 @@
                         return ($this->txtTieneCenso = QType::Cast($mixValue, 'QControl'));
                     case 'Ley14449Control':
                         return ($this->txtLey14449 = QType::Cast($mixValue, 'QControl'));
+                    case 'FechaInformeUrbanisticoControl':
+                        return ($this->calFechaInformeUrbanistico = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

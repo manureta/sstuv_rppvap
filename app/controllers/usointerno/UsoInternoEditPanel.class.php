@@ -27,7 +27,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
    public static $strControlsArray = array(
         'lstIdFolioObject' => true,
-        'txtInformeUrbanisticoFecha' => true,
+        'txtInformeUrbanistico' => true,
         'chkMapeoPreliminar' => true,
         'chkNoCorrespondeInscripcion' => true,
         'txtResolucionInscripcionProvisoria' => true,
@@ -46,7 +46,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'txtTieneCenso' => true,
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
-        'lstEstadoFolioObject' => true
+        'lstEstadoFolioObject' => true,
+        'calFechaInformeUrbanistico'=>true
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -76,7 +77,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
          // informe urbanistico
         $this->lstInformeUrbanistico=new QListBox($this);
-        switch ($this->txtInformeUrbanisticoFecha->Text) {                
+        switch ($this->txtInformeUrbanistico->Text) {                
                 case 'si':
                     $this->lstInformeUrbanistico->AddItem(' Si ', 'si');
                     $this->lstInformeUrbanistico->AddItem(' No ', 'no');
@@ -91,12 +92,12 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     $this->lstInformeUrbanistico->AddItem(' Sin Dato ', 'sin_dato');
                     $this->lstInformeUrbanistico->AddItem(' Si ', 'si');
                     $this->lstInformeUrbanistico->AddItem(' No ', 'no'); 
-                    $this->txtInformeUrbanisticoFecha->Text='sin_dato'; // para inicializarlo           
+                    $this->txtInformeUrbanistico->Text='sin_dato'; // para inicializarlo           
                     break;                    
             }
         $this->lstInformeUrbanistico->Name="Cuenta con informe urbanístico";    
         $this->lstInformeUrbanistico->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstInforme_Change'));
-        $this->txtInformeUrbanisticoFecha->Visible=false;
+        $this->txtInformeUrbanistico->Visible=false;
 
 
         // TIENE PLANO
@@ -235,9 +236,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         // Call MetaControl's methods to create qcontrols based on UsoInterno's data fields
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctUsoInterno->lstIdFolioObject_Create();
-        if (in_array('txtInformeUrbanisticoFecha',$strControlsArray)) 
-            $this->objControlsArray['txtInformeUrbanisticoFecha'] = $this->mctUsoInterno->txtInformeUrbanisticoFecha_Create();
-            $this->objControlsArray['txtInformeUrbanisticoFecha']->Name="¿Cuenta con informe urbanístico?";
+        if (in_array('txtInformeUrbanistico',$strControlsArray)) 
+            $this->objControlsArray['txtInformeUrbanistico'] = $this->mctUsoInterno->txtInformeUrbanistico_Create();
+            $this->objControlsArray['txtInformeUrbanistico']->Name="¿Cuenta con informe urbanístico?";
         if (in_array('chkMapeoPreliminar',$strControlsArray)) 
             $this->objControlsArray['chkMapeoPreliminar'] = $this->mctUsoInterno->chkMapeoPreliminar_Create();
             $this->objControlsArray['chkMapeoPreliminar']->Name="Mapeo Preliminar";
@@ -292,10 +293,13 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('lstEstadoFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
             $this->objControlsArray['lstEstadoFolioObject']->Name="Estado del Folio";
+        if (in_array('calFechaInformeUrbanistico',$strControlsArray)) 
+            $this->objControlsArray['calFechaInformeUrbanistico'] = $this->mctUsoInterno->calFechaInformeUrbanistico_Create();
+            $this->objControlsArray['calFechaInformeUrbanistico']->Name="Fecha del Informe";
     }
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       
-        $this->txtInformeUrbanisticoFecha->Text=$this->lstInformeUrbanistico->SelectedValue;
+        $this->txtInformeUrbanistico->Text=$this->lstInformeUrbanistico->SelectedValue;
     }
 
     public function lstRegularizacionTienePlano_Change($strFormId, $strControlId, $strParameter) {       

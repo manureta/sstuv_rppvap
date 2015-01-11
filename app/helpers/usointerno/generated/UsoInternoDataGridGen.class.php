@@ -21,7 +21,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
     //array de controles para omitir antes del construct
     public static $strColumnsArray = array(
         'IdFolioObject' => true,
-        'InformeUrbanisticoFecha' => true,
+        'InformeUrbanistico' => true,
         'MapeoPreliminar' => true,
         'NoCorrespondeInscripcion' => true,
         'ResolucionInscripcionProvisoria' => true,
@@ -43,6 +43,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'RegularizacionTienePlano' => true,
         'TieneCenso' => true,
         'Ley14449' => true,
+        'FechaInformeUrbanistico' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -76,7 +77,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         // Create the Columns (note that you can use strings for uso_interno's properties, or you
         // can traverse down QQN::uso_interno() to display fields that are down the hierarchy)
         if (UsoInternoDataGrid::$strColumnsArray['IdFolioObject']) $this->MetaAddColumn(QQN::UsoInterno()->IdFolioObject)->Title = QApplication::Translate('IdFolioObject');
-        if (UsoInternoDataGrid::$strColumnsArray['InformeUrbanisticoFecha']) $this->MetaAddColumn('InformeUrbanisticoFecha')->Title = QApplication::Translate('InformeUrbanisticoFecha');
+        if (UsoInternoDataGrid::$strColumnsArray['InformeUrbanistico']) $this->MetaAddColumn('InformeUrbanistico')->Title = QApplication::Translate('InformeUrbanistico');
         if (UsoInternoDataGrid::$strColumnsArray['MapeoPreliminar']) $this->MetaAddColumn('MapeoPreliminar')->Title = QApplication::Translate('MapeoPreliminar');
         if (UsoInternoDataGrid::$strColumnsArray['NoCorrespondeInscripcion']) $this->MetaAddColumn('NoCorrespondeInscripcion')->Title = QApplication::Translate('NoCorrespondeInscripcion');
         if (UsoInternoDataGrid::$strColumnsArray['ResolucionInscripcionProvisoria']) $this->MetaAddColumn('ResolucionInscripcionProvisoria')->Title = QApplication::Translate('ResolucionInscripcionProvisoria');
@@ -98,6 +99,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionTienePlano']) $this->MetaAddColumn('RegularizacionTienePlano')->Title = QApplication::Translate('RegularizacionTienePlano');
         if (UsoInternoDataGrid::$strColumnsArray['TieneCenso']) $this->MetaAddColumn('TieneCenso')->Title = QApplication::Translate('TieneCenso');
         if (UsoInternoDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
+        if (UsoInternoDataGrid::$strColumnsArray['FechaInformeUrbanistico']) $this->MetaAddColumn('FechaInformeUrbanistico')->Title = QApplication::Translate('FechaInformeUrbanistico');
     }
 
 /**
@@ -246,7 +248,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 			} else if (is_string($mixContent)) switch ($mixContent) {
 				case 'IdFolio': return QQN::UsoInterno()->IdFolio;
 				case 'IdFolioObject': return QQN::UsoInterno()->IdFolioObject;
-				case 'InformeUrbanisticoFecha': return QQN::UsoInterno()->InformeUrbanisticoFecha;
+				case 'InformeUrbanistico': return QQN::UsoInterno()->InformeUrbanistico;
 				case 'MapeoPreliminar': return QQN::UsoInterno()->MapeoPreliminar;
 				case 'NoCorrespondeInscripcion': return QQN::UsoInterno()->NoCorrespondeInscripcion;
 				case 'ResolucionInscripcionProvisoria': return QQN::UsoInterno()->ResolucionInscripcionProvisoria;
@@ -270,6 +272,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'RegularizacionTienePlano': return QQN::UsoInterno()->RegularizacionTienePlano;
 				case 'TieneCenso': return QQN::UsoInterno()->TieneCenso;
 				case 'Ley14449': return QQN::UsoInterno()->Ley14449;
+				case 'FechaInformeUrbanistico': return QQN::UsoInterno()->FechaInformeUrbanistico;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

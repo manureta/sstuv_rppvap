@@ -16,7 +16,7 @@
  * @package Relevamiento Anual
  * @subpackage GeneratedDataObjects
 	 * @property integer $IdFolio the value for intIdFolio (PK)
-	 * @property string $InformeUrbanisticoFecha the value for strInformeUrbanisticoFecha 
+	 * @property string $InformeUrbanistico the value for strInformeUrbanistico 
 	 * @property boolean $MapeoPreliminar the value for blnMapeoPreliminar 
 	 * @property boolean $NoCorrespondeInscripcion the value for blnNoCorrespondeInscripcion 
 	 * @property string $ResolucionInscripcionProvisoria the value for strResolucionInscripcionProvisoria 
@@ -38,6 +38,7 @@
 	 * @property string $RegularizacionTienePlano the value for strRegularizacionTienePlano 
 	 * @property string $TieneCenso the value for strTieneCenso 
 	 * @property string $Ley14449 the value for strLey14449 
+	 * @property QDateTime $FechaInformeUrbanistico the value for dttFechaInformeUrbanistico 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (PK)
 	 * @property EstadoProceso $RegularizacionEstadoProcesoObject the value for the EstadoProceso object referenced by intRegularizacionEstadoProceso 
 	 * @property EstadoFolio $EstadoFolioObject the value for the EstadoFolio object referenced by intEstadoFolio 
@@ -76,12 +77,12 @@ class UsoInternoGen extends QBaseClass {
     protected $__intIdFolio;
 
     /**
-     * Protected member variable that maps to the database column uso_interno.informe_urbanistico_fecha
-     * @var string strInformeUrbanisticoFecha
+     * Protected member variable that maps to the database column uso_interno.informe_urbanistico
+     * @var string strInformeUrbanistico
      */
-    protected $strInformeUrbanisticoFecha;
-    const InformeUrbanisticoFechaMaxLength = 45;
-    const InformeUrbanisticoFechaDefault = null;
+    protected $strInformeUrbanistico;
+    const InformeUrbanisticoMaxLength = 45;
+    const InformeUrbanisticoDefault = null;
 
 
     /**
@@ -252,6 +253,14 @@ class UsoInternoGen extends QBaseClass {
      */
     protected $strLey14449;
     const Ley14449Default = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.fecha_informe_urbanistico
+     * @var QDateTime dttFechaInformeUrbanistico
+     */
+    protected $dttFechaInformeUrbanistico;
+    const FechaInformeUrbanisticoDefault = null;
 
 
     /**
@@ -623,7 +632,7 @@ class UsoInternoGen extends QBaseClass {
 			}
 
 			$objBuilder->AddSelectItem($strTableName, 'id_folio', $strAliasPrefix . 'id_folio');
-			$objBuilder->AddSelectItem($strTableName, 'informe_urbanistico_fecha', $strAliasPrefix . 'informe_urbanistico_fecha');
+			$objBuilder->AddSelectItem($strTableName, 'informe_urbanistico', $strAliasPrefix . 'informe_urbanistico');
 			$objBuilder->AddSelectItem($strTableName, 'mapeo_preliminar', $strAliasPrefix . 'mapeo_preliminar');
 			$objBuilder->AddSelectItem($strTableName, 'no_corresponde_inscripcion', $strAliasPrefix . 'no_corresponde_inscripcion');
 			$objBuilder->AddSelectItem($strTableName, 'resolucion_inscripcion_provisoria', $strAliasPrefix . 'resolucion_inscripcion_provisoria');
@@ -645,6 +654,7 @@ class UsoInternoGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'regularizacion_tiene_plano', $strAliasPrefix . 'regularizacion_tiene_plano');
 			$objBuilder->AddSelectItem($strTableName, 'tiene_censo', $strAliasPrefix . 'tiene_censo');
 			$objBuilder->AddSelectItem($strTableName, 'ley_14449', $strAliasPrefix . 'ley_14449');
+			$objBuilder->AddSelectItem($strTableName, 'fecha_informe_urbanistico', $strAliasPrefix . 'fecha_informe_urbanistico');
 		}
 
 //instantiation_methods
@@ -677,8 +687,8 @@ class UsoInternoGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAliasPrefix . 'id_folio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'id_folio'] : $strAliasPrefix . 'id_folio';
 			$objToReturn->intIdFolio = $objDbRow->GetColumn($strAliasName, 'Integer');
 			$objToReturn->__intIdFolio = $objDbRow->GetColumn($strAliasName, 'Integer');
-			$strAliasName = array_key_exists($strAliasPrefix . 'informe_urbanistico_fecha', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'informe_urbanistico_fecha'] : $strAliasPrefix . 'informe_urbanistico_fecha';
-			$objToReturn->strInformeUrbanisticoFecha = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'informe_urbanistico', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'informe_urbanistico'] : $strAliasPrefix . 'informe_urbanistico';
+			$objToReturn->strInformeUrbanistico = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'mapeo_preliminar', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'mapeo_preliminar'] : $strAliasPrefix . 'mapeo_preliminar';
 			$objToReturn->blnMapeoPreliminar = $objDbRow->GetColumn($strAliasName, 'Bit');
 			$strAliasName = array_key_exists($strAliasPrefix . 'no_corresponde_inscripcion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'no_corresponde_inscripcion'] : $strAliasPrefix . 'no_corresponde_inscripcion';
@@ -721,6 +731,8 @@ class UsoInternoGen extends QBaseClass {
 			$objToReturn->strTieneCenso = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'ley_14449', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'ley_14449'] : $strAliasPrefix . 'ley_14449';
 			$objToReturn->strLey14449 = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_informe_urbanistico', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_informe_urbanistico'] : $strAliasPrefix . 'fecha_informe_urbanistico';
+			$objToReturn->dttFechaInformeUrbanistico = $objDbRow->GetColumn($strAliasName, 'Date');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -981,7 +993,7 @@ class UsoInternoGen extends QBaseClass {
                     $objDatabase->NonQuery('
                         INSERT INTO "uso_interno" (
                             "id_folio",
-                            "informe_urbanistico_fecha",
+                            "informe_urbanistico",
                             "mapeo_preliminar",
                             "no_corresponde_inscripcion",
                             "resolucion_inscripcion_provisoria",
@@ -1002,10 +1014,11 @@ class UsoInternoGen extends QBaseClass {
                             "estado_folio",
                             "regularizacion_tiene_plano",
                             "tiene_censo",
-                            "ley_14449"
+                            "ley_14449",
+                            "fecha_informe_urbanistico"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
-                            ' . $objDatabase->SqlVariable($this->strInformeUrbanisticoFecha) . ',
+                            ' . $objDatabase->SqlVariable($this->strInformeUrbanistico) . ',
                             ' . $objDatabase->SqlVariable($this->blnMapeoPreliminar) . ',
                             ' . $objDatabase->SqlVariable($this->blnNoCorrespondeInscripcion) . ',
                             ' . $objDatabase->SqlVariable($this->strResolucionInscripcionProvisoria) . ',
@@ -1026,7 +1039,8 @@ class UsoInternoGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->intEstadoFolio) . ',
                             ' . $objDatabase->SqlVariable($this->strRegularizacionTienePlano) . ',
                             ' . $objDatabase->SqlVariable($this->strTieneCenso) . ',
-                            ' . $objDatabase->SqlVariable($this->strLey14449) . '
+                            ' . $objDatabase->SqlVariable($this->strLey14449) . ',
+                            ' . $objDatabase->SqlVariable($this->dttFechaInformeUrbanistico) . '
                         )
                     ');
 
@@ -1042,7 +1056,7 @@ class UsoInternoGen extends QBaseClass {
                             "uso_interno"
                         SET
                             "id_folio" = ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
-                            "informe_urbanistico_fecha" = ' . $objDatabase->SqlVariable($this->strInformeUrbanisticoFecha) . ',
+                            "informe_urbanistico" = ' . $objDatabase->SqlVariable($this->strInformeUrbanistico) . ',
                             "mapeo_preliminar" = ' . $objDatabase->SqlVariable($this->blnMapeoPreliminar) . ',
                             "no_corresponde_inscripcion" = ' . $objDatabase->SqlVariable($this->blnNoCorrespondeInscripcion) . ',
                             "resolucion_inscripcion_provisoria" = ' . $objDatabase->SqlVariable($this->strResolucionInscripcionProvisoria) . ',
@@ -1063,7 +1077,8 @@ class UsoInternoGen extends QBaseClass {
                             "estado_folio" = ' . $objDatabase->SqlVariable($this->intEstadoFolio) . ',
                             "regularizacion_tiene_plano" = ' . $objDatabase->SqlVariable($this->strRegularizacionTienePlano) . ',
                             "tiene_censo" = ' . $objDatabase->SqlVariable($this->strTieneCenso) . ',
-                            "ley_14449" = ' . $objDatabase->SqlVariable($this->strLey14449) . '
+                            "ley_14449" = ' . $objDatabase->SqlVariable($this->strLey14449) . ',
+                            "fecha_informe_urbanistico" = ' . $objDatabase->SqlVariable($this->dttFechaInformeUrbanistico) . '
                         WHERE
                             "id_folio" = ' . $objDatabase->SqlVariable($this->__intIdFolio) . '
                     ');
@@ -1149,7 +1164,7 @@ class UsoInternoGen extends QBaseClass {
 			// Update $this's local variables to match
 			$this->IdFolio = $objReloaded->IdFolio;
 			$this->__intIdFolio = $this->intIdFolio;
-			$this->strInformeUrbanisticoFecha = $objReloaded->strInformeUrbanisticoFecha;
+			$this->strInformeUrbanistico = $objReloaded->strInformeUrbanistico;
 			$this->blnMapeoPreliminar = $objReloaded->blnMapeoPreliminar;
 			$this->blnNoCorrespondeInscripcion = $objReloaded->blnNoCorrespondeInscripcion;
 			$this->strResolucionInscripcionProvisoria = $objReloaded->strResolucionInscripcionProvisoria;
@@ -1171,6 +1186,7 @@ class UsoInternoGen extends QBaseClass {
 			$this->strRegularizacionTienePlano = $objReloaded->strRegularizacionTienePlano;
 			$this->strTieneCenso = $objReloaded->strTieneCenso;
 			$this->strLey14449 = $objReloaded->strLey14449;
+			$this->dttFechaInformeUrbanistico = $objReloaded->dttFechaInformeUrbanistico;
 		}
 
 
@@ -1199,12 +1215,12 @@ class UsoInternoGen extends QBaseClass {
                  */
                 return $this->intIdFolio;
 
-            case 'InformeUrbanisticoFecha':
+            case 'InformeUrbanistico':
                 /**
-                 * Gets the value for strInformeUrbanisticoFecha 
+                 * Gets the value for strInformeUrbanistico 
                  * @return string
                  */
-                return $this->strInformeUrbanisticoFecha;
+                return $this->strInformeUrbanistico;
 
             case 'MapeoPreliminar':
                 /**
@@ -1353,6 +1369,13 @@ class UsoInternoGen extends QBaseClass {
                  */
                 return $this->strLey14449;
 
+            case 'FechaInformeUrbanistico':
+                /**
+                 * Gets the value for dttFechaInformeUrbanistico 
+                 * @return QDateTime
+                 */
+                return $this->dttFechaInformeUrbanistico;
+
 
             ///////////////////
             // Member Objects
@@ -1448,16 +1471,16 @@ class UsoInternoGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'InformeUrbanisticoFecha':
+				case 'InformeUrbanistico':
 					/**
-					 * Sets the value for strInformeUrbanisticoFecha 
+					 * Sets the value for strInformeUrbanistico 
 					 * @param string $mixValue
 					 * @return string
 					 */
 					try {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strInformeUrbanisticoFecha = QType::Cast($mixValue, QType::String));
-                                                return ($this->strInformeUrbanisticoFecha = $mixValue);
+                                                //return ($this->strInformeUrbanistico = QType::Cast($mixValue, QType::String));
+                                                return ($this->strInformeUrbanistico = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1780,6 +1803,21 @@ class UsoInternoGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'FechaInformeUrbanistico':
+					/**
+					 * Sets the value for dttFechaInformeUrbanistico 
+					 * @param QDateTime $mixValue
+					 * @return QDateTime
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->dttFechaInformeUrbanistico = QType::Cast($mixValue, QType::DateTime));
+                                                return ($this->dttFechaInformeUrbanistico = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1923,7 +1961,7 @@ class UsoInternoGen extends QBaseClass {
 		public static function GetSoapComplexTypeXml() {
 			$strToReturn = '<complexType name="UsoInterno"><sequence>';
 			$strToReturn .= '<element name="IdFolioObject" type="xsd1:Folio"/>';
-			$strToReturn .= '<element name="InformeUrbanisticoFecha" type="xsd:string"/>';
+			$strToReturn .= '<element name="InformeUrbanistico" type="xsd:string"/>';
 			$strToReturn .= '<element name="MapeoPreliminar" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="NoCorrespondeInscripcion" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="ResolucionInscripcionProvisoria" type="xsd:string"/>';
@@ -1945,6 +1983,7 @@ class UsoInternoGen extends QBaseClass {
 			$strToReturn .= '<element name="RegularizacionTienePlano" type="xsd:string"/>';
 			$strToReturn .= '<element name="TieneCenso" type="xsd:string"/>';
 			$strToReturn .= '<element name="Ley14449" type="xsd:string"/>';
+			$strToReturn .= '<element name="FechaInformeUrbanistico" type="xsd:dateTime"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1974,8 +2013,8 @@ class UsoInternoGen extends QBaseClass {
 			if ((property_exists($objSoapObject, 'IdFolioObject')) &&
 				($objSoapObject->IdFolioObject))
 				$objToReturn->IdFolioObject = Folio::GetObjectFromSoapObject($objSoapObject->IdFolioObject);
-			if (property_exists($objSoapObject, 'InformeUrbanisticoFecha')) {
-				$objToReturn->strInformeUrbanisticoFecha = $objSoapObject->InformeUrbanisticoFecha;
+			if (property_exists($objSoapObject, 'InformeUrbanistico')) {
+				$objToReturn->strInformeUrbanistico = $objSoapObject->InformeUrbanistico;
             }
 			if (property_exists($objSoapObject, 'MapeoPreliminar')) {
 				$objToReturn->blnMapeoPreliminar = $objSoapObject->MapeoPreliminar;
@@ -2040,6 +2079,9 @@ class UsoInternoGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Ley14449')) {
 				$objToReturn->strLey14449 = $objSoapObject->Ley14449;
             }
+			if (property_exists($objSoapObject, 'FechaInformeUrbanistico')) {
+				$objToReturn->dttFechaInformeUrbanistico = new QDateTime($objSoapObject->FechaInformeUrbanistico);
+            }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
 			return $objToReturn;
@@ -2072,6 +2114,8 @@ class UsoInternoGen extends QBaseClass {
 				$objObject->objEstadoFolioObject = EstadoFolio::GetSoapObjectFromObject($objObject->objEstadoFolioObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intEstadoFolio = null;
+			if ($objObject->dttFechaInformeUrbanistico)
+				$objObject->dttFechaInformeUrbanistico = $objObject->dttFechaInformeUrbanistico->__toString(QDateTime::FormatSoap);
 			return $objObject;
 		}
 

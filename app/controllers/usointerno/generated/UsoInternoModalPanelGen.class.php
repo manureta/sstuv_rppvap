@@ -11,7 +11,7 @@ class UsoInternoModalPanelGen extends EditPanelBase {
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
         'lstIdFolioObject' => true,
-        'txtInformeUrbanisticoFecha' => true,
+        'txtInformeUrbanistico' => true,
         'chkMapeoPreliminar' => true,
         'chkNoCorrespondeInscripcion' => true,
         'txtResolucionInscripcionProvisoria' => true,
@@ -33,6 +33,7 @@ class UsoInternoModalPanelGen extends EditPanelBase {
         'txtRegularizacionTienePlano' => true,
         'txtTieneCenso' => true,
         'txtLey14449' => true,
+        'calFechaInformeUrbanistico' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsoInterno = null, $strControlId = null) {
@@ -65,8 +66,8 @@ class UsoInternoModalPanelGen extends EditPanelBase {
         // Call MetaControl's methods to create qcontrols based on UsoInterno's data fields
         if (in_array('lstIdFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstIdFolioObject'] = $this->mctUsoInterno->lstIdFolioObject_Create();
-        if (in_array('txtInformeUrbanisticoFecha',$strControlsArray)) 
-            $this->objControlsArray['txtInformeUrbanisticoFecha'] = $this->mctUsoInterno->txtInformeUrbanisticoFecha_Create();
+        if (in_array('txtInformeUrbanistico',$strControlsArray)) 
+            $this->objControlsArray['txtInformeUrbanistico'] = $this->mctUsoInterno->txtInformeUrbanistico_Create();
         if (in_array('chkMapeoPreliminar',$strControlsArray)) 
             $this->objControlsArray['chkMapeoPreliminar'] = $this->mctUsoInterno->chkMapeoPreliminar_Create();
         if (in_array('chkNoCorrespondeInscripcion',$strControlsArray)) 
@@ -109,6 +110,8 @@ class UsoInternoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtTieneCenso'] = $this->mctUsoInterno->txtTieneCenso_Create();
         if (in_array('txtLey14449',$strControlsArray)) 
             $this->objControlsArray['txtLey14449'] = $this->mctUsoInterno->txtLey14449_Create();
+        if (in_array('calFechaInformeUrbanistico',$strControlsArray)) 
+            $this->objControlsArray['calFechaInformeUrbanistico'] = $this->mctUsoInterno->calFechaInformeUrbanistico_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

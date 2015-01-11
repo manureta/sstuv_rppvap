@@ -101,6 +101,7 @@
         <div class="well bs-component">
             
             <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
+            <?php $_CONTROL->calFechaInformeUrbanistico->RenderWithName();?>
             
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component">

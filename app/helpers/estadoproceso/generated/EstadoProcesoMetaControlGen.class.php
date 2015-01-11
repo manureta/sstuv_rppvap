@@ -198,7 +198,7 @@
         $strConfigArray['strAddMethod'] = 'AddUsoInternoAsRegularizacion';
         $strConfigArray['strRemoveMethod'] = 'RemoveUsoInternoAsRegularizacion';
         $strConfigArray['Columns'] = array();
-        $strConfigArray['Columns']['InformeUrbanisticoFecha'] = QApplication::Translate('InformeUrbanisticoFecha');
+        $strConfigArray['Columns']['InformeUrbanistico'] = QApplication::Translate('InformeUrbanistico');
         $strConfigArray['Columns']['MapeoPreliminar'] = QApplication::Translate('MapeoPreliminar');
         $strConfigArray['Columns']['NoCorrespondeInscripcion'] = QApplication::Translate('NoCorrespondeInscripcion');
         $strConfigArray['Columns']['ResolucionInscripcionProvisoria'] = QApplication::Translate('ResolucionInscripcionProvisoria');
@@ -219,6 +219,7 @@
         $strConfigArray['Columns']['RegularizacionTienePlano'] = QApplication::Translate('RegularizacionTienePlano');
         $strConfigArray['Columns']['TieneCenso'] = QApplication::Translate('TieneCenso');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
+        $strConfigArray['Columns']['FechaInformeUrbanistico'] = QApplication::Translate('FechaInformeUrbanistico');
 
         $this->lstUsoInternoAsRegularizacion = new QListPanel($this->objParentObject, $this->objEstadoProceso, $strConfigArray, $strControlId);
         $this->lstUsoInternoAsRegularizacion->Name = UsoInterno::Noun();

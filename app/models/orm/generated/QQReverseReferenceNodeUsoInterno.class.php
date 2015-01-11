@@ -9,8 +9,8 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('id_folio', 'IdFolio', 'integer', $this);
 				case 'IdFolioObject':
 					return new QQNodeFolio('id_folio', 'IdFolioObject', 'integer', $this);
-				case 'InformeUrbanisticoFecha':
-					return new QQNode('informe_urbanistico_fecha', 'InformeUrbanisticoFecha', 'string', $this);
+				case 'InformeUrbanistico':
+					return new QQNode('informe_urbanistico', 'InformeUrbanistico', 'string', $this);
 				case 'MapeoPreliminar':
 					return new QQNode('mapeo_preliminar', 'MapeoPreliminar', 'boolean', $this);
 				case 'NoCorrespondeInscripcion':
@@ -57,6 +57,8 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('tiene_censo', 'TieneCenso', 'string', $this);
 				case 'Ley14449':
 					return new QQNode('ley_14449', 'Ley14449', 'string', $this);
+				case 'FechaInformeUrbanistico':
+					return new QQNode('fecha_informe_urbanistico', 'FechaInformeUrbanistico', 'QDateTime', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

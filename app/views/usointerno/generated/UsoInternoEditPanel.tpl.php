@@ -5,7 +5,7 @@
 	// code re-generations do not overwrite your changes.
 ?>
 		<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
-		<?php $_CONTROL->txtInformeUrbanisticoFecha->RenderWithName(); ?>
+		<?php $_CONTROL->txtInformeUrbanistico->RenderWithName(); ?>
 		<?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
 		<?php $_CONTROL->chkNoCorrespondeInscripcion->RenderWithName(); ?>
 		<?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
@@ -27,6 +27,7 @@
 		<?php $_CONTROL->txtRegularizacionTienePlano->RenderWithName(); ?>
 		<?php $_CONTROL->txtTieneCenso->RenderWithName(); ?>
 		<?php $_CONTROL->txtLey14449->RenderWithName(); ?>
+		<?php $_CONTROL->calFechaInformeUrbanistico->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>
