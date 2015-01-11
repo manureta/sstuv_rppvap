@@ -226,12 +226,12 @@
 					<span>¿Cuenta con informe urbanístico de la SSTUV?</span>
 					<form id="esp_lib">
 						<span>Si</span>
-						<input type="checkbox">
+						<input type="checkbox" <?php echo (($this->objUsoInterno->InformeUrbanistico=='si')?'checked':'');?>>
 						<span>No</span>
-						<input type="checkbox">
+						<input type="checkbox" <?php echo (($this->objUsoInterno->InformeUrbanistico=='no')?'checked':'');?>>
 					</form>
 					<span>Fecha del informe</span>
-					<input style="width:50px;">
+					<input style="width:100px;" value=<?=($this->objUsoInterno->FechaInformeUrbanistico)?$this->objUsoInterno->FechaInformeUrbanistico->format('d-m-Y'):'';?>>
 					
 					
 				</div>

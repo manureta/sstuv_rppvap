@@ -79,7 +79,7 @@
 			<h3>&#9658; Fecha de intervención</h3>
 			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('d'):'';?>>
 			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('m'):'';?>>
-			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('y'):'';?>>
+			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('Y'):'';?>>
 			
 			<div id="uso_int">
 				</br>
@@ -93,7 +93,7 @@
 						<input type="checkbox"<?php echo (($this->objUsoInterno->RegularizacionTienePlano=='no')?'checked':'');?>>
 					</form>
 					<span>Fecha del informe</span>
-					<input style="width:70px;" value="<?=($this->objUsoInterno->RegularizacionFechaInicio)?$this->objUsoInterno->RegularizacionFechaInicio->format('d-m-y'):'';?>"></br>
+					<input style="width:70px;" value="<?=($this->objUsoInterno->RegularizacionFechaInicio)?$this->objUsoInterno->RegularizacionFechaInicio->format('d-m-Y'):'';?>"></br>
 					
 					<span>Circular 10 Catastro</span>
 					<form id="esp_lib" style="margin-left:175px">

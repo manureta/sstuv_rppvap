@@ -13,7 +13,7 @@
 			<h3>Fecha de carga del folio</h3>
 			<input style="width:45px" value=<?=$this->objFolio->Fecha->format('d');?>>
 			<input style="width:45px"value=<?=$this->objFolio->Fecha->format('m');?>>
-			<input style="width:45px" value=<?=$this->objFolio->Fecha->format('y');?>>
+			<input style="width:45px" value=<?=$this->objFolio->Fecha->format('Y');?>>
 			
 			<h3>&#9658; Encargado/a de la carga</h3>
 			<small>(Detallar el nombre y apellido de la persona y repartición publica a la que pertenece)</small></br>
