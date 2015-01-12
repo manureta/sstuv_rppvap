@@ -1,4 +1,3 @@
-<?php $this->RenderBegin(false); ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -10,10 +9,24 @@
 		</style>
 		
 	</head>
+	
+<body onload="imprimir()">
+<?php $this->RenderBegin(false); ?>
 <?php 
+
 	include "hoja1.tpl.php"; 
 	include "hoja2.tpl.php";
 	include "hoja3.tpl.php";
 	include "hoja4.tpl.php";
+	
 ?>
+
 <?php $this->RenderEnd(false); ?>
+	<script type="text/javascript">
+		function imprimir(){
+			window.print();
+			window.close();
+		}
+	</script>
+</body>
+</html>

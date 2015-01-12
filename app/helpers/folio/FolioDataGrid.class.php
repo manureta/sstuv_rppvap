@@ -26,7 +26,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->CreadorObject->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false);?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false);?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
         $this->AddColumn($objColumnAcciones);
     }
 
@@ -135,6 +135,18 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }
 
+    public function GetFolioCompletoButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-yellow');
+        $objButton->Text = 'Folio';
+        $objButton->ToolTip = 'Imprimir el folio completo';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnFolioCompleto_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = Permission::PuedeDescargarFolioCompleto($obj);
+        return $objButton;
+    }
+
     public function btnConfirmar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $objUsoInterno = $objFolio->UsoInterno;
@@ -163,8 +175,8 @@ class FolioDataGrid extends FolioDataGridGen {
    public function Caratula_Click($strFormId, $strControlId, $strParameter) {
         $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";        
 
-        QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
-        //QApplication::ExecuteJavascript("window.frames['printf'].focus();window.frames['printf'].print();");
+        //QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
+        QApplication::ExecuteJavascript("window.open('$url');");
 
     }
 
@@ -208,6 +220,14 @@ class FolioDataGrid extends FolioDataGridGen {
             QApplication::DisplayAlert("No hay archivos disponibles");
         }
         
+    }
+
+    public function btnFolioCompleto_Click($strFormId, $strControlId, $strParameter) {
+        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter&foliocompleto";        
+
+        //QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
+        QApplication::ExecuteJavascript("window.open('$url');");
+
     }
 
     

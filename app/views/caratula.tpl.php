@@ -213,6 +213,7 @@
 			    elems[i].disabled = true;
 			}
 			window.print();
+			window.close();
 	      }
 	    </script>
 		<?php $this->RenderEnd(false); ?>

@@ -258,7 +258,9 @@ abstract class Permission extends PermissionBase {
         return self::EsAdministrador();
     }
 
-
+    public static function PuedeDescargarFolioCompleto(Folio $objFolio){
+        return self::EsAdministrador();
+    }
 
 
 
