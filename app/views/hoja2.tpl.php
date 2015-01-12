@@ -46,10 +46,16 @@
 					<small>Dato verficado en el Registro de la Propiedad</small>
 				</li>
 				<?php $page++; ?>
-					<?php if($page==8): ?>
+					<?php if($page%8==0): ?>
+					</ol>
+					</div>
+					</div>		
 					</page>
+				
 					<page size="A4">
-					<?php $page=0; ?>		
+					<div class="cont">
+					<div class="nomenclaturas">
+					<ol start="<?=$page+1;?>">		
 				<?php endif; ?>
 				<?php endfor; ?>
 			</ol>
