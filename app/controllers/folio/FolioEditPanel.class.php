@@ -168,7 +168,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         
         //seteo upload manager
         $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
-        if(Permission::PuedeAdjuntarHoja1($this->mctFolio->Folio)) {
+        if(($this->mctFolio->Folio->Id) && Permission::PuedeAdjuntarHoja1($this->mctFolio->Folio)) {
             $this->boolPuedeAdjuntar=true;    
             QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload','#files')");
         }else{
