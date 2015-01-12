@@ -4,7 +4,7 @@
 	<h2>Nomenclatura/partida/dominio</h2>
 	<div class="nomenclaturas">
 	<ol>
-
+				<?php $page=0;?>
 				<?php for ($i=0;$i<count($this->arrNom);$i++): ?>
 				  	
 				<li>
@@ -45,6 +45,12 @@
 					<input type="checkbox" <?php echo (($this->arrNom[$i]->DatoVerificadoRegPropiedad)?'checked':'');?>>
 					<small>Dato verficado en el Registro de la Propiedad</small>
 				</li>
+				<?php $page++; ?>
+					<?php if($page==8): ?>
+					</page>
+					<page size="A4">
+					<?php $page=0; ?>		
+				<?php endif; ?>
 				<?php endfor; ?>
 			</ol>
 		</div>
