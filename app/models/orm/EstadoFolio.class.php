@@ -16,8 +16,8 @@ class EstadoFolio extends EstadoFolioGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return $this->strDescripcion;
-        return sprintf('EstadoFolio %s',  $this->intId);
+        //return $this->strDescripcion;
+        return sprintf('%s - %s',  $this->intId,$this->strDescripcion);
     }
 
 }
