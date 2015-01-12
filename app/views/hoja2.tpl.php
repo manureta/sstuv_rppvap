@@ -4,6 +4,7 @@
 	<h2>Nomenclatura/partida/dominio</h2>
 	<div class="nomenclaturas">
 	<ol>
+
 				<?php for ($i=0;$i<count($this->arrNom);$i++): ?>
 				  	
 				<li>

@@ -27,12 +27,8 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
         $this->objFolio = Folio::Load($this->id);
         $this->objInfraestructura=Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,$this->id));
         $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,$this->id));
-        $this->arrNom= Nomenclatura::QueryArray(
-                        QQ::AndCondition(
-                            QQ::Equal(QQN::Nomenclatura()->IdFolio,$this->id),
-                            QQ::Equal(QQN::Nomenclatura()->EstadoGeografico,'completo')
-                        ),QQ::LimitInfo(4)   
-                        );
+        $this->arrNom= Nomenclatura::QueryArray(QQ::Equal(QQN::Nomenclatura()->IdFolio,$this->id));
+
         $this->objCond=CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,$this->id));
         $this->objEquip=Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,$this->id));
         $this->objTransporte=Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,$this->id));

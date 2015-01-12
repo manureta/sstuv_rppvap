@@ -12,7 +12,8 @@
 	
 	<body onload="hide()">
 		<?php $this->RenderBegin(false); ?>
-		<div class="cont">
+		<page size="A4">
+		<div class="cont cond">
 			<h1>Ley 14.449/carátula folio</h1>
 			<h2>Datos de carga</h2>
 			
@@ -67,43 +68,45 @@
 			
 			<h3>&#9658; Nomenclatura catastral/dominio</h3>
 			<ol>
-				<?php for ($i=0;$i<count($this->arrNom);$i++): ?>
-				  
-				
-				<li>
-					<span>Nomenclatura catastral</span>
-					<div>
-						<small>Circ</small></br>
-						<input value="<?php echo $this->limpiar_ceros($i,'circ'); ?>">
-					</div>
-					<div>
-						<small>Secc</small></br>
-						<input value="<?php echo $this->limpiar_ceros($i,'secc'); ?>">
-					</div>
-					<div>
-						<small>Chac</small></br>
-						<input value="<?php echo $this->limpiar_ceros($i,'chac'); ?>"></br>
-					</div>
-					<div>
-						<small>Qta</small></br>
-						<input value="<?php echo $this->limpiar_ceros($i,'quinta'); ?>"></br>
-					</div>
-					<div>
-						<small>Frac</small></br>
-						<input value='<?php echo $this->limpiar_ceros($i,'frac'); ?>'></br>
-					</div>
-					<div>
-						<small>Mza</small></br>
-						<input value="<?php echo $this->limpiar_ceros($i,'mza'); ?>"</br>
-					</div>
-					<div>
-						<small>Parc</small></br>
-						<input value="<?php echo $this->limpiar_ceros($i,'parc'); ?>"></br>
-					</div>
-					
-					<small style="margin-left:230px">Titular de dominio</small>
-					<input style="width:482px;margin-left:230px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
-				</li>
+				<?php $cant=0; ?>
+				<?php for ($i=0;($i<count($this->arrNom)&&$cant<4);$i++): ?>
+					<?php if($this->arrNom[$i]->EstadoGeografico=='completo') : ?>			  
+						<?php $cant++;?>
+						<li>
+							<span>Nomenclatura catastral</span>
+							<div>
+								<small>Circ</small></br>
+								<input value="<?php echo $this->limpiar_ceros($i,'circ'); ?>">
+							</div>
+							<div>
+								<small>Secc</small></br>
+								<input value="<?php echo $this->limpiar_ceros($i,'secc'); ?>">
+							</div>
+							<div>
+								<small>Chac</small></br>
+								<input value="<?php echo $this->limpiar_ceros($i,'chac'); ?>"></br>
+							</div>
+							<div>
+								<small>Qta</small></br>
+								<input value="<?php echo $this->limpiar_ceros($i,'quinta'); ?>"></br>
+							</div>
+							<div>
+								<small>Frac</small></br>
+								<input value='<?php echo $this->limpiar_ceros($i,'frac'); ?>'></br>
+							</div>
+							<div>
+								<small>Mza</small></br>
+								<input value="<?php echo $this->limpiar_ceros($i,'mza'); ?>"</br>
+							</div>
+							<div>
+								<small>Parc</small></br>
+								<input value="<?php echo $this->limpiar_ceros($i,'parc'); ?>"></br>
+							</div>
+							
+							<small style="margin-left:230px">Titular de dominio</small>
+							<input style="width:482px;margin-left:185px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
+						</li>
+					<?php endif; ?>		
 				<?php endfor; ?>
 			</ol>
 			
@@ -199,6 +202,7 @@
 				</div>
 			</div>
 		</div>
+	</page>
 	    <script type="text/javascript">
 
 	      function hide(){
