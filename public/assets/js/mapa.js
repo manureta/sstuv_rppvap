@@ -69,11 +69,12 @@ function mostrarMapa(cod_partido,editar){
 		    "Google Callejero": gcallejero,
 		    "Google Híbrido":ghibrido,
 		    "Catastro ARBA":catastro,
-		    "Parcelario Geodesia":geodesia,
-		    "Base complementaria":base_sstuv
+		    "Parcelario Geodesia":geodesia
+		    
 		};
 
 		var overlayMaps = {
+			"Base complementaria":base_sstuv,
 			"Folios":capa_folios
 		};
 		
