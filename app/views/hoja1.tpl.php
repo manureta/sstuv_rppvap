@@ -17,7 +17,7 @@
 			
 			<h3>&#9658; Encargado/a de la carga</h3>
 			<small>(Detallar el nombre y apellido de la persona y repartición publica a la que pertenece)</small></br>
-			<textarea><?=$this->objFolio->CreadorObject->NombreCompleto;?> - <?=$this->objFolio->CreadorObject->Reparticion;?></textarea>
+			<textarea><?=$this->objFolio->Encargado;?> - <?=$this->objFolio->Reparticion;?></textarea>
 			<h2>Datos generales</h2></br>
 			
 			<h3>&#9658; Partido</h3>

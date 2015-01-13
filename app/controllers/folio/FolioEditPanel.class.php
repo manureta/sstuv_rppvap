@@ -271,6 +271,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
         if (in_array('txtReparticion',$strControlsArray)) 
             $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
+            $this->objControlsArray['txtReparticion']->Name="Repartición";
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 
