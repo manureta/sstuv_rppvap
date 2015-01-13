@@ -189,7 +189,6 @@ class FolioDataGrid extends FolioDataGridGen {
 
     public function btnResolucion_Click($strFormId,$strControlId,$strParameter){
         $url=__VIRTUAL_DIRECTORY__.'/upload.php?tipo=resolucion&idfolio='.$strParameter;
-        
         $response=file_get_contents("http://localhost/".$url);
         $json=json_decode($response,true);
         $links="";
@@ -206,10 +205,9 @@ class FolioDataGrid extends FolioDataGridGen {
 
     public function btnLey_Click($strFormId,$strControlId,$strParameter){
         $url=__VIRTUAL_DIRECTORY__.'/upload.php?tipo=habitat&idfolio='.$strParameter;
-        
         $response=file_get_contents("http://localhost/".$url);
         $json=json_decode($response,true);
-        error_log($url);
+
         $links="";
         foreach ($json['files'] as $key => $file) {
             $link ="<p><a href=".$file['url']." title=".$file['name']." download=".$file['name'].">".$file['name']."</a></p>";
