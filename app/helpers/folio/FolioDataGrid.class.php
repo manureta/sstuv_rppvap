@@ -209,6 +209,7 @@ class FolioDataGrid extends FolioDataGridGen {
         
         $response=file_get_contents("http://localhost/".$url);
         $json=json_decode($response,true);
+        error_log($url);
         $links="";
         foreach ($json['files'] as $key => $file) {
             $link ="<p><a href=".$file['url']." title=".$file['name']." download=".$file['name'].">".$file['name']."</a></p>";
