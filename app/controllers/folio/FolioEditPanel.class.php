@@ -111,8 +111,8 @@ class FolioEditPanel extends FolioEditPanelGen {
             //Fecha 
             $this->calFecha->DateTime=QDateTime::Now();
             // encargado y reparticion
-            $this->txtEncargado=Usuario::load($this->lstCreadorObject->Value)->NombreCompleto;
-            $this->txtReparticion=Usuario::load($this->lstCreadorObject->Value)->Reparticion;
+            $this->txtEncargado->Text=Usuario::load($this->lstCreadorObject->Value)->NombreCompleto;
+            $this->txtReparticion->Text=Usuario::load($this->lstCreadorObject->Value)->Reparticion;
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
