@@ -79,6 +79,7 @@ function mostrarMapa(cod_partido,editar){
 		};
 		
 		L.control.layers(baseMaps, overlayMaps).addTo(map);
+	  	map.addLayer(base_sstuv);
 	  	map.addLayer(capa_folios);
 
 	  	
