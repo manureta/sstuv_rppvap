@@ -186,6 +186,7 @@ function round(value, decimals) {
 }
 
 function cargarPartidos(){
+			partidos['all']=[-58,-37,6,true];
 			partidos['055']=[-57.9531182610472,-34.9201559357356,12,true];
 			partidos['012']=[-60.4912431248804,-35.1152226313929,14,true];
 			partidos['018']=[-59.8236308180915,-34.376595866889,14,false];
