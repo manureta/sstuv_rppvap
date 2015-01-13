@@ -26,6 +26,8 @@ class FolioEditPanelGen extends EditPanelBase {
         'txtLocalidad' => true,
         'lstCreadorObject' => true,
         'txtSuperficie' => true,
+        'txtEncargado' => true,
+        'txtReparticion' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -94,6 +96,10 @@ class FolioEditPanelGen extends EditPanelBase {
             $this->objControlsArray['lstCreadorObject'] = $this->mctFolio->lstCreadorObject_Create();
         if (in_array('txtSuperficie',$strControlsArray)) 
             $this->objControlsArray['txtSuperficie'] = $this->mctFolio->txtSuperficie_Create();
+        if (in_array('txtEncargado',$strControlsArray)) 
+            $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
+        if (in_array('txtReparticion',$strControlsArray)) 
+            $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

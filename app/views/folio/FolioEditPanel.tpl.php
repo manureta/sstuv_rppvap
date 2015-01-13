@@ -53,15 +53,10 @@
     <div class="titulos"><i class="icon-chevron-right"> </i>Datos de carga</div>  
         <div>                
             <div class="well bs-component">
-                <?php $_CONTROL->calFecha->RenderWithName(); ?> 
-                <div class="renderWithName">
-                <div class="left">
-                    <label>Encargado</label>
-                </div>
-                <label class="input-group">
-                 <input class="form-control" type="text" disabled="disabled" value="<?= $_CONTROL->strCreador; ?>"></input>                 
-                </label>    
-            </div>                                     
+                <?php $_CONTROL->calFecha->RenderWithName(); ?>
+                <?php $_CONTROL->txtEncargado->RenderWithName(); ?>
+                <?php $_CONTROL->txtReparticion->RenderWithName(); ?> 
+                                                     
              </div>
         </div>
     

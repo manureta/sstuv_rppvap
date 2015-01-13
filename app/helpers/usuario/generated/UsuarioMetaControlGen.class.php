@@ -492,6 +492,8 @@
         $strConfigArray['Columns']['Judicializado'] = QApplication::Translate('Judicializado');
         $strConfigArray['Columns']['Localidad'] = QApplication::Translate('Localidad');
         $strConfigArray['Columns']['Superficie'] = QApplication::Translate('Superficie');
+        $strConfigArray['Columns']['Encargado'] = QApplication::Translate('Encargado');
+        $strConfigArray['Columns']['Reparticion'] = QApplication::Translate('Reparticion');
 
         $this->lstFolioAsCreador = new QListPanel($this->objParentObject, $this->objUsuario, $strConfigArray, $strControlId);
         $this->lstFolioAsCreador->Name = Folio::Noun();

@@ -52,6 +52,10 @@
      * property-read QLabel $CreadorLabel
      * property QFloatTextBox $SuperficieControl
      * property-read QLabel $SuperficieLabel
+     * property QTextBox $EncargadoControl
+     * property-read QLabel $EncargadoLabel
+     * property QTextBox $ReparticionControl
+     * property-read QLabel $ReparticionLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -92,6 +96,8 @@
         protected $txtLocalidad;
         protected $lstCreadorObject;
         protected $txtSuperficie;
+        protected $txtEncargado;
+        protected $txtReparticion;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -111,6 +117,8 @@
         protected $lblLocalidad;
         protected $lblCreador;
         protected $lblSuperficie;
+        protected $lblEncargado;
+        protected $lblReparticion;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -697,6 +705,56 @@
         }
 
         /**
+         * Create and setup QTextBox txtEncargado
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtEncargado_Create($strControlId = null) {
+            $this->txtEncargado = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtEncargado->Name = QApplication::Translate('Encargado');
+            $this->txtEncargado->Text = $this->objFolio->Encargado;
+            
+            return $this->txtEncargado;
+        }
+
+        /**
+         * Create and setup QLabel lblEncargado
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblEncargado_Create($strControlId = null) {
+            $this->lblEncargado = new QLabel($this->objParentObject, $strControlId);
+            $this->lblEncargado->Name = QApplication::Translate('Encargado');
+            $this->lblEncargado->Text = $this->objFolio->Encargado;
+            return $this->lblEncargado;
+        }
+
+        /**
+         * Create and setup QTextBox txtReparticion
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtReparticion_Create($strControlId = null) {
+            $this->txtReparticion = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtReparticion->Name = QApplication::Translate('Reparticion');
+            $this->txtReparticion->Text = $this->objFolio->Reparticion;
+            
+            return $this->txtReparticion;
+        }
+
+        /**
+         * Create and setup QLabel lblReparticion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblReparticion_Create($strControlId = null) {
+            $this->lblReparticion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblReparticion->Name = QApplication::Translate('Reparticion');
+            $this->lblReparticion->Text = $this->objFolio->Reparticion;
+            return $this->lblReparticion;
+        }
+
+        /**
          * Create and setup QListBox lstCondicionesSocioUrbanisticasAsId ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -975,6 +1033,12 @@
             if ($this->txtSuperficie) $this->txtSuperficie->Text = $this->objFolio->Superficie;
             if ($this->lblSuperficie) $this->lblSuperficie->Text = $this->objFolio->Superficie;
 
+            if ($this->txtEncargado) $this->txtEncargado->Text = $this->objFolio->Encargado;
+            if ($this->lblEncargado) $this->lblEncargado->Text = $this->objFolio->Encargado;
+
+            if ($this->txtReparticion) $this->txtReparticion->Text = $this->objFolio->Reparticion;
+            if ($this->lblReparticion) $this->lblReparticion->Text = $this->objFolio->Reparticion;
+
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
                 $this->lstCondicionesSocioUrbanisticasAsId->AddItem(QApplication::Translate('- Select One -'), null);
@@ -1059,6 +1123,8 @@
                 if ($this->txtLocalidad) $this->objFolio->Localidad = $this->txtLocalidad->Text;
                 if ($this->lstCreadorObject) $this->objFolio->Creador = $this->lstCreadorObject->SelectedValue;
                 if ($this->txtSuperficie) $this->objFolio->Superficie = $this->txtSuperficie->Text;
+                if ($this->txtEncargado) $this->objFolio->Encargado = $this->txtEncargado->Text;
+                if ($this->txtReparticion) $this->objFolio->Reparticion = $this->txtReparticion->Text;
 
 
         }
@@ -1226,6 +1292,18 @@
                 case 'SuperficieLabel':
                     if (!$this->lblSuperficie) return $this->lblSuperficie_Create();
                     return $this->lblSuperficie;
+                case 'EncargadoControl':
+                    if (!$this->txtEncargado) return $this->txtEncargado_Create();
+                    return $this->txtEncargado;
+                case 'EncargadoLabel':
+                    if (!$this->lblEncargado) return $this->lblEncargado_Create();
+                    return $this->lblEncargado;
+                case 'ReparticionControl':
+                    if (!$this->txtReparticion) return $this->txtReparticion_Create();
+                    return $this->txtReparticion;
+                case 'ReparticionLabel':
+                    if (!$this->lblReparticion) return $this->lblReparticion_Create();
+                    return $this->lblReparticion;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1302,6 +1380,10 @@
                         return ($this->lstCreadorObject = QType::Cast($mixValue, 'QControl'));
                     case 'SuperficieControl':
                         return ($this->txtSuperficie = QType::Cast($mixValue, 'QControl'));
+                    case 'EncargadoControl':
+                        return ($this->txtEncargado = QType::Cast($mixValue, 'QControl'));
+                    case 'ReparticionControl':
+                        return ($this->txtReparticion = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

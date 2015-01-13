@@ -12,7 +12,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public $boolPuedeAdjuntar;
 
     public $objPartido;
-    public $strCreador;
+    
 
     //para anio de origen
     public $lstAnioOrigen; 
@@ -42,6 +42,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstUsoInterno' => false,
         'lstNomenclaturaAsId' => false,
         'lstCreadorObject' => true,
+        'txtEncargado' => true,
+        'txtReparticion' => true,
     );
 
     
@@ -108,7 +110,9 @@ class FolioEditPanel extends FolioEditPanelGen {
             
             //Fecha 
             $this->calFecha->DateTime=QDateTime::Now();
-            
+            // encargado y reparticion
+            $this->txtEncargado=Usuario::load($this->lstCreadorObject->Value)->NombreCompleto;
+            $this->txtReparticion=Usuario::load($this->lstCreadorObject->Value)->Reparticion;
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
@@ -156,7 +160,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         // Escondo el creador del folio
         $this->lstCreadorObject->Enabled=false;
         $this->lstCreadorObject->Visible=false;
-        $this->strCreador=Usuario::load($this->lstCreadorObject->Value)->NombreCompleto;
+
         
         //Escondo fecha
         $this->calFecha->Enabled=false;
@@ -262,6 +266,11 @@ class FolioEditPanel extends FolioEditPanelGen {
             $this->objControlsArray['lstUsoInterno'] = $this->mctFolio->lstUsoInterno_Create();
         if (in_array('lstNomenclaturaAsId',$strControlsArray))
             $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
+
+        if (in_array('txtEncargado',$strControlsArray)) 
+            $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
+        if (in_array('txtReparticion',$strControlsArray)) 
+            $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 
