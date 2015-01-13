@@ -41,7 +41,7 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var base_sstuv = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
-		    layers: 'parcelas,macizos_pba,secciones,circunscripcion,partidos_pba_2014_cod_catastro',
+		    layers: 'partidos_pba_2014_cod_catastro,circunscripcion,secciones,macizos_pba,parcelas',
 		    format: 'image/png',
 		    transparent: true,
 		    attribution: ""
