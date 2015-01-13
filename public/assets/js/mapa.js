@@ -31,7 +31,7 @@ function mostrarMapa(cod_partido,editar){
 	      });
 	  	var gcallejero=new L.Google('ROADMAP');
 	  	var gsatelital=new L.Google('SATELLITE');
-	  	var ghibrido¿new L.Google('HYBRID');
+	  	var ghibrido=new L.Google('HYBRID');
 
 	  	var capa_folios = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
 		    layers: 'registro:folios',
