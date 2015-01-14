@@ -187,13 +187,12 @@ class FolioDataGrid extends FolioDataGridGen {
 
     }
 
-    public function btnResolucion_Click($strFormId,$strControlId,$strParameter){
-        $url=__VIRTUAL_DIRECTORY__.'/upload.php?tipo=resolucion&idfolio='.$strParameter;
-        $response=file_get_contents("http://localhost/".$url);
-        $json=json_decode($response,true);
+    public function btnResolucion_Click($strFormId,$strControlId,$strParameter){    	    
+        $upload_handler = new UploadHandler($strParameter,'resolucion');            
+        $json=$upload_handler->get();        
         $links="";
         foreach ($json['files'] as $key => $file) {
-            $link ="<p><a href=".$file['url']." title=".$file['name']." download=".$file['name'].">".$file['name']."</a></p>";
+            $link ="<p><a href=".$file->url." title=".$file->name." download=".$file->name.">".$file->name."</a></p>";
             $links=$links.$link;
         }
         if($links!==""){
@@ -203,14 +202,12 @@ class FolioDataGrid extends FolioDataGridGen {
         }
     }
 
-    public function btnLey_Click($strFormId,$strControlId,$strParameter){
-        $url=__VIRTUAL_DIRECTORY__.'/upload.php?tipo=habitat&idfolio='.$strParameter;
-        $response=file_get_contents("http://localhost/".$url);
-        $json=json_decode($response,true);
-
+    public function btnLey_Click($strFormId,$strControlId,$strParameter){        
+        $upload_handler = new UploadHandler($strParameter,'habitat');            
+        $json=$upload_handler->get();
         $links="";
         foreach ($json['files'] as $key => $file) {
-            $link ="<p><a href=".$file['url']." title=".$file['name']." download=".$file['name'].">".$file['name']."</a></p>";
+            $link ="<p><a href=".$file->url." title=".$file->name." download=".$file->name.">".$file->name."</a></p>";
             $links=$links.$link;
         }
         if($links!==""){
@@ -243,6 +240,8 @@ class FolioDataGrid extends FolioDataGridGen {
         if($mapeo)return 'Mapeo Preliminar';
         return ''; 
     }
+
+
 
 }
 ?>
