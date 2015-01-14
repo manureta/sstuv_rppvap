@@ -70,7 +70,7 @@
 			<ol>
 				<?php $cant=0; ?>
 				<?php for ($i=0;($i<count($this->arrNom)&&$cant<4);$i++): ?>
-					<?php if($this->arrNom[$i]->EstadoGeografico=='completo') : ?>			  
+					<?php if($this->arrNom[$i]->EstadoGeografico=='completo' || $this->arrNom[$i]->EstadoGeografico=='parcial') : ?>			  
 						<?php $cant++;?>
 						<li>
 							<span>Nomenclatura catastral</span>
