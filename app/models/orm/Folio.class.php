@@ -58,18 +58,22 @@ class Folio extends FolioGen {
 	        // Perform the Query
 	        $objDbResult = $objDatabase->Query($strQuery);
 	        $row = $objDbResult->FetchArray();
-	        foreach ($row as $key => $value) {
-	            if (is_int($key)) {
-	                unset($row[$key]);
-	            }
-	        }
 
-	        $reg_evolucion= new EvolucionFolio();
-	        $reg_evolucion->Fecha=QDateTime::Now();
-	        $reg_evolucion->IdFolio=$objFolio->Id;
-	        $reg_evolucion->Contenido=json_encode($row);
-	        $reg_evolucion->Estado=$row['estado_folio'];
-	        $reg_evolucion->save();
+		        if($row){
+		        	foreach ($row as $key => $value) {
+		            if (is_int($key)) {
+		                unset($row[$key]);
+		            }
+		        }
+
+		        $reg_evolucion= new EvolucionFolio();
+		        $reg_evolucion->Fecha=QDateTime::Now();
+		        $reg_evolucion->IdFolio=$objFolio->Id;
+		        $reg_evolucion->Contenido=json_encode($row);
+		        $reg_evolucion->Estado=$row['estado_folio'];
+		        $reg_evolucion->save();	
+	        }
+	        
     }
 
 }

@@ -332,6 +332,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->SetEstadoCondition();
     }
     public function SetEstadoCondition(){
+            if(EstadoFolio::NO_CORRESPONDE)$this->chkNoCorrespondeInscripcion->Checked=true;
             if(Permission::EsAdministrador()) return;
             $this->lstEstadoFolioObject->MarkAsModified();
             switch($this->mctUsoInterno->UsoInterno->EstadoFolio){
@@ -344,6 +345,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     $this->lstEstadoFolioObject->SetCondition($objCondition);
                     break;
                 case EstadoFolio::ENVIADO_ESPERA:
+                    error_log("ENVIADO_ESPERA");
                     $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::VALIDACION,EstadoFolio::ENVIADO_ESPERA));
                     $this->lstEstadoFolioObject->SetCondition($objCondition);
                     break;
@@ -359,6 +361,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::CONFIRMACION,EstadoFolio::INSCRIPCION));
                     $this->lstEstadoFolioObject->SetCondition($objCondition);
                     break;
+                
                     
             }
  
