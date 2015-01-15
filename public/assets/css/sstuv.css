@@ -101,7 +101,15 @@ body{
 }
 
 .btn {
-    margin-left: 10px;
+    margin-left: 5px;
+}
+
+.btn-xs {
+    padding: 1px !IMPORTANT;
+}
+
+.btn-sm, .btn-xs {
+    font-size: 11px !IMPORTANT;
 }
 
 .inscripcion_provisoria{
