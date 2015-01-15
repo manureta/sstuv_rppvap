@@ -75,7 +75,7 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
             $this->objControlsArray['chkDecreto468696']->Name="Decreto 4686/96";
         if (in_array('chkLey14449',$strControlsArray)) 
             $this->objControlsArray['chkLey14449']= $this->mctEncuadreLegal->chkLey14449_Create();    
-            $this->objControlsArray['chkLey14449']->Name="Ley 14119";
+            $this->objControlsArray['chkLey14449']->Name="Ley 14449";
         if (in_array('chkTieneExpropiacion',$strControlsArray)) 
             $this->objControlsArray['chkTieneExpropiacion'] = $this->mctEncuadreLegal->chkTieneExpropiacion_Create();
             $this->objControlsArray['chkTieneExpropiacion']->Name="Expropiación";
