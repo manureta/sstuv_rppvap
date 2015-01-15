@@ -147,7 +147,13 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeBorrarFolio(Folio $objFolio){
-        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
+        //error_log(count($objFolio->EvolucionFolio));
+        if(self::EsAdministrador())return true;
+        // si tiene registros de evolucion ya no se puede borrar
+         $cantEvolucion = EvolucionFolio::QueryCount(
+            QQ::Equal(QQN::EvolucionFolio()->IdFolio, $objFolio->Id)
+        );
+        return (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA && $cantEvolucion==0);
     }
     public static function PuedeConfirmarFolio(Folio $objFolio){
         return (self::EsCarga());
@@ -251,7 +257,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeDescargarResolucion(Folio $objFolio){
-        return self::EsAdministrador();
+        return (self::EsAdministrador() || $objFolio->UsoInterno->EstadoFolio == EstadoFolio::INSCRIPCION);
     }
 
     public static function PuedeDescargarLey14449(Folio $objFolio){
@@ -259,7 +265,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeDescargarFolioCompleto(Folio $objFolio){
-        return self::EsAdministrador();
+        return true; // todos pueden
     }
 
 

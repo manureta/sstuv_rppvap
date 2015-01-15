@@ -26,7 +26,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) . $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false);?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false)  . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
         $this->AddColumn($objColumnAcciones);
     }
 
@@ -42,11 +42,17 @@ class FolioDataGrid extends FolioDataGridGen {
     public function GetEditButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn btn-xs btn-info');
-        if(Permission::EsVisualizador())
+        if(Permission::EsVisualizador() || !Permission::PuedeEditar1A4($obj)){
             $objButton->Icon = 'search';
-        else
+            $objButton->Text = 'Ver';
+            $objButton->ToolTip = 'Ver Folio';
+        }            
+        else{
             $objButton->Icon = 'edit';
-        $objButton->ToolTip = 'Editar Folio';
+            $objButton->Text = 'Editar';
+            $objButton->ToolTip = 'Editar Folio';
+        }
+            
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnEdit_Click"));
         $objButton->Enabled = true;
@@ -55,7 +61,8 @@ class FolioDataGrid extends FolioDataGridGen {
 
     public function GetCaratulaButton(Folio $obj) {
         $objButton = new QButton($this);
-        $objButton->AddCssClass('btn btn-xs');
+        $objButton->AddCssClass('btn-yellow btn-xs');
+        $objButton->Text = 'Carátula';
         $objButton->Icon = 'print';
         $objButton->Enabled = true;
         $objButton->ToolTip = "Ver carátula";
@@ -68,11 +75,13 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-danger');
         $objButton->Icon = 'trash';
+        $objButton->Text = 'Borrar';
         $objButton->ToolTip = 'Borrar Folio';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere BORRAR de este FOLIO?\\r\\nEsta acción no se puede deshacer")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnDelete_Click"));
         $objButton->Enabled = (Permission::PuedeBorrarFolio($obj));
+        $objButton->Visible = (Permission::PuedeBorrarFolio($obj));
         return $objButton;
     }                 
        
@@ -80,6 +89,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-success');
         $objButton->Icon = 'ok';
+        $objButton->Text = 'Confirmar';
         $objButton->ToolTip = 'Confirmar Folio';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere CONFIRMAR este FOLIO?\\r\\nEsta acción no se puede deshacer")));
@@ -92,6 +102,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-warning');
         $objButton->Icon = 'remove';
+        $objButton->Text = 'Actualizar';
         $objButton->ToolTip = 'El Folio necesita correcciones';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que este FOLIO necesita correcciones?")));
@@ -104,7 +115,8 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-success');
         $objButton->Icon = 'circle-arrow-right';
-        $objButton->ToolTip = 'Enviar Folio';
+        $objButton->Text = 'Enviar';
+        $objButton->ToolTip = 'Enviar Folio a la SSTUV';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere ENVIAR este FOLIO?\\r\\n El Folio cambiará de estado y dejará de ser editable por usted hasta nuevo aviso")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnEnviar_Click"));
@@ -115,6 +127,7 @@ class FolioDataGrid extends FolioDataGridGen {
     public function GetResolucionButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-yellow');
+        $objButton->Icon = 'file';
         $objButton->Text = 'Resolución';
         $objButton->ToolTip = 'Descargar resolución';
         $objButton->ActionParameter = $obj->Id;
@@ -139,6 +152,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-yellow');
         $objButton->Text = 'Folio';
+        $objButton->Icon = 'print';
         $objButton->ToolTip = 'Imprimir el folio completo';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnFolioCompleto_Click"));
@@ -162,6 +176,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objUsoInterno->Save();
         $this->MarkAsModified();
         Folio::CambioEstadoFolio($objFolio);
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
     }
      public function btnEnviar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
