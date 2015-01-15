@@ -126,3 +126,9 @@ body{
   color: #3A87AD;
   
 }
+
+.leaflet-container {
+    background: white !IMPORTANT;
+    border-style: solid;
+    border-width: 1px;
+}

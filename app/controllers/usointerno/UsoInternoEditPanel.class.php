@@ -350,7 +350,6 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     $this->lstEstadoFolioObject->SetCondition($objCondition);
                     break;
                 case EstadoFolio::ENVIADO_ESPERA:
-                    error_log("ENVIADO_ESPERA");
                     $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::VALIDACION,EstadoFolio::ENVIADO_ESPERA));
                     $this->lstEstadoFolioObject->SetCondition($objCondition);
                     break;
