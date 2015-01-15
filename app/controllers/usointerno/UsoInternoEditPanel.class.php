@@ -206,6 +206,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                 QApplication::ExecuteJavascript("verAdjuntados('$url_upload_habitat','#files_habitat')");         
             }
         }
+        // para poner en no corresponde si cambia estado
+        $this->lstEstadoFolioObject->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstEstado_Change'));
 
         $this->blnMensajeInscripcion=Permission::inscripcionDefinitiva($this->objFolio);
         // para comprarar si el valor cambio o no
@@ -314,6 +316,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->txtLey14449->Text=$this->lstLey14449->SelectedValue;
     }
 
+    public function lstEstado_Change($strFormId,$strControlId,$strParameter){
+     if($this->lstEstadoFolioObject->Value==EstadoFolio::NO_CORRESPONDE)$this->chkNoCorrespondeInscripcion->Checked=true;               
+    }
+
     protected function buttons_Create($blnDelete = false) {
         parent::buttons_Create($blnDelete);
         if ($blnDelete) {
@@ -332,7 +338,6 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->SetEstadoCondition();
     }
     public function SetEstadoCondition(){
-            if(EstadoFolio::NO_CORRESPONDE)$this->chkNoCorrespondeInscripcion->Checked=true;
             if(Permission::EsAdministrador()) return;
             $this->lstEstadoFolioObject->MarkAsModified();
             switch($this->mctUsoInterno->UsoInterno->EstadoFolio){

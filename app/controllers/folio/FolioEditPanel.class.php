@@ -294,6 +294,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $ui = new UsoInterno();
                 $ui->IdFolio = $this->mctFolio->Folio->Id;
                 $ui->EstadoFolio=EstadoFolio::CARGA;
+                $ui->MapeoPreliminar=true;
                 $ui->save();
                 //Calculo las nomenclaturas
                 $this->calcular_nomenclaturas();

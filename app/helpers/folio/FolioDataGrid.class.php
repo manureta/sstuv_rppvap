@@ -233,7 +233,6 @@ class FolioDataGrid extends FolioDataGridGen {
         $prov=$obj->UsoInterno->ResolucionInscripcionProvisoria;
         $def=$obj->UsoInterno->ResolucionInscripcionDefinitiva;
 
-
         if($no_corresponde) return 'No Corresponde';
         if($def!='')return 'Inscripción Definitiva';
         if($prov!='')return 'Inscripción Provisoria';
