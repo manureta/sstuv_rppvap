@@ -47,7 +47,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
         'lstEstadoFolioObject' => true,
-        'calFechaInformeUrbanistico'=>true
+        'calFechaInformeUrbanistico'=>true,
+        'chkObjetado' => true,
+        'txtComentarioObjetacion' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -298,6 +300,12 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('calFechaInformeUrbanistico',$strControlsArray)) 
             $this->objControlsArray['calFechaInformeUrbanistico'] = $this->mctUsoInterno->calFechaInformeUrbanistico_Create();
             $this->objControlsArray['calFechaInformeUrbanistico']->Name="Fecha del Informe";
+        if (in_array('chkObjetado',$strControlsArray)) 
+            $this->objControlsArray['chkObjetado'] = $this->mctUsoInterno->chkObjetado_Create();
+            $this->objControlsArray['chkObjetado']->Name="Folio objetado por el municipio";
+        if (in_array('txtComentarioObjetacion',$strControlsArray)) 
+            $this->objControlsArray['txtComentarioObjetacion'] = $this->mctUsoInterno->txtComentarioObjetacion_Create();
+            $this->objControlsArray['txtComentarioObjetacion']->Name="Comentario del municipio";
     }
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       

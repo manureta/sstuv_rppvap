@@ -15,6 +15,8 @@ class FolioDataGrid extends FolioDataGridGen {
             $this->AddCondition(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,Session::GetObjUsuario()->CodPartido));
     } 
    public $mdlPanel;
+   
+
    protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
@@ -26,7 +28,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false)  . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
         $this->AddColumn($objColumnAcciones);
     }
 
@@ -110,6 +112,19 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeConfirmarFolio($obj));
         return $objButton;
+    }
+    public function GetObjetarButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-warning');
+        $objButton->Icon = 'stop';
+        $objButton->Text = 'Objetar';
+        $objButton->ToolTip = 'Desea objetar este Folio';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que este FOLIO debe ser objetado?")));
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnObjetar_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeConfirmarFolio($obj));
+        return $objButton;
     }                 
      public function GetEnviarButton(Folio $obj) {
         $objButton = new QButton($this);
@@ -178,6 +193,18 @@ class FolioDataGrid extends FolioDataGridGen {
         Folio::CambioEstadoFolio($objFolio);
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
     }
+    public function btnObjetar_Click($strFormId, $strControlId, $strParameter){
+        $objFolio=Folio::Load($strParameter);
+        //$objUsoInterno = $objFolio->UsoInterno;
+        //$objUsoInterno->EstadoFolio = EstadoFolio::CARGA;
+        //$objUsoInterno->Save();
+        //$this->MarkAsModified();
+        //Folio::CambioEstadoFolio($objFolio);
+        //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
+        // clicked, let's show content in dialog box
+        
+    }
+    
      public function btnEnviar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $objUsoInterno = $objFolio->UsoInterno;

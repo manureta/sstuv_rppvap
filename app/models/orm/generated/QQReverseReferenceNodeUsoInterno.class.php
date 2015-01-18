@@ -59,6 +59,10 @@ class QQReverseReferenceNodeUsoInterno extends QQReverseReferenceNode {
 					return new QQNode('ley_14449', 'Ley14449', 'string', $this);
 				case 'FechaInformeUrbanistico':
 					return new QQNode('fecha_informe_urbanistico', 'FechaInformeUrbanistico', 'QDateTime', $this);
+				case 'Objetado':
+					return new QQNode('objetado', 'Objetado', 'boolean', $this);
+				case 'ComentarioObjetacion':
+					return new QQNode('comentario_objetacion', 'ComentarioObjetacion', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

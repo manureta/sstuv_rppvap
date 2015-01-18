@@ -32,6 +32,8 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'txtTieneCenso' => true,
         'txtLey14449' => true,
         'calFechaInformeUrbanistico' => true,
+        'chkObjetado' => true,
+        'txtComentarioObjetacion' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -107,6 +109,10 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtLey14449'] = $this->mctUsoInterno->txtLey14449_Create();
         if (in_array('calFechaInformeUrbanistico',$strControlsArray)) 
             $this->objControlsArray['calFechaInformeUrbanistico'] = $this->mctUsoInterno->calFechaInformeUrbanistico_Create();
+        if (in_array('chkObjetado',$strControlsArray)) 
+            $this->objControlsArray['chkObjetado'] = $this->mctUsoInterno->chkObjetado_Create();
+        if (in_array('txtComentarioObjetacion',$strControlsArray)) 
+            $this->objControlsArray['txtComentarioObjetacion'] = $this->mctUsoInterno->txtComentarioObjetacion_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

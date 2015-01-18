@@ -39,6 +39,8 @@
 	 * @property string $TieneCenso the value for strTieneCenso 
 	 * @property string $Ley14449 the value for strLey14449 
 	 * @property QDateTime $FechaInformeUrbanistico the value for dttFechaInformeUrbanistico 
+	 * @property boolean $Objetado the value for blnObjetado 
+	 * @property string $ComentarioObjetacion the value for strComentarioObjetacion 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (PK)
 	 * @property EstadoProceso $RegularizacionEstadoProcesoObject the value for the EstadoProceso object referenced by intRegularizacionEstadoProceso 
 	 * @property EstadoFolio $EstadoFolioObject the value for the EstadoFolio object referenced by intEstadoFolio 
@@ -261,6 +263,22 @@ class UsoInternoGen extends QBaseClass {
      */
     protected $dttFechaInformeUrbanistico;
     const FechaInformeUrbanisticoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.objetado
+     * @var boolean blnObjetado
+     */
+    protected $blnObjetado;
+    const ObjetadoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.comentario_objetacion
+     * @var string strComentarioObjetacion
+     */
+    protected $strComentarioObjetacion;
+    const ComentarioObjetacionDefault = null;
 
 
     /**
@@ -655,6 +673,8 @@ class UsoInternoGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'tiene_censo', $strAliasPrefix . 'tiene_censo');
 			$objBuilder->AddSelectItem($strTableName, 'ley_14449', $strAliasPrefix . 'ley_14449');
 			$objBuilder->AddSelectItem($strTableName, 'fecha_informe_urbanistico', $strAliasPrefix . 'fecha_informe_urbanistico');
+			$objBuilder->AddSelectItem($strTableName, 'objetado', $strAliasPrefix . 'objetado');
+			$objBuilder->AddSelectItem($strTableName, 'comentario_objetacion', $strAliasPrefix . 'comentario_objetacion');
 		}
 
 //instantiation_methods
@@ -733,6 +753,10 @@ class UsoInternoGen extends QBaseClass {
 			$objToReturn->strLey14449 = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_informe_urbanistico', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_informe_urbanistico'] : $strAliasPrefix . 'fecha_informe_urbanistico';
 			$objToReturn->dttFechaInformeUrbanistico = $objDbRow->GetColumn($strAliasName, 'Date');
+			$strAliasName = array_key_exists($strAliasPrefix . 'objetado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'objetado'] : $strAliasPrefix . 'objetado';
+			$objToReturn->blnObjetado = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'comentario_objetacion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'comentario_objetacion'] : $strAliasPrefix . 'comentario_objetacion';
+			$objToReturn->strComentarioObjetacion = $objDbRow->GetColumn($strAliasName, 'Blob');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -1015,7 +1039,9 @@ class UsoInternoGen extends QBaseClass {
                             "regularizacion_tiene_plano",
                             "tiene_censo",
                             "ley_14449",
-                            "fecha_informe_urbanistico"
+                            "fecha_informe_urbanistico",
+                            "objetado",
+                            "comentario_objetacion"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->strInformeUrbanistico) . ',
@@ -1040,7 +1066,9 @@ class UsoInternoGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strRegularizacionTienePlano) . ',
                             ' . $objDatabase->SqlVariable($this->strTieneCenso) . ',
                             ' . $objDatabase->SqlVariable($this->strLey14449) . ',
-                            ' . $objDatabase->SqlVariable($this->dttFechaInformeUrbanistico) . '
+                            ' . $objDatabase->SqlVariable($this->dttFechaInformeUrbanistico) . ',
+                            ' . $objDatabase->SqlVariable($this->blnObjetado) . ',
+                            ' . $objDatabase->SqlVariable($this->strComentarioObjetacion) . '
                         )
                     ');
 
@@ -1078,7 +1106,9 @@ class UsoInternoGen extends QBaseClass {
                             "regularizacion_tiene_plano" = ' . $objDatabase->SqlVariable($this->strRegularizacionTienePlano) . ',
                             "tiene_censo" = ' . $objDatabase->SqlVariable($this->strTieneCenso) . ',
                             "ley_14449" = ' . $objDatabase->SqlVariable($this->strLey14449) . ',
-                            "fecha_informe_urbanistico" = ' . $objDatabase->SqlVariable($this->dttFechaInformeUrbanistico) . '
+                            "fecha_informe_urbanistico" = ' . $objDatabase->SqlVariable($this->dttFechaInformeUrbanistico) . ',
+                            "objetado" = ' . $objDatabase->SqlVariable($this->blnObjetado) . ',
+                            "comentario_objetacion" = ' . $objDatabase->SqlVariable($this->strComentarioObjetacion) . '
                         WHERE
                             "id_folio" = ' . $objDatabase->SqlVariable($this->__intIdFolio) . '
                     ');
@@ -1187,6 +1217,8 @@ class UsoInternoGen extends QBaseClass {
 			$this->strTieneCenso = $objReloaded->strTieneCenso;
 			$this->strLey14449 = $objReloaded->strLey14449;
 			$this->dttFechaInformeUrbanistico = $objReloaded->dttFechaInformeUrbanistico;
+			$this->blnObjetado = $objReloaded->blnObjetado;
+			$this->strComentarioObjetacion = $objReloaded->strComentarioObjetacion;
 		}
 
 
@@ -1375,6 +1407,20 @@ class UsoInternoGen extends QBaseClass {
                  * @return QDateTime
                  */
                 return $this->dttFechaInformeUrbanistico;
+
+            case 'Objetado':
+                /**
+                 * Gets the value for blnObjetado 
+                 * @return boolean
+                 */
+                return $this->blnObjetado;
+
+            case 'ComentarioObjetacion':
+                /**
+                 * Gets the value for strComentarioObjetacion 
+                 * @return string
+                 */
+                return $this->strComentarioObjetacion;
 
 
             ///////////////////
@@ -1818,6 +1864,36 @@ class UsoInternoGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'Objetado':
+					/**
+					 * Sets the value for blnObjetado 
+					 * @param boolean $mixValue
+					 * @return boolean
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->blnObjetado = QType::Cast($mixValue, QType::Boolean));
+                                                return ($this->blnObjetado = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'ComentarioObjetacion':
+					/**
+					 * Sets the value for strComentarioObjetacion 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strComentarioObjetacion = QType::Cast($mixValue, QType::String));
+                                                return ($this->strComentarioObjetacion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1984,6 +2060,8 @@ class UsoInternoGen extends QBaseClass {
 			$strToReturn .= '<element name="TieneCenso" type="xsd:string"/>';
 			$strToReturn .= '<element name="Ley14449" type="xsd:string"/>';
 			$strToReturn .= '<element name="FechaInformeUrbanistico" type="xsd:dateTime"/>';
+			$strToReturn .= '<element name="Objetado" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="ComentarioObjetacion" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2081,6 +2159,12 @@ class UsoInternoGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'FechaInformeUrbanistico')) {
 				$objToReturn->dttFechaInformeUrbanistico = new QDateTime($objSoapObject->FechaInformeUrbanistico);
+            }
+			if (property_exists($objSoapObject, 'Objetado')) {
+				$objToReturn->blnObjetado = $objSoapObject->Objetado;
+            }
+			if (property_exists($objSoapObject, 'ComentarioObjetacion')) {
+				$objToReturn->strComentarioObjetacion = $objSoapObject->ComentarioObjetacion;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

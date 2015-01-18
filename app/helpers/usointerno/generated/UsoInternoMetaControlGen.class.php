@@ -64,6 +64,10 @@
      * property-read QLabel $Ley14449Label
      * property QDateTimePicker $FechaInformeUrbanisticoControl
      * property-read QLabel $FechaInformeUrbanisticoLabel
+     * property QCheckBox $ObjetadoControl
+     * property-read QLabel $ObjetadoLabel
+     * property QTextBox $ComentarioObjetacionControl
+     * property-read QLabel $ComentarioObjetacionLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -104,6 +108,8 @@
         protected $txtTieneCenso;
         protected $txtLey14449;
         protected $calFechaInformeUrbanistico;
+        protected $chkObjetado;
+        protected $txtComentarioObjetacion;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -130,6 +136,8 @@
         protected $lblTieneCenso;
         protected $lblLey14449;
         protected $lblFechaInformeUrbanistico;
+        protected $lblObjetado;
+        protected $lblComentarioObjetacion;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -854,6 +862,56 @@
         protected $strFechaInformeUrbanisticoDateTimeFormat;
 
 
+        /**
+         * Create and setup QCheckBox chkObjetado
+         * @param string $strControlId optional ControlId to use
+         * @return QCheckBox
+         */
+        public function chkObjetado_Create($strControlId = null) {
+            $this->chkObjetado = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkObjetado->Name = QApplication::Translate('Objetado');
+            $this->chkObjetado->Checked = $this->objUsoInterno->Objetado;
+                        return $this->chkObjetado;
+        }
+
+        /**
+         * Create and setup QLabel lblObjetado
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblObjetado_Create($strControlId = null) {
+            $this->lblObjetado = new QLabel($this->objParentObject, $strControlId);
+            $this->lblObjetado->Name = QApplication::Translate('Objetado');
+            $this->lblObjetado->Text = ($this->objUsoInterno->Objetado) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            return $this->lblObjetado;
+        }
+
+        /**
+         * Create and setup QTextBox txtComentarioObjetacion
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtComentarioObjetacion_Create($strControlId = null) {
+            $this->txtComentarioObjetacion = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtComentarioObjetacion->Name = QApplication::Translate('ComentarioObjetacion');
+            $this->txtComentarioObjetacion->Text = $this->objUsoInterno->ComentarioObjetacion;
+            $this->txtComentarioObjetacion->TextMode = QTextMode::MultiLine;
+            
+            return $this->txtComentarioObjetacion;
+        }
+
+        /**
+         * Create and setup QLabel lblComentarioObjetacion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblComentarioObjetacion_Create($strControlId = null) {
+            $this->lblComentarioObjetacion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblComentarioObjetacion->Name = QApplication::Translate('ComentarioObjetacion');
+            $this->lblComentarioObjetacion->Text = $this->objUsoInterno->ComentarioObjetacion;
+            return $this->lblComentarioObjetacion;
+        }
+
 
 
 
@@ -954,6 +1012,12 @@
             if ($this->calFechaInformeUrbanistico) $this->calFechaInformeUrbanistico->DateTime = $this->objUsoInterno->FechaInformeUrbanistico;
             if ($this->lblFechaInformeUrbanistico) $this->lblFechaInformeUrbanistico->Text = sprintf($this->objUsoInterno->FechaInformeUrbanistico) ? $this->objUsoInterno->FechaInformeUrbanistico->__toString($this->strFechaInformeUrbanisticoDateTimeFormat) : null;
 
+            if ($this->chkObjetado) $this->chkObjetado->Checked = $this->objUsoInterno->Objetado;
+            if ($this->lblObjetado) $this->lblObjetado->Text = ($this->objUsoInterno->Objetado) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+
+            if ($this->txtComentarioObjetacion) $this->txtComentarioObjetacion->Text = $this->objUsoInterno->ComentarioObjetacion;
+            if ($this->lblComentarioObjetacion) $this->lblComentarioObjetacion->Text = $this->objUsoInterno->ComentarioObjetacion;
+
         }
 
 
@@ -996,6 +1060,8 @@
                 if ($this->txtTieneCenso) $this->objUsoInterno->TieneCenso = $this->txtTieneCenso->Text;
                 if ($this->txtLey14449) $this->objUsoInterno->Ley14449 = $this->txtLey14449->Text;
                 if ($this->calFechaInformeUrbanistico) $this->objUsoInterno->FechaInformeUrbanistico = $this->calFechaInformeUrbanistico->DateTime;
+                if ($this->chkObjetado) $this->objUsoInterno->Objetado = $this->chkObjetado->Checked;
+                if ($this->txtComentarioObjetacion) $this->objUsoInterno->ComentarioObjetacion = $this->txtComentarioObjetacion->Text;
 
 
         }
@@ -1196,6 +1262,18 @@
                 case 'FechaInformeUrbanisticoLabel':
                     if (!$this->lblFechaInformeUrbanistico) return $this->lblFechaInformeUrbanistico_Create();
                     return $this->lblFechaInformeUrbanistico;
+                case 'ObjetadoControl':
+                    if (!$this->chkObjetado) return $this->chkObjetado_Create();
+                    return $this->chkObjetado;
+                case 'ObjetadoLabel':
+                    if (!$this->lblObjetado) return $this->lblObjetado_Create();
+                    return $this->lblObjetado;
+                case 'ComentarioObjetacionControl':
+                    if (!$this->txtComentarioObjetacion) return $this->txtComentarioObjetacion_Create();
+                    return $this->txtComentarioObjetacion;
+                case 'ComentarioObjetacionLabel':
+                    if (!$this->lblComentarioObjetacion) return $this->lblComentarioObjetacion_Create();
+                    return $this->lblComentarioObjetacion;
                 default:
                     try {
                         return parent::__get($strName);
@@ -1266,6 +1344,10 @@
                         return ($this->txtLey14449 = QType::Cast($mixValue, 'QControl'));
                     case 'FechaInformeUrbanisticoControl':
                         return ($this->calFechaInformeUrbanistico = QType::Cast($mixValue, 'QControl'));
+                    case 'ObjetadoControl':
+                        return ($this->chkObjetado = QType::Cast($mixValue, 'QControl'));
+                    case 'ComentarioObjetacionControl':
+                        return ($this->txtComentarioObjetacion = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

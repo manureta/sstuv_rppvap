@@ -28,6 +28,8 @@
 		<?php $_CONTROL->txtTieneCenso->RenderWithName(); ?>
 		<?php $_CONTROL->txtLey14449->RenderWithName(); ?>
 		<?php $_CONTROL->calFechaInformeUrbanistico->RenderWithName(); ?>
+		<?php $_CONTROL->chkObjetado->RenderWithName(); ?>
+		<?php $_CONTROL->txtComentarioObjetacion->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

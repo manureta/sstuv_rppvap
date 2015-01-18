@@ -44,6 +44,8 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'TieneCenso' => true,
         'Ley14449' => true,
         'FechaInformeUrbanistico' => true,
+        'Objetado' => true,
+        'ComentarioObjetacion' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -100,6 +102,8 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['TieneCenso']) $this->MetaAddColumn('TieneCenso')->Title = QApplication::Translate('TieneCenso');
         if (UsoInternoDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
         if (UsoInternoDataGrid::$strColumnsArray['FechaInformeUrbanistico']) $this->MetaAddColumn('FechaInformeUrbanistico')->Title = QApplication::Translate('FechaInformeUrbanistico');
+        if (UsoInternoDataGrid::$strColumnsArray['Objetado']) $this->MetaAddColumn('Objetado')->Title = QApplication::Translate('Objetado');
+        if (UsoInternoDataGrid::$strColumnsArray['ComentarioObjetacion']) $this->MetaAddColumn('ComentarioObjetacion')->Title = QApplication::Translate('ComentarioObjetacion');
     }
 
 /**
@@ -273,6 +277,8 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'TieneCenso': return QQN::UsoInterno()->TieneCenso;
 				case 'Ley14449': return QQN::UsoInterno()->Ley14449;
 				case 'FechaInformeUrbanistico': return QQN::UsoInterno()->FechaInformeUrbanistico;
+				case 'Objetado': return QQN::UsoInterno()->Objetado;
+				case 'ComentarioObjetacion': return QQN::UsoInterno()->ComentarioObjetacion;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

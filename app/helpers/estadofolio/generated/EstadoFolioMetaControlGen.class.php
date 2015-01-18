@@ -250,6 +250,8 @@
         $strConfigArray['Columns']['TieneCenso'] = QApplication::Translate('TieneCenso');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
         $strConfigArray['Columns']['FechaInformeUrbanistico'] = QApplication::Translate('FechaInformeUrbanistico');
+        $strConfigArray['Columns']['Objetado'] = QApplication::Translate('Objetado');
+        $strConfigArray['Columns']['ComentarioObjetacion'] = QApplication::Translate('ComentarioObjetacion');
 
         $this->lstUsoInterno = new QListPanel($this->objParentObject, $this->objEstadoFolio, $strConfigArray, $strControlId);
         $this->lstUsoInterno->Name = UsoInterno::Noun();

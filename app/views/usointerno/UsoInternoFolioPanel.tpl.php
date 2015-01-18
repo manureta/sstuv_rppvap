@@ -20,7 +20,7 @@
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/regularizacion/folio/<?=$folio;?>">
-                    <span class="number">4.</span> Integración socio-urbana
+                    <span class="number">4.</span> Regulación e integración socio-urbana
                 </a>
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
@@ -39,10 +39,11 @@
                     <label>Estado del Folio </label>
                 </div>                
                  <?php $_CONTROL->lstEstadoFolioObject->Render(); ?>
-                 <?php $_CONTROL->btnEvolucion->Render(); ?>                                
+                 <?php $_CONTROL->btnEvolucion->Render(); ?>                               
             </div>
-                     
-               
+            <?php $_CONTROL->chkObjetado->RenderWithName(); ?>
+            <?php $_CONTROL->txtComentarioObjetacion->RenderWithName(); ?> 
+            <div class="renderWithName"></div>   
             <?php if($_CONTROL->blnMensajeInscripcion){ ?>
             <div class="alert alert-success" role="alert">
               <span class="icon-exclamation-sign" aria-hidden="true"></span>              

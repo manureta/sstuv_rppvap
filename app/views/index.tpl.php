@@ -160,6 +160,27 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
             </div>
         </div>
 
+        <div id="FolioObjetado" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Objetar este Folio</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="modal-body" id="comentario-objetacion">
+                        <span> Si desea objetar este folio ingrese un comentario explicando la razón:</span></br>
+                        <textarea style="width:70%"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Objetar</button>
+                  <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.css" />
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.css" />
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.js"></script>
@@ -182,10 +203,7 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/jquery.fileupload.js"></script>
         
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload_manager.js"></script>
-        <script type="text/javascript">
-            $(".inscripcion_provisoria").each(function(e){this.title='Variable necesaria para que se habilite el envio del Folio a la SSTUV'});
-        </script>
-
+        
         <?php $this->RenderEnd(); ?>
         <?php if (QApplication::$Database[1] && QApplication::$Database[1]->EnableProfiling) QApplication::$Database[1]->OutputProfiling(); ?>
     </body>
