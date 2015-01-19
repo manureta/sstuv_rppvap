@@ -1,5 +1,6 @@
 var partidos=[];
 var map;
+var coincide_arba;
 function mostrarMapa(cod_partido,editar){
 	var zoom=11;
 	if(!cod_partido){
@@ -7,7 +8,8 @@ function mostrarMapa(cod_partido,editar){
 		zoom=6;
 	}
 	cargarPartidos();
-
+	coincide_arba=partidos[cod_partido][3];
+	
 	var container = L.DomUtil.get("map");
 	if (container._leaflet) {
 			map.remove();
@@ -24,14 +26,18 @@ function mostrarMapa(cod_partido,editar){
     	map=  L.map("map");
     	map.invalidateSize();
 
-	  	var mapquestOSM = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-	        maxZoom: 19,
-	        subdomains: ["otile1", "otile2", "otile3", "otile4"],
-	        attribution: ''
-	      });
-	  	var gcallejero=new L.Google('ROADMAP');
-	  	var gsatelital=new L.Google('SATELLITE');
-	  	var ghibrido=new L.Google('HYBRID');
+    	if(coincide_arba){
+    		var mapquestOSM = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+		        maxZoom: 19,
+	        	subdomains: ["otile1", "otile2", "otile3", "otile4"],
+	        	attribution: ''
+		    });
+		  	var gcallejero=new L.Google('ROADMAP');
+		  	var gsatelital=new L.Google('SATELLITE');
+		  	var ghibrido=new L.Google('HYBRID');	
+		  	map.addLayer(mapquestOSM);
+    	}
+	  	
 
 	  	var capa_folios = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
 		    layers: 'registro:folios',
@@ -41,7 +47,8 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var base_sstuv = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
-		    layers: 'partidos_pba_2014_cod_catastro,circunscripcion,secciones,macizos_pba,parcelas',
+		    //layers: 'partidos_pba_2014_cod_catastro,circunscripcion,secciones,macizos_pba,parcelas',
+		    layers: 'circunscripcion,secciones,macizos_pba,parcelas',
 		    format: 'image/png',
 		    transparent: true,
 		    attribution: ""
@@ -61,18 +68,24 @@ function mostrarMapa(cod_partido,editar){
 		    attribution: ""
 		});
 
-	  	map.addLayer(mapquestOSM);
-
-	  	var baseMaps = {
+	  	
+	  	if(coincide_arba){
+	  		var baseMaps = {
 		    "OSM": mapquestOSM,
 		    "Google Satelital": gsatelital,
 		    "Google Callejero": gcallejero,
 		    "Google Híbrido":ghibrido,
 		    "Catastro ARBA":catastro,
 		    "Parcelario Geodesia":geodesia
-		    
-		};
-
+		    };
+	  	}else{
+	  		var baseMaps = {
+		    "Catastro ARBA":catastro,
+		    "Parcelario Geodesia":geodesia
+		    };
+		    map.addLayer(geodesia);
+	  	}
+	  	
 		var overlayMaps = {
 			"Base complementaria":base_sstuv,
 			"Folios":capa_folios
