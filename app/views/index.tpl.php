@@ -165,18 +165,19 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title">Objetar este Folio</h4>
+                  <h4 class="modal-title">Si usted desea objetar este folio es necesario que describa la razón.</h4>
                 </div>
-                <div class="modal-body">
-                  <div class="modal-body" id="comentario-objetacion">
-                        <span> Si desea objetar este folio ingrese un comentario explicando la razón:</span></br>
-                        <textarea style="width:70%"></textarea>
-                  </div>
+                <div class="modal-body">                    
+                              
+                      <div class="form-group">
+                        <label for="objetar-comentario">Comentario:</label>
+                        <textarea class="form-control" id="objetar-comentario"></textarea>
+                      </div> 
+                      
+                      <button type="button" id="objetar-folio-btn" class="btn btn-danger">Objetar</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>  
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Objetar</button>
-                  <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                </div>
+                
               </div>
             </div>
         </div>
@@ -203,7 +204,20 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/jquery.fileupload.js"></script>
         
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload_manager.js"></script>
-        
+        <script type="text/javascript">
+            $('#objetar-folio-btn').click(function(e){
+                var comentario= $("#objetar-comentario").val();
+                $.post( "objetarFolio.php", { comentario: comentario })
+                  .done(function( data ) {
+                    $("#FolioObjetado").modal('hide');
+                    if(data.mensaje=="error"){
+                        alert("Hubo un error al tratar de objetar este Folio. Pruebe nuevamente o comuniquese directamente con la SSTUV");
+                    }else{
+                        window.location.reload();
+                    }
+                  });
+                })
+        </script>
         <?php $this->RenderEnd(); ?>
         <?php if (QApplication::$Database[1] && QApplication::$Database[1]->EnableProfiling) QApplication::$Database[1]->OutputProfiling(); ?>
     </body>

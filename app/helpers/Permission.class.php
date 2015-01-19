@@ -55,7 +55,7 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo = array();
 //        $arrUsuarioInfo['IdPersonal'] = Authentication::$objUsuarioLocal->IdPersonal;
 //        $objPersonal = Authentication::$objUsuarioLocal->IdPersonalObject;
-        $arrUsuarioInfo["Nombre"] = sprintf('%s', $objPersonal->NombreCompleto);
+        $arrUsuarioInfo["Nombre"] = sprintf('%s', Authentication::$objUsuarioLocal->NombreCompleto);
         $arrUsuarioInfo['Perfiles'][] = Authentication::$objUsuarioLocal->IdPerfilObject->Nombre;
         if (Authentication::$objUsuarioLocal->SuperAdmin) {
             $arrUsuarioInfo["Perfiles"] = array("Administrador");
@@ -160,6 +160,9 @@ abstract class Permission extends PermissionBase {
     }
     public static function PuedeEnviarFolio(Folio $objFolio){
         return ((self::EsAdministrador() || self::EsCarga()) && self::InscripcionProvisoria($objFolio));
+    }
+    public static function PuedeObjetarFolio(Folio $objFolio){
+        return ((self::EsAdministrador() || self::EsCarga()));
     }
     public static function InscripcionProvisoria(Folio $objFolio){
           try {

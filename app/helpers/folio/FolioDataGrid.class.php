@@ -115,15 +115,15 @@ class FolioDataGrid extends FolioDataGridGen {
     }
     public function GetObjetarButton(Folio $obj) {
         $objButton = new QButton($this);
-        $objButton->AddCssClass('btn-xs btn-warning');
-        $objButton->Icon = 'stop';
+        $objButton->AddCssClass('btn-xs btn-danger');
+        $objButton->Icon = 'lock';
         $objButton->Text = 'Objetar';
         $objButton->ToolTip = 'Desea objetar este Folio';
         $objButton->ActionParameter = $obj->Id;
-        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que este FOLIO debe ser objetado?")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnObjetar_Click"));
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeConfirmarFolio($obj));
+        
         return $objButton;
     }                 
      public function GetEnviarButton(Folio $obj) {
@@ -194,15 +194,9 @@ class FolioDataGrid extends FolioDataGridGen {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
     }
     public function btnObjetar_Click($strFormId, $strControlId, $strParameter){
-        $objFolio=Folio::Load($strParameter);
-        //$objUsoInterno = $objFolio->UsoInterno;
-        //$objUsoInterno->EstadoFolio = EstadoFolio::CARGA;
-        //$objUsoInterno->Save();
-        //$this->MarkAsModified();
-        //Folio::CambioEstadoFolio($objFolio);
-        //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
-        // clicked, let's show content in dialog box
         
+        $_SESSION['folio_a_objetar']=$strParameter;
+        QApplication::ExecuteJavascript("$('#FolioObjetado').modal();");
     }
     
      public function btnEnviar_Click($strFormId, $strControlId, $strParameter){
