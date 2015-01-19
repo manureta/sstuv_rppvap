@@ -64,7 +64,7 @@ class FolioDataGrid extends FolioDataGridGen {
     public function GetCaratulaButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-yellow btn-xs');
-        $objButton->Text = 'Carátula';
+        $objButton->Text = (Permission::EsAdministrador())?'C' :'Carátula';
         $objButton->Icon = 'print';
         $objButton->Enabled = true;
         $objButton->ToolTip = "Ver carátula";
@@ -80,7 +80,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->Text = 'Borrar';
         $objButton->ToolTip = 'Borrar Folio';
         $objButton->ActionParameter = $obj->Id;
-        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere BORRAR de este FOLIO?\\r\\nEsta acción no se puede deshacer")));
+        $objButton->AddAction(new QClickEvent(), new QConfirmAction(sprintf("¿Está seguro que quiere BORRAR este FOLIO?\\r\\nEsta acción no se puede deshacer")));
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnDelete_Click"));
         $objButton->Enabled = (Permission::PuedeBorrarFolio($obj));
         $objButton->Visible = (Permission::PuedeBorrarFolio($obj));
@@ -143,7 +143,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-yellow');
         $objButton->Icon = 'file';
-        $objButton->Text = 'Resolución';
+        $objButton->Text = (Permission::EsAdministrador())?'R' : 'Resolución';
         $objButton->ToolTip = 'Descargar resolución';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnResolucion_Click"));
@@ -154,7 +154,7 @@ class FolioDataGrid extends FolioDataGridGen {
     public function Get14449Button(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-yellow');
-        $objButton->Text = 'Ley 14.449';
+        $objButton->Text = (Permission::EsAdministrador())?'Ley' :'Ley 14.449';
         $objButton->ToolTip = 'Ver documentación de intervención en el marco de la ley 14.449';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnLey_Click"));
@@ -166,7 +166,7 @@ class FolioDataGrid extends FolioDataGridGen {
     public function GetFolioCompletoButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-yellow');
-        $objButton->Text = 'Folio';
+        $objButton->Text = (Permission::EsAdministrador())?'F' :'Folio';
         $objButton->Icon = 'print';
         $objButton->ToolTip = 'Imprimir el folio completo';
         $objButton->ActionParameter = $obj->Id;
