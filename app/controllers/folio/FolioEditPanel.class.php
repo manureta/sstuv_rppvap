@@ -16,6 +16,9 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     //para anio de origen
     public $lstAnioOrigen; 
+
+    //para ver si cambio geom
+    public $geom_original;
     
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
@@ -116,6 +119,7 @@ class FolioEditPanel extends FolioEditPanelGen {
             // Mapa
             QApplication::ExecuteJavascript("mostrarMapa('$partido_usuario',false)");
         }else{
+            $this->geom_original=$this->txtGeom->Text;
             $partido_usuario=$this->mctFolio->Folio->IdPartidoObject->CodPartido;
             
             $this->lstIdPartidoObject->Enabled = false; 
@@ -302,7 +306,13 @@ class FolioEditPanel extends FolioEditPanelGen {
                 //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
             }else{
 
-                $this->actualizarEstadoNomenclaturas();          
+                //$this->actualizarEstadoNomenclaturas();          
+                if($this->geom_original!==$this->txtGeom->Text) {
+                    // borrar las nomenclaturas existentes
+                    $this->borrar_nomenclaturas();
+                    //volver a calcular
+                    $this->calcular_nomenclaturas();
+                }
             }
             QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id);                 
         }else{
@@ -355,7 +365,6 @@ class FolioEditPanel extends FolioEditPanelGen {
     }
 
     public function calcular_nomenclaturas(){
-        
         try {
             $cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
             $gid=$this->mctFolio->Folio->Id;
@@ -406,6 +415,19 @@ class FolioEditPanel extends FolioEditPanelGen {
              $objDatabase->NonQuery($strQuery);
          } catch (Exception $e) {
             QApplication::DisplayAlert("<p>No se pudo actualizar la columna de los estados geograficos de las nomenclaturas del Folio.</p><p>Este error generalmente indica que no existe la funcion actualizar_estado_nomenclaturas en la base de datos.</p>"); 
+            error_log($e);
+         }
+         
+     }
+
+     protected function borrar_nomenclaturas(){
+         $objDatabase = QApplication::$Database[1];
+         $id_folio=$this->mctFolio->Folio->Id; 
+         try {             
+             $strQuery="delete from nomenclatura where id_folio=$id_folio ;";
+             $objDatabase->NonQuery($strQuery);
+         } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>No se pudieron borrar las nomenclaturas viejas.</p><p>Este error indica que puede haber errores en la solapa de nomenclaturas.</p>"); 
             error_log($e);
          }
          
