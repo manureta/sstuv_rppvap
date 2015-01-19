@@ -20,8 +20,8 @@
 	 * @property boolean $Nacional the value for blnNacional 
 	 * @property boolean $Provincial the value for blnProvincial 
 	 * @property boolean $Municipal the value for blnMunicipal 
-	 * @property QDateTime $FechaIntervencion the value for dttFechaIntervencion 
 	 * @property string $Programas the value for strProgramas 
+	 * @property string $FechaIntervencion the value for strFechaIntervencion 
 	 * @property Antecedentes $IdFolioObject the value for the Antecedentes object referenced by intIdFolio 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -83,19 +83,19 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column organismos_de_intervencion.fecha_intervencion
-     * @var QDateTime dttFechaIntervencion
-     */
-    protected $dttFechaIntervencion;
-    const FechaIntervencionDefault = null;
-
-
-    /**
      * Protected member variable that maps to the database column organismos_de_intervencion.programas
      * @var string strProgramas
      */
     protected $strProgramas;
     const ProgramasDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column organismos_de_intervencion.fecha_intervencion
+     * @var string strFechaIntervencion
+     */
+    protected $strFechaIntervencion;
+    const FechaIntervencionDefault = null;
 
 
     /**
@@ -451,8 +451,8 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'nacional', $strAliasPrefix . 'nacional');
 			$objBuilder->AddSelectItem($strTableName, 'provincial', $strAliasPrefix . 'provincial');
 			$objBuilder->AddSelectItem($strTableName, 'municipal', $strAliasPrefix . 'municipal');
-			$objBuilder->AddSelectItem($strTableName, 'fecha_intervencion', $strAliasPrefix . 'fecha_intervencion');
 			$objBuilder->AddSelectItem($strTableName, 'programas', $strAliasPrefix . 'programas');
+			$objBuilder->AddSelectItem($strTableName, 'fecha_intervencion', $strAliasPrefix . 'fecha_intervencion');
 		}
 
 //instantiation_methods
@@ -492,10 +492,10 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$objToReturn->blnProvincial = $objDbRow->GetColumn($strAliasName, 'Bit');
 			$strAliasName = array_key_exists($strAliasPrefix . 'municipal', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'municipal'] : $strAliasPrefix . 'municipal';
 			$objToReturn->blnMunicipal = $objDbRow->GetColumn($strAliasName, 'Bit');
-			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_intervencion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_intervencion'] : $strAliasPrefix . 'fecha_intervencion';
-			$objToReturn->dttFechaIntervencion = $objDbRow->GetColumn($strAliasName, 'Date');
 			$strAliasName = array_key_exists($strAliasPrefix . 'programas', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'programas'] : $strAliasPrefix . 'programas';
 			$objToReturn->strProgramas = $objDbRow->GetColumn($strAliasName, 'Blob');
+			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_intervencion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_intervencion'] : $strAliasPrefix . 'fecha_intervencion';
+			$objToReturn->strFechaIntervencion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -678,15 +678,15 @@ class OrganismosDeIntervencionGen extends QBaseClass {
                             "nacional",
                             "provincial",
                             "municipal",
-                            "fecha_intervencion",
-                            "programas"
+                            "programas",
+                            "fecha_intervencion"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->blnNacional) . ',
                             ' . $objDatabase->SqlVariable($this->blnProvincial) . ',
                             ' . $objDatabase->SqlVariable($this->blnMunicipal) . ',
-                            ' . $objDatabase->SqlVariable($this->dttFechaIntervencion) . ',
-                            ' . $objDatabase->SqlVariable($this->strProgramas) . '
+                            ' . $objDatabase->SqlVariable($this->strProgramas) . ',
+                            ' . $objDatabase->SqlVariable($this->strFechaIntervencion) . '
                         )
                     ');
 
@@ -706,8 +706,8 @@ class OrganismosDeIntervencionGen extends QBaseClass {
                             "nacional" = ' . $objDatabase->SqlVariable($this->blnNacional) . ',
                             "provincial" = ' . $objDatabase->SqlVariable($this->blnProvincial) . ',
                             "municipal" = ' . $objDatabase->SqlVariable($this->blnMunicipal) . ',
-                            "fecha_intervencion" = ' . $objDatabase->SqlVariable($this->dttFechaIntervencion) . ',
-                            "programas" = ' . $objDatabase->SqlVariable($this->strProgramas) . '
+                            "programas" = ' . $objDatabase->SqlVariable($this->strProgramas) . ',
+                            "fecha_intervencion" = ' . $objDatabase->SqlVariable($this->strFechaIntervencion) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -795,8 +795,8 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$this->blnNacional = $objReloaded->blnNacional;
 			$this->blnProvincial = $objReloaded->blnProvincial;
 			$this->blnMunicipal = $objReloaded->blnMunicipal;
-			$this->dttFechaIntervencion = $objReloaded->dttFechaIntervencion;
 			$this->strProgramas = $objReloaded->strProgramas;
+			$this->strFechaIntervencion = $objReloaded->strFechaIntervencion;
 		}
 
 
@@ -853,19 +853,19 @@ class OrganismosDeIntervencionGen extends QBaseClass {
                  */
                 return $this->blnMunicipal;
 
-            case 'FechaIntervencion':
-                /**
-                 * Gets the value for dttFechaIntervencion 
-                 * @return QDateTime
-                 */
-                return $this->dttFechaIntervencion;
-
             case 'Programas':
                 /**
                  * Gets the value for strProgramas 
                  * @return string
                  */
                 return $this->strProgramas;
+
+            case 'FechaIntervencion':
+                /**
+                 * Gets the value for strFechaIntervencion 
+                 * @return string
+                 */
+                return $this->strFechaIntervencion;
 
 
             ///////////////////
@@ -979,21 +979,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'FechaIntervencion':
-					/**
-					 * Sets the value for dttFechaIntervencion 
-					 * @param QDateTime $mixValue
-					 * @return QDateTime
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->dttFechaIntervencion = QType::Cast($mixValue, QType::DateTime));
-                                                return ($this->dttFechaIntervencion = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
 				case 'Programas':
 					/**
 					 * Sets the value for strProgramas 
@@ -1004,6 +989,21 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strProgramas = QType::Cast($mixValue, QType::String));
                                                 return ($this->strProgramas = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'FechaIntervencion':
+					/**
+					 * Sets the value for strFechaIntervencion 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strFechaIntervencion = QType::Cast($mixValue, QType::String));
+                                                return ($this->strFechaIntervencion = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1090,8 +1090,8 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			$strToReturn .= '<element name="Nacional" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="Provincial" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="Municipal" type="xsd:boolean"/>';
-			$strToReturn .= '<element name="FechaIntervencion" type="xsd:dateTime"/>';
 			$strToReturn .= '<element name="Programas" type="xsd:string"/>';
+			$strToReturn .= '<element name="FechaIntervencion" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1131,11 +1131,11 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Municipal')) {
 				$objToReturn->blnMunicipal = $objSoapObject->Municipal;
             }
-			if (property_exists($objSoapObject, 'FechaIntervencion')) {
-				$objToReturn->dttFechaIntervencion = new QDateTime($objSoapObject->FechaIntervencion);
-            }
 			if (property_exists($objSoapObject, 'Programas')) {
 				$objToReturn->strProgramas = $objSoapObject->Programas;
+            }
+			if (property_exists($objSoapObject, 'FechaIntervencion')) {
+				$objToReturn->strFechaIntervencion = $objSoapObject->FechaIntervencion;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
@@ -1159,8 +1159,6 @@ class OrganismosDeIntervencionGen extends QBaseClass {
 				$objObject->objIdFolioObject = Antecedentes::GetSoapObjectFromObject($objObject->objIdFolioObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intIdFolio = null;
-			if ($objObject->dttFechaIntervencion)
-				$objObject->dttFechaIntervencion = $objObject->dttFechaIntervencion->__toString(QDateTime::FormatSoap);
 			return $objObject;
 		}
 

@@ -86,7 +86,7 @@
 					                <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->chkMunicipal->RenderWithName(); ?>
-					                <?php $_CONTROL->pnlOrganismos->calFechaIntervencion->RenderWithName(); ?>
+					                <?php $_CONTROL->pnlOrganismos->txtFechaIntervencion->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->txtProgramas->RenderWithName(); ?>
 					                	
 					        </div>            

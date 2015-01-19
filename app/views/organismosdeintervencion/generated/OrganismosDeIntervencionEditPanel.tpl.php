@@ -9,8 +9,8 @@
 		<?php $_CONTROL->chkNacional->RenderWithName(); ?>
 		<?php $_CONTROL->chkProvincial->RenderWithName(); ?>
 		<?php $_CONTROL->chkMunicipal->RenderWithName(); ?>
-		<?php $_CONTROL->calFechaIntervencion->RenderWithName(); ?>
 		<?php $_CONTROL->txtProgramas->RenderWithName(); ?>
+		<?php $_CONTROL->txtFechaIntervencion->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

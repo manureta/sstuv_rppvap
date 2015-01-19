@@ -344,8 +344,8 @@
         $strConfigArray['Columns']['Nacional'] = QApplication::Translate('Nacional');
         $strConfigArray['Columns']['Provincial'] = QApplication::Translate('Provincial');
         $strConfigArray['Columns']['Municipal'] = QApplication::Translate('Municipal');
-        $strConfigArray['Columns']['FechaIntervencion'] = QApplication::Translate('FechaIntervencion');
         $strConfigArray['Columns']['Programas'] = QApplication::Translate('Programas');
+        $strConfigArray['Columns']['FechaIntervencion'] = QApplication::Translate('FechaIntervencion');
 
         $this->lstOrganismosDeIntervencionAsIdFolio = new QListPanel($this->objParentObject, $this->objAntecedentes, $strConfigArray, $strControlId);
         $this->lstOrganismosDeIntervencionAsIdFolio->Name = OrganismosDeIntervencion::Noun();

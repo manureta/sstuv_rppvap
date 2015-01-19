@@ -14,7 +14,7 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
         'chkNacional' => true,
         'chkProvincial' => true,
         'chkMunicipal' => true,
-        'calFechaIntervencion' => true,
+        'txtFechaIntervencion' => true,
         'txtProgramas' => true
         
     );
@@ -61,9 +61,9 @@ class OrganismosDeIntervencionEditPanel extends OrganismosDeIntervencionEditPane
             $this->objControlsArray['chkProvincial'] = $this->mctOrganismosDeIntervencion->chkProvincial_Create();
         if (in_array('chkMunicipal',$strControlsArray)) 
             $this->objControlsArray['chkMunicipal'] = $this->mctOrganismosDeIntervencion->chkMunicipal_Create();
-        if (in_array('calFechaIntervencion',$strControlsArray)) 
-            $this->objControlsArray['calFechaIntervencion'] = $this->mctOrganismosDeIntervencion->calFechaIntervencion_Create();
-            $this->objControlsArray['calFechaIntervencion']->Name="Fecha de intervención";
+        if (in_array('txtFechaIntervencion',$strControlsArray)) 
+            $this->objControlsArray['txtFechaIntervencion'] = $this->mctOrganismosDeIntervencion->txtFechaIntervencion_Create();
+            $this->objControlsArray['txtFechaIntervencion']->Name="Fecha de intervención";
         if (in_array('txtProgramas',$strControlsArray)) 
             $this->objControlsArray['txtProgramas'] = $this->mctOrganismosDeIntervencion->txtProgramas_Create();
             $this->objControlsArray['txtProgramas']->Name="A través de que programas";

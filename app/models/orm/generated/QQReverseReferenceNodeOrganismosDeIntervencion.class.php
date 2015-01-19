@@ -17,10 +17,10 @@ class QQReverseReferenceNodeOrganismosDeIntervencion extends QQReverseReferenceN
 					return new QQNode('provincial', 'Provincial', 'boolean', $this);
 				case 'Municipal':
 					return new QQNode('municipal', 'Municipal', 'boolean', $this);
-				case 'FechaIntervencion':
-					return new QQNode('fecha_intervencion', 'FechaIntervencion', 'QDateTime', $this);
 				case 'Programas':
 					return new QQNode('programas', 'Programas', 'string', $this);
+				case 'FechaIntervencion':
+					return new QQNode('fecha_intervencion', 'FechaIntervencion', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

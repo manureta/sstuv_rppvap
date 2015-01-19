@@ -26,10 +26,10 @@
      * property-read QLabel $ProvincialLabel
      * property QCheckBox $MunicipalControl
      * property-read QLabel $MunicipalLabel
-     * property QDateTimePicker $FechaIntervencionControl
-     * property-read QLabel $FechaIntervencionLabel
      * property QTextBox $ProgramasControl
      * property-read QLabel $ProgramasLabel
+     * property QTextBox $FechaIntervencionControl
+     * property-read QLabel $FechaIntervencionLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -51,16 +51,16 @@
         protected $chkNacional;
         protected $chkProvincial;
         protected $chkMunicipal;
-        protected $calFechaIntervencion;
         protected $txtProgramas;
+        protected $txtFechaIntervencion;
 
         // Controls that allow the viewing of OrganismosDeIntervencion's individual data fields
         protected $lblIdFolio;
         protected $lblNacional;
         protected $lblProvincial;
         protected $lblMunicipal;
-        protected $lblFechaIntervencion;
         protected $lblProgramas;
+        protected $lblFechaIntervencion;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -274,37 +274,6 @@
         }
 
         /**
-         * Create and setup QDateTimePicker calFechaIntervencion
-         * @param string $strControlId optional ControlId to use
-         * @return QDateTimePicker
-         */
-        public function calFechaIntervencion_Create($strControlId = null) {
-            $this->calFechaIntervencion = new QDateTimePicker($this->objParentObject, $strControlId);
-            $this->calFechaIntervencion->Name = QApplication::Translate('FechaIntervencion');
-            $this->calFechaIntervencion->DateTime = $this->objOrganismosDeIntervencion->FechaIntervencion;
-            $this->calFechaIntervencion->DateTimePickerType = QDateTimePickerType::Date;
-            
-            return $this->calFechaIntervencion;
-        }
-
-        /**
-         * Create and setup QLabel lblFechaIntervencion
-         * @param string $strControlId optional ControlId to use
-         * @param string $strDateTimeFormat optional DateTimeFormat to use
-         * @return QLabel
-         */
-        public function lblFechaIntervencion_Create($strControlId = null, $strDateTimeFormat = null) {
-            $this->lblFechaIntervencion = new QLabel($this->objParentObject, $strControlId);
-            $this->lblFechaIntervencion->Name = QApplication::Translate('FechaIntervencion');
-            $this->strFechaIntervencionDateTimeFormat = $strDateTimeFormat;
-            $this->lblFechaIntervencion->Text = sprintf($this->objOrganismosDeIntervencion->FechaIntervencion) ? $this->objOrganismosDeIntervencion->FechaIntervencion->__toString($this->strFechaIntervencionDateTimeFormat) : null;
-            return $this->lblFechaIntervencion;
-        }
-
-        protected $strFechaIntervencionDateTimeFormat;
-
-
-        /**
          * Create and setup QTextBox txtProgramas
          * @param string $strControlId optional ControlId to use
          * @return QTextBox
@@ -328,6 +297,31 @@
             $this->lblProgramas->Name = QApplication::Translate('Programas');
             $this->lblProgramas->Text = $this->objOrganismosDeIntervencion->Programas;
             return $this->lblProgramas;
+        }
+
+        /**
+         * Create and setup QTextBox txtFechaIntervencion
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtFechaIntervencion_Create($strControlId = null) {
+            $this->txtFechaIntervencion = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtFechaIntervencion->Name = QApplication::Translate('FechaIntervencion');
+            $this->txtFechaIntervencion->Text = $this->objOrganismosDeIntervencion->FechaIntervencion;
+            
+            return $this->txtFechaIntervencion;
+        }
+
+        /**
+         * Create and setup QLabel lblFechaIntervencion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblFechaIntervencion_Create($strControlId = null) {
+            $this->lblFechaIntervencion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFechaIntervencion->Name = QApplication::Translate('FechaIntervencion');
+            $this->lblFechaIntervencion->Text = $this->objOrganismosDeIntervencion->FechaIntervencion;
+            return $this->lblFechaIntervencion;
         }
 
 
@@ -362,11 +356,11 @@
             if ($this->chkMunicipal) $this->chkMunicipal->Checked = $this->objOrganismosDeIntervencion->Municipal;
             if ($this->lblMunicipal) $this->lblMunicipal->Text = ($this->objOrganismosDeIntervencion->Municipal) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
-            if ($this->calFechaIntervencion) $this->calFechaIntervencion->DateTime = $this->objOrganismosDeIntervencion->FechaIntervencion;
-            if ($this->lblFechaIntervencion) $this->lblFechaIntervencion->Text = sprintf($this->objOrganismosDeIntervencion->FechaIntervencion) ? $this->objOrganismosDeIntervencion->FechaIntervencion->__toString($this->strFechaIntervencionDateTimeFormat) : null;
-
             if ($this->txtProgramas) $this->txtProgramas->Text = $this->objOrganismosDeIntervencion->Programas;
             if ($this->lblProgramas) $this->lblProgramas->Text = $this->objOrganismosDeIntervencion->Programas;
+
+            if ($this->txtFechaIntervencion) $this->txtFechaIntervencion->Text = $this->objOrganismosDeIntervencion->FechaIntervencion;
+            if ($this->lblFechaIntervencion) $this->lblFechaIntervencion->Text = $this->objOrganismosDeIntervencion->FechaIntervencion;
 
         }
 
@@ -390,8 +384,8 @@
                 if ($this->chkNacional) $this->objOrganismosDeIntervencion->Nacional = $this->chkNacional->Checked;
                 if ($this->chkProvincial) $this->objOrganismosDeIntervencion->Provincial = $this->chkProvincial->Checked;
                 if ($this->chkMunicipal) $this->objOrganismosDeIntervencion->Municipal = $this->chkMunicipal->Checked;
-                if ($this->calFechaIntervencion) $this->objOrganismosDeIntervencion->FechaIntervencion = $this->calFechaIntervencion->DateTime;
                 if ($this->txtProgramas) $this->objOrganismosDeIntervencion->Programas = $this->txtProgramas->Text;
+                if ($this->txtFechaIntervencion) $this->objOrganismosDeIntervencion->FechaIntervencion = $this->txtFechaIntervencion->Text;
 
 
         }
@@ -478,18 +472,18 @@
                 case 'MunicipalLabel':
                     if (!$this->lblMunicipal) return $this->lblMunicipal_Create();
                     return $this->lblMunicipal;
-                case 'FechaIntervencionControl':
-                    if (!$this->calFechaIntervencion) return $this->calFechaIntervencion_Create();
-                    return $this->calFechaIntervencion;
-                case 'FechaIntervencionLabel':
-                    if (!$this->lblFechaIntervencion) return $this->lblFechaIntervencion_Create();
-                    return $this->lblFechaIntervencion;
                 case 'ProgramasControl':
                     if (!$this->txtProgramas) return $this->txtProgramas_Create();
                     return $this->txtProgramas;
                 case 'ProgramasLabel':
                     if (!$this->lblProgramas) return $this->lblProgramas_Create();
                     return $this->lblProgramas;
+                case 'FechaIntervencionControl':
+                    if (!$this->txtFechaIntervencion) return $this->txtFechaIntervencion_Create();
+                    return $this->txtFechaIntervencion;
+                case 'FechaIntervencionLabel':
+                    if (!$this->lblFechaIntervencion) return $this->lblFechaIntervencion_Create();
+                    return $this->lblFechaIntervencion;
                 default:
                     try {
                         return parent::__get($strName);
@@ -522,10 +516,10 @@
                         return ($this->chkProvincial = QType::Cast($mixValue, 'QControl'));
                     case 'MunicipalControl':
                         return ($this->chkMunicipal = QType::Cast($mixValue, 'QControl'));
-                    case 'FechaIntervencionControl':
-                        return ($this->calFechaIntervencion = QType::Cast($mixValue, 'QControl'));
                     case 'ProgramasControl':
                         return ($this->txtProgramas = QType::Cast($mixValue, 'QControl'));
+                    case 'FechaIntervencionControl':
+                        return ($this->txtFechaIntervencion = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }
