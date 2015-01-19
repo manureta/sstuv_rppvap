@@ -117,6 +117,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
 
 
      protected function buttons_Create($blnDelete = true) {
+        $objFolio=Folio::load($this->mctNomenclatura->Nomenclatura->IdFolio);
+        $blnDelete= Permission::PuedeEditar1A4($objFolio);
         parent::buttons_Create($blnDelete);
         /*
 	if ($blnDelete) {
