@@ -116,7 +116,15 @@ update migracion.folio set nombre_barrio_oficial='' where  nombre_barrio_oficial
 
 select * from migracion.folio  order by id;
 
-select distinct(cantidad_familias) from migracion.folio  where id>0
+-- INSERTAR EN LA TABLA POSTA
+	truncate folio cascade;
+	INSERT INTO folio(
+		select id, cod_folio, id_partido::int, matricula, fecha::DATE, nombre_barrio_oficial, 
+		    nombre_barrio_alternativo_1, nombre_barrio_alternativo_2, anio_origen, 
+		    cantidad_familias::int, tipo_barrio::int, observacion_caso_dudoso, direccion, 
+		    geom, judicializado, localidad, creador, superficie::numeric, encargado, 
+		    reparticion from migracion.folio where id<>0
+	);
 ---------------------------------------------------------------------------------------------------------------------------
 
 
