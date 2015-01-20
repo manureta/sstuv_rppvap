@@ -172,7 +172,7 @@ class FolioGen extends QBaseClass {
      * @var string strDireccion
      */
     protected $strDireccion;
-    const DireccionMaxLength = 100;
+    const DireccionMaxLength = 255;
     const DireccionDefault = null;
 
 
