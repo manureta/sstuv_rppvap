@@ -2,7 +2,7 @@
 -- Para la tabla de folio
 drop table if exists migracion.folio;
 
-delete from datos_folios_integrados where campo98='ID_FOLIO';
+--delete from datos_folios_integrados where campo98='ID_FOLIO';
 
 create table migracion.folio as 
 select 
@@ -58,7 +58,42 @@ update migracion.folio set judicializado='sin_dato' where judicializado IS NULL;
 
 select distinct(campo6) from datos_folios_integrados order by campo6 asc;
 
-select * from migracion.folio  ;
+update migracion.folio set id_partido=(select id from partido where cod_partido=id_partido);
+
+select distinct(fecha) from migracion.folio where length(fecha) = 5;
+
+
+
+update migracion.folio set fecha='01/08/2014' where  fecha='41852';
+update migracion.folio set fecha='23/07/2014' where  fecha='41843';
+update migracion.folio set fecha='12/11/2014' where  fecha='41955';
+update migracion.folio set fecha='20/11/2014' where  fecha='41963';
+update migracion.folio set fecha='11/11/2014' where  fecha='41954';
+update migracion.folio set fecha='07/07/2014' where  fecha='41827';
+update migracion.folio set fecha='28/11/2014' where  fecha='41971';
+update migracion.folio set fecha='05/08/2014' where  fecha='41856';
+update migracion.folio set fecha='11/08/2014' where  fecha='41862';
+update migracion.folio set fecha='25/07/2014' where  fecha='41845';
+update migracion.folio set fecha='26/08/2014' where  fecha='41877';
+update migracion.folio set fecha='18/09/2014' where  fecha='41900';
+update migracion.folio set fecha='11/09/2014' where  fecha='41893';
+update migracion.folio set fecha='15/09/2014' where  fecha='41897';
+update migracion.folio set fecha='09/09/2014' where  fecha='41891';
+update migracion.folio set fecha='03/09/2014' where  fecha='41912';
+update migracion.folio set fecha='27/11/2014' where  fecha='41970';
+update migracion.folio set fecha='01/10/2014' where  fecha='41913';
+update migracion.folio set fecha='18/07/2014' where  fecha='41838';
+update migracion.folio set fecha='15/09/2004' where  fecha='38245';
+update migracion.folio set fecha='26/11/2014' where  fecha='41969';
+update migracion.folio set fecha='01/09/2014' where  fecha='41883';
+update migracion.folio set fecha='04/11/2014' where  fecha='41947';
+update migracion.folio set fecha='03/09/2014' where  fecha='41885';
+update migracion.folio set fecha='10/10/2014' where  fecha='41922';
+update migracion.folio set fecha='14/08/2014' where  fecha='41865';
+update migracion.folio set fecha='30/07/2014' where  fecha='41850';
+update migracion.folio set fecha='28/08/2014' where  fecha='41879';
+update migracion.folio set fecha='30/10/2014' where  fecha='41942';
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------
