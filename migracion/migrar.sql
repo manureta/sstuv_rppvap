@@ -4,12 +4,14 @@ drop table if exists migracion.folio;
 
 --delete from datos_folios_integrados where campo98='ID_FOLIO';
 
+--select min(oid::int)  from datos_folios_integrados ;
+
 create table migracion.folio as 
 select 
-(oid::int - 32494) as id,campo98 as cod_folio, campo1 as id_partido,campo2 as matricula,campo6 as fecha,campo11 as nombre_barrio_oficial,
-campo12 as nombre_barrio_alternativo_1, campo13 as nombre_barrio_alternativo,campo14 as anio_origen, campo16 as cantidad_familias,
+(oid::int - 937347) as id,campo98 as cod_folio, campo1 as id_partido,campo2 as matricula,campo6 as fecha,campo11 as nombre_barrio_oficial,
+campo12 as nombre_barrio_alternativo_1, campo13 as nombre_barrio_alternativo_2,campo14 as anio_origen, campo16 as cantidad_familias,
 campo17 as tipo_barrio,campo18||'-'||campo19 as observacion_caso_dudoso,campo21 as direccion,campo20 as judicializado,
-campo10 as localidad,1 as creador,campo15 as superficie, campo7 as encargado, campo8 as reparticion,'{}' as geom
+campo10 as localidad,1 as creador,campo15 as superficie, campo7 as encargado, campo8 as reparticion,'geom'::text as geom
 from datos_folios_integrados; 
 
 
@@ -94,7 +96,15 @@ update migracion.folio set fecha='30/07/2014' where  fecha='41850';
 update migracion.folio set fecha='28/08/2014' where  fecha='41879';
 update migracion.folio set fecha='30/10/2014' where  fecha='41942';
 
+-- seteo el geom de una tabla previamente exportada
+update migracion.folio set geom = (select astext from migracion.geoms  where id_folio=cod_folio);
+-- hay 3 geom nulos , los pongo en ''
+update migracion.folio set geom = ''  where geom is null;
 
+-- cambio las comas de superficie en puntos
+update migracion.folio  set superficie = replace(superficie, ',', '.');
+
+select direccion,length(direccion) from migracion.folio where length(direccion)>100  order by id;  
 
 ---------------------------------------------------------------------------------------------------------------------------
 
