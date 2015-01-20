@@ -47,6 +47,7 @@ update migracion.folio  set anio_origen='decada_1960' where anio_origen='decada 
 update migracion.folio  set anio_origen='decada_1990' where anio_origen='decada del 90 ';
 update migracion.folio  set anio_origen='decada_1980' where anio_origen='década del 80';
 update migracion.folio  set anio_origen='90_o_anterior' where anio_origen='decada del 90 o anterior';
+update migracion.folio  set anio_origen='1901' where anio_origen is null;
 
 
 select distinct(judicializado) from migracion.folio;  
@@ -96,6 +97,9 @@ update migracion.folio set fecha='30/07/2014' where  fecha='41850';
 update migracion.folio set fecha='28/08/2014' where  fecha='41879';
 update migracion.folio set fecha='30/10/2014' where  fecha='41942';
 
+update migracion.folio set fecha='01/01/0001' where  fecha is null;
+
+
 -- seteo el geom de una tabla previamente exportada
 update migracion.folio set geom = (select astext from migracion.geoms  where id_folio=cod_folio);
 -- hay 3 geom nulos , los pongo en ''
@@ -103,9 +107,16 @@ update migracion.folio set geom = ''  where geom is null;
 
 -- cambio las comas de superficie en puntos
 update migracion.folio  set superficie = replace(superficie, ',', '.');
+-- hay un valor sin dato de cant familia y varios nulos
+update migracion.folio  set cantidad_familias=0 where cantidad_familias ='Sin dato';
+update migracion.folio  set cantidad_familias=0 where cantidad_familias is null;
 
-select direccion,length(direccion) from migracion.folio where length(direccion)>100  order by id;  
+-- los nombres de barrio son obligatorios
+update migracion.folio set nombre_barrio_oficial='' where  nombre_barrio_oficial is null;
 
+select * from migracion.folio  order by id;
+
+select distinct(cantidad_familias) from migracion.folio  where id>0
 ---------------------------------------------------------------------------------------------------------------------------
 
 
