@@ -16,10 +16,9 @@ from datos_folios_integrados;
 
 
 -- ver los difernetes tipos
-select distinct(tipo_barrio),count(*) from migracion.folio
-group by tipo_barrio;
+--select distinct(tipo_barrio),count(*) from migracion.folio group by tipo_barrio;
  -- ver los codigos de los tipos de barrios
- select * from tipo_barrio;  
+ --select * from tipo_barrio;  
 
 update migracion.folio set tipo_barrio=1 where tipo_barrio='Villa';
 update migracion.folio set tipo_barrio=3 where tipo_barrio='sin dato';
@@ -34,7 +33,7 @@ update migracion.folio set id_partido=substring(cod_folio from 1 for 3);
 update migracion.folio set matricula=substring(cod_folio from 4 for 4); 
 
 --select distinct(anio_origen) from migracion.folio; -- hay un solo valor con fecha exacta
-select distinct(anio_origen) from migracion.folio where length(anio_origen)>4; --"2_AÑO" "28/01/2004" "19279"
+--select distinct(anio_origen) from migracion.folio where length(anio_origen)>4; --"2_AÑO" "28/01/2004" "19279"
 
 update migracion.folio  set anio_origen='1979' where anio_origen='19279';
 update migracion.folio set anio_origen='2004' where anio_origen ='28/01/2004';
@@ -50,7 +49,7 @@ update migracion.folio  set anio_origen='90_o_anterior' where anio_origen='decad
 update migracion.folio  set anio_origen='1901' where anio_origen is null;
 
 
-select distinct(judicializado) from migracion.folio;  
+--select distinct(judicializado) from migracion.folio;  
 
 update migracion.folio set judicializado='sin_dato' where judicializado ='Sin dato';
 update migracion.folio set judicializado='no' where judicializado ='No';
@@ -59,11 +58,11 @@ update migracion.folio set judicializado='sin_dato' where judicializado ='sin da
 update migracion.folio set judicializado='sin_dato' where judicializado IS NULL;
 
 
-select distinct(campo6) from datos_folios_integrados order by campo6 asc;
+--select distinct(campo6) from datos_folios_integrados order by campo6 asc;
 
 update migracion.folio set id_partido=(select id from partido where cod_partido=id_partido);
 
-select distinct(fecha) from migracion.folio where length(fecha) = 5;
+--select distinct(fecha) from migracion.folio where length(fecha) = 5;
 
 
 
@@ -114,7 +113,7 @@ update migracion.folio  set cantidad_familias=0 where cantidad_familias is null;
 -- los nombres de barrio son obligatorios
 update migracion.folio set nombre_barrio_oficial='' where  nombre_barrio_oficial is null;
 
-select * from migracion.folio  order by id;
+--select * from migracion.folio  order by id;
 
 -- INSERTAR EN LA TABLA POSTA
 	truncate folio cascade;
@@ -134,7 +133,8 @@ drop table if exists migracion.condiciones_socio_urbanisticas;
 
 create table migracion.condiciones_socio_urbanisticas as 
 select
-campo98 as id_folio, campo27 as espacio_libre_comun, campo50 as presencia_org_sociales, campo51 as nombre_refernte, campo52 as tel_referente
+campo98 as id_folio, campo27 as espacio_libre_comun, campo50 as presencia_org_sociales, 
+campo51 as nombre_refernte, campo52 as telefono_referente
 from datos_folios_integrados;
 
 update migracion.condiciones_socio_urbanisticas set espacio_libre_comun=TRUE where espacio_libre_comun='Si';
@@ -143,9 +143,17 @@ update migracion.condiciones_socio_urbanisticas set espacio_libre_comun=FALSE wh
 update migracion.condiciones_socio_urbanisticas set espacio_libre_comun=FALSE where espacio_libre_comun='No consigna';
 update migracion.condiciones_socio_urbanisticas set espacio_libre_comun=FALSE where espacio_libre_comun IS NULL;
 
+update migracion.condiciones_socio_urbanisticas set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
+
+-- INSERTAR 
+INSERT INTO condiciones_socio_urbanisticas (
+id_folio, espacio_libre_comun, presencia_org_sociales, nombre_refernte, telefono_referente
+)
+select id_folio::int, espacio_libre_comun::boolean, presencia_org_sociales, nombre_refernte, 
+            telefono_referente from migracion.condiciones_socio_urbanisticas  where id_folio is not null;
 
 -- Tabla para Equipamiento
-
+/*
 
 drop table if exists migracion.equipamiento;
 
@@ -848,5 +856,5 @@ select
 
 
   
-
+*/
 

@@ -94,7 +94,7 @@ class CondicionesSocioUrbanisticasGen extends QBaseClass {
      * @var string strNombreRefernte
      */
     protected $strNombreRefernte;
-    const NombreRefernteMaxLength = 45;
+    const NombreRefernteMaxLength = 100;
     const NombreRefernteDefault = null;
 
 
