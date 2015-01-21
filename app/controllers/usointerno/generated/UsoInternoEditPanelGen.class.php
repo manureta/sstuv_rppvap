@@ -14,10 +14,7 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'chkNoCorrespondeInscripcion' => true,
         'txtResolucionInscripcionProvisoria' => true,
         'txtResolucionInscripcionDefinitiva' => true,
-        'calRegularizacionFechaInicio' => true,
         'chkRegularizacionCircular10Catastro' => true,
-        'txtRegularizacionAprobacionGeodesia' => true,
-        'txtRegularizacionRegistracion' => true,
         'lstRegularizacionEstadoProcesoObject' => true,
         'txtNumExpediente' => true,
         'txtRegistracionLegajo' => true,
@@ -31,9 +28,10 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'txtRegularizacionTienePlano' => true,
         'txtTieneCenso' => true,
         'txtLey14449' => true,
-        'calFechaInformeUrbanistico' => true,
         'chkObjetado' => true,
         'txtComentarioObjetacion' => true,
+        'txtRegularizacionFechaInicio' => true,
+        'txtFechaInformeUrbanistico' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -73,14 +71,8 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtResolucionInscripcionProvisoria'] = $this->mctUsoInterno->txtResolucionInscripcionProvisoria_Create();
         if (in_array('txtResolucionInscripcionDefinitiva',$strControlsArray)) 
             $this->objControlsArray['txtResolucionInscripcionDefinitiva'] = $this->mctUsoInterno->txtResolucionInscripcionDefinitiva_Create();
-        if (in_array('calRegularizacionFechaInicio',$strControlsArray)) 
-            $this->objControlsArray['calRegularizacionFechaInicio'] = $this->mctUsoInterno->calRegularizacionFechaInicio_Create();
         if (in_array('chkRegularizacionCircular10Catastro',$strControlsArray)) 
             $this->objControlsArray['chkRegularizacionCircular10Catastro'] = $this->mctUsoInterno->chkRegularizacionCircular10Catastro_Create();
-        if (in_array('txtRegularizacionAprobacionGeodesia',$strControlsArray)) 
-            $this->objControlsArray['txtRegularizacionAprobacionGeodesia'] = $this->mctUsoInterno->txtRegularizacionAprobacionGeodesia_Create();
-        if (in_array('txtRegularizacionRegistracion',$strControlsArray)) 
-            $this->objControlsArray['txtRegularizacionRegistracion'] = $this->mctUsoInterno->txtRegularizacionRegistracion_Create();
         if (in_array('lstRegularizacionEstadoProcesoObject',$strControlsArray)) 
             $this->objControlsArray['lstRegularizacionEstadoProcesoObject'] = $this->mctUsoInterno->lstRegularizacionEstadoProcesoObject_Create();
         if (in_array('txtNumExpediente',$strControlsArray)) 
@@ -107,12 +99,14 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtTieneCenso'] = $this->mctUsoInterno->txtTieneCenso_Create();
         if (in_array('txtLey14449',$strControlsArray)) 
             $this->objControlsArray['txtLey14449'] = $this->mctUsoInterno->txtLey14449_Create();
-        if (in_array('calFechaInformeUrbanistico',$strControlsArray)) 
-            $this->objControlsArray['calFechaInformeUrbanistico'] = $this->mctUsoInterno->calFechaInformeUrbanistico_Create();
         if (in_array('chkObjetado',$strControlsArray)) 
             $this->objControlsArray['chkObjetado'] = $this->mctUsoInterno->chkObjetado_Create();
         if (in_array('txtComentarioObjetacion',$strControlsArray)) 
             $this->objControlsArray['txtComentarioObjetacion'] = $this->mctUsoInterno->txtComentarioObjetacion_Create();
+        if (in_array('txtRegularizacionFechaInicio',$strControlsArray)) 
+            $this->objControlsArray['txtRegularizacionFechaInicio'] = $this->mctUsoInterno->txtRegularizacionFechaInicio_Create();
+        if (in_array('txtFechaInformeUrbanistico',$strControlsArray)) 
+            $this->objControlsArray['txtFechaInformeUrbanistico'] = $this->mctUsoInterno->txtFechaInformeUrbanistico_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

@@ -102,7 +102,7 @@
         <div class="well bs-component">
             
             <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
-            <?php $_CONTROL->calFechaInformeUrbanistico->RenderWithName();?>
+            <?php $_CONTROL->txtFechaInformeUrbanistico->RenderWithName();?>
             
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component">
@@ -138,7 +138,7 @@
         <div class="titulos"><i class="icon-chevron-right"></i> Regularización</div>   
         	<div class="well bs-component"> 
             <?php $_CONTROL->lstRegularizacionTienePlano->RenderWithName(); ?>
-            <?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>            
+            <?php $_CONTROL->txtRegularizacionFechaInicio->RenderWithName(); ?>            
             <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
             <div class="renderWithName">
                 <div class="left">

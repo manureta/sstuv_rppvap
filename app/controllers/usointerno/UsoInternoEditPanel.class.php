@@ -32,7 +32,6 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'chkNoCorrespondeInscripcion' => true,
         'txtResolucionInscripcionProvisoria' => true,
         'txtResolucionInscripcionDefinitiva' => true,
-        'calRegularizacionFechaInicio' => true,
         'txtRegularizacionTienePlano' => true,
         'chkRegularizacionCircular10Catastro' => true,
         'lstRegularizacionEstadoProcesoObject' => true,
@@ -47,9 +46,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'txtFechaCenso' => true,
         'txtGeodesiaPartido' => true,
         'lstEstadoFolioObject' => true,
-        'calFechaInformeUrbanistico'=>true,
+        'txtFechaInformeUrbanistico'=>true,
         'chkObjetado' => true,
         'txtComentarioObjetacion' => true,
+        'txtRegularizacionFechaInicio' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -255,9 +255,6 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('txtResolucionInscripcionDefinitiva',$strControlsArray)) 
             $this->objControlsArray['txtResolucionInscripcionDefinitiva'] = $this->mctUsoInterno->txtResolucionInscripcionDefinitiva_Create();
             $this->objControlsArray['txtResolucionInscripcionDefinitiva']->Name="Resolución Inscripción Definitiva";
-        if (in_array('calRegularizacionFechaInicio',$strControlsArray)) 
-            $this->objControlsArray['calRegularizacionFechaInicio'] = $this->mctUsoInterno->calRegularizacionFechaInicio_Create();
-            $this->objControlsArray['calRegularizacionFechaInicio']->Name="Fecha Inicio";
         if (in_array('txtRegularizacionTienePlano',$strControlsArray)) 
             $this->objControlsArray['txtRegularizacionTienePlano'] = $this->mctUsoInterno->txtRegularizacionTienePlano_Create();            
         if (in_array('chkRegularizacionCircular10Catastro',$strControlsArray)) 
@@ -297,15 +294,18 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('lstEstadoFolioObject',$strControlsArray)) 
             $this->objControlsArray['lstEstadoFolioObject'] = $this->mctUsoInterno->lstEstadoFolioObject_Create();
             $this->objControlsArray['lstEstadoFolioObject']->Name="Estado del Folio";
-        if (in_array('calFechaInformeUrbanistico',$strControlsArray)) 
-            $this->objControlsArray['calFechaInformeUrbanistico'] = $this->mctUsoInterno->calFechaInformeUrbanistico_Create();
-            $this->objControlsArray['calFechaInformeUrbanistico']->Name="Fecha del Informe";
+        if (in_array('txtFechaInformeUrbanistico',$strControlsArray)) 
+            $this->objControlsArray['txtFechaInformeUrbanistico'] = $this->mctUsoInterno->txtFechaInformeUrbanistico_Create();
+            $this->objControlsArray['txtFechaInformeUrbanistico']->Name="Fecha del Informe";
         if (in_array('chkObjetado',$strControlsArray)) 
             $this->objControlsArray['chkObjetado'] = $this->mctUsoInterno->chkObjetado_Create();
             $this->objControlsArray['chkObjetado']->Name="Folio objetado por el municipio";
         if (in_array('txtComentarioObjetacion',$strControlsArray)) 
             $this->objControlsArray['txtComentarioObjetacion'] = $this->mctUsoInterno->txtComentarioObjetacion_Create();
             $this->objControlsArray['txtComentarioObjetacion']->Name="Comentario del municipio";
+        if (in_array('txtRegularizacionFechaInicio',$strControlsArray)) 
+            $this->objControlsArray['txtRegularizacionFechaInicio'] = $this->mctUsoInterno->txtRegularizacionFechaInicio_Create();
+            $this->objControlsArray['txtRegularizacionFechaInicio']->Name="Fecha Inicio";
     }
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       

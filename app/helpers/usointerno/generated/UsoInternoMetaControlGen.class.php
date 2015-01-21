@@ -28,14 +28,8 @@
      * property-read QLabel $ResolucionInscripcionProvisoriaLabel
      * property QTextBox $ResolucionInscripcionDefinitivaControl
      * property-read QLabel $ResolucionInscripcionDefinitivaLabel
-     * property QDateTimePicker $RegularizacionFechaInicioControl
-     * property-read QLabel $RegularizacionFechaInicioLabel
      * property QCheckBox $RegularizacionCircular10CatastroControl
      * property-read QLabel $RegularizacionCircular10CatastroLabel
-     * property QIntegerTextBox $RegularizacionAprobacionGeodesiaControl
-     * property-read QLabel $RegularizacionAprobacionGeodesiaLabel
-     * property QIntegerTextBox $RegularizacionRegistracionControl
-     * property-read QLabel $RegularizacionRegistracionLabel
      * property QListBox $RegularizacionEstadoProcesoControl
      * property-read QLabel $RegularizacionEstadoProcesoLabel
      * property QTextBox $NumExpedienteControl
@@ -62,12 +56,14 @@
      * property-read QLabel $TieneCensoLabel
      * property QTextBox $Ley14449Control
      * property-read QLabel $Ley14449Label
-     * property QDateTimePicker $FechaInformeUrbanisticoControl
-     * property-read QLabel $FechaInformeUrbanisticoLabel
      * property QCheckBox $ObjetadoControl
      * property-read QLabel $ObjetadoLabel
      * property QTextBox $ComentarioObjetacionControl
      * property-read QLabel $ComentarioObjetacionLabel
+     * property QTextBox $RegularizacionFechaInicioControl
+     * property-read QLabel $RegularizacionFechaInicioLabel
+     * property QTextBox $FechaInformeUrbanisticoControl
+     * property-read QLabel $FechaInformeUrbanisticoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -90,10 +86,7 @@
         protected $chkNoCorrespondeInscripcion;
         protected $txtResolucionInscripcionProvisoria;
         protected $txtResolucionInscripcionDefinitiva;
-        protected $calRegularizacionFechaInicio;
         protected $chkRegularizacionCircular10Catastro;
-        protected $txtRegularizacionAprobacionGeodesia;
-        protected $txtRegularizacionRegistracion;
         protected $lstRegularizacionEstadoProcesoObject;
         protected $txtNumExpediente;
         protected $txtRegistracionLegajo;
@@ -107,9 +100,10 @@
         protected $txtRegularizacionTienePlano;
         protected $txtTieneCenso;
         protected $txtLey14449;
-        protected $calFechaInformeUrbanistico;
         protected $chkObjetado;
         protected $txtComentarioObjetacion;
+        protected $txtRegularizacionFechaInicio;
+        protected $txtFechaInformeUrbanistico;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -118,10 +112,7 @@
         protected $lblNoCorrespondeInscripcion;
         protected $lblResolucionInscripcionProvisoria;
         protected $lblResolucionInscripcionDefinitiva;
-        protected $lblRegularizacionFechaInicio;
         protected $lblRegularizacionCircular10Catastro;
-        protected $lblRegularizacionAprobacionGeodesia;
-        protected $lblRegularizacionRegistracion;
         protected $lblRegularizacionEstadoProceso;
         protected $lblNumExpediente;
         protected $lblRegistracionLegajo;
@@ -135,9 +126,10 @@
         protected $lblRegularizacionTienePlano;
         protected $lblTieneCenso;
         protected $lblLey14449;
-        protected $lblFechaInformeUrbanistico;
         protected $lblObjetado;
         protected $lblComentarioObjetacion;
+        protected $lblRegularizacionFechaInicio;
+        protected $lblFechaInformeUrbanistico;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -392,37 +384,6 @@
         }
 
         /**
-         * Create and setup QDateTimePicker calRegularizacionFechaInicio
-         * @param string $strControlId optional ControlId to use
-         * @return QDateTimePicker
-         */
-        public function calRegularizacionFechaInicio_Create($strControlId = null) {
-            $this->calRegularizacionFechaInicio = new QDateTimePicker($this->objParentObject, $strControlId);
-            $this->calRegularizacionFechaInicio->Name = QApplication::Translate('RegularizacionFechaInicio');
-            $this->calRegularizacionFechaInicio->DateTime = $this->objUsoInterno->RegularizacionFechaInicio;
-            $this->calRegularizacionFechaInicio->DateTimePickerType = QDateTimePickerType::Date;
-            
-            return $this->calRegularizacionFechaInicio;
-        }
-
-        /**
-         * Create and setup QLabel lblRegularizacionFechaInicio
-         * @param string $strControlId optional ControlId to use
-         * @param string $strDateTimeFormat optional DateTimeFormat to use
-         * @return QLabel
-         */
-        public function lblRegularizacionFechaInicio_Create($strControlId = null, $strDateTimeFormat = null) {
-            $this->lblRegularizacionFechaInicio = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionFechaInicio->Name = QApplication::Translate('RegularizacionFechaInicio');
-            $this->strRegularizacionFechaInicioDateTimeFormat = $strDateTimeFormat;
-            $this->lblRegularizacionFechaInicio->Text = sprintf($this->objUsoInterno->RegularizacionFechaInicio) ? $this->objUsoInterno->RegularizacionFechaInicio->__toString($this->strRegularizacionFechaInicioDateTimeFormat) : null;
-            return $this->lblRegularizacionFechaInicio;
-        }
-
-        protected $strRegularizacionFechaInicioDateTimeFormat;
-
-
-        /**
          * Create and setup QCheckBox chkRegularizacionCircular10Catastro
          * @param string $strControlId optional ControlId to use
          * @return QCheckBox
@@ -444,62 +405,6 @@
             $this->lblRegularizacionCircular10Catastro->Name = QApplication::Translate('RegularizacionCircular10Catastro');
             $this->lblRegularizacionCircular10Catastro->Text = ($this->objUsoInterno->RegularizacionCircular10Catastro) ? QApplication::Translate('Yes') : QApplication::Translate('No');
             return $this->lblRegularizacionCircular10Catastro;
-        }
-
-        /**
-         * Create and setup QIntegerTextBox txtRegularizacionAprobacionGeodesia
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtRegularizacionAprobacionGeodesia_Create($strControlId = null) {
-            $this->txtRegularizacionAprobacionGeodesia = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesia');
-            $this->txtRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-                        $this->txtRegularizacionAprobacionGeodesia->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegularizacionAprobacionGeodesia->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegularizacionAprobacionGeodesia;
-        }
-
-        /**
-         * Create and setup QLabel lblRegularizacionAprobacionGeodesia
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblRegularizacionAprobacionGeodesia_Create($strControlId = null, $strFormat = null) {
-            $this->lblRegularizacionAprobacionGeodesia = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionAprobacionGeodesia->Name = QApplication::Translate('RegularizacionAprobacionGeodesia');
-            $this->lblRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-            $this->lblRegularizacionAprobacionGeodesia->Format = $strFormat;
-            return $this->lblRegularizacionAprobacionGeodesia;
-        }
-
-        /**
-         * Create and setup QIntegerTextBox txtRegularizacionRegistracion
-         * @param string $strControlId optional ControlId to use
-         * @return QIntegerTextBox
-         */
-        public function txtRegularizacionRegistracion_Create($strControlId = null) {
-            $this->txtRegularizacionRegistracion = new QIntegerTextBox($this->objParentObject, $strControlId);
-            $this->txtRegularizacionRegistracion->Name = QApplication::Translate('RegularizacionRegistracion');
-            $this->txtRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-                        $this->txtRegularizacionRegistracion->Maximum = QDatabaseNumberFieldMax::Integer;
-                        $this->txtRegularizacionRegistracion->Minimum = QDatabaseNumberFieldMin::Integer;
-            return $this->txtRegularizacionRegistracion;
-        }
-
-        /**
-         * Create and setup QLabel lblRegularizacionRegistracion
-         * @param string $strControlId optional ControlId to use
-         * @param string $strFormat optional sprintf format to use
-         * @return QLabel
-         */
-        public function lblRegularizacionRegistracion_Create($strControlId = null, $strFormat = null) {
-            $this->lblRegularizacionRegistracion = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRegularizacionRegistracion->Name = QApplication::Translate('RegularizacionRegistracion');
-            $this->lblRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-            $this->lblRegularizacionRegistracion->Format = $strFormat;
-            return $this->lblRegularizacionRegistracion;
         }
 
         /**
@@ -832,37 +737,6 @@
         }
 
         /**
-         * Create and setup QDateTimePicker calFechaInformeUrbanistico
-         * @param string $strControlId optional ControlId to use
-         * @return QDateTimePicker
-         */
-        public function calFechaInformeUrbanistico_Create($strControlId = null) {
-            $this->calFechaInformeUrbanistico = new QDateTimePicker($this->objParentObject, $strControlId);
-            $this->calFechaInformeUrbanistico->Name = QApplication::Translate('FechaInformeUrbanistico');
-            $this->calFechaInformeUrbanistico->DateTime = $this->objUsoInterno->FechaInformeUrbanistico;
-            $this->calFechaInformeUrbanistico->DateTimePickerType = QDateTimePickerType::Date;
-            
-            return $this->calFechaInformeUrbanistico;
-        }
-
-        /**
-         * Create and setup QLabel lblFechaInformeUrbanistico
-         * @param string $strControlId optional ControlId to use
-         * @param string $strDateTimeFormat optional DateTimeFormat to use
-         * @return QLabel
-         */
-        public function lblFechaInformeUrbanistico_Create($strControlId = null, $strDateTimeFormat = null) {
-            $this->lblFechaInformeUrbanistico = new QLabel($this->objParentObject, $strControlId);
-            $this->lblFechaInformeUrbanistico->Name = QApplication::Translate('FechaInformeUrbanistico');
-            $this->strFechaInformeUrbanisticoDateTimeFormat = $strDateTimeFormat;
-            $this->lblFechaInformeUrbanistico->Text = sprintf($this->objUsoInterno->FechaInformeUrbanistico) ? $this->objUsoInterno->FechaInformeUrbanistico->__toString($this->strFechaInformeUrbanisticoDateTimeFormat) : null;
-            return $this->lblFechaInformeUrbanistico;
-        }
-
-        protected $strFechaInformeUrbanisticoDateTimeFormat;
-
-
-        /**
          * Create and setup QCheckBox chkObjetado
          * @param string $strControlId optional ControlId to use
          * @return QCheckBox
@@ -912,6 +786,56 @@
             return $this->lblComentarioObjetacion;
         }
 
+        /**
+         * Create and setup QTextBox txtRegularizacionFechaInicio
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtRegularizacionFechaInicio_Create($strControlId = null) {
+            $this->txtRegularizacionFechaInicio = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtRegularizacionFechaInicio->Name = QApplication::Translate('RegularizacionFechaInicio');
+            $this->txtRegularizacionFechaInicio->Text = $this->objUsoInterno->RegularizacionFechaInicio;
+            
+            return $this->txtRegularizacionFechaInicio;
+        }
+
+        /**
+         * Create and setup QLabel lblRegularizacionFechaInicio
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblRegularizacionFechaInicio_Create($strControlId = null) {
+            $this->lblRegularizacionFechaInicio = new QLabel($this->objParentObject, $strControlId);
+            $this->lblRegularizacionFechaInicio->Name = QApplication::Translate('RegularizacionFechaInicio');
+            $this->lblRegularizacionFechaInicio->Text = $this->objUsoInterno->RegularizacionFechaInicio;
+            return $this->lblRegularizacionFechaInicio;
+        }
+
+        /**
+         * Create and setup QTextBox txtFechaInformeUrbanistico
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtFechaInformeUrbanistico_Create($strControlId = null) {
+            $this->txtFechaInformeUrbanistico = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtFechaInformeUrbanistico->Name = QApplication::Translate('FechaInformeUrbanistico');
+            $this->txtFechaInformeUrbanistico->Text = $this->objUsoInterno->FechaInformeUrbanistico;
+            
+            return $this->txtFechaInformeUrbanistico;
+        }
+
+        /**
+         * Create and setup QLabel lblFechaInformeUrbanistico
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblFechaInformeUrbanistico_Create($strControlId = null) {
+            $this->lblFechaInformeUrbanistico = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFechaInformeUrbanistico->Name = QApplication::Translate('FechaInformeUrbanistico');
+            $this->lblFechaInformeUrbanistico->Text = $this->objUsoInterno->FechaInformeUrbanistico;
+            return $this->lblFechaInformeUrbanistico;
+        }
+
 
 
 
@@ -948,17 +872,8 @@
             if ($this->txtResolucionInscripcionDefinitiva) $this->txtResolucionInscripcionDefinitiva->Text = $this->objUsoInterno->ResolucionInscripcionDefinitiva;
             if ($this->lblResolucionInscripcionDefinitiva) $this->lblResolucionInscripcionDefinitiva->Text = $this->objUsoInterno->ResolucionInscripcionDefinitiva;
 
-            if ($this->calRegularizacionFechaInicio) $this->calRegularizacionFechaInicio->DateTime = $this->objUsoInterno->RegularizacionFechaInicio;
-            if ($this->lblRegularizacionFechaInicio) $this->lblRegularizacionFechaInicio->Text = sprintf($this->objUsoInterno->RegularizacionFechaInicio) ? $this->objUsoInterno->RegularizacionFechaInicio->__toString($this->strRegularizacionFechaInicioDateTimeFormat) : null;
-
             if ($this->chkRegularizacionCircular10Catastro) $this->chkRegularizacionCircular10Catastro->Checked = $this->objUsoInterno->RegularizacionCircular10Catastro;
             if ($this->lblRegularizacionCircular10Catastro) $this->lblRegularizacionCircular10Catastro->Text = ($this->objUsoInterno->RegularizacionCircular10Catastro) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-
-            if ($this->txtRegularizacionAprobacionGeodesia) $this->txtRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-            if ($this->lblRegularizacionAprobacionGeodesia) $this->lblRegularizacionAprobacionGeodesia->Text = $this->objUsoInterno->RegularizacionAprobacionGeodesia;
-
-            if ($this->txtRegularizacionRegistracion) $this->txtRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
-            if ($this->lblRegularizacionRegistracion) $this->lblRegularizacionRegistracion->Text = $this->objUsoInterno->RegularizacionRegistracion;
 
             if ($this->lstRegularizacionEstadoProcesoObject) {
                 if($this->objUsoInterno->RegularizacionEstadoProcesoObject){
@@ -1009,14 +924,17 @@
             if ($this->txtLey14449) $this->txtLey14449->Text = $this->objUsoInterno->Ley14449;
             if ($this->lblLey14449) $this->lblLey14449->Text = $this->objUsoInterno->Ley14449;
 
-            if ($this->calFechaInformeUrbanistico) $this->calFechaInformeUrbanistico->DateTime = $this->objUsoInterno->FechaInformeUrbanistico;
-            if ($this->lblFechaInformeUrbanistico) $this->lblFechaInformeUrbanistico->Text = sprintf($this->objUsoInterno->FechaInformeUrbanistico) ? $this->objUsoInterno->FechaInformeUrbanistico->__toString($this->strFechaInformeUrbanisticoDateTimeFormat) : null;
-
             if ($this->chkObjetado) $this->chkObjetado->Checked = $this->objUsoInterno->Objetado;
             if ($this->lblObjetado) $this->lblObjetado->Text = ($this->objUsoInterno->Objetado) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
             if ($this->txtComentarioObjetacion) $this->txtComentarioObjetacion->Text = $this->objUsoInterno->ComentarioObjetacion;
             if ($this->lblComentarioObjetacion) $this->lblComentarioObjetacion->Text = $this->objUsoInterno->ComentarioObjetacion;
+
+            if ($this->txtRegularizacionFechaInicio) $this->txtRegularizacionFechaInicio->Text = $this->objUsoInterno->RegularizacionFechaInicio;
+            if ($this->lblRegularizacionFechaInicio) $this->lblRegularizacionFechaInicio->Text = $this->objUsoInterno->RegularizacionFechaInicio;
+
+            if ($this->txtFechaInformeUrbanistico) $this->txtFechaInformeUrbanistico->Text = $this->objUsoInterno->FechaInformeUrbanistico;
+            if ($this->lblFechaInformeUrbanistico) $this->lblFechaInformeUrbanistico->Text = $this->objUsoInterno->FechaInformeUrbanistico;
 
         }
 
@@ -1042,10 +960,7 @@
                 if ($this->chkNoCorrespondeInscripcion) $this->objUsoInterno->NoCorrespondeInscripcion = $this->chkNoCorrespondeInscripcion->Checked;
                 if ($this->txtResolucionInscripcionProvisoria) $this->objUsoInterno->ResolucionInscripcionProvisoria = $this->txtResolucionInscripcionProvisoria->Text;
                 if ($this->txtResolucionInscripcionDefinitiva) $this->objUsoInterno->ResolucionInscripcionDefinitiva = $this->txtResolucionInscripcionDefinitiva->Text;
-                if ($this->calRegularizacionFechaInicio) $this->objUsoInterno->RegularizacionFechaInicio = $this->calRegularizacionFechaInicio->DateTime;
                 if ($this->chkRegularizacionCircular10Catastro) $this->objUsoInterno->RegularizacionCircular10Catastro = $this->chkRegularizacionCircular10Catastro->Checked;
-                if ($this->txtRegularizacionAprobacionGeodesia) $this->objUsoInterno->RegularizacionAprobacionGeodesia = $this->txtRegularizacionAprobacionGeodesia->Text;
-                if ($this->txtRegularizacionRegistracion) $this->objUsoInterno->RegularizacionRegistracion = $this->txtRegularizacionRegistracion->Text;
                 if ($this->lstRegularizacionEstadoProcesoObject) $this->objUsoInterno->RegularizacionEstadoProceso = $this->lstRegularizacionEstadoProcesoObject->SelectedValue;
                 if ($this->txtNumExpediente) $this->objUsoInterno->NumExpediente = $this->txtNumExpediente->Text;
                 if ($this->txtRegistracionLegajo) $this->objUsoInterno->RegistracionLegajo = $this->txtRegistracionLegajo->Text;
@@ -1059,9 +974,10 @@
                 if ($this->txtRegularizacionTienePlano) $this->objUsoInterno->RegularizacionTienePlano = $this->txtRegularizacionTienePlano->Text;
                 if ($this->txtTieneCenso) $this->objUsoInterno->TieneCenso = $this->txtTieneCenso->Text;
                 if ($this->txtLey14449) $this->objUsoInterno->Ley14449 = $this->txtLey14449->Text;
-                if ($this->calFechaInformeUrbanistico) $this->objUsoInterno->FechaInformeUrbanistico = $this->calFechaInformeUrbanistico->DateTime;
                 if ($this->chkObjetado) $this->objUsoInterno->Objetado = $this->chkObjetado->Checked;
                 if ($this->txtComentarioObjetacion) $this->objUsoInterno->ComentarioObjetacion = $this->txtComentarioObjetacion->Text;
+                if ($this->txtRegularizacionFechaInicio) $this->objUsoInterno->RegularizacionFechaInicio = $this->txtRegularizacionFechaInicio->Text;
+                if ($this->txtFechaInformeUrbanistico) $this->objUsoInterno->FechaInformeUrbanistico = $this->txtFechaInformeUrbanistico->Text;
 
 
         }
@@ -1154,30 +1070,12 @@
                 case 'ResolucionInscripcionDefinitivaLabel':
                     if (!$this->lblResolucionInscripcionDefinitiva) return $this->lblResolucionInscripcionDefinitiva_Create();
                     return $this->lblResolucionInscripcionDefinitiva;
-                case 'RegularizacionFechaInicioControl':
-                    if (!$this->calRegularizacionFechaInicio) return $this->calRegularizacionFechaInicio_Create();
-                    return $this->calRegularizacionFechaInicio;
-                case 'RegularizacionFechaInicioLabel':
-                    if (!$this->lblRegularizacionFechaInicio) return $this->lblRegularizacionFechaInicio_Create();
-                    return $this->lblRegularizacionFechaInicio;
                 case 'RegularizacionCircular10CatastroControl':
                     if (!$this->chkRegularizacionCircular10Catastro) return $this->chkRegularizacionCircular10Catastro_Create();
                     return $this->chkRegularizacionCircular10Catastro;
                 case 'RegularizacionCircular10CatastroLabel':
                     if (!$this->lblRegularizacionCircular10Catastro) return $this->lblRegularizacionCircular10Catastro_Create();
                     return $this->lblRegularizacionCircular10Catastro;
-                case 'RegularizacionAprobacionGeodesiaControl':
-                    if (!$this->txtRegularizacionAprobacionGeodesia) return $this->txtRegularizacionAprobacionGeodesia_Create();
-                    return $this->txtRegularizacionAprobacionGeodesia;
-                case 'RegularizacionAprobacionGeodesiaLabel':
-                    if (!$this->lblRegularizacionAprobacionGeodesia) return $this->lblRegularizacionAprobacionGeodesia_Create();
-                    return $this->lblRegularizacionAprobacionGeodesia;
-                case 'RegularizacionRegistracionControl':
-                    if (!$this->txtRegularizacionRegistracion) return $this->txtRegularizacionRegistracion_Create();
-                    return $this->txtRegularizacionRegistracion;
-                case 'RegularizacionRegistracionLabel':
-                    if (!$this->lblRegularizacionRegistracion) return $this->lblRegularizacionRegistracion_Create();
-                    return $this->lblRegularizacionRegistracion;
                 case 'RegularizacionEstadoProcesoControl':
                     if (!$this->lstRegularizacionEstadoProcesoObject) return $this->lstRegularizacionEstadoProcesoObject_Create();
                     return $this->lstRegularizacionEstadoProcesoObject;
@@ -1256,12 +1154,6 @@
                 case 'Ley14449Label':
                     if (!$this->lblLey14449) return $this->lblLey14449_Create();
                     return $this->lblLey14449;
-                case 'FechaInformeUrbanisticoControl':
-                    if (!$this->calFechaInformeUrbanistico) return $this->calFechaInformeUrbanistico_Create();
-                    return $this->calFechaInformeUrbanistico;
-                case 'FechaInformeUrbanisticoLabel':
-                    if (!$this->lblFechaInformeUrbanistico) return $this->lblFechaInformeUrbanistico_Create();
-                    return $this->lblFechaInformeUrbanistico;
                 case 'ObjetadoControl':
                     if (!$this->chkObjetado) return $this->chkObjetado_Create();
                     return $this->chkObjetado;
@@ -1274,6 +1166,18 @@
                 case 'ComentarioObjetacionLabel':
                     if (!$this->lblComentarioObjetacion) return $this->lblComentarioObjetacion_Create();
                     return $this->lblComentarioObjetacion;
+                case 'RegularizacionFechaInicioControl':
+                    if (!$this->txtRegularizacionFechaInicio) return $this->txtRegularizacionFechaInicio_Create();
+                    return $this->txtRegularizacionFechaInicio;
+                case 'RegularizacionFechaInicioLabel':
+                    if (!$this->lblRegularizacionFechaInicio) return $this->lblRegularizacionFechaInicio_Create();
+                    return $this->lblRegularizacionFechaInicio;
+                case 'FechaInformeUrbanisticoControl':
+                    if (!$this->txtFechaInformeUrbanistico) return $this->txtFechaInformeUrbanistico_Create();
+                    return $this->txtFechaInformeUrbanistico;
+                case 'FechaInformeUrbanisticoLabel':
+                    if (!$this->lblFechaInformeUrbanistico) return $this->lblFechaInformeUrbanistico_Create();
+                    return $this->lblFechaInformeUrbanistico;
                 default:
                     try {
                         return parent::__get($strName);
@@ -1308,14 +1212,8 @@
                         return ($this->txtResolucionInscripcionProvisoria = QType::Cast($mixValue, 'QControl'));
                     case 'ResolucionInscripcionDefinitivaControl':
                         return ($this->txtResolucionInscripcionDefinitiva = QType::Cast($mixValue, 'QControl'));
-                    case 'RegularizacionFechaInicioControl':
-                        return ($this->calRegularizacionFechaInicio = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionCircular10CatastroControl':
                         return ($this->chkRegularizacionCircular10Catastro = QType::Cast($mixValue, 'QControl'));
-                    case 'RegularizacionAprobacionGeodesiaControl':
-                        return ($this->txtRegularizacionAprobacionGeodesia = QType::Cast($mixValue, 'QControl'));
-                    case 'RegularizacionRegistracionControl':
-                        return ($this->txtRegularizacionRegistracion = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionEstadoProcesoControl':
                         return ($this->lstRegularizacionEstadoProcesoObject = QType::Cast($mixValue, 'QControl'));
                     case 'NumExpedienteControl':
@@ -1342,12 +1240,14 @@
                         return ($this->txtTieneCenso = QType::Cast($mixValue, 'QControl'));
                     case 'Ley14449Control':
                         return ($this->txtLey14449 = QType::Cast($mixValue, 'QControl'));
-                    case 'FechaInformeUrbanisticoControl':
-                        return ($this->calFechaInformeUrbanistico = QType::Cast($mixValue, 'QControl'));
                     case 'ObjetadoControl':
                         return ($this->chkObjetado = QType::Cast($mixValue, 'QControl'));
                     case 'ComentarioObjetacionControl':
                         return ($this->txtComentarioObjetacion = QType::Cast($mixValue, 'QControl'));
+                    case 'RegularizacionFechaInicioControl':
+                        return ($this->txtRegularizacionFechaInicio = QType::Cast($mixValue, 'QControl'));
+                    case 'FechaInformeUrbanisticoControl':
+                        return ($this->txtFechaInformeUrbanistico = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

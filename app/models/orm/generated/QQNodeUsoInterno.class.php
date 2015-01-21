@@ -19,14 +19,8 @@ class QQNodeUsoInterno extends QQNode {
 					return new QQNode('resolucion_inscripcion_provisoria', 'ResolucionInscripcionProvisoria', 'string', $this);
 				case 'ResolucionInscripcionDefinitiva':
 					return new QQNode('resolucion_inscripcion_definitiva', 'ResolucionInscripcionDefinitiva', 'string', $this);
-				case 'RegularizacionFechaInicio':
-					return new QQNode('regularizacion_fecha_inicio', 'RegularizacionFechaInicio', 'QDateTime', $this);
 				case 'RegularizacionCircular10Catastro':
 					return new QQNode('regularizacion_circular_10_catastro', 'RegularizacionCircular10Catastro', 'boolean', $this);
-				case 'RegularizacionAprobacionGeodesia':
-					return new QQNode('regularizacion_aprobacion_geodesia', 'RegularizacionAprobacionGeodesia', 'integer', $this);
-				case 'RegularizacionRegistracion':
-					return new QQNode('regularizacion_registracion', 'RegularizacionRegistracion', 'integer', $this);
 				case 'RegularizacionEstadoProceso':
 					return new QQNode('regularizacion_estado_proceso', 'RegularizacionEstadoProceso', 'integer', $this);
 				case 'RegularizacionEstadoProcesoObject':
@@ -57,12 +51,14 @@ class QQNodeUsoInterno extends QQNode {
 					return new QQNode('tiene_censo', 'TieneCenso', 'string', $this);
 				case 'Ley14449':
 					return new QQNode('ley_14449', 'Ley14449', 'string', $this);
-				case 'FechaInformeUrbanistico':
-					return new QQNode('fecha_informe_urbanistico', 'FechaInformeUrbanistico', 'QDateTime', $this);
 				case 'Objetado':
 					return new QQNode('objetado', 'Objetado', 'boolean', $this);
 				case 'ComentarioObjetacion':
 					return new QQNode('comentario_objetacion', 'ComentarioObjetacion', 'string', $this);
+				case 'RegularizacionFechaInicio':
+					return new QQNode('regularizacion_fecha_inicio', 'RegularizacionFechaInicio', 'string', $this);
+				case 'FechaInformeUrbanistico':
+					return new QQNode('fecha_informe_urbanistico', 'FechaInformeUrbanistico', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

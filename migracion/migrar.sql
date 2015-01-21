@@ -914,43 +914,68 @@ select * from migracion.regularizacion   ;
 ---------------------------------------------------------------------------------------------------------
 ------------------
 ------------------------------------------------------------------------------------------------------------
-/*
+
 -- Tabla uso_interno, no la pudimos generar porque encontramos problematicas que no podemos resolver (te las detallamos)
+
 
 drop table if exists migracion.uso_interno;
 
 create table migracion.uso_interno as 
 select
+ campo98 as id_folio, campo61 as informe_urbanistico, 
+ CASE WHEN campo23 ='Mapeo preliminar' THEN true
+            ELSE false
+       END as  mapeo_preliminar,
+CASE WHEN campo23 ='No corresponde inscripción' THEN true
+            ELSE false
+       END as no_corresponde_inscripcion,
+CASE WHEN campo23 ='Inscripción provisoria' THEN 'n° pendiente'
+            ELSE ''
+       END  as  resolucion_inscripcion_provisoria,
+ campo25 as resolucion_inscripcion_definitiva,
+ campo85 as regularizacion_fecha_inicio,
+ campo86 as regularizacion_circular_10_catastro,
+ campo87 as geodesia_partido,
+ campo88 as geodesia_num, 
+ campo89 as geodesia_anio,
+ campo90 as registracion_legajo,
+ campo92 as registracion_fecha, 
+ campo91 as registracion_folio, 
+ campo93 as regularizacion_estado_proceso, --(es de 3 opciones y no esta creada la tabla de opc)
+ campo63 as tiene_censo,
+ campo64 as fecha_censo,
+ campo26 as num_expediente,
+ campo94 as ley_14449, 
+ campo62 as fecha_informe_urbanistico,
+ campo99 as estado_folio, 
+ campo84 as regularizacion_tiene_plano,
+ false as objetado,
+ ''::text comentario_objetacion
+ from datos_folios_integrados ;
 
--- campo98 as id_folio, campo61 as as informe_urbanistico, (sin problema)
--- campo23 as  mapeo_preliminar, campo23 as no_corresponde_inscripcion, campo23/24 as  resolucion_inscripcion_provisoria, campo23/24 as resolucion_inscripcion_definitiva,(en tabla excel estos cuatro estan contenidos en una sola columna, no tendriamos que generar opciones para el campo situacuin registral? que seria el campo 23. (NO LO ENTENDEMOS BIEN COMO LO PLANTEASTE)
--- campo85 as regularizacion_fecha_inicio, (recordar transformarlo en texto)
--- campo86 as regularizacion_circular_10_catastro, (sin problema)
--- campo as regularizacion_aprobacion_geodesia, (entendemos que integra los campos 87, 88, 89). Es un campo a crear?
--- campo 87 as geodesia_partido, (sin Problemas)
--- campo88 as geodesia_num, (sin problema)
--- campo89 as geodesia_anio, (sin problema)
--- campo as regularizacion_registracion, (entendemos que integra los campos 90, 92, 91. Es un campo a crear?
--- campo90 as registracion_legajo, (sin problema)
--- campo92 as registracion_fecha, (sin problema)
--- campo91 as registracion_folio, (sin problema)
--- campo93 as regularizacion_estado_proceso, (es de 3 opciones y no esta creada la tabla de opc)
---campo63 as tiene_censo, (es boolean)
--- campo64 as fecha_censo, (texto)
--- campo26 as num_expediente, (sin problema)
--- campo94 as ley_14449, (es boolean)
--- campo61 as informe_urbanistico es boolean(no figura en tabla uso_interno, pero si en la tabla integrada)
--- campo62 as fecha_informe_urbanistico, (texto)
---campo99 as estado_folio, (de opciones)
---campo84 as regularizacion_tiene_plano (boolean)
- 
+
+update migracion.uso_interno set informe_urbanistico='si' where informe_urbanistico in ('si','Si','SI');
+update migracion.uso_interno set informe_urbanistico='no' where informe_urbanistico in ('No');
+update migracion.uso_interno set informe_urbanistico='sin_dato' where informe_urbanistico in ('Sin dato','');
+update migracion.uso_interno set informe_urbanistico='sin_dato' where informe_urbanistico is null;
 
 
+update migracion.uso_interno set tiene_censo='sin_dato' where tiene_censo is null;
+update migracion.uso_interno set tiene_censo='no' where tiene_censo = 'No';
 
- from datos_folios_integrados;
+update migracion.uso_interno set regularizacion_tiene_plano='sin_dato' where regularizacion_tiene_plano is null;
+
+update migracion.uso_interno set ley_14449='sin_dato' where ley_14449 is null;
+
+update migracion.uso_interno set estado_folio=4 where estado_folio='No corresponde inscripcion';
+update migracion.uso_interno set estado_folio=5 where estado_folio='Notificacion';
+update migracion.uso_interno set estado_folio=3 where estado_folio='Validacion y/o completamiento';
+
+
+ select * from migracion.uso_interno;
 
 
 
   
-*/
+
 

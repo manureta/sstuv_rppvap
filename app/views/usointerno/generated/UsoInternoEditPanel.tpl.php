@@ -10,10 +10,7 @@
 		<?php $_CONTROL->chkNoCorrespondeInscripcion->RenderWithName(); ?>
 		<?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
 		<?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
-		<?php $_CONTROL->calRegularizacionFechaInicio->RenderWithName(); ?>
 		<?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
-		<?php $_CONTROL->txtRegularizacionAprobacionGeodesia->RenderWithName(); ?>
-		<?php $_CONTROL->txtRegularizacionRegistracion->RenderWithName(); ?>
 		<?php $_CONTROL->lstRegularizacionEstadoProcesoObject->RenderWithName(); ?>
 		<?php $_CONTROL->txtNumExpediente->RenderWithName(); ?>
 		<?php $_CONTROL->txtRegistracionLegajo->RenderWithName(); ?>
@@ -27,9 +24,10 @@
 		<?php $_CONTROL->txtRegularizacionTienePlano->RenderWithName(); ?>
 		<?php $_CONTROL->txtTieneCenso->RenderWithName(); ?>
 		<?php $_CONTROL->txtLey14449->RenderWithName(); ?>
-		<?php $_CONTROL->calFechaInformeUrbanistico->RenderWithName(); ?>
 		<?php $_CONTROL->chkObjetado->RenderWithName(); ?>
 		<?php $_CONTROL->txtComentarioObjetacion->RenderWithName(); ?>
+		<?php $_CONTROL->txtRegularizacionFechaInicio->RenderWithName(); ?>
+		<?php $_CONTROL->txtFechaInformeUrbanistico->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

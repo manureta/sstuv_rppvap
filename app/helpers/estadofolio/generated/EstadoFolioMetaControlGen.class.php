@@ -233,10 +233,7 @@
         $strConfigArray['Columns']['NoCorrespondeInscripcion'] = QApplication::Translate('NoCorrespondeInscripcion');
         $strConfigArray['Columns']['ResolucionInscripcionProvisoria'] = QApplication::Translate('ResolucionInscripcionProvisoria');
         $strConfigArray['Columns']['ResolucionInscripcionDefinitiva'] = QApplication::Translate('ResolucionInscripcionDefinitiva');
-        $strConfigArray['Columns']['RegularizacionFechaInicio'] = QApplication::Translate('RegularizacionFechaInicio');
         $strConfigArray['Columns']['RegularizacionCircular10Catastro'] = QApplication::Translate('RegularizacionCircular10Catastro');
-        $strConfigArray['Columns']['RegularizacionAprobacionGeodesia'] = QApplication::Translate('RegularizacionAprobacionGeodesia');
-        $strConfigArray['Columns']['RegularizacionRegistracion'] = QApplication::Translate('RegularizacionRegistracion');
         $strConfigArray['Columns']['RegularizacionEstadoProcesoObject'] = QApplication::Translate('RegularizacionEstadoProcesoObject');
         $strConfigArray['Columns']['NumExpediente'] = QApplication::Translate('NumExpediente');
         $strConfigArray['Columns']['RegistracionLegajo'] = QApplication::Translate('RegistracionLegajo');
@@ -249,9 +246,10 @@
         $strConfigArray['Columns']['RegularizacionTienePlano'] = QApplication::Translate('RegularizacionTienePlano');
         $strConfigArray['Columns']['TieneCenso'] = QApplication::Translate('TieneCenso');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
-        $strConfigArray['Columns']['FechaInformeUrbanistico'] = QApplication::Translate('FechaInformeUrbanistico');
         $strConfigArray['Columns']['Objetado'] = QApplication::Translate('Objetado');
         $strConfigArray['Columns']['ComentarioObjetacion'] = QApplication::Translate('ComentarioObjetacion');
+        $strConfigArray['Columns']['RegularizacionFechaInicio'] = QApplication::Translate('RegularizacionFechaInicio');
+        $strConfigArray['Columns']['FechaInformeUrbanistico'] = QApplication::Translate('FechaInformeUrbanistico');
 
         $this->lstUsoInterno = new QListPanel($this->objParentObject, $this->objEstadoFolio, $strConfigArray, $strControlId);
         $this->lstUsoInterno->Name = UsoInterno::Noun();
