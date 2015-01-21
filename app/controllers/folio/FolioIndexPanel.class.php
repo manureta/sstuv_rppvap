@@ -20,6 +20,10 @@ class FolioIndexPanel extends FolioIndexPanelGen {
     // Redefinicion de visibilidad de columnas y controles
     protected $strColumnsArray;
     protected $strControlsArray;    
+    public $strTemplate;
+
+    public $btnBuscar;
+    public $strBuscar;
 
     
     /**
@@ -39,11 +43,11 @@ class FolioIndexPanel extends FolioIndexPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        if (!isset($this->lblTitulo)) { //En PivotePanel ya está creado...
-           // $this->lblTitulo = new QTitulo($this);
-        }
-        $this->lblTitulo->Titulo = isset($this->strTitulo) ? $this->strTitulo : Folio::Noun();
-        $this->lblTitulo->Subtitulo = isset($this->strSubtitulo) ? $this->strSubtitulo : '';
+        $this->strTemplate=__VIEW_DIR__."/folio/FolioIndexPanel.tpl.php";
+
+        
+        $this->lblTitulo->Visible=false;
+        //$this->lblTitulo->Subtitulo = isset($this->strSubtitulo) ? $this->strSubtitulo : '';
         
         $this->strColumnsArray = is_null($strColumnsArray) ? FolioDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
@@ -58,8 +62,16 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         if(Permission::EsVisualizador() || (Permission::EsUsoInterno() && !Permission::EsAdministrador())) {
             $this->btnCreateNew->Enabled = false;
         }
-        
 
+        $this->btnBuscar = new QButton($this);
+        $this->btnBuscar->AddCssClass('btn-s btn-white');
+        $this->btnBuscar->Icon="search";
+        $this->btnBuscar->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnBuscar_Click"));
+        $this->btnBuscar->Enabled = true;
+        
+        $this->strBuscar=new QTextBox($this);
+        $this->strBuscar->SetCustomAttribute("placeholder", "buscar ..."); 
+        $this->strBuscar->AddAction(new QEnterKeyEvent(),new QTerminateAction() ); // new QTerminateAction() si quiero que haga nada
         
     }
 
@@ -69,5 +81,17 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         //$this->dtgFolios->RowClickMethod = 'dtgRow_Click';
         return $this->dtgFolios;
     }
+
+    public function btnBuscar_Click($strFormId, $strControlId, $strParameter){
+       
+       if($this->strBuscar->Text!=="") QApplication::DisplayAlert($this->strBuscar->Text);
+    }
+
+    public function strBuscar_Enter($strFormId, $strControlId, $strParameter){
+       // todavia no pfunca
+       if($this->strBuscar->Text!=="") QApplication::DisplayAlert($this->strBuscar->Text);
+       //return new QTerminateAction():
+    }
+
 }
 ?>

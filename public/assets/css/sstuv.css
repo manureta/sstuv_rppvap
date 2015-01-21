@@ -132,3 +132,7 @@ body{
     border-style: solid;
     border-width: 1px;
 }
+
+label {
+    margin-bottom: 0px !IMPORTANT;
+}
