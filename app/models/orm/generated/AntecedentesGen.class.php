@@ -97,7 +97,6 @@ class AntecedentesGen extends QBaseClass {
      * @var string strOtros
      */
     protected $strOtros;
-    const OtrosMaxLength = 45;
     const OtrosDefault = null;
 
 

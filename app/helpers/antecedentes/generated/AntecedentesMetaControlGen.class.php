@@ -306,7 +306,6 @@
             $this->txtOtros = new QTextBox($this->objParentObject, $strControlId);
             $this->txtOtros->Name = QApplication::Translate('Otros');
             $this->txtOtros->Text = $this->objAntecedentes->Otros;
-            $this->txtOtros->MaxLength = Antecedentes::OtrosMaxLength;
             
             return $this->txtOtros;
         }

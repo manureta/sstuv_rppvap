@@ -298,9 +298,9 @@
         $strConfigArray['Columns']['Ley23073'] = QApplication::Translate('Ley23073');
         $strConfigArray['Columns']['Decreto468696'] = QApplication::Translate('Decreto468696');
         $strConfigArray['Columns']['Expropiacion'] = QApplication::Translate('Expropiacion');
-        $strConfigArray['Columns']['Otros'] = QApplication::Translate('Otros');
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
         $strConfigArray['Columns']['TieneExpropiacion'] = QApplication::Translate('TieneExpropiacion');
+        $strConfigArray['Columns']['Otros'] = QApplication::Translate('Otros');
 
         $this->lstEncuadreLegalAsIdFolio = new QListPanel($this->objParentObject, $this->objRegularizacion, $strConfigArray, $strControlId);
         $this->lstEncuadreLegalAsIdFolio->Name = EncuadreLegal::Noun();

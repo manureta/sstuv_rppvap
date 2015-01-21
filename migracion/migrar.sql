@@ -152,16 +152,24 @@ id_folio, espacio_libre_comun, presencia_org_sociales, nombre_refernte, telefono
 select id_folio::int, espacio_libre_comun::boolean, presencia_org_sociales, nombre_refernte, 
             telefono_referente from migracion.condiciones_socio_urbanisticas  where id_folio is not null;
 
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
 -- Tabla para Equipamiento
-/*
+
 
 drop table if exists migracion.equipamiento;
 
 create table migracion.equipamiento as 
 select
-
 campo98 as id_folio, campo28 as unidad_sanitaria, campo29 as jardin_infantes, campo30 as escuela_primaria, campo31 as escuela_secundaria, campo32 as comedor, 
 campo33 as centro_integracion_comunitaria, campo34 as otro from datos_folios_integrados;
+
+update migracion.equipamiento set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
 
 
 -- ver los difernetes tipo unidad_sanitaria
@@ -170,7 +178,6 @@ group by unidad_sanitaria;
 
  -- ver los codigos de equipamiento
  
- select * from opciones_equipamientos;  
 
 update migracion.equipamiento set unidad_sanitaria=1 where unidad_sanitaria='Dentro del barrio';
 update migracion.equipamiento set unidad_sanitaria=2 where unidad_sanitaria='Próximo al barrio';
@@ -180,8 +187,6 @@ update migracion.equipamiento set unidad_sanitaria=5 where unidad_sanitaria='Sin
 update migracion.equipamiento set unidad_sanitaria=4 where unidad_sanitaria='No existe';
 update migracion.equipamiento set unidad_sanitaria=5 where unidad_sanitaria IS NULL;
 
-select * from migracion.equipamiento;
-
 
 
 -- ver los difernetes tipo jardin_infantes
@@ -190,7 +195,6 @@ group by jardin_infantes;
 
  -- ver los codigos de equipamiento
  
- select * from opciones_equipamientos;  
 
 update migracion.equipamiento set jardin_infantes=1 where jardin_infantes='Dentro del barrio';
 update migracion.equipamiento set jardin_infantes=2 where jardin_infantes='Próximo al barrio';
@@ -200,7 +204,6 @@ update migracion.equipamiento set jardin_infantes=5 where jardin_infantes='Sin d
 update migracion.equipamiento set jardin_infantes=4 where jardin_infantes='No existe';
 update migracion.equipamiento set jardin_infantes=5 where jardin_infantes IS NULL;
 
-select * from migracion.equipamiento;
 
 -- ver los difernetes tipo escuela_primaria
 select distinct(escuela_primaria),count(*) from migracion.equipamiento
@@ -208,7 +211,6 @@ group by escuela_primaria;
 
  -- ver los codigos de equipamiento
  
- select * from opciones_equipamientos;  
 
 update migracion.equipamiento set escuela_primaria=1 where escuela_primaria='Dentro del barrio';
 update migracion.equipamiento set escuela_primaria=2 where escuela_primaria='Próximo al barrio';
@@ -218,7 +220,6 @@ update migracion.equipamiento set escuela_primaria=5 where escuela_primaria='Sin
 update migracion.equipamiento set escuela_primaria=4 where escuela_primaria='No existe';
 update migracion.equipamiento set escuela_primaria=5 where escuela_primaria IS NULL;
 
-select * from migracion.equipamiento;
 
 -- ver los difernetes tipo escuela_secundaria
 select distinct(escuela_secundaria),count(*) from migracion.equipamiento
@@ -226,7 +227,6 @@ group by escuela_secundaria;
 
  -- ver los codigos de equipamiento
  
- select * from opciones_equipamientos;  
 
 update migracion.equipamiento set escuela_secundaria=1 where escuela_secundaria='Dentro del barrio';
 update migracion.equipamiento set escuela_secundaria=2 where escuela_secundaria='Próximo al barrio';
@@ -236,8 +236,6 @@ update migracion.equipamiento set escuela_secundaria=5 where escuela_secundaria=
 update migracion.equipamiento set escuela_secundaria=4 where escuela_secundaria='No existe';
 update migracion.equipamiento set escuela_secundaria=5 where escuela_secundaria IS NULL;
 
-select * from migracion.equipamiento;
-
 
 -- ver los difernetes tipo comedor
 
@@ -246,7 +244,6 @@ group by comedor;
 
  -- ver los codigos de equipamiento
  
- select * from opciones_equipamientos;  
 
 update migracion.equipamiento set comedor=1 where comedor='Dentro del barrio';
 update migracion.equipamiento set comedor=2 where comedor='Próximo al barrio';
@@ -256,7 +253,6 @@ update migracion.equipamiento set comedor=5 where comedor='Sin dato';
 update migracion.equipamiento set comedor=4 where comedor='No existe';
 update migracion.equipamiento set comedor=5 where comedor IS NULL;
 
-select * from migracion.equipamiento;
 
 -- ver los difernetes tipo CIC
 
@@ -265,7 +261,6 @@ group by centro_integracion_comunitaria;
 
  -- ver los codigos de equipamiento
  
- select * from opciones_equipamientos;  
 
 update migracion.equipamiento set centro_integracion_comunitaria=1 where centro_integracion_comunitaria='Dentro del barrio';
 update migracion.equipamiento set centro_integracion_comunitaria=2 where centro_integracion_comunitaria='Próximo al barrio';
@@ -277,6 +272,18 @@ update migracion.equipamiento set centro_integracion_comunitaria=5 where centro_
 
 select * from migracion.equipamiento;
 
+--INSERTAR EN EQUIPAMIENTO
+INSERT INTO equipamiento(
+            id_folio, unidad_sanitaria, jardin_infantes, escuela_primaria, 
+            escuela_secundaria, comedor, centro_integracion_comunitaria, 
+            otro)
+    select id_folio::int, unidad_sanitaria::int, jardin_infantes::int, escuela_primaria::int, 
+            escuela_secundaria::int, comedor::int, centro_integracion_comunitaria::int, 
+            otro from migracion.equipamiento  where id_folio is not null;
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
 
 -- Tabla para Transporte
 
@@ -286,6 +293,7 @@ create table migracion.transporte as
 select
 campo98 as id_folio, campo35 as colectivos, campo36 as ferrocarril, campo37 as remis_combis from datos_folios_integrados;
 
+update migracion.transporte set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
 
 -- colectivos
 
@@ -329,6 +337,13 @@ update migracion.transporte set remis_combis=5 where remis_combis IS NULL;
 
 select * from migracion.transporte;
 
+-- INSERTAR TRSNPORTE
+INSERT INTO transporte(
+            id_folio, colectivos, ferrocarril, remis_combis)
+    select id_folio::int, colectivos::int, ferrocarril::int, remis_combis::int from migracion.transporte  where id_folio is not null;
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -343,6 +358,7 @@ select
 campo98 as id_folio, campo38 as energia_electrica_medidor_individual, campo39 as energia_electrica_medidor_colectivo, campo40 as alumbrado_publico, campo41 as agua_corriente, campo42 as agua_potable, campo43 as red_cloacal, campo44 as sist_alternativo_eliminacion_excretas, campo45 as red_gas,
 campo46 as pavimento, campo47 as cordon_cuneta, campo48 as desagues_pluviales, campo49 as recoleccion_residuos from datos_folios_integrados;
 
+update migracion.infraestructura set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
 
 
 -- medidor individual
@@ -552,8 +568,20 @@ update migracion.infraestructura  set recoleccion_residuos=4 where recoleccion_r
 update migracion.infraestructura  set recoleccion_residuos=4 where recoleccion_residuos='sin dato';
 update migracion.infraestructura  set recoleccion_residuos=4 where recoleccion_residuos IS NULL;
 
+--INSERTAR EN INFRAESTRUCTURA
 
-select * from migracion.infraestructura;
+INSERT INTO infraestructura(
+            id_folio, energia_electrica_medidor_individual, energia_electrica_medidor_colectivo, 
+            alumbrado_publico, agua_corriente, agua_potable, red_cloacal, 
+            sist_alternativo_eliminacion_excretas, red_gas, pavimento, cordon_cuneta, 
+            desagues_pluviales, recoleccion_residuos)
+    select id_folio::int, energia_electrica_medidor_individual::int, energia_electrica_medidor_colectivo::int, 
+            alumbrado_publico::int, agua_corriente::int, agua_potable::int, red_cloacal::int, 
+            sist_alternativo_eliminacion_excretas::int, red_gas::int, pavimento::int, cordon_cuneta::int, 
+            desagues_pluviales::int, recoleccion_residuos::int
+	from migracion.infraestructura where id_folio is not null;
+
+----------------------------------------------------------------------------------------------------------------------	
 
 
 -- situacion ambiental
@@ -566,6 +594,9 @@ select
 campo98 as id_folio, campo53 as sin_problemas, campo54 as reserva_electroducto, campo55 as inundable, campo56 as sobre_terraplen_ferroviario, campo57 as sobre_camino_sirga, campo58 as expuesto_contaminacion_industrial, campo59 as sobre_suelo_degradado, 
 campo60 as otro from datos_folios_integrados;
 
+update migracion.situacion_ambiental set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
+
+
 -- sin_problemas
 
 update migracion.situacion_ambiental set sin_problemas=TRUE where sin_problemas='Si';
@@ -573,7 +604,7 @@ update migracion.situacion_ambiental set sin_problemas=TRUE where sin_problemas=
 update migracion.situacion_ambiental set sin_problemas=TRUE where sin_problemas='SI';
 update migracion.situacion_ambiental set sin_problemas=FALSE where sin_problemas='No';
 update migracion.situacion_ambiental set sin_problemas=FALSE where sin_problemas='no';
-update migracion.situacion_ambiental set sin_problemas='' where sin_problemas='Sin dato';
+update migracion.situacion_ambiental set sin_problemas=FALSE where sin_problemas='Sin dato';
 
 -- reserva_electroducto
 
@@ -582,7 +613,7 @@ update migracion.situacion_ambiental set reserva_electroducto=TRUE where reserva
 update migracion.situacion_ambiental set reserva_electroducto=TRUE where reserva_electroducto='SI';
 update migracion.situacion_ambiental set reserva_electroducto=FALSE where reserva_electroducto='No';
 update migracion.situacion_ambiental set reserva_electroducto=FALSE where reserva_electroducto='no';
-update migracion.situacion_ambiental set reserva_electroducto='' where reserva_electroducto='Sin dato';
+update migracion.situacion_ambiental set reserva_electroducto=FALSE where reserva_electroducto='Sin dato';
 
 -- inundable
 
@@ -591,7 +622,7 @@ update migracion.situacion_ambiental set inundable=TRUE where inundable='si';
 update migracion.situacion_ambiental set inundable=TRUE where inundable='SI';
 update migracion.situacion_ambiental set inundable=FALSE where inundable='No';
 update migracion.situacion_ambiental set inundable=FALSE where inundable='no';
-update migracion.situacion_ambiental set inundable='' where inundable='Sin dato';
+update migracion.situacion_ambiental set inundable=FALSE where inundable='Sin dato';
 
 --sobre_terraplen_ferroviario
 
@@ -600,7 +631,7 @@ update migracion.situacion_ambiental set sobre_terraplen_ferroviario=TRUE where 
 update migracion.situacion_ambiental set sobre_terraplen_ferroviario=TRUE where sobre_terraplen_ferroviario='SI';
 update migracion.situacion_ambiental set sobre_terraplen_ferroviario=FALSE where sobre_terraplen_ferroviario='No';
 update migracion.situacion_ambiental set sobre_terraplen_ferroviario=FALSE where sobre_terraplen_ferroviario='no';
-update migracion.situacion_ambiental set sobre_terraplen_ferroviario='' where sobre_terraplen_ferroviario='Sin dato';
+update migracion.situacion_ambiental set sobre_terraplen_ferroviario=FALSE where sobre_terraplen_ferroviario='Sin dato';
 
 
 --sobre_camino_sirga
@@ -610,7 +641,7 @@ update migracion.situacion_ambiental set sobre_camino_sirga=TRUE where sobre_cam
 update migracion.situacion_ambiental set sobre_camino_sirga=TRUE where sobre_camino_sirga='SI';
 update migracion.situacion_ambiental set sobre_camino_sirga=FALSE where sobre_camino_sirga='No';
 update migracion.situacion_ambiental set sobre_camino_sirga=FALSE where sobre_camino_sirga='no';
-update migracion.situacion_ambiental set sobre_camino_sirga='' where sobre_camino_sirga='Sin dato';
+update migracion.situacion_ambiental set sobre_camino_sirga=FALSE where sobre_camino_sirga='Sin dato';
 
 
 --expuesto_contaminacion_industrial
@@ -620,7 +651,7 @@ update migracion.situacion_ambiental set expuesto_contaminacion_industrial=TRUE 
 update migracion.situacion_ambiental set expuesto_contaminacion_industrial=TRUE where expuesto_contaminacion_industrial='SI';
 update migracion.situacion_ambiental set expuesto_contaminacion_industrial=FALSE where expuesto_contaminacion_industrial='No';
 update migracion.situacion_ambiental set expuesto_contaminacion_industrial=FALSE where expuesto_contaminacion_industrial='no';
-update migracion.situacion_ambiental set expuesto_contaminacion_industrial='' where expuesto_contaminacion_industrial='Sin dato';
+update migracion.situacion_ambiental set expuesto_contaminacion_industrial=FALSE where expuesto_contaminacion_industrial='Sin dato';
 
 
 
@@ -631,8 +662,23 @@ update migracion.situacion_ambiental set sobre_suelo_degradado=TRUE where sobre_
 update migracion.situacion_ambiental set sobre_suelo_degradado=TRUE where sobre_suelo_degradado='SI';
 update migracion.situacion_ambiental set sobre_suelo_degradado=FALSE where sobre_suelo_degradado='No';
 update migracion.situacion_ambiental set sobre_suelo_degradado=FALSE where sobre_suelo_degradado='no';
-update migracion.situacion_ambiental set sobre_suelo_degradado='' where sobre_suelo_degradado='Sin dato';
+update migracion.situacion_ambiental set sobre_suelo_degradado=FALSE where sobre_suelo_degradado='Sin dato';
+update migracion.situacion_ambiental set sobre_suelo_degradado=FALSE where sobre_suelo_degradado='sin dato';
 
+
+-- INSERTAR
+
+INSERT INTO situacion_ambiental(
+            id_folio, sin_problemas, reserva_electroducto, inundable, 
+            sobre_terraplen_ferroviario, sobre_camino_sirga, expuesto_contaminacion_industrial, 
+            sobre_suelo_degradado, otro)
+   select 
+            id_folio::int, sin_problemas::boolean, reserva_electroducto::boolean, inundable::boolean, 
+            sobre_terraplen_ferroviario::boolean, sobre_camino_sirga::boolean, expuesto_contaminacion_industrial::boolean, 
+            sobre_suelo_degradado::boolean, otro from migracion.situacion_ambiental  where id_folio is not null;
+
+
+--------------------------------------------------------------------------------------------------------------------
 
   
 -- Tabla para regularizaciones
@@ -642,8 +688,9 @@ drop table if exists migracion.regularizacion;
 
 create table migracion.regularizacion as 
 select
-
 campo98 as id_folio, campo65 as proceso_iniciado, campo97 as observaciones from datos_folios_integrados;
+
+update migracion.regularizacion set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
 
 --proceso iniciado
 
@@ -653,7 +700,17 @@ update migracion.regularizacion set proceso_iniciado=TRUE where proceso_iniciado
 update migracion.regularizacion set proceso_iniciado=TRUE where proceso_iniciado='SI';
 update migracion.regularizacion set proceso_iniciado=FALSE where proceso_iniciado='No';
 update migracion.regularizacion set proceso_iniciado=FALSE where proceso_iniciado='no';
-update migracion.regularizacion set proceso_iniciado='' where proceso_iniciado='Sin dato';
+update migracion.regularizacion set proceso_iniciado=FALSE where proceso_iniciado='Sin dato';
+update migracion.regularizacion set proceso_iniciado=FALSE where proceso_iniciado is null;
+
+--INSERTAR
+
+INSERT INTO regularizacion(
+             id_folio, proceso_iniciado, observaciones)
+    select id_folio::int, proceso_iniciado::boolean, observaciones from migracion.regularizacion  where id_folio is not null;
+
+
+---------------------------------------------------------------------------------------------------------------
 
 
 
@@ -664,9 +721,10 @@ drop table if exists migracion.encuadre_legal;
 
 create table migracion.encuadre_legal as 
 select
-
 campo98 as id_folio, campo66 as decreto_2225_95, campo69 as ley_24374, campo68 as decreto_815_88,
-campo70 as ley_23073, campo67 as decreto_4686_96, campo72 as expropiacion, campo73 as otros, campo71 as tiene_expropiacion from datos_folios_integrados;
+campo70 as ley_23073, campo67 as decreto_4686_96, campo72 as expropiacion, campo73 as otros,false as ley_14449, campo71 as tiene_expropiacion from datos_folios_integrados;
+
+update migracion.encuadre_legal set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
 
  
 
@@ -677,7 +735,7 @@ update migracion.encuadre_legal set decreto_2225_95=TRUE where decreto_2225_95='
 update migracion.encuadre_legal set decreto_2225_95=TRUE where decreto_2225_95='SI';
 update migracion.encuadre_legal set decreto_2225_95=FALSE where decreto_2225_95='No';
 update migracion.encuadre_legal set decreto_2225_95=FALSE where decreto_2225_95='no';
-update migracion.encuadre_legal set decreto_2225_95='' where decreto_2225_95='Sin dato';
+update migracion.encuadre_legal set decreto_2225_95=FALSE where decreto_2225_95='Sin dato';
 
 
 --ley_24374
@@ -687,7 +745,7 @@ update migracion.encuadre_legal set ley_24374=TRUE where ley_24374='si';
 update migracion.encuadre_legal set ley_24374=TRUE where ley_24374='SI';
 update migracion.encuadre_legal set ley_24374=FALSE where ley_24374='No';
 update migracion.encuadre_legal set ley_24374=FALSE where ley_24374='no';
-update migracion.encuadre_legal set ley_24374='' where ley_24374='Sin dato';
+update migracion.encuadre_legal set ley_24374=FALSE where ley_24374='Sin dato';
 
 
 --decreto_815_88
@@ -697,7 +755,7 @@ update migracion.encuadre_legal set decreto_815_88=TRUE where decreto_815_88='si
 update migracion.encuadre_legal set decreto_815_88=TRUE where decreto_815_88='SI';
 update migracion.encuadre_legal set decreto_815_88=FALSE where decreto_815_88='No';
 update migracion.encuadre_legal set decreto_815_88=FALSE where decreto_815_88='no';
-update migracion.encuadre_legal set decreto_815_88='' where decreto_815_88='Sin dato';
+update migracion.encuadre_legal set decreto_815_88=FALSE where decreto_815_88='Sin dato';
 
 --ley_23073
 
@@ -706,7 +764,7 @@ update migracion.encuadre_legal set ley_23073=TRUE where ley_23073='si';
 update migracion.encuadre_legal set ley_23073=TRUE where ley_23073='SI';
 update migracion.encuadre_legal set ley_23073=FALSE where ley_23073='No';
 update migracion.encuadre_legal set ley_23073=FALSE where ley_23073='no';
-update migracion.encuadre_legal set ley_23073='' where ley_23073='Sin dato';
+update migracion.encuadre_legal set ley_23073=FALSE where ley_23073='Sin dato';
 
 
 
@@ -717,7 +775,7 @@ update migracion.encuadre_legal set decreto_4686_96=TRUE where decreto_4686_96='
 update migracion.encuadre_legal set decreto_4686_96=TRUE where decreto_4686_96='SI';
 update migracion.encuadre_legal set decreto_4686_96=FALSE where decreto_4686_96='No';
 update migracion.encuadre_legal set decreto_4686_96=FALSE where decreto_4686_96='no';
-update migracion.encuadre_legal set decreto_4686_96='' where decreto_4686_96='Sin dato';
+update migracion.encuadre_legal set decreto_4686_96=FALSE where decreto_4686_96='Sin dato';
 
 
 --tiene_expropiacion
@@ -727,8 +785,20 @@ update migracion.encuadre_legal set tiene_expropiacion=TRUE where tiene_expropia
 update migracion.encuadre_legal set tiene_expropiacion=TRUE where tiene_expropiacion='SI';
 update migracion.encuadre_legal set tiene_expropiacion=FALSE where tiene_expropiacion='No';
 update migracion.encuadre_legal set tiene_expropiacion=FALSE where tiene_expropiacion='no';
-update migracion.encuadre_legal set tiene_expropiacion='' where tiene_expropiacion='Sin dato';
+update migracion.encuadre_legal set tiene_expropiacion=FALSE where tiene_expropiacion='Sin dato';
 
+
+--INSERTAR
+
+INSERT INTO encuadre_legal(
+            id_folio, decreto_2225_95, ley_24374, decreto_815_88, ley_23073, 
+            decreto_4686_96, expropiacion, otros, ley_14449, tiene_expropiacion)
+select id_folio::int, decreto_2225_95::boolean, ley_24374::boolean, decreto_815_88::boolean, ley_23073::boolean, 
+            decreto_4686_96::boolean, expropiacion, otros, ley_14449::boolean, tiene_expropiacion::boolean
+            from migracion.encuadre_legal  where id_folio is not null;
+
+
+--------------------------------------------------------------------------------------------------------------------
 
 -- Tabla antecedentes
 
@@ -736,9 +806,10 @@ drop table if exists migracion.antecedentes;
 
 create table migracion.antecedentes as 
 select
-
 campo98 as id_folio, campo74 as sin_intervencion, campo76 as obras_infraestructura, campo77 as equipamientos, campo75 as intervenciones_en_viviendas,
 campo78 as otros from datos_folios_integrados;
+
+update migracion.antecedentes set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
 
 
 -- sin_intervencion 
@@ -748,7 +819,7 @@ update migracion.antecedentes set sin_intervencion=TRUE where sin_intervencion='
 update migracion.antecedentes set sin_intervencion=TRUE where sin_intervencion='SI';
 update migracion.antecedentes set sin_intervencion=FALSE where sin_intervencion='No';
 update migracion.antecedentes set sin_intervencion=FALSE where sin_intervencion='no';
-update migracion.antecedentes set sin_intervencion='' where sin_intervencion='Sin dato';
+update migracion.antecedentes set sin_intervencion=FALSE where sin_intervencion='Sin dato';
 
 -- obras_infraestructura 
 
@@ -757,7 +828,7 @@ update migracion.antecedentes set obras_infraestructura=TRUE where obras_infraes
 update migracion.antecedentes set obras_infraestructura=TRUE where obras_infraestructura='SI';
 update migracion.antecedentes set obras_infraestructura=FALSE where obras_infraestructura='No';
 update migracion.antecedentes set obras_infraestructura=FALSE where obras_infraestructura='no';
-update migracion.antecedentes set obras_infraestructura='' where obras_infraestructura='Sin dato';
+update migracion.antecedentes set obras_infraestructura=FALSE where obras_infraestructura='Sin dato';
 
 -- equipamientos
 
@@ -766,7 +837,7 @@ update migracion.antecedentes set equipamientos=TRUE where equipamientos='si';
 update migracion.antecedentes set equipamientos=TRUE where equipamientos='SI';
 update migracion.antecedentes set equipamientos=FALSE where equipamientos='No';
 update migracion.antecedentes set equipamientos=FALSE where equipamientos='no';
-update migracion.antecedentes set equipamientos='' where equipamientos='Sin dato';
+update migracion.antecedentes set equipamientos=FALSE where equipamientos='Sin dato';
 
 
 --intervenciones_en_viviendas
@@ -776,7 +847,19 @@ update migracion.antecedentes set intervenciones_en_viviendas=TRUE where interve
 update migracion.antecedentes set intervenciones_en_viviendas=TRUE where intervenciones_en_viviendas='SI';
 update migracion.antecedentes set intervenciones_en_viviendas=FALSE where intervenciones_en_viviendas='No';
 update migracion.antecedentes set intervenciones_en_viviendas=FALSE where intervenciones_en_viviendas='no';
-update migracion.antecedentes set intervenciones_en_viviendas='' where intervenciones_en_viviendas='Sin dato';
+update migracion.antecedentes set intervenciones_en_viviendas=FALSE where intervenciones_en_viviendas='Sin dato';
+
+--INSERTAR
+
+INSERT INTO antecedentes(
+            id_folio, sin_intervencion, obras_infraestructura, equipamientos, 
+            intervenciones_en_viviendas, otros)
+SELECT id_folio::int, sin_intervencion::boolean, obras_infraestructura::boolean, equipamientos::boolean, 
+            intervenciones_en_viviendas::boolean, otros FROM migracion.antecedentes  where id_folio is not null;    
+
+
+------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -786,9 +869,11 @@ drop table if exists migracion.organismos_de_intervencion;
 
 create table migracion.organismos_de_intervencion as 
 select
-
 campo98 as id_folio, campo79 as nacional, campo80 as provincial, campo81 as municipal, campo83 as fecha_intervencion,
 campo82 as programas from datos_folios_integrados;
+
+update migracion.organismos_de_intervencion set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
+
 
 --nacional
 
@@ -797,7 +882,7 @@ update migracion.organismos_de_intervencion set nacional=TRUE where nacional='si
 update migracion.organismos_de_intervencion set nacional=TRUE where nacional='SI';
 update migracion.organismos_de_intervencion set nacional=FALSE where nacional='No';
 update migracion.organismos_de_intervencion set nacional=FALSE where nacional='no';
-update migracion.organismos_de_intervencion set nacional='' where nacional='Sin dato';
+update migracion.organismos_de_intervencion set nacional=FALSE where nacional='Sin dato';
 
 --provincial
 
@@ -806,7 +891,7 @@ update migracion.organismos_de_intervencion set provincial=TRUE where provincial
 update migracion.organismos_de_intervencion set provincial=TRUE where provincial='SI';
 update migracion.organismos_de_intervencion set provincial=FALSE where provincial='No';
 update migracion.organismos_de_intervencion set provincial=FALSE where provincial='no';
-update migracion.organismos_de_intervencion set provincial='' where provincial='Sin dato';
+update migracion.organismos_de_intervencion set provincial=FALSE where provincial='Sin dato';
 
 --municipal
 
@@ -815,10 +900,21 @@ update migracion.organismos_de_intervencion set municipal=TRUE where municipal='
 update migracion.organismos_de_intervencion set municipal=TRUE where municipal='SI';
 update migracion.organismos_de_intervencion set municipal=FALSE where municipal='No';
 update migracion.organismos_de_intervencion set municipal=FALSE where municipal='no';
-update migracion.organismos_de_intervencion set municipal='' where municipal='Sin dato';
+update migracion.organismos_de_intervencion set municipal=FALSE where municipal='Sin dato';
 
+-- INSERTAR
 
+INSERT INTO organismos_de_intervencion(
+            id_folio, nacional, provincial, municipal, programas, fecha_intervencion)
+select id_folio::int, nacional::boolean, provincial::boolean, municipal::boolean, programas, fecha_intervencion
+from migracion.organismos_de_intervencion  where id_folio is not null;
 
+select * from migracion.regularizacion   ;
+
+---------------------------------------------------------------------------------------------------------
+------------------
+------------------------------------------------------------------------------------------------------------
+/*
 -- Tabla uso_interno, no la pudimos generar porque encontramos problematicas que no podemos resolver (te las detallamos)
 
 drop table if exists migracion.uso_interno;

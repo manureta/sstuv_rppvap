@@ -122,7 +122,7 @@ class SituacionAmbientalGen extends QBaseClass {
      * @var string strOtro
      */
     protected $strOtro;
-    const OtroMaxLength = 45;
+    const OtroMaxLength = 100;
     const OtroDefault = null;
 
 

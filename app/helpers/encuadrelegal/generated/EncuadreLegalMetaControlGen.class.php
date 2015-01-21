@@ -32,12 +32,12 @@
      * property-read QLabel $Decreto468696Label
      * property QTextBox $ExpropiacionControl
      * property-read QLabel $ExpropiacionLabel
-     * property QTextBox $OtrosControl
-     * property-read QLabel $OtrosLabel
      * property QCheckBox $Ley14449Control
      * property-read QLabel $Ley14449Label
      * property QCheckBox $TieneExpropiacionControl
      * property-read QLabel $TieneExpropiacionLabel
+     * property QTextBox $OtrosControl
+     * property-read QLabel $OtrosLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -62,9 +62,9 @@
         protected $chkLey23073;
         protected $chkDecreto468696;
         protected $txtExpropiacion;
-        protected $txtOtros;
         protected $chkLey14449;
         protected $chkTieneExpropiacion;
+        protected $txtOtros;
 
         // Controls that allow the viewing of EncuadreLegal's individual data fields
         protected $lblIdFolio;
@@ -74,9 +74,9 @@
         protected $lblLey23073;
         protected $lblDecreto468696;
         protected $lblExpropiacion;
-        protected $lblOtros;
         protected $lblLey14449;
         protected $lblTieneExpropiacion;
+        protected $lblOtros;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -364,32 +364,6 @@
         }
 
         /**
-         * Create and setup QTextBox txtOtros
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtOtros_Create($strControlId = null) {
-            $this->txtOtros = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtOtros->Name = QApplication::Translate('Otros');
-            $this->txtOtros->Text = $this->objEncuadreLegal->Otros;
-            $this->txtOtros->MaxLength = EncuadreLegal::OtrosMaxLength;
-            
-            return $this->txtOtros;
-        }
-
-        /**
-         * Create and setup QLabel lblOtros
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblOtros_Create($strControlId = null) {
-            $this->lblOtros = new QLabel($this->objParentObject, $strControlId);
-            $this->lblOtros->Name = QApplication::Translate('Otros');
-            $this->lblOtros->Text = $this->objEncuadreLegal->Otros;
-            return $this->lblOtros;
-        }
-
-        /**
          * Create and setup QCheckBox chkLey14449
          * @param string $strControlId optional ControlId to use
          * @return QCheckBox
@@ -437,6 +411,32 @@
             return $this->lblTieneExpropiacion;
         }
 
+        /**
+         * Create and setup QTextBox txtOtros
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtOtros_Create($strControlId = null) {
+            $this->txtOtros = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtOtros->Name = QApplication::Translate('Otros');
+            $this->txtOtros->Text = $this->objEncuadreLegal->Otros;
+            $this->txtOtros->TextMode = QTextMode::MultiLine;
+            
+            return $this->txtOtros;
+        }
+
+        /**
+         * Create and setup QLabel lblOtros
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblOtros_Create($strControlId = null) {
+            $this->lblOtros = new QLabel($this->objParentObject, $strControlId);
+            $this->lblOtros->Name = QApplication::Translate('Otros');
+            $this->lblOtros->Text = $this->objEncuadreLegal->Otros;
+            return $this->lblOtros;
+        }
+
 
 
 
@@ -478,14 +478,14 @@
             if ($this->txtExpropiacion) $this->txtExpropiacion->Text = $this->objEncuadreLegal->Expropiacion;
             if ($this->lblExpropiacion) $this->lblExpropiacion->Text = $this->objEncuadreLegal->Expropiacion;
 
-            if ($this->txtOtros) $this->txtOtros->Text = $this->objEncuadreLegal->Otros;
-            if ($this->lblOtros) $this->lblOtros->Text = $this->objEncuadreLegal->Otros;
-
             if ($this->chkLey14449) $this->chkLey14449->Checked = $this->objEncuadreLegal->Ley14449;
             if ($this->lblLey14449) $this->lblLey14449->Text = ($this->objEncuadreLegal->Ley14449) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
             if ($this->chkTieneExpropiacion) $this->chkTieneExpropiacion->Checked = $this->objEncuadreLegal->TieneExpropiacion;
             if ($this->lblTieneExpropiacion) $this->lblTieneExpropiacion->Text = ($this->objEncuadreLegal->TieneExpropiacion) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+
+            if ($this->txtOtros) $this->txtOtros->Text = $this->objEncuadreLegal->Otros;
+            if ($this->lblOtros) $this->lblOtros->Text = $this->objEncuadreLegal->Otros;
 
         }
 
@@ -512,9 +512,9 @@
                 if ($this->chkLey23073) $this->objEncuadreLegal->Ley23073 = $this->chkLey23073->Checked;
                 if ($this->chkDecreto468696) $this->objEncuadreLegal->Decreto468696 = $this->chkDecreto468696->Checked;
                 if ($this->txtExpropiacion) $this->objEncuadreLegal->Expropiacion = $this->txtExpropiacion->Text;
-                if ($this->txtOtros) $this->objEncuadreLegal->Otros = $this->txtOtros->Text;
                 if ($this->chkLey14449) $this->objEncuadreLegal->Ley14449 = $this->chkLey14449->Checked;
                 if ($this->chkTieneExpropiacion) $this->objEncuadreLegal->TieneExpropiacion = $this->chkTieneExpropiacion->Checked;
+                if ($this->txtOtros) $this->objEncuadreLegal->Otros = $this->txtOtros->Text;
 
 
         }
@@ -619,12 +619,6 @@
                 case 'ExpropiacionLabel':
                     if (!$this->lblExpropiacion) return $this->lblExpropiacion_Create();
                     return $this->lblExpropiacion;
-                case 'OtrosControl':
-                    if (!$this->txtOtros) return $this->txtOtros_Create();
-                    return $this->txtOtros;
-                case 'OtrosLabel':
-                    if (!$this->lblOtros) return $this->lblOtros_Create();
-                    return $this->lblOtros;
                 case 'Ley14449Control':
                     if (!$this->chkLey14449) return $this->chkLey14449_Create();
                     return $this->chkLey14449;
@@ -637,6 +631,12 @@
                 case 'TieneExpropiacionLabel':
                     if (!$this->lblTieneExpropiacion) return $this->lblTieneExpropiacion_Create();
                     return $this->lblTieneExpropiacion;
+                case 'OtrosControl':
+                    if (!$this->txtOtros) return $this->txtOtros_Create();
+                    return $this->txtOtros;
+                case 'OtrosLabel':
+                    if (!$this->lblOtros) return $this->lblOtros_Create();
+                    return $this->lblOtros;
                 default:
                     try {
                         return parent::__get($strName);
@@ -675,12 +675,12 @@
                         return ($this->chkDecreto468696 = QType::Cast($mixValue, 'QControl'));
                     case 'ExpropiacionControl':
                         return ($this->txtExpropiacion = QType::Cast($mixValue, 'QControl'));
-                    case 'OtrosControl':
-                        return ($this->txtOtros = QType::Cast($mixValue, 'QControl'));
                     case 'Ley14449Control':
                         return ($this->chkLey14449 = QType::Cast($mixValue, 'QControl'));
                     case 'TieneExpropiacionControl':
                         return ($this->chkTieneExpropiacion = QType::Cast($mixValue, 'QControl'));
+                    case 'OtrosControl':
+                        return ($this->txtOtros = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }
