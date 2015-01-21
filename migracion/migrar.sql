@@ -953,6 +953,8 @@ CASE WHEN campo23 ='Inscripción provisoria' THEN 'n° pendiente'
  ''::text comentario_objetacion
  from datos_folios_integrados ;
 
+update migracion.uso_interno set id_folio = (select id from folio where cod_folio=lpad(id_folio,7,'0'));
+
 
 update migracion.uso_interno set informe_urbanistico='si' where informe_urbanistico in ('si','Si','SI');
 update migracion.uso_interno set informe_urbanistico='no' where informe_urbanistico in ('No');
@@ -971,8 +973,32 @@ update migracion.uso_interno set estado_folio=4 where estado_folio='No correspon
 update migracion.uso_interno set estado_folio=5 where estado_folio='Notificacion';
 update migracion.uso_interno set estado_folio=3 where estado_folio='Validacion y/o completamiento';
 
+--INSERTAR USO INTERNO
 
- select * from migracion.uso_interno;
+INSERT INTO uso_interno(
+            id_folio, informe_urbanistico, mapeo_preliminar, no_corresponde_inscripcion, 
+            resolucion_inscripcion_provisoria, resolucion_inscripcion_definitiva, 
+            regularizacion_circular_10_catastro, regularizacion_estado_proceso, 
+            num_expediente, registracion_legajo, registracion_fecha, registracion_folio, 
+            geodesia_num, geodesia_anio, fecha_censo, geodesia_partido, estado_folio, 
+            regularizacion_tiene_plano, tiene_censo, ley_14449, objetado, 
+            comentario_objetacion, regularizacion_fecha_inicio, fecha_informe_urbanistico)
+    select 
+    id_folio::int, informe_urbanistico, mapeo_preliminar, no_corresponde_inscripcion, 
+            resolucion_inscripcion_provisoria, resolucion_inscripcion_definitiva, 
+            regularizacion_circular_10_catastro::boolean, regularizacion_estado_proceso::int, 
+            num_expediente, registracion_legajo, registracion_fecha, registracion_folio, 
+            geodesia_num, geodesia_anio, fecha_censo, geodesia_partido, estado_folio::int, 
+            regularizacion_tiene_plano, tiene_censo, ley_14449, objetado, 
+            comentario_objetacion, regularizacion_fecha_inicio, fecha_informe_urbanistico
+	from migracion.uso_interno where id_folio is not null;	
+
+------------------------------------------------------------------------------------------------------
+
+-----------                  THE END --------------------------------------------------------------
+
+	
+ select 'OK, todo piola';
 
 
 
