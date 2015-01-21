@@ -173,6 +173,10 @@ class CondicionesSocioUrbanisticasEditPanel extends CondicionesSocioUrbanisticas
         $this->btnCancel_Click();
     }
 
+    public function btnCancel_Click($strFormId, $strControlId, $strParameter){
+        QApplication::ExecuteJavascript("window.history.back();");
+    }
+
     // getter y setter mágicos para los controles
     public function __get($strName) {
         if (is_array($this->objControlsArray) &&

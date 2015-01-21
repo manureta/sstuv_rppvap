@@ -345,6 +345,11 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         }    
         $this->SetEstadoCondition();
     }
+
+    public function btnCancel_Click($strFormId, $strControlId, $strParameter){
+        QApplication::ExecuteJavascript("window.history.back();");
+    }
+
     public function SetEstadoCondition(){
             if(Permission::EsAdministrador()) return;
             $this->lstEstadoFolioObject->MarkAsModified();

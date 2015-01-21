@@ -142,6 +142,11 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
 
+    public function btnCancel_Click($strFormId, $strControlId, $strParameter){
+        QApplication::ExecuteJavascript("window.history.back();");
+    }
+
+
     public function sinintervencion_chk($strFormId, $strControlId, $strParameter){
         if($this->pnlAntecedentes->chkSinIntervencion->Checked){
             $this->pnlAntecedentes->chkObrasInfraestructura->Checked=false;
