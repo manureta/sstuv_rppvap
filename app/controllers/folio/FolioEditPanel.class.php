@@ -461,7 +461,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     }
 
     protected function GeometriaValida(){
-        return (!$this->txtGeom->Text=='');
+        return ($this->txtGeom->Text!=='' && $this->txtGeom->Text!=='GEOMETRYCOLLECTION EMPTY' && $this->txtGeom->Text!=='MULTIPOLYGON EMPTY');
         // tambien habria que chequear que el geom este en el partido seleccionado
     }
 

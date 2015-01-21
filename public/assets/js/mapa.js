@@ -1,6 +1,7 @@
 var partidos=[];
 var map;
 var coincide_arba;
+var drawnItems;
 function mostrarMapa(cod_partido,editar){
 	var zoom=11;
 	if(!cod_partido){
@@ -47,8 +48,8 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var base_sstuv = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
-		    //layers: 'partidos_pba_2014_cod_catastro,circunscripcion,secciones,macizos_pba,parcelas',
-		    layers: 'circunscripcion,secciones,macizos_pba,parcelas',
+		    layers: 'partidos_pba_2014_cod_catastro,circunscripcion,secciones,macizos_pba,parcelas',
+		    //layers: 'circunscripcion,secciones,macizos_pba,parcelas',
 		    format: 'image/png',
 		    transparent: true,
 		    attribution: ""
@@ -100,7 +101,7 @@ function mostrarMapa(cod_partido,editar){
 
 	  	// EDITOR
 
-	  	var drawnItems = new L.FeatureGroup();
+	  	drawnItems = new L.FeatureGroup();
 	  	
 
 		map.addLayer(drawnItems);
@@ -134,21 +135,33 @@ function mostrarMapa(cod_partido,editar){
 
 		if(editar!="solover")map.addControl(drawControl);
 
-		if(editar && ($(".geometria_barrio").val()!=="")){
+		if(editar && ($(".geometria_barrio").val()!=="") && ($(".geometria_barrio").val()!=="GEOMETRYCOLLECTION EMPTY") && ($(".geometria_barrio").val()!=="MULTIPOLYGON EMPTY")){
 	  		var geojson = Terraformer.WKT.parse($(".geometria_barrio").val());
-	  		var layer=L.geoJson(geojson);
 	  		
 	  		L.geoJson(geojson, {
 			  onEachFeature: function (feature, layer) {
-			    drawnItems.addLayer(layer);
-			  }
+			  	if(feature.type=="MultiPolygon"){
+	                layer.eachLayer(function(child_layer){
+	                    drawnItems.addLayer(child_layer);
+	                });
+			    }else{
+			            drawnItems.addLayer(layer);
+			        }
+			 }
+
 			});
-	  		$(".leaflet-draw-draw-polygon").fadeOut();
+			
+	  		//$(".leaflet-draw-draw-polygon").fadeOut();
 	  		map.fitBounds(drawnItems.getBounds());	
 	  	}
 
 
 		map.on('draw:created', function (e) {
+			var type = e.layerType,
+				layer = e.layer;
+			drawnItems.addLayer(layer);
+			actualizarWKT();
+			/*
 			var type = e.layerType,
 				layer = e.layer;
 			var geojson = layer.toGeoJSON();
@@ -157,38 +170,43 @@ function mostrarMapa(cod_partido,editar){
 			if (type === 'marker') {
 				layer.bindPopup('A popup!');
 			}
-
-			drawnItems.addLayer(layer);			  			
+			
+						  			
 
   			$(".geometria_barrio").val(wkt);
   			$(".leaflet-draw-draw-polygon").fadeOut();
   			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs());
         	$(".superficie_barrio").val(round(area/10000,2));
+        	*/
 		});
 
 		map.on('draw:edited', function (e) {
 			var layers = e.layers;
-    		layers.eachLayer(function (layer) {
-        		var geojson = layer.toGeoJSON();
-    			var wkt = Terraformer.WKT.convert(geojson.geometry);	
-    			$(".geometria_barrio").val(wkt);
-    			var area = L.GeometryUtil.geodesicArea(layer.getLatLngs());
-        		$(".superficie_barrio").val(round(area/10000,2));
-        		$(".boton_guardar").removeAttr("disabled");
-    		});
+			actualizarWKT();
 						  			
 		});
 
 		map.on('draw:deleted',function(e){
 			$(".leaflet-draw-draw-polygon").fadeIn();
-		});
-/*
-		$("#actualizar_geom").click(function(e){
-			var p = $(".partido").val().substring(0,3);
-			mostrarMapa(p,true);
+			actualizarWKT();
 		});
 
-*/		
+		function actualizarWKT(){
+			var area=0;			
+			var obj={
+			  "type": "MultiPolygon",
+			  "coordinates": []
+			};
+			drawnItems.eachLayer(function(l){
+				obj.coordinates.push(l.toGeoJSON().geometry.coordinates);
+				area=area + L.GeometryUtil.geodesicArea(l.getLatLngs());
+			});
+			var wkt = Terraformer.WKT.convert(obj);
+			$(".geometria_barrio").val(wkt);
+			$(".superficie_barrio").val(round(area/10000,2));
+    		$(".boton_guardar").removeAttr("disabled");
+		}
+
 	  	
 	});
 
