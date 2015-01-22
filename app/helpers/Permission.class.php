@@ -162,7 +162,8 @@ abstract class Permission extends PermissionBase {
         return ((self::EsAdministrador() || self::EsCarga()) && self::InscripcionProvisoria($objFolio));
     }
     public static function PuedeObjetarFolio(Folio $objFolio){
-        return ((self::EsAdministrador() || self::EsCarga()));
+        //error_log($objFolio->CreadorObject->IdPerfilObject->IdPerfil);
+        return ((self::EsAdministrador() || (self::EsCarga() && ($objFolio->CreadorObject->IdPerfilObject->IdPerfil==1) ) ));
     }
     public static function InscripcionProvisoria(Folio $objFolio){
           try {

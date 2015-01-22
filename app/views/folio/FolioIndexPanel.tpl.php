@@ -1,12 +1,7 @@
-<div class="row">
-  <div class="col-lg-6 page-header">
+
+  <div class="page-header">
     <h1>Folios<small><i class="icon-double-angle-right"></i></small></h1>
   </div><!-- /.col-lg-6 -->
-  <div class="col-lg-6">
-        
-  </div><!-- /.col-lg-6 -->
-
-</div><!-- /.row -->
 
 	<?php $_CONTROL->dtgFolios->Render(); ?>
 	<p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow"'); ?></p>

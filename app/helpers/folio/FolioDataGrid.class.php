@@ -124,7 +124,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnObjetar_Click"));
         $objButton->Enabled = true;
-        $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeConfirmarFolio($obj));
+        $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeObjetarFolio($obj));
         
         return $objButton;
     }                 
