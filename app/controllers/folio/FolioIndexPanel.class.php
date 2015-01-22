@@ -47,7 +47,6 @@ class FolioIndexPanel extends FolioIndexPanelGen {
 
         
         $this->lblTitulo->Visible=false;
-        //$this->lblTitulo->Subtitulo = isset($this->strSubtitulo) ? $this->strSubtitulo : '';
         
         $this->strColumnsArray = is_null($strColumnsArray) ? FolioDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
@@ -84,7 +83,8 @@ class FolioIndexPanel extends FolioIndexPanelGen {
 
     public function btnBuscar_Click($strFormId, $strControlId, $strParameter){
        
-       if($this->strBuscar->Text!=="") QApplication::DisplayAlert($this->strBuscar->Text);
+       //if($this->strBuscar->Text!=="") QApplication::DisplayAlert($this->strBuscar->Text);
+        $this->dtgFolios->AddCondition(QQ::Like(QQN::Folio()->CodFolio,'055%'));
     }
 
     public function strBuscar_Enter($strFormId, $strControlId, $strParameter){
