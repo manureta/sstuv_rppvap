@@ -956,13 +956,50 @@ INSERT INTO uso_interno(
 
 ------------------------------------------------------------------------------------------------------
 
------------                  THE END --------------------------------------------------------------
-
-	
- select 'OK, todo piola';
+-----------                  THE END 1era PARTE   --------------------------------------------------------------
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
+-- NOMENCLATURAS
+
+drop table if exists migracion.nomenclatura;
+create table migracion.nomenclatura as 
+select 
+  campo1 as id_folio,
+  campo9 as partida_inmobiliaria,
+  campo10 as titular_dominio,
+  campo3 as circ,
+  campo4 as secc,
+  campo5 as chac_quinta,
+  campo6 as frac,
+  campo7 as mza,
+  campo8 as parc,
+  ''::character varying as _inscripcion_dominio ,
+  campo2 as partido ,
+  false as _dato_verificado_reg_propiedad ,
+  ''::character varying as estado_geografico
+from datos_nomenclaturas_integradas  ;
 
   
+update migracion.nomenclatura  set id_folio=lpad(id_folio,7,'0');
+update migracion.nomenclatura  set partido=lpad(partido,3,'0');
+update migracion.nomenclatura  set id_folio=(select id from folio where cod_folio=id_folio);
+update migracion.nomenclatura  set circ='0' where circ='0INVASION DE DOMINIO PUBLICO';
+
+--------------------------------------------------------------------------------------
+--INSERTAR
+
+INSERT INTO nomenclatura(
+            id_folio, partida_inmobiliaria, titular_dominio, circ, secc, 
+            chac_quinta, frac, mza, parc, _inscripcion_dominio, partido, 
+            _dato_verificado_reg_propiedad, estado_geografico)
+select id_folio::int, partida_inmobiliaria, titular_dominio, circ, secc, 
+            chac_quinta, frac, mza, parc, _inscripcion_dominio, partido, 
+            _dato_verificado_reg_propiedad, estado_geografico
+ from migracion.nomenclatura  where id_folio is not null;                       
+
+
 
 

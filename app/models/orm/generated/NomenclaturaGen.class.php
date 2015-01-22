@@ -79,7 +79,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strTitularDominio
      */
     protected $strTitularDominio;
-    const TitularDominioMaxLength = 45;
+    const TitularDominioMaxLength = 255;
     const TitularDominioDefault = null;
 
 
@@ -142,7 +142,7 @@ class NomenclaturaGen extends QBaseClass {
      * @var string strInscripcionDominio
      */
     protected $strInscripcionDominio;
-    const InscripcionDominioMaxLength = 128;
+    const InscripcionDominioMaxLength = 255;
     const InscripcionDominioDefault = null;
 
 
