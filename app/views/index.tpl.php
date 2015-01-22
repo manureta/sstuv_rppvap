@@ -109,6 +109,40 @@
                         <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_derecha.png">
                     </div>
                 </div>
+                
+            </nav>
+            <br><br>
+            <nav class="navbar navbar-default" role="navigation">
+            	<div class="row">
+            		<div class="center col-md-2">
+            			Colaboraron
+            		</div>
+                    <div class="center col-md-2">
+                        <a href="#" target="_blank">
+                        <img class="img-responsive" alt="" width="120" height="23" src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/cfi_e.jpg">
+                        </a>
+                    </div>
+                    <div class="center col-md-2">
+                        <a href="http://asistide.mapaeducativo.edu.ar/portal" target="_blank">
+                        <img class="img-responsive" alt="" width="120" height="23" src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/asistide_e.jpg">
+                        </a>
+                    </div>
+                    <div class="center col-md-2">
+                    	<a href="http://www.arba.gov.ar" target="_blank">
+                        <img class="img-responsive" alt="" width="120" height="23" src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/arba_e.jpg">
+                        </a>
+                    </div>
+                    <div class="center col-md-2">
+                    	<a href="http://sig.gobierno.gba.gov.ar/sig/ideba/" target="_blank">
+                        <img class="img-responsive" alt="" width="120" height="23" src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/ideba_e.jpg">
+                        </a>
+                    </div>
+                    <div class="center col-md-2">
+                    	<a href="http://www.ungs.edu.ar/ms_ungs/" target="_blank">
+                        <img class="img-responsive" alt="" width="120" height="23" src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/ungs_e.jpg">
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
 
