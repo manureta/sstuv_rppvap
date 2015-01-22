@@ -1,8 +1,8 @@
 ﻿alter table parcelas drop constraint enforce_srid_geom;
 update parcelas set geom=st_transform(geom,4326);
 
-
-create view v_folios as select id as gid,st_geomfromtext(geom,4326) as the_geom from folio;
+drop view v_folios;
+create view v_folios as select id as gid,st_geomfromtext(geom,4326) as the_geom from folio where geom<>'';
 
 drop view if exists v_parcelas;
 create view v_parcelas as select a.*,p.geom as the_geom from 
@@ -45,6 +45,5 @@ select
   from folio f 
   left join partido p on f.id_partido=p.id 
   left join tipo_barrio tb on f.tipo_barrio=tb.id
-  left join infraestructura i on f.id=i.id_folio;
-
-
+  left join infraestructura i on f.id=i.id_folio
+  where f.geom <>'';

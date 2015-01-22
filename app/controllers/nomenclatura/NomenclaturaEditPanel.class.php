@@ -117,16 +117,9 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
 
 
      protected function buttons_Create($blnDelete = true) {
-        $objFolio=Folio::load($this->mctNomenclatura->Nomenclatura->IdFolio);
-        $blnDelete= Permission::PuedeEditar1A4($objFolio);
+        $blnDelete= Permission::PuedeEditar1A4($this->$objFolio);
         parent::buttons_Create($blnDelete);
-        /*
-	if ($blnDelete) {
-            $this->btnDelete->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere BORRAR est%s %s?', (Nomenclatura::GenderMale() ? 'e' : 'a'), Nomenclatura::Noun())));
-            $this->btnDelete->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnDelete_Click'));
-            $this->btnDelete->Visible = $this->mctNomenclatura->EditMode;
-        }
-	*/
+        
     }
 
     public function actualizarEstadoNomenclaturas(){
