@@ -173,8 +173,7 @@ update migracion.equipamiento set id_folio = (select id from folio where cod_fol
 
 
 -- ver los difernetes tipo unidad_sanitaria
-select distinct(unidad_sanitaria),count(*) from migracion.equipamiento
-group by unidad_sanitaria;
+--select distinct(unidad_sanitaria),count(*) from migracion.equipamiento group by unidad_sanitaria;
 
  -- ver los codigos de equipamiento
  
@@ -190,8 +189,7 @@ update migracion.equipamiento set unidad_sanitaria=5 where unidad_sanitaria IS N
 
 
 -- ver los difernetes tipo jardin_infantes
-select distinct(jardin_infantes),count(*) from migracion.equipamiento
-group by jardin_infantes;
+--select distinct(jardin_infantes),count(*) from migracion.equipamiento group by jardin_infantes;
 
  -- ver los codigos de equipamiento
  
@@ -206,8 +204,7 @@ update migracion.equipamiento set jardin_infantes=5 where jardin_infantes IS NUL
 
 
 -- ver los difernetes tipo escuela_primaria
-select distinct(escuela_primaria),count(*) from migracion.equipamiento
-group by escuela_primaria;
+--select distinct(escuela_primaria),count(*) from migracion.equipamiento group by escuela_primaria;
 
  -- ver los codigos de equipamiento
  
@@ -222,8 +219,7 @@ update migracion.equipamiento set escuela_primaria=5 where escuela_primaria IS N
 
 
 -- ver los difernetes tipo escuela_secundaria
-select distinct(escuela_secundaria),count(*) from migracion.equipamiento
-group by escuela_secundaria;
+--select distinct(escuela_secundaria),count(*) from migracion.equipamiento group by escuela_secundaria;
 
  -- ver los codigos de equipamiento
  
@@ -239,8 +235,7 @@ update migracion.equipamiento set escuela_secundaria=5 where escuela_secundaria 
 
 -- ver los difernetes tipo comedor
 
-select distinct(comedor),count(*) from migracion.equipamiento
-group by comedor;
+--select distinct(comedor),count(*) from migracion.equipamiento group by comedor;
 
  -- ver los codigos de equipamiento
  
@@ -256,8 +251,7 @@ update migracion.equipamiento set comedor=5 where comedor IS NULL;
 
 -- ver los difernetes tipo CIC
 
-select distinct(centro_integracion_comunitaria),count(*) from migracion.equipamiento
-group by centro_integracion_comunitaria;
+--select distinct(centro_integracion_comunitaria),count(*) from migracion.equipamiento group by centro_integracion_comunitaria;
 
  -- ver los codigos de equipamiento
  
@@ -270,7 +264,6 @@ update migracion.equipamiento set centro_integracion_comunitaria=5 where centro_
 update migracion.equipamiento set centro_integracion_comunitaria=4 where centro_integracion_comunitaria='No existe';
 update migracion.equipamiento set centro_integracion_comunitaria=5 where centro_integracion_comunitaria IS NULL;
 
-select * from migracion.equipamiento;
 
 --INSERTAR EN EQUIPAMIENTO
 INSERT INTO equipamiento(
@@ -297,7 +290,6 @@ update migracion.transporte set id_folio = (select id from folio where cod_folio
 
 -- colectivos
 
-select * from opciones_transporte;  
 
 update migracion.transporte set colectivos=1 where colectivos= 'Dentro del barrio';
 update migracion.transporte set colectivos=2 where colectivos='Próximo al barrio';
@@ -307,11 +299,8 @@ update migracion.transporte set colectivos=5 where colectivos='Sin dato';
 update migracion.transporte set colectivos=4 where colectivos='No existe';
 update migracion.transporte set colectivos=5 where colectivos IS NULL;
 
-select * from migracion.transporte;
 
 -- ffcc
-
-select * from opciones_transporte;  
 
 update migracion.transporte set ferrocarril=1 where ferrocarril='Dentro del barrio';
 update migracion.transporte set ferrocarril=2 where ferrocarril='Próximo al barrio';
@@ -321,11 +310,8 @@ update migracion.transporte set ferrocarril=5 where ferrocarril='Sin dato';
 update migracion.transporte set ferrocarril=4 where ferrocarril='No existe';
 update migracion.transporte set ferrocarril=5 where ferrocarril IS NULL;
 
-select * from migracion.transporte;
 
 -- remis/combis
-
-select * from opciones_transporte;  
 
 update migracion.transporte set remis_combis=1 where remis_combis='Dentro del barrio';
 update migracion.transporte set remis_combis=2 where remis_combis='Próximo al barrio';
@@ -335,7 +321,6 @@ update migracion.transporte set remis_combis=5 where remis_combis='Sin dato';
 update migracion.transporte set remis_combis=4 where remis_combis='No existe';
 update migracion.transporte set remis_combis=5 where remis_combis IS NULL;
 
-select * from migracion.transporte;
 
 -- INSERTAR TRSNPORTE
 INSERT INTO transporte(
@@ -363,7 +348,6 @@ update migracion.infraestructura set id_folio = (select id from folio where cod_
 
 -- medidor individual
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura set energia_electrica_medidor_individual=1 where energia_electrica_medidor_individual='Inexistente';
 update migracion.infraestructura set energia_electrica_medidor_individual=1 where energia_electrica_medidor_individual='inexistente';
@@ -376,11 +360,8 @@ update migracion.infraestructura set energia_electrica_medidor_individual=4 wher
 update migracion.infraestructura set energia_electrica_medidor_individual=4 where energia_electrica_medidor_individual IS NULL;
 
 
-select * from migracion.infraestructura;
-
 -- medidor colectivo
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura set energia_electrica_medidor_colectivo=1 where energia_electrica_medidor_colectivo='Inexistente';
 update migracion.infraestructura set energia_electrica_medidor_colectivo=1 where energia_electrica_medidor_colectivo='inexistente';
@@ -393,12 +374,10 @@ update migracion.infraestructura set energia_electrica_medidor_colectivo=4 where
 update migracion.infraestructura set energia_electrica_medidor_colectivo=4 where energia_electrica_medidor_colectivo IS NULL;
 
 
-select * from migracion.infraestructura;
 
 
 -- alumbrado publico
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura set alumbrado_publico=1 where alumbrado_publico='Inexistente';
 update migracion.infraestructura set alumbrado_publico=1 where alumbrado_publico='inexistente';
@@ -411,12 +390,10 @@ update migracion.infraestructura set alumbrado_publico=4 where alumbrado_publico
 update migracion.infraestructura set alumbrado_publico=4 where alumbrado_publico IS NULL;
 
 
-select * from migracion.infraestructura;
 
 
 -- agua corriente
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set agua_corriente=1 where agua_corriente='Inexistente';
 update migracion.infraestructura  set agua_corriente=1 where agua_corriente='inexistente';
@@ -429,11 +406,9 @@ update migracion.infraestructura  set agua_corriente=4 where agua_corriente='sin
 update migracion.infraestructura  set agua_corriente=4 where agua_corriente IS NULL;
 
 
-select * from migracion.infraestructura;
 
 -- agua potable
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set agua_potable=1 where agua_potable='Inexistente';
 update migracion.infraestructura  set agua_potable=1 where agua_potable='inexistente';
@@ -446,11 +421,9 @@ update migracion.infraestructura  set agua_potable=4 where agua_potable='sin dat
 update migracion.infraestructura  set agua_potable=4 where agua_potable IS NULL;
 
 
-select * from migracion.infraestructura;
 
 -- cloacal
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set red_cloacal=1 where red_cloacal='Inexistente';
 update migracion.infraestructura  set red_cloacal=1 where red_cloacal='inexistente';
@@ -463,11 +436,9 @@ update migracion.infraestructura  set red_cloacal=4 where red_cloacal='sin dato'
 update migracion.infraestructura  set red_cloacal=4 where red_cloacal IS NULL;
 
 
-select * from migracion.infraestructura;
 
 -- sistema excreta
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set sist_alternativo_eliminacion_excretas=1 where sist_alternativo_eliminacion_excretas='Inexistente';
 update migracion.infraestructura  set sist_alternativo_eliminacion_excretas=1 where sist_alternativo_eliminacion_excretas='inexistente';
@@ -480,11 +451,9 @@ update migracion.infraestructura  set sist_alternativo_eliminacion_excretas=4 wh
 update migracion.infraestructura  set sist_alternativo_eliminacion_excretas=4 where sist_alternativo_eliminacion_excretas IS NULL;
 
 
-select * from migracion.infraestructura;
 
 -- gas
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set red_gas=1 where red_gas='Inexistente';
 update migracion.infraestructura  set red_gas=1 where red_gas='inexistente';
@@ -497,11 +466,9 @@ update migracion.infraestructura  set red_gas=4 where red_gas='sin dato';
 update migracion.infraestructura  set red_gas=4 where red_gas IS NULL;
 
 
-select * from migracion.infraestructura;
 
 -- pavimento
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set pavimento=1 where pavimento='Inexistente';
 update migracion.infraestructura  set pavimento=1 where pavimento='inexistente';
@@ -514,12 +481,10 @@ update migracion.infraestructura  set pavimento=4 where pavimento='sin dato';
 update migracion.infraestructura  set pavimento=4 where pavimento IS NULL;
 
 
-select * from migracion.infraestructura;
 
 
 -- cordon_cuneta
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set cordon_cuneta=1 where cordon_cuneta='Inexistente';
 update migracion.infraestructura  set cordon_cuneta=1 where cordon_cuneta='inexistente';
@@ -532,12 +497,10 @@ update migracion.infraestructura  set cordon_cuneta=4 where cordon_cuneta='sin d
 update migracion.infraestructura  set cordon_cuneta=4 where cordon_cuneta IS NULL;
 
 
-select * from migracion.infraestructura;
 
 
 -- deagues pluviales
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set desagues_pluviales=1 where desagues_pluviales='Inexistente';
 update migracion.infraestructura  set desagues_pluviales=1 where desagues_pluviales='inexistente';
@@ -550,13 +513,11 @@ update migracion.infraestructura  set desagues_pluviales=4 where desagues_pluvia
 update migracion.infraestructura  set desagues_pluviales=4 where desagues_pluviales IS NULL;
 
 
-select * from migracion.infraestructura;
 
 
 
 -- recoleccion residuos
 
-select * from opciones_infraestructura;  
 
 update migracion.infraestructura  set recoleccion_residuos=1 where recoleccion_residuos='Inexistente';
 update migracion.infraestructura  set recoleccion_residuos=1 where recoleccion_residuos='inexistente';
