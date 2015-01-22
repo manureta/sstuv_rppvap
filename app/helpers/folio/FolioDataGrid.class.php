@@ -156,7 +156,8 @@ class FolioDataGrid extends FolioDataGridGen {
     public function Get14449Button(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-yellow');
-        $objButton->Text = (Permission::EsAdministrador())?'Ley' :'Ley 14.449';
+        $objButton->Text = (Permission::EsAdministrador())?'L' :'Ley 14.449';
+        $objButton->Icon = 'file';
         $objButton->ToolTip = 'Ver documentación de intervención en el marco de la ley 14.449';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnLey_Click"));
