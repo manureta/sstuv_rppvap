@@ -22,9 +22,6 @@ class FolioIndexPanel extends FolioIndexPanelGen {
     protected $strControlsArray;    
     public $strTemplate;
 
-    public $btnBuscar;
-    public $strBuscar;
-
     
     /**
      * Constructor del panel índice generado
@@ -43,6 +40,7 @@ class FolioIndexPanel extends FolioIndexPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
+        
         $this->strTemplate=__VIEW_DIR__."/folio/FolioIndexPanel.tpl.php";
 
         
@@ -62,16 +60,8 @@ class FolioIndexPanel extends FolioIndexPanelGen {
             $this->btnCreateNew->Enabled = false;
         }
 
-        $this->btnBuscar = new QButton($this);
-        $this->btnBuscar->AddCssClass('btn-s btn-white');
-        $this->btnBuscar->Icon="search";
-        $this->btnBuscar->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnBuscar_Click"));
-        $this->btnBuscar->Enabled = true;
-        
-        $this->strBuscar=new QTextBox($this);
-        $this->strBuscar->SetCustomAttribute("placeholder", "buscar ..."); 
-        $this->strBuscar->AddAction(new QEnterKeyEvent(),new QTerminateAction() ); // new QTerminateAction() si quiero que haga nada
-        
+        $this->dtgFolios->ShowFilter = true;
+
     }
 
 
@@ -79,18 +69,6 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         $this->dtgFolios = new FolioDataGrid($this);
         //$this->dtgFolios->RowClickMethod = 'dtgRow_Click';
         return $this->dtgFolios;
-    }
-
-    public function btnBuscar_Click($strFormId, $strControlId, $strParameter){
-       
-       //if($this->strBuscar->Text!=="") QApplication::DisplayAlert($this->strBuscar->Text);
-        $this->dtgFolios->AddCondition(QQ::Like(QQN::Folio()->CodFolio,'055%'));
-    }
-
-    public function strBuscar_Enter($strFormId, $strControlId, $strParameter){
-       // todavia no pfunca
-       if($this->strBuscar->Text!=="") QApplication::DisplayAlert($this->strBuscar->Text);
-       //return new QTerminateAction():
     }
 
 }
