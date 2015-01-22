@@ -35,7 +35,7 @@ body{
 }
 
 .cont{
-	background-color:#BBBBBB;
+	background-color:#d2d2d2;
 }
 
 h1{
@@ -56,6 +56,7 @@ h3{
 	margin:0;
 	padding:3px 13px;
 	display: inline-block;
+  font-size: 11px;
 }
 
 input {
@@ -68,13 +69,13 @@ input {
 
 small {
     color: #333;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: normal;
 }
 
 .left{
 	float:left;
-	margin-left: 25px;
+	margin-left: 2px;
 }
 
 .left h3{
@@ -212,13 +213,13 @@ ol {
 
 /* tengo que bajar el tamano de hoja 3 */
 .cond{
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .cond h1{
   text-transform:uppercase;
   margin: 0;
-    padding: 15px 0 0 15px;
+    padding: 0px 0 0 15px;
   background-color:white;
 }
 
@@ -240,4 +241,8 @@ ol {
     height: 15px;
     margin-top: 2px;
     padding: 4px;
+}
+
+.encabezado{
+
 }

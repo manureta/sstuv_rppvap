@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="LATIN1" />
-		<title>Carátula</title>
+        <meta charset="utf-8" />
+		<title>Car&aacute;tula</title>
 		<!-- CSS -->
 		<style>
 		<?=file_get_contents("http://localhost/registro/assets/css/print.css");?>
@@ -13,42 +13,50 @@
 	<body onload="hide()">
 		<?php $this->RenderBegin(false); ?>
 		<page size="A4">
+		<div class="encabezado">
+			<img src="assets/images/header.png" width="100%">
+		</div>
 		<div class="cont cond">
-			<h1>Ley 14.449/carátula folio</h1>
+			<h1>Ley 14.449/car&aacute;tula folio</h1>
 			<h2>Datos de carga</h2>
 			
-			<small style="margin-left:105px">Cod. partido</small>
-			<small style="margin-left:25px">Cod. matrícula</small></br>
 			<div class="left">	
-			<h3>&#9658; Folio</h3>
-			<input style="width:118px; margin-left:5px" value='<?=$this->objFolio->Matricula;?>' >
-			<input style="width:90px;" value='<?=$this->objFolio->IdPartidoObject->CodPartido;?>' >
+				<h3>&#9658; Folio</h3>
+				<input style="width:118px; margin-left:5px" value='<?=$this->objFolio->Matricula;?>' >
+				<input style="width:72px; margin-left:11px" value='<?=$this->objFolio->IdPartidoObject->CodPartido;?>' >
 			</div>
-			<div class="right" style="margin-right:10px">
-			<h3>Fecha de carga del folio</h3>
-			<input style="width:50px" value=<?=$this->objFolio->Fecha->format('d');?>>
-			<input style="width:50px" value=<?=$this->objFolio->Fecha->format('m');?>>
-			<input style="width:50px" value=<?=$this->objFolio->Fecha->format('y');?>>
+			<div class="right" style="width:50%;margin-right:25px">
+				<h3>Fecha de carga del folio</h3>
+				<input style="width:50px" value=<?=$this->objFolio->Fecha->format('d');?>>
+				<input style="width:50px" value=<?=$this->objFolio->Fecha->format('m');?>>
+				<input style="width:50px" value=<?=$this->objFolio->Fecha->format('y');?>>
 			</div>
-			<h3>&#9658; Partido</h3>
-			<input style="width:204px" value='<?=$this->objFolio->IdPartidoObject->Nombre;?>'>
-			
-			<h3>Localidad</h3>
-			<input style="width:303px" value='<?=$this->objFolio->Localidad;?>'>
+			<div class="left">
+				<h3>&#9658; Partido</h3>
+				<input style="width:204px" value='<?=$this->objFolio->IdPartidoObject->Nombre;?>'>
+			</div>
+			<div class="right">
+				<h3>Localidad</h3>
+				<input style="width:303px" value='<?=$this->objFolio->Localidad;?>'>
+			</div>	
 
 			<div class="left">
-				<h3>&#9658; Nombre del barrio oficial</h3></br>
-				<small>(Según denominación en el encuadre normativo de regularización)</small></br>
-				<input style="width:303px" value='<?=$this->objFolio->NombreBarrioOficial;?>'></br>
-				<h3>Superficie (En hectareas)</h3></br>
-				<input style="width:303px" value='<?=$this->objFolio->Superficie?>'>				
+				<h3>&#9658; Nombre del barrio oficial</h3><br>
+				<input style="width:500px; margin-left:25px" value='<?=$this->objFolio->NombreBarrioOficial;?>'></br>
+			</div>
+			<div class="right" style="">
+				<h3>A&ntilde;o de origen del barrio</h3><br>
+				<input style="width:170px" value='<?=$this->objFolio->AnioOrigen;?>'></br>
+			</div>	
+			<div class="left">	
+				<h3>Superficie (En hect&aacute;reas)</h3><br>
+				<input style="width:150px; margin-left:25px" value='<?=$this->objFolio->Superficie?>'>				
 			</div>
 			
-			<div class="right" style="margin-top: 19px;">
-				<h3>Año de origen del barrio</h3></br>
-				<input style="width:303px" value='<?=$this->objFolio->AnioOrigen;?>'></br>
-				<h3>Cantidad de familias/hogares</h3></br>
-				<input style="width:303px" value='<?=$this->objFolio->CantidadFamilias;?>'>		
+			
+			<div class="right">
+				<h3>Cantidad de familias/hogares</h3><br>
+				<input style="width:170px" value='<?=$this->objFolio->CantidadFamilias;?>'>		
 			</div>
 			</br>
 			
@@ -59,11 +67,11 @@
 				<input type="checkbox" <?php echo (($this->objFolio->TipoBarrio==2)?'checked':'');?>>
 				<span>Asentamiento precario</span>
 				<input type="checkbox" <?php echo (($this->objFolio->TipoBarrio==3)?'checked':'');?>>
-				<span>Caso dudoso</span>
+				<span>Otro</span>
 			</form>
 			
-			<h3>&#9658; Dirección</h3>
-			<small>(Detallar calles que circundan(Calle 1, Calle 2, Calle 3, Calle 4, etc.)</small></br>
+			<h3>&#9658; Direcci&oacute;n</h3>
+			</br>
 			<input style="margin-left: 25px;width: 730px;" value='<?=$this->objFolio->Direccion;?>'>
 			
 			<h3>&#9658; Nomenclatura catastral/dominio</h3>
@@ -104,14 +112,14 @@
 							</div>
 							
 							<small style="margin-left:230px">Titular de dominio</small>
-							<input style="width:482px;margin-left:185px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
+							<input style="width:535px;margin-left:115px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
 						</li>
 					<?php endif; ?>		
 				<?php endfor; ?>
 			</ol>
 			
 			<h3>&#9658; Infraestructura y servicios urbanos</h3>
-			<small>(Tildar la opción que corresponda)</small>
+			
 			<table>
 				<tr class="infra">
 					<th></th>
@@ -120,7 +128,7 @@
 					<th>Cobertura total</th>
 				</tr>
 				<tr class="infra">
-					<td>Luz eléctrica</td>
+					<td>Luz el&eacute;ctrica</td>
 					<td><input type="checkbox" <?php echo (($this->objInfraestructura->EnergiaElectricaMedidorIndividual==1)?'checked':'');?> ></td>
 					<td><input type="checkbox" <?php echo (($this->objInfraestructura->EnergiaElectricaMedidorIndividual==2)?'checked':'');?>></td>
 					<td><input type="checkbox" <?php echo (($this->objInfraestructura->EnergiaElectricaMedidorIndividual==3)?'checked':'');?>></td>
@@ -150,7 +158,7 @@
 					<td><input type="checkbox"<?php echo (($this->objInfraestructura->Pavimento==3)?'checked':'');?> ></td>
 				</tr>
 				<tr class="infra">
-					<td>Alumbrado público</td>
+					<td>Alumbrado p&uacute;blico</td>
 					<td><input type="checkbox"<?php echo (($this->objInfraestructura->AlumbradoPublico==1)?'checked':'');?> ></td>
 					<td><input type="checkbox"<?php echo (($this->objInfraestructura->AlumbradoPublico==2)?'checked':'');?> ></td>
 					<td><input type="checkbox"<?php echo (($this->objInfraestructura->AlumbradoPublico==3)?'checked':'');?> ></td>
@@ -160,7 +168,7 @@
 				</br>
 				<h3>Uso interno</h3>
 				<div>
-					<span>Situación Registral</span></br>
+					<span>Situaci&oacute;n Registral</span></br>
 					<table>
 						<tr>
 							<td>
@@ -171,29 +179,29 @@
 						<tr>
 							<td>
 								<input type="checkbox" <?php echo ((strlen($this->objUsoInterno->NumExpediente)>0)?'checked':'');?>>
-								<small>N° Expediente</small>
+								<small>N&deg; Expediente</small>
 							</td>
 							<td>
-								<input value="<?=$this->objUsoInterno->NumExpediente;?>">
+								<input value="<?=$this->objUsoInterno->NumExpediente;?>" style="float:left; margin-left:78px">
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<input type="checkbox" <?php echo ((strlen($this->objUsoInterno->ResolucionInscripcionProvisoria)>0)?'checked':'');?>>
-								<small>Inscripción provisoria</small></br>
+								<small>Inscripci&oacute;n provisoria</small></br>
 							</td>
 							<td>
-								<small>N° de Resolución</small>
+								<small>N&deg; de Resoluci&oacute;n</small>
 								<input value="<?=$this->objUsoInterno->ResolucionInscripcionProvisoria;?>">
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<input type="checkbox" <?php echo ((strlen($this->objUsoInterno->ResolucionInscripcionDefinitiva)>0)?'checked':'');?>>
-								<small>Inscripción definitiva</small></br>
+								<small>Inscripci&oacute;n definitiva</small></br>
 							</td>
 							<td>
-								<small>N° de Resolución</small>
+								<small>N&deg; de Resoluci&oacute;n</small>
 								<input value="<?=$this->objUsoInterno->ResolucionInscripcionDefinitiva;?>">
 							</td>
 						</tr>
@@ -210,7 +218,7 @@
 			var len = elems.length;
 
 			for (var i = 0; i < len; i++) {
-			    elems[i].disabled = true;
+			    //elems[i].disabled = true;
 			}
 			window.print();
 			window.close();
