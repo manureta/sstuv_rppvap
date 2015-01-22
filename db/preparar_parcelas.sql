@@ -6,8 +6,19 @@ create view v_folios as select id as gid,st_geomfromtext(geom,4326) as the_geom 
 
 drop view if exists v_parcelas;
 create view v_parcelas as select a.*,p.geom as the_geom from 
-((SELECT n.id as gid,n.estado_geografico, f.cod_folio,n.partido|| n.circ || n.secc || n.chac_quinta || n.frac || n.mza || n.parc as nomencla 
+((SELECT 
+n.id as gid,
+n.estado_geografico,
+ f.cod_folio,
+ lpad(n.partido,3,'0')||
+ lpad(n.circ,2,'0') || 
+ lpad(n.secc,2,'0') || 
+ lpad(n.chac_quinta,14,'0') || 
+ lpad(n.frac,7,'0') || 
+ lpad(n.mza,7,'0') || 
+ lpad(n.parc,7,'0') as nomencla 
 FROM nomenclatura n join folio f on n.id_folio=f.id)) as a join parcelas p on a.nomencla=p.nomencla;
+
 
 drop view if exists v_caratulas;
 create view v_caratulas as 

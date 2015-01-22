@@ -8,7 +8,7 @@ drop table if exists migracion.folio;
 
 create table migracion.folio as 
 select 
-(oid::int - 937347) as id,campo98 as cod_folio, campo1 as id_partido,campo2 as matricula,campo6 as fecha,campo11 as nombre_barrio_oficial,
+(oid::int - 83380) as id,campo98 as cod_folio, campo1 as id_partido,campo2 as matricula,campo6 as fecha,campo11 as nombre_barrio_oficial,
 campo12 as nombre_barrio_alternativo_1, campo13 as nombre_barrio_alternativo_2,campo14 as anio_origen, campo16 as cantidad_familias,
 campo17 as tipo_barrio,campo18||'-'||campo19 as observacion_caso_dudoso,campo21 as direccion,campo20 as judicializado,
 campo10 as localidad,1 as creador,campo15 as superficie, campo7 as encargado, campo8 as reparticion,'geom'::text as geom
@@ -113,7 +113,6 @@ update migracion.folio  set cantidad_familias=0 where cantidad_familias is null;
 -- los nombres de barrio son obligatorios
 update migracion.folio set nombre_barrio_oficial='' where  nombre_barrio_oficial is null;
 
---select * from migracion.folio  order by id;
 
 -- INSERTAR EN LA TABLA POSTA
 	truncate folio cascade;
@@ -124,6 +123,9 @@ update migracion.folio set nombre_barrio_oficial='' where  nombre_barrio_oficial
 		    geom, judicializado, localidad, creador, superficie::numeric, encargado, 
 		    reparticion from migracion.folio where id<>0
 	);
+	--select max(id) from folio;
+ALTER SEQUENCE folio_id_seq RESTART WITH 1279;
+
 ---------------------------------------------------------------------------------------------------------------------------
 
 
@@ -979,7 +981,7 @@ select
   ''::character varying as _inscripcion_dominio ,
   campo2 as partido ,
   false as _dato_verificado_reg_propiedad ,
-  ''::character varying as estado_geografico
+  'completo'::character varying as estado_geografico
 from datos_nomenclaturas_integradas  ;
 
   
@@ -987,6 +989,13 @@ update migracion.nomenclatura  set id_folio=lpad(id_folio,7,'0');
 update migracion.nomenclatura  set partido=lpad(partido,3,'0');
 update migracion.nomenclatura  set id_folio=(select id from folio where cod_folio=id_folio);
 update migracion.nomenclatura  set circ='0' where circ='0INVASION DE DOMINIO PUBLICO';
+
+update migracion.nomenclatura  set circ=lpad(circ,2,'0');
+update migracion.nomenclatura  set secc=lpad(secc,2,'0');
+update migracion.nomenclatura  set chac_quinta=lpad(chac_quinta,14,'0');
+update migracion.nomenclatura  set frac=lpad(frac,7,'0');
+update migracion.nomenclatura  set mza=lpad(mza,7,'0');
+update migracion.nomenclatura  set parc=lpad(parc,7,'0');
 
 --------------------------------------------------------------------------------------
 --INSERTAR
@@ -999,7 +1008,4 @@ select id_folio::int, partida_inmobiliaria, titular_dominio, circ, secc,
             chac_quinta, frac, mza, parc, _inscripcion_dominio, partido, 
             _dato_verificado_reg_propiedad, estado_geografico
  from migracion.nomenclatura  where id_folio is not null;                       
-
-
-
 
