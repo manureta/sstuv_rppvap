@@ -117,7 +117,7 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
 
 
      protected function buttons_Create($blnDelete = true) {
-        $blnDelete= Permission::PuedeEditar1A4($this->$objFolio);
+       if($this->objFolio) $blnDelete= Permission::PuedeEditar1A4($this->$objFolio);
         parent::buttons_Create($blnDelete);
         
     }
