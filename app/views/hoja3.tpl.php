@@ -1,5 +1,8 @@
 
 <page size="A4">
+		<div class="encabezado">
+			<img src="assets/images/header.png" width="100%">
+		</div>
 		<div class="cont cond">
 			<h2>Condiciones socio-urbanísticas</h2>
 			</br>

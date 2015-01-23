@@ -15,6 +15,7 @@ page[size="A4"] {
   height: 29.7cm;
   display: block;
   margin: 0 auto;
+  border: dotted;
   margin-bottom: 1cm;
   page-break-after: always;
   
@@ -88,9 +89,10 @@ small {
 }
 
 .left small {
-    display: inline-block;
-    height: 8px;
-    line-height: 5px;
+    /*display: inline-block;*/
+    height: 0px;
+    line-height: 30px;
+    margin-left:25px;
 }
 .right{
 	float:right;
@@ -114,9 +116,12 @@ form input {
 	margin-left:30px;
 }
 
+li {
+  padding-top: 15px;
+}
 li div {
     display: inline-block;
-	margin-top:10px;
+	  margin-top:1px;
 }
 
 li input{
@@ -124,7 +129,7 @@ li input{
 }
 
 li span{
-	margin-right:3px;
+	margin-right:65px;
 }
 
 table {
@@ -166,8 +171,8 @@ table input {
 
 textarea{
    border: 1px solid black;
-   margin-left: 40px;
-   width:716px;
+   margin-left: 25px;
+   width:740px;
    height:35px;
    margin-bottom:10px;
 }
@@ -206,9 +211,9 @@ ol {
 	height: auto;
 }
 
-.judic {
-    float: right;
-    margin-right: 325px;
+.judic form input {
+    height: 15px;
+    margin-left: 10px;
 }
 
 /* tengo que bajar el tamano de hoja 3 */
@@ -246,3 +251,8 @@ ol {
 .encabezado{
 
 }
+
+.pie_li{
+  background-color:#d2d2d2; 
+}
+

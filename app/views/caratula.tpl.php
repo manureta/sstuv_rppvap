@@ -111,8 +111,8 @@
 								<input value="<?php echo $this->limpiar_ceros($i,'parc'); ?>"></br>
 							</div>
 							
-							<small style="margin-left:230px">Titular de dominio</small>
-							<input style="width:535px;margin-left:115px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
+							<small style="margin-left:182px">Titular de dominio</small>
+							<input style="width:535px;margin-left:180px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
 						</li>
 					<?php endif; ?>		
 				<?php endfor; ?>
@@ -182,7 +182,7 @@
 								<small>N&deg; Expediente</small>
 							</td>
 							<td>
-								<input value="<?=$this->objUsoInterno->NumExpediente;?>" style="float:left; margin-left:78px">
+								<input value="<?=$this->objUsoInterno->NumExpediente;?>" style="float:left; margin-left:82px">
 							</td>
 						</tr>
 						<tr>

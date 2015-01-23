@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="LATIN1" />
+        <meta charset="utf-8" />
 		<title>Folio Completo</title>
 		<!-- CSS -->
 		<style>
@@ -24,8 +24,8 @@
 <?php $this->RenderEnd(false); ?>
 	<script type="text/javascript">
 		function imprimir(){
-			window.print();
-			window.close();
+			//window.print();
+			//window.close();
 		}
 	</script>
 </body>

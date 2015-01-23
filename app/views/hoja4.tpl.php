@@ -1,5 +1,8 @@
 
 	<page size="A4">
+		<div class="encabezado">
+			<img src="assets/images/header.png" width="100%">
+		</div>
 		<div class="cont">
 			<h2>Regularización e integración soco-urbana</h2>
 			</br>
