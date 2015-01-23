@@ -150,7 +150,7 @@
 						</form>
 					</div>
 					
-					<small>Intervencion ley 14.449</small>
+					<small>Intervenci&oacute;n ley 14.449</small>
 						
 					<form id="esp_lib" style="margin-left:120px">
 						<small>Si</small>
