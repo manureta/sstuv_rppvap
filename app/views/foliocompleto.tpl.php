@@ -24,8 +24,8 @@
 <?php $this->RenderEnd(false); ?>
 	<script type="text/javascript">
 		function imprimir(){
-			//window.print();
-			//window.close();
+			window.print();
+			window.close();
 		}
 	</script>
 </body>

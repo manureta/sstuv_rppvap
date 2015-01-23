@@ -80,6 +80,7 @@
 				<?php for ($i=0;($i<count($this->arrNom)&&$cant<4);$i++): ?>
 					<?php if($this->arrNom[$i]->EstadoGeografico=='completo' || $this->arrNom[$i]->EstadoGeografico=='parcial') : ?>			  
 						<?php $cant++;?>
+						<div class="li_caratula">
 						<li>
 							<span>Nomenclatura catastral</span>
 							<div>
@@ -114,6 +115,7 @@
 							<small style="margin-left:182px">Titular de dominio</small>
 							<input style="width:535px;margin-left:180px;" value="<?=$this->arrNom[$i]->TitularDominio;?>">
 						</li>
+					</div>
 					<?php endif; ?>		
 				<?php endfor; ?>
 			</ol>
@@ -165,10 +167,9 @@
 				</tr>
 			</table>
 			<div id="uso_int">
-				</br>
 				<h3>Uso interno</h3>
 				<div>
-					<span>Situaci&oacute;n Registral</span></br>
+					<span>Situaci&oacute;n Registral</span>
 					<table>
 						<tr>
 							<td>

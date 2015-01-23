@@ -3,19 +3,19 @@
 		<div class="encabezado">
 			<img src="assets/images/header.png" width="100%">
 		</div>
-		<div class="cont">
-			<h2>Regularización e integración soco-urbana</h2>
+		<div class="cont cond">
+			<h2>Regularizaci&oacute;n e integraci&oacute;n soco-urbana</h2>
 			</br>
-			<h3>&#9658; Se ha iniciado un proceso de regularización en el barrio?</h3>
+			<h3>&#9658; Se ha iniciado un proceso de regularizaci&oacute;n en el barrio?</h3>
 			<form id="esp_lib">
 				<span>Si</span>
 				<input type="checkbox" <?php echo (($this->objRegularizacion->ProcesoIniciado)?'checked':'');?>>
 				<span>No</span>
 				<input type="checkbox" <?php echo ((!$this->objRegularizacion->ProcesoIniciado)?'checked':'');?>>
 			</form>
-			
+			</br>
 			<h3>&#9658; Encuadre legal</h3>
-			<small>(Se puede seleccionar más de una opción)</small></br>
+			</br>
 			<form id="sit_amb">
 				<input type="checkbox" <?php echo (($this->objEncuadre->Decreto222595)?'checked':'');?>>
 				<small>Decreto 2225/95</small>
@@ -37,36 +37,36 @@
 			</br>	
 
 				<input type="checkbox" <?php echo (($this->objEncuadre->TieneExpropiacion)?'checked':'');?>>
-				<small>Expropiación</small>
-				<input value="<?=(strlen($this->objEncuadre->Expropiacion)>0)?$this->objEncuadre->Expropiacion:'Nro. de expropiación';?>" style="margin-left:1px;width:150px">
+				<small>Expropiaci&oacute;n</small>
+				<input value="<?=(strlen($this->objEncuadre->Expropiacion)>0)?$this->objEncuadre->Expropiacion:'Nro. de expropiaci&oacute;n';?>" style="margin-left:1px;width:150px">
 			</br>
 				<input type="checkbox" <?php echo ((strlen($this->objEncuadre->Otros)>0)?'checked':'');?>>
-				<small>Otros ¿Cuales?</small>
-				<input style="width:300px" value="<?=(strlen($this->objEncuadre->Otros)>0)?$this->objEncuadre->Otros:'Otros ¿Cuáles?';?>" ></br>
+				<small>Otros &iquest;Cuales?</small>
+				<input style="width:300px" value="<?=(strlen($this->objEncuadre->Otros)>0)?$this->objEncuadre->Otros:'Otros &iquest;Cu&aacute;les?';?>" ></br>
 			
 				
 			</form>
 
+			</br>
 			
-			
-			<h3>&#9658; Antecedentes en intervención públicas en materia habitacional</h3></br>
-			<small style="margin-left:40px">(Se puede seleccionar más de una opción)</small></br>
+			<h3>&#9658; Antecedentes en intervenci&oacute;n p&uacute;blicas en materia habitacional</h3></br>
+			</br>
 			<form id="sit_amb" class="antec">
 				<input type="checkbox" <?php echo (($this->objAntecedentes->SinIntervencion)?'checked':'');?>>
-				<small>Sin antecedentes de intervención</small>
+				<small>Sin antecedentes de intervenci&oacute;n</small>
 				<input type="checkbox" <?php echo (($this->objAntecedentes->ObrasInfraestructura)?'checked':'');?>>
 				<small>Obras de Infraestructura</small></br>
 				<input type="checkbox" <?php echo (($this->objAntecedentes->Equipamientos)?'checked':'');?>>
 				<small>Equipamientos</small>
 				<input type="checkbox" <?php echo (($this->objAntecedentes->IntervencionesEnViviendas)?'checked':'');?>>
-				<small>Intervención en vivienda</small></br>
+				<small>Intervenci&oacute;n en vivienda</small></br>
 				<input type="checkbox" <?php echo ((strlen($this->objAntecedentes->Otros)>0)?'checked':'');?>>
-				<small>Otros ¿Cuáles?</small>
+				<small>Otros &iquest;Cu&aacute;les?</small>
 			</form>
-			<input value="<?=(strlen($this->objAntecedentes->Otros)>0)?$this->objAntecedentes->Otros:'Otros ¿Cuáles?';?>" style="margin-left:56px"></br>
-			
-			<h3>&#9658; Organismos de intervención</h3>
-			<small>(Se puede seleccionar más de una opción)</small></br>
+			<input value="<?=(strlen($this->objAntecedentes->Otros)>0)?$this->objAntecedentes->Otros:'Otros &iquest;Cu&aacute;les?';?>" style="margin-left:56px"></br>
+			</br>
+			<h3>&#9658; Organismos de intervenci&oacute;n</h3>
+			</br>
 			<form id="sit_amb">
 				<input type="checkbox" <?php echo (($this->objOrg->Nacional)?'checked':'');?>>
 				<small>Nacional</small></br>
@@ -76,76 +76,86 @@
 				<small>Municipal</small>
 			</form>
 			
-			<h3>&#9658; A travéz de que programas</h3></br>
+			<h3>&#9658; A trav&eacute;s de que programas</h3></br>
 			<textarea style="height:90px;"><?php echo $this->objOrg->Programas;?></textarea>
 			
-			<h3>&#9658; Fecha de intervención</h3>
-			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('d'):'';?>>
-			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('m'):'';?>>
-			<input style="width:50px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion->format('Y'):'';?>>
+			<h3>&#9658; Fecha de intervenci&oacute;n</h3>
+			<input style="width:130px" value=<?=($this->objOrg->FechaIntervencion)?$this->objOrg->FechaIntervencion:'';?>>
 			
 			<div id="uso_int">
 				</br>
 				<h3>Uso interno</h3>
-				<div style="background-color:#767583">
-					<span>¿Cuenta con plano en trámite en la SSTUV?</span>
-					<form id="esp_lib">
-						<span>Si</span>
+				<div>
+					<small>&iquest;Cuenta con plano en tr&aacute;mite en la SSTUV?</small>
+					<form id="esp_lib" style="margin-left:15px;">
+						<small>Si</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->RegularizacionTienePlano=='si')?'checked':'');?>>
-						<span>No</span>
+						<small>No</small>
 						<input type="checkbox"<?php echo (($this->objUsoInterno->RegularizacionTienePlano=='no')?'checked':'');?>>
 					</form>
-					<span>Fecha del informe</span>
-					<input style="width:70px;" value="<?=($this->objUsoInterno->RegularizacionFechaInicio)?$this->objUsoInterno->RegularizacionFechaInicio->format('d-m-Y'):'';?>"></br>
 					
-					<span>Circular 10 Catastro</span>
-					<form id="esp_lib" style="margin-left:175px">
-						<span>Si</span>
+					<div class="right">
+						<small>Fecha del informe</small>
+						<input style="width:70px;" value="<?=($this->objUsoInterno->RegularizacionFechaInicio)?$this->objUsoInterno->RegularizacionFechaInicio->format('d-m-Y'):'';?>"></br>
+					</div>
+					</br>
+					</br>
+					<small>Circular 10 Catastro</small>
+					<form id="esp_lib" style="margin-left:132px">
+						<small>Si</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->RegularizacionCircular10Catastro)?'checked':'');?>>
-						<span>No</span>
+						<small>No</small>
 						<input type="checkbox" <?php echo ((!$this->objUsoInterno->RegularizacionCircular10Catastro)?'checked':'');?>>
-					</form></br>
-					<span>Aprobación de Geodesia. Nro. de plano</span>			
+					</form>
+					</br></br>
+					
+					<small>Aprobaci&oacute;n de Geodesia. Nro. de plano</small>			
 					<small style="margin-left:30px">Partido</small>
 					<input style="width:50px" value=<?=($this->objUsoInterno->GeodesiaPartido);?>>
-					<small>N°</small>
+					<small>N&deg;</small>
 					<input style="width:80px" value=<?=($this->objUsoInterno->GeodesiaNum);?>>
-					<small>Año</small>
-					<input style="width:50px" value=<?=($this->objUsoInterno->GeodesiaAnio);?>></br>
-					<span>Registración</span>
-					<small style="margin-left:30px">Legajo</small>
+					<small>A&ntilde;o</small>
+					<input style="width:50px" value=<?=($this->objUsoInterno->GeodesiaAnio);?>>
+					</br></br>
+					
+					<small>Registraci&oacute;n</small>
+					<small style="margin-left:158px">Legajo</small>
 					<input style="width:80px" value=<?=($this->objUsoInterno->RegistracionLegajo);?>>
 					<small>Folio</small>
 					<input style="width:80px" value=<?=($this->objUsoInterno->RegistracionFolio);?>>
 					<small>Fecha</small>
-					<input style="width:80px"value=<?=($this->objUsoInterno->RegistracionFecha);?>></br>
-					<span>¿Cuenta con censo de la SSTUV?</span>
-					<form id="esp_lib">
-						<span>Si</span>
+					<input style="width:80px"value=<?=($this->objUsoInterno->RegistracionFecha);?>>
+					</br></br>
+
+					<small>&iquest;Cuenta con censo de la SSTUV?</small>
+					<form id="esp_lib" style="margin-left:59px">
+						<small>Si</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->TieneCenso=='si')?'checked':'');?>>
-						<span>No</span>
+						<small>No</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->TieneCenso=='no')?'checked':'');?>>
 					</form>
 					<small>Fecha</small>
-					<input style="width:80px" value="<?=($this->objUsoInterno->FechaCenso);?>"></br>
+					<input style="margin-left:20px" style="width:80px" value="<?=($this->objUsoInterno->FechaCenso);?>">
+					</br></br>
+					
 					<div style="background-color:#21202E;padding:16px;margin:6px -15px">
-						<span>Estado del proceso de regularización</span></br>
+						<small>Estado del proceso de regularizaci&oacute;n</small></br>
 						<form id="sit_amb">
 							<input type="checkbox" <?php echo (($this->objUsoInterno->RegularizacionEstadoProceso==1)?'checked':'');?>>
 							<small>Iniciado</small></br>
 							<input type="checkbox" <?php echo (($this->objUsoInterno->RegularizacionEstadoProceso==2)?'checked':'');?>>
-							<small style="width:auto">Acta de regularización / certificado de preadjudicación / Boleto</small></br>
+							<small style="width:auto">Acta de regularizaci&oacute;n / certificado de preadjudicaci&oacute;n / Boleto</small></br>
 							<input type="checkbox" <?php echo (($this->objUsoInterno->RegularizacionEstadoProceso==3)?'checked':'');?>>
 							<small>Escriturado</small>
 						</form>
 					</div>
 					
-					<span>Intervencion ley 14.449</span>
+					<small>Intervencion ley 14.449</small>
 						
-					<form id="esp_lib">
-						<span>Si</span>
+					<form id="esp_lib" style="margin-left:120px">
+						<small>Si</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->Ley14449=='si')?'checked':'');?>>
-						<span>No</span>
+						<small>No</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->Ley14449=='no')?'checked':'');?>>
 						
 					</form>
