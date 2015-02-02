@@ -17,7 +17,10 @@ class UsuarioEditPanel extends UsuarioEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-
+        
+        if(!Permission::EsAdministrador())
+            QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
+        
     }
 
 }
