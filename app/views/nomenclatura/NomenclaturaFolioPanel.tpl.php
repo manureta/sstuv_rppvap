@@ -22,7 +22,7 @@
                     <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
-<?php if(Permission::EsUsoInterno()){ ?>
+<?php if(Permission::EsUsoInterno() || Permission::EsVisualizadorGeneral()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="/registro/interno/folio/<?=$folio;?>">
                     <span class="number">5.</span> Uso Interno

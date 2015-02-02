@@ -50,6 +50,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         'chkObjetado' => true,
         'txtComentarioObjetacion' => true,
         'txtRegularizacionFechaInicio' => true,
+        'lstInformeUrbanistico'=>true,
+        'lstTieneCenso'=>true,
+        'lstLey14449'=>true,
+        'lstRegularizacionTienePlano'=>true
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -65,8 +69,11 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        if(!Permission::EsUsoInterno())
-            QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
+        if(!Permission::EsUsoInterno()){
+            if(!Permission::EsVisualizadorGeneral())
+                QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
+        }
+            
 
         $this->intIdFolio = $intIdFolio;
 
@@ -79,6 +86,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
          // informe urbanistico
         $this->lstInformeUrbanistico=new QListBox($this);
+        $this->objControlsArray['lstInformeUrbanistico']=$this->lstInformeUrbanistico;
         switch ($this->txtInformeUrbanistico->Text) {                
                 case 'si':
                     $this->lstInformeUrbanistico->AddItem(' Si ', 'si');
@@ -126,7 +134,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstRegularizacionTienePlano->Name="Plano en trámite";    
         $this->lstRegularizacionTienePlano->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstRegularizacionTienePlano_Change'));
         $this->txtRegularizacionTienePlano->Visible=false;
-
+        $this->objControlsArray['lstRegularizacionTienePlano']=$this->lstRegularizacionTienePlano;
         // TIENE CENSO
 
         $this->lstTieneCenso=new QListBox($this);
@@ -152,7 +160,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstTieneCenso->Name="Tiene censo de la SSTUV";
         $this->lstTieneCenso->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTieneCenso_Change'));
         $this->txtTieneCenso->Visible=false;
-
+        $this->objControlsArray['lstTieneCenso']=$this->lstTieneCenso;
 
         // LEY 14449
 
@@ -179,7 +187,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstLey14449->Name="Intervención en el marco de la ley 14.449";
         $this->lstLey14449->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstLey14449_Change'));
         $this->txtLey14449->Visible=false;
-
+        $this->objControlsArray['lstLey14449']=$this->lstLey14449;
         
 
         // Partido de Geodesia
@@ -220,6 +228,12 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->btnEvolucion->Icon = 'download';
         $this->btnEvolucion->AddCssClass('btn-info boton_evolucion');
         $this->btnEvolucion->AddAction(new QClickEvent(),  new QAjaxControlAction($this,"btnEvolucion_Click"));
+
+        if(!Permission::PuedeEditar1A4($this->objFolio) ) {
+            foreach($this->objControlsArray as $objControl){
+                $objControl->Enabled = false;
+            }
+        }
 
         if(!Permission::EsAdministrador()){
             $this->objControlsArray['lstEstadoFolioObject']->Enabled=false;
