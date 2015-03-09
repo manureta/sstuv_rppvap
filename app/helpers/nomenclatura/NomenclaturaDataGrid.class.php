@@ -4,7 +4,7 @@ class NomenclaturaDataGrid extends NomenclaturaDataGridGen {
 	public static $strColumnsArray = array(
         'Id' => false,
         'IdFolioObject' => true,
-        'PartidaInmobiliaria' => false,
+        'PartidaInmobiliaria' => true,
         'TitularDominio' => false,
         'Partido' => true,
         'Circ' => true,
