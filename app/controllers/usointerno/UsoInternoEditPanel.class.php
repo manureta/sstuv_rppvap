@@ -201,9 +201,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
         //Archivos adjuntos de sisteme registral
         
-        $url_upload_resolucion="/registro/upload.php?idfolio=".$this->objFolio->Id."&tipo=resolucion";
-        $url_upload_informe="/registro/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
-        $url_upload_habitat="/registro/upload.php?idfolio=".$this->objFolio->Id."&tipo=habitat";
+        $url_upload_resolucion=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=resolucion";
+        $url_upload_informe=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
+        $url_upload_habitat=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=habitat";
         if(Permission::PuedeAdjuntar($this->objFolio)){
             $this->boolPuedeAdjuntar=true;    
             QApplication::ExecuteJavascript("uploadManager('$url_upload_resolucion','#fileupload2','#files_resolucion')");

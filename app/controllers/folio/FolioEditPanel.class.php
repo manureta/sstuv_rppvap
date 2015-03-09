@@ -175,7 +175,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->lstAnioOrigen->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstAnioOrigen_Change'));        
         
         //seteo upload manager
-        $url_upload_manager="/registro/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
+        $url_upload_manager=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->mctFolio->Folio->Id."&tipo=general";
         if(($this->mctFolio->Folio->Id) && Permission::PuedeAdjuntarHoja1($this->mctFolio->Folio)) {
             $this->boolPuedeAdjuntar=true;    
             QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload','#files')");

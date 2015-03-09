@@ -4,9 +4,8 @@
         <meta charset="utf-8" />
 		<title>Folio Completo</title>
 		<!-- CSS -->
-		<style>
-		<?=file_get_contents("http://localhost/registro/assets/css/print.css");?>
-		</style>
+		<link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/print.css" />
+		
 		
 	</head>
 	
