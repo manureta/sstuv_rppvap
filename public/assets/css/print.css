@@ -259,8 +259,8 @@ ol {
 }
 
 #anexo{
-  position: fixed;
-  top: 75px;
+  position: relative;
+  top: -75px;
   text-align: center;
   width: 800px;
   font-family:arial
