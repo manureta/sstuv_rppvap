@@ -248,7 +248,6 @@ ol {
 }
 
 .encabezado{
-
 }
 
 .pie_li{
@@ -257,4 +256,12 @@ ol {
 
 .li_caratula li {
   padding-top: 0px;
+}
+
+#anexo{
+  position: fixed;
+  top: 75px;
+  text-align: center;
+  width: 800px;
+  font-family:arial
 }

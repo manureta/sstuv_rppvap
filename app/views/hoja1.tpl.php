@@ -1,9 +1,9 @@
 <page size="A4">
 	<div class="encabezado">
 			<img src="assets/images/header.png" width="100%">
+			<div id="anexo">ANEXO UNICO</div>
 		</div>
 	<div class="cont cond">		
-			<h1>Ley 14.449/folio</h1>
 			<h2>Datos de carga</h2>
 			
 			<small style="margin-left:105px">Cod. partido</small>

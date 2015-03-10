@@ -15,7 +15,7 @@
 			<img src="assets/images/header.png" width="100%">
 		</div>
 		<div class="cont cond">
-			<h1>Ley 14.449/car&aacute;tula folio</h1>
+			
 			<h2>Datos de carga</h2>
 			
 			<div class="left">	
