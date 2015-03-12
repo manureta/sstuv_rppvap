@@ -118,8 +118,8 @@
 				<tr>
 					<th></th>
 					<th>Inexistente</th>
-					<th>Dentro del barrio</th>
-					<th>Pr&oacute;ximo al barrio</th>
+					<th>Cobertura parcial</th>
+					<th>Cobertura total</th>
 				</tr>
 				<tr>
 					<td>Energ&iacute;a el&eacute;ctrica medidor individual</td>
