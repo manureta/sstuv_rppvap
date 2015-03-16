@@ -24,7 +24,8 @@
 	<script type="text/javascript">
 		function imprimir(){
 			window.print();
-			setTimeout({window.close();},200);
+			window.close();
+			//setTimeout({window.close();},200);
 		}
 	</script>
 </body>
