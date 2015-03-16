@@ -219,9 +219,8 @@
 			for (var i = 0; i < len; i++) {
 			    //elems[i].disabled = true;
 			}
-			window.print();
-			//window.close();
-			setTimeout({window.close();},1000);
+			window.print();			
+			setTimeout("window.close()",100);
 	      }
 	    </script>
 		<?php $this->RenderEnd(false); ?>

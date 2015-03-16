@@ -23,9 +23,8 @@
 <?php $this->RenderEnd(false); ?>
 	<script type="text/javascript">
 		function imprimir(){
-			window.print();
-			//window.close();
-			setTimeout({window.close();},1000);
+			window.print();			
+			setTimeout("window.close()",100);
 		}
 	</script>
 </body>
