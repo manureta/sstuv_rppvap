@@ -220,7 +220,7 @@
 			    //elems[i].disabled = true;
 			}
 			window.print();
-			window.close();
+			setTimeout({window.close();},200);
 	      }
 	    </script>
 		<?php $this->RenderEnd(false); ?>
