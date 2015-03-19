@@ -105,7 +105,11 @@
 						<small>Si</small>
 						<input type="checkbox" <?php echo (($this->objUsoInterno->RegularizacionCircular10Catastro)?'checked':'');?>>
 						<small>No</small>
-						<input type="checkbox" <?php echo ((!$this->objUsoInterno->RegularizacionCircular10Catastro)?'checked':'');?>>
+						<input type="checkbox" <?php if(is_null($this->objUsoInterno->RegularizacionCircular10Catastro)){
+												echo '';
+												}else{ 
+												echo ((!$this->objUsoInterno->RegularizacionCircular10Catastro)?'checked':'');
+												}?>>
 					</form>
 					</br></br>
 					
