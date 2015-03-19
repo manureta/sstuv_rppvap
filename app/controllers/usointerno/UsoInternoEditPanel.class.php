@@ -316,7 +316,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['chkObjetado']->Name="Folio objetado por el municipio";
         if (in_array('txtComentarioObjetacion',$strControlsArray)) 
             $this->objControlsArray['txtComentarioObjetacion'] = $this->mctUsoInterno->txtComentarioObjetacion_Create();
-            $this->objControlsArray['txtComentarioObjetacion']->Name="Comentario del municipio";
+            $this->objControlsArray['txtComentarioObjetacion']->Name="Observaciones Objetados";
         if (in_array('txtRegularizacionFechaInicio',$strControlsArray)) 
             $this->objControlsArray['txtRegularizacionFechaInicio'] = $this->mctUsoInterno->txtRegularizacionFechaInicio_Create();
             $this->objControlsArray['txtRegularizacionFechaInicio']->Name="Fecha Inicio";
