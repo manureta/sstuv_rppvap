@@ -111,12 +111,21 @@ abstract class Permission extends PermissionBase {
         return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('carga', $arrUsuarioInfo['Perfiles']);
     }
  
-    public static function EsUsoInterno() {
+    public static function EsUsoInterno($arrTipos) {
+        
         if (!Authentication::EstaConectado())
             return false;
         if(self::EsAdministrador()) return true;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('uso_interno', $arrUsuarioInfo['Perfiles']);
+        
+        if(array_key_exists('Perfiles', $arrUsuarioInfo)&&is_array( $arrUsuarioInfo['Perfiles'] )) {
+            foreach ($arrTipos as $t) {
+                if(in_array($t, $arrUsuarioInfo['Perfiles'])) return true;    
+            }
+            
+        }  else{
+            return false;
+        }
     }
     public static function EsVisualizadorGeneral() {
         if (!Authentication::EstaConectado())
@@ -144,7 +153,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeAdjuntar(Folio $objFolio){
-        return (self::EsUsoInterno() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
+        return (self::EsUsoInterno(array("uso_interno_expediente")) || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
     public static function PuedeAdjuntarHoja1(Folio $objFolio){
         return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));

@@ -40,7 +40,7 @@
                     <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
-<?php if(Permission::EsUsoInterno() || Permission::EsVisualizadorGeneral()){ ?>
+<?php if(Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) || Permission::EsVisualizadorGeneral()){ ?>
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?=$link_interno;?>">
                     <span class="number">5.</span> Uso Interno

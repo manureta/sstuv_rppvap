@@ -41,10 +41,17 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
             }
         }
 
-       if(Permission::EsUsoInterno() && !Permission::EsAdministrador()){
+        // si es uso interno oculto todo
+
+        if(Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !Permission::EsAdministrador()){
+
             foreach($this->objControlsArray as $objControl){
                     $objControl->Enabled = false;
             }
+       }
+       // pero si es ui_nomencla muestro estos 3
+       if(Permission::EsUsoInterno(array("uso_interno_nomencla")) ){
+
             $this->objControlsArray['txtInscripcionDominio']->Enabled=true;
             $this->objControlsArray['txtTitularDominio']->Enabled=true;
             $this->objControlsArray['chkDatoVerificadoRegPropiedad']->Enabled=true;
@@ -118,6 +125,12 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
 
      protected function buttons_Create($blnDelete = true) {
        if($this->objFolio) $blnDelete= Permission::PuedeEditar1A4($this->$objFolio);
+
+       if(Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !Permission::EsAdministrador()){
+
+            $blnDelete=false;
+       }
+
         parent::buttons_Create($blnDelete);
         
     }

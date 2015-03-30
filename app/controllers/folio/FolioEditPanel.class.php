@@ -189,7 +189,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->btnSave->AddCssClass("boton_guardar");
         
 
-        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio) || (Permission::EsUsoInterno() && !Permission::EsAdministrador())){
+        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio) || (Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !Permission::EsAdministrador())){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }

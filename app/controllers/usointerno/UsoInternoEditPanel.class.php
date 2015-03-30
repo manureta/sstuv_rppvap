@@ -69,7 +69,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        if(!Permission::EsUsoInterno()){
+        if(!Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))){
             if(!Permission::EsVisualizadorGeneral())
                 QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
         }
