@@ -65,6 +65,7 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo["IdUsuario"] = Authentication::$objUsuarioLocal->IdUsuario;
         //$arrUsuarioInfo["Cuit"] = $objPersonal->Cuit;
         $arrUsuarioInfo["NombreUsuario"] = Authentication::$objUsuarioLocal->Nombre;
+        $arrUsuarioInfo["SuperAdmin"] = Authentication::$objUsuarioLocal->SuperAdmin;
         self::$arrUsuarioInfo = $arrUsuarioInfo;
         Session::setObjUsuario(Authentication::$objUsuarioLocal);
         Session::SetUsuario(self::$arrUsuarioInfo);
@@ -81,6 +82,12 @@ abstract class Permission extends PermissionBase {
         self::$arrUsuarioInfo = $arrUsuarioInfo;
         Session::SetUsuario(self::$arrUsuarioInfo);
         return true;
+    }
+
+    public static function EsSuperAdministrador(){
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        $objUsuario = Usuario::Load($arrUsuarioInfo['IdUsuario']);
+        return (parent::EsAdministrador() && $objUsuario->SuperAdmin);
     }
 
     public static function EsAdministrador() {
@@ -148,7 +155,7 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeBorrarFolio(Folio $objFolio){
         //error_log(count($objFolio->EvolucionFolio));
-        if(self::EsAdministrador())return true;
+        if(self::EsSuperAdministrador())return true;
         // si tiene registros de evolucion ya no se puede borrar
          $cantEvolucion = EvolucionFolio::QueryCount(
             QQ::Equal(QQN::EvolucionFolio()->IdFolio, $objFolio->Id)
@@ -156,6 +163,8 @@ abstract class Permission extends PermissionBase {
         return (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA && $cantEvolucion==0);
     }
     public static function PuedeConfirmarFolio(Folio $objFolio){
+        //quick fix
+        if(Permission::EsAdministrador()&&!Permission::EsSuperAdministrador()) return false;
         return (self::EsCarga());
     }
     public static function PuedeEnviarFolio(Folio $objFolio){

@@ -24,7 +24,7 @@ class UsuarioIndexPanel extends UsuarioIndexPanelGen {
             throw $objExc;
         }
 
-        if(!Permission::EsAdministrador())
+        if(!Permission::EsSuperAdministrador())
             QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
         
 

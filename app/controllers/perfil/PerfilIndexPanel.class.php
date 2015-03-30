@@ -15,5 +15,21 @@ class PerfilIndexPanel extends PerfilIndexPanelGen {
             );
     }
 
+    public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
+
+        try {
+            parent::__construct($objParentObject, $strControlId);
+        } catch (QCallerException $objExc) {
+            $objExc->IncrementOffset();
+            throw $objExc;
+        }
+
+        if(!Permission::EsSuperAdministrador())
+            QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
+        
+
+    }
+
+
 }
 ?>
