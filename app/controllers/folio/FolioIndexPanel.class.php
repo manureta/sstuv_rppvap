@@ -49,7 +49,7 @@ class FolioIndexPanel extends FolioIndexPanelGen {
         $this->strColumnsArray = is_null($strColumnsArray) ? FolioDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(FolioEditPanel::$strControlsArray, true) : $strControlsArray;
 
-        if(!Permission::EsAdministrador() && !Permission::EsUsoInterno()){
+        if(!Permission::EsAdministrador()){
             $this->dtgFolios->AddCondition(QQ::NotEqual(QQN::Folio()->UsoInterno->EstadoFolio,EstadoFolio::NO_CORRESPONDE));    
         }
         
