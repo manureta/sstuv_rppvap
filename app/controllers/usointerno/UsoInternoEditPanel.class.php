@@ -212,8 +212,15 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         }else{
             if(Permission::PuedeVerAdjuntados($this->objFolio)){                
                 QApplication::ExecuteJavascript("verAdjuntados('$url_upload_resolucion','#files_resolucion')");
-                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
-                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_habitat','#files_habitat')");         
+                if(Permission::SoloAdjuntaInformeUrbanistico()){
+
+                    QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
+                }else{
+                    QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
+                }
+                if(Permission::PuedeVerAdjuntadosHabitat()){
+                  QApplication::ExecuteJavascript("verAdjuntados('$url_upload_habitat','#files_habitat')");         
+                }  
             }
         }
         // para poner en no corresponde si cambia estado
@@ -229,7 +236,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->btnEvolucion->AddCssClass('btn-info boton_evolucion');
         $this->btnEvolucion->AddAction(new QClickEvent(),  new QAjaxControlAction($this,"btnEvolucion_Click"));
 
-        if(!Permission::PuedeEditar1A4($this->objFolio) ) {
+        if(!Permission::PuedeEditar1A4($this->objFolio)) {
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
@@ -242,6 +249,49 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->objControlsArray['txtResolucionInscripcionDefinitiva']->Enabled=false;
             $this->objControlsArray['txtNumExpediente']->Enabled=false;
             $this->objControlsArray['chkNoCorrespondeInscripcion']->Enabled=false;
+        }
+
+        if(Permission::EsUsoInterno(array("uso_interno_expediente"))){
+            $this->objControlsArray['txtResolucionInscripcionProvisoria']->Enabled=true;
+            $this->objControlsArray['txtResolucionInscripcionDefinitiva']->Enabled=true;
+            $this->objControlsArray['txtNumExpediente']->Enabled=true;   
+        }
+
+        if(Permission::EsUsoInterno(array("uso_interno_tecnico"))){
+            //informe urb
+            $this->lstInformeUrbanistico->Enabled=true;
+            $this->txtFechaInformeUrbanistico->Enabled=true;
+
+            //regularizaciones
+            $this->lstRegularizacionTienePlano->Enabled=true;
+            $this->txtRegularizacionFechaInicio->Enabled=true;
+            $this->chkRegularizacionCircular10Catastro->Enabled=true;
+
+            $this->txtGeodesiaPartido->Enabled=true;
+            $this->txtGeodesiaNum->Enabled=true;
+            $this->txtGeodesiaAnio->Enabled=true;
+
+            $this->txtRegistracionLegajo->Enabled=true;
+            $this->txtRegistracionFolio->Enabled=true;
+            $this->txtRegistracionFecha->Enabled=true;            
+        }
+
+        if(Permission::EsUsoInterno(array("uso_interno_social"))){
+            //regularizaciones
+            $this->lstRegularizacionTienePlano->Enabled=true;
+            $this->txtRegularizacionFechaInicio->Enabled=true;
+            $this->chkRegularizacionCircular10Catastro->Enabled=true;
+
+            $this->txtGeodesiaPartido->Enabled=true;
+            $this->txtGeodesiaNum->Enabled=true;
+            $this->txtGeodesiaAnio->Enabled=true;
+
+            $this->txtRegistracionLegajo->Enabled=true;
+            $this->txtRegistracionFolio->Enabled=true;
+            $this->txtRegistracionFecha->Enabled=true;
+            $this->lstTieneCenso->Enabled=true;
+            $this->txtFechaCenso->Enabled=true;
+            $this->lstRegularizacionEstadoProcesoObject->Enabled=true;   
         }
 
     }

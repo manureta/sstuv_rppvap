@@ -149,14 +149,19 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeEditar1A4(Folio $objFolio){  
         if(self::EsAdministrador()) return true;
-        return !(self::EsVisualizador() || (self::EsCarga() && !in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::CARGA,NULL))));
+        return !(self::EsVisualizador() ||
+            self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))|| 
+            (self::EsCarga() && !in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::CARGA,NULL))));
     }
 
     public static function PuedeAdjuntar(Folio $objFolio){
         return (self::EsUsoInterno(array("uso_interno_expediente")) || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
+    public static function SoloAdjuntaInformeUrbanistico(){
+        return self::EsUsoInterno(array("uso_interno_tecnico"));   
+    }
     public static function PuedeAdjuntarHoja1(Folio $objFolio){
-        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
+        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA) || self::EsUsoInterno(array("uso_interno_expediente")));
     }
     public static function PuedeVerAdjuntados(Folio $objFolio){
         return !(self::EsVisualizadorBasico());
@@ -183,6 +188,14 @@ abstract class Permission extends PermissionBase {
         //error_log($objFolio->CreadorObject->IdPerfilObject->IdPerfil);
         return ((self::EsAdministrador() || (self::EsCarga() && ($objFolio->CreadorObject->IdPerfilObject->IdPerfil==1) ) ));
     }
+    public static function PuedeVerHoja5(){
+        return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) || Permission::EsVisualizadorGeneral());
+    }
+
+    public static function PuedeVerAdjuntadosHabitat(){
+        return (!self::EsUsoInterno(array("uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
+    }
+
     public static function InscripcionProvisoria(Folio $objFolio){
           try {
             $id=$objFolio->Id;

@@ -23,7 +23,7 @@
                     <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
-<?php if(Permission::EsUsoInterno() || Permission::EsVisualizadorGeneral()){ ?>
+<?php if(Permission::PuedeVerHoja5()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">
                     <span class="number">5.</span> Uso Interno

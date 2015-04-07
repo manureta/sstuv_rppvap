@@ -104,7 +104,7 @@
             <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
             <?php $_CONTROL->txtFechaInformeUrbanistico->RenderWithName();?>
             
-            <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
+            <?php if($_CONTROL->boolPuedeAdjuntar || Permission::SoloAdjuntaInformeUrbanistico()){ ?>
             <div class="well bs-component">
                 <div class="container">
    

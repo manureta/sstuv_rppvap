@@ -97,6 +97,21 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             }
         }
 
+        if(Permission::EsUsoInterno(array("uso_interno_legal","uso_interno_tecnico","uso_interno_social"))){
+
+            $this->chkProcesoIniciado->Enabled=true;
+
+            $this->pnlEncuadre->chkDecreto222595->Enabled = true;
+            $this->pnlEncuadre->chkLey24374->Enabled = true;
+            $this->pnlEncuadre->chkDecreto81588->Enabled = true;
+            $this->pnlEncuadre->chkLey23073->Enabled = true;
+            $this->pnlEncuadre->chkDecreto468696->Enabled = true;
+            $this->pnlEncuadre->chkLey14449->Enabled = true;
+            $this->pnlEncuadre->txtExpropiacion->Enabled = true;
+            $this->pnlEncuadre->txtOtros->Enabled = true;
+            $this->pnlEncuadre->chkTieneExpropiacion->Enabled = true;
+        }
+
     }
 
    

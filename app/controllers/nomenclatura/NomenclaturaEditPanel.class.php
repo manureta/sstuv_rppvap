@@ -49,8 +49,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
                     $objControl->Enabled = false;
             }
        }
-       // pero si es ui_nomencla muestro estos 3
-       if(Permission::EsUsoInterno(array("uso_interno_nomencla")) ){
+       // pero si es ui_nomencla o ui_expe muestro estos 3
+       if(Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla")) ){
 
             $this->objControlsArray['txtInscripcionDominio']->Enabled=true;
             $this->objControlsArray['txtTitularDominio']->Enabled=true;
