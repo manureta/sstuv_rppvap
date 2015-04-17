@@ -189,7 +189,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->btnSave->AddCssClass("boton_guardar");
         
 
-        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio) || (Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !Permission::EsAdministrador())){
+        if(!Permission::PuedeEditar1A4($this->mctFolio->Folio) ){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
@@ -297,7 +297,13 @@ class FolioEditPanel extends FolioEditPanelGen {
                 // Creo UsoInterno y pongo el folio en CARGA
                 $ui = new UsoInterno();
                 $ui->IdFolio = $this->mctFolio->Folio->Id;
-                $ui->EstadoFolio=EstadoFolio::CARGA;
+                // Hay perfiles de uso interno que pueden crear folios pero no deben estar publicos
+                if(Permission::EsUsoInterno(array('uso_interno_legal','uso_interno_tecnico','uso_interno_social'))){
+                	$ui->EstadoFolio=EstadoFolio::NECESITA_AUTORIZACION;
+                }else{
+                	$ui->EstadoFolio=EstadoFolio::CARGA;	
+                }
+                
                 $ui->MapeoPreliminar=true;
                 $ui->save();
                 //Calculo las nomenclaturas

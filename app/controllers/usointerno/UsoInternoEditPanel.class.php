@@ -442,6 +442,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
                     $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::CONFIRMACION,EstadoFolio::INSCRIPCION));
                     $this->lstEstadoFolioObject->SetCondition($objCondition);
                     break;
+                case EstadoFolio::NECESITA_AUTORIZACION:
+                    $objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::NECESITA_AUTORIZACION,EstadoFolio::CARGA));
+                    $this->lstEstadoFolioObject->SetCondition($objCondition);
+                    break;    
                 
                     
             }

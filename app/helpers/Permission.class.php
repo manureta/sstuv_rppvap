@@ -116,11 +116,13 @@ abstract class Permission extends PermissionBase {
         if (!Authentication::EstaConectado())
             return false;
         if(self::EsAdministrador()) return true;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();        
         
         if(array_key_exists('Perfiles', $arrUsuarioInfo)&&is_array( $arrUsuarioInfo['Perfiles'] )) {
-            foreach ($arrTipos as $t) {
-                if(in_array($t, $arrUsuarioInfo['Perfiles'])) return true;    
+            foreach ($arrTipos as $t) {                
+                if(in_array($t, $arrUsuarioInfo['Perfiles'])) {                    
+                    return true;
+                }        
             }
             
         }  else{
@@ -149,6 +151,16 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeEditar1A4(Folio $objFolio){  
         if(self::EsAdministrador()) return true;
+        if(self::EsUsoInterno(array("uso_interno_legal","uso_interno_tecnico","uso_interno_social"))){
+            //Puede ser uno de los folios creados por estos perfiles            
+            if(
+                in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) &&
+               (
+                in_array($objFolio->Creador, array(Session::GetObjUsuario()->IdUsuario,NULL)) ||
+                !isset($objFolio->Creador)
+               )
+            )return true;
+        }
         return !(self::EsVisualizador() ||
             self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))|| 
             (self::EsCarga() && !in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::CARGA,NULL))));

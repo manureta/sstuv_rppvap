@@ -13,6 +13,10 @@ class FolioDataGrid extends FolioDataGridGen {
 
         if(Permission::EsVisualizadorFiltrado())
             $this->AddCondition(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,Session::GetObjUsuario()->CodPartido));
+
+        if(!Permission::EsUsoInterno(array('uso_interno_legal','uso_interno_tecnico','uso_interno_social'))){
+            $this->AddCondition(QQ::NotEqual(QQN::Folio()->UsoInterno->EstadoFolio,EstadoFolio::NECESITA_AUTORIZACION));   
+        }
     } 
    public $mdlPanel;
    
