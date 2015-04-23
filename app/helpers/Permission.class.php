@@ -280,7 +280,11 @@ and u.estado_folio=6
     }
 
     public static function PuedeDescargarResolucion(Folio $objFolio){
-        return (self::EsAdministrador() || $objFolio->UsoInterno->EstadoFolio == EstadoFolio::INSCRIPCION);
+        //return (self::EsAdministrador() || $objFolio->UsoInterno->EstadoFolio == EstadoFolio::INSCRIPCION);
+
+        // segun la planilla de permisos todos pueden ver/descargar las resoluciones
+
+        return true;
     }
 
     public static function PuedeDescargarLey14449(Folio $objFolio){
