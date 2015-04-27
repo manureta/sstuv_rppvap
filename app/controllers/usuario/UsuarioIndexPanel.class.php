@@ -24,6 +24,8 @@ class UsuarioIndexPanel extends UsuarioIndexPanelGen {
             throw $objExc;
         }
 
+        $this->dtgUsuarios->ShowFilter = true;
+
         if(!Permission::EsSuperAdministrador())
             QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
         

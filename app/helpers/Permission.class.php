@@ -156,8 +156,7 @@ abstract class Permission extends PermissionBase {
             if(
                 in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) &&
                (
-                in_array($objFolio->Creador, array(Session::GetObjUsuario()->IdUsuario,NULL)) ||
-                !isset($objFolio->Creador)
+                self::EsCreador($objFolio) || !isset($objFolio->Creador)
                )
             )return true;
         }
@@ -173,7 +172,10 @@ abstract class Permission extends PermissionBase {
         return self::EsUsoInterno(array("uso_interno_tecnico"));   
     }
     public static function PuedeAdjuntarHoja1(Folio $objFolio){
-        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA) || self::EsUsoInterno(array("uso_interno_expediente")));
+        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA) 
+            || self::EsUsoInterno(array("uso_interno_expediente"))
+            || (self::EsCreador($objFolio) && in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) && self::EsUsoInterno(array("uso_interno_legal","uso_interno_social","uso_interno_tecnico")))
+            );
     }
     public static function PuedeVerAdjuntados(Folio $objFolio){
         return !(self::EsVisualizadorBasico());
@@ -206,6 +208,11 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeVerAdjuntadosHabitat(){
         return (!self::EsUsoInterno(array("uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
+    }
+
+    public static function EsCreador($objFolio){
+        // metodo para saber si el usuario actual es el dueño/creador del folio
+        return (in_array($objFolio->Creador, array(Session::GetObjUsuario()->IdUsuario,NULL)) );
     }
 
     public static function InscripcionProvisoria(Folio $objFolio){
@@ -280,11 +287,8 @@ and u.estado_folio=6
     }
 
     public static function PuedeDescargarResolucion(Folio $objFolio){
-        //return (self::EsAdministrador() || $objFolio->UsoInterno->EstadoFolio == EstadoFolio::INSCRIPCION);
+        return (self::EsAdministrador() || $objFolio->UsoInterno->EstadoFolio == EstadoFolio::INSCRIPCION);
 
-        // segun la planilla de permisos todos pueden ver/descargar las resoluciones
-
-        return true;
     }
 
     public static function PuedeDescargarLey14449(Folio $objFolio){
