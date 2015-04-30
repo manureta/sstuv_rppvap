@@ -298,7 +298,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $ui = new UsoInterno();
                 $ui->IdFolio = $this->mctFolio->Folio->Id;
                 // Hay perfiles de uso interno que pueden crear folios pero no deben estar publicos
-                if(Permission::EsUsoInterno(array('uso_interno_legal','uso_interno_tecnico','uso_interno_social'))){
+                if(!Permission::EsAdministrador() && Permission::EsUsoInterno(array('uso_interno_legal','uso_interno_tecnico','uso_interno_social'))){
                 	$ui->EstadoFolio=EstadoFolio::NECESITA_AUTORIZACION;
                 }else{
                 	$ui->EstadoFolio=EstadoFolio::CARGA;	
@@ -355,7 +355,7 @@ class FolioEditPanel extends FolioEditPanelGen {
 
     protected function CrearListadoDeAnios($strValor){
         $this->lstAnioOrigen->AddItem('Seleccione año o década',null);
-        for ($i=1901; $i < 2014 ; $i++) {
+        for ($i=1901; $i < 2020 ; $i++) {
             if(in_array($i, array(1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010))){
                 $texto="Década de ".strval($i);
                 $valor="decada_".strval($i);
