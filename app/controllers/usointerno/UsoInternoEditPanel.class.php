@@ -84,6 +84,9 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
 
+        //SITUACION REGISTRAL
+        $this->chkNoCorrespondeInscripcion->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'chkNoCorrespondeInscripcion_Change'));
+
          // informe urbanistico
         $this->lstInformeUrbanistico=new QListBox($this);
         $this->objControlsArray['lstInformeUrbanistico']=$this->lstInformeUrbanistico;
@@ -378,6 +381,21 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
     public function lstRegularizacionTienePlano_Change($strFormId, $strControlId, $strParameter) {       
         $this->txtRegularizacionTienePlano->Text=$this->lstRegularizacionTienePlano->SelectedValue;
+    }
+
+    public function chkNoCorrespondeInscripcion_Change($strFormId, $strControlId, $strParameter){
+    	if($this->chkNoCorrespondeInscripcion->Checked){
+    		$msg="Al tildar esta opción el folio pasa a estado 'No Corresponde Inscripción'";
+    		//$this->lstEstadoFolioObject->Text=EstadoFolio::NO_CORRESPONDE;
+    		//$objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::NO_CORRESPONDE));
+            //$this->lstEstadoFolioObject->SetCondition($objCondition);
+
+    	}else{
+    		$msg="Deberá cambiar el estado del folio en la sección de administración";
+    	
+    	}
+    
+    	QApplication::DisplayNotification($msg,'W');
     }
 
     public function lstTieneCenso_Change($strFormId, $strControlId, $strParameter) {       
