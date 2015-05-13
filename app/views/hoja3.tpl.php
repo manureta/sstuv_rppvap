@@ -77,7 +77,8 @@
 					<td>Otro</td>
 				</tr>
 			</table>
-			<input value="<?=$this->objEquip->Otro;?>" style="margin-left:40px;"></br>
+			<textarea><?=$this->objEquip->Otro;?></textarea>
+			</br>
 			
 			<h3>&#9658; Transporte p&uacute;blico</h3>
 			</br>
