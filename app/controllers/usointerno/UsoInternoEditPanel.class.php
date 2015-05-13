@@ -1,4 +1,4 @@
-<?php
+    <?php
 class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
      public $mctUsoInterno;
@@ -385,17 +385,18 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
     public function chkNoCorrespondeInscripcion_Change($strFormId, $strControlId, $strParameter){
     	if($this->chkNoCorrespondeInscripcion->Checked){
-    		$msg="Al tildar esta opción el folio pasa a estado 'No Corresponde Inscripción'";
-    		//$this->lstEstadoFolioObject->Text=EstadoFolio::NO_CORRESPONDE;
-    		//$objCondition = QQ::In(QQN::EstadoFolio()->Id, array(EstadoFolio::NO_CORRESPONDE));
-            //$this->lstEstadoFolioObject->SetCondition($objCondition);
+    		$msg="Al tildar esta opción el folio pasó a estado 'No Corresponde Inscripción'";
+    		$objEstadoFolio=EstadoFolio::Load(EstadoFolio::NO_CORRESPONDE);
+            $this->lstEstadoFolioObject->Text = $objEstadoFolio->__toString();
+            $this->lstEstadoFolioObject->Value = $objEstadoFolio->Id;
+
 
     	}else{
-    		$msg="Deberá cambiar el estado del folio en la sección de administración";
+    		$msg="Asegúrese de también cambiar el estado del folio en la sección de administración al estado que corresponda";
     	
     	}
     
-    	QApplication::DisplayNotification($msg,'W');
+    	QApplication::DisplayAlert($msg);
     }
 
     public function lstTieneCenso_Change($strFormId, $strControlId, $strParameter) {       
