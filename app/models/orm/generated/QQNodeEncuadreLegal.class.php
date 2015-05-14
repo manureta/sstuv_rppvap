@@ -29,6 +29,24 @@ class QQNodeEncuadreLegal extends QQNode {
 					return new QQNode('tiene_expropiacion', 'TieneExpropiacion', 'boolean', $this);
 				case 'Otros':
 					return new QQNode('otros', 'Otros', 'string', $this);
+				case 'FechaSancion':
+					return new QQNode('fecha_sancion', 'FechaSancion', 'string', $this);
+				case 'FechaVencimiento':
+					return new QQNode('fecha_vencimiento', 'FechaVencimiento', 'string', $this);
+				case 'NomenclaturaTextoLey':
+					return new QQNode('nomenclatura_texto_ley', 'NomenclaturaTextoLey', 'string', $this);
+				case 'TasacionAdministrativa':
+					return new QQNode('tasacion_administrativa', 'TasacionAdministrativa', 'string', $this);
+				case 'PrecioPagado':
+					return new QQNode('precio_pagado', 'PrecioPagado', 'string', $this);
+				case 'Juzgado':
+					return new QQNode('juzgado', 'Juzgado', 'string', $this);
+				case 'EstadoProcesoExpropiacion':
+					return new QQNode('estado_proceso_expropiacion', 'EstadoProcesoExpropiacion', 'integer', $this);
+				case 'EstadoProcesoExpropiacionObject':
+					return new QQNodeOpcionesEstadoExpropiacion('estado_proceso_expropiacion', 'EstadoProcesoExpropiacionObject', 'integer', $this);
+				case 'MemoriaDescriptiva':
+					return new QQNode('memoria_descriptiva', 'MemoriaDescriptiva', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

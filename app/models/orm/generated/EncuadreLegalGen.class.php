@@ -26,7 +26,16 @@
 	 * @property boolean $Ley14449 the value for blnLey14449 
 	 * @property boolean $TieneExpropiacion the value for blnTieneExpropiacion 
 	 * @property string $Otros the value for strOtros 
+	 * @property string $FechaSancion the value for strFechaSancion 
+	 * @property string $FechaVencimiento the value for strFechaVencimiento 
+	 * @property string $NomenclaturaTextoLey the value for strNomenclaturaTextoLey 
+	 * @property string $TasacionAdministrativa the value for strTasacionAdministrativa 
+	 * @property string $PrecioPagado the value for strPrecioPagado 
+	 * @property string $Juzgado the value for strJuzgado 
+	 * @property integer $EstadoProcesoExpropiacion the value for intEstadoProcesoExpropiacion 
+	 * @property string $MemoriaDescriptiva the value for strMemoriaDescriptiva 
 	 * @property Regularizacion $IdFolioObject the value for the Regularizacion object referenced by intIdFolio 
+	 * @property OpcionesEstadoExpropiacion $EstadoProcesoExpropiacionObject the value for the OpcionesEstadoExpropiacion object referenced by intEstadoProcesoExpropiacion 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
 class EncuadreLegalGen extends QBaseClass {
@@ -136,6 +145,76 @@ class EncuadreLegalGen extends QBaseClass {
 
 
     /**
+     * Protected member variable that maps to the database column encuadre_legal.fecha_sancion
+     * @var string strFechaSancion
+     */
+    protected $strFechaSancion;
+    const FechaSancionMaxLength = 150;
+    const FechaSancionDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.fecha_vencimiento
+     * @var string strFechaVencimiento
+     */
+    protected $strFechaVencimiento;
+    const FechaVencimientoMaxLength = 150;
+    const FechaVencimientoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.nomenclatura_texto_ley
+     * @var string strNomenclaturaTextoLey
+     */
+    protected $strNomenclaturaTextoLey;
+    const NomenclaturaTextoLeyMaxLength = 150;
+    const NomenclaturaTextoLeyDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.tasacion_administrativa
+     * @var string strTasacionAdministrativa
+     */
+    protected $strTasacionAdministrativa;
+    const TasacionAdministrativaMaxLength = 150;
+    const TasacionAdministrativaDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.precio_pagado
+     * @var string strPrecioPagado
+     */
+    protected $strPrecioPagado;
+    const PrecioPagadoMaxLength = 150;
+    const PrecioPagadoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.juzgado
+     * @var string strJuzgado
+     */
+    protected $strJuzgado;
+    const JuzgadoMaxLength = 150;
+    const JuzgadoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.estado_proceso_expropiacion
+     * @var integer intEstadoProcesoExpropiacion
+     */
+    protected $intEstadoProcesoExpropiacion;
+    const EstadoProcesoExpropiacionDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column encuadre_legal.memoria_descriptiva
+     * @var string strMemoriaDescriptiva
+     */
+    protected $strMemoriaDescriptiva;
+    const MemoriaDescriptivaDefault = null;
+
+
+    /**
      * Protected array of virtual attributes for this object (e.g. extra/other calculated and/or non-object bound
      * columns from the run-time database query result for this object).  Used by InstantiateDbRow and
      * GetVirtualAttribute.
@@ -165,6 +244,16 @@ class EncuadreLegalGen extends QBaseClass {
 		 * @var Regularizacion objIdFolioObject
 		 */
 		protected $objIdFolioObject;
+
+		/**
+		 * Protected member variable that contains the object pointed by the reference
+		 * in the database column encuadre_legal.estado_proceso_expropiacion.
+		 *
+		 * NOTE: Always use the EstadoProcesoExpropiacionObject property getter to correctly retrieve this OpcionesEstadoExpropiacion object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var OpcionesEstadoExpropiacion objEstadoProcesoExpropiacionObject
+		 */
+		protected $objEstadoProcesoExpropiacionObject;
 
 
 
@@ -494,6 +583,14 @@ class EncuadreLegalGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'ley_14449', $strAliasPrefix . 'ley_14449');
 			$objBuilder->AddSelectItem($strTableName, 'tiene_expropiacion', $strAliasPrefix . 'tiene_expropiacion');
 			$objBuilder->AddSelectItem($strTableName, 'otros', $strAliasPrefix . 'otros');
+			$objBuilder->AddSelectItem($strTableName, 'fecha_sancion', $strAliasPrefix . 'fecha_sancion');
+			$objBuilder->AddSelectItem($strTableName, 'fecha_vencimiento', $strAliasPrefix . 'fecha_vencimiento');
+			$objBuilder->AddSelectItem($strTableName, 'nomenclatura_texto_ley', $strAliasPrefix . 'nomenclatura_texto_ley');
+			$objBuilder->AddSelectItem($strTableName, 'tasacion_administrativa', $strAliasPrefix . 'tasacion_administrativa');
+			$objBuilder->AddSelectItem($strTableName, 'precio_pagado', $strAliasPrefix . 'precio_pagado');
+			$objBuilder->AddSelectItem($strTableName, 'juzgado', $strAliasPrefix . 'juzgado');
+			$objBuilder->AddSelectItem($strTableName, 'estado_proceso_expropiacion', $strAliasPrefix . 'estado_proceso_expropiacion');
+			$objBuilder->AddSelectItem($strTableName, 'memoria_descriptiva', $strAliasPrefix . 'memoria_descriptiva');
 		}
 
 //instantiation_methods
@@ -545,6 +642,22 @@ class EncuadreLegalGen extends QBaseClass {
 			$objToReturn->blnTieneExpropiacion = $objDbRow->GetColumn($strAliasName, 'Bit');
 			$strAliasName = array_key_exists($strAliasPrefix . 'otros', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'otros'] : $strAliasPrefix . 'otros';
 			$objToReturn->strOtros = $objDbRow->GetColumn($strAliasName, 'Blob');
+			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_sancion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_sancion'] : $strAliasPrefix . 'fecha_sancion';
+			$objToReturn->strFechaSancion = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_vencimiento', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_vencimiento'] : $strAliasPrefix . 'fecha_vencimiento';
+			$objToReturn->strFechaVencimiento = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'nomenclatura_texto_ley', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nomenclatura_texto_ley'] : $strAliasPrefix . 'nomenclatura_texto_ley';
+			$objToReturn->strNomenclaturaTextoLey = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'tasacion_administrativa', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tasacion_administrativa'] : $strAliasPrefix . 'tasacion_administrativa';
+			$objToReturn->strTasacionAdministrativa = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'precio_pagado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'precio_pagado'] : $strAliasPrefix . 'precio_pagado';
+			$objToReturn->strPrecioPagado = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'juzgado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'juzgado'] : $strAliasPrefix . 'juzgado';
+			$objToReturn->strJuzgado = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'estado_proceso_expropiacion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'estado_proceso_expropiacion'] : $strAliasPrefix . 'estado_proceso_expropiacion';
+			$objToReturn->intEstadoProcesoExpropiacion = $objDbRow->GetColumn($strAliasName, 'Integer');
+			$strAliasName = array_key_exists($strAliasPrefix . 'memoria_descriptiva', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'memoria_descriptiva'] : $strAliasPrefix . 'memoria_descriptiva';
+			$objToReturn->strMemoriaDescriptiva = $objDbRow->GetColumn($strAliasName, 'Blob');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -574,6 +687,12 @@ class EncuadreLegalGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
 			if (!is_null($objDbRow->GetColumn($strAliasName)))
 				$objToReturn->objIdFolioObject = Regularizacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'id_folio__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+
+			// Check for EstadoProcesoExpropiacionObject Early Binding
+			$strAlias = $strAliasPrefix . 'estado_proceso_expropiacion__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName)))
+				$objToReturn->objEstadoProcesoExpropiacionObject = OpcionesEstadoExpropiacion::InstantiateDbRow($objDbRow, $strAliasPrefix . 'estado_proceso_expropiacion__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 
 
 
@@ -667,6 +786,38 @@ class EncuadreLegalGen extends QBaseClass {
 				QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio)
 			);
 		}
+			
+		/**
+		 * Load an array of EncuadreLegal objects,
+		 * by EstadoProcesoExpropiacion Index(es)
+		 * @param integer $intEstadoProcesoExpropiacion
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return EncuadreLegal[]
+		*/
+		public static function LoadArrayByEstadoProcesoExpropiacion($intEstadoProcesoExpropiacion, $objOptionalClauses = null) {
+			// Call EncuadreLegal::QueryArray to perform the LoadArrayByEstadoProcesoExpropiacion query
+			try {
+				return EncuadreLegal::QueryArray(
+					QQ::Equal(QQN::EncuadreLegal()->EstadoProcesoExpropiacion, $intEstadoProcesoExpropiacion),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count EncuadreLegales
+		 * by EstadoProcesoExpropiacion Index(es)
+		 * @param integer $intEstadoProcesoExpropiacion
+		 * @return int
+		*/
+		public static function CountByEstadoProcesoExpropiacion($intEstadoProcesoExpropiacion) {
+			// Call EncuadreLegal::QueryCount to perform the CountByEstadoProcesoExpropiacion query
+			return EncuadreLegal::QueryCount(
+				QQ::Equal(QQN::EncuadreLegal()->EstadoProcesoExpropiacion, $intEstadoProcesoExpropiacion)
+			);
+		}
 
 
 
@@ -710,12 +861,29 @@ class EncuadreLegalGen extends QBaseClass {
 			throw $objExc;
                 }
             }
+            // ver si objEstadoProcesoExpropiacionObject esta Guardado
+            if(is_null($this->intEstadoProcesoExpropiacion)){
+                //Si el objeto esta seteado lo grabo sino no hago NADA.
+                if(!is_null($this->EstadoProcesoExpropiacionObject))
+                try{
+                    if(!is_null($this->EstadoProcesoExpropiacionObject->EstadoProcesoExpropiacion))
+                        $this->intEstadoProcesoExpropiacion = $this->EstadoProcesoExpropiacionObject->EstadoProcesoExpropiacion;
+                    else
+                        $this->intEstadoProcesoExpropiacion = $this->EstadoProcesoExpropiacionObject->Save();
+                }catch(Exception $objExc){
+                    	$objExc->IncrementOffset();
+			throw $objExc;
+                }
+            }
 
                     if ($this->intId && ($this->intId > QDatabaseNumberFieldMax::Integer || $this->intId < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intId', QDatabaseFieldType::Integer);
                     }
                     if ($this->intIdFolio && ($this->intIdFolio > QDatabaseNumberFieldMax::Integer || $this->intIdFolio < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intIdFolio', QDatabaseFieldType::Integer);
+                    }
+                    if ($this->intEstadoProcesoExpropiacion && ($this->intEstadoProcesoExpropiacion > QDatabaseNumberFieldMax::Integer || $this->intEstadoProcesoExpropiacion < QDatabaseNumberFieldMin::Integer)) {
+                        throw new NumberOutOfRangeException('intEstadoProcesoExpropiacion', QDatabaseFieldType::Integer);
                     }
 
             try {
@@ -732,7 +900,15 @@ class EncuadreLegalGen extends QBaseClass {
                             "expropiacion",
                             "ley_14449",
                             "tiene_expropiacion",
-                            "otros"
+                            "otros",
+                            "fecha_sancion",
+                            "fecha_vencimiento",
+                            "nomenclatura_texto_ley",
+                            "tasacion_administrativa",
+                            "precio_pagado",
+                            "juzgado",
+                            "estado_proceso_expropiacion",
+                            "memoria_descriptiva"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->blnDecreto222595) . ',
@@ -743,7 +919,15 @@ class EncuadreLegalGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strExpropiacion) . ',
                             ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
                             ' . $objDatabase->SqlVariable($this->blnTieneExpropiacion) . ',
-                            ' . $objDatabase->SqlVariable($this->strOtros) . '
+                            ' . $objDatabase->SqlVariable($this->strOtros) . ',
+                            ' . $objDatabase->SqlVariable($this->strFechaSancion) . ',
+                            ' . $objDatabase->SqlVariable($this->strFechaVencimiento) . ',
+                            ' . $objDatabase->SqlVariable($this->strNomenclaturaTextoLey) . ',
+                            ' . $objDatabase->SqlVariable($this->strTasacionAdministrativa) . ',
+                            ' . $objDatabase->SqlVariable($this->strPrecioPagado) . ',
+                            ' . $objDatabase->SqlVariable($this->strJuzgado) . ',
+                            ' . $objDatabase->SqlVariable($this->intEstadoProcesoExpropiacion) . ',
+                            ' . $objDatabase->SqlVariable($this->strMemoriaDescriptiva) . '
                         )
                     ');
 
@@ -768,7 +952,15 @@ class EncuadreLegalGen extends QBaseClass {
                             "expropiacion" = ' . $objDatabase->SqlVariable($this->strExpropiacion) . ',
                             "ley_14449" = ' . $objDatabase->SqlVariable($this->blnLey14449) . ',
                             "tiene_expropiacion" = ' . $objDatabase->SqlVariable($this->blnTieneExpropiacion) . ',
-                            "otros" = ' . $objDatabase->SqlVariable($this->strOtros) . '
+                            "otros" = ' . $objDatabase->SqlVariable($this->strOtros) . ',
+                            "fecha_sancion" = ' . $objDatabase->SqlVariable($this->strFechaSancion) . ',
+                            "fecha_vencimiento" = ' . $objDatabase->SqlVariable($this->strFechaVencimiento) . ',
+                            "nomenclatura_texto_ley" = ' . $objDatabase->SqlVariable($this->strNomenclaturaTextoLey) . ',
+                            "tasacion_administrativa" = ' . $objDatabase->SqlVariable($this->strTasacionAdministrativa) . ',
+                            "precio_pagado" = ' . $objDatabase->SqlVariable($this->strPrecioPagado) . ',
+                            "juzgado" = ' . $objDatabase->SqlVariable($this->strJuzgado) . ',
+                            "estado_proceso_expropiacion" = ' . $objDatabase->SqlVariable($this->intEstadoProcesoExpropiacion) . ',
+                            "memoria_descriptiva" = ' . $objDatabase->SqlVariable($this->strMemoriaDescriptiva) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -862,6 +1054,14 @@ class EncuadreLegalGen extends QBaseClass {
 			$this->blnLey14449 = $objReloaded->blnLey14449;
 			$this->blnTieneExpropiacion = $objReloaded->blnTieneExpropiacion;
 			$this->strOtros = $objReloaded->strOtros;
+			$this->strFechaSancion = $objReloaded->strFechaSancion;
+			$this->strFechaVencimiento = $objReloaded->strFechaVencimiento;
+			$this->strNomenclaturaTextoLey = $objReloaded->strNomenclaturaTextoLey;
+			$this->strTasacionAdministrativa = $objReloaded->strTasacionAdministrativa;
+			$this->strPrecioPagado = $objReloaded->strPrecioPagado;
+			$this->strJuzgado = $objReloaded->strJuzgado;
+			$this->EstadoProcesoExpropiacion = $objReloaded->EstadoProcesoExpropiacion;
+			$this->strMemoriaDescriptiva = $objReloaded->strMemoriaDescriptiva;
 		}
 
 
@@ -960,6 +1160,62 @@ class EncuadreLegalGen extends QBaseClass {
                  */
                 return $this->strOtros;
 
+            case 'FechaSancion':
+                /**
+                 * Gets the value for strFechaSancion 
+                 * @return string
+                 */
+                return $this->strFechaSancion;
+
+            case 'FechaVencimiento':
+                /**
+                 * Gets the value for strFechaVencimiento 
+                 * @return string
+                 */
+                return $this->strFechaVencimiento;
+
+            case 'NomenclaturaTextoLey':
+                /**
+                 * Gets the value for strNomenclaturaTextoLey 
+                 * @return string
+                 */
+                return $this->strNomenclaturaTextoLey;
+
+            case 'TasacionAdministrativa':
+                /**
+                 * Gets the value for strTasacionAdministrativa 
+                 * @return string
+                 */
+                return $this->strTasacionAdministrativa;
+
+            case 'PrecioPagado':
+                /**
+                 * Gets the value for strPrecioPagado 
+                 * @return string
+                 */
+                return $this->strPrecioPagado;
+
+            case 'Juzgado':
+                /**
+                 * Gets the value for strJuzgado 
+                 * @return string
+                 */
+                return $this->strJuzgado;
+
+            case 'EstadoProcesoExpropiacion':
+                /**
+                 * Gets the value for intEstadoProcesoExpropiacion 
+                 * @return integer
+                 */
+                return $this->intEstadoProcesoExpropiacion;
+
+            case 'MemoriaDescriptiva':
+                /**
+                 * Gets the value for strMemoriaDescriptiva 
+                 * @return string
+                 */
+                return $this->strMemoriaDescriptiva;
+
 
             ///////////////////
             // Member Objects
@@ -973,6 +1229,20 @@ class EncuadreLegalGen extends QBaseClass {
                     if ((!$this->objIdFolioObject) && (!is_null($this->intIdFolio)))
                         $this->objIdFolioObject = Regularizacion::Load($this->intIdFolio);
                     return $this->objIdFolioObject;
+                } catch (QCallerException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
+
+            case 'EstadoProcesoExpropiacionObject':
+                /**
+                 * Gets the value for the OpcionesEstadoExpropiacion object referenced by intEstadoProcesoExpropiacion 
+                 * @return OpcionesEstadoExpropiacion
+                 */
+                try {
+                    if ((!$this->objEstadoProcesoExpropiacionObject) && (!is_null($this->intEstadoProcesoExpropiacion)))
+                        $this->objEstadoProcesoExpropiacionObject = OpcionesEstadoExpropiacion::Load($this->intEstadoProcesoExpropiacion);
+                    return $this->objEstadoProcesoExpropiacionObject;
                 } catch (QCallerException $objExc) {
                     $objExc->IncrementOffset();
                     throw $objExc;
@@ -1162,6 +1432,127 @@ class EncuadreLegalGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'FechaSancion':
+					/**
+					 * Sets the value for strFechaSancion 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strFechaSancion = QType::Cast($mixValue, QType::String));
+                                                return ($this->strFechaSancion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'FechaVencimiento':
+					/**
+					 * Sets the value for strFechaVencimiento 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strFechaVencimiento = QType::Cast($mixValue, QType::String));
+                                                return ($this->strFechaVencimiento = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'NomenclaturaTextoLey':
+					/**
+					 * Sets the value for strNomenclaturaTextoLey 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strNomenclaturaTextoLey = QType::Cast($mixValue, QType::String));
+                                                return ($this->strNomenclaturaTextoLey = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'TasacionAdministrativa':
+					/**
+					 * Sets the value for strTasacionAdministrativa 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strTasacionAdministrativa = QType::Cast($mixValue, QType::String));
+                                                return ($this->strTasacionAdministrativa = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'PrecioPagado':
+					/**
+					 * Sets the value for strPrecioPagado 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strPrecioPagado = QType::Cast($mixValue, QType::String));
+                                                return ($this->strPrecioPagado = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'Juzgado':
+					/**
+					 * Sets the value for strJuzgado 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strJuzgado = QType::Cast($mixValue, QType::String));
+                                                return ($this->strJuzgado = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'EstadoProcesoExpropiacion':
+					/**
+					 * Sets the value for intEstadoProcesoExpropiacion 
+					 * @param integer $mixValue
+					 * @return integer
+					 */
+					try {
+						$this->objEstadoProcesoExpropiacionObject = null;
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->intEstadoProcesoExpropiacion = QType::Cast($mixValue, QType::Integer));
+                                                return ($this->intEstadoProcesoExpropiacion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'MemoriaDescriptiva':
+					/**
+					 * Sets the value for strMemoriaDescriptiva 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strMemoriaDescriptiva = QType::Cast($mixValue, QType::String));
+                                                return ($this->strMemoriaDescriptiva = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1193,6 +1584,39 @@ class EncuadreLegalGen extends QBaseClass {
 						// Update Local Member Variables
 						$this->objIdFolioObject = $mixValue;
 						$this->intIdFolio = $mixValue->IdFolio;
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
+				case 'EstadoProcesoExpropiacionObject':
+					/**
+					 * Sets the value for the OpcionesEstadoExpropiacion object referenced by intEstadoProcesoExpropiacion 
+					 * @param OpcionesEstadoExpropiacion $mixValue
+					 * @return OpcionesEstadoExpropiacion
+					 */
+					if (is_null($mixValue)) {
+						$this->intEstadoProcesoExpropiacion = null;
+						$this->objEstadoProcesoExpropiacionObject = null;
+						return null;
+					} else {
+						// Make sure $mixValue actually is a OpcionesEstadoExpropiacion object
+						//try {
+						//	$mixValue = QType::Cast($mixValue, 'OpcionesEstadoExpropiacion');
+						//} catch (QInvalidCastException $objExc) {
+						//	$objExc->IncrementOffset();
+						//	throw $objExc;
+						//}
+
+						// DEPRECATED
+                                                // Make sure $mixValue is a SAVED OpcionesEstadoExpropiacion object
+						//if (is_null($mixValue->Id))
+						//	throw new QCallerException('Unable to set an unsaved EstadoProcesoExpropiacionObject for this EncuadreLegal');
+
+						// Update Local Member Variables
+						$this->objEstadoProcesoExpropiacionObject = $mixValue;
+						$this->intEstadoProcesoExpropiacion = $mixValue->Id;
 
 						// Return $mixValue
 						return $mixValue;
@@ -1249,6 +1673,14 @@ class EncuadreLegalGen extends QBaseClass {
 			$strToReturn .= '<element name="Ley14449" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="TieneExpropiacion" type="xsd:boolean"/>';
 			$strToReturn .= '<element name="Otros" type="xsd:string"/>';
+			$strToReturn .= '<element name="FechaSancion" type="xsd:string"/>';
+			$strToReturn .= '<element name="FechaVencimiento" type="xsd:string"/>';
+			$strToReturn .= '<element name="NomenclaturaTextoLey" type="xsd:string"/>';
+			$strToReturn .= '<element name="TasacionAdministrativa" type="xsd:string"/>';
+			$strToReturn .= '<element name="PrecioPagado" type="xsd:string"/>';
+			$strToReturn .= '<element name="Juzgado" type="xsd:string"/>';
+			$strToReturn .= '<element name="EstadoProcesoExpropiacionObject" type="xsd1:OpcionesEstadoExpropiacion"/>';
+			$strToReturn .= '<element name="MemoriaDescriptiva" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1258,6 +1690,7 @@ class EncuadreLegalGen extends QBaseClass {
 			if (!array_key_exists('EncuadreLegal', $strComplexTypeArray)) {
 				$strComplexTypeArray['EncuadreLegal'] = EncuadreLegal::GetSoapComplexTypeXml();
 				$strComplexTypeArray = Regularizacion::AlterSoapComplexTypeArray($strComplexTypeArray);
+				$strComplexTypeArray = OpcionesEstadoExpropiacion::AlterSoapComplexTypeArray($strComplexTypeArray);
 			}
             return $strComplexTypeArray;
 		}
@@ -1306,6 +1739,30 @@ class EncuadreLegalGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Otros')) {
 				$objToReturn->strOtros = $objSoapObject->Otros;
             }
+			if (property_exists($objSoapObject, 'FechaSancion')) {
+				$objToReturn->strFechaSancion = $objSoapObject->FechaSancion;
+            }
+			if (property_exists($objSoapObject, 'FechaVencimiento')) {
+				$objToReturn->strFechaVencimiento = $objSoapObject->FechaVencimiento;
+            }
+			if (property_exists($objSoapObject, 'NomenclaturaTextoLey')) {
+				$objToReturn->strNomenclaturaTextoLey = $objSoapObject->NomenclaturaTextoLey;
+            }
+			if (property_exists($objSoapObject, 'TasacionAdministrativa')) {
+				$objToReturn->strTasacionAdministrativa = $objSoapObject->TasacionAdministrativa;
+            }
+			if (property_exists($objSoapObject, 'PrecioPagado')) {
+				$objToReturn->strPrecioPagado = $objSoapObject->PrecioPagado;
+            }
+			if (property_exists($objSoapObject, 'Juzgado')) {
+				$objToReturn->strJuzgado = $objSoapObject->Juzgado;
+            }
+			if ((property_exists($objSoapObject, 'EstadoProcesoExpropiacionObject')) &&
+				($objSoapObject->EstadoProcesoExpropiacionObject))
+				$objToReturn->EstadoProcesoExpropiacionObject = OpcionesEstadoExpropiacion::GetObjectFromSoapObject($objSoapObject->EstadoProcesoExpropiacionObject);
+			if (property_exists($objSoapObject, 'MemoriaDescriptiva')) {
+				$objToReturn->strMemoriaDescriptiva = $objSoapObject->MemoriaDescriptiva;
+            }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;
 			return $objToReturn;
@@ -1328,6 +1785,10 @@ class EncuadreLegalGen extends QBaseClass {
 				$objObject->objIdFolioObject = Regularizacion::GetSoapObjectFromObject($objObject->objIdFolioObject, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intIdFolio = null;
+			if ($objObject->objEstadoProcesoExpropiacionObject)
+				$objObject->objEstadoProcesoExpropiacionObject = OpcionesEstadoExpropiacion::GetSoapObjectFromObject($objObject->objEstadoProcesoExpropiacionObject, false);
+			else if (!$blnBindRelatedObjects)
+				$objObject->intEstadoProcesoExpropiacion = null;
 			return $objObject;
 		}
 

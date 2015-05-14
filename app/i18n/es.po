@@ -215,3 +215,6 @@ msgstr "Condiciones Socio Urbanisticas"
 
 MsgId "TipoBarrio"
 MsgStr "tipo de barrio"
+
+MsgId "Seleccione un OpcionesEstadoExpropiacion"
+MsgStr "- Seleccione opción -"

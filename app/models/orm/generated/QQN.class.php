@@ -73,6 +73,12 @@
 			return new QQNodeOpcionesEquipamientos('opciones_equipamientos', null, null);
 		}
 		/**
+		 * @return QQNodeOpcionesEstadoExpropiacion
+		 */
+		static public function OpcionesEstadoExpropiacion() {
+			return new QQNodeOpcionesEstadoExpropiacion('opciones_estado_expropiacion', null, null);
+		}
+		/**
 		 * @return QQNodeOpcionesInfraestructura
 		 */
 		static public function OpcionesInfraestructura() {

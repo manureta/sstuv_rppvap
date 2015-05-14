@@ -38,6 +38,22 @@
      * property-read QLabel $TieneExpropiacionLabel
      * property QTextBox $OtrosControl
      * property-read QLabel $OtrosLabel
+     * property QTextBox $FechaSancionControl
+     * property-read QLabel $FechaSancionLabel
+     * property QTextBox $FechaVencimientoControl
+     * property-read QLabel $FechaVencimientoLabel
+     * property QTextBox $NomenclaturaTextoLeyControl
+     * property-read QLabel $NomenclaturaTextoLeyLabel
+     * property QTextBox $TasacionAdministrativaControl
+     * property-read QLabel $TasacionAdministrativaLabel
+     * property QTextBox $PrecioPagadoControl
+     * property-read QLabel $PrecioPagadoLabel
+     * property QTextBox $JuzgadoControl
+     * property-read QLabel $JuzgadoLabel
+     * property QListBox $EstadoProcesoExpropiacionControl
+     * property-read QLabel $EstadoProcesoExpropiacionLabel
+     * property QTextBox $MemoriaDescriptivaControl
+     * property-read QLabel $MemoriaDescriptivaLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -65,6 +81,14 @@
         protected $chkLey14449;
         protected $chkTieneExpropiacion;
         protected $txtOtros;
+        protected $txtFechaSancion;
+        protected $txtFechaVencimiento;
+        protected $txtNomenclaturaTextoLey;
+        protected $txtTasacionAdministrativa;
+        protected $txtPrecioPagado;
+        protected $txtJuzgado;
+        protected $lstEstadoProcesoExpropiacionObject;
+        protected $txtMemoriaDescriptiva;
 
         // Controls that allow the viewing of EncuadreLegal's individual data fields
         protected $lblIdFolio;
@@ -77,6 +101,14 @@
         protected $lblLey14449;
         protected $lblTieneExpropiacion;
         protected $lblOtros;
+        protected $lblFechaSancion;
+        protected $lblFechaVencimiento;
+        protected $lblNomenclaturaTextoLey;
+        protected $lblTasacionAdministrativa;
+        protected $lblPrecioPagado;
+        protected $lblJuzgado;
+        protected $lblEstadoProcesoExpropiacion;
+        protected $lblMemoriaDescriptiva;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -437,6 +469,215 @@
             return $this->lblOtros;
         }
 
+        /**
+         * Create and setup QTextBox txtFechaSancion
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtFechaSancion_Create($strControlId = null) {
+            $this->txtFechaSancion = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtFechaSancion->Name = QApplication::Translate('FechaSancion');
+            $this->txtFechaSancion->Text = $this->objEncuadreLegal->FechaSancion;
+            $this->txtFechaSancion->MaxLength = EncuadreLegal::FechaSancionMaxLength;
+            
+            return $this->txtFechaSancion;
+        }
+
+        /**
+         * Create and setup QLabel lblFechaSancion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblFechaSancion_Create($strControlId = null) {
+            $this->lblFechaSancion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFechaSancion->Name = QApplication::Translate('FechaSancion');
+            $this->lblFechaSancion->Text = $this->objEncuadreLegal->FechaSancion;
+            return $this->lblFechaSancion;
+        }
+
+        /**
+         * Create and setup QTextBox txtFechaVencimiento
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtFechaVencimiento_Create($strControlId = null) {
+            $this->txtFechaVencimiento = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtFechaVencimiento->Name = QApplication::Translate('FechaVencimiento');
+            $this->txtFechaVencimiento->Text = $this->objEncuadreLegal->FechaVencimiento;
+            $this->txtFechaVencimiento->MaxLength = EncuadreLegal::FechaVencimientoMaxLength;
+            
+            return $this->txtFechaVencimiento;
+        }
+
+        /**
+         * Create and setup QLabel lblFechaVencimiento
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblFechaVencimiento_Create($strControlId = null) {
+            $this->lblFechaVencimiento = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFechaVencimiento->Name = QApplication::Translate('FechaVencimiento');
+            $this->lblFechaVencimiento->Text = $this->objEncuadreLegal->FechaVencimiento;
+            return $this->lblFechaVencimiento;
+        }
+
+        /**
+         * Create and setup QTextBox txtNomenclaturaTextoLey
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtNomenclaturaTextoLey_Create($strControlId = null) {
+            $this->txtNomenclaturaTextoLey = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtNomenclaturaTextoLey->Name = QApplication::Translate('NomenclaturaTextoLey');
+            $this->txtNomenclaturaTextoLey->Text = $this->objEncuadreLegal->NomenclaturaTextoLey;
+            $this->txtNomenclaturaTextoLey->MaxLength = EncuadreLegal::NomenclaturaTextoLeyMaxLength;
+            
+            return $this->txtNomenclaturaTextoLey;
+        }
+
+        /**
+         * Create and setup QLabel lblNomenclaturaTextoLey
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblNomenclaturaTextoLey_Create($strControlId = null) {
+            $this->lblNomenclaturaTextoLey = new QLabel($this->objParentObject, $strControlId);
+            $this->lblNomenclaturaTextoLey->Name = QApplication::Translate('NomenclaturaTextoLey');
+            $this->lblNomenclaturaTextoLey->Text = $this->objEncuadreLegal->NomenclaturaTextoLey;
+            return $this->lblNomenclaturaTextoLey;
+        }
+
+        /**
+         * Create and setup QTextBox txtTasacionAdministrativa
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtTasacionAdministrativa_Create($strControlId = null) {
+            $this->txtTasacionAdministrativa = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtTasacionAdministrativa->Name = QApplication::Translate('TasacionAdministrativa');
+            $this->txtTasacionAdministrativa->Text = $this->objEncuadreLegal->TasacionAdministrativa;
+            $this->txtTasacionAdministrativa->MaxLength = EncuadreLegal::TasacionAdministrativaMaxLength;
+            
+            return $this->txtTasacionAdministrativa;
+        }
+
+        /**
+         * Create and setup QLabel lblTasacionAdministrativa
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblTasacionAdministrativa_Create($strControlId = null) {
+            $this->lblTasacionAdministrativa = new QLabel($this->objParentObject, $strControlId);
+            $this->lblTasacionAdministrativa->Name = QApplication::Translate('TasacionAdministrativa');
+            $this->lblTasacionAdministrativa->Text = $this->objEncuadreLegal->TasacionAdministrativa;
+            return $this->lblTasacionAdministrativa;
+        }
+
+        /**
+         * Create and setup QTextBox txtPrecioPagado
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtPrecioPagado_Create($strControlId = null) {
+            $this->txtPrecioPagado = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtPrecioPagado->Name = QApplication::Translate('PrecioPagado');
+            $this->txtPrecioPagado->Text = $this->objEncuadreLegal->PrecioPagado;
+            $this->txtPrecioPagado->MaxLength = EncuadreLegal::PrecioPagadoMaxLength;
+            
+            return $this->txtPrecioPagado;
+        }
+
+        /**
+         * Create and setup QLabel lblPrecioPagado
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblPrecioPagado_Create($strControlId = null) {
+            $this->lblPrecioPagado = new QLabel($this->objParentObject, $strControlId);
+            $this->lblPrecioPagado->Name = QApplication::Translate('PrecioPagado');
+            $this->lblPrecioPagado->Text = $this->objEncuadreLegal->PrecioPagado;
+            return $this->lblPrecioPagado;
+        }
+
+        /**
+         * Create and setup QTextBox txtJuzgado
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtJuzgado_Create($strControlId = null) {
+            $this->txtJuzgado = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtJuzgado->Name = QApplication::Translate('Juzgado');
+            $this->txtJuzgado->Text = $this->objEncuadreLegal->Juzgado;
+            $this->txtJuzgado->MaxLength = EncuadreLegal::JuzgadoMaxLength;
+            
+            return $this->txtJuzgado;
+        }
+
+        /**
+         * Create and setup QLabel lblJuzgado
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblJuzgado_Create($strControlId = null) {
+            $this->lblJuzgado = new QLabel($this->objParentObject, $strControlId);
+            $this->lblJuzgado->Name = QApplication::Translate('Juzgado');
+            $this->lblJuzgado->Text = $this->objEncuadreLegal->Juzgado;
+            return $this->lblJuzgado;
+        }
+
+        /**
+         * Create and setup QAjaxAutoCompleteEntidadTextBox lstEstadoProcesoExpropiacionObject
+         * @param string $strControlId optional ControlId to use
+         * @return QAjaxAutoCompleteEntidadTextBox
+         */
+        public function lstEstadoProcesoExpropiacionObject_Create($strControlId = null) {
+            $this->lstEstadoProcesoExpropiacionObject = new QAjaxAutoCompleteEntidadTextBox($this->objParentObject, 'OpcionesEstadoExpropiacion', 'Id' , $strControlId);
+            if($this->objEncuadreLegal->EstadoProcesoExpropiacionObject){
+                $this->lstEstadoProcesoExpropiacionObject->Text = $this->objEncuadreLegal->EstadoProcesoExpropiacionObject->__toString();
+                $this->lstEstadoProcesoExpropiacionObject->Value = $this->objEncuadreLegal->EstadoProcesoExpropiacionObject->Id;
+            }
+            $this->lstEstadoProcesoExpropiacionObject->Name = QApplication::Translate('EstadoProcesoExpropiacionObject');
+            return $this->lstEstadoProcesoExpropiacionObject;
+        }
+
+        /**
+         * Create and setup QLabel lblEstadoProcesoExpropiacion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblEstadoProcesoExpropiacion_Create($strControlId = null) {
+            $this->lblEstadoProcesoExpropiacion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblEstadoProcesoExpropiacion->Name = QApplication::Translate('EstadoProcesoExpropiacionObject');
+            $this->lblEstadoProcesoExpropiacion->Text = ($this->objEncuadreLegal->EstadoProcesoExpropiacionObject) ? $this->objEncuadreLegal->EstadoProcesoExpropiacionObject->__toString() : null;
+            return $this->lblEstadoProcesoExpropiacion;
+        }
+
+        /**
+         * Create and setup QTextBox txtMemoriaDescriptiva
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtMemoriaDescriptiva_Create($strControlId = null) {
+            $this->txtMemoriaDescriptiva = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtMemoriaDescriptiva->Name = QApplication::Translate('MemoriaDescriptiva');
+            $this->txtMemoriaDescriptiva->Text = $this->objEncuadreLegal->MemoriaDescriptiva;
+            $this->txtMemoriaDescriptiva->TextMode = QTextMode::MultiLine;
+            
+            return $this->txtMemoriaDescriptiva;
+        }
+
+        /**
+         * Create and setup QLabel lblMemoriaDescriptiva
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblMemoriaDescriptiva_Create($strControlId = null) {
+            $this->lblMemoriaDescriptiva = new QLabel($this->objParentObject, $strControlId);
+            $this->lblMemoriaDescriptiva->Name = QApplication::Translate('MemoriaDescriptiva');
+            $this->lblMemoriaDescriptiva->Text = $this->objEncuadreLegal->MemoriaDescriptiva;
+            return $this->lblMemoriaDescriptiva;
+        }
+
 
 
 
@@ -487,6 +728,35 @@
             if ($this->txtOtros) $this->txtOtros->Text = $this->objEncuadreLegal->Otros;
             if ($this->lblOtros) $this->lblOtros->Text = $this->objEncuadreLegal->Otros;
 
+            if ($this->txtFechaSancion) $this->txtFechaSancion->Text = $this->objEncuadreLegal->FechaSancion;
+            if ($this->lblFechaSancion) $this->lblFechaSancion->Text = $this->objEncuadreLegal->FechaSancion;
+
+            if ($this->txtFechaVencimiento) $this->txtFechaVencimiento->Text = $this->objEncuadreLegal->FechaVencimiento;
+            if ($this->lblFechaVencimiento) $this->lblFechaVencimiento->Text = $this->objEncuadreLegal->FechaVencimiento;
+
+            if ($this->txtNomenclaturaTextoLey) $this->txtNomenclaturaTextoLey->Text = $this->objEncuadreLegal->NomenclaturaTextoLey;
+            if ($this->lblNomenclaturaTextoLey) $this->lblNomenclaturaTextoLey->Text = $this->objEncuadreLegal->NomenclaturaTextoLey;
+
+            if ($this->txtTasacionAdministrativa) $this->txtTasacionAdministrativa->Text = $this->objEncuadreLegal->TasacionAdministrativa;
+            if ($this->lblTasacionAdministrativa) $this->lblTasacionAdministrativa->Text = $this->objEncuadreLegal->TasacionAdministrativa;
+
+            if ($this->txtPrecioPagado) $this->txtPrecioPagado->Text = $this->objEncuadreLegal->PrecioPagado;
+            if ($this->lblPrecioPagado) $this->lblPrecioPagado->Text = $this->objEncuadreLegal->PrecioPagado;
+
+            if ($this->txtJuzgado) $this->txtJuzgado->Text = $this->objEncuadreLegal->Juzgado;
+            if ($this->lblJuzgado) $this->lblJuzgado->Text = $this->objEncuadreLegal->Juzgado;
+
+            if ($this->lstEstadoProcesoExpropiacionObject) {
+                if($this->objEncuadreLegal->EstadoProcesoExpropiacionObject){
+                    $this->lstEstadoProcesoExpropiacionObject->Text = $this->objEncuadreLegal->EstadoProcesoExpropiacionObject->__toString();
+                    $this->lstEstadoProcesoExpropiacionObject->Value = $this->objEncuadreLegal->EstadoProcesoExpropiacion->Id;
+                }                
+            }
+            if ($this->lblEstadoProcesoExpropiacion) $this->lblEstadoProcesoExpropiacion->Text = ($this->objEncuadreLegal->EstadoProcesoExpropiacionObject) ? $this->objEncuadreLegal->EstadoProcesoExpropiacionObject->__toString() : null;
+
+            if ($this->txtMemoriaDescriptiva) $this->txtMemoriaDescriptiva->Text = $this->objEncuadreLegal->MemoriaDescriptiva;
+            if ($this->lblMemoriaDescriptiva) $this->lblMemoriaDescriptiva->Text = $this->objEncuadreLegal->MemoriaDescriptiva;
+
         }
 
 
@@ -515,6 +785,14 @@
                 if ($this->chkLey14449) $this->objEncuadreLegal->Ley14449 = $this->chkLey14449->Checked;
                 if ($this->chkTieneExpropiacion) $this->objEncuadreLegal->TieneExpropiacion = $this->chkTieneExpropiacion->Checked;
                 if ($this->txtOtros) $this->objEncuadreLegal->Otros = $this->txtOtros->Text;
+                if ($this->txtFechaSancion) $this->objEncuadreLegal->FechaSancion = $this->txtFechaSancion->Text;
+                if ($this->txtFechaVencimiento) $this->objEncuadreLegal->FechaVencimiento = $this->txtFechaVencimiento->Text;
+                if ($this->txtNomenclaturaTextoLey) $this->objEncuadreLegal->NomenclaturaTextoLey = $this->txtNomenclaturaTextoLey->Text;
+                if ($this->txtTasacionAdministrativa) $this->objEncuadreLegal->TasacionAdministrativa = $this->txtTasacionAdministrativa->Text;
+                if ($this->txtPrecioPagado) $this->objEncuadreLegal->PrecioPagado = $this->txtPrecioPagado->Text;
+                if ($this->txtJuzgado) $this->objEncuadreLegal->Juzgado = $this->txtJuzgado->Text;
+                if ($this->lstEstadoProcesoExpropiacionObject) $this->objEncuadreLegal->EstadoProcesoExpropiacion = $this->lstEstadoProcesoExpropiacionObject->SelectedValue;
+                if ($this->txtMemoriaDescriptiva) $this->objEncuadreLegal->MemoriaDescriptiva = $this->txtMemoriaDescriptiva->Text;
 
 
         }
@@ -637,6 +915,54 @@
                 case 'OtrosLabel':
                     if (!$this->lblOtros) return $this->lblOtros_Create();
                     return $this->lblOtros;
+                case 'FechaSancionControl':
+                    if (!$this->txtFechaSancion) return $this->txtFechaSancion_Create();
+                    return $this->txtFechaSancion;
+                case 'FechaSancionLabel':
+                    if (!$this->lblFechaSancion) return $this->lblFechaSancion_Create();
+                    return $this->lblFechaSancion;
+                case 'FechaVencimientoControl':
+                    if (!$this->txtFechaVencimiento) return $this->txtFechaVencimiento_Create();
+                    return $this->txtFechaVencimiento;
+                case 'FechaVencimientoLabel':
+                    if (!$this->lblFechaVencimiento) return $this->lblFechaVencimiento_Create();
+                    return $this->lblFechaVencimiento;
+                case 'NomenclaturaTextoLeyControl':
+                    if (!$this->txtNomenclaturaTextoLey) return $this->txtNomenclaturaTextoLey_Create();
+                    return $this->txtNomenclaturaTextoLey;
+                case 'NomenclaturaTextoLeyLabel':
+                    if (!$this->lblNomenclaturaTextoLey) return $this->lblNomenclaturaTextoLey_Create();
+                    return $this->lblNomenclaturaTextoLey;
+                case 'TasacionAdministrativaControl':
+                    if (!$this->txtTasacionAdministrativa) return $this->txtTasacionAdministrativa_Create();
+                    return $this->txtTasacionAdministrativa;
+                case 'TasacionAdministrativaLabel':
+                    if (!$this->lblTasacionAdministrativa) return $this->lblTasacionAdministrativa_Create();
+                    return $this->lblTasacionAdministrativa;
+                case 'PrecioPagadoControl':
+                    if (!$this->txtPrecioPagado) return $this->txtPrecioPagado_Create();
+                    return $this->txtPrecioPagado;
+                case 'PrecioPagadoLabel':
+                    if (!$this->lblPrecioPagado) return $this->lblPrecioPagado_Create();
+                    return $this->lblPrecioPagado;
+                case 'JuzgadoControl':
+                    if (!$this->txtJuzgado) return $this->txtJuzgado_Create();
+                    return $this->txtJuzgado;
+                case 'JuzgadoLabel':
+                    if (!$this->lblJuzgado) return $this->lblJuzgado_Create();
+                    return $this->lblJuzgado;
+                case 'EstadoProcesoExpropiacionControl':
+                    if (!$this->lstEstadoProcesoExpropiacionObject) return $this->lstEstadoProcesoExpropiacionObject_Create();
+                    return $this->lstEstadoProcesoExpropiacionObject;
+                case 'EstadoProcesoExpropiacionLabel':
+                    if (!$this->lblEstadoProcesoExpropiacion) return $this->lblEstadoProcesoExpropiacion_Create();
+                    return $this->lblEstadoProcesoExpropiacion;
+                case 'MemoriaDescriptivaControl':
+                    if (!$this->txtMemoriaDescriptiva) return $this->txtMemoriaDescriptiva_Create();
+                    return $this->txtMemoriaDescriptiva;
+                case 'MemoriaDescriptivaLabel':
+                    if (!$this->lblMemoriaDescriptiva) return $this->lblMemoriaDescriptiva_Create();
+                    return $this->lblMemoriaDescriptiva;
                 default:
                     try {
                         return parent::__get($strName);
@@ -681,6 +1007,22 @@
                         return ($this->chkTieneExpropiacion = QType::Cast($mixValue, 'QControl'));
                     case 'OtrosControl':
                         return ($this->txtOtros = QType::Cast($mixValue, 'QControl'));
+                    case 'FechaSancionControl':
+                        return ($this->txtFechaSancion = QType::Cast($mixValue, 'QControl'));
+                    case 'FechaVencimientoControl':
+                        return ($this->txtFechaVencimiento = QType::Cast($mixValue, 'QControl'));
+                    case 'NomenclaturaTextoLeyControl':
+                        return ($this->txtNomenclaturaTextoLey = QType::Cast($mixValue, 'QControl'));
+                    case 'TasacionAdministrativaControl':
+                        return ($this->txtTasacionAdministrativa = QType::Cast($mixValue, 'QControl'));
+                    case 'PrecioPagadoControl':
+                        return ($this->txtPrecioPagado = QType::Cast($mixValue, 'QControl'));
+                    case 'JuzgadoControl':
+                        return ($this->txtJuzgado = QType::Cast($mixValue, 'QControl'));
+                    case 'EstadoProcesoExpropiacionControl':
+                        return ($this->lstEstadoProcesoExpropiacionObject = QType::Cast($mixValue, 'QControl'));
+                    case 'MemoriaDescriptivaControl':
+                        return ($this->txtMemoriaDescriptiva = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

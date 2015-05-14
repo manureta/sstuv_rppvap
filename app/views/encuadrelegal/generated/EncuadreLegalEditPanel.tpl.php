@@ -15,6 +15,14 @@
 		<?php $_CONTROL->chkLey14449->RenderWithName(); ?>
 		<?php $_CONTROL->chkTieneExpropiacion->RenderWithName(); ?>
 		<?php $_CONTROL->txtOtros->RenderWithName(); ?>
+		<?php $_CONTROL->txtFechaSancion->RenderWithName(); ?>
+		<?php $_CONTROL->txtFechaVencimiento->RenderWithName(); ?>
+		<?php $_CONTROL->txtNomenclaturaTextoLey->RenderWithName(); ?>
+		<?php $_CONTROL->txtTasacionAdministrativa->RenderWithName(); ?>
+		<?php $_CONTROL->txtPrecioPagado->RenderWithName(); ?>
+		<?php $_CONTROL->txtJuzgado->RenderWithName(); ?>
+		<?php $_CONTROL->lstEstadoProcesoExpropiacionObject->RenderWithName(); ?>
+		<?php $_CONTROL->txtMemoriaDescriptiva->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

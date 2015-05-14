@@ -19,6 +19,14 @@ class EncuadreLegalEditPanelGen extends EditPanelBase {
         'chkLey14449' => true,
         'chkTieneExpropiacion' => true,
         'txtOtros' => true,
+        'txtFechaSancion' => true,
+        'txtFechaVencimiento' => true,
+        'txtNomenclaturaTextoLey' => true,
+        'txtTasacionAdministrativa' => true,
+        'txtPrecioPagado' => true,
+        'txtJuzgado' => true,
+        'lstEstadoProcesoExpropiacionObject' => true,
+        'txtMemoriaDescriptiva' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -68,6 +76,22 @@ class EncuadreLegalEditPanelGen extends EditPanelBase {
             $this->objControlsArray['chkTieneExpropiacion'] = $this->mctEncuadreLegal->chkTieneExpropiacion_Create();
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctEncuadreLegal->txtOtros_Create();
+        if (in_array('txtFechaSancion',$strControlsArray)) 
+            $this->objControlsArray['txtFechaSancion'] = $this->mctEncuadreLegal->txtFechaSancion_Create();
+        if (in_array('txtFechaVencimiento',$strControlsArray)) 
+            $this->objControlsArray['txtFechaVencimiento'] = $this->mctEncuadreLegal->txtFechaVencimiento_Create();
+        if (in_array('txtNomenclaturaTextoLey',$strControlsArray)) 
+            $this->objControlsArray['txtNomenclaturaTextoLey'] = $this->mctEncuadreLegal->txtNomenclaturaTextoLey_Create();
+        if (in_array('txtTasacionAdministrativa',$strControlsArray)) 
+            $this->objControlsArray['txtTasacionAdministrativa'] = $this->mctEncuadreLegal->txtTasacionAdministrativa_Create();
+        if (in_array('txtPrecioPagado',$strControlsArray)) 
+            $this->objControlsArray['txtPrecioPagado'] = $this->mctEncuadreLegal->txtPrecioPagado_Create();
+        if (in_array('txtJuzgado',$strControlsArray)) 
+            $this->objControlsArray['txtJuzgado'] = $this->mctEncuadreLegal->txtJuzgado_Create();
+        if (in_array('lstEstadoProcesoExpropiacionObject',$strControlsArray)) 
+            $this->objControlsArray['lstEstadoProcesoExpropiacionObject'] = $this->mctEncuadreLegal->lstEstadoProcesoExpropiacionObject_Create();
+        if (in_array('txtMemoriaDescriptiva',$strControlsArray)) 
+            $this->objControlsArray['txtMemoriaDescriptiva'] = $this->mctEncuadreLegal->txtMemoriaDescriptiva_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

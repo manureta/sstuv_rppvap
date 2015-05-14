@@ -253,6 +253,27 @@
     QApplication::$ClassFile['qqreversereferencenodeopcionesequipamientos'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeOpcionesEquipamientos.class.php';
 
 
+    // ClassPaths for the OpcionesEstadoExpropiacion class
+    QApplication::$ClassFile['opcionesestadoexpropiacionindexpanelgen'] = __CONTROLLER_DIR__.'/opcionesestadoexpropiacion/generated/OpcionesEstadoExpropiacionIndexPanelGen.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiacioneditpanelgen'] = __CONTROLLER_DIR__.'/opcionesestadoexpropiacion/generated/OpcionesEstadoExpropiacionEditPanelGen.class.php';
+
+    QApplication::$ClassFile['opcionesestadoexpropiacionindexpanel'] = __CONTROLLER_DIR__.'/opcionesestadoexpropiacion/OpcionesEstadoExpropiacionIndexPanel.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiacioneditpanel'] = __CONTROLLER_DIR__.'/opcionesestadoexpropiacion/OpcionesEstadoExpropiacionEditPanel.class.php';
+
+    QApplication::$ClassFile['opcionesestadoexpropiacionmodalpanel'] = __CONTROLLER_DIR__.'/opcionesestadoexpropiacion/OpcionesEstadoExpropiacionModalPanel.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiacionmodalpanelgen'] = __CONTROLLER_DIR__.'/opcionesestadoexpropiacion/generated/OpcionesEstadoExpropiacionModalPanelGen.class.php';
+
+    QApplication::$ClassFile['opcionesestadoexpropiaciondatagridgen'] = __HELPER_DIR__.'/opcionesestadoexpropiacion/generated/OpcionesEstadoExpropiacionDataGridGen.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiacionmetacontrolgen'] = __HELPER_DIR__.'/opcionesestadoexpropiacion/generated/OpcionesEstadoExpropiacionMetaControlGen.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiaciondatagrid'] = __HELPER_DIR__.'/opcionesestadoexpropiacion/OpcionesEstadoExpropiacionDataGrid.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiacionmetacontrol'] = __HELPER_DIR__.'/opcionesestadoexpropiacion/OpcionesEstadoExpropiacionMetaControl.class.php';
+
+    QApplication::$ClassFile['opcionesestadoexpropiaciongen'] = __MODEL_DIR__.'/orm/generated/OpcionesEstadoExpropiacionGen.class.php';
+    QApplication::$ClassFile['opcionesestadoexpropiacion'] = __MODEL_DIR__.'/orm/OpcionesEstadoExpropiacion.class.php';
+    QApplication::$ClassFile['qqnodeopcionesestadoexpropiacion'] = __MODEL_DIR__.'/orm/generated/QQNodeOpcionesEstadoExpropiacion.class.php';
+    QApplication::$ClassFile['qqreversereferencenodeopcionesestadoexpropiacion'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeOpcionesEstadoExpropiacion.class.php';
+
+
     // ClassPaths for the OpcionesInfraestructura class
     QApplication::$ClassFile['opcionesinfraestructuraindexpanelgen'] = __CONTROLLER_DIR__.'/opcionesinfraestructura/generated/OpcionesInfraestructuraIndexPanelGen.class.php';
     QApplication::$ClassFile['opcionesinfraestructuraeditpanelgen'] = __CONTROLLER_DIR__.'/opcionesinfraestructura/generated/OpcionesInfraestructuraEditPanelGen.class.php';

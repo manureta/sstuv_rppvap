@@ -53,10 +53,19 @@
                         <?php $_CONTROL->pnlEncuadre->chkLey23073->RenderWithName(); ?>                        
                         <?php $_CONTROL->pnlEncuadre->chkDecreto468696->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkLey14449->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->chkTieneExpropiacion->RenderWithName(); ?>
-                        <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtOtros->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->chkTieneExpropiacion->RenderWithName(); ?>
+                        
                        
+                        <?php $_CONTROL->pnlEncuadre->txtExpropiacion->RenderWithName(); ?>                        
+                        <?php $_CONTROL->pnlEncuadre->txtFechaSancion->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtFechaVencimiento->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtNomenclaturaTextoLey->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtTasacionAdministrativa->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtPrecioPagado->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtJuzgado->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->lstEstadoProcesoExpropiacionObject->RenderWithName(); ?>
+                        <?php $_CONTROL->pnlEncuadre->txtMemoriaDescriptiva->RenderWithName(); ?>
 		                    
 		        	</div>    
     			</div>        

@@ -31,6 +31,14 @@ class EncuadreLegalDataGridGen extends QFilteredDataGrid {
         'Ley14449' => true,
         'TieneExpropiacion' => true,
         'Otros' => true,
+        'FechaSancion' => true,
+        'FechaVencimiento' => true,
+        'NomenclaturaTextoLey' => true,
+        'TasacionAdministrativa' => true,
+        'PrecioPagado' => true,
+        'Juzgado' => true,
+        'EstadoProcesoExpropiacionObject' => true,
+        'MemoriaDescriptiva' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -74,6 +82,14 @@ class EncuadreLegalDataGridGen extends QFilteredDataGrid {
         if (EncuadreLegalDataGrid::$strColumnsArray['Ley14449']) $this->MetaAddColumn('Ley14449')->Title = QApplication::Translate('Ley14449');
         if (EncuadreLegalDataGrid::$strColumnsArray['TieneExpropiacion']) $this->MetaAddColumn('TieneExpropiacion')->Title = QApplication::Translate('TieneExpropiacion');
         if (EncuadreLegalDataGrid::$strColumnsArray['Otros']) $this->MetaAddColumn('Otros')->Title = QApplication::Translate('Otros');
+        if (EncuadreLegalDataGrid::$strColumnsArray['FechaSancion']) $this->MetaAddColumn('FechaSancion')->Title = QApplication::Translate('FechaSancion');
+        if (EncuadreLegalDataGrid::$strColumnsArray['FechaVencimiento']) $this->MetaAddColumn('FechaVencimiento')->Title = QApplication::Translate('FechaVencimiento');
+        if (EncuadreLegalDataGrid::$strColumnsArray['NomenclaturaTextoLey']) $this->MetaAddColumn('NomenclaturaTextoLey')->Title = QApplication::Translate('NomenclaturaTextoLey');
+        if (EncuadreLegalDataGrid::$strColumnsArray['TasacionAdministrativa']) $this->MetaAddColumn('TasacionAdministrativa')->Title = QApplication::Translate('TasacionAdministrativa');
+        if (EncuadreLegalDataGrid::$strColumnsArray['PrecioPagado']) $this->MetaAddColumn('PrecioPagado')->Title = QApplication::Translate('PrecioPagado');
+        if (EncuadreLegalDataGrid::$strColumnsArray['Juzgado']) $this->MetaAddColumn('Juzgado')->Title = QApplication::Translate('Juzgado');
+        if (EncuadreLegalDataGrid::$strColumnsArray['EstadoProcesoExpropiacionObject']) $this->MetaAddColumn(QQN::EncuadreLegal()->EstadoProcesoExpropiacionObject)->Title = QApplication::Translate('EstadoProcesoExpropiacionObject');
+        if (EncuadreLegalDataGrid::$strColumnsArray['MemoriaDescriptiva']) $this->MetaAddColumn('MemoriaDescriptiva')->Title = QApplication::Translate('MemoriaDescriptiva');
     }
 
 /**
@@ -232,6 +248,15 @@ class EncuadreLegalDataGridGen extends QFilteredDataGrid {
 				case 'Ley14449': return QQN::EncuadreLegal()->Ley14449;
 				case 'TieneExpropiacion': return QQN::EncuadreLegal()->TieneExpropiacion;
 				case 'Otros': return QQN::EncuadreLegal()->Otros;
+				case 'FechaSancion': return QQN::EncuadreLegal()->FechaSancion;
+				case 'FechaVencimiento': return QQN::EncuadreLegal()->FechaVencimiento;
+				case 'NomenclaturaTextoLey': return QQN::EncuadreLegal()->NomenclaturaTextoLey;
+				case 'TasacionAdministrativa': return QQN::EncuadreLegal()->TasacionAdministrativa;
+				case 'PrecioPagado': return QQN::EncuadreLegal()->PrecioPagado;
+				case 'Juzgado': return QQN::EncuadreLegal()->Juzgado;
+				case 'EstadoProcesoExpropiacion': return QQN::EncuadreLegal()->EstadoProcesoExpropiacion;
+				case 'EstadoProcesoExpropiacionObject': return QQN::EncuadreLegal()->EstadoProcesoExpropiacionObject;
+				case 'MemoriaDescriptiva': return QQN::EncuadreLegal()->MemoriaDescriptiva;
 				default: throw new QCallerException('Simple Property not found in EncuadreLegalDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

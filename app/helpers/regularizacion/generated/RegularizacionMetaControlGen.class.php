@@ -301,6 +301,14 @@
         $strConfigArray['Columns']['Ley14449'] = QApplication::Translate('Ley14449');
         $strConfigArray['Columns']['TieneExpropiacion'] = QApplication::Translate('TieneExpropiacion');
         $strConfigArray['Columns']['Otros'] = QApplication::Translate('Otros');
+        $strConfigArray['Columns']['FechaSancion'] = QApplication::Translate('FechaSancion');
+        $strConfigArray['Columns']['FechaVencimiento'] = QApplication::Translate('FechaVencimiento');
+        $strConfigArray['Columns']['NomenclaturaTextoLey'] = QApplication::Translate('NomenclaturaTextoLey');
+        $strConfigArray['Columns']['TasacionAdministrativa'] = QApplication::Translate('TasacionAdministrativa');
+        $strConfigArray['Columns']['PrecioPagado'] = QApplication::Translate('PrecioPagado');
+        $strConfigArray['Columns']['Juzgado'] = QApplication::Translate('Juzgado');
+        $strConfigArray['Columns']['EstadoProcesoExpropiacionObject'] = QApplication::Translate('EstadoProcesoExpropiacionObject');
+        $strConfigArray['Columns']['MemoriaDescriptiva'] = QApplication::Translate('MemoriaDescriptiva');
 
         $this->lstEncuadreLegalAsIdFolio = new QListPanel($this->objParentObject, $this->objRegularizacion, $strConfigArray, $strControlId);
         $this->lstEncuadreLegalAsIdFolio->Name = EncuadreLegal::Noun();

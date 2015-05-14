@@ -219,13 +219,71 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
 
     public function TieneExpropiacion_chk(){
         if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
+            
             $this->pnlEncuadre->txtExpropiacion->Enabled=true;
             $this->pnlEncuadre->txtExpropiacion->Visible=true;
+
+            $this->pnlEncuadre->txtFechaSancion->Enabled=true;
+            $this->pnlEncuadre->txtFechaSancion->Visible=true;
+        
+            $this->pnlEncuadre->txtFechaVencimiento->Enabled=true;
+            $this->pnlEncuadre->txtFechaVencimiento->Visible=true;
+            
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=true;
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=true;
+
+            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=true;
+            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=true;
+            
+            $this->pnlEncuadre->txtPrecioPagado->Enabled=true;
+            $this->pnlEncuadre->txtPrecioPagado->Visible=true;
+            
+            $this->pnlEncuadre->txtJuzgado->Enabled=true;
+            $this->pnlEncuadre->txtJuzgado->Visible=true;
+            
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=true;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=true;
+            
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=true;
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=true;
 
         }else{
             $this->pnlEncuadre->txtExpropiacion->Text='';
             $this->pnlEncuadre->txtExpropiacion->Visible=false;
             $this->pnlEncuadre->txtExpropiacion->Enabled=false;
+
+            $this->pnlEncuadre->txtFechaSancion->Text='';
+            $this->pnlEncuadre->txtFechaSancion->Enabled=false;
+            $this->pnlEncuadre->txtFechaSancion->Visible=false;
+        
+            $this->pnlEncuadre->txtFechaVencimiento->Text=''; 
+            $this->pnlEncuadre->txtFechaVencimiento->Enabled=false;
+            $this->pnlEncuadre->txtFechaVencimiento->Visible=false;
+            
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Text='';
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=false;
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=false;
+
+            $this->pnlEncuadre->txtTasacionAdministrativa->Text='';
+            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=false;
+            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=false;
+            
+            $this->pnlEncuadre->txtPrecioPagado->Text='';
+            $this->pnlEncuadre->txtPrecioPagado->Enabled=false;
+            $this->pnlEncuadre->txtPrecioPagado->Visible=false;
+            
+            $this->pnlEncuadre->txtJuzgado->Text='';
+            $this->pnlEncuadre->txtJuzgado->Enabled=false;
+            $this->pnlEncuadre->txtJuzgado->Visible=false;
+            
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Value=null;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Text=null;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=false;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=false;
+            
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Text='';
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=false;
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=false;
         }
     }
 

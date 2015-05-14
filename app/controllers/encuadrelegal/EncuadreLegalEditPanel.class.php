@@ -16,10 +16,18 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
         'chkDecreto81588' => true,
         'chkLey23073' => true,
         'chkDecreto468696' => true,
-        'chkLey14449' => true,
         'txtExpropiacion' => true,
+        'chkLey14449' => true,
+        'chkTieneExpropiacion' => true,
         'txtOtros' => true,
-        'chkTieneExpropiacion' => true
+        'txtFechaSancion' => true,
+        'txtFechaVencimiento' => true,
+        'txtNomenclaturaTextoLey' => true,
+        'txtTasacionAdministrativa' => true,
+        'txtPrecioPagado' => true,
+        'txtJuzgado' => true,
+        'lstEstadoProcesoExpropiacionObject' => true,
+        'txtMemoriaDescriptiva' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -84,7 +92,29 @@ class EncuadreLegalEditPanel extends EncuadreLegalEditPanelGen {
             $this->objControlsArray['txtExpropiacion']->Name="Nro Ley Expropiación";
         if (in_array('txtOtros',$strControlsArray)) 
             $this->objControlsArray['txtOtros'] = $this->mctEncuadreLegal->txtOtros_Create();
-
+        if (in_array('txtFechaSancion',$strControlsArray)) 
+            $this->objControlsArray['txtFechaSancion'] = $this->mctEncuadreLegal->txtFechaSancion_Create();
+            $this->objControlsArray['txtFechaSancion']->Name="Fecha Sanción";
+        if (in_array('txtFechaVencimiento',$strControlsArray)) 
+            $this->objControlsArray['txtFechaVencimiento'] = $this->mctEncuadreLegal->txtFechaVencimiento_Create();
+            $this->objControlsArray['txtFechaVencimiento']->Name="Fecha Vencimiento";
+        if (in_array('txtNomenclaturaTextoLey',$strControlsArray)) 
+            $this->objControlsArray['txtNomenclaturaTextoLey'] = $this->mctEncuadreLegal->txtNomenclaturaTextoLey_Create();
+            $this->objControlsArray['txtNomenclaturaTextoLey']->Name="Nomenclatura texto Ley";
+        if (in_array('txtTasacionAdministrativa',$strControlsArray)) 
+            $this->objControlsArray['txtTasacionAdministrativa'] = $this->mctEncuadreLegal->txtTasacionAdministrativa_Create();
+            $this->objControlsArray['txtTasacionAdministrativa']->Name="Tasación administrativa";
+        if (in_array('txtPrecioPagado',$strControlsArray)) 
+            $this->objControlsArray['txtPrecioPagado'] = $this->mctEncuadreLegal->txtPrecioPagado_Create();
+            $this->objControlsArray['txtPrecioPagado']->Name="Precio Pagado";
+        if (in_array('txtJuzgado',$strControlsArray)) 
+            $this->objControlsArray['txtJuzgado'] = $this->mctEncuadreLegal->txtJuzgado_Create();
+        if (in_array('lstEstadoProcesoExpropiacionObject',$strControlsArray)) 
+            $this->objControlsArray['lstEstadoProcesoExpropiacionObject'] = $this->mctEncuadreLegal->lstEstadoProcesoExpropiacionObject_Create();
+            $this->objControlsArray['lstEstadoProcesoExpropiacionObject']->Name="Estado del proceso de expropiación";
+        if (in_array('txtMemoriaDescriptiva',$strControlsArray)) 
+            $this->objControlsArray['txtMemoriaDescriptiva'] = $this->mctEncuadreLegal->txtMemoriaDescriptiva_Create();
+            $this->objControlsArray['txtMemoriaDescriptiva']->Name="Memoria Descriptiva del seguimiento";
     }
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
         //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
