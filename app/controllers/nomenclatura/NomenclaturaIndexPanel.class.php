@@ -78,15 +78,17 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $intIdFolio=QApplication::QueryString("id");
         $strQuery="select distinct(estado_geografico) as estado, count(*) as cantidad from nomenclatura where id_folio=$intIdFolio group by estado_geografico;";
         try {
+                
                 $objDatabase = QApplication::$Database[1];
                 $objDbResult = $objDatabase->Query($strQuery);
                 $text="";
-                while ($row = $objDbResult->FetchArray()) {
+                if($objDbResult->CountRows()==0)return false;                    
+                while ($row = $objDbResult->FetchArray()) {                                                                
                     if($row['estado']=='')$row['estado']='vacio';
-		    $clase=$class[$row['estado']];	
+                    $clase=$class[$row['estado']];  
                     $text=$text."<div class=$clase><p class='text-center'>Hay <strong>".$row['cantidad']."</strong> ".$msj[$row['estado']]."</p></div>";
-
-                }
+                }    
+                
                 QApplication::DisplayAlert($text);
                 } catch (Exception $e) {
                     QApplication::DisplayAlert("<div class='alert-danger'>Hubo un error al intentar analizar las parcelas del barrio.<div>");

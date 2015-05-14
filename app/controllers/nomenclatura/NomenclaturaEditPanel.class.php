@@ -115,6 +115,7 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         // Delegate "Save" processing to the NomenclaturaMetaControl
         $this->mctNomenclatura->Save();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
+        $this->actualizarEstadoNomenclaturas();
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctNomenclatura->Nomenclatura->IdFolio) ; 
     }
     public function btnCancel_Click($strFormId, $strControlId, $strParameter){
