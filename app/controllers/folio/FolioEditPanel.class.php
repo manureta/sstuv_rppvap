@@ -308,7 +308,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $ui->save();
                 //Calculo las nomenclaturas
                 $this->calcular_nomenclaturas();
-                QApplication::DisplayAlert("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>");
+                QApplication::DisplayNotification("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>");
                 //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
             }else{
 
@@ -374,7 +374,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         try {
             $cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
             $gid=$this->mctFolio->Folio->Id;
-            $strQuery = "select gid,nomencla,partida from parcelas where partido=$cod AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
+            $strQuery = "select gid,nomencla,partida from parcelas where partido=$cod AND nomencla not in(SELECT  (((((lpad(n.partido::text, 3, '0'::text) || lpad(n.circ::text, 2, '0'::text)) || lpad(n.secc::text, 2, '0'::text)) || lpad(n.chac_quinta::text, 14, '0'::text)) || lpad(n.frac::text, 7, '0'::text)) || lpad(n.mza::text, 7, '0'::text)) || lpad(n.parc::text, 7, '0'::text) AS nomencla FROM nomenclatura n where id_folio=$gid ) AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
             
             $objDatabase = QApplication::$Database[1];
 
@@ -411,9 +411,9 @@ class FolioEditPanel extends FolioEditPanelGen {
     	    	               
 	    
 	 }
+     
 
      protected function actualizarEstadoNomenclaturas(){
-         error_log("entro a actualizarEstadoNomenclaturas");
          $objDatabase = QApplication::$Database[1];
          $id_folio=$this->mctFolio->Folio->Id; 
          try {             
