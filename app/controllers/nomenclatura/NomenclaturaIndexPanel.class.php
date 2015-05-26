@@ -47,11 +47,15 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $this->btnMapa = new QLinkButton($this);
         $this->btnMapa->Text = 'Mostrar Perímetro Barrio';               
         $this->btnMapa->AddAction(new QClickEvent(), new QAjaxControlAction($this,'mostrar_mapa'));
-        */ 
-        $this->btnRecalcular = new QLinkButton($this);
-        $this->btnRecalcular->Text = 'Actualizar Nomenclatura y Dominio';  
-        $this->btnRecalcular->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere recalcular las nomenclaturas y dominios de este folio?')));             
-        $this->btnRecalcular->AddAction(new QClickEvent(), new QAjaxControlAction($this,'recalcular'));
+        */
+        if(Permission::EsAdministrador()){
+         $this->btnRecalcular = new QLinkButton($this);
+         $this->btnRecalcular->Text = 'Actualizar Nomenclatura y Dominio';  
+         $this->btnRecalcular->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere recalcular las nomenclaturas y dominios de este folio?')));             
+         $this->btnRecalcular->AddAction(new QClickEvent(), new QAjaxControlAction($this,'recalcular'));
+            
+        } 
+        
         
         $this->blnAutoRenderChildren = false;
         

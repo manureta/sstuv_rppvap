@@ -51,7 +51,9 @@
                       <span class="sr-only"></span>
                      <?php $_CONTROL->btnAnalizar->Render(); ?>
                     </div>
+                    <?php } ?>
                     
+                    <?php if(Permission::EsAdministrador()){ ?>
                     <div class="alert alert-danger msg-nomenclatura" role="alert">
                       <span class="icon-exclamation-sign" aria-hidden="true"></span>
                       <span class="sr-only"></span>
