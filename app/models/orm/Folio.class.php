@@ -77,7 +77,7 @@ class Folio extends FolioGen {
     }
 	
 	public function calcular_nomenclaturas(){
-        Permission::Log("Calculando nomenclaturas de FOLIO ".$this->intId);
+        Permission::Log("Calculando/Actualizando las nomenclaturas de FOLIO ".$this->intId);
         try {
             $cod=intval($this->IdPartidoObject->CodPartido);
             $gid=$this->intId;
@@ -122,11 +122,11 @@ class Folio extends FolioGen {
 	 
 	public function actualizarEstadoNomenclaturas(){
         try{
-         Permission::Log("actualizando estado geografico de nomenc del FOLIO ".$this->intId);
+         Permission::Log("Actualizando estado geografico de nomenc del FOLIO ".$this->intId);
          $objDatabase = QApplication::$Database[1];
          $id_folio=$this->intId;
          $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
-         $objDatabase->NonQuery($strQuery);   
+         $objDatabase->NonQuery($strQuery);
         }catch(Exception $e){
           QApplication::DisplayAlert("<p>Hubo un error al actualizar la geometria de las nomenclaturas:</p>".$e->getMessage());  
         }

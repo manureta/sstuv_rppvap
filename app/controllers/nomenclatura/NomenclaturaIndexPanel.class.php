@@ -124,7 +124,6 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     
     protected function buscarTitularDominio($nomencla,$partido){
         if(isset($partido) && isset($nomencla)){
-            Permission::Log("buscando el titular de dominio de ".$nomencla);
             $objDatabase = QApplication::$Database[1];
             $strQuery="select titular_dominio from parcelas where partido='$partido' and nomencla='$nomencla'";
             $objDbResult = $objDatabase->Query($strQuery);
@@ -138,6 +137,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     }
 
     protected function actualizarDominio(){
+        Permission::Log("Actualizando los dominios");
         //actualiza titular de dominio de las nomenclaturas
         $arrTitularesNulos=Nomenclatura::QueryArray(
             QQ::AndCondition(
@@ -145,14 +145,18 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
                 QQ::Equal(QQN::Nomenclatura()->TitularDominio,NULL),
                 QQ::Equal(QQN::Nomenclatura()->TitularDominio,'')
              ),            
-             QQ::Equal(QQN::Nomenclatura()->IdFolio,$this->mctNomenclatura->Nomenclatura->IdFolio)
+             QQ::Equal(QQN::Nomenclatura()->IdFolio,QApplication::QueryString("id"))
             )
         );
-        $i=1;   
+        
         foreach ($arrTitularesNulos as $reg) {   
             $nomencla=$reg->Partido.$reg->Circ.$reg->Secc.$reg->ChacQuinta.$reg->Frac.$reg->Mza.$reg->Parc;
-            $reg->TitularDominio=$this->buscarTitularDominio($nomencla,$reg->Partido);
-            $reg->Save();
+            if(!is_null($nomencla) && strlen($nomencla)==42){
+              $nuevoTitular=$this->buscarTitularDominio($nomencla,$reg->Partido);	
+              $reg->TitularDominio=($nuevoTitular=='')?$reg->TitularDominio:$nuevoTitular;
+              $reg->Save();    
+            }
+            
         }
         
      }
@@ -163,8 +167,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         // Funcion para actualizar nomenclaturas y dominios
         Permission::Log("Actualizando dominio y nomenclaturas de FOLIO ".QApplication::QueryString("id"));
         Folio::load(QApplication::QueryString("id"))->calcular_nomenclaturas();
-        $this->actualizarDominio();
-        Permision::Log("Recargando la pagina");
+        $this->actualizarDominio();        
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/".QApplication::QueryString("id"));
     }
 
