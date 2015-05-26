@@ -136,3 +136,7 @@ body{
 label {
     margin-bottom: 0px !IMPORTANT;
 }
+
+.alert-danger a{
+  color:#b94a48;
+}

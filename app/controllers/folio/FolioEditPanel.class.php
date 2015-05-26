@@ -284,6 +284,7 @@ class FolioEditPanel extends FolioEditPanelGen {
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
         if($this->txtSuperficie->Text=='')$this->txtSuperficie->Text=0;
         if($this->GeometriaValida()){
+            Permission::Log("Guardando FOLIO ".$this->mctFolio->Folio->Id);
             parent::btnSave_Click($strFormId, $strControlId, $strParameter);
             // Delegate "Save" processing to the FolioMetaControl                
             $this->mctFolio->Save();
@@ -307,17 +308,13 @@ class FolioEditPanel extends FolioEditPanelGen {
                 $ui->MapeoPreliminar=true;
                 $ui->save();
                 //Calculo las nomenclaturas
-                $this->calcular_nomenclaturas();
-                QApplication::DisplayNotification("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>");
-                //QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctFolio->Folio->Id); 
+                $this->mctFolio->Folio->calcular_nomenclaturas();
+                QApplication::DisplayNotification("<p>Se calcularon automáticamente las Nomenclaturas y las puede ver en la pestaña 'Nomenclatura Catastral y Dominio'</p><p>Ya puede adjuntar archivos en la pestaña de 'Datos Generales del Barrio'</p>"); 
             }else{
 
                 //$this->actualizarEstadoNomenclaturas();          
                 if($this->geom_original!==$this->txtGeom->Text) {
-                    // borrar las nomenclaturas existentes
-                    $this->borrar_nomenclaturas();
-                    //volver a calcular
-                    $this->calcular_nomenclaturas();
+                    $this->mctFolio->Folio->calcular_nomenclaturas();
                 }
             }
             QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/view/". $this->mctFolio->Folio->Id);                 
@@ -370,62 +367,11 @@ class FolioEditPanel extends FolioEditPanelGen {
         $this->lstAnioOrigen->AddItem("Década del 90 o anterior ","90_o_anterior",($strValor=="90_o_anterior"));
     }
 
-    public function calcular_nomenclaturas(){
-        try {
-            $cod=intval($this->mctFolio->Folio->IdPartidoObject->CodPartido);
-            $gid=$this->mctFolio->Folio->Id;
-            $strQuery = "select gid,nomencla,partida from parcelas where partido=$cod AND nomencla not in(SELECT  (((((lpad(n.partido::text, 3, '0'::text) || lpad(n.circ::text, 2, '0'::text)) || lpad(n.secc::text, 2, '0'::text)) || lpad(n.chac_quinta::text, 14, '0'::text)) || lpad(n.frac::text, 7, '0'::text)) || lpad(n.mza::text, 7, '0'::text)) || lpad(n.parc::text, 7, '0'::text) AS nomencla FROM nomenclatura n where id_folio=$gid ) AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
-            
-            $objDatabase = QApplication::$Database[1];
-
-            // Perform the Query
-            $objDbResult = $objDatabase->Query($strQuery);
-            
-            while ($row = $objDbResult->FetchArray()) {
-               
-                $nomencla=$row['nomencla'];
-                $partida=$row['partida'];
-                $nom = new Nomenclatura();
-                $nom->IdFolio = $this->mctFolio->Folio->Id;
-                $nom->PartidaInmobiliaria = $partida;
-                $nom->TitularDominio = '';
-                $nom->Partido = substr($nomencla,0,3);
-                $nom->Circ = substr($nomencla,3,2);//2
-                $nom->Secc = substr($nomencla,5,2);//2
-                $nom->ChacQuinta = substr($nomencla,7,14);//14
-                $nom->Frac = substr($nomencla,21,7);//7
-                $nom->Mza = substr($nomencla,28,7);//7;
-                $nom->Parc = substr($nomencla,35,7);//7;
-                $nom->InscripcionDominio = '';
-                $nom->EstadoGeografico='';
-                $nom->DatoVerificadoRegPropiedad = false;
-                $nom->Save();
-                
-            }                     
-        } catch (Exception $e) {
-            QApplication::DisplayAlert("<p>Error al calcular las nomenclaturas del barrio</p>");
-            // mandar mail
-            error_log($e);
-        }
-        $this->actualizarEstadoNomenclaturas();
-    	    	               
-	    
-	 }
+    
      
 
-     protected function actualizarEstadoNomenclaturas(){
-         $objDatabase = QApplication::$Database[1];
-         $id_folio=$this->mctFolio->Folio->Id; 
-         try {             
-             $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
-             $objDatabase->NonQuery($strQuery);
-         } catch (Exception $e) {
-            QApplication::DisplayAlert("<p>No se pudo actualizar la columna de los estados geograficos de las nomenclaturas del Folio.</p><p>Este error generalmente indica que no existe la funcion actualizar_estado_nomenclaturas en la base de datos.</p>"); 
-            error_log($e);
-         }
-         
-     }
-
+     
+/*
      protected function borrar_nomenclaturas(){
          $objDatabase = QApplication::$Database[1];
          $id_folio=$this->mctFolio->Folio->Id; 
@@ -438,7 +384,7 @@ class FolioEditPanel extends FolioEditPanelGen {
          }
          
      }
-
+*/
      protected function setearValorMatricula($strCodPartido){
         if($strCodPartido){
             //calculo Matricula

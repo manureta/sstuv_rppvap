@@ -52,10 +52,10 @@
                      <?php $_CONTROL->btnAnalizar->Render(); ?>
                     </div>
                     
-                    <div class="alert alert-info msg-nomenclatura" role="alert">
-                      <span class="icon-map-marker" aria-hidden="true"></span>
+                    <div class="alert alert-danger msg-nomenclatura" role="alert">
+                      <span class="icon-exclamation-sign" aria-hidden="true"></span>
                       <span class="sr-only"></span>
-                     <?php $_CONTROL->btnMapa->Render(); ?>
+                     <?php $_CONTROL->btnRecalcular->Render(); ?>
                     </div>
                     <?php } ?>
                 </p> 

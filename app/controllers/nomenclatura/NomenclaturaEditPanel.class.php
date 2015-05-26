@@ -115,8 +115,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         // Delegate "Save" processing to the NomenclaturaMetaControl
         $this->mctNomenclatura->Save();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
-        $this->actualizarEstadoNomenclaturas();
-        $this->actualizarDominio();
+        QApplication::DisplayNotification('Calculando los estados geograficos de las nomenclaturas ...');
+        Folio::load($this->mctNomenclatura->Nomenclatura->IdFolio)->actualizarEstadoNomenclaturas();
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctNomenclatura->Nomenclatura->IdFolio) ; 
     }
     public function btnCancel_Click($strFormId, $strControlId, $strParameter){
@@ -134,50 +134,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
        }
 
         parent::buttons_Create($blnDelete);
-        
+                
     }
-
-    public function actualizarEstadoNomenclaturas(){
-         $objDatabase = QApplication::$Database[1];
-         $id_folio=$this->mctNomenclatura->Nomenclatura->IdFolio;
-         $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
-         $objDatabase->NonQuery($strQuery);
-    }
-
-    protected function buscarTitularDominio($nomencla,$partido){
-        if(isset($partido) && isset($nomencla)){
-            error_log("calculando ".$nomencla);
-            $objDatabase = QApplication::$Database[1];
-            $strQuery="select nomencla from parcelas where partido='$partido' and nomencla='$nomencla'";
-            $objDbResult = $objDatabase->Query($strQuery);
-            $row = $objDbResult->FetchArray();
-            return $row['nomencla'];
-        }else{
-            //error_log("error: ".$nomencla."-".$partido);
-            return '';
-        }
-        
-    }
-
-    protected function actualizarDominio(){
-        //actualiza titular de dominio de las nomenclaturas
-        $arrTitularesNulos=Nomenclatura::QueryArray(
-            QQ::AndCondition(
-             QQ::OrCondition(
-                QQ::Equal(QQN::Nomenclatura()->TitularDominio,NULL),
-                QQ::Equal(QQN::Nomenclatura()->TitularDominio,'')
-             ),            
-             QQ::Equal(QQN::Nomenclatura()->IdFolio,$this->mctNomenclatura->Nomenclatura->IdFolio)
-            )
-        );
-        $i=1;   
-        foreach ($arrTitularesNulos as $reg) {   
-            $nomencla=$reg->Partido.$reg->Circ.$reg->Secc.$reg->ChacQuinta.$reg->Frac.$reg->Mza.$reg->Parc;
-            $reg->TitularDominio=$this->buscarTitularDominio($nomencla,$reg->Partido);
-            $reg->Save();
-        }
-        
-     }
 
 }
 ?>
