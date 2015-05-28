@@ -115,7 +115,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
         // Delegate "Save" processing to the NomenclaturaMetaControl
         $this->mctNomenclatura->Save();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
-        $this->actualizarEstadoNomenclaturas();
+        QApplication::DisplayNotification('Calculando los estados geograficos de las nomenclaturas ...');
+        Folio::load($this->mctNomenclatura->Nomenclatura->IdFolio)->actualizarEstadoNomenclaturas();
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/". $this->mctNomenclatura->Nomenclatura->IdFolio) ; 
     }
     public function btnCancel_Click($strFormId, $strControlId, $strParameter){
@@ -133,15 +134,8 @@ class NomenclaturaEditPanel extends NomenclaturaEditPanelGen {
        }
 
         parent::buttons_Create($blnDelete);
-        
+                
     }
-
-    public function actualizarEstadoNomenclaturas(){
-         $objDatabase = QApplication::$Database[1];
-         $id_folio=$this->mctNomenclatura->Nomenclatura->IdFolio;
-         $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
-         $objDatabase->NonQuery($strQuery);
-     }
 
 }
 ?>

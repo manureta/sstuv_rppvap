@@ -11,6 +11,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     public $strTemplate='';
     public $btnAnalizar;
     public $btnMapa;
+    public $btnRecalcular;
 
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
     	$this->strTemplate=__VIEW_DIR__."/nomenclatura/NomenclaturaFolioPanel.tpl.php";
@@ -42,11 +43,20 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $this->btnAnalizar->Text = 'Analizar Nomenclaturas';               
         $this->btnAnalizar->AddAction(new QClickEvent(), new QAjaxControlAction($this,'analizar_nomenclatura'));
 
+        /*
         $this->btnMapa = new QLinkButton($this);
         $this->btnMapa->Text = 'Mostrar Perímetro Barrio';               
         $this->btnMapa->AddAction(new QClickEvent(), new QAjaxControlAction($this,'mostrar_mapa'));
-
-
+        */
+        if(Permission::EsAdministrador()){
+         $this->btnRecalcular = new QLinkButton($this);
+         $this->btnRecalcular->Text = 'Actualizar Nomenclatura y Dominio';  
+         $this->btnRecalcular->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere recalcular las nomenclaturas y dominios de este folio?')));             
+         $this->btnRecalcular->AddAction(new QClickEvent(), new QAjaxControlAction($this,'recalcular'));
+            
+        } 
+        
+        
         $this->blnAutoRenderChildren = false;
         
         if (isset($this->pnlEditNomenclatura)) {
@@ -110,6 +120,55 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Hubo un error al calcular el encuadre geográfico del mapa.</p> Revisar geometría en 'Datos Generales'");
         }
+    }
+    
+    protected function buscarTitularDominio($nomencla,$partido){
+        if(isset($partido) && isset($nomencla)){
+            $objDatabase = QApplication::$Database[1];
+            $strQuery="select titular_dominio from parcelas where partido='$partido' and nomencla='$nomencla'";
+            $objDbResult = $objDatabase->Query($strQuery);
+            $row = $objDbResult->FetchArray();
+            return $row['titular_dominio'];
+        }else{
+            //error_log("error: ".$nomencla."-".$partido);
+            return '';
+        }
+        
+    }
+
+    protected function actualizarDominio(){
+        Permission::Log("Actualizando los dominios");
+        //actualiza titular de dominio de las nomenclaturas
+        $arrTitularesNulos=Nomenclatura::QueryArray(
+            QQ::AndCondition(
+             QQ::OrCondition(
+                QQ::Equal(QQN::Nomenclatura()->TitularDominio,NULL),
+                QQ::Equal(QQN::Nomenclatura()->TitularDominio,'')
+             ),            
+             QQ::Equal(QQN::Nomenclatura()->IdFolio,QApplication::QueryString("id"))
+            )
+        );
+        
+        foreach ($arrTitularesNulos as $reg) {   
+            $nomencla=$reg->Partido.$reg->Circ.$reg->Secc.$reg->ChacQuinta.$reg->Frac.$reg->Mza.$reg->Parc;
+            if(!is_null($nomencla) && strlen($nomencla)==42){
+              $nuevoTitular=$this->buscarTitularDominio($nomencla,$reg->Partido);	
+              $reg->TitularDominio=($nuevoTitular=='')?$reg->TitularDominio:$nuevoTitular;
+              $reg->Save();    
+            }
+            
+        }
+        
+     }
+
+    
+    
+    public function recalcular(){
+        // Funcion para actualizar nomenclaturas y dominios
+        Permission::Log("Actualizando dominio y nomenclaturas de FOLIO ".QApplication::QueryString("id"));
+        Folio::load(QApplication::QueryString("id"))->calcular_nomenclaturas();
+        $this->actualizarDominio();        
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/".QApplication::QueryString("id"));
     }
 
 }

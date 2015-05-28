@@ -3,6 +3,8 @@ app/*/geometrycolumns
 app/*/spatialrefsys
 app/*/*/GeometryColumns.class.php
 app/*/*/SpatialRefSys.class.php
-cache/
-tmp/log/debug.log
+cache/*
+tmp/log/*
 config/configuracion.xml
+public/files/*
+public/tmp/*

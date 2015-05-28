@@ -75,6 +75,63 @@ class Folio extends FolioGen {
 	        }
 	        
     }
+	
+	public function calcular_nomenclaturas(){
+        Permission::Log("Calculando/Actualizando las nomenclaturas de FOLIO ".$this->intId);
+        try {
+            $cod=intval($this->IdPartidoObject->CodPartido);
+            $gid=$this->intId;
+            $strQuery = "select gid,nomencla,partida,titular_dominio from parcelas where partido=$cod AND nomencla not in(SELECT  (((((lpad(n.partido::text, 3, '0'::text) || lpad(n.circ::text, 2, '0'::text)) || lpad(n.secc::text, 2, '0'::text)) || lpad(n.chac_quinta::text, 14, '0'::text)) || lpad(n.frac::text, 7, '0'::text)) || lpad(n.mza::text, 7, '0'::text)) || lpad(n.parc::text, 7, '0'::text) AS nomencla FROM nomenclatura n where id_folio=$gid ) AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
+            
+            $objDatabase = QApplication::$Database[1];
+
+            // Perform the Query
+            $objDbResult = $objDatabase->Query($strQuery);
+            
+            while ($row = $objDbResult->FetchArray()) {
+               
+                $nomencla=$row['nomencla'];
+                $partida=$row['partida'];
+				$titular=$row['titular_dominio'];
+                $nom = new Nomenclatura();
+                $nom->IdFolio = $this->intId;
+                $nom->PartidaInmobiliaria = $partida;
+                $nom->TitularDominio = $titular;
+                $nom->Partido = substr($nomencla,0,3);
+                $nom->Circ = substr($nomencla,3,2);//2
+                $nom->Secc = substr($nomencla,5,2);//2
+                $nom->ChacQuinta = substr($nomencla,7,14);//14
+                $nom->Frac = substr($nomencla,21,7);//7
+                $nom->Mza = substr($nomencla,28,7);//7;
+                $nom->Parc = substr($nomencla,35,7);//7;
+                $nom->InscripcionDominio = '';
+                $nom->EstadoGeografico='';
+                $nom->DatoVerificadoRegPropiedad = false;
+                $nom->Save();
+                
+            }                     
+        } catch (Exception $e) {
+            QApplication::DisplayAlert("<p>Error al calcular las nomenclaturas del barrio</p>");
+            // mandar mail
+            Permission::Log($e->getMessage());
+        }
+        $this->actualizarEstadoNomenclaturas();
+    	    	               
+	    
+	 }
+	 
+	public function actualizarEstadoNomenclaturas(){
+        try{
+         Permission::Log("Actualizando estado geografico de nomenc del FOLIO ".$this->intId);
+         $objDatabase = QApplication::$Database[1];
+         $id_folio=$this->intId;
+         $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
+         $objDatabase->NonQuery($strQuery);
+        }catch(Exception $e){
+          QApplication::DisplayAlert("<p>Hubo un error al actualizar la geometria de las nomenclaturas:</p>".$e->getMessage());  
+        }
+         
+    }
 
 }
 ?>

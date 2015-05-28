@@ -48,7 +48,7 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var base_sstuv = L.tileLayer.wms("http://190.188.234.6/geoserver/wms", {
-		    layers: 'partidos_pba_2014_cod_catastro,circunscripcion,secciones,macizos_pba,parcelas',
+		    layers: 'capabase',
 		    //layers: 'circunscripcion,secciones,macizos_pba,parcelas',
 		    format: 'image/png',
 		    transparent: true,
@@ -56,7 +56,7 @@ function mostrarMapa(cod_partido,editar){
 		});
 
 	  	var catastro = L.tileLayer.wms("http://cartoservices.arba.gov.ar/geoserver/cartoservice/wms", {
-		    layers: 'cartoservice:grupocapas',
+		    layers: 'cartoservice:Grupo ARBA',
 		    format: 'image/png',
 		    transparent: true,
 		    attribution: ""
@@ -68,7 +68,13 @@ function mostrarMapa(cod_partido,editar){
 		    transparent: true,
 		    attribution: ""
 		});
-
+		
+		var  sin_capa = L.tileLayer.wms("", {
+		    layers: '',
+		    format: 'image/png',
+		    transparent: true,
+		    attribution: ""
+		});
 	  	
 	  	if(coincide_arba){
 	  		var baseMaps = {
@@ -77,12 +83,14 @@ function mostrarMapa(cod_partido,editar){
 		    "Google Callejero": gcallejero,
 		    "Google Híbrido":ghibrido,
 		    "Catastro ARBA":catastro,
-		    "Parcelario Geodesia":geodesia
+		    "Parcelario Geodesia":geodesia,
+			"Sin Capa":sin_capa
 		    };
 	  	}else{
 	  		var baseMaps = {
 		    "Catastro ARBA":catastro,
-		    "Parcelario Geodesia":geodesia
+		    "Parcelario Geodesia":geodesia,
+			"Sin Capa":sin_capa
 		    };
 		    map.addLayer(geodesia);
 	  	}

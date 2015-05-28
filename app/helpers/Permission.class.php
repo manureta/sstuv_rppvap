@@ -300,6 +300,9 @@ and u.estado_folio=6
     }
 
 
+    public static function Log($strMensaje){
+        error_log($strMensaje);
+    }
 
 
 
@@ -308,211 +311,33 @@ and u.estado_folio=6
         return array($objUsuario->IdPerfil => $objUsuario->IdPerfilObject->Nombre);
     }
 
-    public static function DirectorTieneEstablecimiento($objEstablecimiento) {
-        if (!$objEstablecimiento)
-            return false;
-        return in_array($objEstablecimiento->Cue, Permission::GetCues());
-    }
+    
 
     public static function TienePermisoControllerAction($strController, $strAction) {
-        /*
-        if(Permission::EsSupervisor()) return true;
-        switch ($strController) {
-            case 'Fichaescuela':
-                if(Permission::EsDirector()) return true;
-                break;
-            case 'Carga':
-                if (Permission::EsEditor()) return true;
-                if ((Permission::EsDirector() || Permission::EsInspector()) && Permission::DirectorTieneLocalizacion(Session::getLocalizacion())) return true;            
-                break;
-            case 'Localizacion':
-                if ($strAction == 'Index') return true;
-                if (Permission::EsEditor()) return true;
-                if ((Permission::EsDirector() || Permission::EsInspector()) && Permission::DirectorTieneLocalizacion(Localizacion::Load(DispatchHelper::$intId))) return true;
-                break;
-            case 'Estadistica':
-                if (!Permission::EsDirector()) return true;
-                break;
-            case 'Usuario':
-                if ($strAction == 'Password') return true;
-                break;
-            case 'Lector':
-                if (Permission::EsEditor()) return true;
-                break;
-            case 'Datoscuadernillo':
-                if (($strAction == 'Verificar' || $strAction == 'Constancia' ) && (Permission::EsInspector() || Permission::EsDirector() || Permission::EsEditor())) return true;
-                break;
-        }
-        if(Permission::EsEditor()) return true;
-        // existe el perfil inspector-sololectura que si llegó hasta acá es porque entro a algún lugar que no puede ver. el perfil sololectura puede ver todo, pero solo ver
-        if(Permission::EsSoloLectura() && !Permission::EsInspector()) return true;
-        return false;
-        */
+        
     }
 
     public static function GetRecursosUsuarioRa($strUsuario) {
-        /*
-        $arrControladores = null;
-        $arrControladores['Definicioncuadro'][QControllerActionType::AllAction] = array();
-        $arrControladores['Defcuadrodefcolumnacodvalor'][QControllerActionType::AllAction] = array();
-        $arrControladores['Codigos'][QControllerActionType::AllAction] = array();
-        switch ($strUsuario) {
-            case 'supervisor':
-                array_push($arrControladores['Defcuadrodefcolumnacodvalor'][QControllerActionType::AllAction], QControllerActionType::AllAction);
-                array_push($arrControladores['Definicioncuadro'][QControllerActionType::AllAction], QControllerActionType::AllAction);
-                array_push($arrControladores['Codigos'][QControllerActionType::AllAction], QControllerActionType::AllAction);
-            break;
-        }
-        return $arrControladores;
-        */
+        
     }
 
     public static function GetEntidadesUsuario(Usuario $objUsuario) {
-        /*
-        switch (strtolower($objUsuario->IdPerfilObject->Nombre)) {
-            case 'supervisor':
-            case 'sololectura':
-            case 'editor':
-                $arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction] = array(QControllerActionType::AllAction);
-            break;
-            case 'inspector':
-            case 'director':
-            case 'inspectorsololectura':
-                $objLocArray = $objUsuario->GetLocalizacionArray();
-                $arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction] = array();
-                foreach ($objLocArray as $objLocalizacion) {
-                    array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction], $objLocalizacion->Cueanexo);
-                }
-            break;
-        }
-        return $arrControladores;
-        */
+        
     }
 
     public static function GetEntidadesUsuarioRa($strUsuario) {
-        /*
-        $arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction] = array();
-        $arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction] = array();
-        $arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction] = array();
-        switch ($strUsuario) {
-            case 'supervisor':
-            case 'sololectura':
-                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::AllAction], QControllerActionType::AllAction);
-            break;
-            case 'usuario1':
-                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction], 920001500);
-                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction], 920001500);
-                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction], 910012400);
-                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction], 910012400);
-            break;
-            case 'usuario2':
-                array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::ViewAction], QControllerActionType::AllAction);
-                //array_push($arrControladores['Localizacion']['cueanexo'][QControllerActionType::EditAction], 920001500);
-            break;
-        }
-        return $arrControladores;
-        */
+        
     }
 
 
     public static function TienePermisoControllerActionColumna($strController, $strAction, $strColumna) {
-        /*
-        if (!Authentication::UsuarioLogueado() || self::EsAdministrador()) {
-            return true;
-        }
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-
-        return (
-        isset($arrUsuarioInfo["Recursos"]) &&
-        isset($arrUsuarioInfo["Recursos"][$strController]) &&
-        isset($arrUsuarioInfo["Recursos"][$strController][$strAction]) &&
-        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][$strController][$strAction]) ||
-        in_array($strColumna, $arrUsuarioInfo["Recursos"][$strController][$strAction])
-        )
-        ) || (
-        isset($arrUsuarioInfo["Recursos"]) &&
-        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction]) &&
-        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][QControllerActionType::AllAction]) &&
-        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][QControllerActionType::AllAction]) ||
-        in_array($strColumna, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][QControllerActionType::AllAction])
-        )
-        ) || (
-        isset($arrUsuarioInfo["Recursos"]) &&
-        isset($arrUsuarioInfo["Recursos"][$strController]) &&
-        isset($arrUsuarioInfo["Recursos"][$strController][QControllerActionType::AllAction]) &&
-        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][$strController][QControllerActionType::AllAction]) ||
-        in_array($strColumna, $arrUsuarioInfo["Recursos"][$strController][QControllerActionType::AllAction])
-        )
-        ) || (
-        isset($arrUsuarioInfo["Recursos"]) &&
-        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction]) &&
-        isset($arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][$strAction]) &&
-        (in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][$strAction]) ||
-        in_array($strColumna, $arrUsuarioInfo["Recursos"][QControllerActionType::AllAction][$strAction])
-        )
-        );
-        */
+        
     }
 
-    public static function TieneAccesoEntidad($strController, $strColumna, $strAction, $mixValor) {
-        /*
-        if (!Authentication::UsuarioLogueado() || self::EsAdministrador()) {
-            return true;
-        }
-
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-
-        return (
-        isset($arrUsuarioInfo["Entidades"]) &&
-        isset($arrUsuarioInfo["Entidades"][$strController]) &&
-        isset($arrUsuarioInfo["Entidades"][$strController][$strColumna]) &&
-        isset($arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction]) &&
-        is_array($arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction]) &&
-        (in_array($mixValor, $arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction]) ||
-        in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Entidades"][$strController][$strColumna][$strAction])
-        )
-        ) || (
-        isset($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction]) &&
-        isset($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction]) &&
-        isset($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction]) &&
-        is_array($arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction]) &&
-        (in_array($mixValor, $arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction]) ||
-        in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Entidades"][QControllerActionType::AllAction][QControllerActionType::AllAction][$strAction])
-        )
-        ) || (
-        isset($arrUsuarioInfo["Entidades"][$strController]) &&
-        isset($arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction]) &&
-        isset($arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction]) &&
-        is_array($arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction]) &&
-        (in_array($mixValor, $arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction]) ||
-        in_array(QControllerActionType::AllAction, $arrUsuarioInfo["Entidades"][$strController][QControllerActionType::AllAction][$strAction])
-        )
-        );
-        */
-    }
+    
 
     public static function GetAccionColumnas($strEntidad, $strAccion) {
-        /*
-        if (self::EsAdministrador())
-            return array();
-        $arrColumnas = array();
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        if (isset($arrUsuarioInfo["Recursos"])) {
-            $arrUsuarioRecursos = $arrUsuarioInfo["Recursos"];
-            if (in_array(QControllerActionType::AllAction, array_keys($arrUsuarioRecursos))) {
-                return array();
-            }
-            if (isset($arrUsuarioRecursos[$strEntidad]) && isset($arrUsuarioRecursos[$strEntidad][$strAccion]) && is_array($arrUsuarioRecursos[$strEntidad][$strAccion])) {
-                if (in_array(QControllerActionType::AllAction, $arrUsuarioRecursos[$strEntidad][$strAccion])) {
-                    return array();
-                }
-                foreach ($arrUsuarioRecursos[$strEntidad][$strAccion] as $strColumna) {
-                    array_push($arrColumnas, $strColumna);
-                }
-            }
-        }
-        return $arrColumnas;
-        */
+        
     }
 }
 ?>
