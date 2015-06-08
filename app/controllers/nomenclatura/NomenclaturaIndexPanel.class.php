@@ -122,16 +122,16 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         }
     }
     
-    protected function buscarTitularDominio($nomencla,$partido){
+    protected function buscarDatosDominio($nomencla,$partido){
         if(isset($partido) && isset($nomencla)){
             $objDatabase = QApplication::$Database[1];
-            $strQuery="select titular_dominio from parcelas where partido='$partido' and nomencla='$nomencla'";
+            $strQuery="select titular_dominio,inscripcion_dominio from parcelas where partido=$partido and nomencla='$nomencla'";
             $objDbResult = $objDatabase->Query($strQuery);
             $row = $objDbResult->FetchArray();
-            return $row['titular_dominio'];
+            return $row;
         }else{
             //error_log("error: ".$nomencla."-".$partido);
-            return '';
+            return array();
         }
         
     }
@@ -143,7 +143,9 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
             QQ::AndCondition(
              QQ::OrCondition(
                 QQ::Equal(QQN::Nomenclatura()->TitularDominio,NULL),
-                QQ::Equal(QQN::Nomenclatura()->TitularDominio,'')
+                QQ::Equal(QQN::Nomenclatura()->TitularDominio,''),
+                QQ::Equal(QQN::Nomenclatura()->InscripcionDominio,NULL),
+                QQ::Equal(QQN::Nomenclatura()->InscripcionDominio,'')
              ),            
              QQ::Equal(QQN::Nomenclatura()->IdFolio,QApplication::QueryString("id"))
             )
@@ -152,9 +154,19 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         foreach ($arrTitularesNulos as $reg) {   
             $nomencla=$reg->Partido.$reg->Circ.$reg->Secc.$reg->ChacQuinta.$reg->Frac.$reg->Mza.$reg->Parc;
             if(!is_null($nomencla) && strlen($nomencla)==42){
-              $nuevoTitular=$this->buscarTitularDominio($nomencla,$reg->Partido);	
-              $reg->TitularDominio=($nuevoTitular=='')?$reg->TitularDominio:$nuevoTitular;
-              $reg->Save();    
+              $arrDominio=$this->buscarDatosDominio($nomencla,intval($reg->Partido));	
+              // actualizo vacios si se encuentran resultados
+              if(count($arrDominio)>0){
+                if($reg->TitularDominio=='' || is_null($reg->TitularDominio)){
+                  $reg->TitularDominio='T-'.$arrDominio['titular_dominio'];  
+                }
+                if($reg->InscripcionDominio=='' || is_null($reg->InscripcionDominio)){  
+                  $reg->InscripcionDominio=$arrDominio['inscripcion_dominio'];  
+                }
+                $reg->Save();  
+              }else{
+                error_log("no se encontro registros");
+              }   
             }
             
         }

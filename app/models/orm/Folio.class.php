@@ -81,7 +81,7 @@ class Folio extends FolioGen {
         try {
             $cod=intval($this->IdPartidoObject->CodPartido);
             $gid=$this->intId;
-            $strQuery = "select gid,nomencla,partida,titular_dominio from parcelas where partido=$cod AND nomencla not in(SELECT  (((((lpad(n.partido::text, 3, '0'::text) || lpad(n.circ::text, 2, '0'::text)) || lpad(n.secc::text, 2, '0'::text)) || lpad(n.chac_quinta::text, 14, '0'::text)) || lpad(n.frac::text, 7, '0'::text)) || lpad(n.mza::text, 7, '0'::text)) || lpad(n.parc::text, 7, '0'::text) AS nomencla FROM nomenclatura n where id_folio=$gid ) AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
+            $strQuery = "select gid,nomencla,partida,titular_dominio,inscripcion_dominio from parcelas where partido=$cod AND nomencla not in(SELECT  (((((lpad(n.partido::text, 3, '0'::text) || lpad(n.circ::text, 2, '0'::text)) || lpad(n.secc::text, 2, '0'::text)) || lpad(n.chac_quinta::text, 14, '0'::text)) || lpad(n.frac::text, 7, '0'::text)) || lpad(n.mza::text, 7, '0'::text)) || lpad(n.parc::text, 7, '0'::text) AS nomencla FROM nomenclatura n where id_folio=$gid ) AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
             
             $objDatabase = QApplication::$Database[1];
 
@@ -92,7 +92,9 @@ class Folio extends FolioGen {
                
                 $nomencla=$row['nomencla'];
                 $partida=$row['partida'];
-				$titular=$row['titular_dominio'];
+				$titular=($row['titular_dominio']!='')?'T-'.$row['titular_dominio'] : '';
+				$inscripcion=$row['inscripcion_dominio'];
+                
                 $nom = new Nomenclatura();
                 $nom->IdFolio = $this->intId;
                 $nom->PartidaInmobiliaria = $partida;
@@ -104,7 +106,7 @@ class Folio extends FolioGen {
                 $nom->Frac = substr($nomencla,21,7);//7
                 $nom->Mza = substr($nomencla,28,7);//7;
                 $nom->Parc = substr($nomencla,35,7);//7;
-                $nom->InscripcionDominio = '';
+                $nom->InscripcionDominio = $inscripcion;
                 $nom->EstadoGeografico='';
                 $nom->DatoVerificadoRegPropiedad = false;
                 $nom->Save();
