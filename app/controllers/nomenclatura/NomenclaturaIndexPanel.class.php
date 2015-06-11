@@ -166,7 +166,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
                 }
                 $reg->Save();  
               }else{
-                error_log("no se encontro registros)";
+                error_log("no se encontro registros");
               }   
             }
             
