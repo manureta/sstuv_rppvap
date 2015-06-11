@@ -158,14 +158,15 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
               // actualizo vacios si se encuentran resultados
               if(count($arrDominio)>0){
                 if($reg->TitularDominio=='' || is_null($reg->TitularDominio)){
-                  $reg->TitularDominio='T-'.$arrDominio['titular_dominio'];  
+                  $tit=($arrDominio['titular_dominio']=='')? '':'T-'.$arrDominio['titular_dominio'];
+                  $reg->TitularDominio= $tit; 
                 }
-                if($reg->InscripcionDominio=='' || is_null($reg->InscripcionDominio)){  
+                if($reg->InscripcionDominio=='' || is_null($reg->InscripcionDominio)){  	
                   $reg->InscripcionDominio=$arrDominio['inscripcion_dominio'];  
                 }
                 $reg->Save();  
               }else{
-                error_log("no se encontro registros");
+                error_log("no se encontro registros)";
               }   
             }
             

@@ -92,7 +92,7 @@ class Folio extends FolioGen {
                
                 $nomencla=$row['nomencla'];
                 $partida=$row['partida'];
-				$titular=($row['titular_dominio']!='')?'T-'.$row['titular_dominio'] : '';
+				$titular=($row['titular_dominio']=='')? '': 'T-'.$row['titular_dominio'];
 				$inscripcion=$row['inscripcion_dominio'];
                 
                 $nom = new Nomenclatura();
