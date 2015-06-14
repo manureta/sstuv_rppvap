@@ -57,8 +57,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
         $this->pnlEncuadre->lstIdFolioObject->Visible = false;
-        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk"));
-        $this->TieneExpropiacion_chk();
+
+        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk"));           
+        $this->TieneExpropiacion_chk(true);
 
 
         $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
@@ -217,37 +218,8 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         }
     }
 
-    public function TieneExpropiacion_chk(){
-        if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
-            
-            $this->pnlEncuadre->txtExpropiacion->Enabled=true;
-            $this->pnlEncuadre->txtExpropiacion->Visible=true;
+    public function ResetearExpropiacion($inicio){
 
-            $this->pnlEncuadre->txtFechaSancion->Enabled=true;
-            $this->pnlEncuadre->txtFechaSancion->Visible=true;
-        
-            $this->pnlEncuadre->txtFechaVencimiento->Enabled=true;
-            $this->pnlEncuadre->txtFechaVencimiento->Visible=true;
-            
-            $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=true;
-            $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=true;
-
-            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=true;
-            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=true;
-            
-            $this->pnlEncuadre->txtPrecioPagado->Enabled=true;
-            $this->pnlEncuadre->txtPrecioPagado->Visible=true;
-            
-            $this->pnlEncuadre->txtJuzgado->Enabled=true;
-            $this->pnlEncuadre->txtJuzgado->Visible=true;
-            
-            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=true;
-            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=true;
-            
-            $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=true;
-            $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=true;
-
-        }else{
             $this->pnlEncuadre->txtExpropiacion->Text='';
             $this->pnlEncuadre->txtExpropiacion->Visible=false;
             $this->pnlEncuadre->txtExpropiacion->Enabled=false;
@@ -284,6 +256,51 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlEncuadre->txtMemoriaDescriptiva->Text='';
             $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=false;
             $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=false;
+
+            if($inicio=="warning")QApplication::DisplayAlert("Advertencia: Al destildar la variable de 'Expropiación' se borraron sus variables asociadas, si no esta seguro no guarde los cambios.");
+    }
+
+    public function TieneExpropiacion_chk($inicializar){
+        
+        if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
+            
+            $puede_editar=(Permission::EsAdministrador()||Permission::EsSuperAdministrador()||Permission::EsUsoInterno(array("uso_interno_legal")));
+
+            $this->pnlEncuadre->txtExpropiacion->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtExpropiacion->Visible=true;
+
+            $this->pnlEncuadre->txtFechaSancion->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtFechaSancion->Visible=true;
+        
+            $this->pnlEncuadre->txtFechaVencimiento->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtFechaVencimiento->Visible=true;
+            
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=true;
+
+            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=true;
+            
+            $this->pnlEncuadre->txtPrecioPagado->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtPrecioPagado->Visible=true;
+            
+            $this->pnlEncuadre->txtJuzgado->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtJuzgado->Visible=true;
+            
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=$puede_editar;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=true;
+            
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=true;
+            
+
+        }else{
+            $mensaje="warning";
+            if($inicializar===true){
+                $mensaje="inicio";
+            }
+            $this->ResetearExpropiacion($mensaje);
+             
         }
     }
 
