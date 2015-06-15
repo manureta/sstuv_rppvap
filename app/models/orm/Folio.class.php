@@ -135,5 +135,23 @@ class Folio extends FolioGen {
          
     }
 
+    public function getParametrosMapa(){
+        try{
+            $gid=$this->intId;
+            $strQuery = "SELECT x(st_transform((st_centroid(st_geomfromtext(folio.geom, 4326))),900913))as x,y(st_transform((st_centroid(st_geomfromtext(folio.geom, 4326))),900913))as y FROM folio WHERE id=$gid;";
+            
+            $objDatabase = QApplication::$Database[1];
+
+            // Perform the Query
+            $objDbResult = $objDatabase->Query($strQuery);
+            
+            return $objDbResult->FetchArray();
+            
+        }catch(Exception $e){
+          QApplication::DisplayAlert("<p>Hubo un error al calcular los parametros del mapa</p>".$e->getMessage());  
+        }
+         
+    }
+
 }
 ?>

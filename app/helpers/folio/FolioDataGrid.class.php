@@ -32,7 +32,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=center', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false). $_CONTROL->GetMapaButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=left', 'HtmlEntities=false');
         
         $this->AddColumn($objColumnAcciones);
 
@@ -183,6 +183,19 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }
 
+    public function GetMapaButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-yellow');
+        $objButton->Text = (Permission::EsAdministrador())?'M' :'Mapa';
+        $objButton->Icon = 'map-marker';
+        $objButton->ToolTip = 'Ver Folio en el Mapa';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnVerMapa_Click"));
+        $objButton->Enabled = true;
+        $objButton->Visible = true;
+        return $objButton;
+    }
+
     public function btnConfirmar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $objUsoInterno = $objFolio->UsoInterno;
@@ -265,6 +278,17 @@ class FolioDataGrid extends FolioDataGridGen {
         $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter&foliocompleto";        
 
         //QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
+        QApplication::ExecuteJavascript("window.open('$url');");
+
+    }
+
+    public function btnVerMapa_Click($strFormId, $strControlId, $strParameter){
+        $objFolio=Folio::Load($strParameter);
+        $xy=$objFolio->getParametrosMapa();
+        $x=$xy["x"];
+        $y=$xy["y"];
+
+        $url="http://190.188.234.6/mapa_pruebas/?map_x=$x&map_y=$y&map_zoom=16&map_opacity_Open%20Street%20Map=1";        
         QApplication::ExecuteJavascript("window.open('$url');");
 
     }
