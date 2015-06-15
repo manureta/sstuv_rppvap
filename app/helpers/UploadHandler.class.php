@@ -20,15 +20,15 @@ class UploadHandler
     // PHP File Upload error message codes:
     // http://php.net/manual/en/features.file-upload.errors.php
     protected $error_messages = array(
-        1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+        1 => 'El archivo es muy grande, no debe superar los 5mb',
         2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
         3 => 'The uploaded file was only partially uploaded',
         4 => 'No file was uploaded',
         6 => 'Missing a temporary folder',
         7 => 'Failed to write file to disk',
         8 => 'A PHP extension stopped the file upload',
-        'post_max_size' => 'The uploaded file exceeds the post_max_size directive in php.ini',
-        'max_file_size' => 'El archivo es muy grande, no debe superar los 3mb',
+        'post_max_size' => 'El archivo es muy grande, no debe superar los 5mb',
+        'max_file_size' => 'El archivo es muy grande, no debe superar los 5mb',
         'min_file_size' => 'File is too small',
         'accept_file_types' => 'Tipo de archivo no permitido',
         'max_number_of_files' => 'Maximum number of files exceeded',
@@ -88,7 +88,7 @@ class UploadHandler
             'accept_file_types' => '/\.(gif|jpe?g|png|pdf|xls|doc|docx|csv|zip|rar|txt)$/i',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
-            'max_file_size' => 3000000,
+            'max_file_size' => 5000000,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
             'max_number_of_files' => null,
