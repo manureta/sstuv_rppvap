@@ -140,9 +140,15 @@ abstract class Permission extends PermissionBase {
             return false;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_basico', $arrUsuarioInfo['Perfiles']);
+    } 
+    public static function EsVisualizadorIntermedio() {
+        if (!Authentication::EstaConectado())
+            return false;
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_intermedio', $arrUsuarioInfo['Perfiles']);
     }    
     public static function EsVisualizador(){
-        return self::EsVisualizadorBasico() || self::EsVisualizadorGeneral();
+        return self::EsVisualizadorBasico() || self::EsVisualizadorGeneral() || self::EsVisualizadorIntermedio();
     }
 
     public static function EsVisualizadorFiltrado(){
@@ -203,7 +209,7 @@ abstract class Permission extends PermissionBase {
         return ((self::EsAdministrador() || (self::EsCarga() && ($objFolio->CreadorObject->IdPerfilObject->IdPerfil==1) ) ));
     }
     public static function PuedeVerHoja5(){
-        return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) || Permission::EsVisualizadorGeneral());
+        return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) || Permission::EsVisualizadorGeneral() ||Permission::EsVisualizadorIntermedio());
     }
 
     public static function PuedeVerAdjuntadosHabitat(){
