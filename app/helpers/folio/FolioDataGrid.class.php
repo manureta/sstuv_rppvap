@@ -191,8 +191,8 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->ToolTip = 'Ver Folio en el Mapa';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnVerMapa_Click"));
-        $objButton->Enabled = false;
-        $objButton->Visible = false;
+        $objButton->Enabled = true;
+        $objButton->Visible = true;
         return $objButton;
     }
 
