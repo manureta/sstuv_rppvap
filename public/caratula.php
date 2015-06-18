@@ -97,7 +97,7 @@ public function limpiar_ceros($intInd,$strTipo){
 
 public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
         try {
-            if(isset($_GET['foliocompleto'])){
+            if(isset($_GET['foliocompleto']) &&(Authentication::EstaConectado())){
                 parent::Run('Caratula', '../app/views/foliocompleto.tpl.php');
             }else{
                 parent::Run('Caratula', '../app/views/caratula.tpl.php');    
