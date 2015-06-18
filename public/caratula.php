@@ -97,8 +97,12 @@ public function limpiar_ceros($intInd,$strTipo){
 
 public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
         try {
-            if(isset($_GET['foliocompleto']) &&(Authentication::EstaConectado())){
+            if(isset($_GET['foliocompleto'])){
+                if(Authentication::EstaConectado()){
                 parent::Run('Caratula', '../app/views/foliocompleto.tpl.php');
+                }else{
+                    die("Error: No tiene permisos para ver el contenido.");
+                }
             }else{
                 parent::Run('Caratula', '../app/views/caratula.tpl.php');    
             }
