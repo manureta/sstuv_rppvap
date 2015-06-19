@@ -192,7 +192,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnVerMapa_Click"));
         $objButton->Enabled = true;
-        $objButton->Visible = false;
+        $objButton->Visible = true;
         return $objButton;
     }
 
