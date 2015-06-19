@@ -36,7 +36,12 @@ class UserMenuPanel extends QPanel {
         $btnFolio->Icon = 'edit';
         $btnFolio->AddCssClass('navbar-link');
         $btnFolio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnFolio_Click'));
-        //$btnFolio->Visible = Permission::EsDirector();
+        
+        $btnReportes = new QLinkButton($this);
+        $btnReportes->Text = 'Reportes';
+        $btnReportes->Icon = 'file';
+        $btnReportes->AddCssClass('navbar-link');
+        $btnReportes->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnReportes_Click'));
 
         
         /*
@@ -103,25 +108,13 @@ class UserMenuPanel extends QPanel {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/usuario/perfil');
     }
     
-    public function btnIncidente_Click() {
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/incidente');
-    }
     
-    public function btnDesvinculacion_Click() {
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/establecimiento/desvincular');
-    }
 
     public function btnFolio_Click() {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/folio');
     }
     
-    public function btnInformacionGlobal_Click(){
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/informacionglobal');
-    }
     
-    public function btnAdmNominas_Click(){
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/admnomina');
-    }
 /*
     public function btnCedula_Click() {
         //QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/cedula');
@@ -134,9 +127,6 @@ class UserMenuPanel extends QPanel {
         }
     }
 */    
-     public function btnResetearPassword_Click() {
-         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/usuario/resetearpass');
-     }
     
     
     public function lnkRedirect_Click($strFormId, $strControlId, $strParameter) {
@@ -147,4 +137,8 @@ class UserMenuPanel extends QPanel {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/page/mapa');
     }
 
+
+     public function btnReportes_Click() {
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/page/reportes');
+    }
 }

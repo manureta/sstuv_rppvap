@@ -101,7 +101,7 @@ public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
                 if(Authentication::EstaConectado()){
                 parent::Run('Caratula', '../app/views/foliocompleto.tpl.php');
                 }else{
-                    die("Error: No tiene permisos para ver el contenido.");
+                    echo("<script type='text/javascript'>alert('Error: No tiene permisos para ver el contenido.')</script>");
                 }
             }else{
                 parent::Run('Caratula', '../app/views/caratula.tpl.php');    
