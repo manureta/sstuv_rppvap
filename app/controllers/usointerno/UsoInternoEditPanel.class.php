@@ -69,10 +69,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        if(!Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))){
-            if(!Permission::EsVisualizadorGeneral())
-                QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
-        }
+        
+
+           if(!Permission::PuedeVerHoja5()) QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
+        
             
 
         $this->intIdFolio = $intIdFolio;
@@ -295,6 +295,16 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->lstTieneCenso->Enabled=true;
             $this->txtFechaCenso->Enabled=true;
             $this->lstRegularizacionEstadoProcesoObject->Enabled=true;   
+        }
+
+        if(!Permission::PuedeVerPanelAdministracion()){
+            $this->lstEstadoFolioObject->Visible=false;
+            
+            $this->btnEvolucion->Visible=false;
+
+            $this->chkObjetado->Visible=false;
+
+            $this->txtComentarioObjetacion->Visible=false;
         }
 
     }

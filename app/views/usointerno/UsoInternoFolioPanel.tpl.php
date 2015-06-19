@@ -32,6 +32,7 @@
     </div>
 
     <div>
+       <?php if(Permission::PuedeVerPanelAdministracion()){ ?>
         <div class="titulos"><i class="icon-chevron-right"> </i>Administración</div>        
         <div class="well bs-component">
             <div class="renderWithName">
@@ -56,7 +57,7 @@
                 </div>
                 <?php } ?>
          </div>
-
+         <?php } ?>
         <div class="titulos"><i class="icon-chevron-right"></i> Situación Registral</div>        
         <div class="well bs-component">
 			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
