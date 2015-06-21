@@ -274,15 +274,15 @@ where f.tipo_barrio > 0 and f.creador > 0 and f.id_partido > 0 and f.matricula <
 and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie <> 0
 and f.cantidad_familias > 0 
 and i.energia_electrica_medidor_individual < 4 and
-  i.agua_corriente < 4 and
-  i.red_cloacal <4 and
-  i.red_gas <4 and
-  i.pavimento <4
+  i.agua_corriente < 5 and
+  i.red_cloacal <5 and
+  i.red_gas <5 and
+  i.pavimento <5
 and (n.partido <> '' and n.titular_dominio <> '')
-and e.unidad_sanitaria < 5 and
-  e.jardin_infantes < 5 and
-  e.escuela_primaria < 5 and   
-  e.escuela_secundaria < 5  
+and e.unidad_sanitaria < 6 and
+  e.jardin_infantes < 6 and
+  e.escuela_primaria < 6 and   
+  e.escuela_secundaria < 6  
 and u.estado_folio=6
  and f.id=$id";
             $objDatabase = QApplication::$Database[1];
