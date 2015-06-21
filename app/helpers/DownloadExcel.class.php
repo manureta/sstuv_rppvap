@@ -41,13 +41,13 @@ class DownloadExcel  {
         $ExpStr = "Expires: " . gmdate("D, d M Y H:i:s", time()) . " GMT";
         header($ExpStr);
 
-        header("Content-type: text/xls ; charset=UTF-8");
-        header("Content-disposition: xls; filename=" . $filename  .".xls");
+        header("Content-type: application/vnd.ms-excel; charset=utf-8");
+        header("Content-Disposition: attachment; filename=" . $filename  .".xls");
         // excel xml info ( tested with my office 2000 - to have datagrid and active cell a1)
 
         echo self::format_XLS_head($filename);
         
-        if ($header) echo "<h1>$header</h1>";
+        if ($header) echo "<h3>$header</h3>";
         
         // Spit out table header
         echo implode("", $theader);
@@ -66,7 +66,9 @@ class DownloadExcel  {
             echo "\n</tr>";
         }
         while (@ob_end_flush());
-        echo "</tbody>\n</table>\n</body>\n</html>";
+        echo "</tbody>\n</table>\n";
+        echo "<h6>Fuente: Registro Público Provincial de Villas y Asentamientos (Ley 14.449).<br />Subsecretaría Social de Tierras, Urbanismo y Vivienda.<br />Ministerio de Infraestructura de la Provincia de Buenos Aires.</h6>";
+        echo "</body>\n</html>";
         exit();
     }
 

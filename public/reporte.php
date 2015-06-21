@@ -52,17 +52,23 @@ public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
     }
 
          public static function ConfirmadosMunicipales($intIdPartido){
-            $strQuery="select cod_folio as folio, nombre_barrio_oficial as nombre, tipo_barrio as tipo, cantidad_familias as viviendas, superficie as has from folio f
-        join uso_interno u on f.id=u.id_folio 
+            $strQuery="select cod_folio as folio, nombre_barrio_oficial as nombre, t.tipo, cantidad_familias as viviendas, superficie as has from folio f
+        join tipo_barrio t on f.tipo_barrio=t.id join uso_interno u on f.id=u.id_folio 
         where f.id_partido = $intIdPartido and (u.estado_folio = 6 or u.estado_folio = 7) 
         order by f.nombre_barrio_oficial";
 
             $objDatabase = QApplication::$Database[1];
             $objDbResult = $objDatabase->Query($strQuery);
-            $result = $objDbResult->FetchAll();            
-            
-            
-            DownloadExcel::DownloadArrayAsExcel($result,"confirmados_municipales_".date("Y-m-d"));   
+            $result = $objDbResult->FetchAll();           
+
+            $strQuery="select * from partido where id=$intIdPartido";
+            $objDbResult = $objDatabase->Query($strQuery);
+            $partido = $objDbResult->FetchAll();           
+            $cod=$partido[0]['cod_partido'];
+            $nombre_partido=$partido[0]['nombre'];
+
+            $header="Barrios confirmados o inscriptos en $nombre_partido";
+            DownloadExcel::DownloadArrayAsExcel($result,"confirmados_municipales_".$cod."_".date("Y-m-d"),$header);   
             
          }
 
@@ -72,13 +78,19 @@ public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
         where f.id_partido = $intIdPartido and (u.estado_folio < 4 OR u.estado_folio = 5 )   
         order by f.nombre_barrio_oficial
         ";
-
+            
             $objDatabase = QApplication::$Database[1];
             $objDbResult = $objDatabase->Query($strQuery);
             $result = $objDbResult->FetchAll();            
             
+            $strQuery="select * from partido where id=$intIdPartido";
+            $objDbResult = $objDatabase->Query($strQuery);
+            $partido = $objDbResult->FetchAll();           
+            $cod=$partido[0]['cod_partido'];
+            $nombre_partido=$partido[0]['nombre'];
             
-            DownloadExcel::DownloadArrayAsExcel($result,"mapeo_municipales_".date("Y-m-d"));   
+            $header="Barrios en instancia de mapeo preliminar en $nombre_partido";
+            DownloadExcel::DownloadArrayAsExcel($result,"mapeo_municipales_".$cod."_".date("Y-m-d"),$header);   
             
          }   
 
@@ -96,9 +108,9 @@ public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
                 $objDatabase = QApplication::$Database[1];
                 $objDbResult = $objDatabase->Query($strQuery);
                 $result = $objDbResult->FetchAll();            
+                $header="Partidos según cantidad de barrio confirmados e inscriptos";
                 
-                
-                DownloadExcel::DownloadArrayAsExcel($result,"confirmados_provincial_".date("Y-m-d"));   
+                DownloadExcel::DownloadArrayAsExcel($result,"confirmados_provincial_".date("Y-m-d"),$header);   
                 
          }
 
@@ -115,9 +127,9 @@ public static function Run($strFormId = null, $strAlternateHtmlFile = null) {
                 $objDatabase = QApplication::$Database[1];
                 $objDbResult = $objDatabase->Query($strQuery);
                 $result = $objDbResult->FetchAll();            
+                $header="Partidos según cantidad de barrio en instancia de mapeo preliminar";
                 
-                
-                DownloadExcel::DownloadArrayAsExcel($result,"mapeo_provincial_".date("Y-m-d"));   
+                DownloadExcel::DownloadArrayAsExcel($result,"mapeo_provincial_".date("Y-m-d"),$header);   
                 
          }
 
