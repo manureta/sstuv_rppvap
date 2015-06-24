@@ -9,7 +9,7 @@
 	<ol>
 				<?php $page=0;?>
 				<?php for ($i=0;$i<count($this->arrNom);$i++): ?>
-					
+				<?php if($this->arrNom[$i]->EstadoGeografico=='completo' || $this->arrNom[$i]->EstadoGeografico=='parcial') : ?>	
 				<li>
 				
 					<span>Nomenclatura catastral</span>
@@ -69,6 +69,7 @@
 					<div class="cont cond">
 					<div class="nomenclaturas">
 					<ol start="<?=$page+1;?>">		
+				<?php endif; ?>
 				<?php endif; ?>
 				<?php endfor; ?>
 				</br></br></br></br>
