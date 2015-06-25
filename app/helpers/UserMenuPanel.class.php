@@ -36,13 +36,14 @@ class UserMenuPanel extends QPanel {
         $btnFolio->Icon = 'edit';
         $btnFolio->AddCssClass('navbar-link');
         $btnFolio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnFolio_Click'));
-        
-        $btnReportes = new QLinkButton($this);
-        $btnReportes->Text = 'Reportes';
-        $btnReportes->Icon = 'file';
-        $btnReportes->AddCssClass('navbar-link');
-        $btnReportes->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnReportes_Click'));
 
+        if(!Permission::EsVisualizadorBasico()){
+         $btnReportes = new QLinkButton($this);
+         $btnReportes->Text = 'Reportes';
+         $btnReportes->Icon = 'download';
+         $btnReportes->AddCssClass('navbar-link');
+         $btnReportes->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnReportes_Click'));
+        }
         
         /*
         if(Permission::EsSupervisor()){

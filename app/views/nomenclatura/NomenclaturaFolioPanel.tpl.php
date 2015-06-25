@@ -53,7 +53,7 @@
                     </div>
                     
                     
-                    <?php if(Permission::EsAdministrador()){ ?>
+                    <?php if(Permission::EsUsoInterno(array("uso_interno_nomencla"))){ ?>
                     <div class="alert alert-danger msg-nomenclatura" role="alert">
                       <span class="icon-exclamation-sign" aria-hidden="true"></span>
                       <span class="sr-only"></span>

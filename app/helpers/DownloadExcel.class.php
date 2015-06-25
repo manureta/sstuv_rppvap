@@ -10,6 +10,7 @@ class DownloadExcel  {
          * cannot be rendered until RenderBegin() has been called on the form" error
          * on columns with buttons or other Render()able objects
          ************************************************************************************/
+        if(count($arrToExport)==0)die("<script type='text/javascript'> alert('No se encontraron registros en este partido');window.history.back();</script>");
         $columns = array_keys($arrToExport[0]);
 
         // Get table header names

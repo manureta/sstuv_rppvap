@@ -19,7 +19,6 @@ class NomenclaturaDataGrid extends NomenclaturaDataGridGen {
         'EstadoGeografico' => true,
     );
 
-
     protected function GetControlHtml() {
         if (!$this->blnVisible)
             return '';

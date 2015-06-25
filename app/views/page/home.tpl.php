@@ -3,13 +3,13 @@
   <strong>Bienvenido al Registro Público Provincial de Villas y Asentamientos !</strong><br>
 Este Registro constituye una herramienta única y centralizada de relevamiento, captación 
 
-y <br />administración de datos para la implementación del régimen de integración socio-
+y administración de datos para la implementación del régimen de integración socio-
 
-urbana de villas <br />y asentamiento precarios en el marco de la Ley 14.449.
+urbana de villas y asentamiento precarios en el marco de la Ley 14.449.
 <br />
 Para comenzar la carga de la información catastral, dominial, social y urbanística de un 
 
-barrio haga <br />clic <a href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio">aquí</a> o en el botón “Folios”. 
+barrio haga clic <a href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio">aquí</a> o en el botón “Folios”. 
 </address>
 
 <address>
@@ -23,10 +23,9 @@ duda o dificultad no deje<br /> de escribirnos a	<a href="mailto:#">registrovill
 </address>
 
 <address>
-	<strong>ACLARACION:</strong> EN LA ACTUALIDAD NOS ENCONTRAMOS EN PROCESO DE RECOPILACIÓN <br />
+	<strong>ACLARACION:</strong> EN LA ACTUALIDAD NOS ENCONTRAMOS EN PROCESO DE RECOPILACIÓN 
 	E IDENTIFICACIÓN DE LOS BARRIOS QUE CONFORMARÁN EL REGISTRO. <br />
-    POR ELLO RECOMENDAMOS TENER EN CUENTA QUE LA INFORMACIÓN DISPONIBLE <br />
-	MUESTRA DIFERENTES GRADOS DE AVANCES POR MUNICIPIOS. EN OCASIONES EL <br />
-    UNIVERSO DE BARRIOS PUEDE SER PARCIAL O AÚN NO ESTAR VALIDADOS EN SU <br />
-	TOTALIDAD.
+    POR ELLO RECOMENDAMOS TENER EN CUENTA QUE LA INFORMACIÓN DISPONIBLE 
+	MUESTRA DIFERENTES GRADOS DE AVANCES POR MUNICIPIOS. EN OCASIONES EL 
+    UNIVERSO DE BARRIOS PUEDE SER PARCIAL O AÚN NO ESTAR VALIDADOS EN SU TOTALIDAD.
 </address>
