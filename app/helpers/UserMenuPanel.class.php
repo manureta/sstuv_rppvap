@@ -25,12 +25,13 @@ class UserMenuPanel extends QPanel {
         $btnInicio->AddCssClass('navbar-link');
         $btnInicio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnHome_Click'));
 
-        $btnMapa = new QLinkButton($this);
+        $btnMapa = new QLinkButtonTargetBlank($this);
         $btnMapa->Text = 'Mapa';
         $btnMapa->Icon = 'map-marker';
         $btnMapa->AddCssClass('navbar-link');
-        $btnMapa->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnMapa_Click'));
-
+        //$btnMapa->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnMapa_Click'));
+        $btnMapa->Link = "/mapa/";
+        
         $btnFolio = new QLinkButton($this);
         $btnFolio->Text = 'Folios';
         $btnFolio->Icon = 'edit';

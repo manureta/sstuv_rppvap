@@ -88,6 +88,12 @@ where
        lpad(n.mza::text, 7, '0'::text)) || 
        lpad(n.parc::text, 7, '0'::text) ) in (select nomencla from tripartito.errores_nomenclaturas where remplazar='SI');
 
+
+
+select * from nomenclatura  where titular_dominio='T-'
+
+
+
 /*
 update nomenclatura n set titular_dominio=parc.titular_dominio, _inscripcion_dominio=parc.inscripcion_dominio
 from (

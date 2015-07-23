@@ -288,7 +288,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $x=$xy["x"];
         $y=$xy["y"];
 
-        $url="http://190.188.234.6/mapa_pruebas/?map_x=$x&map_y=$y&map_zoom=16&map_opacity_Open%20Street%20Map=1";        
+        $url="http://190.188.234.6/mapa/?map_x=$x&map_y=$y&map_zoom=16&map_opacity_Open%20Street%20Map=1";        
         QApplication::ExecuteJavascript("window.open('$url');");
 
     }

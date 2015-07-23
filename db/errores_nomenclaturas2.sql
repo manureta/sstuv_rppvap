@@ -14,7 +14,7 @@ where length(titular_dominio) < 5 and titular_dominio<>'' group by titular_domin
 update nomenclatura set titular_dominio='-' where titular_dominio='T-ÿ'
 
 --2
-update nomenclatura set titular_dominio='IDP' where titular doominio='-IDP'
+update nomenclatura set titular_dominio='IDP' where titular_dominio='-IDP'
 
 -- creo vistas
 
