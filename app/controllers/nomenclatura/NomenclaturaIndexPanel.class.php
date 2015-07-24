@@ -78,12 +78,14 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $msj['exterior']="nomenclaturas que están completamente fuera del dibujo del barrio";
         $msj['error']="nomenclaturas que generan error en el cálculo de su ubicación";
         $msj['vacio']="valores indeterminados";
+        $msj['repetido']="registros donde se repite el codigo de nomenclatura";
 
         $class['completo']="alert-success";
         $class['parcial']="alert-info";
         $class['exterior']="alert-danger";
         $class['vacio']="alert-danger";
         $class['error']="alert-danger";
+        $class['repetido']="alert-danger";
 
         $intIdFolio=QApplication::QueryString("id");
         $strQuery="select distinct(estado_geografico) as estado, count(*) as cantidad from nomenclatura where id_folio=$intIdFolio group by estado_geografico;";
