@@ -9,7 +9,7 @@
 	<ol>
 				<?php $page=0;?>
 				<?php for ($i=0;$i<count($this->arrNom);$i++): ?>
-				<?php if($this->arrNom[$i]->EstadoGeografico=='completo' || $this->arrNom[$i]->EstadoGeografico=='parcial') : ?>	
+				<?php if( in_array($this->arrNom[$i]->EstadoGeografico, array('completo','parcial','repetido'))) : ?>	
 				<li>
 				
 					<span>Nomenclatura catastral</span>

@@ -76,7 +76,7 @@
 			<ol>
 				<?php $cant=0; ?>
 				<?php for ($i=0;($i<count($this->arrNom)&&$cant<4);$i++): ?>
-					<?php if($this->arrNom[$i]->EstadoGeografico=='completo' || $this->arrNom[$i]->EstadoGeografico=='parcial') : ?>			  
+					<?php if( in_array($this->arrNom[$i]->EstadoGeografico, array('completo','parcial','repetido'))) : ?>			  
 						<?php $cant++;?>
 						<div class="li_caratula">
 						<li>
