@@ -33,10 +33,10 @@
         </ul>
     </div>
     
-    <div class="titulos"><i class="icon-chevron-right"> </i>Regularización Dominial</div>  
+    <div class="container titulos"><i class="icon-chevron-right"> </i>Regularización Dominial</div>  
     <div>
                 
-            <div class="well bs-component">           				        
+            <div class="well bs-component container">           				        
                         <?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkProcesoIniciado->RenderWithName(); ?>
 
@@ -44,7 +44,7 @@
         		<br>
         		<div class="titulos"><i class="icon-tag"></i> Encuadre Legal</div> 
 		        <br>
-		        	<div class="well bs-component">
+		        	<div class="well bs-component container">
 		                                         
                         <?php $_CONTROL->pnlEncuadre->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->chkDecreto222595->RenderWithName(); ?>
@@ -75,9 +75,9 @@
 
     
  
-    <div class="titulos"><i class="icon-chevron-right"></i>Antecedentes de intervención en materia habitacional</div>    
+    <div class="container titulos"><i class="icon-chevron-right"></i>Antecedentes de intervención en materia habitacional</div>    
     <div> 
-                <div class="well bs-component">     
+                <div class="well bs-component container">     
                         
                         <?php $_CONTROL->pnlAntecedentes->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAntecedentes->chkSinIntervencion->RenderWithName(); ?>
@@ -90,7 +90,7 @@
 					        <br>					        
                             <div class="titulos"><i class="icon-tag"></i> Organismos de intervención</div>    
 					        <br>
-					        <div class="well bs-component">                                                    
+					        <div class="well bs-component container">                                                    
 					                <?php $_CONTROL->pnlOrganismos->lstIdFolioObject->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->chkNacional->RenderWithName(); ?>
 					                <?php $_CONTROL->pnlOrganismos->chkProvincial->RenderWithName(); ?>
@@ -102,7 +102,7 @@
 					    </div>  
                 </div>
     </div>
-    <div class="well bs-component">     
+    <div class="well bs-component container">     
         <?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
     </div>
 </div>

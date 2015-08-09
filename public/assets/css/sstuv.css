@@ -140,3 +140,6 @@ label {
 .alert-danger a{
   color:#b94a48;
 }
+textarea.form-control {
+    min-height: 100px !important;
+}
