@@ -143,3 +143,9 @@ label {
 textarea.form-control {
     min-height: 100px !important;
 }
+
+#MapaModal .modal-dialog {
+    margin-top: 50px;
+    width: 98%;
+    height: 100%;
+}

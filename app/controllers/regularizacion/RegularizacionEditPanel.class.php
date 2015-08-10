@@ -264,7 +264,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         
         if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
             
-            $puede_editar=(Permission::EsAdministrador()||Permission::EsSuperAdministrador()||Permission::EsUsoInterno(array("uso_interno_legal")));
+            $puede_editar=(Permission::EsAdministrador()||Permission::EsSuperAdministrador()||Permission::EsUsoInterno(array("uso_interno_legal")) ||Permission::PuedeEditar1A4($this->objFolio));
 
             $this->pnlEncuadre->txtExpropiacion->Enabled=$puede_editar;
             $this->pnlEncuadre->txtExpropiacion->Visible=true;
