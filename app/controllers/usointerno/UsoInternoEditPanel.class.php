@@ -307,6 +307,49 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $this->txtComentarioObjetacion->Visible=false;
         }
 
+        //ESCONDO CONTROLES QUE AHORA SE VERAN EN HOJA 4
+
+        $this->lstInformeUrbanistico->Enabled = false;
+        $this->lstInformeUrbanistico->Visible = false;
+        $this->txtFechaInformeUrbanistico->Visible = false;
+        $this->txtFechaInformeUrbanistico->Enabled = false;
+        //regularizacion
+        $this->lstRegularizacionTienePlano->Visible = false;
+        $this->lstRegularizacionTienePlano->Enabled = false;
+
+        $this->txtRegularizacionFechaInicio->Visible = false;
+        $this->txtRegularizacionFechaInicio->Enabled = false;
+
+        $this->chkRegularizacionCircular10Catastro->Visible = false;
+        $this->chkRegularizacionCircular10Catastro->Enabled = false;
+
+        $this->txtGeodesiaPartido->Visible = false;
+        $this->txtGeodesiaPartido->Enabled = false;
+
+        $this->txtGeodesiaNum->Visible = false;
+        $this->txtGeodesiaNum->Enabled = false;
+
+        $this->txtGeodesiaAnio->Visible = false;
+        $this->txtGeodesiaAnio->Enabled = false;
+
+        $this->txtRegistracionLegajo->Visible = false;
+        $this->txtRegistracionLegajo->Enabled = false;
+
+        $this->txtRegistracionFolio->Visible = false;
+        $this->txtRegistracionFolio->Enabled = false;
+
+        $this->txtRegistracionFecha->Visible = false;
+        $this->txtRegistracionFecha->Enabled = false;
+
+         $this->lstTieneCenso->Visible = false;
+        $this->lstTieneCenso->Enabled = false;
+
+         $this->txtFechaCenso->Visible = false;
+        $this->txtFechaCenso->Enabled = false;
+
+        $this->lstRegularizacionEstadoProcesoObject->Visible = false;
+        $this->lstRegularizacionEstadoProcesoObject->Enabled = false;
+
     }
 
     protected function metaControl_Create($strControlsArray){

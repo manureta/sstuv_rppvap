@@ -99,76 +99,7 @@
 
          </div>    
         
-        <div class="titulos"><i class="icon-chevron-right"> </i>Informe Urbanístico</div> 
-        <div class="well bs-component">
-            
-            <?php $_CONTROL->lstInformeUrbanistico->RenderWithName();?>
-            <?php $_CONTROL->txtFechaInformeUrbanistico->RenderWithName();?>
-            
-            <?php if($_CONTROL->boolPuedeAdjuntar || Permission::SoloAdjuntaInformeUrbanistico()){ ?>
-            <div class="well bs-component">
-                <div class="container">
-   
-                    <span class="btn btn-success fileinput-button">
-                        <i class="icon-plus"></i>
-                        <span>Adjuntar Informe</span>
-                        <!-- The file input field used as target for the file upload widget -->
-                        <input id="fileupload3" type="file" name="files[]">
-                    </span>
-                    <br>
-                    <br>
-                    <!-- The global progress bar -->
-                    <div id="progress" class="progress">
-                        <div class="progress-bar progress-bar-success"></div>
-                    </div>
-                    <!-- The container for the uploaded files -->
-                    <div id="files_informe" class="files"></div>
-                    <br>
-                </div>
-            </div>
-            <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"> </i>Informes Adjuntos</div>  
-            <div>
-                <div class="well bs-component">
-                    <div id="files_informe" class="files"></div>
-                </div>
-            </div>       
-            <?php } ?>
-        </div>
-
-        <div class="titulos"><i class="icon-chevron-right"></i> Regularización</div>   
-        	<div class="well bs-component"> 
-            <?php $_CONTROL->lstRegularizacionTienePlano->RenderWithName(); ?>
-            <?php $_CONTROL->txtRegularizacionFechaInicio->RenderWithName(); ?>            
-            <?php $_CONTROL->chkRegularizacionCircular10Catastro->RenderWithName(); ?>
-            <div class="renderWithName">
-                <div class="left">
-                    <label>N° plano aprobacion de Geodesia </label>
-                </div>
-                
-                 <?php $_CONTROL->txtGeodesiaPartido->Render(); ?>
-                 <?php $_CONTROL->txtGeodesiaNum->Render(); ?>
-                 <?php $_CONTROL->txtGeodesiaAnio->Render(); ?>
-                    
-            </div>
-            
-            <div class="renderWithName">
-                <div class="left">
-                    <label>Registración</label>
-                </div>
-                <?php $_CONTROL->txtRegistracionLegajo->Render(); ?>
-                <?php $_CONTROL->txtRegistracionFolio->Render(); ?>
-                <?php $_CONTROL->txtRegistracionFecha->Render(); ?>
-            </div>  
-            
-            <?php $_CONTROL->lstTieneCenso->RenderWithName(); ?>
-            <?php $_CONTROL->txtFechaCenso->RenderWithName(); ?>
-            
-            
-            
-            <?php $_CONTROL->lstRegularizacionEstadoProcesoObject->RenderWithName(); ?>
-            
-       		</div>
+        
 
         <div class="titulos"><i class="icon-chevron-right"></i> Ley de acceso justo al hábitat</div> 
         <div class="well bs-component">

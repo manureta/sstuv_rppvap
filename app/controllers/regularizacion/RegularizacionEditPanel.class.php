@@ -12,6 +12,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
     protected $objEncuadre;
     protected $objAntecedentes;
     protected $objOrganismos;
+    //Me pidieron que mueva variables de uso interno a hoja 4
+    public $pnlUsoInterno;
+    protected $objUsoInterno;
 
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
@@ -88,6 +91,71 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlOrganismos->lstIdFolioObject->Enabled = false;
         $this->pnlOrganismos->lstIdFolioObject->Visible = false;                
         
+        // PANELES DE INFORME URBANISTICO Y REGULARIZACION
+        // QUE ORIGINALMENTE SON DE USO INTERNO
+        // LOS EVENTOS SIGUEN ESTANDO EN EL CONTROLLER DE USO INTERNO
+
+        $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,QApplication::QueryString("id")));                        
+        $this->pnlUsoInterno = new UsoInternoEditPanel($this,UsoInternoEditPanel::$strControlsArray,$this->objUsoInterno->IdFolio);
+        $this->pnlUsoInterno->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlUsoInterno->lstIdFolioObject->Text = $this->objFolio->__toString();
+        //Escondo todas las variables de uso interno para habilitar solo las que necesito
+        foreach ($this->pnlUsoInterno->objControlsArray as $objControl) {
+            $objControl->Enabled=false;
+            $objControl->Visible=false;
+        }
+        //informe urbanistico
+        $this->pnlUsoInterno->Template=null;
+        $this->pnlUsoInterno->Form->RemoveControl($this->pnlUsoInterno->pnlTabs->ControlId, true);
+        $this->pnlUsoInterno->lstInformeUrbanistico->Enabled = true;
+        $this->pnlUsoInterno->lstInformeUrbanistico->Visible = true;
+        $this->pnlUsoInterno->txtFechaInformeUrbanistico->Visible = true;
+        $this->pnlUsoInterno->txtFechaInformeUrbanistico->Enabled = true;
+        //regularizacion
+        $this->pnlUsoInterno->lstRegularizacionTienePlano->Visible = true;
+        $this->pnlUsoInterno->lstRegularizacionTienePlano->Enabled = true;
+
+        $this->pnlUsoInterno->txtRegularizacionFechaInicio->Visible = true;
+        $this->pnlUsoInterno->txtRegularizacionFechaInicio->Enabled = true;
+
+        $this->pnlUsoInterno->chkRegularizacionCircular10Catastro->Visible = true;
+        $this->pnlUsoInterno->chkRegularizacionCircular10Catastro->Enabled = true;
+
+        $this->pnlUsoInterno->txtGeodesiaPartido->Visible = true;
+        $this->pnlUsoInterno->txtGeodesiaPartido->Enabled = true;
+
+        $this->pnlUsoInterno->txtGeodesiaNum->Visible = true;
+        $this->pnlUsoInterno->txtGeodesiaNum->Enabled = true;
+
+        $this->pnlUsoInterno->txtGeodesiaAnio->Visible = true;
+        $this->pnlUsoInterno->txtGeodesiaAnio->Enabled = true;
+
+        $this->pnlUsoInterno->txtRegistracionLegajo->Visible = true;
+        $this->pnlUsoInterno->txtRegistracionLegajo->Enabled = true;
+
+        $this->pnlUsoInterno->txtRegistracionFolio->Visible = true;
+        $this->pnlUsoInterno->txtRegistracionFolio->Enabled = true;
+
+
+        $this->pnlUsoInterno->txtRegistracionFecha->Visible = true;
+        $this->pnlUsoInterno->txtRegistracionFecha->Enabled = true;
+
+         $this->pnlUsoInterno->lstTieneCenso->Visible = true;
+        $this->pnlUsoInterno->lstTieneCenso->Enabled = true;
+
+         $this->pnlUsoInterno->txtFechaCenso->Visible = true;
+        $this->pnlUsoInterno->txtFechaCenso->Enabled = true;
+
+        $this->pnlUsoInterno->lstRegularizacionEstadoProcesoObject->Visible = true;
+        $this->pnlUsoInterno->lstRegularizacionEstadoProcesoObject->Enabled = true;
+        //OCULTO BOTONES
+        $this->pnlUsoInterno->btnSave->Enabled=false;
+        $this->pnlUsoInterno->btnSave->Visible=false;
+        $this->pnlUsoInterno->btnCancel->Enabled=false;
+        $this->pnlUsoInterno->btnCancel->Visible=false;
+        $this->pnlUsoInterno->btnEvolucion->Visible=false;
+
+        // FIN DE PANELES QUE ERAN DE USO INTERNO
 
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
@@ -153,6 +221,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlAntecedentes->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlOrganismos->btnSave_Click($strFormId, $strControlId, $strParameter);
+        $this->pnlUsoInterno->btnSave_Click($strFormId, $strControlId, $strParameter);
         
         $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
