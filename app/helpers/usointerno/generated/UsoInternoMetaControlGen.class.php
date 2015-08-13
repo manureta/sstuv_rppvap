@@ -64,6 +64,8 @@
      * property-read QLabel $RegularizacionFechaInicioLabel
      * property QTextBox $FechaInformeUrbanisticoControl
      * property-read QLabel $FechaInformeUrbanisticoLabel
+     * property QTextBox $ComentariosControl
+     * property-read QLabel $ComentariosLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -104,6 +106,7 @@
         protected $txtComentarioObjetacion;
         protected $txtRegularizacionFechaInicio;
         protected $txtFechaInformeUrbanistico;
+        protected $txtComentarios;
 
         // Controls that allow the viewing of UsoInterno's individual data fields
         protected $lblIdFolio;
@@ -130,6 +133,7 @@
         protected $lblComentarioObjetacion;
         protected $lblRegularizacionFechaInicio;
         protected $lblFechaInformeUrbanistico;
+        protected $lblComentarios;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -836,6 +840,32 @@
             return $this->lblFechaInformeUrbanistico;
         }
 
+        /**
+         * Create and setup QTextBox txtComentarios
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtComentarios_Create($strControlId = null) {
+            $this->txtComentarios = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtComentarios->Name = QApplication::Translate('Comentarios');
+            $this->txtComentarios->Text = $this->objUsoInterno->Comentarios;
+            $this->txtComentarios->TextMode = QTextMode::MultiLine;
+            
+            return $this->txtComentarios;
+        }
+
+        /**
+         * Create and setup QLabel lblComentarios
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblComentarios_Create($strControlId = null) {
+            $this->lblComentarios = new QLabel($this->objParentObject, $strControlId);
+            $this->lblComentarios->Name = QApplication::Translate('Comentarios');
+            $this->lblComentarios->Text = $this->objUsoInterno->Comentarios;
+            return $this->lblComentarios;
+        }
+
 
 
 
@@ -936,6 +966,9 @@
             if ($this->txtFechaInformeUrbanistico) $this->txtFechaInformeUrbanistico->Text = $this->objUsoInterno->FechaInformeUrbanistico;
             if ($this->lblFechaInformeUrbanistico) $this->lblFechaInformeUrbanistico->Text = $this->objUsoInterno->FechaInformeUrbanistico;
 
+            if ($this->txtComentarios) $this->txtComentarios->Text = $this->objUsoInterno->Comentarios;
+            if ($this->lblComentarios) $this->lblComentarios->Text = $this->objUsoInterno->Comentarios;
+
         }
 
 
@@ -978,6 +1011,7 @@
                 if ($this->txtComentarioObjetacion) $this->objUsoInterno->ComentarioObjetacion = $this->txtComentarioObjetacion->Text;
                 if ($this->txtRegularizacionFechaInicio) $this->objUsoInterno->RegularizacionFechaInicio = $this->txtRegularizacionFechaInicio->Text;
                 if ($this->txtFechaInformeUrbanistico) $this->objUsoInterno->FechaInformeUrbanistico = $this->txtFechaInformeUrbanistico->Text;
+                if ($this->txtComentarios) $this->objUsoInterno->Comentarios = $this->txtComentarios->Text;
 
 
         }
@@ -1178,6 +1212,12 @@
                 case 'FechaInformeUrbanisticoLabel':
                     if (!$this->lblFechaInformeUrbanistico) return $this->lblFechaInformeUrbanistico_Create();
                     return $this->lblFechaInformeUrbanistico;
+                case 'ComentariosControl':
+                    if (!$this->txtComentarios) return $this->txtComentarios_Create();
+                    return $this->txtComentarios;
+                case 'ComentariosLabel':
+                    if (!$this->lblComentarios) return $this->lblComentarios_Create();
+                    return $this->lblComentarios;
                 default:
                     try {
                         return parent::__get($strName);
@@ -1248,6 +1288,8 @@
                         return ($this->txtRegularizacionFechaInicio = QType::Cast($mixValue, 'QControl'));
                     case 'FechaInformeUrbanisticoControl':
                         return ($this->txtFechaInformeUrbanistico = QType::Cast($mixValue, 'QControl'));
+                    case 'ComentariosControl':
+                        return ($this->txtComentarios = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

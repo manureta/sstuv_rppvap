@@ -32,6 +32,7 @@ class UsoInternoEditPanelGen extends EditPanelBase {
         'txtComentarioObjetacion' => true,
         'txtRegularizacionFechaInicio' => true,
         'txtFechaInformeUrbanistico' => true,
+        'txtComentarios' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
@@ -107,6 +108,8 @@ class UsoInternoEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtRegularizacionFechaInicio'] = $this->mctUsoInterno->txtRegularizacionFechaInicio_Create();
         if (in_array('txtFechaInformeUrbanistico',$strControlsArray)) 
             $this->objControlsArray['txtFechaInformeUrbanistico'] = $this->mctUsoInterno->txtFechaInformeUrbanistico_Create();
+        if (in_array('txtComentarios',$strControlsArray)) 
+            $this->objControlsArray['txtComentarios'] = $this->mctUsoInterno->txtComentarios_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

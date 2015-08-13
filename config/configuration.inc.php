@@ -1,6 +1,6 @@
 <?php
 
-define('__APP_NAME__', 'Sitio generico sin descripcion');
+define('__APP_NAME__', 'Registro Provincial de Villas y asentamientos');
 define('__APP_SHORT_NAME__', 'registro');
 
 #Default timezone
@@ -29,7 +29,7 @@ if (file_exists(__CONFIG_DIR__.'/configuracion.xml')) {
             'profiling' => $xmlConfiguracion->DbConn->Profiling == 'false' ? false : true
 
     )));
-   define('DB_CONNECTION_2', serialize(array(
+   /*define('DB_CONNECTION_2', serialize(array(
             'adapter' => (string) $xmlConfiguracion->DbConnProc->Adapter,
             'server' => (string) $xmlConfiguracion->DbConnProc->Server,
             'port' => (int) $xmlConfiguracion->DbConnProc->Port,
@@ -39,6 +39,7 @@ if (file_exists(__CONFIG_DIR__.'/configuracion.xml')) {
             'schema' =>  array(),
             'profiling' => $xmlConfiguracion->DbConnProc->Profiling == 'false' ? false : true
     )));
+    */
     define('__DB_INDEX_CARGA__', 1);
     define('__DB_INDEX_OLTP__', 2);
     define('__DB_INDEX_PROC__', 3);
@@ -70,13 +71,13 @@ if (file_exists(__CONFIG_DIR__.'/configuracion.xml')) {
     if (!defined('__WEBSERVICE_MANAGER_SOAP_TNS__')) {
         define('__WEBSERVICE_MANAGER_SOAP_TNS__', 'localhost/manager/WebService.php');
     }
-
+/*
     if(!defined('__WEBSERVICE_DINIECE_NACIONAL_TEST_SOAP_URI__')) define('__WEBSERVICE_DINIECE_NACIONAL_TEST_SOAP_URI__', 'https://diniece.me.gov.ar/managernacional_test/WebService.php');
     if(!defined('__WEBSERVICE_DINIECE_NACIONAL_TEST_SOAP_TNS__')) define('__WEBSERVICE_DINIECE_NACIONAL_TEST_SOAP_TNS__', 'diniece.me.gov.ar/managernacional_test/WebService.php');
      
     if(!defined('AUTH_SOAP_URI') && $xmlConfiguracion->AuthMe->AuthmeUri != "") define('AUTH_SOAP_URI', 'http://'.(string) $xmlConfiguracion->AuthMe->AuthmeUri.'?wsdl');
     if(!defined('USE_AUTHME')) define('USE_AUTHME', $xmlConfiguracion->AuthMe->UseAuthMe == 'false' ? false : true);
-
+*/
     define('__DB_INICIALIZADA_CARGA__', $xmlConfiguracion->DbConn->Inicializada == "false" ? false : true);
     if(!defined('__ALLOW_EMAILS__')) define('__ALLOW_EMAILS__', $xmlConfiguracion->Email->Enabled == "false" ? false : true);
     if(!defined('__EMAIL_SMTP_SERVER__')) define('__EMAIL_SMTP_SERVER__', (string) $xmlConfiguracion->Email->Smtp);

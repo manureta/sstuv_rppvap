@@ -28,6 +28,7 @@
 		<?php $_CONTROL->txtComentarioObjetacion->RenderWithName(); ?>
 		<?php $_CONTROL->txtRegularizacionFechaInicio->RenderWithName(); ?>
 		<?php $_CONTROL->txtFechaInformeUrbanistico->RenderWithName(); ?>
+		<?php $_CONTROL->txtComentarios->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

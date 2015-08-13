@@ -530,7 +530,7 @@
             $this->txtNomenclaturaTextoLey = new QTextBox($this->objParentObject, $strControlId);
             $this->txtNomenclaturaTextoLey->Name = QApplication::Translate('NomenclaturaTextoLey');
             $this->txtNomenclaturaTextoLey->Text = $this->objEncuadreLegal->NomenclaturaTextoLey;
-            $this->txtNomenclaturaTextoLey->MaxLength = EncuadreLegal::NomenclaturaTextoLeyMaxLength;
+            $this->txtNomenclaturaTextoLey->TextMode = QTextMode::MultiLine;
             
             return $this->txtNomenclaturaTextoLey;
         }

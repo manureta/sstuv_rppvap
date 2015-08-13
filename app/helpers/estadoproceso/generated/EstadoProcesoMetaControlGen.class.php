@@ -220,6 +220,7 @@
         $strConfigArray['Columns']['ComentarioObjetacion'] = QApplication::Translate('ComentarioObjetacion');
         $strConfigArray['Columns']['RegularizacionFechaInicio'] = QApplication::Translate('RegularizacionFechaInicio');
         $strConfigArray['Columns']['FechaInformeUrbanistico'] = QApplication::Translate('FechaInformeUrbanistico');
+        $strConfigArray['Columns']['Comentarios'] = QApplication::Translate('Comentarios');
 
         $this->lstUsoInternoAsRegularizacion = new QListPanel($this->objParentObject, $this->objEstadoProceso, $strConfigArray, $strControlId);
         $this->lstUsoInternoAsRegularizacion->Name = UsoInterno::Noun();

@@ -59,6 +59,8 @@ class QQNodeUsoInterno extends QQNode {
 					return new QQNode('regularizacion_fecha_inicio', 'RegularizacionFechaInicio', 'string', $this);
 				case 'FechaInformeUrbanistico':
 					return new QQNode('fecha_informe_urbanistico', 'FechaInformeUrbanistico', 'string', $this);
+				case 'Comentarios':
+					return new QQNode('comentarios', 'Comentarios', 'string', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNodeFolio('id_folio', 'IdFolio', 'integer', $this);

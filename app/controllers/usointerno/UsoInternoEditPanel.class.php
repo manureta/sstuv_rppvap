@@ -24,37 +24,7 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
     // boton para descargar evolucion
     public $btnEvolucion;
-
-   public static $strControlsArray = array(
-        'lstIdFolioObject' => true,
-        'txtInformeUrbanistico' => true,
-        'chkMapeoPreliminar' => true,
-        'chkNoCorrespondeInscripcion' => true,
-        'txtResolucionInscripcionProvisoria' => true,
-        'txtResolucionInscripcionDefinitiva' => true,
-        'txtRegularizacionTienePlano' => true,
-        'chkRegularizacionCircular10Catastro' => true,
-        'lstRegularizacionEstadoProcesoObject' => true,
-        'txtNumExpediente' => true,
-        'txtRegistracionLegajo' => true,
-        'txtRegistracionFecha' => true,
-        'txtRegistracionFolio' => true,
-        'txtGeodesiaNum' => true,
-        'txtGeodesiaAnio' => true,
-        'txtLey14449' => true,
-        'txtTieneCenso' => true,
-        'txtFechaCenso' => true,
-        'txtGeodesiaPartido' => true,
-        'lstEstadoFolioObject' => true,
-        'txtFechaInformeUrbanistico'=>true,
-        'chkObjetado' => true,
-        'txtComentarioObjetacion' => true,
-        'txtRegularizacionFechaInicio' => true,
-        'lstInformeUrbanistico'=>true,
-        'lstTieneCenso'=>true,
-        'lstLey14449'=>true,
-        'lstRegularizacionTienePlano'=>true
-    );
+    
 
     public function __construct($objParentObject, $strControlsArray = array(), $intIdFolio = null, $strControlId = null) {
 
@@ -357,6 +327,10 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         $this->lstRegularizacionEstadoProcesoObject->Visible = false;
         $this->lstRegularizacionEstadoProcesoObject->Enabled = false;
 
+        //width del textarea de comentarios
+
+        $this->txtComentarios->AddCssClass("comentarios_uso_interno");
+
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -433,6 +407,8 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         if (in_array('txtRegularizacionFechaInicio',$strControlsArray)) 
             $this->objControlsArray['txtRegularizacionFechaInicio'] = $this->mctUsoInterno->txtRegularizacionFechaInicio_Create();
             $this->objControlsArray['txtRegularizacionFechaInicio']->Name="Fecha Inicio";
+        if (in_array('txtComentarios',$strControlsArray)) 
+            $this->objControlsArray['txtComentarios'] = $this->mctUsoInterno->txtComentarios_Create();    
     }
 
     public function lstInforme_Change($strFormId, $strControlId, $strParameter) {       

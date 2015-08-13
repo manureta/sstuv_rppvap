@@ -44,6 +44,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         'ComentarioObjetacion' => true,
         'RegularizacionFechaInicio' => true,
         'FechaInformeUrbanistico' => true,
+        'Comentarios' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -100,6 +101,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
         if (UsoInternoDataGrid::$strColumnsArray['ComentarioObjetacion']) $this->MetaAddColumn('ComentarioObjetacion')->Title = QApplication::Translate('ComentarioObjetacion');
         if (UsoInternoDataGrid::$strColumnsArray['RegularizacionFechaInicio']) $this->MetaAddColumn('RegularizacionFechaInicio')->Title = QApplication::Translate('RegularizacionFechaInicio');
         if (UsoInternoDataGrid::$strColumnsArray['FechaInformeUrbanistico']) $this->MetaAddColumn('FechaInformeUrbanistico')->Title = QApplication::Translate('FechaInformeUrbanistico');
+        if (UsoInternoDataGrid::$strColumnsArray['Comentarios']) $this->MetaAddColumn('Comentarios')->Title = QApplication::Translate('Comentarios');
     }
 
 /**
@@ -273,6 +275,7 @@ class UsoInternoDataGridGen extends QFilteredDataGrid {
 				case 'ComentarioObjetacion': return QQN::UsoInterno()->ComentarioObjetacion;
 				case 'RegularizacionFechaInicio': return QQN::UsoInterno()->RegularizacionFechaInicio;
 				case 'FechaInformeUrbanistico': return QQN::UsoInterno()->FechaInformeUrbanistico;
+				case 'Comentarios': return QQN::UsoInterno()->Comentarios;
 				default: throw new QCallerException('Simple Property not found in UsoInternoDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

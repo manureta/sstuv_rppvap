@@ -34,6 +34,7 @@ class UsoInternoModalPanelGen extends EditPanelBase {
         'txtComentarioObjetacion' => true,
         'txtRegularizacionFechaInicio' => true,
         'txtFechaInformeUrbanistico' => true,
+        'txtComentarios' => true,
     );
     
     public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsoInterno = null, $strControlId = null) {
@@ -112,6 +113,8 @@ class UsoInternoModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtRegularizacionFechaInicio'] = $this->mctUsoInterno->txtRegularizacionFechaInicio_Create();
         if (in_array('txtFechaInformeUrbanistico',$strControlsArray)) 
             $this->objControlsArray['txtFechaInformeUrbanistico'] = $this->mctUsoInterno->txtFechaInformeUrbanistico_Create();
+        if (in_array('txtComentarios',$strControlsArray)) 
+            $this->objControlsArray['txtComentarios'] = $this->mctUsoInterno->txtComentarios_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }

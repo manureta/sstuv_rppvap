@@ -33,8 +33,8 @@
 
     <div>
        <?php if(Permission::PuedeVerPanelAdministracion()){ ?>
-        <div class="titulos"><i class="icon-chevron-right"> </i>Administración</div>        
-        <div class="well bs-component">
+        <div class="titulos container"><i class="icon-chevron-right"> </i>Administración</div>        
+        <div class="well bs-component container">
             <div class="renderWithName">
                 <div class="left">
                     <label>Estado del Folio </label>
@@ -58,8 +58,8 @@
                 <?php } ?>
          </div>
          <?php } ?>
-        <div class="titulos"><i class="icon-chevron-right"></i> Situación Registral</div>        
-        <div class="well bs-component">
+        <div class="titulos container"><i class="icon-chevron-right"></i> Situación Registral</div>        
+        <div class="well bs-component container">
 			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
             <?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
             <?php $_CONTROL->chkNoCorrespondeInscripcion->RenderWithName(); ?>
@@ -68,7 +68,7 @@
             <?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
             
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
-            <div class="well bs-component">
+            <div class="well bs-component container">
                 <div class="container">
    
                     <span class="btn btn-success fileinput-button">
@@ -101,12 +101,12 @@
         
         
 
-        <div class="titulos"><i class="icon-chevron-right"></i> Ley de acceso justo al hábitat</div> 
-        <div class="well bs-component">
+        <div class="titulos container"><i class="icon-chevron-right"></i> Ley de acceso justo al hábitat</div> 
+        <div class="well bs-component container">
             <?php $_CONTROL->lstLey14449->RenderWithName(); ?>
             
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
-            <div class="well bs-component">
+            <div class="well bs-component container">
                 <div class="container">
    
                     <span class="btn btn-success fileinput-button">
@@ -127,15 +127,20 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>  
+            <div class="titulos container"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>  
             <div>
-                <div class="well bs-component">
+                <div class="well bs-component container">
                     <div id="files_habitat" class="files"></div>
                 </div>
             </div>       
             <?php } ?>
             
         </div>    
+
+        <div class="titulos container"><i class="icon-chevron-right"></i> Comentarios Generales</div> 
+        <div class="well bs-component container">
+            <?php $_CONTROL->txtComentarios->Render(); ?>
+        </div>
 
     </div>
 </div>
@@ -148,6 +153,8 @@
     $(".registracion_folio").attr("placeholder","Folio");
     $(".registracion_legajo").attr("placeholder","Legajo");
     $(".registracion_fecha").attr("placeholder","Fecha");
+
+    $(".comentarios_uso_interno").parent().parent().css("width","100%");
 
 </script>
 

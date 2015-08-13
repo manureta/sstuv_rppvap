@@ -39,6 +39,7 @@
 	 * @property string $ComentarioObjetacion the value for strComentarioObjetacion 
 	 * @property string $RegularizacionFechaInicio the value for strRegularizacionFechaInicio 
 	 * @property string $FechaInformeUrbanistico the value for strFechaInformeUrbanistico 
+	 * @property string $Comentarios the value for strComentarios 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (PK)
 	 * @property EstadoProceso $RegularizacionEstadoProcesoObject the value for the EstadoProceso object referenced by intRegularizacionEstadoProceso 
 	 * @property EstadoFolio $EstadoFolioObject the value for the EstadoFolio object referenced by intEstadoFolio 
@@ -261,6 +262,14 @@ class UsoInternoGen extends QBaseClass {
      */
     protected $strFechaInformeUrbanistico;
     const FechaInformeUrbanisticoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column uso_interno.comentarios
+     * @var string strComentarios
+     */
+    protected $strComentarios;
+    const ComentariosDefault = null;
 
 
     /**
@@ -655,6 +664,7 @@ class UsoInternoGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'comentario_objetacion', $strAliasPrefix . 'comentario_objetacion');
 			$objBuilder->AddSelectItem($strTableName, 'regularizacion_fecha_inicio', $strAliasPrefix . 'regularizacion_fecha_inicio');
 			$objBuilder->AddSelectItem($strTableName, 'fecha_informe_urbanistico', $strAliasPrefix . 'fecha_informe_urbanistico');
+			$objBuilder->AddSelectItem($strTableName, 'comentarios', $strAliasPrefix . 'comentarios');
 		}
 
 //instantiation_methods
@@ -733,6 +743,8 @@ class UsoInternoGen extends QBaseClass {
 			$objToReturn->strRegularizacionFechaInicio = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_informe_urbanistico', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_informe_urbanistico'] : $strAliasPrefix . 'fecha_informe_urbanistico';
 			$objToReturn->strFechaInformeUrbanistico = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'comentarios', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'comentarios'] : $strAliasPrefix . 'comentarios';
+			$objToReturn->strComentarios = $objDbRow->GetColumn($strAliasName, 'Blob');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -1009,7 +1021,8 @@ class UsoInternoGen extends QBaseClass {
                             "objetado",
                             "comentario_objetacion",
                             "regularizacion_fecha_inicio",
-                            "fecha_informe_urbanistico"
+                            "fecha_informe_urbanistico",
+                            "comentarios"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->strInformeUrbanistico) . ',
@@ -1034,7 +1047,8 @@ class UsoInternoGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->blnObjetado) . ',
                             ' . $objDatabase->SqlVariable($this->strComentarioObjetacion) . ',
                             ' . $objDatabase->SqlVariable($this->strRegularizacionFechaInicio) . ',
-                            ' . $objDatabase->SqlVariable($this->strFechaInformeUrbanistico) . '
+                            ' . $objDatabase->SqlVariable($this->strFechaInformeUrbanistico) . ',
+                            ' . $objDatabase->SqlVariable($this->strComentarios) . '
                         )
                     ');
 
@@ -1072,7 +1086,8 @@ class UsoInternoGen extends QBaseClass {
                             "objetado" = ' . $objDatabase->SqlVariable($this->blnObjetado) . ',
                             "comentario_objetacion" = ' . $objDatabase->SqlVariable($this->strComentarioObjetacion) . ',
                             "regularizacion_fecha_inicio" = ' . $objDatabase->SqlVariable($this->strRegularizacionFechaInicio) . ',
-                            "fecha_informe_urbanistico" = ' . $objDatabase->SqlVariable($this->strFechaInformeUrbanistico) . '
+                            "fecha_informe_urbanistico" = ' . $objDatabase->SqlVariable($this->strFechaInformeUrbanistico) . ',
+                            "comentarios" = ' . $objDatabase->SqlVariable($this->strComentarios) . '
                         WHERE
                             "id_folio" = ' . $objDatabase->SqlVariable($this->__intIdFolio) . '
                     ');
@@ -1181,6 +1196,7 @@ class UsoInternoGen extends QBaseClass {
 			$this->strComentarioObjetacion = $objReloaded->strComentarioObjetacion;
 			$this->strRegularizacionFechaInicio = $objReloaded->strRegularizacionFechaInicio;
 			$this->strFechaInformeUrbanistico = $objReloaded->strFechaInformeUrbanistico;
+			$this->strComentarios = $objReloaded->strComentarios;
 		}
 
 
@@ -1369,6 +1385,13 @@ class UsoInternoGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strFechaInformeUrbanistico;
+
+            case 'Comentarios':
+                /**
+                 * Gets the value for strComentarios 
+                 * @return string
+                 */
+                return $this->strComentarios;
 
 
             ///////////////////
@@ -1812,6 +1835,21 @@ class UsoInternoGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'Comentarios':
+					/**
+					 * Sets the value for strComentarios 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strComentarios = QType::Cast($mixValue, QType::String));
+                                                return ($this->strComentarios = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				///////////////////
 				// Member Objects
@@ -1978,6 +2016,7 @@ class UsoInternoGen extends QBaseClass {
 			$strToReturn .= '<element name="ComentarioObjetacion" type="xsd:string"/>';
 			$strToReturn .= '<element name="RegularizacionFechaInicio" type="xsd:string"/>';
 			$strToReturn .= '<element name="FechaInformeUrbanistico" type="xsd:string"/>';
+			$strToReturn .= '<element name="Comentarios" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2075,6 +2114,9 @@ class UsoInternoGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'FechaInformeUrbanistico')) {
 				$objToReturn->strFechaInformeUrbanistico = $objSoapObject->FechaInformeUrbanistico;
+            }
+			if (property_exists($objSoapObject, 'Comentarios')) {
+				$objToReturn->strComentarios = $objSoapObject->Comentarios;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

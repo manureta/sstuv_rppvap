@@ -250,6 +250,7 @@
         $strConfigArray['Columns']['ComentarioObjetacion'] = QApplication::Translate('ComentarioObjetacion');
         $strConfigArray['Columns']['RegularizacionFechaInicio'] = QApplication::Translate('RegularizacionFechaInicio');
         $strConfigArray['Columns']['FechaInformeUrbanistico'] = QApplication::Translate('FechaInformeUrbanistico');
+        $strConfigArray['Columns']['Comentarios'] = QApplication::Translate('Comentarios');
 
         $this->lstUsoInterno = new QListPanel($this->objParentObject, $this->objEstadoFolio, $strConfigArray, $strControlId);
         $this->lstUsoInterno->Name = UsoInterno::Noun();

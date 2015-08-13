@@ -149,3 +149,7 @@ textarea.form-control {
     width: 98%;
     height: 100%;
 }
+
+textarea.comentarios_uso_interno{
+  min-height: 200px !important;
+}

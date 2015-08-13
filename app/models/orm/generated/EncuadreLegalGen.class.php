@@ -167,7 +167,6 @@ class EncuadreLegalGen extends QBaseClass {
      * @var string strNomenclaturaTextoLey
      */
     protected $strNomenclaturaTextoLey;
-    const NomenclaturaTextoLeyMaxLength = 150;
     const NomenclaturaTextoLeyDefault = null;
 
 
@@ -647,7 +646,7 @@ class EncuadreLegalGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_vencimiento', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_vencimiento'] : $strAliasPrefix . 'fecha_vencimiento';
 			$objToReturn->strFechaVencimiento = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'nomenclatura_texto_ley', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nomenclatura_texto_ley'] : $strAliasPrefix . 'nomenclatura_texto_ley';
-			$objToReturn->strNomenclaturaTextoLey = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$objToReturn->strNomenclaturaTextoLey = $objDbRow->GetColumn($strAliasName, 'Blob');
 			$strAliasName = array_key_exists($strAliasPrefix . 'tasacion_administrativa', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tasacion_administrativa'] : $strAliasPrefix . 'tasacion_administrativa';
 			$objToReturn->strTasacionAdministrativa = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'precio_pagado', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'precio_pagado'] : $strAliasPrefix . 'precio_pagado';
@@ -757,38 +756,6 @@ class EncuadreLegalGen extends QBaseClass {
 			
 		/**
 		 * Load an array of EncuadreLegal objects,
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return EncuadreLegal[]
-		*/
-		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
-			// Call EncuadreLegal::QueryArray to perform the LoadArrayByIdFolio query
-			try {
-				return EncuadreLegal::QueryArray(
-					QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count EncuadreLegales
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @return int
-		*/
-		public static function CountByIdFolio($intIdFolio) {
-			// Call EncuadreLegal::QueryCount to perform the CountByIdFolio query
-			return EncuadreLegal::QueryCount(
-				QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio)
-			);
-		}
-			
-		/**
-		 * Load an array of EncuadreLegal objects,
 		 * by EstadoProcesoExpropiacion Index(es)
 		 * @param integer $intEstadoProcesoExpropiacion
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -816,6 +783,38 @@ class EncuadreLegalGen extends QBaseClass {
 			// Call EncuadreLegal::QueryCount to perform the CountByEstadoProcesoExpropiacion query
 			return EncuadreLegal::QueryCount(
 				QQ::Equal(QQN::EncuadreLegal()->EstadoProcesoExpropiacion, $intEstadoProcesoExpropiacion)
+			);
+		}
+			
+		/**
+		 * Load an array of EncuadreLegal objects,
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return EncuadreLegal[]
+		*/
+		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
+			// Call EncuadreLegal::QueryArray to perform the LoadArrayByIdFolio query
+			try {
+				return EncuadreLegal::QueryArray(
+					QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count EncuadreLegales
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @return int
+		*/
+		public static function CountByIdFolio($intIdFolio) {
+			// Call EncuadreLegal::QueryCount to perform the CountByIdFolio query
+			return EncuadreLegal::QueryCount(
+				QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio)
 			);
 		}
 
