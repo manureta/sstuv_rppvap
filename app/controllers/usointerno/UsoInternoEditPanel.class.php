@@ -69,10 +69,13 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        
-
-           if(!Permission::PuedeVerHoja5()) QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
-        
+            
+           // quick fix:
+           // al llamar a este edit panel desde hoja 4 tengo que saltear el redirect 
+           if(QApplication::QueryString('controller')!=="regularizacion"){
+                if(!Permission::PuedeVerHoja5()) QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden"); 
+           } 
+           
             
 
         $this->intIdFolio = $intIdFolio;
@@ -205,27 +208,31 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
         //Archivos adjuntos de sisteme registral
         
         $url_upload_resolucion=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=resolucion";
-        $url_upload_informe=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
+        //$url_upload_informe=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
         $url_upload_habitat=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=habitat";
-        if(Permission::PuedeAdjuntar($this->objFolio)){
-            $this->boolPuedeAdjuntar=true;    
-            QApplication::ExecuteJavascript("uploadManager('$url_upload_resolucion','#fileupload2','#files_resolucion')");
-            QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
-            QApplication::ExecuteJavascript("uploadManager('$url_upload_habitat','#fileupload4','#files_habitat')");
-        }else{
-            if(Permission::PuedeVerAdjuntados($this->objFolio)){                
-                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_resolucion','#files_resolucion')");
-                if(Permission::SoloAdjuntaInformeUrbanistico()){
 
-                    QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
-                }else{
-                    QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
+        // QUICK FIX: porque se llama a este edit panel desde hoja 4 tambien
+        if(QApplication::QueryString('controller')=="interno"){
+            if(Permission::PuedeAdjuntar($this->objFolio)){
+                $this->boolPuedeAdjuntar=true;    
+                QApplication::ExecuteJavascript("uploadManager('$url_upload_resolucion','#fileupload2','#files_resolucion')");
+                //QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
+                QApplication::ExecuteJavascript("uploadManager('$url_upload_habitat','#fileupload4','#files_habitat')");
+            }else{
+                if(Permission::PuedeVerAdjuntados($this->objFolio)){                
+                    QApplication::ExecuteJavascript("verAdjuntados('$url_upload_resolucion','#files_resolucion')");
+                    if(Permission::SoloAdjuntaInformeUrbanistico()){
+                        //QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
+                    }else{
+                        //QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
+                    }
+                    if(Permission::PuedeVerAdjuntadosHabitat()){
+                      QApplication::ExecuteJavascript("verAdjuntados('$url_upload_habitat','#files_habitat')");         
+                    }  
                 }
-                if(Permission::PuedeVerAdjuntadosHabitat()){
-                  QApplication::ExecuteJavascript("verAdjuntados('$url_upload_habitat','#files_habitat')");         
-                }  
             }
         }
+
         // para poner en no corresponde si cambia estado
         $this->lstEstadoFolioObject->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstEstado_Change'));
 

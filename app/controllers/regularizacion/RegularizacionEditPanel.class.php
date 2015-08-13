@@ -94,8 +94,9 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         // PANELES DE INFORME URBANISTICO Y REGULARIZACION
         // QUE ORIGINALMENTE SON DE USO INTERNO
         // LOS EVENTOS SIGUEN ESTANDO EN EL CONTROLLER DE USO INTERNO
-
-        $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,QApplication::QueryString("id")));                        
+       
+        $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,QApplication::QueryString("id")));  
+        
         $this->pnlUsoInterno = new UsoInternoEditPanel($this,UsoInternoEditPanel::$strControlsArray,$this->objUsoInterno->IdFolio);
         $this->pnlUsoInterno->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlUsoInterno->lstIdFolioObject->Text = $this->objFolio->__toString();
@@ -107,47 +108,49 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         //informe urbanistico
         $this->pnlUsoInterno->Template=null;
         $this->pnlUsoInterno->Form->RemoveControl($this->pnlUsoInterno->pnlTabs->ControlId, true);
-        $this->pnlUsoInterno->lstInformeUrbanistico->Enabled = true;
+        
+        $this->pnlUsoInterno->lstInformeUrbanistico->Enabled = Permission::PuedeEditar1A4($this->objFolio);
         $this->pnlUsoInterno->lstInformeUrbanistico->Visible = true;
+
         $this->pnlUsoInterno->txtFechaInformeUrbanistico->Visible = true;
-        $this->pnlUsoInterno->txtFechaInformeUrbanistico->Enabled = true;
+        $this->pnlUsoInterno->txtFechaInformeUrbanistico->Enabled = Permission::PuedeEditar1A4($this->objFolio);
         //regularizacion
         $this->pnlUsoInterno->lstRegularizacionTienePlano->Visible = true;
-        $this->pnlUsoInterno->lstRegularizacionTienePlano->Enabled = true;
+        $this->pnlUsoInterno->lstRegularizacionTienePlano->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->txtRegularizacionFechaInicio->Visible = true;
-        $this->pnlUsoInterno->txtRegularizacionFechaInicio->Enabled = true;
+        $this->pnlUsoInterno->txtRegularizacionFechaInicio->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->chkRegularizacionCircular10Catastro->Visible = true;
-        $this->pnlUsoInterno->chkRegularizacionCircular10Catastro->Enabled = true;
+        $this->pnlUsoInterno->chkRegularizacionCircular10Catastro->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->txtGeodesiaPartido->Visible = true;
-        $this->pnlUsoInterno->txtGeodesiaPartido->Enabled = true;
+        $this->pnlUsoInterno->txtGeodesiaPartido->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->txtGeodesiaNum->Visible = true;
-        $this->pnlUsoInterno->txtGeodesiaNum->Enabled = true;
+        $this->pnlUsoInterno->txtGeodesiaNum->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->txtGeodesiaAnio->Visible = true;
-        $this->pnlUsoInterno->txtGeodesiaAnio->Enabled = true;
+        $this->pnlUsoInterno->txtGeodesiaAnio->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->txtRegistracionLegajo->Visible = true;
-        $this->pnlUsoInterno->txtRegistracionLegajo->Enabled = true;
+        $this->pnlUsoInterno->txtRegistracionLegajo->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->txtRegistracionFolio->Visible = true;
-        $this->pnlUsoInterno->txtRegistracionFolio->Enabled = true;
+        $this->pnlUsoInterno->txtRegistracionFolio->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
 
         $this->pnlUsoInterno->txtRegistracionFecha->Visible = true;
-        $this->pnlUsoInterno->txtRegistracionFecha->Enabled = true;
+        $this->pnlUsoInterno->txtRegistracionFecha->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
          $this->pnlUsoInterno->lstTieneCenso->Visible = true;
-        $this->pnlUsoInterno->lstTieneCenso->Enabled = true;
+        $this->pnlUsoInterno->lstTieneCenso->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
          $this->pnlUsoInterno->txtFechaCenso->Visible = true;
-        $this->pnlUsoInterno->txtFechaCenso->Enabled = true;
+        $this->pnlUsoInterno->txtFechaCenso->Enabled = Permission::PuedeEditar1A4($this->objFolio);
 
         $this->pnlUsoInterno->lstRegularizacionEstadoProcesoObject->Visible = true;
-        $this->pnlUsoInterno->lstRegularizacionEstadoProcesoObject->Enabled = true;
+        $this->pnlUsoInterno->lstRegularizacionEstadoProcesoObject->Enabled = Permission::PuedeEditar1A4($this->objFolio);
         //OCULTO BOTONES
         $this->pnlUsoInterno->btnSave->Enabled=false;
         $this->pnlUsoInterno->btnSave->Visible=false;
@@ -179,6 +182,23 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlEncuadre->txtExpropiacion->Enabled = true;
             $this->pnlEncuadre->txtOtros->Enabled = true;
             $this->pnlEncuadre->chkTieneExpropiacion->Enabled = true;
+        }
+
+        //ADJUNTOS DE INFORME URBANISTICO
+        $url_upload_informe=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
+		if(Permission::PuedeAdjuntar($this->objFolio)){
+			$this->pnlUsoInterno->boolPuedeAdjuntar=true;
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");                
+        }else{
+            if(Permission::PuedeVerAdjuntados($this->objFolio)){                
+                if(Permission::SoloAdjuntaInformeUrbanistico()){
+                	$this->pnlUsoInterno->boolPuedeAdjuntar=true;
+                    QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
+                }else{
+                    QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
+                }
+                  
+            }
         }
 
     }
