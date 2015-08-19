@@ -153,3 +153,7 @@ textarea.form-control {
 textarea.comentarios_uso_interno{
   min-height: 200px !important;
 }
+
+.dropdown-menu{
+  min-height: 260px !important;
+}
