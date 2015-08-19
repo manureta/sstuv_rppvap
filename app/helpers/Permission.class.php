@@ -179,7 +179,7 @@ abstract class Permission extends PermissionBase {
     }
     public static function PuedeAdjuntarHoja1(Folio $objFolio){
         return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA) 
-            || self::EsUsoInterno(array("uso_interno_expediente"))
+            || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla"))
             || (self::EsCreador($objFolio) && in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) && self::EsUsoInterno(array("uso_interno_legal","uso_interno_social","uso_interno_tecnico")))
             );
     }
@@ -219,6 +219,10 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeVerAdjuntadosHabitat(){
         return (!self::EsUsoInterno(array("uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !self::EsVisualizadorIntermedio());
+    }
+
+    public static function PuedeVerNoCorrespondeInscripcion(){
+        return (self::EsAdministrador() || self::EsVisualizadorGeneral() || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
     }
 
     public static function EsCreador($objFolio){
