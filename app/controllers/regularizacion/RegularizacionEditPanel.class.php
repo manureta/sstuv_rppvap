@@ -219,7 +219,10 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
                 	$this->pnlUsoInterno->boolPuedeAdjuntar=true;
                     QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
                 }else{
-                    QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
+                    if(Permission::PuedeVerAdjuntosInformeUrbanistico()){
+                        QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");    
+                    }
+                    
                 }
                   
             }
@@ -377,7 +380,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
     public function InicializarExpropiacion(){
 
             $mostrar=($this->pnlEncuadre->chkTieneExpropiacion->Checked);
-            $puede_editar=Permission::PuedeEditarExpropiaciones();
+            $puede_editar=Permission::PuedeEditarExpropiaciones($this->objFolio);
 
             // Si se puede ver
             $this->pnlEncuadre->txtExpropiacion->Visible=$mostrar;
