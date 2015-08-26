@@ -225,6 +225,10 @@ abstract class Permission extends PermissionBase {
         return (self::EsAdministrador() || self::EsVisualizadorGeneral() || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
     }
 
+    public static function PuedeEditarExpropiaciones(){
+        return (self::EsAdministrador() || self::EsSuperAdministrador() || self::EsUsoInterno(array("uso_interno_legal")) || self::PuedeEditar1A4($this->objFolio));
+    }
+
     public static function EsCreador($objFolio){
         // metodo para saber si el usuario actual es el dueño/creador del folio
         return (in_array($objFolio->Creador, array(Session::GetObjUsuario()->IdUsuario,NULL)) );

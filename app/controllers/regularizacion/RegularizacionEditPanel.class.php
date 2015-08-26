@@ -65,7 +65,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         //$this->TieneExpropiacion_chk(true);
         $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al tildar 'Expropiación' se habilitarán nuevas variables asociadas. \\En cambio, al destildar 'Expropiación' se BORRARÁN estas nuevas variables \\n ¿Está seguro?")));        
         $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk")); 
-
+        $this->InicializarExpropiacion();
 
         $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
         $this->pnlAntecedentes = new AntecedentesEditPanel($this,AntecedentesEditPanel::$strControlsArray,$this->objAntecedentes->Id);
@@ -310,10 +310,11 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->chkDecreto81588->Checked=false;
         $this->pnlEncuadre->chkLey23073->Checked=false;
         $this->pnlEncuadre->chkDecreto468696->Checked=false;
-        $this->pnlEncuadre->chkLey14449->Checked=false;
-        $this->pnlEncuadre->txtExpropiacion->Text='';
+        $this->pnlEncuadre->chkLey14449->Checked=false;        
         $this->pnlEncuadre->txtOtros->Text='';
+        //reseteo expropiaciones
         $this->pnlEncuadre->chkTieneExpropiacion->Checked=false;
+        $this->ResetearExpropiacion();
     }
 
 
@@ -331,7 +332,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         }
     }
 
-    public function ResetearExpropiacion($inicio){
+    public function ResetearExpropiacion($mensaje){
 
             $this->pnlEncuadre->txtExpropiacion->Text='';
             $this->pnlEncuadre->txtExpropiacion->Visible=false;
@@ -370,41 +371,43 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=false;
             $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=false;
 
-            if($inicio=="warning")QApplication::DisplayAlert("Advertencia: Usted acaba de destildar 'Expropiación' por lo tanto se borraron sus variables asociadas, si no esta seguro presione el botón <b>Cancelar</b> al pie de la página.");
+            if($mensaje=="warning")QApplication::DisplayAlert("Advertencia: Usted acaba de destildar 'Expropiación' por lo tanto se borraron sus variables asociadas, si no esta seguro presione el botón <b>Cancelar</b> al pie de la página.");
     }
 
-    public function TieneExpropiacion_chk($inicializar){
+    public function InicializarExpropiacion(){
+
+            $mostrar=($this->pnlEncuadre->chkTieneExpropiacion->Checked);
+            $puede_editar=Permission::PuedeEditarExpropiaciones();
+
+            // Si se puede ver
+            $this->pnlEncuadre->txtExpropiacion->Visible=$mostrar;
+            $this->pnlEncuadre->txtFechaSancion->Visible=$mostrar;        
+            $this->pnlEncuadre->txtFechaVencimiento->Visible=$mostrar;            
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=$mostrar;
+            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=$mostrar;            
+            $this->pnlEncuadre->txtPrecioPagado->Visible=$mostrar;            
+            $this->pnlEncuadre->txtJuzgado->Visible=$mostrar;            
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=$mostrar;            
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=$mostrar;
+            
+            //si se puede editar                        
+            $this->pnlEncuadre->txtExpropiacion->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtFechaSancion->Enabled=$puede_editar;        
+            $this->pnlEncuadre->txtFechaVencimiento->Enabled=$puede_editar;            
+            $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=$puede_editar;            
+            $this->pnlEncuadre->txtPrecioPagado->Enabled=$puede_editar;            
+            $this->pnlEncuadre->txtJuzgado->Enabled=$puede_editar;            
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=$puede_editar;            
+            $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=$puede_editar;
+
+    }
+
+    public function TieneExpropiacion_chk($inicializar=false){
         
         if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
             
-            $puede_editar=(Permission::EsAdministrador()||Permission::EsSuperAdministrador()||Permission::EsUsoInterno(array("uso_interno_legal")) ||Permission::PuedeEditar1A4($this->objFolio));
-
-            $this->pnlEncuadre->txtExpropiacion->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtExpropiacion->Visible=true;
-
-            $this->pnlEncuadre->txtFechaSancion->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtFechaSancion->Visible=true;
-        
-            $this->pnlEncuadre->txtFechaVencimiento->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtFechaVencimiento->Visible=true;
-            
-            $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=true;
-
-            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=true;
-            
-            $this->pnlEncuadre->txtPrecioPagado->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtPrecioPagado->Visible=true;
-            
-            $this->pnlEncuadre->txtJuzgado->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtJuzgado->Visible=true;
-            
-            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=$puede_editar;
-            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=true;
-            
-            $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=true;
+            $this->InicializarExpropiacion();
             
 
         }else{
