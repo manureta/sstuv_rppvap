@@ -225,6 +225,18 @@ abstract class Permission extends PermissionBase {
         return (self::EsAdministrador() || self::EsVisualizadorGeneral() || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
     }
 
+    public static function EsCargaExterna(){
+        // se refere al perfin carga externa no municipal... que son los que duplican folios
+        if (!Authentication::EstaConectado())
+            return false;
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+        return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('carga_externa', $arrUsuarioInfo['Perfiles']);
+    }
+
+    public static function PuedeDuplicar(){
+        return (self::EsAdministrador() || self::EsCargaExterna());
+    }
+
     public static function EsCreador($objFolio){
         // metodo para saber si el usuario actual es el dueño/creador del folio
         return (in_array($objFolio->Creador, array(Session::GetObjUsuario()->IdUsuario,NULL)) );

@@ -24,6 +24,7 @@
 		<?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
 		<?php $_CONTROL->txtEncargado->RenderWithName(); ?>
 		<?php $_CONTROL->txtReparticion->RenderWithName(); ?>
+		<?php $_CONTROL->txtFolioOriginal->RenderWithName(); ?>
 		<?php $_CONTROL->lstCondicionesSocioUrbanisticasAsId->RenderWithName(); ?>
 
 		<?php $_CONTROL->lstRegularizacionAsId->RenderWithName(); ?>

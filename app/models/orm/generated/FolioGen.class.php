@@ -35,6 +35,7 @@
 	 * @property double $Superficie the value for fltSuperficie 
 	 * @property string $Encargado the value for strEncargado 
 	 * @property string $Reparticion the value for strReparticion 
+	 * @property integer $FolioOriginal the value for intFolioOriginal 
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
 	 * @property Usuario $CreadorObject the value for the Usuario object referenced by intCreador 
@@ -230,6 +231,14 @@ class FolioGen extends QBaseClass {
      */
     protected $strReparticion;
     const ReparticionDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column folio.folio_original
+     * @var integer intFolioOriginal
+     */
+    protected $intFolioOriginal;
+    const FolioOriginalDefault = null;
 
 
     /**
@@ -707,6 +716,7 @@ class FolioGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'superficie', $strAliasPrefix . 'superficie');
 			$objBuilder->AddSelectItem($strTableName, 'encargado', $strAliasPrefix . 'encargado');
 			$objBuilder->AddSelectItem($strTableName, 'reparticion', $strAliasPrefix . 'reparticion');
+			$objBuilder->AddSelectItem($strTableName, 'folio_original', $strAliasPrefix . 'folio_original');
 		}
 
 //instantiation_methods
@@ -831,6 +841,8 @@ class FolioGen extends QBaseClass {
 			$objToReturn->strEncargado = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'reparticion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'reparticion'] : $strAliasPrefix . 'reparticion';
 			$objToReturn->strReparticion = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'folio_original', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'folio_original'] : $strAliasPrefix . 'folio_original';
+			$objToReturn->intFolioOriginal = $objDbRow->GetColumn($strAliasName, 'Integer');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -1203,6 +1215,9 @@ class FolioGen extends QBaseClass {
                     if ($this->intCreador && ($this->intCreador > QDatabaseNumberFieldMax::Integer || $this->intCreador < QDatabaseNumberFieldMin::Integer)) {
                         throw new NumberOutOfRangeException('intCreador', QDatabaseFieldType::Integer);
                     }
+                    if ($this->intFolioOriginal && ($this->intFolioOriginal > QDatabaseNumberFieldMax::Integer || $this->intFolioOriginal < QDatabaseNumberFieldMin::Integer)) {
+                        throw new NumberOutOfRangeException('intFolioOriginal', QDatabaseFieldType::Integer);
+                    }
 
             try {
                 if (((!$this->__blnRestored) && (!$blnForceUpdate)) || ($blnForceInsert)) {
@@ -1227,7 +1242,8 @@ class FolioGen extends QBaseClass {
                             "creador",
                             "superficie",
                             "encargado",
-                            "reparticion"
+                            "reparticion",
+                            "folio_original"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->strCodFolio) . ',
                             ' . $objDatabase->SqlVariable($this->intIdPartido) . ',
@@ -1247,7 +1263,8 @@ class FolioGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->intCreador) . ',
                             ' . $objDatabase->SqlVariable($this->fltSuperficie) . ',
                             ' . $objDatabase->SqlVariable($this->strEncargado) . ',
-                            ' . $objDatabase->SqlVariable($this->strReparticion) . '
+                            ' . $objDatabase->SqlVariable($this->strReparticion) . ',
+                            ' . $objDatabase->SqlVariable($this->intFolioOriginal) . '
                         )
                     ');
 
@@ -1281,7 +1298,8 @@ class FolioGen extends QBaseClass {
                             "creador" = ' . $objDatabase->SqlVariable($this->intCreador) . ',
                             "superficie" = ' . $objDatabase->SqlVariable($this->fltSuperficie) . ',
                             "encargado" = ' . $objDatabase->SqlVariable($this->strEncargado) . ',
-                            "reparticion" = ' . $objDatabase->SqlVariable($this->strReparticion) . '
+                            "reparticion" = ' . $objDatabase->SqlVariable($this->strReparticion) . ',
+                            "folio_original" = ' . $objDatabase->SqlVariable($this->intFolioOriginal) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -1472,6 +1490,7 @@ class FolioGen extends QBaseClass {
 			$this->fltSuperficie = $objReloaded->fltSuperficie;
 			$this->strEncargado = $objReloaded->strEncargado;
 			$this->strReparticion = $objReloaded->strReparticion;
+			$this->intFolioOriginal = $objReloaded->intFolioOriginal;
 		}
 
 
@@ -1632,6 +1651,13 @@ class FolioGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strReparticion;
+
+            case 'FolioOriginal':
+                /**
+                 * Gets the value for intFolioOriginal 
+                 * @return integer
+                 */
+                return $this->intFolioOriginal;
 
 
             ///////////////////
@@ -2091,6 +2117,21 @@ class FolioGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strReparticion = QType::Cast($mixValue, QType::String));
                                                 return ($this->strReparticion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'FolioOriginal':
+					/**
+					 * Sets the value for intFolioOriginal 
+					 * @param integer $mixValue
+					 * @return integer
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->intFolioOriginal = QType::Cast($mixValue, QType::Integer));
+                                                return ($this->intFolioOriginal = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -2765,6 +2806,7 @@ class FolioGen extends QBaseClass {
 			$strToReturn .= '<element name="Superficie" type="xsd:float"/>';
 			$strToReturn .= '<element name="Encargado" type="xsd:string"/>';
 			$strToReturn .= '<element name="Reparticion" type="xsd:string"/>';
+			$strToReturn .= '<element name="FolioOriginal" type="xsd:int"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -2850,6 +2892,9 @@ class FolioGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'Reparticion')) {
 				$objToReturn->strReparticion = $objSoapObject->Reparticion;
+            }
+			if (property_exists($objSoapObject, 'FolioOriginal')) {
+				$objToReturn->intFolioOriginal = $objSoapObject->FolioOriginal;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

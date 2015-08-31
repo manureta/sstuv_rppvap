@@ -51,6 +51,8 @@ class QQNodeFolio extends QQNode {
 					return new QQNode('encargado', 'Encargado', 'string', $this);
 				case 'Reparticion':
 					return new QQNode('reparticion', 'Reparticion', 'string', $this);
+				case 'FolioOriginal':
+					return new QQNode('folio_original', 'FolioOriginal', 'integer', $this);
 				case 'CondicionesSocioUrbanisticasAsId':
 					return new QQReverseReferenceNodeCondicionesSocioUrbanisticas($this, 'condicionessociourbanisticasasid', 'reverse_reference', 'id_folio', 'CondicionesSocioUrbanisticasAsId');
 				case 'EvolucionFolioAsId':

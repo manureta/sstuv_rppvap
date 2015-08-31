@@ -100,6 +100,10 @@ class FolioDataGridGen extends QFilteredDataGrid {
         'CondicionesSocioUrbanisticasAsId' => true,
         'RegularizacionAsId' => true,
         'UsoInterno' => true,
+        'FolioOriginal' => true,
+        'CondicionesSocioUrbanisticasAsId' => true,
+        'RegularizacionAsId' => true,
+        'UsoInterno' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -152,6 +156,7 @@ class FolioDataGridGen extends QFilteredDataGrid {
         if (FolioDataGrid::$strColumnsArray['Superficie']) $this->MetaAddColumn('Superficie')->Title = QApplication::Translate('Superficie');
         if (FolioDataGrid::$strColumnsArray['Encargado']) $this->MetaAddColumn('Encargado')->Title = QApplication::Translate('Encargado');
         if (FolioDataGrid::$strColumnsArray['Reparticion']) $this->MetaAddColumn('Reparticion')->Title = QApplication::Translate('Reparticion');
+        if (FolioDataGrid::$strColumnsArray['FolioOriginal']) $this->MetaAddColumn('FolioOriginal')->Title = QApplication::Translate('FolioOriginal');
         if (FolioDataGrid::$strColumnsArray['CondicionesSocioUrbanisticasAsId']) $this->MetaAddColumn(QQN::Folio()->CondicionesSocioUrbanisticasAsId)->Title = QApplication::Translate('CondicionesSocioUrbanisticasAsId');
         if (FolioDataGrid::$strColumnsArray['RegularizacionAsId']) $this->MetaAddColumn(QQN::Folio()->RegularizacionAsId)->Title = QApplication::Translate('RegularizacionAsId');
         if (FolioDataGrid::$strColumnsArray['UsoInterno']) $this->MetaAddColumn(QQN::Folio()->UsoInterno)->Title = QApplication::Translate('UsoInterno');
@@ -324,6 +329,7 @@ class FolioDataGridGen extends QFilteredDataGrid {
 				case 'Superficie': return QQN::Folio()->Superficie;
 				case 'Encargado': return QQN::Folio()->Encargado;
 				case 'Reparticion': return QQN::Folio()->Reparticion;
+				case 'FolioOriginal': return QQN::Folio()->FolioOriginal;
 				case 'CondicionesSocioUrbanisticasAsId': return QQN::Folio()->CondicionesSocioUrbanisticasAsId;
 
 				case 'RegularizacionAsId': return QQN::Folio()->RegularizacionAsId;

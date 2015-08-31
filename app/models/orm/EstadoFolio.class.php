@@ -12,6 +12,7 @@ class EstadoFolio extends EstadoFolioGen {
     const INSCRIPCION = 7;
     const OBJETADO = 8;
     const NECESITA_AUTORIZACION = 9;
+    const FOLIO_DUPLICADO = 10;
 
     protected $strNoun = 'EstadoFolio';
     protected $strNounPlural = 'EstadoFolios';

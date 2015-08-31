@@ -56,6 +56,8 @@
      * property-read QLabel $EncargadoLabel
      * property QTextBox $ReparticionControl
      * property-read QLabel $ReparticionLabel
+     * property QIntegerTextBox $FolioOriginalControl
+     * property-read QLabel $FolioOriginalLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -98,6 +100,7 @@
         protected $txtSuperficie;
         protected $txtEncargado;
         protected $txtReparticion;
+        protected $txtFolioOriginal;
 
         // Controls that allow the viewing of Folio's individual data fields
         protected $lblCodFolio;
@@ -119,6 +122,7 @@
         protected $lblSuperficie;
         protected $lblEncargado;
         protected $lblReparticion;
+        protected $lblFolioOriginal;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
@@ -755,6 +759,34 @@
         }
 
         /**
+         * Create and setup QIntegerTextBox txtFolioOriginal
+         * @param string $strControlId optional ControlId to use
+         * @return QIntegerTextBox
+         */
+        public function txtFolioOriginal_Create($strControlId = null) {
+            $this->txtFolioOriginal = new QIntegerTextBox($this->objParentObject, $strControlId);
+            $this->txtFolioOriginal->Name = QApplication::Translate('FolioOriginal');
+            $this->txtFolioOriginal->Text = $this->objFolio->FolioOriginal;
+                        $this->txtFolioOriginal->Maximum = QDatabaseNumberFieldMax::Integer;
+                        $this->txtFolioOriginal->Minimum = QDatabaseNumberFieldMin::Integer;
+            return $this->txtFolioOriginal;
+        }
+
+        /**
+         * Create and setup QLabel lblFolioOriginal
+         * @param string $strControlId optional ControlId to use
+         * @param string $strFormat optional sprintf format to use
+         * @return QLabel
+         */
+        public function lblFolioOriginal_Create($strControlId = null, $strFormat = null) {
+            $this->lblFolioOriginal = new QLabel($this->objParentObject, $strControlId);
+            $this->lblFolioOriginal->Name = QApplication::Translate('FolioOriginal');
+            $this->lblFolioOriginal->Text = $this->objFolio->FolioOriginal;
+            $this->lblFolioOriginal->Format = $strFormat;
+            return $this->lblFolioOriginal;
+        }
+
+        /**
          * Create and setup QListBox lstCondicionesSocioUrbanisticasAsId ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -1039,6 +1071,9 @@
             if ($this->txtReparticion) $this->txtReparticion->Text = $this->objFolio->Reparticion;
             if ($this->lblReparticion) $this->lblReparticion->Text = $this->objFolio->Reparticion;
 
+            if ($this->txtFolioOriginal) $this->txtFolioOriginal->Text = $this->objFolio->FolioOriginal;
+            if ($this->lblFolioOriginal) $this->lblFolioOriginal->Text = $this->objFolio->FolioOriginal;
+
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
                 $this->lstCondicionesSocioUrbanisticasAsId->AddItem(QApplication::Translate('- Select One -'), null);
@@ -1125,6 +1160,7 @@
                 if ($this->txtSuperficie) $this->objFolio->Superficie = $this->txtSuperficie->Text;
                 if ($this->txtEncargado) $this->objFolio->Encargado = $this->txtEncargado->Text;
                 if ($this->txtReparticion) $this->objFolio->Reparticion = $this->txtReparticion->Text;
+                if ($this->txtFolioOriginal) $this->objFolio->FolioOriginal = $this->txtFolioOriginal->Text;
 
 
         }
@@ -1304,6 +1340,12 @@
                 case 'ReparticionLabel':
                     if (!$this->lblReparticion) return $this->lblReparticion_Create();
                     return $this->lblReparticion;
+                case 'FolioOriginalControl':
+                    if (!$this->txtFolioOriginal) return $this->txtFolioOriginal_Create();
+                    return $this->txtFolioOriginal;
+                case 'FolioOriginalLabel':
+                    if (!$this->lblFolioOriginal) return $this->lblFolioOriginal_Create();
+                    return $this->lblFolioOriginal;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1384,6 +1426,8 @@
                         return ($this->txtEncargado = QType::Cast($mixValue, 'QControl'));
                     case 'ReparticionControl':
                         return ($this->txtReparticion = QType::Cast($mixValue, 'QControl'));
+                    case 'FolioOriginalControl':
+                        return ($this->txtFolioOriginal = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

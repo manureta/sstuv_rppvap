@@ -121,12 +121,6 @@
 			return new QQNodeSituacionAmbiental('situacion_ambiental', null, null);
 		}
 		/**
-		 * @return QQNodeSpatialRefSys
-		 */
-		static public function SpatialRefSys() {
-			return new QQNodeSpatialRefSys('spatial_ref_sys', null, null);
-		}
-		/**
 		 * @return QQNodeTipoBarrio
 		 */
 		static public function TipoBarrio() {

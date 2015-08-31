@@ -17,8 +17,7 @@
 		<div class="title_action">QCubed Development Framework <?= QCODO_VERSION ?></div>
 
 		<ul class="title">
-		<li><a href="codegen.php">codegen.php</a> - to code generate your tables</li>
-		<li><a href="cuadroscodegen.php">cuadroscodegen.php</a> - GENERAR LOS CUADROS</li>
+		<li><a href="codegen.php">codegen.php</a> - to code generate your tables</li>		
 		</ul>
 		
 		For more information, please go to the QCubed website at: <a href="http://www.qcu.be/">http://www.qcu.be/</a>

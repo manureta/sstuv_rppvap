@@ -30,6 +30,7 @@ class FolioModalPanelGen extends EditPanelBase {
         'txtSuperficie' => true,
         'txtEncargado' => true,
         'txtReparticion' => true,
+        'txtFolioOriginal' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -105,6 +106,8 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtEncargado'] = $this->mctFolio->txtEncargado_Create();
         if (in_array('txtReparticion',$strControlsArray)) 
             $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
+        if (in_array('txtFolioOriginal',$strControlsArray)) 
+            $this->objControlsArray['txtFolioOriginal'] = $this->mctFolio->txtFolioOriginal_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

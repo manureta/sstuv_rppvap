@@ -421,27 +421,6 @@
     QApplication::$ClassFile['qqreversereferencenodesituacionambiental'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeSituacionAmbiental.class.php';
 
 
-    // ClassPaths for the SpatialRefSys class
-    QApplication::$ClassFile['spatialrefsysindexpanelgen'] = __CONTROLLER_DIR__.'/spatialrefsys/generated/SpatialRefSysIndexPanelGen.class.php';
-    QApplication::$ClassFile['spatialrefsyseditpanelgen'] = __CONTROLLER_DIR__.'/spatialrefsys/generated/SpatialRefSysEditPanelGen.class.php';
-
-    QApplication::$ClassFile['spatialrefsysindexpanel'] = __CONTROLLER_DIR__.'/spatialrefsys/SpatialRefSysIndexPanel.class.php';
-    QApplication::$ClassFile['spatialrefsyseditpanel'] = __CONTROLLER_DIR__.'/spatialrefsys/SpatialRefSysEditPanel.class.php';
-
-    QApplication::$ClassFile['spatialrefsysmodalpanel'] = __CONTROLLER_DIR__.'/spatialrefsys/SpatialRefSysModalPanel.class.php';
-    QApplication::$ClassFile['spatialrefsysmodalpanelgen'] = __CONTROLLER_DIR__.'/spatialrefsys/generated/SpatialRefSysModalPanelGen.class.php';
-
-    QApplication::$ClassFile['spatialrefsysdatagridgen'] = __HELPER_DIR__.'/spatialrefsys/generated/SpatialRefSysDataGridGen.class.php';
-    QApplication::$ClassFile['spatialrefsysmetacontrolgen'] = __HELPER_DIR__.'/spatialrefsys/generated/SpatialRefSysMetaControlGen.class.php';
-    QApplication::$ClassFile['spatialrefsysdatagrid'] = __HELPER_DIR__.'/spatialrefsys/SpatialRefSysDataGrid.class.php';
-    QApplication::$ClassFile['spatialrefsysmetacontrol'] = __HELPER_DIR__.'/spatialrefsys/SpatialRefSysMetaControl.class.php';
-
-    QApplication::$ClassFile['spatialrefsysgen'] = __MODEL_DIR__.'/orm/generated/SpatialRefSysGen.class.php';
-    QApplication::$ClassFile['spatialrefsys'] = __MODEL_DIR__.'/orm/SpatialRefSys.class.php';
-    QApplication::$ClassFile['qqnodespatialrefsys'] = __MODEL_DIR__.'/orm/generated/QQNodeSpatialRefSys.class.php';
-    QApplication::$ClassFile['qqreversereferencenodespatialrefsys'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeSpatialRefSys.class.php';
-
-
     // ClassPaths for the TipoBarrio class
     QApplication::$ClassFile['tipobarrioindexpanelgen'] = __CONTROLLER_DIR__.'/tipobarrio/generated/TipoBarrioIndexPanelGen.class.php';
     QApplication::$ClassFile['tipobarrioeditpanelgen'] = __CONTROLLER_DIR__.'/tipobarrio/generated/TipoBarrioEditPanelGen.class.php';

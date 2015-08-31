@@ -24,7 +24,7 @@ class FolioDataGrid extends FolioDataGridGen {
    protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
-        if (FolioDataGrid::$strColumnsArray['CodFolio']) $this->MetaAddColumn('CodFolio')->Title = QApplication::Translate('CodFolio');
+        if (FolioDataGrid::$strColumnsArray['CodFolio']) $this->MetaAddColumn('CodFolio')->Title = QApplication::Translate('Folio');
         if (FolioDataGrid::$strColumnsArray['IdPartidoObject']) $this->MetaAddColumn(QQN::Folio()->IdPartidoObject)->Title = QApplication::Translate('IdPartidoObject');
         if (FolioDataGrid::$strColumnsArray['NombreBarrioOficial']) $this->MetaAddColumn('NombreBarrioOficial')->Title ='Nombre Oficial Barrio';
         if (FolioDataGrid::$strColumnsArray['TipoBarrioObject']) $this->MetaAddColumn(QQN::Folio()->TipoBarrioObject)->Title = "Tipo";
@@ -32,7 +32,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->AddColumn($objSituacionRegistral); 
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->Reparticion)->Title = "Reparticion";
-        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false). $_CONTROL->GetMapaButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=left', 'HtmlEntities=false');
+        $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetDuplicarButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false). $_CONTROL->GetMapaButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=left', 'HtmlEntities=false');
         
         $this->AddColumn($objColumnAcciones);
 
@@ -196,6 +196,19 @@ class FolioDataGrid extends FolioDataGridGen {
         return $objButton;
     }
 
+    public function GetDuplicarButton(Folio $obj) {
+        $objButton = new QButton($this);
+        $objButton->AddCssClass('btn-xs btn-warning');
+        $objButton->Text = (Permission::EsAdministrador())?'D' :'Duplicar';
+        $objButton->Icon = 'paste';
+        $objButton->ToolTip = 'Duplicar este Folio';
+        $objButton->ActionParameter = $obj->Id;
+        $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnDuplicar_Click"));
+        $objButton->Enabled = Permission::PuedeDuplicar();
+        $objButton->Visible = Permission::PuedeDuplicar();
+        return $objButton;
+    }
+
     public function btnConfirmar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $objUsoInterno = $objFolio->UsoInterno;
@@ -293,6 +306,26 @@ class FolioDataGrid extends FolioDataGridGen {
 
     }
 
+    public function btnDuplicar_Click($strFormId, $strControlId, $strParameter){
+        $objFolio=Folio::Load($strParameter);
+        $nuevoFolio=new Folio();
+        $nuevoFolio=$objFolio;       
+        $nuevoFolio->FolioOriginal=$objFolio->Id;
+        $nuevoFolio->Matricula=$this->getNuevaMatricula($objFolio->IdPartido);
+        $nuevoFolio->Save(true);
+
+        //Uso interno
+        $ui = new UsoInterno();
+        $ui->IdFolio = $nuevoFolio->Id;
+        //$ui=$objFolio->UsoInterno;
+        //$ui->IdFolio=$nuevoFolio->Id;
+        $ui->EstadoFolio=EstadoFolio::FOLIO_DUPLICADO;
+        $ui->Save(true);
+
+        QApplication::DisplayAlert("se duplico el folio ".$objFolio->CodFolio. "a ".$nuevoFolio->Id  );
+
+    }
+
     
     public function CalcularSitRegistral(Folio $obj){
         $mapeo=$obj->UsoInterno->MapeoPreliminar;
@@ -306,6 +339,23 @@ class FolioDataGrid extends FolioDataGridGen {
         if($mapeo)return 'Mapeo Preliminar';
         return ''; 
     }
+
+    public function getNuevaMatricula($IdPartido){
+        error_log("buscando un nuevo valor de matricula para el folio");
+        if($IdPartido){
+            //calculo Matricula
+            $arrFoliosPartido=Folio::QueryArray(QQ::Equal(QQN::Folio()->IdPartidoObject->Id,$IdPartido));
+            $arrMatriculas = array();
+            foreach ($arrFoliosPartido as $folio) {
+                array_push($arrMatriculas,intval($folio->Matricula));
+            }
+            $ultimo=max($arrMatriculas);            
+            $nueva_matricula=str_pad($ultimo+1, 4, '0', STR_PAD_LEFT);
+            return $nueva_matricula;
+        }
+        
+            
+     }
 
 
 
