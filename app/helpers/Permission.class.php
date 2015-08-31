@@ -221,9 +221,14 @@ abstract class Permission extends PermissionBase {
         return (!self::EsUsoInterno(array("uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !self::EsVisualizadorIntermedio());
     }
 
+    public static function PuedeVerAdjuntosInformeUrbanistico(){
+        return (!self::EsCarga());
+    }
+
     public static function PuedeVerNoCorrespondeInscripcion(){
         return (self::EsAdministrador() || self::EsVisualizadorGeneral() || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
     }
+
 
     public static function EsCargaExterna(){
         // se refere al perfin carga externa no municipal... que son los que duplican folios
@@ -235,6 +240,10 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeDuplicar(){
         return (self::EsAdministrador() || self::EsCargaExterna());
+
+    public static function PuedeEditarExpropiaciones($objFolio){
+        return (self::EsAdministrador() || self::EsSuperAdministrador() || self::EsUsoInterno(array("uso_interno_legal")) || self::PuedeEditar1A4($objFolio));
+
     }
 
     public static function EsCreador($objFolio){
