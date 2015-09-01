@@ -240,6 +240,11 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeDuplicar(){
         return (self::EsAdministrador() || self::EsCargaExterna());
+    }
+    
+    public static function EsDuplicado($strIdFolio){
+    	return (Folio::load($strIdFolio)->UsoInterno->EstadoFolio==EstadoFolio::FOLIO_DUPLICADO);
+    }    
 
     public static function PuedeEditarExpropiaciones($objFolio){
         return (self::EsAdministrador() || self::EsSuperAdministrador() || self::EsUsoInterno(array("uso_interno_legal")) || self::PuedeEditar1A4($objFolio));

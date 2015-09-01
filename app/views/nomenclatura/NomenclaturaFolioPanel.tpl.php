@@ -31,6 +31,15 @@
 <?php } ?>
         </ul>
     </div>
+
+    <?php if(Permission::EsDuplicado($folio)){ ?>
+    <div class="alert alert-danger" role="alert">
+       <span class="icon-exclamation-sign" aria-hidden="true"></span>              
+        Este Folio es un duplicado
+    </div>
+    <?php } ?>
+
+
     <div class="index_nomenclaturas">
                 
                 <div class="well bs-component">

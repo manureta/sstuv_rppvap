@@ -331,6 +331,11 @@ class UsoInternoEditPanel extends UsoInternoEditPanelGen {
 
         $this->txtComentarios->AddCssClass("comentarios_uso_interno");
 
+        //si es folio duplicado que no se pueda cambiar estado
+        if(Permission::EsDuplicado($this->lstIdFolioObject->Value)){
+         $this->objControlsArray['lstEstadoFolioObject']->Enabled=false;   
+        }
+
     }
 
     protected function metaControl_Create($strControlsArray){

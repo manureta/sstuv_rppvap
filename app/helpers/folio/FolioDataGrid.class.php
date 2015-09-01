@@ -204,8 +204,8 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->ToolTip = 'Duplicar este Folio';
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnDuplicar_Click"));
-        $objButton->Enabled = Permission::PuedeDuplicar();
-        $objButton->Visible = Permission::PuedeDuplicar();
+        $objButton->Enabled = (Permission::PuedeDuplicar() && $obj->UsoInterno->EstadoFolio!=EstadoFolio::FOLIO_DUPLICADO);
+        $objButton->Visible = (Permission::PuedeDuplicar() && $obj->UsoInterno->EstadoFolio!=EstadoFolio::FOLIO_DUPLICADO);
         return $objButton;
     }
 
@@ -316,11 +316,85 @@ class FolioDataGrid extends FolioDataGridGen {
 
         //Uso interno
         $ui = new UsoInterno();
+        $viejoUi=UsoInterno::Load($strParameter);
+        $ui=$viejoUi;
         $ui->IdFolio = $nuevoFolio->Id;
-        //$ui=$objFolio->UsoInterno;
-        //$ui->IdFolio=$nuevoFolio->Id;
         $ui->EstadoFolio=EstadoFolio::FOLIO_DUPLICADO;
         $ui->Save(true);
+
+        //Nomenclaturas
+        Permission::Log("Duplicando las nomenclaturas del FOLIO ".$strParameter);
+        try {
+            $arrNomenclasOriginales=Nomenclatura::QueryArray(QQ::Equal(QQN::Nomenclatura()->IdFolio,$strParameter));
+            foreach ($arrNomenclasOriginales as $nomenclaOriginal) {               
+                $nom = new Nomenclatura();
+                $nom=$nomenclaOriginal;
+                $nom->IdFolio=$nuevoFolio->Id;
+                $nom->Save(true);                
+            }                     
+        } catch (Exception $e) {           
+            Permission::Log($e->getMessage());
+        }
+
+        //Hoja 3
+        try {
+
+            $objCondiciones=new CondicionesSocioUrbanisticas();                        
+            $objCondiciones = CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,$strParameter));
+            $objCondiciones->IdFolio = $nuevoFolio->Id;
+            $objCondiciones->Save(true);
+
+            $objEquipamiento=new Equipamiento();                        
+            $objEquipamiento = Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,$strParameter));
+            $objEquipamiento->IdFolio = $nuevoFolio->Id;
+            $objEquipamiento->Save(true);
+
+            $objTransporte=new Transporte();                        
+            $objTransporte = Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,$strParameter));
+            $objTransporte->IdFolio = $nuevoFolio->Id;
+            $objTransporte->Save(true);
+
+            $objInfraestructura=new Infraestructura();                        
+            $objInfraestructura = Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,$strParameter));
+            $objInfraestructura->IdFolio = $nuevoFolio->Id;
+            $objInfraestructura->Save(true);
+
+            $objAmbiental=new SituacionAmbiental();                        
+            $objAmbiental = SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,$strParameter));
+            $objAmbiental->IdFolio = $nuevoFolio->Id;
+            $objAmbiental->Save(true);
+
+        } catch (Exception $e) {
+         Permission::Log($e->getMessage());   
+        }
+
+
+        //Hoja 4
+        try {
+
+            $objRegularizacion=new Regularizacion();                        
+            $objRegularizacion = Regularizacion::QuerySingle(QQ::Equal(QQN::Regularizacion()->IdFolio,$strParameter));
+            $objRegularizacion->IdFolio = $nuevoFolio->Id;
+            $objRegularizacion->Save(true);
+
+            $objEncuadreLegal=new EncuadreLegal();                        
+            $objEncuadreLegal = EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$strParameter));
+            $objEncuadreLegal->IdFolio = $nuevoFolio->Id;
+            $objEncuadreLegal->Save(true);
+
+            $objAntecedentes=new Antecedentes();                        
+            $objAntecedentes = Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,$strParameter));
+            $objAntecedentes->IdFolio = $nuevoFolio->Id;
+            $objAntecedentes->Save(true);
+
+            $objOrganismosDeIntervencion=new OrganismosDeIntervencion();                        
+            $objOrganismosDeIntervencion = OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,$strParameter));
+            $objOrganismosDeIntervencion->IdFolio = $nuevoFolio->Id;
+            $objOrganismosDeIntervencion->Save(true);
+
+        } catch (Exception $e) {
+         Permission::Log($e->getMessage());   
+        }
 
         QApplication::DisplayAlert("se duplico el folio ".$objFolio->CodFolio. "a ".$nuevoFolio->Id  );
 

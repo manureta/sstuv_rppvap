@@ -47,6 +47,7 @@ class FolioEditPanel extends FolioEditPanelGen {
         'lstCreadorObject' => true,
         'txtEncargado' => true,
         'txtReparticion' => true,
+        'txtFolioOriginal' => true,
     );
 
     
@@ -147,8 +148,14 @@ class FolioEditPanel extends FolioEditPanelGen {
                     $this->lstJudicializado->AddItem(' Si ', 'si');
                     break;                
             }
+            if($this->mctFolio->Folio->UsoInterno->EstadoFolio==EstadoFolio::FOLIO_DUPLICADO){
+                $this->txtMatricula->Visible = false;
+            }
 
         }
+        $this->txtFolioOriginal->Enabled=false;
+        $this->txtFolioOriginal->Visible=false;
+
         $this->objControlsArray["Judicializado"] = $this->lstJudicializado;
         $this->objControlsArray['AnioOrigen']=$this->lstAnioOrigen;
 
@@ -276,6 +283,8 @@ class FolioEditPanel extends FolioEditPanelGen {
         if (in_array('txtReparticion',$strControlsArray)) 
             $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
             $this->objControlsArray['txtReparticion']->Name="Repartición";
+        if (in_array('txtFolioOriginal',$strControlsArray)) 
+            $this->objControlsArray['txtFolioOriginal'] = $this->mctFolio->txtFolioOriginal_Create();    
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 

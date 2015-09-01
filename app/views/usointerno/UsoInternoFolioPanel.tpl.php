@@ -31,6 +31,14 @@
         </ul>
     </div>
 
+    <?php if(Permission::EsDuplicado($folio)){ ?>
+    <div class="container alert alert-danger" role="alert">
+       <span class="icon-exclamation-sign" aria-hidden="true"></span>              
+        Este Folio es un duplicado
+    </div>
+    <?php } ?>
+
+
     <div>
        <?php if(Permission::PuedeVerPanelAdministracion()){ ?>
         <div class="titulos container"><i class="icon-chevron-right"> </i>Administración</div>        
