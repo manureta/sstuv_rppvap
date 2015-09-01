@@ -395,8 +395,8 @@ class FolioDataGrid extends FolioDataGridGen {
         } catch (Exception $e) {
          Permission::Log($e->getMessage());   
         }
-
-        QApplication::DisplayAlert("se duplico el folio ".$objFolio->CodFolio. "a ".$nuevoFolio->Id  );
+        
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$nuevoFolio->Id);
 
     }
 
