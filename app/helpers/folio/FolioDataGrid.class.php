@@ -339,28 +339,29 @@ class FolioDataGrid extends FolioDataGridGen {
         //Hoja 3
         try {
 
-            $objCondiciones=new CondicionesSocioUrbanisticas();                        
+                                    
             $objCondiciones = CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,$strParameter));
+            if(is_null($objCondiciones))$objCondiciones=new CondicionesSocioUrbanisticas();
             $objCondiciones->IdFolio = $nuevoFolio->Id;
             $objCondiciones->Save(true);
 
-            $objEquipamiento=new Equipamiento();                        
             $objEquipamiento = Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,$strParameter));
+            if(is_null($objEquipamiento))$objEquipamiento=new Equipamiento();                                    
             $objEquipamiento->IdFolio = $nuevoFolio->Id;
             $objEquipamiento->Save(true);
-
-            $objTransporte=new Transporte();                        
+                                    
             $objTransporte = Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,$strParameter));
+            if(is_null($objTransporte))$objTransporte=new Transporte();
             $objTransporte->IdFolio = $nuevoFolio->Id;
             $objTransporte->Save(true);
-
-            $objInfraestructura=new Infraestructura();                        
+                                    
             $objInfraestructura = Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,$strParameter));
+            if(is_null($objInfraestructura))$objInfraestructura=new Infraestructura();
             $objInfraestructura->IdFolio = $nuevoFolio->Id;
             $objInfraestructura->Save(true);
-
-            $objAmbiental=new SituacionAmbiental();                        
+                                    
             $objAmbiental = SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,$strParameter));
+            if(is_null($objAmbiental))$objAmbiental=new SituacionAmbiental();
             $objAmbiental->IdFolio = $nuevoFolio->Id;
             $objAmbiental->Save(true);
 
@@ -372,23 +373,26 @@ class FolioDataGrid extends FolioDataGridGen {
         //Hoja 4
         try {
 
-            $objRegularizacion=new Regularizacion();                        
+                                    
             $objRegularizacion = Regularizacion::QuerySingle(QQ::Equal(QQN::Regularizacion()->IdFolio,$strParameter));
+            if(is_null($objRegularizacion))$objRegularizacion=new Regularizacion();
             $objRegularizacion->IdFolio = $nuevoFolio->Id;
             $objRegularizacion->Save(true);
 
-            $objEncuadreLegal=new EncuadreLegal();                        
+                                    
             $objEncuadreLegal = EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$strParameter));
+            if(is_null($objEncuadreLegal))$objEncuadreLegal=new EncuadreLegal();
             $objEncuadreLegal->IdFolio = $nuevoFolio->Id;
             $objEncuadreLegal->Save(true);
 
-            $objAntecedentes=new Antecedentes();                        
+                                    
             $objAntecedentes = Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,$strParameter));
+            if(is_null($objAntecedentes))$objAntecedentes=new Antecedentes();
             $objAntecedentes->IdFolio = $nuevoFolio->Id;
             $objAntecedentes->Save(true);
 
-            $objOrganismosDeIntervencion=new OrganismosDeIntervencion();                        
             $objOrganismosDeIntervencion = OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,$strParameter));
+            if(is_null($objOrganismosDeIntervencion))$objOrganismosDeIntervencion=new OrganismosDeIntervencion();                                    
             $objOrganismosDeIntervencion->IdFolio = $nuevoFolio->Id;
             $objOrganismosDeIntervencion->Save(true);
 
