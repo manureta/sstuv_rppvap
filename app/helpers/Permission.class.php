@@ -175,6 +175,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeAdjuntar(Folio $objFolio){
+        if(self::EsCargaExterna()) return self::EsCreador($objFolio);
         return (self::EsUsoInterno(array("uso_interno_expediente")) || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
     public static function SoloAdjuntaInformeUrbanistico(){
@@ -184,6 +185,7 @@ abstract class Permission extends PermissionBase {
         return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA)
             || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla"))
             || (self::EsCreador($objFolio) && in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) && self::EsUsoInterno(array("uso_interno_legal","uso_interno_social","uso_interno_tecnico")))
+            || (self::EsCargaExterna() && self::EsCreador($objFolio))
             );
     }
     public static function PuedeVerAdjuntados(Folio $objFolio){
