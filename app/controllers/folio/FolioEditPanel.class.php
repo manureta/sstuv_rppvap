@@ -149,9 +149,7 @@ class FolioEditPanel extends FolioEditPanelGen {
                     break;
             }
             if(Permission::EsDuplicado($this->mctFolio->Folio->Id)){
-                $this->txtMatricula->Visible = false;
-                error_log("mostrando ".$this->txtFolioOriginal->Text);
-                $this->txtCodFolioOriginal=Folio::load((int)$this->txtFolioOriginal->Text)->CodFolio;
+                $this->txtCodFolioOriginal=Folio::load($this->txtFolioOriginal->Text)->CodFolio;
             }
 
         }
