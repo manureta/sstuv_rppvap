@@ -2,7 +2,7 @@
 /**
  * Este es un panel índice que hereda de NomenclaturaIndexPanelGen
  * Puede sobreescribir los métodos de su padre para utilizar funcionalidad propia.
- * 
+ *
  */
 class RegularizacionFolioPanel extends RegularizacionEditPanel {
 
@@ -10,9 +10,10 @@ class RegularizacionFolioPanel extends RegularizacionEditPanel {
     public $strSubtitulo = '';
     public $strTrmplate;
     public $objFolio;
+    public $txtCodFolioOriginal;
     protected $objRegularizacion;
     //protected $pnlEditRegularizacion;
-    
+
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
 
@@ -27,7 +28,11 @@ class RegularizacionFolioPanel extends RegularizacionEditPanel {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        
+
+        $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        if(Permission::EsDuplicado($this->objFolio->Id)){
+          $this->txtCodFolioOriginal=Folio::load($this->objFolio->FolioOriginal)->CodFolio;
+        }
 
     }
 }

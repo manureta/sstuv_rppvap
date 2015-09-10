@@ -1,5 +1,5 @@
 
- <?php $folio=QApplication::QueryString("id"); ?>   
+ <?php $folio=QApplication::QueryString("id"); ?>
  <div id="steps-tabs-folio" role="application" class="wizard clearfix">
     <div class="steps clearfix">
         <ul role="tablist">
@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">                    
+                <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">
                     <span class="number">2.</span>Nomenclatura Catastral y Dominio
                 </a>
             </li>
@@ -33,40 +33,40 @@
 
     <?php if(Permission::EsDuplicado($folio)){ ?>
     <div class="container alert alert-danger" role="alert">
-       <span class="icon-exclamation-sign" aria-hidden="true"></span>              
-        Este Folio es un duplicado
+       <span class="icon-exclamation-sign" aria-hidden="true"></span>
+      Este Folio es un duplicado de <?=$_CONTROL->txtCodFolioOriginal;?>
     </div>
     <?php } ?>
 
 
     <div>
        <?php if(Permission::PuedeVerPanelAdministracion()){ ?>
-        <div class="titulos container"><i class="icon-chevron-right"> </i>Administración</div>        
+        <div class="titulos container"><i class="icon-chevron-right"> </i>Administración</div>
         <div class="well bs-component container">
             <div class="renderWithName">
                 <div class="left">
                     <label>Estado del Folio </label>
-                </div>                
+                </div>
                  <?php $_CONTROL->lstEstadoFolioObject->Render(); ?>
-                 <?php $_CONTROL->btnEvolucion->Render(); ?>                               
+                 <?php $_CONTROL->btnEvolucion->Render(); ?>
             </div>
             <?php $_CONTROL->chkObjetado->RenderWithName(); ?>
-            <?php $_CONTROL->txtComentarioObjetacion->RenderWithName(); ?> 
-            <div class="renderWithName"></div>   
+            <?php $_CONTROL->txtComentarioObjetacion->RenderWithName(); ?>
+            <div class="renderWithName"></div>
             <?php if($_CONTROL->blnMensajeInscripcion){ ?>
             <div class="alert alert-success" role="alert">
-              <span class="icon-exclamation-sign" aria-hidden="true"></span>              
+              <span class="icon-exclamation-sign" aria-hidden="true"></span>
               Este Folio califica para inscripcion Definitiva
             </div>
             <?php }else{ ?>
                 <div class="alert alert-danger" role="alert">
-                  <span class="icon-exclamation-sign" aria-hidden="true"></span>              
+                  <span class="icon-exclamation-sign" aria-hidden="true"></span>
                   Este Folio no califica para inscripcion Definitiva
                 </div>
                 <?php } ?>
          </div>
          <?php } ?>
-        <div class="titulos container"><i class="icon-chevron-right"></i> Situación Registral</div>        
+        <div class="titulos container"><i class="icon-chevron-right"></i> Situación Registral</div>
         <div class="well bs-component container">
 			<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
             <?php $_CONTROL->chkMapeoPreliminar->RenderWithName(); ?>
@@ -74,11 +74,11 @@
             <?php $_CONTROL->txtNumExpediente->RenderWithName(); ?>
             <?php $_CONTROL->txtResolucionInscripcionProvisoria->RenderWithName(); ?>
             <?php $_CONTROL->txtResolucionInscripcionDefinitiva->RenderWithName(); ?>
-            
+
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component container">
                 <div class="container">
-   
+
                     <span class="btn btn-success fileinput-button">
                         <i class="icon-plus"></i>
                         <span>Adjuntar Resolución</span>
@@ -97,26 +97,26 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>  
+            <div class="titulos"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>
             <div>
                 <div class="well bs-component">
                     <div id="files_resolucion" class="files"></div>
                 </div>
-            </div>       
+            </div>
             <?php } ?>
 
-         </div>    
-        
-        
+         </div>
 
-        <div class="titulos container"><i class="icon-chevron-right"></i> Ley de acceso justo al hábitat</div> 
+
+
+        <div class="titulos container"><i class="icon-chevron-right"></i> Ley de acceso justo al hábitat</div>
         <div class="well bs-component container">
             <?php $_CONTROL->lstLey14449->RenderWithName(); ?>
-            
+
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component container">
                 <div class="container">
-   
+
                     <span class="btn btn-success fileinput-button">
                         <i class="icon-plus"></i>
                         <span>Adjuntar Archivo</span>
@@ -135,17 +135,17 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos container"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>  
+            <div class="titulos container"><i class="icon-chevron-right"></i> Archivos Adjuntos</div>
             <div>
                 <div class="well bs-component container">
                     <div id="files_habitat" class="files"></div>
                 </div>
-            </div>       
+            </div>
             <?php } ?>
-            
-        </div>    
 
-        <div class="titulos container"><i class="icon-chevron-right"></i> Comentarios Generales</div> 
+        </div>
+
+        <div class="titulos container"><i class="icon-chevron-right"></i> Comentarios Generales</div>
         <div class="well bs-component container">
             <?php $_CONTROL->txtComentarios->Render(); ?>
         </div>
@@ -165,9 +165,3 @@
     $(".comentarios_uso_interno").parent().parent().css("width","100%");
 
 </script>
-
-  
-	
-
-
-

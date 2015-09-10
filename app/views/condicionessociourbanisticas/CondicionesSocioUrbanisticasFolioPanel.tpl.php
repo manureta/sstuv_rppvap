@@ -1,4 +1,4 @@
-<?php $folio=QApplication::QueryString("id"); ?>	
+<?php $folio=QApplication::QueryString("id"); ?>
  <div id="steps-tabs-folio" role="application" class="wizard clearfix">
     <div class="steps clearfix">
         <ul role="tablist">
@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true" aria-selected="false">
-                <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">                    
+                <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">
                     <span class="number">2.</span> Nomenclatura Catastral y Dominio
                 </a>
             </li>
@@ -32,19 +32,19 @@
 <?php } ?>
         </ul>
     </div>
-        
+
 <?php if(Permission::EsDuplicado($folio)){ ?>
     <div class="alert alert-danger" role="alert">
-       <span class="icon-exclamation-sign" aria-hidden="true"></span>              
-        Este Folio es un duplicado
+       <span class="icon-exclamation-sign" aria-hidden="true"></span>
+        Este Folio es un duplicado de <?=$_CONTROL->txtCodFolioOriginal;?>
     </div>
 <?php } ?>
 
 
 
-    <div class="titulos"><i class="icon-chevron-right"></i> Espacios públicos y equipamientos comunitarios</div> 
+    <div class="titulos"><i class="icon-chevron-right"></i> Espacios públicos y equipamientos comunitarios</div>
     <div>
-                    <div class="well bs-component">                            
+                    <div class="well bs-component">
                         <?php $_CONTROL->pnlEquipamiento->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->chkEspacioLibreComun->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEquipamiento->lstUnidadSanitariaObject->RenderWithName(); ?>
@@ -58,9 +58,9 @@
     </div>
 
 
-    <div class="titulos"><i class="icon-chevron-right"></i>Transporte</div> 
+    <div class="titulos"><i class="icon-chevron-right"></i>Transporte</div>
     <div>
-                    <div class="well bs-component">                            
+                    <div class="well bs-component">
 
                     <?php $_CONTROL->pnlTransporte->lstIdFolioObject->RenderWithName(); ?>
                     <?php $_CONTROL->pnlTransporte->lstColectivosObject->RenderWithName(); ?>
@@ -69,14 +69,14 @@
                     </div>
     </div>
 
-    <div class="titulos"><i class="icon-chevron-right"></i> Infraestructura</div> 
+    <div class="titulos"><i class="icon-chevron-right"></i> Infraestructura</div>
     <div>
-                    <div class="well bs-component">                                                          
+                    <div class="well bs-component">
 
                         <?php $_CONTROL->pnlInfraestructura->lstIdFolioObject->RenderWithName(); ?>
-                    
+
                         <?php $_CONTROL->pnlInfraestructura->lstEnergiaElectricaMedidorIndividualObject->RenderWithName(); ?>
-                    
+
                         <?php $_CONTROL->pnlInfraestructura->lstEnergiaElectricaMedidorColectivoObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstAlumbradoPublicoObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstAguaCorrienteObject->RenderWithName(); ?>
@@ -88,13 +88,13 @@
                         <?php $_CONTROL->pnlInfraestructura->lstCordonCunetaObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstDesaguesPluvialesObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlInfraestructura->lstRecoleccionResiduosObject->RenderWithName(); ?>
-                    </div> 
+                    </div>
     </div>
 
-    
+
     <div class="titulos"><i class="icon-chevron-right"></i> Situación Ambiental</div>
     <div>
-                   <div class="well bs-component">                                                     
+                   <div class="well bs-component">
 
                         <?php $_CONTROL->pnlAmbiental->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlAmbiental->chkSinProblemas->RenderWithName(); ?>
@@ -107,12 +107,12 @@
                         <?php $_CONTROL->pnlAmbiental->txtOtro->RenderWithName(); ?>
 
 
-				</div>                
+				</div>
     </div>
-    <div class="titulos"><i class="icon-chevron-right"></i> Organizaciones Sociales</div>  
-    <div>                
-                <div class="well bs-component">                                                                     
-                        <?php //$_CONTROL->lstIdFolioObject->RenderWithName(); ?>                        
+    <div class="titulos"><i class="icon-chevron-right"></i> Organizaciones Sociales</div>
+    <div>
+                <div class="well bs-component">
+                        <?php //$_CONTROL->lstIdFolioObject->RenderWithName(); ?>
                         <?php $_CONTROL->txtPresenciaOrgSociales->RenderWithName(); ?>
                         <?php $_CONTROL->txtNombreRefernte->RenderWithName(); ?>
                         <?php $_CONTROL->txtTelefonoReferente->RenderWithName(); ?>

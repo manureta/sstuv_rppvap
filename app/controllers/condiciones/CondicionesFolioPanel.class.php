@@ -9,9 +9,9 @@ class CondicionesFolioPanel extends CondicionesSocioUrbanisticasEditPanel {
 
     public $objFolio;
     public $objCond;
-
+    public $txtCodFolioOriginal;
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
-                        
+
         try {
             $this->objCond=CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
             $editar_o_nuevo=($this->objCond->Id)? $this->objCond->Id : null;
@@ -20,17 +20,21 @@ class CondicionesFolioPanel extends CondicionesSocioUrbanisticasEditPanel {
             $objExc->IncrementOffset();
             throw $objExc;
         }
+        $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        if(Permission::EsDuplicado($this->objFolio->Id)){
+          $this->txtCodFolioOriginal=Folio::load($this->objFolio->FolioOriginal)->CodFolio;
+        }
        // $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         //$this->dtgCondicionesSocioUrbanisticases->AddCondition(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,QApplication::QueryString("id")));
 
-        
+
 
     }
 /*
     public function CondicionesSocioUrbanisticasEditPanel_Create($intId = null) {
         if (isset($this->pnlEditCondicionesSocioUrbanisticas))
             $this->Form->RemoveControl($this->pnlEditCondicionesSocioUrbanisticas->ControlId);
-        
+
         $this->pnlEditCondicionesSocioUrbanisticas = new CondicionesSocioUrbanisticasEditPanel($this, $this->strControlsArray, $intId);
         $this->pnlEditCondicionesSocioUrbanisticas->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEditCondicionesSocioUrbanisticas->lstIdFolioObject->Text = $this->objFolio->__toString();

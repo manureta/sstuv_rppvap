@@ -1,8 +1,8 @@
-<?php	
+<?php
 class FolioDataGrid extends FolioDataGridGen {
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
         parent::__construct($objParentObject, $strColumnsArray, $strControlId);
-        
+
         if(Permission::EsCarga() && !Permission::EsAdministrador())
             $this->AddCondition(
                 QQ::OrCondition(
@@ -15,11 +15,11 @@ class FolioDataGrid extends FolioDataGridGen {
             $this->AddCondition(QQ::Equal(QQN::Folio()->IdPartidoObject->CodPartido,Session::GetObjUsuario()->CodPartido));
 
         if(!Permission::EsUsoInterno(array('uso_interno_legal','uso_interno_tecnico','uso_interno_social'))){
-            $this->AddCondition(QQ::NotEqual(QQN::Folio()->UsoInterno->EstadoFolio,EstadoFolio::NECESITA_AUTORIZACION));   
+            $this->AddCondition(QQ::NotEqual(QQN::Folio()->UsoInterno->EstadoFolio,EstadoFolio::NECESITA_AUTORIZACION));
         }
-    } 
+    }
    public $mdlPanel;
-   
+
 
    protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
@@ -29,11 +29,11 @@ class FolioDataGrid extends FolioDataGridGen {
         if (FolioDataGrid::$strColumnsArray['NombreBarrioOficial']) $this->MetaAddColumn('NombreBarrioOficial')->Title ='Nombre Oficial Barrio';
         if (FolioDataGrid::$strColumnsArray['TipoBarrioObject']) $this->MetaAddColumn(QQN::Folio()->TipoBarrioObject)->Title = "Tipo";
         $objSituacionRegistral = new QFilteredDataGridColumn("Situación Registral",'<?= $_CONTROL->CalcularSitRegistral($_ITEM);?>');
-        $this->AddColumn($objSituacionRegistral); 
+        $this->AddColumn($objSituacionRegistral);
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->Reparticion)->Title = "Reparticion";
         $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetDuplicarButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false). $_CONTROL->GetMapaButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=left', 'HtmlEntities=false');
-        
+
         $this->AddColumn($objColumnAcciones);
 
     }
@@ -41,10 +41,10 @@ class FolioDataGrid extends FolioDataGridGen {
     public function btnEdit_Click($strFormId, $strControlId, $strParameter) {
 
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
-                          
+
     }
 
-    
+
 
 
     public function GetEditButton(Folio $obj) {
@@ -54,13 +54,13 @@ class FolioDataGrid extends FolioDataGridGen {
             $objButton->Icon = 'search';
             $objButton->Text = 'Ver';
             $objButton->ToolTip = 'Ver Folio';
-        }            
+        }
         else{
             $objButton->Icon = 'edit';
             $objButton->Text = 'Editar';
             $objButton->ToolTip = 'Editar Folio';
         }
-            
+
         $objButton->ActionParameter = $obj->Id;
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnEdit_Click"));
         $objButton->Enabled = true;
@@ -91,8 +91,8 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->Enabled = (Permission::PuedeBorrarFolio($obj));
         $objButton->Visible = (Permission::PuedeBorrarFolio($obj));
         return $objButton;
-    }                 
-       
+    }
+
      public function GetConfirmarButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-success');
@@ -105,7 +105,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeConfirmarFolio($obj));
         return $objButton;
-    }                 
+    }
     public function GetCancelarButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-warning');
@@ -129,9 +129,9 @@ class FolioDataGrid extends FolioDataGridGen {
         $objButton->AddAction(new QClickEvent(), new QAjaxControlAction($this, "btnObjetar_Click"));
         $objButton->Enabled = true;
         $objButton->Visible = ($obj->UsoInterno->EstadoFolio == EstadoFolio::NOTIFICACION && Permission::PuedeObjetarFolio($obj));
-        
+
         return $objButton;
-    }                 
+    }
      public function GetEnviarButton(Folio $obj) {
         $objButton = new QButton($this);
         $objButton->AddCssClass('btn-xs btn-success');
@@ -227,11 +227,11 @@ class FolioDataGrid extends FolioDataGridGen {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$strParameter);
     }
     public function btnObjetar_Click($strFormId, $strControlId, $strParameter){
-        
+
         $_SESSION['folio_a_objetar']=$strParameter;
         QApplication::ExecuteJavascript("$('#FolioObjetado').modal();");
     }
-    
+
      public function btnEnviar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $objUsoInterno = $objFolio->UsoInterno;
@@ -240,9 +240,9 @@ class FolioDataGrid extends FolioDataGridGen {
         $this->MarkAsModified();
         Folio::CambioEstadoFolio($objFolio);
     }
-   
+
    public function Caratula_Click($strFormId, $strControlId, $strParameter) {
-        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";        
+        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter";
 
         //QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
         QApplication::ExecuteJavascript("window.open('$url');");
@@ -256,23 +256,8 @@ class FolioDataGrid extends FolioDataGridGen {
 
     }
 
-    public function btnResolucion_Click($strFormId,$strControlId,$strParameter){    	    
-        $upload_handler = new UploadHandler($strParameter,'resolucion');            
-        $json=$upload_handler->get();        
-        $links="";
-        foreach ($json['files'] as $key => $file) {
-            $link ="<p><a href=".$file->url." title=".$file->name." download=".$file->name.">".$file->name."</a></p>";
-            $links=$links.$link;
-        }
-        if($links!==""){
-            QApplication::DisplayAlert("<div id='files'>".$links."</div>");    
-        }else{
-            QApplication::DisplayAlert("No hay archivos disponibles");
-        }
-    }
-
-    public function btnLey_Click($strFormId,$strControlId,$strParameter){        
-        $upload_handler = new UploadHandler($strParameter,'habitat');            
+    public function btnResolucion_Click($strFormId,$strControlId,$strParameter){
+        $upload_handler = new UploadHandler($strParameter,'resolucion');
         $json=$upload_handler->get();
         $links="";
         foreach ($json['files'] as $key => $file) {
@@ -280,15 +265,30 @@ class FolioDataGrid extends FolioDataGridGen {
             $links=$links.$link;
         }
         if($links!==""){
-            QApplication::DisplayAlert("<div id='files'>".$links."</div>");    
+            QApplication::DisplayAlert("<div id='files'>".$links."</div>");
         }else{
             QApplication::DisplayAlert("No hay archivos disponibles");
         }
-        
+    }
+
+    public function btnLey_Click($strFormId,$strControlId,$strParameter){
+        $upload_handler = new UploadHandler($strParameter,'habitat');
+        $json=$upload_handler->get();
+        $links="";
+        foreach ($json['files'] as $key => $file) {
+            $link ="<p><a href=".$file->url." title=".$file->name." download=".$file->name.">".$file->name."</a></p>";
+            $links=$links.$link;
+        }
+        if($links!==""){
+            QApplication::DisplayAlert("<div id='files'>".$links."</div>");
+        }else{
+            QApplication::DisplayAlert("No hay archivos disponibles");
+        }
+
     }
 
     public function btnFolioCompleto_Click($strFormId, $strControlId, $strParameter) {
-        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter&foliocompleto";        
+        $url=__VIRTUAL_DIRECTORY__."/caratula.php?idfolio=$strParameter&foliocompleto";
 
         //QApplication::DisplayAlert("<iframe id='printf' name='printf' src='$url' width='100%' height='500'></iframe>");
         QApplication::ExecuteJavascript("window.open('$url');");
@@ -301,7 +301,7 @@ class FolioDataGrid extends FolioDataGridGen {
         $x=$xy["x"];
         $y=$xy["y"];
 
-        $url="http://190.188.234.6/mapa/?map_x=$x&map_y=$y&map_zoom=16&map_opacity_Open%20Street%20Map=1";        
+        $url="http://190.188.234.6/mapa/?map_x=$x&map_y=$y&map_zoom=16&map_opacity_Open%20Street%20Map=1";
         QApplication::ExecuteJavascript("window.open('$url');");
 
     }
@@ -309,9 +309,14 @@ class FolioDataGrid extends FolioDataGridGen {
     public function btnDuplicar_Click($strFormId, $strControlId, $strParameter){
         $objFolio=Folio::Load($strParameter);
         $nuevoFolio=new Folio();
-        $nuevoFolio=$objFolio;       
+        $nuevoFolio=$objFolio;
         $nuevoFolio->FolioOriginal=$objFolio->Id;
         $nuevoFolio->Matricula=$this->getNuevaMatricula($objFolio->IdPartido);
+        $nuevoFolio->Creador=Session::GetObjUsuario()->IdUsuario;
+        $nuevoFolio->Fecha=QDateTime::Now();
+        // encargado y reparticion del duplicador
+        $nuevoFolio->Encargado=Usuario::load($nuevoFolio->Creador)->NombreCompleto;
+        $nuevoFolio->Reparticion->Text=Usuario::load($nuevoFolio->Creador)->Reparticion;
         $nuevoFolio->Save(true);
 
         //Uso interno
@@ -326,85 +331,85 @@ class FolioDataGrid extends FolioDataGridGen {
         Permission::Log("Duplicando las nomenclaturas del FOLIO ".$strParameter);
         try {
             $arrNomenclasOriginales=Nomenclatura::QueryArray(QQ::Equal(QQN::Nomenclatura()->IdFolio,$strParameter));
-            foreach ($arrNomenclasOriginales as $nomenclaOriginal) {               
+            foreach ($arrNomenclasOriginales as $nomenclaOriginal) {
                 $nom = new Nomenclatura();
                 $nom=$nomenclaOriginal;
                 $nom->IdFolio=$nuevoFolio->Id;
-                $nom->Save(true);                
-            }                     
-        } catch (Exception $e) {           
+                $nom->Save(true);
+            }
+        } catch (Exception $e) {
             Permission::Log($e->getMessage());
         }
 
         //Hoja 3
         try {
 
-                                    
+
             $objCondiciones = CondicionesSocioUrbanisticas::QuerySingle(QQ::Equal(QQN::CondicionesSocioUrbanisticas()->IdFolio,$strParameter));
             if(is_null($objCondiciones))$objCondiciones=new CondicionesSocioUrbanisticas();
             $objCondiciones->IdFolio = $nuevoFolio->Id;
             $objCondiciones->Save(true);
 
             $objEquipamiento = Equipamiento::QuerySingle(QQ::Equal(QQN::Equipamiento()->IdFolio,$strParameter));
-            if(is_null($objEquipamiento))$objEquipamiento=new Equipamiento();                                    
+            if(is_null($objEquipamiento))$objEquipamiento=new Equipamiento();
             $objEquipamiento->IdFolio = $nuevoFolio->Id;
             $objEquipamiento->Save(true);
-                                    
+
             $objTransporte = Transporte::QuerySingle(QQ::Equal(QQN::Transporte()->IdFolio,$strParameter));
             if(is_null($objTransporte))$objTransporte=new Transporte();
             $objTransporte->IdFolio = $nuevoFolio->Id;
             $objTransporte->Save(true);
-                                    
+
             $objInfraestructura = Infraestructura::QuerySingle(QQ::Equal(QQN::Infraestructura()->IdFolio,$strParameter));
             if(is_null($objInfraestructura))$objInfraestructura=new Infraestructura();
             $objInfraestructura->IdFolio = $nuevoFolio->Id;
             $objInfraestructura->Save(true);
-                                    
+
             $objAmbiental = SituacionAmbiental::QuerySingle(QQ::Equal(QQN::SituacionAmbiental()->IdFolio,$strParameter));
             if(is_null($objAmbiental))$objAmbiental=new SituacionAmbiental();
             $objAmbiental->IdFolio = $nuevoFolio->Id;
             $objAmbiental->Save(true);
 
         } catch (Exception $e) {
-         Permission::Log($e->getMessage());   
+         Permission::Log($e->getMessage());
         }
 
 
         //Hoja 4
         try {
 
-                                    
+
             $objRegularizacion = Regularizacion::QuerySingle(QQ::Equal(QQN::Regularizacion()->IdFolio,$strParameter));
             if(is_null($objRegularizacion))$objRegularizacion=new Regularizacion();
             $objRegularizacion->IdFolio = $nuevoFolio->Id;
             $objRegularizacion->Save(true);
 
-                                    
+
             $objEncuadreLegal = EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$strParameter));
             if(is_null($objEncuadreLegal))$objEncuadreLegal=new EncuadreLegal();
             $objEncuadreLegal->IdFolio = $nuevoFolio->Id;
             $objEncuadreLegal->Save(true);
 
-                                    
+
             $objAntecedentes = Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,$strParameter));
             if(is_null($objAntecedentes))$objAntecedentes=new Antecedentes();
             $objAntecedentes->IdFolio = $nuevoFolio->Id;
             $objAntecedentes->Save(true);
 
             $objOrganismosDeIntervencion = OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,$strParameter));
-            if(is_null($objOrganismosDeIntervencion))$objOrganismosDeIntervencion=new OrganismosDeIntervencion();                                    
+            if(is_null($objOrganismosDeIntervencion))$objOrganismosDeIntervencion=new OrganismosDeIntervencion();
             $objOrganismosDeIntervencion->IdFolio = $nuevoFolio->Id;
             $objOrganismosDeIntervencion->Save(true);
 
         } catch (Exception $e) {
-         Permission::Log($e->getMessage());   
+         Permission::Log($e->getMessage());
         }
-        
+
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/folio/edit/".$nuevoFolio->Id);
 
     }
 
-    
+
     public function CalcularSitRegistral(Folio $obj){
         $mapeo=$obj->UsoInterno->MapeoPreliminar;
         $no_corresponde=$obj->UsoInterno->NoCorrespondeInscripcion;
@@ -415,7 +420,7 @@ class FolioDataGrid extends FolioDataGridGen {
         if($def!='')return 'Inscripción Definitiva';
         if($prov!='')return 'Inscripción Provisoria';
         if($mapeo)return 'Mapeo Preliminar';
-        return ''; 
+        return '';
     }
 
     public function getNuevaMatricula($IdPartido){
@@ -427,12 +432,12 @@ class FolioDataGrid extends FolioDataGridGen {
             foreach ($arrFoliosPartido as $folio) {
                 array_push($arrMatriculas,intval($folio->Matricula));
             }
-            $ultimo=max($arrMatriculas);            
+            $ultimo=max($arrMatriculas);
             $nueva_matricula=str_pad($ultimo+1, 4, '0', STR_PAD_LEFT);
             return $nueva_matricula;
         }
-        
-            
+
+
      }
 
 

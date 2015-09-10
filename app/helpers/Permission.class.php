@@ -110,21 +110,21 @@ abstract class Permission extends PermissionBase {
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('carga', $arrUsuarioInfo['Perfiles']);
     }
- 
+
     public static function EsUsoInterno($arrTipos) {
-        
+
         if (!Authentication::EstaConectado())
             return false;
         if(self::EsAdministrador()) return true;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();        
-        
+        $arrUsuarioInfo = Permission::GetPermisosUsuario();
+
         if(array_key_exists('Perfiles', $arrUsuarioInfo)&&is_array( $arrUsuarioInfo['Perfiles'] )) {
-            foreach ($arrTipos as $t) {                
-                if(in_array($t, $arrUsuarioInfo['Perfiles'])) {                    
+            foreach ($arrTipos as $t) {
+                if(in_array($t, $arrUsuarioInfo['Perfiles'])) {
                     return true;
-                }        
+                }
             }
-            
+
         }  else{
             return false;
         }
@@ -134,19 +134,19 @@ abstract class Permission extends PermissionBase {
             return false;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_general', $arrUsuarioInfo['Perfiles']);
-    }    
+    }
     public static function EsVisualizadorBasico() {
         if (!Authentication::EstaConectado())
             return false;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_basico', $arrUsuarioInfo['Perfiles']);
-    } 
+    }
     public static function EsVisualizadorIntermedio() {
         if (!Authentication::EstaConectado())
             return false;
         $arrUsuarioInfo = Permission::GetPermisosUsuario();
         return in_array('SoloLectura', $arrUsuarioInfo['Perfiles']) || in_array('visualizador_intermedio', $arrUsuarioInfo['Perfiles']);
-    }    
+    }
     public static function EsVisualizador(){
         return self::EsVisualizadorBasico() || self::EsVisualizadorGeneral() || self::EsVisualizadorIntermedio();
     }
@@ -154,11 +154,13 @@ abstract class Permission extends PermissionBase {
     public static function EsVisualizadorFiltrado(){
         return (self::EsVisualizador() && (Session::GetObjUsuario()->CodPartido!==""));
     }
-
-    public static function PuedeEditar1A4(Folio $objFolio){  
+    /*Originalmente eran solo 4 pestañas por eso el nombre,
+    pero este es el metodo principal para controlar quien puede editar
+    */
+    public static function PuedeEditar1A4(Folio $objFolio){
         if(self::EsAdministrador()) return true;
         if(self::EsUsoInterno(array("uso_interno_legal","uso_interno_tecnico","uso_interno_social"))){
-            //Puede ser uno de los folios creados por estos perfiles            
+            //Puede ser uno de los folios creados por estos perfiles
             if(
                 in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) &&
                (
@@ -166,8 +168,9 @@ abstract class Permission extends PermissionBase {
                )
             )return true;
         }
+        if(self::EsCargaExterna()) return self::EsCreador($objFolio);
         return !(self::EsVisualizador() ||
-            self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))|| 
+            self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))||
             (self::EsCarga() && !in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::CARGA,NULL))));
     }
 
@@ -175,10 +178,10 @@ abstract class Permission extends PermissionBase {
         return (self::EsUsoInterno(array("uso_interno_expediente")) || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA));
     }
     public static function SoloAdjuntaInformeUrbanistico(){
-        return self::EsUsoInterno(array("uso_interno_tecnico"));   
+        return self::EsUsoInterno(array("uso_interno_tecnico"));
     }
     public static function PuedeAdjuntarHoja1(Folio $objFolio){
-        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA) 
+        return (self::EsAdministrador() || (self::EsCarga() && $objFolio->UsoInterno->EstadoFolio == EstadoFolio::CARGA)
             || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla"))
             || (self::EsCreador($objFolio) && in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::NECESITA_AUTORIZACION,NULL)) && self::EsUsoInterno(array("uso_interno_legal","uso_interno_social","uso_interno_tecnico")))
             );
@@ -241,10 +244,10 @@ abstract class Permission extends PermissionBase {
     public static function PuedeDuplicar(){
         return (self::EsAdministrador() || self::EsCargaExterna());
     }
-    
+
     public static function EsDuplicado($strIdFolio){
     	return (Folio::load($strIdFolio)->UsoInterno->EstadoFolio==EstadoFolio::FOLIO_DUPLICADO);
-    }    
+    }
 
     public static function PuedeEditarExpropiaciones($objFolio){
         return (self::EsAdministrador() || self::EsSuperAdministrador() || self::EsUsoInterno(array("uso_interno_legal")) || self::PuedeEditar1A4($objFolio));
@@ -259,9 +262,9 @@ abstract class Permission extends PermissionBase {
     public static function InscripcionProvisoria(Folio $objFolio){
           try {
             $id=$objFolio->Id;
-            $strQuery = "select distinct(f.id) from folio f 
+            $strQuery = "select distinct(f.id) from folio f
                         join infraestructura i on f.id=i.id_folio
-                        join nomenclatura n on f.id=n.id_folio 
+                        join nomenclatura n on f.id=n.id_folio
                         where f.tipo_barrio > 0 and f.creador > 0 and f.id_partido > 0 and f.matricula <> ''
                         and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie >0
                         and f.cantidad_familias > 0
@@ -278,31 +281,31 @@ abstract class Permission extends PermissionBase {
 
             $objDatabase = QApplication::$Database[1];
             $objDbResult = $objDatabase->Query($strQuery);
-            $row = $objDbResult->FetchArray();            
-            return (count($row)>0 && $row['id']==$id);          
+            $row = $objDbResult->FetchArray();
+            return (count($row)>0 && $row['id']==$id);
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Error al determinar si el Folio esta habilitado para enviarse</p>");
             // mandar mail
             error_log($e);
         }
-                                    
+
     }
 
     public static function InscripcionDefinitiva(Folio $objFolio){
           try {
             $id=$objFolio->Id;
-            $strQuery = "select distinct(f.id) from folio f 
+            $strQuery = "select distinct(f.id) from folio f
 join infraestructura i on f.id=i.id_folio
-join equipamiento e on f.id=e.id_folio 
-join regularizacion r on f.id=r.id_folio 
+join equipamiento e on f.id=e.id_folio
+join regularizacion r on f.id=r.id_folio
 join encuadre_legal l on f.id=l.id_folio
-join situacion_ambiental s on f.id=s.id_folio  
+join situacion_ambiental s on f.id=s.id_folio
 join antecedentes a on f.id=a.id_folio
 join nomenclatura n on f.id=n.id_folio
 join uso_interno u on f.id=u.id_folio
 where f.tipo_barrio > 0 and f.creador > 0 and f.id_partido > 0 and f.matricula <> ''
 and f.nombre_barrio_oficial <> '' and f.anio_origen <> '' and f.superficie <> 0
-and f.cantidad_familias > 0 
+and f.cantidad_familias > 0
 and i.energia_electrica_medidor_individual < 4 and
   i.agua_corriente < 5 and
   i.red_cloacal <5 and
@@ -311,20 +314,20 @@ and i.energia_electrica_medidor_individual < 4 and
 and (n.partido <> '' and n.titular_dominio <> '')
 and e.unidad_sanitaria < 6 and
   e.jardin_infantes < 6 and
-  e.escuela_primaria < 6 and   
-  e.escuela_secundaria < 6  
+  e.escuela_primaria < 6 and
+  e.escuela_secundaria < 6
 and u.estado_folio=6
  and f.id=$id";
             $objDatabase = QApplication::$Database[1];
             $objDbResult = $objDatabase->Query($strQuery);
-            $row = $objDbResult->FetchArray();            
-            return (count($row)>0 && $row['id']==$id);          
+            $row = $objDbResult->FetchArray();
+            return (count($row)>0 && $row['id']==$id);
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Error al determinar si el Folio esta habilitado para inscripcion definitiba</p>");
             // mandar mail
             error_log($e);
         }
-                                    
+
     }
 
     public static function PuedeDescargarResolucion(Folio $objFolio){
@@ -352,33 +355,33 @@ and u.estado_folio=6
         return array($objUsuario->IdPerfil => $objUsuario->IdPerfilObject->Nombre);
     }
 
-    
+
 
     public static function TienePermisoControllerAction($strController, $strAction) {
-        
+
     }
 
     public static function GetRecursosUsuarioRa($strUsuario) {
-        
+
     }
 
     public static function GetEntidadesUsuario(Usuario $objUsuario) {
-        
+
     }
 
     public static function GetEntidadesUsuarioRa($strUsuario) {
-        
+
     }
 
 
     public static function TienePermisoControllerActionColumna($strController, $strAction, $strColumna) {
-        
+
     }
 
-    
+
 
     public static function GetAccionColumnas($strEntidad, $strAccion) {
-        
+
     }
 }
 ?>

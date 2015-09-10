@@ -1,6 +1,6 @@
- <?php 
+ <?php
     if($_CONTROL->txtCodFolio->ActionParameter){
-        
+
         $folio=$_CONTROL->txtCodFolio->ActionParameter;
         $link_nomenclatura=__VIRTUAL_DIRECTORY__."/nomenclatura/folio/$folio";
         $link_condiciones=__VIRTUAL_DIRECTORY__."/condiciones/folio/$folio";
@@ -8,13 +8,13 @@
         $link_interno=__VIRTUAL_DIRECTORY__."/interno/folio/$folio";
         $clase="done";
     }else{
-        
+
         $link_nomenclatura="#";
         $link_condiciones="#";
         $link_regularizacion="#";
         $link_interno="#";
         $clase="disabled";
-    }; 
+    };
 
  ?>
  <div id="steps-tabs-folio" role="application" class="wizard clearfix">
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li role="tab" class="<?=$clase;?>" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-1" href="<?=$link_nomenclatura;?>">                    
+                <a aria-controls="wizard-p-1" href="<?=$link_nomenclatura;?>">
                     <span class="number">2.</span> Nomenclatura Catastral y Dominio
                 </a>
             </li>
@@ -49,65 +49,65 @@
 <?php } ?>
         </ul>
     </div>
-    
+
 <?php if(Permission::EsDuplicado($folio)){ ?>
     <div class="alert alert-danger" role="alert">
-       <span class="icon-exclamation-sign" aria-hidden="true"></span>              
-        Este Folio es un duplicado
+       <span class="icon-exclamation-sign" aria-hidden="true"></span>
+        Este Folio es un duplicado de <?=$_CONTROL->txtCodFolioOriginal; ?>
     </div>
 <?php } ?>
 
-    <div class="titulos"><i class="icon-chevron-right"> </i>Datos de carga</div>  
-        <div>                
+    <div class="titulos"><i class="icon-chevron-right"> </i>Datos de carga</div>
+        <div>
             <div class="well bs-component">
                 <?php $_CONTROL->calFecha->RenderWithName(); ?>
                 <?php $_CONTROL->txtEncargado->RenderWithName(); ?>
-                <?php $_CONTROL->txtReparticion->RenderWithName(); ?> 
-                                                     
+                <?php $_CONTROL->txtReparticion->RenderWithName(); ?>
+
              </div>
         </div>
-    
-    <div class="titulos"><i class="icon-chevron-right"> </i>Datos generales del barrio</div>  
-        <div>                
-            <div class="well bs-component">            
-            <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>			
+
+    <div class="titulos"><i class="icon-chevron-right"> </i>Datos generales del barrio</div>
+        <div>
+            <div class="well bs-component">
+            <?php $_CONTROL->txtCodFolio->RenderWithName(); ?>
             <?php $_CONTROL->lstIdPartidoObject->RenderWithName(); ?>
-            
-            <?php $_CONTROL->txtLocalidad->RenderWithName(); ?>                        
-             
+
+            <?php $_CONTROL->txtLocalidad->RenderWithName(); ?>
+
 			<?php $_CONTROL->txtMatricula->RenderWithName(); ?>
-            						
-			
+
+
             <?php $_CONTROL->txtNombreBarrioOficial->RenderWithName(); ?>
-                
+
 			<?php $_CONTROL->txtNombreBarrioAlternativo1->RenderWithName(); ?>
 			<?php $_CONTROL->txtNombreBarrioAlternativo2->RenderWithName(); ?>
-            
+
             <?php $_CONTROL->lstTipoBarrioObject->RenderWithName(); ?>
-            
+
             <?php $_CONTROL->txtObservacionCasoDudoso->RenderWithName(); ?>
 
 			<?php $_CONTROL->txtAnioOrigen->RenderWithName(); ?>
-            
+
             <?php $_CONTROL->lstAnioOrigen->RenderWithName(); ?>
             <?php $_CONTROL->txtSuperficie->RenderWithName(); ?>
-            
-            
+
+
 			<?php $_CONTROL->txtCantidadFamilias->RenderWithName(); ?>
-			
+
 			<?php $_CONTROL->txtJudicializado->RenderWithName(); ?>
             <?php $_CONTROL->lstJudicializado->RenderWithName(); ?>
 
-            
+
 			<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
-            
+
             <?php $_CONTROL->txtGeom->RenderWithName(); ?>
-			
+
 
             <?php if($_CONTROL->boolPuedeAdjuntar){ ?>
             <div class="well bs-component">
                 <div class="container">
-   
+
                     <span class="btn btn-success fileinput-button">
                         <i class="icon-plus"></i>
                         <span>Adjuntar...</span>
@@ -126,12 +126,12 @@
                 </div>
             </div>
             <?php } else {?>
-            <div class="titulos"><i class="icon-chevron-right"></i>Archivos Adjuntos</div>  
+            <div class="titulos"><i class="icon-chevron-right"></i>Archivos Adjuntos</div>
             <div>
                 <div class="well bs-component">
                     <div id="files" class="files"></div>
                 </div>
-            </div>       
+            </div>
             <?php } ?>
     </div>
 

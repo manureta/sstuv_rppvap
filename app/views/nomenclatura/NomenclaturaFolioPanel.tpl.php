@@ -3,12 +3,12 @@
     <div class="steps clearfix">
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
-                <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>" id="wizard-t-0">                    
+                <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>" id="wizard-t-0">
                     <span class="number">1.</span> Datos Generales del Barrio
                 </a>
             </li>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
-                <a aria-controls="wizard-p-1" href="#" id="wizard-t-1">                    
+                <a aria-controls="wizard-p-1" href="#" id="wizard-t-1">
                     <span class="number">2.</span> Nomenclatura Catastral y Dominio
                 </a>
             </li>
@@ -34,25 +34,25 @@
 
     <?php if(Permission::EsDuplicado($folio)){ ?>
     <div class="alert alert-danger" role="alert">
-       <span class="icon-exclamation-sign" aria-hidden="true"></span>              
-        Este Folio es un duplicado
+       <span class="icon-exclamation-sign" aria-hidden="true"></span>
+        Este Folio es un duplicado de <?=$_CONTROL->txtCodFolioOriginal;?>
     </div>
     <?php } ?>
 
 
     <div class="index_nomenclaturas">
-                
+
                 <div class="well bs-component">
 				<?php $_CONTROL->dtgNomenclaturas->Render(); ?>
-				
 
-				<?php 
+
+				<?php
 					if ($_CONTROL->pnlEditNomenclatura) {
 						$_CONTROL->pnlEditNomenclatura->Render();
-						} 
+						}
 				?>
 
-				</div>             
+				</div>
                 <p><?php $_CONTROL->btnCreateNew->Render('CssClass="btn btn-yellow btn-create-indexpanel"'); ?>
                     <?php if(!($_CONTROL->pnlEditNomenclatura)){ ?>
                     <div class="alert alert-info msg-nomenclatura" role="alert">
@@ -60,8 +60,8 @@
                       <span class="sr-only"></span>
                      <?php $_CONTROL->btnAnalizar->Render(); ?>
                     </div>
-                    
-                    
+
+
                     <?php if(Permission::EsUsoInterno(array("uso_interno_nomencla"))){ ?>
                     <div class="alert alert-danger msg-nomenclatura" role="alert">
                       <span class="icon-exclamation-sign" aria-hidden="true"></span>
@@ -70,12 +70,10 @@
                     </div>
                      <?php } ?>
                     <?php } ?>
-                </p> 
-                
+                </p>
+
     </div>
 
-    
-    
+
+
 </div>
-
-
