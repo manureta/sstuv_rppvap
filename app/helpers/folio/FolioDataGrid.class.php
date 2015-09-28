@@ -25,10 +25,12 @@ class FolioDataGrid extends FolioDataGridGen {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
         //if (FolioDataGrid::$strColumnsArray['CodFolio']) $this->MetaAddColumn('CodFolio')->Title = QApplication::Translate('Folio');
-        $objCodFolio = new QFilteredDataGridColumn("Folio",'<?= $_CONTROL->codFolio2Datagrid($_ITEM);?>');
+        $objCodFolio = new QFilteredDataGridColumn("Folio",'<?= $_CONTROL->codFolio2Datagrid($_ITEM);?>', 'HtmlEntities=true');
         $objCodFolio->FilterType = QFilterType::TextFilter;
         $objCodFolio->FilterPrefix = '%';
         $objCodFolio->FilterPostfix = '%';
+        $objCodFolio->OrderByClause = QQ::OrderBy(QQN::Folio()->CodFolio);
+        $objCodFolio->ReverseOrderByClause = QQ::OrderBy(QQN::Folio()->CodFolio, false);
         $objCodFolio->FilterFolio = QQ::Like(QQN::Folio()->CodFolio, null);
         $this->AddColumn($objCodFolio);
         if (FolioDataGrid::$strColumnsArray['IdPartidoObject']) $this->MetaAddColumn(QQN::Folio()->IdPartidoObject)->Title = QApplication::Translate('IdPartidoObject');
@@ -458,7 +460,7 @@ class FolioDataGrid extends FolioDataGridGen {
     public function codFolio2Datagrid(Folio $obj){
            if($obj->UsoInterno->EstadoFolio==EstadoFolio::FOLIO_DUPLICADO){
              //return Folio::load($obj->FolioOriginal)->CodFolio;
-             $obj->CodFolio=Folio::load($obj->FolioOriginal)->CodFolio;
+             $obj->CodFolio=$obj->CodFolio." (".Folio::load($obj->FolioOriginal)->CodFolio.")";
            }
            return $obj->CodFolio;
 
