@@ -36,13 +36,13 @@ class Folio extends FolioGen {
 			$objDatabase->NonQuery('DELETE FROM	"encuadre_legal"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"regularizacion"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"uso_interno"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			
+
            		 parent::Delete();
 		}
 
 		public static function CambioEstadoFolio(Folio $objFolio){
 	        $id=$objFolio->Id;
-	        $strQuery = "select * from folio f 
+	        $strQuery = "select * from folio f
 	                    join condiciones_socio_urbanisticas c on f.id=c.id_folio
 	                    join equipamiento e on f.id=e.id_folio
 	                    join transporte t on f.id=t.id_folio
@@ -71,30 +71,30 @@ class Folio extends FolioGen {
 		        $reg_evolucion->IdFolio=$objFolio->Id;
 		        $reg_evolucion->Contenido=json_encode($row);
 		        $reg_evolucion->Estado=$row['estado_folio'];
-		        $reg_evolucion->save();	
+		        $reg_evolucion->save();
 	        }
-	        
+
     }
-	
+
 	public function calcular_nomenclaturas(){
         Permission::Log("Calculando/Actualizando las nomenclaturas de FOLIO ".$this->intId);
         try {
             $cod=intval($this->IdPartidoObject->CodPartido);
             $gid=$this->intId;
             $strQuery = "select gid,nomencla,partida,titular_dominio,inscripcion_dominio from parcelas where partido=$cod AND nomencla not in(SELECT  (((((lpad(n.partido::text, 3, '0'::text) || lpad(n.circ::text, 2, '0'::text)) || lpad(n.secc::text, 2, '0'::text)) || lpad(n.chac_quinta::text, 14, '0'::text)) || lpad(n.frac::text, 7, '0'::text)) || lpad(n.mza::text, 7, '0'::text)) || lpad(n.parc::text, 7, '0'::text) AS nomencla FROM nomenclatura n where id_folio=$gid ) AND st_intersects(geom,(select the_geom from v_folios where gid=$gid))";
-            
+
             $objDatabase = QApplication::$Database[1];
 
             // Perform the Query
             $objDbResult = $objDatabase->Query($strQuery);
-            
+
             while ($row = $objDbResult->FetchArray()) {
-               
+
                 $nomencla=$row['nomencla'];
                 $partida=$row['partida'];
 				$titular=($row['titular_dominio']=='')? '': 'T-'.$row['titular_dominio'];
 				$inscripcion=$row['inscripcion_dominio'];
-                
+
                 $nom = new Nomenclatura();
                 $nom->IdFolio = $this->intId;
                 $nom->PartidaInmobiliaria = $partida;
@@ -110,18 +110,18 @@ class Folio extends FolioGen {
                 $nom->EstadoGeografico='';
                 $nom->DatoVerificadoRegPropiedad = false;
                 $nom->Save();
-                
-            }                     
+
+            }
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Error al calcular las nomenclaturas del barrio</p>");
             // mandar mail
             Permission::Log($e->getMessage());
         }
         $this->actualizarEstadoNomenclaturas();
-    	    	               
-	    
+
+
 	 }
-	 
+
 	public function actualizarEstadoNomenclaturas(){
         try{
          Permission::Log("Actualizando estado geografico de nomenc del FOLIO ".$this->intId);
@@ -130,28 +130,30 @@ class Folio extends FolioGen {
          $strQuery="select actualizar_estado_nomenclaturas($id_folio)";
          $objDatabase->NonQuery($strQuery);
         }catch(Exception $e){
-          QApplication::DisplayAlert("<p>Hubo un error al actualizar la geometria de las nomenclaturas:</p>".$e->getMessage());  
+          QApplication::DisplayAlert("<p>Hubo un error al actualizar la geometria de las nomenclaturas:</p>".$e->getMessage());
         }
-         
+
     }
 
     public function getParametrosMapa(){
         try{
             $gid=$this->intId;
             $strQuery = "SELECT x(st_transform((st_centroid(st_geomfromtext(folio.geom, 4326))),900913))as x,y(st_transform((st_centroid(st_geomfromtext(folio.geom, 4326))),900913))as y FROM folio WHERE id=$gid;";
-            
+
             $objDatabase = QApplication::$Database[1];
 
             // Perform the Query
             $objDbResult = $objDatabase->Query($strQuery);
-            
+
             return $objDbResult->FetchArray();
-            
+
         }catch(Exception $e){
-          QApplication::DisplayAlert("<p>Hubo un error al calcular los parametros del mapa</p>".$e->getMessage());  
+          QApplication::DisplayAlert("<p>Hubo un error al calcular los parametros del mapa</p>".$e->getMessage());
         }
-         
+
     }
+
+
 
 }
 ?>

@@ -24,17 +24,31 @@ class FolioDataGrid extends FolioDataGridGen {
    protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
-        if (FolioDataGrid::$strColumnsArray['CodFolio']) $this->MetaAddColumn('CodFolio')->Title = QApplication::Translate('Folio');
+        //if (FolioDataGrid::$strColumnsArray['CodFolio']) $this->MetaAddColumn('CodFolio')->Title = QApplication::Translate('Folio');
+        $objCodFolio = new QFilteredDataGridColumn("Folio",'<?= $_CONTROL->codFolio2Datagrid($_ITEM);?>');
+        $objCodFolio->FilterType = QFilterType::TextFilter;
+        $objCodFolio->FilterPrefix = '%';
+        $objCodFolio->FilterPostfix = '%';
+        $objCodFolio->FilterFolio = QQ::Like(QQN::Folio()->CodFolio, null);
+        $this->AddColumn($objCodFolio);
         if (FolioDataGrid::$strColumnsArray['IdPartidoObject']) $this->MetaAddColumn(QQN::Folio()->IdPartidoObject)->Title = QApplication::Translate('IdPartidoObject');
         if (FolioDataGrid::$strColumnsArray['NombreBarrioOficial']) $this->MetaAddColumn('NombreBarrioOficial')->Title ='Nombre Oficial Barrio';
         if (FolioDataGrid::$strColumnsArray['TipoBarrioObject']) $this->MetaAddColumn(QQN::Folio()->TipoBarrioObject)->Title = "Tipo";
+        //Filtros Situacion Registral
         $objSituacionRegistral = new QFilteredDataGridColumn("Situación Registral",'<?= $_CONTROL->CalcularSitRegistral($_ITEM);?>');
+        $objSituacionRegistral->FilterType = QFilterType::ListFilter;
+        $objSituacionRegistral->FilterAddListItem('No Corresponde', QQ::Equal(QQN::Folio()->UsoInterno->NoCorrespondeInscripcion, true));
+        $objSituacionRegistral->FilterAddListItem('Inscripción Definitiva', QQ::NotEqual(QQN::Folio()->UsoInterno->ResolucionInscripcionDefinitiva, ''));
+        $objSituacionRegistral->FilterAddListItem('Inscripción Provisoria', QQ::NotEqual(QQN::Folio()->UsoInterno->ResolucionInscripcionProvisoria, ''));
+        $objSituacionRegistral->FilterAddListItem('Mapeo Preliminar', QQ::Equal(QQN::Folio()->UsoInterno->MapeoPreliminar, true));
+
         $this->AddColumn($objSituacionRegistral);
         $this->MetaAddColumn(QQN::Folio()->UsoInterno->EstadoFolioObject->Nombre)->Title = "Estado";
         $this->MetaAddColumn(QQN::Folio()->Reparticion)->Title = "Reparticion";
         $objColumnAcciones = new QFilteredDataGridColumn("Acciones", '<?= $_CONTROL->GetEditButton($_ITEM)->Render(false) . $_CONTROL->GetDuplicarButton($_ITEM)->Render(false)  . $_CONTROL->GetEnviarButton($_ITEM)->Render(false) .  $_CONTROL->GetConfirmarButton($_ITEM)->Render(false) . $_CONTROL->GetCancelarButton($_ITEM)->Render(false) . $_CONTROL->GetObjetarButton($_ITEM)->Render(false) . $_CONTROL->GetResolucionButton($_ITEM)->Render(false) . $_CONTROL->Get14449Button($_ITEM)->Render(false) . $_CONTROL->GetCaratulaButton($_ITEM)->Render(false) . $_CONTROL->GetFolioCompletoButton($_ITEM)->Render(false) . $_CONTROL->GetDeleteButton($_ITEM)->Render(false). $_CONTROL->GetMapaButton($_ITEM)->Render(false) ;?>', 'Width=35%', 'HorizontalAlign=left', 'HtmlEntities=false');
-
         $this->AddColumn($objColumnAcciones);
+
+
 
     }
 
@@ -439,6 +453,16 @@ class FolioDataGrid extends FolioDataGridGen {
 
 
      }
+
+
+    public function codFolio2Datagrid(Folio $obj){
+           if($obj->UsoInterno->EstadoFolio==EstadoFolio::FOLIO_DUPLICADO){
+             //return Folio::load($obj->FolioOriginal)->CodFolio;
+             $obj->CodFolio=Folio::load($obj->FolioOriginal)->CodFolio;
+           }
+           return $obj->CodFolio;
+
+    }
 
 
 

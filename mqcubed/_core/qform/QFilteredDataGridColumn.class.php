@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('__MAX_RECORD_FILTERBOX__')) {
-    define('__MAX_RECORD_FILTERBOX__', 100);
+    define('__MAX_RECORD_FILTERBOX__', 300);
 }
 
 /* * **********************
@@ -48,9 +48,9 @@ class QFilteredDataGridColumn extends QDataGridColumn {
     protected $objFilterCustom = null;
     protected $strFilterPrefix = '';
     protected $strFilterPostfix = '';
-    
+
     protected $objNode;
-    
+
     protected $objConditionsArray = array();
 
     public function SetFilterCondition(QQCondition $objCondition) {
@@ -65,7 +65,7 @@ class QFilteredDataGridColumn extends QDataGridColumn {
     public function ResetFilterConditions() {
         return $this->objConditionsArray = array();
     }
-    
+
 
     public function SetDataGrid(\QDataGrid $objDataGrid) {
         $this->strControlId = sprintf('%s_col%s',$objDataGrid->ControlId, $this->intFilterColId);
@@ -74,7 +74,7 @@ class QFilteredDataGridColumn extends QDataGridColumn {
         $this->objForm->AddControl($this);
         $objDataGrid->AddChildControl($this);
     }
-    
+
     protected function GetControlHtml() {
         if ($this->objDataGrid->FilterShow && !$this->arrFilterList && $this->objNode) $this->LoadFilterItems();
         $strTitle = ($this->Title) ? $this->Title : $this->Name;
@@ -82,11 +82,11 @@ class QFilteredDataGridColumn extends QDataGridColumn {
         $strCssClass = ($this->objOrderByClause) ? ' class="qfiltereddatagrid-sortable" ' : '';
         return sprintf('<span %s %s %s>%s</span>', $this->GetActionAttributes(), $strCssClass, $strTooltip, $strTitle);
     }
-    
+
     public function SetNode(QQNode $objNode) {
         $this->objNode = $objNode;
     }
-    
+
     protected function LoadFilterItems() {
         $strClass = $this->objNode->_ClassName;
         $strPk = $this->objNode->_PrimaryKeyNode->_PropertyName;
@@ -215,6 +215,17 @@ class QFilteredDataGridColumn extends QDataGridColumn {
                     throw $objExc;
                 }
 
+            case "FilterFolio":
+                try {
+                    //if($mixValue instanceof Filter)
+                    //	$this->objFilter = $mixValue;
+                    //else
+                    $this->arrFilterList = array($mixValue);                
+                    break;
+                } catch (QInvalidCastException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
 
 
             case "FilterBoxSize":
@@ -260,7 +271,7 @@ class QFilteredDataGridColumn extends QDataGridColumn {
             $this->arrFilterList = array();
         if ($arg1 instanceof AdvancedListItem) {
             $this->arrFilterList[$arg1->Name] = $arg1->Filter;
-            //since we are adding an advanced list item make sure to set the 
+            //since we are adding an advanced list item make sure to set the
             //filter type for the column appropriately too
             $this->strFilterType = QFilterType::ListFilter;
         } elseif ($arg1 !== null && $arg2 instanceof QQCondition) {
