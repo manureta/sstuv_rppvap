@@ -74,8 +74,15 @@
                         <?php $_CONTROL->pnlEncuadre->txtJuzgado->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->lstEstadoProcesoExpropiacionObject->RenderWithName(); ?>
                         <?php $_CONTROL->pnlEncuadre->txtMemoriaDescriptiva->RenderWithName(); ?>
+                        <br>
+
 
 		        	</div>
+
+              <div class="well bs-component container">
+                <?php $_CONTROL->pnlEncuadre->btnImprimirExpropiaciones->RenderWithName(); ?>
+              </div>
+
     			</div>
 
             </div>

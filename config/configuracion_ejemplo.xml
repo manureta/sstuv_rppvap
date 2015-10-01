@@ -11,17 +11,7 @@
         <Password>password</Password>
         <Profiling>false</Profiling>
         <Inicializada>1</Inicializada>
-    </DbConn>
-   <DbConnProc>
-        <Adapter>PostgreSqlPdo</Adapter>
-        <Server>localhost</Server>
-        <Port>5432</Port>
-        <Database>cenpeproc</Database>
-        <Username>redfie</Username>
-        <Password>redfie11</Password>
-        <Profiling>false</Profiling>
-        <Inicializada>1</Inicializada>
-    </DbConnProc>
+    </DbConn>   
     <ServerInstance/>
     <Email>
         <Enabled>false</Enabled>

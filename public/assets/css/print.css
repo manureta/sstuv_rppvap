@@ -10,14 +10,14 @@
 }
 */
 page[size="A4"] {
-  
+
   width: 21cm;
   height: 29.7cm;
   display: block;
   margin: 0 auto;
   margin-bottom: 1cm;
   page-break-after: always;
-  
+
 }
 @media print {
   body, page[size="A4"] {
@@ -35,6 +35,10 @@ body{
 }
 
 .cont{
+	background-color:#d2d2d2;
+}
+
+.memoria_descriptiva{
 	background-color:#d2d2d2;
 }
 
@@ -251,7 +255,7 @@ ol {
 }
 
 .pie_li{
-  background-color:#d2d2d2; 
+  background-color:#d2d2d2;
 }
 
 .li_caratula li {

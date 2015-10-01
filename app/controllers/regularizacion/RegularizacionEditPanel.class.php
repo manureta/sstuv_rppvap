@@ -46,59 +46,59 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->lstIdFolioObject->Enabled = false;
         $this->lstIdFolioObject->Visible = false;
-        
+
         // Si proceso iniciado esta tildado hay que mostrar encuadre legal
         $checked=($this->chkProcesoIniciado->Checked==1)? true: false;
         if($checked)QApplication::ExecuteJavascript("mostrarEncuadre(true)");
-        $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al cambiar el estado de 'Proceso Iniciado'\\r\\n se inicializan o borran todas las opciones de 'Encuadre Legal' de acuerdo al caso.\\r\\n ¿Está seguro?")));        
+        $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al cambiar el estado de 'Proceso Iniciado'\\r\\n se inicializan o borran todas las opciones de 'Encuadre Legal' de acuerdo al caso.\\r\\n ¿Está seguro?")));
         $this->chkProcesoIniciado->AddAction(new QClickEvent(), new QAjaxControlAction($this,"ProcesoIniciado_chk"));
-        
 
-        $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));                        
+
+        $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));
         $this->pnlEncuadre = new EncuadreLegalEditPanel($this,EncuadreLegalEditPanel::$strControlsArray,$this->objEncuadre->Id);
         $this->pnlEncuadre->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEncuadre->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEncuadre->lstIdFolioObject->Enabled = false;
         $this->pnlEncuadre->lstIdFolioObject->Visible = false;
 
-        //$this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk"));           
+        //$this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk"));
         //$this->TieneExpropiacion_chk(true);
-        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al tildar 'Expropiación' se habilitarán nuevas variables asociadas. \\En cambio, al destildar 'Expropiación' se BORRARÁN estas nuevas variables \\n ¿Está seguro?")));        
-        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk")); 
+        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(), new QConfirmAction(sprintf("Al tildar 'Expropiación' se habilitarán nuevas variables asociadas. \\En cambio, al destildar 'Expropiación' se BORRARÁN estas nuevas variables \\n ¿Está seguro?")));
+        $this->pnlEncuadre->chkTieneExpropiacion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"TieneExpropiacion_chk"));
         $this->InicializarExpropiacion();
 
-        $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));                                
+        $this->objAntecedentes=Antecedentes::QuerySingle(QQ::Equal(QQN::Antecedentes()->IdFolio,QApplication::QueryString("id")));
         $this->pnlAntecedentes = new AntecedentesEditPanel($this,AntecedentesEditPanel::$strControlsArray,$this->objAntecedentes->Id);
         $this->pnlAntecedentes->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlAntecedentes->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlAntecedentes->lstIdFolioObject->Enabled = false;
-        $this->pnlAntecedentes->lstIdFolioObject->Visible = false;        
+        $this->pnlAntecedentes->lstIdFolioObject->Visible = false;
 
         // Si se tilda sin intervencion hay que ocultar org de intervencion
-        $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;        
+        $sinintervencion=($this->pnlAntecedentes->chkSinIntervencion->Checked==1)? true: false;
         if($sinintervencion)QApplication::ExecuteJavascript("SinIntervencion(true)");
-        
+
         $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(),new QConfirmAction(sprintf("Al tildar 'Sin Intervención' se anulan las demas opciones \\r\\n y se deshabilitan las opciones de 'Organismos de intervención'.\\r\\n ¿Está seguro?")));
         $this->pnlAntecedentes->chkSinIntervencion->AddAction(new QClickEvent(),new QAjaxControlAction($this,"sinintervencion_chk"));
         $this->pnlAntecedentes->chkObrasInfraestructura->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
         $this->pnlAntecedentes->chkEquipamientos->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
         $this->pnlAntecedentes->chkIntervencionesEnViviendas->AddAction(new QClickEvent(),new QAjaxControlAction($this,"deshabilitar_sinintervencion"));
-        
 
 
-        $this->objOrganismos=OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,QApplication::QueryString("id")));                        
+
+        $this->objOrganismos=OrganismosDeIntervencion::QuerySingle(QQ::Equal(QQN::OrganismosDeIntervencion()->IdFolio,QApplication::QueryString("id")));
         $this->pnlOrganismos = new OrganismosDeIntervencionEditPanel($this,OrganismosDeIntervencionEditPanel::$strControlsArray,$this->objOrganismos->Id);
         $this->pnlOrganismos->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlOrganismos->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlOrganismos->lstIdFolioObject->Enabled = false;
-        $this->pnlOrganismos->lstIdFolioObject->Visible = false;                
-        
+        $this->pnlOrganismos->lstIdFolioObject->Visible = false;
+
         // PANELES DE INFORME URBANISTICO Y REGULARIZACION
         // QUE ORIGINALMENTE SON DE USO INTERNO
         // LOS EVENTOS SIGUEN ESTANDO EN EL CONTROLLER DE USO INTERNO
-       
-        $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,QApplication::QueryString("id")));  
-        
+
+        $this->objUsoInterno=UsoInterno::QuerySingle(QQ::Equal(QQN::UsoInterno()->IdFolio,QApplication::QueryString("id")));
+
         $this->pnlUsoInterno = new UsoInternoEditPanel($this,UsoInternoEditPanel::$strControlsArray,$this->objUsoInterno->IdFolio);
         $this->pnlUsoInterno->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlUsoInterno->lstIdFolioObject->Text = $this->objFolio->__toString();
@@ -110,7 +110,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         //informe urbanistico
         $this->pnlUsoInterno->Template=null;
         $this->pnlUsoInterno->Form->RemoveControl($this->pnlUsoInterno->pnlTabs->ControlId, true);
-        
+
         $puedeEditar_InformeUrbanistico=(Permission::PuedeEditar1A4($this->objFolio)||Permission::EsUsoInterno(array("uso_interno_tecnico")));
         $PuedeEditar_Regularizacion=(Permission::PuedeEditar1A4($this->objFolio)||Permission::EsUsoInterno(array("uso_interno_tecnico","uso_interno_social")));
 
@@ -202,7 +202,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
 
             $this->txtObservaciones->Enabled=true;
         }
-        
+
         if(Permission::EsUsoInterno(array("uso_interno_tecnico"))){
 
         }
@@ -212,25 +212,25 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $url_upload_informe=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->objFolio->Id."&tipo=informe";
 		if(Permission::PuedeAdjuntar($this->objFolio)){
 			$this->pnlUsoInterno->boolPuedeAdjuntar=true;
-            QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");                
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
         }else{
-            if(Permission::PuedeVerAdjuntados($this->objFolio)){                
+            if(Permission::PuedeVerAdjuntados($this->objFolio)){
                 if(Permission::SoloAdjuntaInformeUrbanistico()){
                 	$this->pnlUsoInterno->boolPuedeAdjuntar=true;
                     QApplication::ExecuteJavascript("uploadManager('$url_upload_informe','#fileupload3','#files_informe')");
                 }else{
                     if(Permission::PuedeVerAdjuntosInformeUrbanistico()){
-                        QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");    
+                        QApplication::ExecuteJavascript("verAdjuntados('$url_upload_informe','#files_informe')");
                     }
-                    
+
                 }
-                  
+
             }
         }
 
     }
 
-   
+
 
 
     protected function metaControl_Create($strControlsArray){
@@ -239,25 +239,25 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->mctRegularizacion = RegularizacionMetaControl::Create($this, $this->intId);
 
         // Call MetaControl's methods to create qcontrols based on Regularizacion's data fields
-        if (in_array('lblId',$strControlsArray)) 
+        if (in_array('lblId',$strControlsArray))
             $this->objControlsArray['lblId'] = $this->mctRegularizacion->lblId_Create();
-        if (in_array('lstIdFolioObject',$strControlsArray)) 
+        if (in_array('lstIdFolioObject',$strControlsArray))
             $this->objControlsArray['lstIdFolioObject'] = $this->mctRegularizacion->lstIdFolioObject_Create();
-        if (in_array('chkProcesoIniciado',$strControlsArray)) 
+        if (in_array('chkProcesoIniciado',$strControlsArray))
             $this->objControlsArray['chkProcesoIniciado'] = $this->mctRegularizacion->chkProcesoIniciado_Create();
-            $this->objControlsArray['chkProcesoIniciado']->Name="¿Se inició un proceso de regularización?"; 
-        if (in_array('lstAntecedentesAsIdFolio',$strControlsArray)) 
+            $this->objControlsArray['chkProcesoIniciado']->Name="¿Se inició un proceso de regularización?";
+        if (in_array('lstAntecedentesAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstAntecedentesAsIdFolio'] = $this->mctRegularizacion->lstAntecedentesAsIdFolio_Create();
         if (in_array('lstEncuadreLegalAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstEncuadreLegalAsIdFolio'] = $this->mctRegularizacion->lstEncuadreLegalAsIdFolio_Create();
         if (in_array('lstRegistracionAsIdFolio',$strControlsArray))
             $this->objControlsArray['lstRegistracionAsIdFolio'] = $this->mctRegularizacion->lstRegistracionAsIdFolio_Create();
-        if (in_array('txtObservaciones',$strControlsArray)) 
+        if (in_array('txtObservaciones',$strControlsArray))
             $this->objControlsArray['txtObservaciones'] = $this->mctRegularizacion->txtObservaciones_Create();
 
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
-    
+
      public function btnSave_Click($strFormId, $strControlId, $strParameter) {
         //parent::btnSave_Click($strFormId, $strControlId, $strParameter);
         // Delegate "Save" processing to the RegularizacionMetaControl
@@ -269,7 +269,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlAntecedentes->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlOrganismos->btnSave_Click($strFormId, $strControlId, $strParameter);
         $this->pnlUsoInterno->btnSave_Click($strFormId, $strControlId, $strParameter);
-        
+
         $this->objModifiedChildsArray = array();
         QApplication::DisplayNotification('Los datos se guardaron correctamente');
     }
@@ -284,8 +284,8 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlAntecedentes->chkObrasInfraestructura->Checked=false;
             $this->pnlAntecedentes->chkEquipamientos->Checked=false;
             $this->pnlAntecedentes->chkIntervencionesEnViviendas->Checked=false;
-            $this->pnlAntecedentes->txtOtros->Text="";    
-            
+            $this->pnlAntecedentes->txtOtros->Text="";
+
             // reseteo organismos
             $this->pnlOrganismos->chkNacional->Checked=false;
             $this->pnlOrganismos->chkProvincial->Checked=false;
@@ -296,15 +296,15 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         }else{
             QApplication::ExecuteJavascript("SinIntervencion(false)");
         }
-                
+
     }
 
     public function ProcesoIniciado_chk($strFormId, $strControlId, $strParameter){
-        if(!$this->chkProcesoIniciado->Checked){            
-          $this->ResetearEncuadreLegal();           
+        if(!$this->chkProcesoIniciado->Checked){
+          $this->ResetearEncuadreLegal();
         }
         QApplication::ExecuteJavascript("mostrarEncuadre()");
-                
+
     }
 
     public function ResetearEncuadreLegal(){
@@ -313,7 +313,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
         $this->pnlEncuadre->chkDecreto81588->Checked=false;
         $this->pnlEncuadre->chkLey23073->Checked=false;
         $this->pnlEncuadre->chkDecreto468696->Checked=false;
-        $this->pnlEncuadre->chkLey14449->Checked=false;        
+        $this->pnlEncuadre->chkLey14449->Checked=false;
         $this->pnlEncuadre->txtOtros->Text='';
         //reseteo expropiaciones
         $this->pnlEncuadre->chkTieneExpropiacion->Checked=false;
@@ -344,11 +344,11 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlEncuadre->txtFechaSancion->Text='';
             $this->pnlEncuadre->txtFechaSancion->Enabled=false;
             $this->pnlEncuadre->txtFechaSancion->Visible=false;
-        
-            $this->pnlEncuadre->txtFechaVencimiento->Text=''; 
+
+            $this->pnlEncuadre->txtFechaVencimiento->Text='';
             $this->pnlEncuadre->txtFechaVencimiento->Enabled=false;
             $this->pnlEncuadre->txtFechaVencimiento->Visible=false;
-            
+
             $this->pnlEncuadre->txtNomenclaturaTextoLey->Text='';
             $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=false;
             $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=false;
@@ -356,20 +356,20 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
             $this->pnlEncuadre->txtTasacionAdministrativa->Text='';
             $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=false;
             $this->pnlEncuadre->txtTasacionAdministrativa->Visible=false;
-            
+
             $this->pnlEncuadre->txtPrecioPagado->Text='';
             $this->pnlEncuadre->txtPrecioPagado->Enabled=false;
             $this->pnlEncuadre->txtPrecioPagado->Visible=false;
-            
+
             $this->pnlEncuadre->txtJuzgado->Text='';
             $this->pnlEncuadre->txtJuzgado->Enabled=false;
             $this->pnlEncuadre->txtJuzgado->Visible=false;
-            
+
             $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Value=null;
             $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Text=null;
             $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=false;
             $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=false;
-            
+
             $this->pnlEncuadre->txtMemoriaDescriptiva->Text='';
             $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=false;
             $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=false;
@@ -384,34 +384,36 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
 
             // Si se puede ver
             $this->pnlEncuadre->txtExpropiacion->Visible=$mostrar;
-            $this->pnlEncuadre->txtFechaSancion->Visible=$mostrar;        
-            $this->pnlEncuadre->txtFechaVencimiento->Visible=$mostrar;            
+            $this->pnlEncuadre->txtFechaSancion->Visible=$mostrar;
+            $this->pnlEncuadre->txtFechaVencimiento->Visible=$mostrar;
             $this->pnlEncuadre->txtNomenclaturaTextoLey->Visible=$mostrar;
-            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=$mostrar;            
-            $this->pnlEncuadre->txtPrecioPagado->Visible=$mostrar;            
-            $this->pnlEncuadre->txtJuzgado->Visible=$mostrar;            
-            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=$mostrar;            
+            $this->pnlEncuadre->txtTasacionAdministrativa->Visible=$mostrar;
+            $this->pnlEncuadre->txtPrecioPagado->Visible=$mostrar;
+            $this->pnlEncuadre->txtJuzgado->Visible=$mostrar;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Visible=$mostrar;
             $this->pnlEncuadre->txtMemoriaDescriptiva->Visible=$mostrar;
-            
-            //si se puede editar                        
+
+            //si se puede editar
             $this->pnlEncuadre->txtExpropiacion->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtFechaSancion->Enabled=$puede_editar;        
-            $this->pnlEncuadre->txtFechaVencimiento->Enabled=$puede_editar;            
+            $this->pnlEncuadre->txtFechaSancion->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtFechaVencimiento->Enabled=$puede_editar;
             $this->pnlEncuadre->txtNomenclaturaTextoLey->Enabled=$puede_editar;
-            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=$puede_editar;            
-            $this->pnlEncuadre->txtPrecioPagado->Enabled=$puede_editar;            
-            $this->pnlEncuadre->txtJuzgado->Enabled=$puede_editar;            
-            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=$puede_editar;            
+            $this->pnlEncuadre->txtTasacionAdministrativa->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtPrecioPagado->Enabled=$puede_editar;
+            $this->pnlEncuadre->txtJuzgado->Enabled=$puede_editar;
+            $this->pnlEncuadre->lstEstadoProcesoExpropiacionObject->Enabled=$puede_editar;
             $this->pnlEncuadre->txtMemoriaDescriptiva->Enabled=$puede_editar;
 
+            $this->pnlEncuadre->btnImprimirExpropiaciones->Enabled = $mostrar;
+            $this->pnlEncuadre->btnImprimirExpropiaciones->Visible = $mostrar;
     }
 
     public function TieneExpropiacion_chk($inicializar=false){
-        
+
         if($this->pnlEncuadre->chkTieneExpropiacion->Checked){
-            
+
             $this->InicializarExpropiacion();
-            
+
 
         }else{
             $mensaje="warning";
@@ -419,7 +421,7 @@ class RegularizacionEditPanel extends RegularizacionEditPanelGen {
                 $mensaje="inicio";
             }
             $this->ResetearExpropiacion($mensaje);
-             
+
         }
     }
 
