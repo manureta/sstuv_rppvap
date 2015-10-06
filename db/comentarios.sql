@@ -1,4 +1,4 @@
-﻿drop table comentarios;
+﻿--drop table comentarios;
 CREATE TABLE comentarios
 (
   id serial NOT NULL,
