@@ -22,6 +22,27 @@
     QApplication::$ClassFile['qqreversereferencenodeantecedentes'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeAntecedentes.class.php';
 
 
+    // ClassPaths for the Comentarios class
+    QApplication::$ClassFile['comentariosindexpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosIndexPanelGen.class.php';
+    QApplication::$ClassFile['comentarioseditpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosEditPanelGen.class.php';
+
+    QApplication::$ClassFile['comentariosindexpanel'] = __CONTROLLER_DIR__.'/comentarios/ComentariosIndexPanel.class.php';
+    QApplication::$ClassFile['comentarioseditpanel'] = __CONTROLLER_DIR__.'/comentarios/ComentariosEditPanel.class.php';
+
+    QApplication::$ClassFile['comentariosmodalpanel'] = __CONTROLLER_DIR__.'/comentarios/ComentariosModalPanel.class.php';
+    QApplication::$ClassFile['comentariosmodalpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosModalPanelGen.class.php';
+
+    QApplication::$ClassFile['comentariosdatagridgen'] = __HELPER_DIR__.'/comentarios/generated/ComentariosDataGridGen.class.php';
+    QApplication::$ClassFile['comentariosmetacontrolgen'] = __HELPER_DIR__.'/comentarios/generated/ComentariosMetaControlGen.class.php';
+    QApplication::$ClassFile['comentariosdatagrid'] = __HELPER_DIR__.'/comentarios/ComentariosDataGrid.class.php';
+    QApplication::$ClassFile['comentariosmetacontrol'] = __HELPER_DIR__.'/comentarios/ComentariosMetaControl.class.php';
+
+    QApplication::$ClassFile['comentariosgen'] = __MODEL_DIR__.'/orm/generated/ComentariosGen.class.php';
+    QApplication::$ClassFile['comentarios'] = __MODEL_DIR__.'/orm/Comentarios.class.php';
+    QApplication::$ClassFile['qqnodecomentarios'] = __MODEL_DIR__.'/orm/generated/QQNodeComentarios.class.php';
+    QApplication::$ClassFile['qqreversereferencenodecomentarios'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeComentarios.class.php';
+
+
     // ClassPaths for the CondicionesSocioUrbanisticas class
     QApplication::$ClassFile['condicionessociourbanisticasindexpanelgen'] = __CONTROLLER_DIR__.'/condicionessociourbanisticas/generated/CondicionesSocioUrbanisticasIndexPanelGen.class.php';
     QApplication::$ClassFile['condicionessociourbanisticaseditpanelgen'] = __CONTROLLER_DIR__.'/condicionessociourbanisticas/generated/CondicionesSocioUrbanisticasEditPanelGen.class.php';

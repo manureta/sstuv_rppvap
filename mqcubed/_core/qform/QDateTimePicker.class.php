@@ -35,7 +35,7 @@ class QDateTimePicker extends QControl {
         $this->AddJavascriptFile("_core/date_time_picker.js?1");
         $this->dttDateTime = null;
     }
-    
+
     protected function GetDaysMonth($intMonth, $intYear){
         switch($intMonth){
             case 1:
@@ -82,7 +82,7 @@ class QDateTimePicker extends QControl {
                     if($intDay > $this->GetDaysMonth($intMonth, $intYear)){
                         $this->dttDateTime = null;
                         return;
-                    }                    
+                    }
 
                     $this->intSelectedMonth = $intMonth;
                     $this->intSelectedDay = $intDay;
@@ -263,7 +263,7 @@ class QDateTimePicker extends QControl {
                     throw $objExc;
                 }
                 if(in_array($this->strDateTimePickerType, array(QDateTimePickerType::DateTime, QDateTimePickerType::DateTimeSeconds)))
-                    throw new QCallerException('Soporte para fecha y hora no desarrollado');
+                    //throw new QCallerException('Soporte para fecha y hora no desarrollado');
                 break;
 
             case "DateTimePickerFormat":
@@ -302,6 +302,6 @@ class QDateTimePicker extends QControl {
                     throw $objExc;
                 }
         }
-    }    
+    }
 }
 ?>

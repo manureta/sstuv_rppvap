@@ -29,6 +29,8 @@ class QQNodeUsuario extends QQNode {
 					return new QQNode('reparticion', 'Reparticion', 'string', $this);
 				case 'Telefono':
 					return new QQNode('telefono', 'Telefono', 'string', $this);
+				case 'ComentariosAsId':
+					return new QQReverseReferenceNodeComentarios($this, 'comentariosasid', 'reverse_reference', 'id_usuario');
 				case 'FolioAsCreador':
 					return new QQReverseReferenceNodeFolio($this, 'folioascreador', 'reverse_reference', 'creador');
 

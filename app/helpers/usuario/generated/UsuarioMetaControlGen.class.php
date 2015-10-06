@@ -460,6 +460,52 @@
 
 
 
+    public $lstComentariosAsId;
+    /**
+     * Gets all associated ComentariosesAsId as an array of Comentarios objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Comentarios[]
+    */ 
+    public function lstComentariosAsId_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Comentarios';
+        $strConfigArray['strRefreshMethod'] = 'ComentariosAsIdArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'IdUsuario';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddComentariosAsId';
+        $strConfigArray['strRemoveMethod'] = 'RemoveComentariosAsId';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['IdFolioObject'] = QApplication::Translate('IdFolioObject');
+        $strConfigArray['Columns']['FechaCreacion'] = QApplication::Translate('FechaCreacion');
+        $strConfigArray['Columns']['FechaModificacion'] = QApplication::Translate('FechaModificacion');
+        $strConfigArray['Columns']['Comentario'] = QApplication::Translate('Comentario');
+
+        $this->lstComentariosAsId = new QListPanel($this->objParentObject, $this->objUsuario, $strConfigArray, $strControlId);
+        $this->lstComentariosAsId->Name = Comentarios::Noun();
+        $this->lstComentariosAsId->SetNewMethod($this, "lstComentariosAsId_New");
+        $this->lstComentariosAsId->SetEditMethod($this, "lstComentariosAsId_Edit");
+        return $this->lstComentariosAsId;
+    }
+
+    public function lstComentariosAsId_New() {
+        ComentariosModalPanel::$strControlsArray['lstIdUsuarioObject'] = false;
+        $strControlsArray = array_keys(ComentariosModalPanel::$strControlsArray, true);
+        $this->lstComentariosAsId->ModalPanel = new ComentariosModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstComentariosAsId->ModalPanel->objCallerControl = $this->lstComentariosAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstComentariosAsId_Edit($intKey) {
+        ComentariosModalPanel::$strControlsArray['lstIdUsuarioObject'] = false;
+        $strControlsArray = array_keys(ComentariosModalPanel::$strControlsArray, true);
+        $obj = $this->objUsuario->ComentariosAsIdArray[$intKey];
+        $this->lstComentariosAsId->ModalPanel = new ComentariosModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstComentariosAsId->ModalPanel->objCallerControl = $this->lstComentariosAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
     public $lstFolioAsCreador;
     /**
      * Gets all associated FoliosAsCreador as an array of Folio objects

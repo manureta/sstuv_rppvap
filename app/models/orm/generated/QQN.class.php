@@ -7,6 +7,12 @@
 			return new QQNodeAntecedentes('antecedentes', null, null);
 		}
 		/**
+		 * @return QQNodeComentarios
+		 */
+		static public function Comentarios() {
+			return new QQNodeComentarios('comentarios', null, null);
+		}
+		/**
 		 * @return QQNodeCondicionesSocioUrbanisticas
 		 */
 		static public function CondicionesSocioUrbanisticas() {

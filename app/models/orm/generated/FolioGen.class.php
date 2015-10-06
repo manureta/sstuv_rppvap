@@ -42,6 +42,8 @@
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
 	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
+	 * @property-read Comentarios $ComentariosAsId the value for the private _objComentariosAsId (Read-Only) if set due to an expansion on the comentarios.id_folio reverse relationship
+	 * @property-read Comentarios[] $ComentariosAsIdArray the value for the private _objComentariosAsIdArray (Read-Only) if set due to an ExpandAsArray on the comentarios.id_folio reverse relationship
 	 * @property-read EvolucionFolio $EvolucionFolioAsId the value for the private _objEvolucionFolioAsId (Read-Only) if set due to an expansion on the evolucion_folio.id_folio reverse relationship
 	 * @property-read EvolucionFolio[] $EvolucionFolioAsIdArray the value for the private _objEvolucionFolioAsIdArray (Read-Only) if set due to an ExpandAsArray on the evolucion_folio.id_folio reverse relationship
 	 * @property-read Nomenclatura $NomenclaturaAsId the value for the private _objNomenclaturaAsId (Read-Only) if set due to an expansion on the nomenclatura.id_folio reverse relationship
@@ -240,6 +242,22 @@ class FolioGen extends QBaseClass {
     protected $intFolioOriginal;
     const FolioOriginalDefault = null;
 
+
+    /**
+     * Private member variable that stores a reference to a single ComentariosAsId object
+     * (of type Comentarios), if this Folio object was restored with
+     * an expansion on the comentarios association table.
+     * @var Comentarios _objComentariosAsId;
+     */
+    protected $objComentariosAsId;
+
+    /**
+     * Private member variable that stores a reference to an array of ComentariosAsId objects
+     * (of type Comentarios[]), if this Folio object was restored with
+     * an ExpandAsArray on the comentarios association table.
+     * @var Comentarios[] _objComentariosAsIdArray;
+     */
+    protected $objComentariosAsIdArray;
 
     /**
      * Private member variable that stores a reference to a single EvolucionFolioAsId object
@@ -753,6 +771,23 @@ class FolioGen extends QBaseClass {
 							$strAliasPrefix = 'folio__';
 
 
+						// Expanding reverse references: ComentariosAsId
+						$strAlias = $strAliasPrefix . 'comentariosasid__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objComentariosAsIdArray)) {
+								$objPreviousChildItems = $objPreviousItem->objComentariosAsIdArray;
+								$objChildItem = Comentarios::InstantiateDbRow($objDbRow, $strAliasPrefix . 'comentariosasid__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objComentariosAsIdArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objComentariosAsIdArray[] = Comentarios::InstantiateDbRow($objDbRow, $strAliasPrefix . 'comentariosasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
 						// Expanding reverse references: EvolucionFolioAsId
 						$strAlias = $strAliasPrefix . 'evolucionfolioasid__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
@@ -849,6 +884,9 @@ class FolioGen extends QBaseClass {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
 						continue;
 					}
+					if (array_diff($objPreviousItem->objComentariosAsIdArray, $objToReturn->objComentariosAsIdArray) != null) {
+						continue;
+					}
 					if (array_diff($objPreviousItem->objCondicionesSocioUrbanisticasAsIdArray, $objToReturn->objCondicionesSocioUrbanisticasAsIdArray) != null) {
 						continue;
 					}
@@ -938,6 +976,16 @@ class FolioGen extends QBaseClass {
 			}
 
 
+
+			// Check for ComentariosAsId Virtual Binding
+			$strAlias = $strAliasPrefix . 'comentariosasid__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objComentariosAsIdArray[] = Comentarios::InstantiateDbRow($objDbRow, $strAliasPrefix . 'comentariosasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objComentariosAsId = Comentarios::InstantiateDbRow($objDbRow, $strAliasPrefix . 'comentariosasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
 
 			// Check for EvolucionFolioAsId Virtual Binding
 			$strAlias = $strAliasPrefix . 'evolucionfolioasid__id';
@@ -1771,6 +1819,24 @@ class FolioGen extends QBaseClass {
             // (If restored via a "Many-to" expansion)
             ////////////////////////////
 
+            case 'ComentariosAsId':
+                /**
+                 * Gets the value for the private _objComentariosAsId (Read-Only)
+                 * if set due to an expansion on the comentarios.id_folio reverse relationship
+                 * @return Comentarios
+                 */
+                return $this->objComentariosAsId;
+
+            case 'ComentariosAsIdArray':
+                /**
+                 * Gets the value for the private _objComentariosAsIdArray (Read-Only)
+                 * if set due to an ExpandAsArray on the comentarios.id_folio reverse relationship
+                 * @return Comentarios[]
+                 */
+                if(is_null($this->objComentariosAsIdArray))
+                    $this->objComentariosAsIdArray = $this->GetComentariosAsIdArray();
+                return (array) $this->objComentariosAsIdArray;
+
             case 'EvolucionFolioAsId':
                 /**
                  * Gets the value for the private _objEvolucionFolioAsId (Read-Only)
@@ -2386,6 +2452,201 @@ class FolioGen extends QBaseClass {
         
         protected $objChildObjectsArray = array();
         
+			
+		
+		// Related Objects' Methods for ComentariosAsId
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _ComentariosAsIdArray
+                /**
+                * Add a Item to the _ComentariosAsIdArray
+                * @param Comentarios $objItem
+                * @return Comentarios[]
+                */
+                public function AddComentariosAsId(Comentarios $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->IdFolioObject = $this;
+                    $this->objComentariosAsIdArray = $this->ComentariosAsIdArray;
+                    $this->objComentariosAsIdArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateComentariosAsId($objItem);
+
+                    return $this->ComentariosAsIdArray;
+                }
+
+                /**
+                * Remove a Item to the _ComentariosAsIdArray
+                * @param Comentarios $objItem
+                * @return Comentarios[]
+                */
+                public function RemoveComentariosAsId(Comentarios $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objComentariosAsIdArray;
+                    $this->objComentariosAsIdArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objComentariosAsIdArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->IdFolioObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedComentariosAsId($objItem);
+                        }
+
+                    return $this->objComentariosAsIdArray;
+                }
+
+		/**
+		 * Gets all associated ComentariosesAsId as an array of Comentarios objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Comentarios[]
+		*/ 
+		public function GetComentariosAsIdArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Comentarios::LoadArrayByIdFolio($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated ComentariosesAsId
+		 * @return int
+		*/ 
+		public function CountComentariosesAsId() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Comentarios::CountByIdFolio($this->intId);
+		}
+
+		/**
+		 * Associates a ComentariosAsId
+		 * @param Comentarios $objComentarios
+		 * @return void
+		*/ 
+		public function AssociateComentariosAsId(Comentarios $objComentarios) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateComentariosAsId on this unsaved Folio.');
+			if ((is_null($objComentarios->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateComentariosAsId on this Folio with an unsaved Comentarios.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"comentarios"
+				SET
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objComentarios->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a ComentariosAsId
+		 * @param Comentarios $objComentarios
+		 * @return void
+		*/ 
+		public function UnassociateComentariosAsId(Comentarios $objComentarios) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateComentariosAsId on this unsaved Folio.');
+			if ((is_null($objComentarios->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateComentariosAsId on this Folio with an unsaved Comentarios.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"comentarios"
+				SET
+					"id_folio" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objComentarios->Id) . ' AND
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all ComentariosesAsId
+		 * @return void
+		*/ 
+		public function UnassociateAllComentariosesAsId() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateComentariosAsId on this unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"comentarios"
+				SET
+					"id_folio" = null
+				WHERE
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated ComentariosAsId
+		 * @param Comentarios $objComentarios
+		 * @return void
+		*/ 
+		public function DeleteAssociatedComentariosAsId(Comentarios $objComentarios) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateComentariosAsId on this unsaved Folio.');
+			if ((is_null($objComentarios->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateComentariosAsId on this Folio with an unsaved Comentarios.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"comentarios"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objComentarios->Id) . ' AND
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated ComentariosesAsId
+		 * @return void
+		*/ 
+		public function DeleteAllComentariosesAsId() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateComentariosAsId on this unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"comentarios"
+				WHERE
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
 			
 		
 		// Related Objects' Methods for EvolucionFolioAsId

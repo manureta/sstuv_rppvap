@@ -53,12 +53,12 @@ span.nombre-usuario {
 }
 
 .wizard > .steps > ul > li {
-    width: 20% !IMPORTANT;
+    width: 16% !IMPORTANT;
 }
 
 .titulos {
   font-family: arial;
-  font-size: 14px;    
+  font-size: 14px;
 }
 
 .renderWithName  input[type="checkbox"]{
@@ -115,7 +115,7 @@ body{
 .inscripcion_provisoria{
   background-color: #D9EDF7;
     border-color: #BCE8F1;
-    
+
 }
 
 .inscripcion_provisoria .icon-question-sign{
@@ -124,7 +124,7 @@ body{
   margin-right: 120px;
   position: relative;
   color: #3A87AD;
-  
+
 }
 
 .leaflet-container {

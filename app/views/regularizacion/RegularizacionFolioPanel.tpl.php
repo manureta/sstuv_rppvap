@@ -23,10 +23,15 @@
                     <span class="number">4.</span> Regularización e integración socio-urbana
                 </a>
             </li>
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/comentarios/folio/<?=$folio;?>">
+                    <span class="number">5.</span> Comentarios
+                </a>
+            </li>
 <?php if(Permission::PuedeVerHoja5()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">
-                    <span class="number">5.</span> Uso Interno
+                    <span class="number">6.</span> Uso Interno
                 </a>
             </li>
 <?php } ?>

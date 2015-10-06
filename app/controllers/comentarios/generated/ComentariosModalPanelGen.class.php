@@ -1,33 +1,26 @@
 <?php
-class UsuarioModalPanelGen extends EditPanelBase {
+class ComentariosModalPanelGen extends EditPanelBase {
 
-    public $mctUsuario;
+    public $mctComentarios;
     public $objCallerControl;
     protected $blnChangesMade = false;
     
     //id variables for meta_create
-    protected $intIdUsuario;
+    protected $intId;
 
     //array de nombres de controles para omitir (poner en false antes de llamar al construct)
     public static $strControlsArray = array(
-        'lblIdUsuario' => false,
-        'txtPassword' => true,
-        'txtEmail' => true,
-        'chkSuperAdmin' => true,
-        'calFechaActivacion' => true,
-        'txtNombre' => true,
-        'lstIdPerfilObject' => true,
-        'txtCodPartido' => true,
-        'txtNombreCompleto' => true,
-        'txtReparticion' => true,
-        'txtTelefono' => true,
-        'lstComentariosAsId' => false,
-        'lstFolioAsCreador' => false,
+        'lblId' => false,
+        'lstIdFolioObject' => true,
+        'lstIdUsuarioObject' => true,
+        'calFechaCreacion' => true,
+        'calFechaModificacion' => true,
+        'txtComentario' => true,
     );
     
-    public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objUsuario = null, $strControlId = null) {
+    public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objComentarios = null, $strControlId = null) {
 
-        $strControlsArray = empty($strControlsArray) ? array_keys(UsuarioModalPanel::$strControlsArray, true) : $strControlsArray;
+        $strControlsArray = empty($strControlsArray) ? array_keys(ComentariosModalPanel::$strControlsArray, true) : $strControlsArray;
 
         // Call the Parent
         try {
@@ -37,48 +30,34 @@ class UsuarioModalPanelGen extends EditPanelBase {
             throw $objExc;
         }
 
-        if (!$objUsuario)
-            $objUsuario = new Usuario();
+        if (!$objComentarios)
+            $objComentarios = new Comentarios();
         
-        $this->intIdUsuario = $objUsuario->IdUsuario;
+        $this->intId = $objComentarios->Id;
         $this->pnlTabs = new QTabPanel($this);
-        $this->pnlTabs->AddTab(Usuario::Noun());
-        $this->metaControl_Create($strControlsArray, $objUsuario);
+        $this->pnlTabs->AddTab(Comentarios::Noun());
+        $this->metaControl_Create($strControlsArray, $objComentarios);
         $this->buttons_Create(false);
         $objParentObject->CloseMethod = array($this, 'Close');
     }
 
-    protected function metaControl_Create($strControlsArray, $objUsuario){
+    protected function metaControl_Create($strControlsArray, $objComentarios){
 
-        $this->mctUsuario = new UsuarioMetaControl($this, $objUsuario);
+        $this->mctComentarios = new ComentariosMetaControl($this, $objComentarios);
 
-        // Call MetaControl's methods to create qcontrols based on Usuario's data fields
-        if (in_array('lblIdUsuario',$strControlsArray)) 
-            $this->objControlsArray['lblIdUsuario'] = $this->mctUsuario->lblIdUsuario_Create();
-        if (in_array('txtPassword',$strControlsArray)) 
-            $this->objControlsArray['txtPassword'] = $this->mctUsuario->txtPassword_Create();
-        if (in_array('txtEmail',$strControlsArray)) 
-            $this->objControlsArray['txtEmail'] = $this->mctUsuario->txtEmail_Create();
-        if (in_array('chkSuperAdmin',$strControlsArray)) 
-            $this->objControlsArray['chkSuperAdmin'] = $this->mctUsuario->chkSuperAdmin_Create();
-        if (in_array('calFechaActivacion',$strControlsArray)) 
-            $this->objControlsArray['calFechaActivacion'] = $this->mctUsuario->calFechaActivacion_Create();
-        if (in_array('txtNombre',$strControlsArray)) 
-            $this->objControlsArray['txtNombre'] = $this->mctUsuario->txtNombre_Create();
-        if (in_array('lstIdPerfilObject',$strControlsArray)) 
-            $this->objControlsArray['lstIdPerfilObject'] = $this->mctUsuario->lstIdPerfilObject_Create();
-        if (in_array('txtCodPartido',$strControlsArray)) 
-            $this->objControlsArray['txtCodPartido'] = $this->mctUsuario->txtCodPartido_Create();
-        if (in_array('txtNombreCompleto',$strControlsArray)) 
-            $this->objControlsArray['txtNombreCompleto'] = $this->mctUsuario->txtNombreCompleto_Create();
-        if (in_array('txtReparticion',$strControlsArray)) 
-            $this->objControlsArray['txtReparticion'] = $this->mctUsuario->txtReparticion_Create();
-        if (in_array('txtTelefono',$strControlsArray)) 
-            $this->objControlsArray['txtTelefono'] = $this->mctUsuario->txtTelefono_Create();
-        if (in_array('lstComentariosAsId',$strControlsArray))
-            $this->objControlsArray['lstComentariosAsId'] = $this->mctUsuario->lstComentariosAsId_Create();
-        if (in_array('lstFolioAsCreador',$strControlsArray))
-            $this->objControlsArray['lstFolioAsCreador'] = $this->mctUsuario->lstFolioAsCreador_Create();
+        // Call MetaControl's methods to create qcontrols based on Comentarios's data fields
+        if (in_array('lblId',$strControlsArray)) 
+            $this->objControlsArray['lblId'] = $this->mctComentarios->lblId_Create();
+        if (in_array('lstIdFolioObject',$strControlsArray)) 
+            $this->objControlsArray['lstIdFolioObject'] = $this->mctComentarios->lstIdFolioObject_Create();
+        if (in_array('lstIdUsuarioObject',$strControlsArray)) 
+            $this->objControlsArray['lstIdUsuarioObject'] = $this->mctComentarios->lstIdUsuarioObject_Create();
+        if (in_array('calFechaCreacion',$strControlsArray)) 
+            $this->objControlsArray['calFechaCreacion'] = $this->mctComentarios->calFechaCreacion_Create();
+        if (in_array('calFechaModificacion',$strControlsArray)) 
+            $this->objControlsArray['calFechaModificacion'] = $this->mctComentarios->calFechaModificacion_Create();
+        if (in_array('txtComentario',$strControlsArray)) 
+            $this->objControlsArray['txtComentario'] = $this->mctComentarios->txtComentario_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
@@ -91,9 +70,9 @@ class UsuarioModalPanelGen extends EditPanelBase {
 
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        if (!$this->mctUsuario->objUsuario->__Restored)
-            $this->objParentControl->objParentControl->lstUsuarioAsId->objParent->AddUsuarioAsId($this->mctUsuario->objUsuario);
-        $this->mctUsuario->Bind();
+        if (!$this->mctComentarios->objComentarios->__Restored)
+            $this->objParentControl->objParentControl->lstComentariosAsId->objParent->AddComentariosAsId($this->mctComentarios->objComentarios);
+        $this->mctComentarios->Bind();
         $this->objCallerControl->MarkAsModified();
         //Busco el EditPanel Padre
         $objParentControl = $this->objCallerControl;
@@ -102,13 +81,13 @@ class UsuarioModalPanelGen extends EditPanelBase {
             $objParentControl = $objParentControl->objParentControl;
         }
 
-        $objParentControl->AddModifiedChild($this->mctUsuario->objUsuario);
+        $objParentControl->AddModifiedChild($this->mctComentarios->objComentarios);
         $this->blnChangesMade = true;
         $this->objParentControl->HideDialogBox();
     }
 
     public function btnCancel_Click() {
-        $this->mctUsuario = null;
+        $this->mctComentarios = null;
         $this->blnChangesMade = false;
         $this->objParentControl->HideDialogBox();
     }
