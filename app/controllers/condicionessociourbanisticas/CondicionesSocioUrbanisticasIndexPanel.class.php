@@ -6,7 +6,7 @@
  *
  * @package Padrón establecimientos
  * @subpackage Controladores-Generado
- * @author Codegen     
+ * @author Codegen
  *
  */
 class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
@@ -24,12 +24,12 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
 
     // Redefinicion de visibilidad de columnas y controles
     protected $strColumnsArray;
-    protected $strControlsArray;    
+    protected $strControlsArray;
     public $strTemplate='';
-    
+
     /**
      * Constructor del panel índice generado
-     * 
+     *
      * @param <Panel> $objParentObject
      * @param <array> $strColumnsArray
      * @param <array> $strControlsArray
@@ -38,6 +38,9 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
      */
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
 
+      QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
+
+/*
         try {
             parent::__construct($objParentObject, $strControlId);
             //$this->strTemplate=__VIEW_DIR__."/condicionessociourbanisticas/CondicionesSocioUrbanisticasIndexPanel.tpl.php";
@@ -50,7 +53,7 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
         }
         $this->lblTitulo->Titulo = isset($this->strTitulo) ? $this->strTitulo : CondicionesSocioUrbanisticas::Noun();
         $this->lblTitulo->Subtitulo = isset($this->strSubtitulo) ? $this->strSubtitulo : '';
-        
+
         $this->strColumnsArray = is_null($strColumnsArray) ? CondicionesSocioUrbanisticasDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(CondicionesSocioUrbanisticasEditPanel::$strControlsArray, true) : $strControlsArray;
 
@@ -61,11 +64,11 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
         $this->btnCreateNew_Create();
 
         $this->blnAutoRenderChildren = true;
-        
+
         if (isset($this->pnlEditCondicionesSocioUrbanisticas)) {
             $this->Form->RemoveControl($this->pnlEditCondicionesSocioUrbanisticas->ControlId);
         }
-
+*/
     }
 
     protected function btnCreateNew_Create() {
@@ -75,10 +78,10 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
         $this->btnCreateNew->Icon = 'plus';
         $this->btnCreateNew->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnCreateNew_Click'));
 
-        return $this->btnCreateNew;            
+        return $this->btnCreateNew;
     }
 
-    protected function dtgCondicionesSocioUrbanisticas_Create() {            
+    protected function dtgCondicionesSocioUrbanisticas_Create() {
         $this->dtgCondicionesSocioUrbanisticases = new CondicionesSocioUrbanisticasDataGrid($this, $this->strColumnsArray);
         $this->dtgCondicionesSocioUrbanisticases->RowClickMethod = 'dtgRow_Click';
         return $this->dtgCondicionesSocioUrbanisticases;
@@ -89,7 +92,7 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
             $this->Form->RemoveControl($this->pnlEditCondicionesSocioUrbanisticas->ControlId);
         return $this->pnlEditCondicionesSocioUrbanisticas = new CondicionesSocioUrbanisticasEditPanel($this, $this->strControlsArray, $intIdintIdFolio);
     }
-    
+
     public function dtgRow_Click(CondicionesSocioUrbanisticas $objCondicionesSocioUrbanisticas) {
         $this->CondicionesSocioUrbanisticasEditPanel_Create($objCondicionesSocioUrbanisticas->IdIdFolio);
         $this->dtgCondicionesSocioUrbanisticases->Visible=false;
@@ -120,5 +123,5 @@ class CondicionesSocioUrbanisticasIndexPanel extends QPanel {
                 }
         }
     }
-    
+
 }

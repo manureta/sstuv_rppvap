@@ -2,7 +2,7 @@
 /**
  * Este es un panel índice que hereda de ComentariosIndexPanelGen
  * Puede sobreescribir los métodos de su padre para utilizar funcionalidad propia.
- * 
+ *
  */
 class ComentariosIndexPanel extends ComentariosIndexPanelGen {
 
@@ -14,6 +14,7 @@ class ComentariosIndexPanel extends ComentariosIndexPanelGen {
                 'Comentarios'
             );
     }
+  
 
 }
 ?>

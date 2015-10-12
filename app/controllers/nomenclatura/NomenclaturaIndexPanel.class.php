@@ -2,7 +2,7 @@
 /**
  * Este es un panel índice que hereda de NomenclaturaIndexPanelGen
  * Puede sobreescribir los métodos de su padre para utilizar funcionalidad propia.
- * 
+ *
  */
 class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
 
@@ -13,6 +13,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
     public $btnMapa;
     public $btnRecalcular;
 
+    
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
     	$this->strTemplate=__VIEW_DIR__."/nomenclatura/NomenclaturaFolioPanel.tpl.php";
         try {
@@ -26,7 +27,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         }
         $this->lblTitulo->Titulo = isset($this->strTitulo) ? $this->strTitulo : Nomenclatura::Noun();
         //$this->lblTitulo->Subtitulo = isset($this->strSubtitulo) ? $this->strSubtitulo : '';
-        
+
         $this->strColumnsArray = is_null($strColumnsArray) ? NomenclaturaDataGrid::$strColumnsArray : $strColumnsArray;
         $this->strControlsArray = is_null($strControlsArray) ? array_keys(NomenclaturaEditPanel::$strControlsArray, true) : $strControlsArray;
 
@@ -34,36 +35,34 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $this->dtgNomenclatura_Create();
 
 
-        
+
         //Botón de creación
         $this->btnCreateNew_Create();
         $this->btnCreateNew->Text="Añadir Nomenclatura";
 
         $this->btnAnalizar = new QLinkButton($this);
-        $this->btnAnalizar->Text = 'Analizar Nomenclaturas';               
+        $this->btnAnalizar->Text = 'Analizar Nomenclaturas';
         $this->btnAnalizar->AddAction(new QClickEvent(), new QAjaxControlAction($this,'analizar_nomenclatura'));
 
-        /*
-        $this->btnMapa = new QLinkButton($this);
-        $this->btnMapa->Text = 'Mostrar Perímetro Barrio';               
-        $this->btnMapa->AddAction(new QClickEvent(), new QAjaxControlAction($this,'mostrar_mapa'));
-        */
+
         if(Permission::EsUsoInterno(array("uso_interno_nomencla"))){
          $this->btnRecalcular = new QLinkButton($this);
-         $this->btnRecalcular->Text = 'Actualizar Nomenclatura y Dominio';  
-         $this->btnRecalcular->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere recalcular las nomenclaturas y dominios de este folio?')));             
+         $this->btnRecalcular->Text = 'Actualizar Nomenclatura y Dominio';
+         $this->btnRecalcular->AddAction(new QClickEvent(), new QConfirmAction(sprintf('¿Está seguro que quiere recalcular las nomenclaturas y dominios de este folio?')));
          $this->btnRecalcular->AddAction(new QClickEvent(), new QAjaxControlAction($this,'recalcular'));
-            
-        } 
-        
-        
+
+        }
+
+
         $this->blnAutoRenderChildren = false;
-        
+
         if (isset($this->pnlEditNomenclatura)) {
             $this->Form->RemoveControl($this->pnlEditNomenclatura->ControlId);
         }
 
-        
+
+
+
     }
 
     public function GetBreadCrumb() {
@@ -90,21 +89,21 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
         $intIdFolio=QApplication::QueryString("id");
         $strQuery="select distinct(estado_geografico) as estado, count(*) as cantidad from nomenclatura where id_folio=$intIdFolio group by estado_geografico;";
         try {
-                
+
                 $objDatabase = QApplication::$Database[1];
                 $objDbResult = $objDatabase->Query($strQuery);
                 $text="";
-                if($objDbResult->CountRows()==0)return false;                    
-                while ($row = $objDbResult->FetchArray()) {                                                                
+                if($objDbResult->CountRows()==0)return false;
+                while ($row = $objDbResult->FetchArray()) {
                     if($row['estado']=='')$row['estado']='vacio';
-                    $clase=$class[$row['estado']];  
+                    $clase=$class[$row['estado']];
                     $text=$text."<div class=$clase><p class='text-center'>Hay <strong>".$row['cantidad']."</strong> ".$msj[$row['estado']]."</p></div>";
-                }    
-                
+                }
+
                 QApplication::DisplayAlert($text);
                 } catch (Exception $e) {
                     QApplication::DisplayAlert("<div class='alert-danger'>Hubo un error al intentar analizar las parcelas del barrio.<div>");
-                }        
+                }
     }
 
     public function mostrar_mapa(){
@@ -117,13 +116,13 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
             $encuadre= array($row[0],$row[1],$row[2],$row[3]); //quick fix
             $bbox=implode(',',$encuadre);
             $mapa="http://190.188.234.6/geoserver/registro/wms?service=WMS&version=1.1.0&request=GetMap&layers=registro:folios,registro:parcelas_nomenclas&styles=&bbox=$bbox&width=512&height=465&srs=EPSG:4326&format=application/openlayers";
-            
+
             QApplication::DisplayAlert("<iframe src='$mapa' width='100%' height='400'></iframe>");
         } catch (Exception $e) {
             QApplication::DisplayAlert("<p>Hubo un error al calcular el encuadre geográfico del mapa.</p> Revisar geometría en 'Datos Generales'");
         }
     }
-    
+
     protected function buscarDatosDominio($nomencla,$partido){
         if(isset($partido) && isset($nomencla)){
             $objDatabase = QApplication::$Database[1];
@@ -135,7 +134,7 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
             //error_log("error: ".$nomencla."-".$partido);
             return array();
         }
-        
+
     }
 
     protected function actualizarDominio(){
@@ -148,41 +147,41 @@ class NomenclaturaIndexPanel extends NomenclaturaIndexPanelGen {
                 QQ::Equal(QQN::Nomenclatura()->TitularDominio,''),
                 QQ::Equal(QQN::Nomenclatura()->InscripcionDominio,NULL),
                 QQ::Equal(QQN::Nomenclatura()->InscripcionDominio,'')
-             ),            
+             ),
              QQ::Equal(QQN::Nomenclatura()->IdFolio,QApplication::QueryString("id"))
             )
         );
-        
-        foreach ($arrTitularesNulos as $reg) {   
+
+        foreach ($arrTitularesNulos as $reg) {
             $nomencla=$reg->Partido.$reg->Circ.$reg->Secc.$reg->ChacQuinta.$reg->Frac.$reg->Mza.$reg->Parc;
             if(!is_null($nomencla) && strlen($nomencla)==42){
-              $arrDominio=$this->buscarDatosDominio($nomencla,intval($reg->Partido));	
+              $arrDominio=$this->buscarDatosDominio($nomencla,intval($reg->Partido));
               // actualizo vacios si se encuentran resultados
               if(count($arrDominio)>0){
                 if($reg->TitularDominio=='' || is_null($reg->TitularDominio)){
                   $tit=($arrDominio['titular_dominio']=='')? '':'T-'.$arrDominio['titular_dominio'];
-                  $reg->TitularDominio= $tit; 
+                  $reg->TitularDominio= $tit;
                 }
-                if($reg->InscripcionDominio=='' || is_null($reg->InscripcionDominio)){  	
-                  $reg->InscripcionDominio=$arrDominio['inscripcion_dominio'];  
+                if($reg->InscripcionDominio=='' || is_null($reg->InscripcionDominio)){
+                  $reg->InscripcionDominio=$arrDominio['inscripcion_dominio'];
                 }
-                $reg->Save();  
+                $reg->Save();
               }else{
                 error_log("no se encontro registros");
-              }   
+              }
             }
-            
+
         }
-        
+
      }
 
-    
-    
+
+
     public function recalcular(){
         // Funcion para actualizar nomenclaturas y dominios
         Permission::Log("Actualizando dominio y nomenclaturas de FOLIO ".QApplication::QueryString("id"));
         Folio::load(QApplication::QueryString("id"))->calcular_nomenclaturas();
-        $this->actualizarDominio();        
+        $this->actualizarDominio();
         QApplication::Redirect(__VIRTUAL_DIRECTORY__."/nomenclatura/folio/".QApplication::QueryString("id"));
     }
 

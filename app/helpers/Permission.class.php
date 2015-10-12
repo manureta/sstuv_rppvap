@@ -266,6 +266,10 @@ abstract class Permission extends PermissionBase {
         return (in_array($objComentario->lstIdUsuarioObject->Value, array(Session::GetObjUsuario()->IdUsuario,NULL)) );
     }
 
+    public static function PuedeVerComentarios(){
+        return !(self::EsVisualizadorBasico());
+    }
+
     public static function InscripcionProvisoria(Folio $objFolio){
           try {
             $id=$objFolio->Id;

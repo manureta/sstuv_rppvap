@@ -2,7 +2,7 @@
 /**
  * Este es un panel índice que hereda de EncuadreLegalIndexPanelGen
  * Puede sobreescribir los métodos de su padre para utilizar funcionalidad propia.
- * 
+ *
  */
 class EncuadreLegalIndexPanel extends EncuadreLegalIndexPanelGen {
 
@@ -13,6 +13,11 @@ class EncuadreLegalIndexPanel extends EncuadreLegalIndexPanelGen {
         return array(
                 'EncuadreLegal'
             );
+    }
+
+    public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
+     // Redirecciono para ocultar controlador
+      QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
     }
 
 }

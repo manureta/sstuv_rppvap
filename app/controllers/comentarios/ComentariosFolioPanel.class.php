@@ -33,6 +33,7 @@ class ComentariosFolioPanel extends ComentariosIndexPanel {
         }
         $this->btnCreateNew->Text="Agregar Comentario";
         $this->blnAutoRenderChildren = false;
+        if(!Permission::PuedeVerComentarios()) QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
     }
 
     public function ComentariosEditPanel_Create($intId = null) {
@@ -49,7 +50,7 @@ class ComentariosFolioPanel extends ComentariosIndexPanel {
           $this->pnlEditComentarios->calFechaCreacion->DateTime=QDateTime::Now();
         }
         $this->pnlEditComentarios->lstIdUsuarioObject->Enabled=false;
-        
+
         $this->pnlEditComentarios->calFechaCreacion->Enabled=false;
         $this->pnlEditComentarios->calFechaCreacion->Visible=false;
 
