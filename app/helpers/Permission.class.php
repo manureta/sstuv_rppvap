@@ -261,6 +261,11 @@ abstract class Permission extends PermissionBase {
         return (in_array($objFolio->Creador, array(Session::GetObjUsuario()->IdUsuario,NULL)) );
     }
 
+    public static function EsAutorComentario($objComentario){
+        // metodo para saber si el usuario actual es el autor del coemntario
+        return (in_array($objComentario->lstIdUsuarioObject->Value, array(Session::GetObjUsuario()->IdUsuario,NULL)) );
+    }
+
     public static function InscripcionProvisoria(Folio $objFolio){
           try {
             $id=$objFolio->Id;

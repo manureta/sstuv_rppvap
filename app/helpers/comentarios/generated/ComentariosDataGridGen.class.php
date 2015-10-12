@@ -27,7 +27,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
         'FechaModificacion' => true,
         'Comentario' => true,
     );
-    
+
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
         parent::__construct($objParentObject, $strControlId);
         $this->SetDataBinder('MetaDataBinder', $this);
@@ -35,7 +35,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
         $this->strEntidad = 'Comentarios';
         $this->strNoun = Comentarios::Noun();
         $this->strNounPlural = Comentarios::NounPlural();
-        
+
         if ($strColumnsArray) {
             foreach ($strColumnsArray as $strColumn => $bln) {
                 if (is_string($bln)) $strColumn = $bln;
@@ -108,7 +108,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 			$this->AddColumn($colEditColumn);
 			return $colEditColumn;
 		}
-		
+
 		public function EditColumn_Render(Comentarios $objComentarios) {
                         // se concatenan todos los campos PK
                         $strControlId = "";
@@ -126,7 +126,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 	                    $btnEdit->Icon = "edit";
 	                    $btnEdit->CssClass = "btn-xs";
 	                }
-	
+
 	                // If we are currently editing a person, then set this Edit button to be disabled
 					if (isset($this->ParentControl->pnlEditComentarios)){
 		                if ($this->ParentControl->pnlEditComentarios->Visible)
@@ -134,12 +134,12 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 		                else
 		                    $btnEdit->Enabled = true;
 		            }
-	
+
 	                // Return the rendered Edit button
 	                return $btnEdit->Render(false);
-	            
+
 	     }
-	        
+
 		 public function btnEdit_Click($strFormId, $strControlId, $strParameter) {
 
                          if ($this->ParentControl instanceof ComentariosIndexPanelGen){
@@ -151,7 +151,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
                              QApplication::Redirect(__VIRTUAL_DIRECTORY__."/comentarios/edit/".$strParameter);
                           }
                  }
-                     
+
 
 
 /**

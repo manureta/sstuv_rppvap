@@ -12,5 +12,8 @@
 
 <div class="container info">
 	 <span class="icon-exclamation-sign" aria-hidden="true"></span>
-		última modificación: <?php echo $_CONTROL->calFechaModificacion->DateTime ?>
+	  Fecha: <b><?php echo $_CONTROL->calFechaCreacion->DateTime; ?></b>
+		<br/>
+		<span class="icon-exclamation-sign" aria-hidden="true"></span>
+		Última modificación: <b><?php echo $_CONTROL->calFechaModificacion->DateTime; ?></b>
 </div>

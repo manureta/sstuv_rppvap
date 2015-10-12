@@ -7,7 +7,7 @@ class Usuario extends UsuarioGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('Usuario %s',  $this->intIdUsuario);
+        return ($this->strNombre.' ('.$this->strNombreCompleto.')');
     }
 
 }

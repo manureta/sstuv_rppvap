@@ -43,12 +43,13 @@ class ComentariosFolioPanel extends ComentariosIndexPanel {
         $this->pnlEditComentarios->lstIdFolioObject->Value = $this->objFolio->Id;
         $this->pnlEditComentarios->lstIdFolioObject->Text = $this->objFolio->__toString();
         $this->pnlEditComentarios->lstIdFolioObject->Enabled = false;
-
-        $this->pnlEditComentarios->lstIdUsuarioObject->Value = Session::GetObjUsuario()->IdUsuario;
-        $this->pnlEditComentarios->lstIdUsuarioObject->Text = Session::GetObjUsuario()->NombreCompleto;
+        if(is_null($intId)){
+          $this->pnlEditComentarios->lstIdUsuarioObject->Value = Session::GetObjUsuario()->IdUsuario;
+          $this->pnlEditComentarios->lstIdUsuarioObject->Text = Session::GetObjUsuario()->NombreCompleto;
+          $this->pnlEditComentarios->calFechaCreacion->DateTime=QDateTime::Now();
+        }
         $this->pnlEditComentarios->lstIdUsuarioObject->Enabled=false;
-
-        $this->pnlEditComentarios->calFechaCreacion->DateTime=QDateTime::Now();
+        
         $this->pnlEditComentarios->calFechaCreacion->Enabled=false;
         $this->pnlEditComentarios->calFechaCreacion->Visible=false;
 

@@ -28,13 +28,19 @@ class ComentariosEditPanel extends ComentariosEditPanelGen {
         $this->Template=__VIEW_DIR__."/comentarios/ComentariosEditPanel.tpl.php";
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
         $this->objFolio=Folio::load(QApplication::QueryString("id"));
-/*
-       if(!Permission::EsCreador($this->objFolio)){
+
+       if(!Permission::EsAutorComentario($this)){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
+            $this->btnDelete->Enabled=false;
+            $this->btnDelete->Visible=false;
+
+            $this->btnSave->Enabled=false;
+            $this->btnSave->Visible=false;
+
         }
-*/
+
     }
 
     protected function metaControl_Create($strControlsArray){
