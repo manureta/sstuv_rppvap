@@ -12,7 +12,7 @@
 		<?php $this->RenderBegin(false); ?>
 		<page size="A4">
 		<div class="encabezado">
-			<img src="assets/images/header_expropiaciones.png" width="100%">
+			<img src="assets/images/header_expropiaciones.jpg" width="100%">
 		</div>
 		<div class="cont cond">
 
