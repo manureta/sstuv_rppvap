@@ -22,10 +22,18 @@ class Folio extends FolioGen {
 			if ((is_null($this->intId)))
 				throw new QUndefinedPrimaryKeyException('Cannot delete this Folio with an unset primary key.');
 
+      //Veo Si tiene duplicados
+      $objDuplicadosArray = Folio::QueryArray(
+        QQ::Equal(QQN::Folio()->FolioOriginal, $this->intId)
+      );
+      foreach ($objDuplicadosArray as $objFolio) {
+        Permission::Log("borrando folio duplicado de ".$this->CodFolio);
+        $objFolio->Delete();
+      }
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
 			$objDatabase->NonQuery('DELETE FROM "organismos_de_intervencion" WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM     "evolucion_folio"       WHERE "id_folio" = '. $objDatabase->SqlVariable($this->intId) . '');
+			$objDatabase->NonQuery('DELETE FROM  "evolucion_folio"       WHERE "id_folio" = '. $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"antecedentes"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"equipamiento"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"nomenclatura"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
@@ -36,9 +44,13 @@ class Folio extends FolioGen {
 			$objDatabase->NonQuery('DELETE FROM	"encuadre_legal"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"regularizacion"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
 			$objDatabase->NonQuery('DELETE FROM	"uso_interno"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-
-           		 parent::Delete();
+      $objDatabase->NonQuery('DELETE FROM	"comentarios"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+      parent::Delete();
 		}
+
+    public function TieneDuplicados(){
+
+    }
 
 		public static function CambioEstadoFolio(Folio $objFolio){
 	        $id=$objFolio->Id;
@@ -92,8 +104,8 @@ class Folio extends FolioGen {
 
                 $nomencla=$row['nomencla'];
                 $partida=$row['partida'];
-				$titular=($row['titular_dominio']=='')? '': 'T-'.$row['titular_dominio'];
-				$inscripcion=$row['inscripcion_dominio'];
+				        $titular=($row['titular_dominio']=='')? '': 'T-'.$row['titular_dominio'];
+				        $inscripcion=$row['inscripcion_dominio'];
 
                 $nom = new Nomenclatura();
                 $nom->IdFolio = $this->intId;

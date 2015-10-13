@@ -1,56 +1,6 @@
 <?php
 abstract class Permission extends PermissionBase {
-/*
-    public static function GetCueanexos() {
-        if (!Authentication::EstaConectado())
-            return array(QControllerActionType::AllAction);
-        $arrCueanexoReturn = array();
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        foreach ($arrUsuarioInfo['Entidades']['Localizacion']['cueanexo'] as $strAction => $arrCueanexo) {
-            foreach ($arrCueanexo as $strCueanexo)
-                array_push ($arrCueanexoReturn, (string)$strCueanexo);
-        }
-        return $arrCueanexoReturn;
-    }
-    public static function EsSupervisor() {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Supervisor', $arrUsuarioInfo['Perfiles']);
-    }
 
-    public static function EsSupervisorDeLocalizacion($intIdLocalizacion) {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return (isset($arrUsuarioInfo['PerfilesLocalizaciones'][$intIdLocalizacion]) && in_array('Supervisor', $arrUsuarioInfo['PerfilesLocalizaciones'][$intIdLocalizacion]));
-    }
-    public static function EsOperador() {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Operador', $arrUsuarioInfo['Perfiles']);
-    }
-    public static function EsPersonal() {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return array_key_exists('Perfiles', $arrUsuarioInfo) && is_array( $arrUsuarioInfo['Perfiles'] ) && in_array('Personal', $arrUsuarioInfo['Perfiles']);
-    }
-
-    public static function EsDirectorEstablecimiento($intIdEstablcimiento) {
-        if (!Authentication::EstaConectado())
-            return false;
-        $arrUsuarioInfo = Permission::GetPermisosUsuario();
-        return (isset($arrUsuarioInfo['PerfilesEstablecimiento'][$intIdEstablcimiento]) && in_array('Director', $arrUsuarioInfo['PerfilesEstablecimiento'][$intIdEstablcimiento]));
-    }
-
-
-
-
-
-
-*/
     public static function LoadPerfilUsuario() {
         $arrUsuarioInfo = array();
 //        $arrUsuarioInfo['IdPersonal'] = Authentication::$objUsuarioLocal->IdPersonal;
@@ -91,9 +41,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function EsAdministrador() {
-        // @TODO Quitar este hardocodeo
-//        return Authentication::$objUsuarioLocal->SuperAdmin;
-        //return (self::EsDirector() || parent::EsAdministrador());
+
         return parent::EsAdministrador();
     }
 
