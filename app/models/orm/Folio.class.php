@@ -26,26 +26,34 @@ class Folio extends FolioGen {
       $objDuplicadosArray = Folio::QueryArray(
         QQ::Equal(QQN::Folio()->FolioOriginal, $this->intId)
       );
+      $codFoliosDuplicados="";
       foreach ($objDuplicadosArray as $objFolio) {
-        Permission::Log("borrando folio duplicado de ".$this->CodFolio);
-        $objFolio->Delete();
+        //Permission::Log("borrando folio duplicado de ".$this->CodFolio);
+        $codFoliosDuplicados=$codFoliosDuplicados.$objFolio->CodFolio." ";
+        //$objFolio->Delete();
       }
-			// Get the Database Object for this Class
-			$objDatabase = Folio::GetDatabase();
-			$objDatabase->NonQuery('DELETE FROM "organismos_de_intervencion" WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM  "evolucion_folio"       WHERE "id_folio" = '. $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"antecedentes"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"equipamiento"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"nomenclatura"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"infraestructura"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"situacion_ambiental"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"transporte"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"condiciones_socio_urbanisticas"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"encuadre_legal"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"regularizacion"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-			$objDatabase->NonQuery('DELETE FROM	"uso_interno"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-      $objDatabase->NonQuery('DELETE FROM	"comentarios"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
-      parent::Delete();
+
+      if(count($objDuplicadosArray)>0){
+        //si tiene duplicados no se borra
+        QApplication::DisplayAlert("Este Folio tiene duplicados ($codFoliosDuplicados). <br \> Miéntras estos duplicados sigan existiendo no se podrá borrar el original.");
+      }else{
+  			// Get the Database Object for this Class
+  			$objDatabase = Folio::GetDatabase();
+  			$objDatabase->NonQuery('DELETE FROM "organismos_de_intervencion" WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM  "evolucion_folio"       WHERE "id_folio" = '. $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"antecedentes"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"equipamiento"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"nomenclatura"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"infraestructura"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"situacion_ambiental"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"transporte"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"condiciones_socio_urbanisticas"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"encuadre_legal"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"regularizacion"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+  			$objDatabase->NonQuery('DELETE FROM	"uso_interno"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+        $objDatabase->NonQuery('DELETE FROM	"comentarios"	WHERE "id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '');
+        parent::Delete();
+      }
 		}
 
     public function TieneDuplicados(){
