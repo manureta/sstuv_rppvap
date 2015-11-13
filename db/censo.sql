@@ -16,8 +16,7 @@ CREATE TABLE censo_grupo_familiar
   CONSTRAINT censo_grupo_familiar_pkey PRIMARY KEY (censo_grupo_familiar_id),
   CONSTRAINT censo_grupo_familiar_id_folio_fkey FOREIGN KEY (id_folio)
       REFERENCES folio (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT censo_grupo_familiar_id_folio_key UNIQUE (id_folio)
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 drop table censo_persona cascade;

@@ -7,7 +7,7 @@ class CensoGrupoFamiliar extends CensoGrupoFamiliarGen {
     protected $blnGenderMale = true;
 
     public function __toString() {
-        return sprintf('CensoGrupoFamiliar %s',  $this->intId);
+        return sprintf(' %s',  $this->intCensoGrupoFamiliarId);
     }
 
 }
