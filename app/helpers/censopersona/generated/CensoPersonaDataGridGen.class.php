@@ -1,9 +1,9 @@
 <?php
 /**
  * This is the "Meta" DataGrid class for the List functionality
- * of the Comentarios class.  This code-generated class
+ * of the CensoPersona class.  This code-generated class
  * contains a QDataGrid class which can be used by any QForm or QPanel,
- * listing a collection of Comentarios objects.  It includes
+ * listing a collection of CensoPersona objects.  It includes
  * functionality to perform pagination and sorting on columns.
  *
  * To take advantage of some (or all) of these control objects, you
@@ -16,25 +16,35 @@
  * @subpackage MetaControls
  *
  */
-class ComentariosDataGridGen extends QFilteredDataGrid {
+class CensoPersonaDataGridGen extends QFilteredDataGrid {
 
     //array de controles para omitir antes del construct
     public static $strColumnsArray = array(
-        'Id' => false,
-        'IdFolioObject' => true,
-        'IdUsuarioObject' => true,
-        'FechaCreacion' => true,
-        'FechaModificacion' => true,
-        'Comentario' => true,
+        'CensoPersonaId' => false,
+        'CensoGrupoFamiliar' => true,
+        'Apellido' => true,
+        'Nombres' => true,
+        'FechaNacimiento' => true,
+        'Edad' => true,
+        'EstadoCivil' => true,
+        'DeOConQuien' => true,
+        'Ocupacion' => true,
+        'Ingreso' => true,
+        'TipoDoc' => true,
+        'Doc' => true,
+        'Nacionalidad' => true,
+        'NyaMadre' => true,
+        'NyaPadre' => true,
+        'RelacionParentescoJefeHogar' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
         parent::__construct($objParentObject, $strControlId);
         $this->SetDataBinder('MetaDataBinder', $this);
         $this->UseAjax = true;
-        $this->strEntidad = 'Comentarios';
-        $this->strNoun = Comentarios::Noun();
-        $this->strNounPlural = Comentarios::NounPlural();
+        $this->strEntidad = 'CensoPersona';
+        $this->strNoun = CensoPersona::Noun();
+        $this->strNounPlural = CensoPersona::NounPlural();
         
         if ($strColumnsArray) {
             foreach ($strColumnsArray as $strColumn => $bln) {
@@ -56,14 +66,24 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
     protected function addAllColumns() {
         // Use the MetaDataGrid functionality to add Columns for this datagrid
 
-        // Create the Columns (note that you can use strings for comentarios's properties, or you
-        // can traverse down QQN::comentarios() to display fields that are down the hierarchy)
-        if (ComentariosDataGrid::$strColumnsArray['Id']) $this->MetaAddColumn('Id')->Title = QApplication::Translate('Id');
-        if (ComentariosDataGrid::$strColumnsArray['IdFolioObject']) $this->MetaAddColumn(QQN::Comentarios()->IdFolioObject)->Title = QApplication::Translate('IdFolioObject');
-        if (ComentariosDataGrid::$strColumnsArray['IdUsuarioObject']) $this->MetaAddColumn(QQN::Comentarios()->IdUsuarioObject)->Title = QApplication::Translate('IdUsuarioObject');
-        if (ComentariosDataGrid::$strColumnsArray['FechaCreacion']) $this->MetaAddColumn('FechaCreacion')->Title = QApplication::Translate('FechaCreacion');
-        if (ComentariosDataGrid::$strColumnsArray['FechaModificacion']) $this->MetaAddColumn('FechaModificacion')->Title = QApplication::Translate('FechaModificacion');
-        if (ComentariosDataGrid::$strColumnsArray['Comentario']) $this->MetaAddColumn('Comentario')->Title = QApplication::Translate('Comentario');
+        // Create the Columns (note that you can use strings for censo_persona's properties, or you
+        // can traverse down QQN::censo_persona() to display fields that are down the hierarchy)
+        if (CensoPersonaDataGrid::$strColumnsArray['CensoPersonaId']) $this->MetaAddColumn('CensoPersonaId')->Title = QApplication::Translate('CensoPersonaId');
+        if (CensoPersonaDataGrid::$strColumnsArray['CensoGrupoFamiliar']) $this->MetaAddColumn(QQN::CensoPersona()->CensoGrupoFamiliar)->Title = QApplication::Translate('CensoGrupoFamiliar');
+        if (CensoPersonaDataGrid::$strColumnsArray['Apellido']) $this->MetaAddColumn('Apellido')->Title = QApplication::Translate('Apellido');
+        if (CensoPersonaDataGrid::$strColumnsArray['Nombres']) $this->MetaAddColumn('Nombres')->Title = QApplication::Translate('Nombres');
+        if (CensoPersonaDataGrid::$strColumnsArray['FechaNacimiento']) $this->MetaAddColumn('FechaNacimiento')->Title = QApplication::Translate('FechaNacimiento');
+        if (CensoPersonaDataGrid::$strColumnsArray['Edad']) $this->MetaAddColumn('Edad')->Title = QApplication::Translate('Edad');
+        if (CensoPersonaDataGrid::$strColumnsArray['EstadoCivil']) $this->MetaAddColumn('EstadoCivil')->Title = QApplication::Translate('EstadoCivil');
+        if (CensoPersonaDataGrid::$strColumnsArray['DeOConQuien']) $this->MetaAddColumn('DeOConQuien')->Title = QApplication::Translate('DeOConQuien');
+        if (CensoPersonaDataGrid::$strColumnsArray['Ocupacion']) $this->MetaAddColumn('Ocupacion')->Title = QApplication::Translate('Ocupacion');
+        if (CensoPersonaDataGrid::$strColumnsArray['Ingreso']) $this->MetaAddColumn('Ingreso')->Title = QApplication::Translate('Ingreso');
+        if (CensoPersonaDataGrid::$strColumnsArray['TipoDoc']) $this->MetaAddColumn('TipoDoc')->Title = QApplication::Translate('TipoDoc');
+        if (CensoPersonaDataGrid::$strColumnsArray['Doc']) $this->MetaAddColumn('Doc')->Title = QApplication::Translate('Doc');
+        if (CensoPersonaDataGrid::$strColumnsArray['Nacionalidad']) $this->MetaAddColumn('Nacionalidad')->Title = QApplication::Translate('Nacionalidad');
+        if (CensoPersonaDataGrid::$strColumnsArray['NyaMadre']) $this->MetaAddColumn('NyaMadre')->Title = QApplication::Translate('NyaMadre');
+        if (CensoPersonaDataGrid::$strColumnsArray['NyaPadre']) $this->MetaAddColumn('NyaPadre')->Title = QApplication::Translate('NyaPadre');
+        if (CensoPersonaDataGrid::$strColumnsArray['RelacionParentescoJefeHogar']) $this->MetaAddColumn('RelacionParentescoJefeHogar')->Title = QApplication::Translate('RelacionParentescoJefeHogar');
     }
 
 /**
@@ -78,10 +98,10 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 		public function MetaAddEditLinkColumn($strLinkUrl, $strLinkHtml = 'Edit', $strColumnTitle = 'Edit', $intArgumentType = QMetaControlArgumentType::PathInfo) {
 			switch ($intArgumentType) {
 				case QMetaControlArgumentType::QueryString:
-					$strLinkUrl .= '?intId=<?=urlencode($_ITEM->Id)?>';
+					$strLinkUrl .= '?intCensoPersonaId=<?=urlencode($_ITEM->CensoPersonaId)?>';
 					break;
 				case QMetaControlArgumentType::PathInfo:
-					$strLinkUrl .= '/<?=urlencode($_ITEM->Id)?>';
+					$strLinkUrl .= '/<?=urlencode($_ITEM->CensoPersonaId)?>';
 					break;
 				default:
 					throw new QCallerException('Unable to pass arguments with this intArgumentType: ' . $intArgumentType);
@@ -102,17 +122,17 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 		 * @param string $strColumnTitle the HTML of the link text
 		 */
 		public function MetaAddEditProxyColumn(QControlProxy $pxyControl, $strLinkHtml = 'Edit', $strColumnTitle = 'Edit') {
-			$intId="IdComentarios";
-			$strHtml = '<a href="comentarios/edit/<?=$_ITEM->'.$intId.'?>" <?= $_FORM->GetControl("' . $pxyControl->ControlId . '")->RenderAsEvents($_ITEM->Id, false); ?>>' . $strLinkHtml . '</a>';
+			$intId="IdCensoPersona";
+			$strHtml = '<a href="censopersona/edit/<?=$_ITEM->'.$intId.'?>" <?= $_FORM->GetControl("' . $pxyControl->ControlId . '")->RenderAsEvents($_ITEM->CensoPersonaId, false); ?>>' . $strLinkHtml . '</a>';
 			$colEditColumn = new QDataGridColumn($strColumnTitle, $strHtml, 'HtmlEntities=False');
 			$this->AddColumn($colEditColumn);
 			return $colEditColumn;
 		}
 		
-		public function EditColumn_Render(Comentarios $objComentarios) {
+		public function EditColumn_Render(CensoPersona $objCensoPersona) {
                         // se concatenan todos los campos PK
                         $strControlId = "";
-                        $strControlId .= "x" . $objComentarios->Id;
+                        $strControlId .= "x" . $objCensoPersona->CensoPersonaId;
                         $strControlId = str_replace("-","n",substr($strControlId, 1));
 	                $btnEdit = $this->objForm->GetControl("btnEdit".$strControlId);
 	                if (!$btnEdit) {
@@ -128,8 +148,8 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 	                }
 	
 	                // If we are currently editing a person, then set this Edit button to be disabled
-					if (isset($this->ParentControl->pnlEditComentarios)){
-		                if ($this->ParentControl->pnlEditComentarios->Visible)
+					if (isset($this->ParentControl->pnlEditCensoPersona)){
+		                if ($this->ParentControl->pnlEditCensoPersona->Visible)
 		                    $btnEdit->Enabled = false;
 		                else
 		                    $btnEdit->Enabled = true;
@@ -142,13 +162,13 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 	        
 		 public function btnEdit_Click($strFormId, $strControlId, $strParameter) {
 
-                         if ($this->ParentControl instanceof ComentariosIndexPanelGen){
-                             $this->ParentControl->pnlEditComentarios = new ComentariosEditPanel($this->ParentControl,null,$strParameter);
-                             $this->ParentControl->pnlEditComentarios->Visible=true;
-                             $this->ParentControl->dtgComentarioses->Visible=false;
+                         if ($this->ParentControl instanceof CensoPersonaIndexPanelGen){
+                             $this->ParentControl->pnlEditCensoPersona = new CensoPersonaEditPanel($this->ParentControl,null,$strParameter);
+                             $this->ParentControl->pnlEditCensoPersona->Visible=true;
+                             $this->ParentControl->dtgCensoPersonas->Visible=false;
                              $this->ParentControl->btnCreateNew->Visible=false;
                           }else{
-                             QApplication::Redirect(__VIRTUAL_DIRECTORY__."/comentarios/edit/".$strParameter);
+                             QApplication::Redirect(__VIRTUAL_DIRECTORY__."/censopersona/edit/".$strParameter);
                           }
                  }
                      
@@ -164,7 +184,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
         public function MetaDataBinder() {
             // Remember!  We need to first set the TotalItemCount, which will affect the calcuation of LimitClause below
             if ($this->Paginator) {
-                $this->TotalItemCount = Comentarios::QueryCount($this->Conditions);
+                $this->TotalItemCount = CensoPersona::QueryCount($this->Conditions);
             }
 
             // Setup the $objClauses Array
@@ -179,15 +199,15 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
             if ($objClause = $this->LimitClause)
                 array_push($objClauses, $objClause);
 
-            // Set the DataSource to be a Query result from Comentarios, given the clauses above
-            $this->DataSource = Comentarios::QueryArray($this->Conditions, $objClauses);
+            // Set the DataSource to be a Query result from CensoPersona, given the clauses above
+            $this->DataSource = CensoPersona::QueryArray($this->Conditions, $objClauses);
         }
 
 /**
 		 * Used internally by the Meta-based Add Column tools.
 		 *
-		 * Given a QQNode or a Text String, this will return a Comentarios-based QQNode.
-		 * It will also verify that it is a proper Comentarios-based QQNode, and will throw an exception otherwise.
+		 * Given a QQNode or a Text String, this will return a CensoPersona-based QQNode.
+		 * It will also verify that it is a proper CensoPersona-based QQNode, and will throw an exception otherwise.
 		 *
 		 * @param mixed $mixContent
 		 * @return QQNode
@@ -196,7 +216,7 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 			if ($mixContent instanceof QQNode) {
 				if (!$mixContent->_ParentNode)
 					throw new QCallerException('Content QQNode cannot be a Top Level Node');
-				if ($mixContent->_RootTableName == 'comentarios') {
+				if ($mixContent->_RootTableName == 'censo_persona') {
 					if (($mixContent instanceof QQReverseReferenceNode) && !($mixContent->_PropertyName))
 						throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');
 					$objCurrentNode = $mixContent;
@@ -208,17 +228,26 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 					}
 					return $mixContent;
 				} else
-					throw new QCallerException('Content QQNode has a root table of "' . $mixContent->_RootTableName . '". Must be a root of "comentarios".');
+					throw new QCallerException('Content QQNode has a root table of "' . $mixContent->_RootTableName . '". Must be a root of "censo_persona".');
 			} else if (is_string($mixContent)) switch ($mixContent) {
-				case 'Id': return QQN::Comentarios()->Id;
-				case 'IdFolio': return QQN::Comentarios()->IdFolio;
-				case 'IdFolioObject': return QQN::Comentarios()->IdFolioObject;
-				case 'IdUsuario': return QQN::Comentarios()->IdUsuario;
-				case 'IdUsuarioObject': return QQN::Comentarios()->IdUsuarioObject;
-				case 'FechaCreacion': return QQN::Comentarios()->FechaCreacion;
-				case 'FechaModificacion': return QQN::Comentarios()->FechaModificacion;
-				case 'Comentario': return QQN::Comentarios()->Comentario;
-				default: throw new QCallerException('Simple Property not found in ComentariosDataGrid content: ' . $mixContent);
+				case 'CensoPersonaId': return QQN::CensoPersona()->CensoPersonaId;
+				case 'CensoGrupoFamiliarId': return QQN::CensoPersona()->CensoGrupoFamiliarId;
+				case 'CensoGrupoFamiliar': return QQN::CensoPersona()->CensoGrupoFamiliar;
+				case 'Apellido': return QQN::CensoPersona()->Apellido;
+				case 'Nombres': return QQN::CensoPersona()->Nombres;
+				case 'FechaNacimiento': return QQN::CensoPersona()->FechaNacimiento;
+				case 'Edad': return QQN::CensoPersona()->Edad;
+				case 'EstadoCivil': return QQN::CensoPersona()->EstadoCivil;
+				case 'DeOConQuien': return QQN::CensoPersona()->DeOConQuien;
+				case 'Ocupacion': return QQN::CensoPersona()->Ocupacion;
+				case 'Ingreso': return QQN::CensoPersona()->Ingreso;
+				case 'TipoDoc': return QQN::CensoPersona()->TipoDoc;
+				case 'Doc': return QQN::CensoPersona()->Doc;
+				case 'Nacionalidad': return QQN::CensoPersona()->Nacionalidad;
+				case 'NyaMadre': return QQN::CensoPersona()->NyaMadre;
+				case 'NyaPadre': return QQN::CensoPersona()->NyaPadre;
+				case 'RelacionParentescoJefeHogar': return QQN::CensoPersona()->RelacionParentescoJefeHogar;
+				default: throw new QCallerException('Simple Property not found in CensoPersonaDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');
 			else
@@ -226,8 +255,8 @@ class ComentariosDataGridGen extends QFilteredDataGrid {
 		}
 
     public static function SetValor($strColumnName, $mixValue) {
-        ComentariosDataGrid::$strColumnsArray[$strColumnName] = false;
-        ComentariosDataGrid::$objStaticConditionsArray[$strColumnName] = QQ::Equal(QQN::Comentarios()->$strColumnName, $mixValue);
+        CensoPersonaDataGrid::$strColumnsArray[$strColumnName] = false;
+        CensoPersonaDataGrid::$objStaticConditionsArray[$strColumnName] = QQ::Equal(QQN::CensoPersona()->$strColumnName, $mixValue);
     }
 
 

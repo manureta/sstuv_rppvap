@@ -31,6 +31,7 @@ class FolioModalPanelGen extends EditPanelBase {
         'txtEncargado' => true,
         'txtReparticion' => true,
         'txtFolioOriginal' => true,
+        'lstCensoGrupoFamiliarAsId' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
@@ -109,6 +110,8 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
         if (in_array('txtFolioOriginal',$strControlsArray)) 
             $this->objControlsArray['txtFolioOriginal'] = $this->mctFolio->txtFolioOriginal_Create();
+        if (in_array('lstCensoGrupoFamiliarAsId',$strControlsArray)) 
+            $this->objControlsArray['lstCensoGrupoFamiliarAsId'] = $this->mctFolio->lstCensoGrupoFamiliarAsId_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 

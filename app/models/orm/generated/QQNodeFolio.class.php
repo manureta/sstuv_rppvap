@@ -53,6 +53,8 @@ class QQNodeFolio extends QQNode {
 					return new QQNode('reparticion', 'Reparticion', 'string', $this);
 				case 'FolioOriginal':
 					return new QQNode('folio_original', 'FolioOriginal', 'integer', $this);
+				case 'CensoGrupoFamiliarAsId':
+					return new QQReverseReferenceNodeCensoGrupoFamiliar($this, 'censogrupofamiliarasid', 'reverse_reference', 'id_folio', 'CensoGrupoFamiliarAsId');
 				case 'ComentariosAsId':
 					return new QQReverseReferenceNodeComentarios($this, 'comentariosasid', 'reverse_reference', 'id_folio');
 				case 'CondicionesSocioUrbanisticasAsId':

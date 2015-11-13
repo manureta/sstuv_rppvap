@@ -7,6 +7,18 @@
 			return new QQNodeAntecedentes('antecedentes', null, null);
 		}
 		/**
+		 * @return QQNodeCensoGrupoFamiliar
+		 */
+		static public function CensoGrupoFamiliar() {
+			return new QQNodeCensoGrupoFamiliar('censo_grupo_familiar', null, null);
+		}
+		/**
+		 * @return QQNodeCensoPersona
+		 */
+		static public function CensoPersona() {
+			return new QQNodeCensoPersona('censo_persona', null, null);
+		}
+		/**
 		 * @return QQNodeComentarios
 		 */
 		static public function Comentarios() {

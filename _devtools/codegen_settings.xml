@@ -34,7 +34,7 @@
                 you should set an excludeTables pattern to exclude all, or "[0-9a-zA-Z_]*".
                 And then you should set an includeTables pattern of "^qc_[0-9a-zA-Z_]*".
             -->
-            <excludeTables pattern="precarga*" list="spatial_ref_sys, geometry_columns, parcelas, caratulas2, geography_columns, v_caratulas, v_caratulas_lanus, v_folios, v_parcelas, v_reporte, villas_y_asentamientos_confirmados"/>
+            <excludeTables pattern="precarga*" list="raster_overviews,raster_columns,spatial_ref_sys, geometry_columns, parcelas, caratulas2, geography_columns, v_caratulas, v_caratulas_lanus, v_folios, v_parcelas, v_reporte, villas_y_asentamientos_confirmados"/>
                         <includeTables pattern="" list=""/>
 
             <!-- Support for "Beta 2" version of Manual Queries and Hard Coded Column Names -->

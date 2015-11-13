@@ -22,6 +22,48 @@
     QApplication::$ClassFile['qqreversereferencenodeantecedentes'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeAntecedentes.class.php';
 
 
+    // ClassPaths for the CensoGrupoFamiliar class
+    QApplication::$ClassFile['censogrupofamiliarindexpanelgen'] = __CONTROLLER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarIndexPanelGen.class.php';
+    QApplication::$ClassFile['censogrupofamiliareditpanelgen'] = __CONTROLLER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarEditPanelGen.class.php';
+
+    QApplication::$ClassFile['censogrupofamiliarindexpanel'] = __CONTROLLER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarIndexPanel.class.php';
+    QApplication::$ClassFile['censogrupofamiliareditpanel'] = __CONTROLLER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarEditPanel.class.php';
+
+    QApplication::$ClassFile['censogrupofamiliarmodalpanel'] = __CONTROLLER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarModalPanel.class.php';
+    QApplication::$ClassFile['censogrupofamiliarmodalpanelgen'] = __CONTROLLER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarModalPanelGen.class.php';
+
+    QApplication::$ClassFile['censogrupofamiliardatagridgen'] = __HELPER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarDataGridGen.class.php';
+    QApplication::$ClassFile['censogrupofamiliarmetacontrolgen'] = __HELPER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarMetaControlGen.class.php';
+    QApplication::$ClassFile['censogrupofamiliardatagrid'] = __HELPER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarDataGrid.class.php';
+    QApplication::$ClassFile['censogrupofamiliarmetacontrol'] = __HELPER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarMetaControl.class.php';
+
+    QApplication::$ClassFile['censogrupofamiliargen'] = __MODEL_DIR__.'/orm/generated/CensoGrupoFamiliarGen.class.php';
+    QApplication::$ClassFile['censogrupofamiliar'] = __MODEL_DIR__.'/orm/CensoGrupoFamiliar.class.php';
+    QApplication::$ClassFile['qqnodecensogrupofamiliar'] = __MODEL_DIR__.'/orm/generated/QQNodeCensoGrupoFamiliar.class.php';
+    QApplication::$ClassFile['qqreversereferencenodecensogrupofamiliar'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeCensoGrupoFamiliar.class.php';
+
+
+    // ClassPaths for the CensoPersona class
+    QApplication::$ClassFile['censopersonaindexpanelgen'] = __CONTROLLER_DIR__.'/censopersona/generated/CensoPersonaIndexPanelGen.class.php';
+    QApplication::$ClassFile['censopersonaeditpanelgen'] = __CONTROLLER_DIR__.'/censopersona/generated/CensoPersonaEditPanelGen.class.php';
+
+    QApplication::$ClassFile['censopersonaindexpanel'] = __CONTROLLER_DIR__.'/censopersona/CensoPersonaIndexPanel.class.php';
+    QApplication::$ClassFile['censopersonaeditpanel'] = __CONTROLLER_DIR__.'/censopersona/CensoPersonaEditPanel.class.php';
+
+    QApplication::$ClassFile['censopersonamodalpanel'] = __CONTROLLER_DIR__.'/censopersona/CensoPersonaModalPanel.class.php';
+    QApplication::$ClassFile['censopersonamodalpanelgen'] = __CONTROLLER_DIR__.'/censopersona/generated/CensoPersonaModalPanelGen.class.php';
+
+    QApplication::$ClassFile['censopersonadatagridgen'] = __HELPER_DIR__.'/censopersona/generated/CensoPersonaDataGridGen.class.php';
+    QApplication::$ClassFile['censopersonametacontrolgen'] = __HELPER_DIR__.'/censopersona/generated/CensoPersonaMetaControlGen.class.php';
+    QApplication::$ClassFile['censopersonadatagrid'] = __HELPER_DIR__.'/censopersona/CensoPersonaDataGrid.class.php';
+    QApplication::$ClassFile['censopersonametacontrol'] = __HELPER_DIR__.'/censopersona/CensoPersonaMetaControl.class.php';
+
+    QApplication::$ClassFile['censopersonagen'] = __MODEL_DIR__.'/orm/generated/CensoPersonaGen.class.php';
+    QApplication::$ClassFile['censopersona'] = __MODEL_DIR__.'/orm/CensoPersona.class.php';
+    QApplication::$ClassFile['qqnodecensopersona'] = __MODEL_DIR__.'/orm/generated/QQNodeCensoPersona.class.php';
+    QApplication::$ClassFile['qqreversereferencenodecensopersona'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeCensoPersona.class.php';
+
+
     // ClassPaths for the Comentarios class
     QApplication::$ClassFile['comentariosindexpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosIndexPanelGen.class.php';
     QApplication::$ClassFile['comentarioseditpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosEditPanelGen.class.php';
