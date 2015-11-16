@@ -22,48 +22,6 @@
     QApplication::$ClassFile['qqreversereferencenodeantecedentes'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeAntecedentes.class.php';
 
 
-    // ClassPaths for the CensoGrupoFamiliar class
-    QApplication::$ClassFile['censogrupofamiliarindexpanelgen'] = __CONTROLLER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarIndexPanelGen.class.php';
-    QApplication::$ClassFile['censogrupofamiliareditpanelgen'] = __CONTROLLER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarEditPanelGen.class.php';
-
-    QApplication::$ClassFile['censogrupofamiliarindexpanel'] = __CONTROLLER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarIndexPanel.class.php';
-    QApplication::$ClassFile['censogrupofamiliareditpanel'] = __CONTROLLER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarEditPanel.class.php';
-
-    QApplication::$ClassFile['censogrupofamiliarmodalpanel'] = __CONTROLLER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarModalPanel.class.php';
-    QApplication::$ClassFile['censogrupofamiliarmodalpanelgen'] = __CONTROLLER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarModalPanelGen.class.php';
-
-    QApplication::$ClassFile['censogrupofamiliardatagridgen'] = __HELPER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarDataGridGen.class.php';
-    QApplication::$ClassFile['censogrupofamiliarmetacontrolgen'] = __HELPER_DIR__.'/censogrupofamiliar/generated/CensoGrupoFamiliarMetaControlGen.class.php';
-    QApplication::$ClassFile['censogrupofamiliardatagrid'] = __HELPER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarDataGrid.class.php';
-    QApplication::$ClassFile['censogrupofamiliarmetacontrol'] = __HELPER_DIR__.'/censogrupofamiliar/CensoGrupoFamiliarMetaControl.class.php';
-
-    QApplication::$ClassFile['censogrupofamiliargen'] = __MODEL_DIR__.'/orm/generated/CensoGrupoFamiliarGen.class.php';
-    QApplication::$ClassFile['censogrupofamiliar'] = __MODEL_DIR__.'/orm/CensoGrupoFamiliar.class.php';
-    QApplication::$ClassFile['qqnodecensogrupofamiliar'] = __MODEL_DIR__.'/orm/generated/QQNodeCensoGrupoFamiliar.class.php';
-    QApplication::$ClassFile['qqreversereferencenodecensogrupofamiliar'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeCensoGrupoFamiliar.class.php';
-
-
-    // ClassPaths for the CensoPersona class
-    QApplication::$ClassFile['censopersonaindexpanelgen'] = __CONTROLLER_DIR__.'/censopersona/generated/CensoPersonaIndexPanelGen.class.php';
-    QApplication::$ClassFile['censopersonaeditpanelgen'] = __CONTROLLER_DIR__.'/censopersona/generated/CensoPersonaEditPanelGen.class.php';
-
-    QApplication::$ClassFile['censopersonaindexpanel'] = __CONTROLLER_DIR__.'/censopersona/CensoPersonaIndexPanel.class.php';
-    QApplication::$ClassFile['censopersonaeditpanel'] = __CONTROLLER_DIR__.'/censopersona/CensoPersonaEditPanel.class.php';
-
-    QApplication::$ClassFile['censopersonamodalpanel'] = __CONTROLLER_DIR__.'/censopersona/CensoPersonaModalPanel.class.php';
-    QApplication::$ClassFile['censopersonamodalpanelgen'] = __CONTROLLER_DIR__.'/censopersona/generated/CensoPersonaModalPanelGen.class.php';
-
-    QApplication::$ClassFile['censopersonadatagridgen'] = __HELPER_DIR__.'/censopersona/generated/CensoPersonaDataGridGen.class.php';
-    QApplication::$ClassFile['censopersonametacontrolgen'] = __HELPER_DIR__.'/censopersona/generated/CensoPersonaMetaControlGen.class.php';
-    QApplication::$ClassFile['censopersonadatagrid'] = __HELPER_DIR__.'/censopersona/CensoPersonaDataGrid.class.php';
-    QApplication::$ClassFile['censopersonametacontrol'] = __HELPER_DIR__.'/censopersona/CensoPersonaMetaControl.class.php';
-
-    QApplication::$ClassFile['censopersonagen'] = __MODEL_DIR__.'/orm/generated/CensoPersonaGen.class.php';
-    QApplication::$ClassFile['censopersona'] = __MODEL_DIR__.'/orm/CensoPersona.class.php';
-    QApplication::$ClassFile['qqnodecensopersona'] = __MODEL_DIR__.'/orm/generated/QQNodeCensoPersona.class.php';
-    QApplication::$ClassFile['qqreversereferencenodecensopersona'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeCensoPersona.class.php';
-
-
     // ClassPaths for the Comentarios class
     QApplication::$ClassFile['comentariosindexpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosIndexPanelGen.class.php';
     QApplication::$ClassFile['comentarioseditpanelgen'] = __CONTROLLER_DIR__.'/comentarios/generated/ComentariosEditPanelGen.class.php';
@@ -232,6 +190,27 @@
     QApplication::$ClassFile['qqreversereferencenodefolio'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeFolio.class.php';
 
 
+    // ClassPaths for the Hogar class
+    QApplication::$ClassFile['hogarindexpanelgen'] = __CONTROLLER_DIR__.'/hogar/generated/HogarIndexPanelGen.class.php';
+    QApplication::$ClassFile['hogareditpanelgen'] = __CONTROLLER_DIR__.'/hogar/generated/HogarEditPanelGen.class.php';
+
+    QApplication::$ClassFile['hogarindexpanel'] = __CONTROLLER_DIR__.'/hogar/HogarIndexPanel.class.php';
+    QApplication::$ClassFile['hogareditpanel'] = __CONTROLLER_DIR__.'/hogar/HogarEditPanel.class.php';
+
+    QApplication::$ClassFile['hogarmodalpanel'] = __CONTROLLER_DIR__.'/hogar/HogarModalPanel.class.php';
+    QApplication::$ClassFile['hogarmodalpanelgen'] = __CONTROLLER_DIR__.'/hogar/generated/HogarModalPanelGen.class.php';
+
+    QApplication::$ClassFile['hogardatagridgen'] = __HELPER_DIR__.'/hogar/generated/HogarDataGridGen.class.php';
+    QApplication::$ClassFile['hogarmetacontrolgen'] = __HELPER_DIR__.'/hogar/generated/HogarMetaControlGen.class.php';
+    QApplication::$ClassFile['hogardatagrid'] = __HELPER_DIR__.'/hogar/HogarDataGrid.class.php';
+    QApplication::$ClassFile['hogarmetacontrol'] = __HELPER_DIR__.'/hogar/HogarMetaControl.class.php';
+
+    QApplication::$ClassFile['hogargen'] = __MODEL_DIR__.'/orm/generated/HogarGen.class.php';
+    QApplication::$ClassFile['hogar'] = __MODEL_DIR__.'/orm/Hogar.class.php';
+    QApplication::$ClassFile['qqnodehogar'] = __MODEL_DIR__.'/orm/generated/QQNodeHogar.class.php';
+    QApplication::$ClassFile['qqreversereferencenodehogar'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeHogar.class.php';
+
+
     // ClassPaths for the Infraestructura class
     QApplication::$ClassFile['infraestructuraindexpanelgen'] = __CONTROLLER_DIR__.'/infraestructura/generated/InfraestructuraIndexPanelGen.class.php';
     QApplication::$ClassFile['infraestructuraeditpanelgen'] = __CONTROLLER_DIR__.'/infraestructura/generated/InfraestructuraEditPanelGen.class.php';
@@ -293,6 +272,27 @@
     QApplication::$ClassFile['nomenclatura'] = __MODEL_DIR__.'/orm/Nomenclatura.class.php';
     QApplication::$ClassFile['qqnodenomenclatura'] = __MODEL_DIR__.'/orm/generated/QQNodeNomenclatura.class.php';
     QApplication::$ClassFile['qqreversereferencenodenomenclatura'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeNomenclatura.class.php';
+
+
+    // ClassPaths for the Ocupante class
+    QApplication::$ClassFile['ocupanteindexpanelgen'] = __CONTROLLER_DIR__.'/ocupante/generated/OcupanteIndexPanelGen.class.php';
+    QApplication::$ClassFile['ocupanteeditpanelgen'] = __CONTROLLER_DIR__.'/ocupante/generated/OcupanteEditPanelGen.class.php';
+
+    QApplication::$ClassFile['ocupanteindexpanel'] = __CONTROLLER_DIR__.'/ocupante/OcupanteIndexPanel.class.php';
+    QApplication::$ClassFile['ocupanteeditpanel'] = __CONTROLLER_DIR__.'/ocupante/OcupanteEditPanel.class.php';
+
+    QApplication::$ClassFile['ocupantemodalpanel'] = __CONTROLLER_DIR__.'/ocupante/OcupanteModalPanel.class.php';
+    QApplication::$ClassFile['ocupantemodalpanelgen'] = __CONTROLLER_DIR__.'/ocupante/generated/OcupanteModalPanelGen.class.php';
+
+    QApplication::$ClassFile['ocupantedatagridgen'] = __HELPER_DIR__.'/ocupante/generated/OcupanteDataGridGen.class.php';
+    QApplication::$ClassFile['ocupantemetacontrolgen'] = __HELPER_DIR__.'/ocupante/generated/OcupanteMetaControlGen.class.php';
+    QApplication::$ClassFile['ocupantedatagrid'] = __HELPER_DIR__.'/ocupante/OcupanteDataGrid.class.php';
+    QApplication::$ClassFile['ocupantemetacontrol'] = __HELPER_DIR__.'/ocupante/OcupanteMetaControl.class.php';
+
+    QApplication::$ClassFile['ocupantegen'] = __MODEL_DIR__.'/orm/generated/OcupanteGen.class.php';
+    QApplication::$ClassFile['ocupante'] = __MODEL_DIR__.'/orm/Ocupante.class.php';
+    QApplication::$ClassFile['qqnodeocupante'] = __MODEL_DIR__.'/orm/generated/QQNodeOcupante.class.php';
+    QApplication::$ClassFile['qqreversereferencenodeocupante'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeOcupante.class.php';
 
 
     // ClassPaths for the OpcionesEquipamientos class

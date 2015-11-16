@@ -16,7 +16,7 @@
  * @package Relevamiento Anual
  * @subpackage GeneratedDataObjects
 	 * @property-read integer $CensoGrupoFamiliarId the value for intCensoGrupoFamiliarId (Read-Only PK)
-	 * @property integer $IdFolio the value for intIdFolio (Unique)
+	 * @property integer $IdFolio the value for intIdFolio (Not Null)
 	 * @property QDateTime $FechaAlta the value for dttFechaAlta 
 	 * @property string $Circ the value for strCirc 
 	 * @property string $Secc the value for strSecc 
@@ -26,7 +26,7 @@
 	 * @property boolean $DeclaracionNoOcupacion the value for blnDeclaracionNoOcupacion 
 	 * @property string $TipoDocAdj the value for strTipoDocAdj 
 	 * @property string $TipoBeneficio the value for strTipoBeneficio 
-	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (Unique)
+	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (Not Null)
 	 * @property-read CensoPersona $CensoPersona the value for the private _objCensoPersona (Read-Only) if set due to an expansion on the censo_persona.censo_grupo_familiar_id reverse relationship
 	 * @property-read CensoPersona[] $CensoPersonaArray the value for the private _objCensoPersonaArray (Read-Only) if set due to an ExpandAsArray on the censo_persona.censo_grupo_familiar_id reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
@@ -710,18 +710,34 @@ class CensoGrupoFamiliarGen extends QBaseClass {
 		}
 			
 		/**
-		 * Load a single CensoGrupoFamiliar object,
+		 * Load an array of CensoGrupoFamiliar objects,
 		 * by IdFolio Index(es)
 		 * @param integer $intIdFolio
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return CensoGrupoFamiliar
+		 * @return CensoGrupoFamiliar[]
 		*/
-		public static function LoadByIdFolio($intIdFolio, $objOptionalClauses = null) {
-			return CensoGrupoFamiliar::QuerySingle(
-				QQ::AndCondition(
-					QQ::Equal(QQN::CensoGrupoFamiliar()->IdFolio, $intIdFolio)
-				),
-				$objOptionalClauses
+		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
+			// Call CensoGrupoFamiliar::QueryArray to perform the LoadArrayByIdFolio query
+			try {
+				return CensoGrupoFamiliar::QueryArray(
+					QQ::Equal(QQN::CensoGrupoFamiliar()->IdFolio, $intIdFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count CensoGrupoFamiliares
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @return int
+		*/
+		public static function CountByIdFolio($intIdFolio) {
+			// Call CensoGrupoFamiliar::QueryCount to perform the CountByIdFolio query
+			return CensoGrupoFamiliar::QueryCount(
+				QQ::Equal(QQN::CensoGrupoFamiliar()->IdFolio, $intIdFolio)
 			);
 		}
 
@@ -949,7 +965,7 @@ class CensoGrupoFamiliarGen extends QBaseClass {
 
             case 'IdFolio':
                 /**
-                 * Gets the value for intIdFolio (Unique)
+                 * Gets the value for intIdFolio (Not Null)
                  * @return integer
                  */
                 return $this->intIdFolio;
@@ -1023,7 +1039,7 @@ class CensoGrupoFamiliarGen extends QBaseClass {
             ///////////////////
             case 'IdFolioObject':
                 /**
-                 * Gets the value for the Folio object referenced by intIdFolio (Unique)
+                 * Gets the value for the Folio object referenced by intIdFolio (Not Null)
                  * @return Folio
                  */
                 try {
@@ -1088,7 +1104,7 @@ class CensoGrupoFamiliarGen extends QBaseClass {
 				///////////////////
 				case 'IdFolio':
 					/**
-					 * Sets the value for intIdFolio (Unique)
+					 * Sets the value for intIdFolio (Not Null)
 					 * @param integer $mixValue
 					 * @return integer
 					 */
@@ -1243,7 +1259,7 @@ class CensoGrupoFamiliarGen extends QBaseClass {
 				///////////////////
 				case 'IdFolioObject':
 					/**
-					 * Sets the value for the Folio object referenced by intIdFolio (Unique)
+					 * Sets the value for the Folio object referenced by intIdFolio (Not Null)
 					 * @param Folio $mixValue
 					 * @return Folio
 					 */

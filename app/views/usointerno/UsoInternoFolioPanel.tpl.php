@@ -5,34 +5,43 @@
         <ul role="tablist">
             <li role="tab" class="done" aria-disabled="false" >
                 <a aria-controls="wizard-p-0" href="<?php echo __VIRTUAL_DIRECTORY__;?>/folio/view/<?=$folio;?>">
-                    <span class="number">1.</span> Datos Generales del Barrio
+                    Datos Generales del Barrio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="false" aria-selected="false">
                 <a aria-controls="wizard-p-1" href="<?php echo __VIRTUAL_DIRECTORY__;?>/nomenclatura/folio/<?=$folio;?>">
-                    <span class="number">2.</span>Nomenclatura Catastral y Dominio
+                    Nomenclatura Catastral y Dominio
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-2" href="<?php echo __VIRTUAL_DIRECTORY__;?>/condiciones/folio/<?=$folio;?>">
-                    <span class="number">3.</span>Condiciones Socio-Urbanísticas
+                    Condiciones Socio-Urbanísticas
                 </a>
             </li>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/regularizacion/folio/<?=$folio;?>">
-                    <span class="number">4.</span> Regulación e integración socio-urbana
+                    Regulación e integración socio-urbana
                 </a>
             </li>
-<?php if(Permission::PuedeVerComentarios()){ ?>
+
+            <?php if(Permission::PuedeEditarCenso()){ ?>
+            <li role="tab" class="done" aria-disabled="true">
+                <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/censo/folio/<?=$folio;?>">
+                    Censo / Adjudicación
+                </a>
+            </li>
+            <?php } ?>
+
+            <?php if(Permission::PuedeVerComentarios()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/comentarios/folio/<?=$folio;?>">
-                    <span class="number">5.</span> Comentarios
+                    Comentarios
                 </a>
             </li>
-<?php } ?>            
+            <?php } ?>
             <li role="tab" class="current" aria-disabled="false" aria-selected="true">
                 <a aria-controls="wizard-p-3" href="#">
-                    <span class="number">6.</span> Uso Interno
+                    Uso Interno
                 </a>
             </li>
         </ul>

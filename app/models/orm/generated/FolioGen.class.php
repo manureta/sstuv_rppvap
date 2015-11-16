@@ -39,7 +39,6 @@
 	 * @property Partido $IdPartidoObject the value for the Partido object referenced by intIdPartido (Not Null)
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
 	 * @property Usuario $CreadorObject the value for the Usuario object referenced by intCreador 
-	 * @property CensoGrupoFamiliar $CensoGrupoFamiliarAsId the value for the CensoGrupoFamiliar object that uniquely references this Folio
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
 	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
@@ -47,6 +46,8 @@
 	 * @property-read Comentarios[] $ComentariosAsIdArray the value for the private _objComentariosAsIdArray (Read-Only) if set due to an ExpandAsArray on the comentarios.id_folio reverse relationship
 	 * @property-read EvolucionFolio $EvolucionFolioAsId the value for the private _objEvolucionFolioAsId (Read-Only) if set due to an expansion on the evolucion_folio.id_folio reverse relationship
 	 * @property-read EvolucionFolio[] $EvolucionFolioAsIdArray the value for the private _objEvolucionFolioAsIdArray (Read-Only) if set due to an ExpandAsArray on the evolucion_folio.id_folio reverse relationship
+	 * @property-read Hogar $HogarAsId the value for the private _objHogarAsId (Read-Only) if set due to an expansion on the hogar.id_folio reverse relationship
+	 * @property-read Hogar[] $HogarAsIdArray the value for the private _objHogarAsIdArray (Read-Only) if set due to an ExpandAsArray on the hogar.id_folio reverse relationship
 	 * @property-read Nomenclatura $NomenclaturaAsId the value for the private _objNomenclaturaAsId (Read-Only) if set due to an expansion on the nomenclatura.id_folio reverse relationship
 	 * @property-read Nomenclatura[] $NomenclaturaAsIdArray the value for the private _objNomenclaturaAsIdArray (Read-Only) if set due to an ExpandAsArray on the nomenclatura.id_folio reverse relationship
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
@@ -277,6 +278,22 @@ class FolioGen extends QBaseClass {
     protected $objEvolucionFolioAsIdArray;
 
     /**
+     * Private member variable that stores a reference to a single HogarAsId object
+     * (of type Hogar), if this Folio object was restored with
+     * an expansion on the hogar association table.
+     * @var Hogar _objHogarAsId;
+     */
+    protected $objHogarAsId;
+
+    /**
+     * Private member variable that stores a reference to an array of HogarAsId objects
+     * (of type Hogar[]), if this Folio object was restored with
+     * an ExpandAsArray on the hogar association table.
+     * @var Hogar[] _objHogarAsIdArray;
+     */
+    protected $objHogarAsIdArray;
+
+    /**
      * Private member variable that stores a reference to a single NomenclaturaAsId object
      * (of type Nomenclatura), if this Folio object was restored with
      * an expansion on the nomenclatura association table.
@@ -342,24 +359,6 @@ class FolioGen extends QBaseClass {
 		 * @var Usuario objCreadorObject
 		 */
 		protected $objCreadorObject;
-
-		/**
-		 * Protected member variable that contains the object which points to
-		 * this object by the reference in the unique database column censo_grupo_familiar.id_folio.
-		 *
-		 * NOTE: Always use the CensoGrupoFamiliarAsId property getter to correctly retrieve this CensoGrupoFamiliar object.
-		 * (Because this class implements late binding, this variable reference MAY be null.)
-		 * @var CensoGrupoFamiliar objCensoGrupoFamiliarAsId
-		 */
-		protected $objCensoGrupoFamiliarAsId;
-		
-		/**
-		 * Used internally to manage whether the adjoined CensoGrupoFamiliarAsId object
-		 * needs to be updated on save.
-		 * 
-		 * NOTE: Do not manually update this value 
-		 */
-		protected $blnDirtyCensoGrupoFamiliarAsId;
 
 		/**
 		 * Protected member variable that contains the object which points to
@@ -824,6 +823,23 @@ class FolioGen extends QBaseClass {
 							$blnExpandedViaArray = true;
 						}
 
+						// Expanding reverse references: HogarAsId
+						$strAlias = $strAliasPrefix . 'hogarasid__id';
+						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+						if ((array_key_exists($strAlias, $strExpandAsArrayNodes)) &&
+							(!is_null($objDbRow->GetColumn($strAliasName)))) {
+							if ($intPreviousChildItemCount = count($objPreviousItem->objHogarAsIdArray)) {
+								$objPreviousChildItems = $objPreviousItem->objHogarAsIdArray;
+								$objChildItem = Hogar::InstantiateDbRow($objDbRow, $strAliasPrefix . 'hogarasid__', $strExpandAsArrayNodes, $objPreviousChildItems, $strColumnAliasArray);
+								if ($objChildItem) {
+									$objPreviousItem->objHogarAsIdArray[] = $objChildItem;
+								}
+							} else {
+								$objPreviousItem->objHogarAsIdArray[] = Hogar::InstantiateDbRow($objDbRow, $strAliasPrefix . 'hogarasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+							}
+							$blnExpandedViaArray = true;
+						}
+
 						// Expanding reverse references: NomenclaturaAsId
 						$strAlias = $strAliasPrefix . 'nomenclaturaasid__id';
 						$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
@@ -903,9 +919,6 @@ class FolioGen extends QBaseClass {
 					if ($objToReturn->Id != $objPreviousItem->Id) {
 						continue;
 					}
-					if (array_diff($objPreviousItem->objCensoGrupoFamiliarAsIdArray, $objToReturn->objCensoGrupoFamiliarAsIdArray) != null) {
-						continue;
-					}
 					if (array_diff($objPreviousItem->objComentariosAsIdArray, $objToReturn->objComentariosAsIdArray) != null) {
 						continue;
 					}
@@ -913,6 +926,9 @@ class FolioGen extends QBaseClass {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objEvolucionFolioAsIdArray, $objToReturn->objEvolucionFolioAsIdArray) != null) {
+						continue;
+					}
+					if (array_diff($objPreviousItem->objHogarAsIdArray, $objToReturn->objHogarAsIdArray) != null) {
 						continue;
 					}
 					if (array_diff($objPreviousItem->objNomenclaturaAsIdArray, $objToReturn->objNomenclaturaAsIdArray) != null) {
@@ -960,18 +976,6 @@ class FolioGen extends QBaseClass {
 			if (!is_null($objDbRow->GetColumn($strAliasName)))
 				$objToReturn->objCreadorObject = Usuario::InstantiateDbRow($objDbRow, $strAliasPrefix . 'creador__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 
-
-			// Check for CensoGrupoFamiliarAsId Unique ReverseReference Binding
-			$strAlias = $strAliasPrefix . 'censogrupofamiliarasid__censo_grupo_familiar_id';
-			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
-			if ($objDbRow->ColumnExists($strAliasName)) {
-				if (!is_null($objDbRow->GetColumn($strAliasName)))
-					$objToReturn->objCensoGrupoFamiliarAsId = CensoGrupoFamiliar::InstantiateDbRow($objDbRow, $strAliasPrefix . 'censogrupofamiliarasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
-				else
-					// We ATTEMPTED to do an Early Bind but the Object Doesn't Exist
-					// Let's set to FALSE so that the object knows not to try and re-query again
-					$objToReturn->objCensoGrupoFamiliarAsId = false;
-			}
 
 			// Check for CondicionesSocioUrbanisticasAsId Unique ReverseReference Binding
 			$strAlias = $strAliasPrefix . 'condicionessociourbanisticasasid__id';
@@ -1029,6 +1033,16 @@ class FolioGen extends QBaseClass {
 					$objToReturn->objEvolucionFolioAsIdArray[] = EvolucionFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'evolucionfolioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 				else
 					$objToReturn->objEvolucionFolioAsId = EvolucionFolio::InstantiateDbRow($objDbRow, $strAliasPrefix . 'evolucionfolioasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+			}
+
+			// Check for HogarAsId Virtual Binding
+			$strAlias = $strAliasPrefix . 'hogarasid__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if (!is_null($objDbRow->GetColumn($strAliasName))) {
+				if (($strExpandAsArrayNodes) && (array_key_exists($strAlias, $strExpandAsArrayNodes)))
+					$objToReturn->objHogarAsIdArray[] = Hogar::InstantiateDbRow($objDbRow, $strAliasPrefix . 'hogarasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					$objToReturn->objHogarAsId = Hogar::InstantiateDbRow($objDbRow, $strAliasPrefix . 'hogarasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
 			}
 
 			// Check for NomenclaturaAsId Virtual Binding
@@ -1389,26 +1403,6 @@ class FolioGen extends QBaseClass {
 
         
         
-                // Update the adjoined CensoGrupoFamiliarAsId object (if applicable)
-                // TODO: Make this into hard-coded SQL queries
-                if ($this->blnDirtyCensoGrupoFamiliarAsId) {
-                    // Unassociate the old one (if applicable)
-                    if ($objAssociated = CensoGrupoFamiliar::LoadByIdFolio($this->intId)) {
-                        $objAssociated->IdFolio = null;
-                        $objAssociated->Save();
-                    }
-
-                    // Associate the new one (if applicable)
-                    if ($this->objCensoGrupoFamiliarAsId) {
-                        $this->objCensoGrupoFamiliarAsId->IdFolio = $this->intId;
-                        $this->objCensoGrupoFamiliarAsId->Save();
-                    }
-
-                    // Reset the "Dirty" flag
-                    $this->blnDirtyCensoGrupoFamiliarAsId = false;
-                }
-        
-        
                 // Update the adjoined CondicionesSocioUrbanisticasAsId object (if applicable)
                 // TODO: Make this into hard-coded SQL queries
                 if ($this->blnDirtyCondicionesSocioUrbanisticasAsId) {
@@ -1496,15 +1490,6 @@ class FolioGen extends QBaseClass {
 			// Get the Database Object for this Class
 			$objDatabase = Folio::GetDatabase();
 
-			
-			
-			// Update the adjoined CensoGrupoFamiliarAsId object (if applicable) and perform a delete
-
-			// Optional -- if you **KNOW** that you do not want to EVER run any level of business logic on the disassocation,
-			// you *could* override Delete() so that this step can be a single hard coded query to optimize performance.
-			if ($objAssociated = CensoGrupoFamiliar::LoadByIdFolio($this->intId)) {
-				$objAssociated->Delete();
-			}
 			
 			
 			// Update the adjoined CondicionesSocioUrbanisticasAsId object (if applicable) and perform a delete
@@ -1818,26 +1803,6 @@ class FolioGen extends QBaseClass {
 
     
     
-            case 'CensoGrupoFamiliarAsId':
-                /**
-                 * Gets the value for the CensoGrupoFamiliar object that uniquely references this Folio
-                 * by objCensoGrupoFamiliarAsId (Unique)
-                 * @return CensoGrupoFamiliar
-                 */
-                try {
-                    if ($this->objCensoGrupoFamiliarAsId === false)
-                        // We've attempted early binding -- and the reverse reference object does not exist
-                        return null;
-                    if (!$this->objCensoGrupoFamiliarAsId)
-                        $this->objCensoGrupoFamiliarAsId = CensoGrupoFamiliar::LoadByIdFolio($this->intId);
-                    return $this->objCensoGrupoFamiliarAsId;
-                } catch (QCallerException $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-
-    
-    
             case 'CondicionesSocioUrbanisticasAsId':
                 /**
                  * Gets the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
@@ -1937,6 +1902,24 @@ class FolioGen extends QBaseClass {
                 if(is_null($this->objEvolucionFolioAsIdArray))
                     $this->objEvolucionFolioAsIdArray = $this->GetEvolucionFolioAsIdArray();
                 return (array) $this->objEvolucionFolioAsIdArray;
+
+            case 'HogarAsId':
+                /**
+                 * Gets the value for the private _objHogarAsId (Read-Only)
+                 * if set due to an expansion on the hogar.id_folio reverse relationship
+                 * @return Hogar
+                 */
+                return $this->objHogarAsId;
+
+            case 'HogarAsIdArray':
+                /**
+                 * Gets the value for the private _objHogarAsIdArray (Read-Only)
+                 * if set due to an ExpandAsArray on the hogar.id_folio reverse relationship
+                 * @return Hogar[]
+                 */
+                if(is_null($this->objHogarAsIdArray))
+                    $this->objHogarAsIdArray = $this->GetHogarAsIdArray();
+                return (array) $this->objHogarAsIdArray;
 
             case 'NomenclaturaAsId':
                 /**
@@ -2383,45 +2366,6 @@ class FolioGen extends QBaseClass {
 						// Update Local Member Variables
 						$this->objCreadorObject = $mixValue;
 						$this->intCreador = $mixValue->IdUsuario;
-
-						// Return $mixValue
-						return $mixValue;
-					}
-					break;
-
-				case 'CensoGrupoFamiliarAsId':
-					/**
-					 * Sets the value for the CensoGrupoFamiliar object referenced by objCensoGrupoFamiliarAsId (Unique)
-					 * @param CensoGrupoFamiliar $mixValue
-					 * @return CensoGrupoFamiliar
-					 */
-					if (is_null($mixValue)) {
-						$this->objCensoGrupoFamiliarAsId = null;
-
-						// Make sure we update the adjoined CensoGrupoFamiliar object the next time we call Save()
-						$this->blnDirtyCensoGrupoFamiliarAsId = true;
-
-						return null;
-					} else {
-						// Make sure $mixValue actually is a CensoGrupoFamiliar object
-						try {
-							$mixValue = QType::Cast($mixValue, 'CensoGrupoFamiliar');
-						} catch (QInvalidCastException $objExc) {
-							$objExc->IncrementOffset();
-							throw $objExc;
-						}
-
-						// Are we setting objCensoGrupoFamiliarAsId to a DIFFERENT $mixValue?
-						if ((!$this->CensoGrupoFamiliarAsId) || ($this->CensoGrupoFamiliarAsId->CensoGrupoFamiliarId != $mixValue->CensoGrupoFamiliarId)) {
-							// Yes -- therefore, set the "Dirty" flag to true
-							// to make sure we update the adjoined CensoGrupoFamiliar object the next time we call Save()
-							$this->blnDirtyCensoGrupoFamiliarAsId = true;
-
-							// Update Local Member Variable
-							$this->objCensoGrupoFamiliarAsId = $mixValue;
-						} else {
-							// Nope -- therefore, make no changes
-						}
 
 						// Return $mixValue
 						return $mixValue;
@@ -2959,6 +2903,201 @@ class FolioGen extends QBaseClass {
 			$objDatabase->NonQuery('
 				DELETE FROM
 					"evolucion_folio"
+				WHERE
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+			
+		
+		// Related Objects' Methods for HogarAsId
+		//-------------------------------------------------------------------
+
+                //Public Model methods for add and remove Items from the _HogarAsIdArray
+                /**
+                * Add a Item to the _HogarAsIdArray
+                * @param Hogar $objItem
+                * @return Hogar[]
+                */
+                public function AddHogarAsId(Hogar $objItem){
+                   //add to the collection and add me as a parent
+                    $objItem->IdFolioObject = $this;
+                    $this->objHogarAsIdArray = $this->HogarAsIdArray;
+                    $this->objHogarAsIdArray[] = $objItem;
+
+                    if (!$objItem->__Restored) array_push($this->objChildObjectsArray, $objItem);
+                    
+                    //automatic persistence to de DB DEPRECATED
+                    //$this->AssociateHogarAsId($objItem);
+
+                    return $this->HogarAsIdArray;
+                }
+
+                /**
+                * Remove a Item to the _HogarAsIdArray
+                * @param Hogar $objItem
+                * @return Hogar[]
+                */
+                public function RemoveHogarAsId(Hogar $objItem){
+                    //remove Item from the collection
+                    $arrAux = $this->objHogarAsIdArray;
+                    $this->objHogarAsIdArray = array();
+                    foreach ($arrAux as $obj) {
+                        if ($obj !== $objItem) 
+                            array_push($this->objHogarAsIdArray,$obj);
+                    }
+                    //automatic persistence to de DB if necesary
+                    if(!is_null($objItem->Id))
+                        try{
+                            $objItem->IdFolioObject = null;
+                            $objItem->Save();
+                        }catch(Exception $e){
+                            $this->DeleteAssociatedHogarAsId($objItem);
+                        }
+
+                    return $this->objHogarAsIdArray;
+                }
+
+		/**
+		 * Gets all associated HogaresAsId as an array of Hogar objects
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return Hogar[]
+		*/ 
+		public function GetHogarAsIdArray($objOptionalClauses = null) {
+			if ((is_null($this->intId)))
+				return array();
+
+			try {
+				return Hogar::LoadArrayByIdFolio($this->intId, $objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Counts all associated HogaresAsId
+		 * @return int
+		*/ 
+		public function CountHogaresAsId() {
+			if ((is_null($this->intId)))
+				return 0;
+
+			return Hogar::CountByIdFolio($this->intId);
+		}
+
+		/**
+		 * Associates a HogarAsId
+		 * @param Hogar $objHogar
+		 * @return void
+		*/ 
+		public function AssociateHogarAsId(Hogar $objHogar) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateHogarAsId on this unsaved Folio.');
+			if ((is_null($objHogar->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call AssociateHogarAsId on this Folio with an unsaved Hogar.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"hogar"
+				SET
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objHogar->Id) . '
+			');
+		}
+
+		/**
+		 * Unassociates a HogarAsId
+		 * @param Hogar $objHogar
+		 * @return void
+		*/ 
+		public function UnassociateHogarAsId(Hogar $objHogar) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateHogarAsId on this unsaved Folio.');
+			if ((is_null($objHogar->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateHogarAsId on this Folio with an unsaved Hogar.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"hogar"
+				SET
+					"id_folio" = null
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objHogar->Id) . ' AND
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Unassociates all HogaresAsId
+		 * @return void
+		*/ 
+		public function UnassociateAllHogaresAsId() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateHogarAsId on this unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				UPDATE
+					"hogar"
+				SET
+					"id_folio" = null
+				WHERE
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes an associated HogarAsId
+		 * @param Hogar $objHogar
+		 * @return void
+		*/ 
+		public function DeleteAssociatedHogarAsId(Hogar $objHogar) {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateHogarAsId on this unsaved Folio.');
+			if ((is_null($objHogar->Id)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateHogarAsId on this Folio with an unsaved Hogar.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"hogar"
+				WHERE
+					"id" = ' . $objDatabase->SqlVariable($objHogar->Id) . ' AND
+					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
+			');
+		}
+
+		/**
+		 * Deletes all associated HogaresAsId
+		 * @return void
+		*/ 
+		public function DeleteAllHogaresAsId() {
+			if ((is_null($this->intId)))
+				throw new QUndefinedPrimaryKeyException('Unable to call UnassociateHogarAsId on this unsaved Folio.');
+
+			// Get the Database Object for this Class
+			$objDatabase = Folio::GetDatabase();
+
+			// Perform the SQL Query
+			$objDatabase->NonQuery('
+				DELETE FROM
+					"hogar"
 				WHERE
 					"id_folio" = ' . $objDatabase->SqlVariable($this->intId) . '
 			');

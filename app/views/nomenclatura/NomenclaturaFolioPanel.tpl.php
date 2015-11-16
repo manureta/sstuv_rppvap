@@ -22,18 +22,20 @@
                     Regularización e integración socio-urbana
                 </a>
             </li>
+            <?php if(Permission::PuedeEditarCenso()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/censo/folio/<?=$folio;?>">
                     Censo / Adjudicación
                 </a>
             </li>
+            <?php } ?>
             <?php if(Permission::PuedeVerComentarios()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/comentarios/folio/<?=$folio;?>">
                     Comentarios
                 </a>
             </li>
-            <?php } ?>            
+            <?php } ?>
             <?php if(Permission::PuedeVerHoja5()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/interno/folio/<?=$folio;?>">

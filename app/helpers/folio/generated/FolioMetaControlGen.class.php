@@ -58,8 +58,6 @@
      * property-read QLabel $ReparticionLabel
      * property QIntegerTextBox $FolioOriginalControl
      * property-read QLabel $FolioOriginalLabel
-     * property QListBox $CensoGrupoFamiliarAsIdControl
-     * property-read QLabel $CensoGrupoFamiliarAsIdLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
      * property QListBox $RegularizacionAsIdControl
@@ -127,13 +125,11 @@
         protected $lblFolioOriginal;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
-        protected $lstCensoGrupoFamiliarAsId;
         protected $lstCondicionesSocioUrbanisticasAsId;
         protected $lstRegularizacionAsId;
         protected $lstUsoInterno;
 
         // QLabel Controls (if applicable) to view Unique ReverseReferences and ManyToMany References
-        protected $lblCensoGrupoFamiliarAsId;
         protected $lblCondicionesSocioUrbanisticasAsId;
         protected $lblRegularizacionAsId;
         protected $lblUsoInterno;
@@ -791,40 +787,6 @@
         }
 
         /**
-         * Create and setup QListBox lstCensoGrupoFamiliarAsId ES ACA?
-         * @param string $strControlId optional ControlId to use
-         * @return QListBox
-         */
-        public function lstCensoGrupoFamiliarAsId_Create($strControlId = null) {
-            $this->lstCensoGrupoFamiliarAsId = new QListBox($this->objParentObject, $strControlId);
-            $this->lstCensoGrupoFamiliarAsId->Name = QApplication::Translate('CensoGrupoFamiliarAsId');
-                $this->lstCensoGrupoFamiliarAsId->AddItem(QApplication::Translate('- Select One -'), null);
-                $objCensoGrupoFamiliarArray = CensoGrupoFamiliar::LoadAll();
-                if ($objCensoGrupoFamiliarArray) foreach ($objCensoGrupoFamiliarArray as $objCensoGrupoFamiliar) {
-                    $objListItem = new QListItem($objCensoGrupoFamiliar->__toString(), $objCensoGrupoFamiliar->CensoGrupoFamiliarId);
-                    if ($objCensoGrupoFamiliar->IdFolio == $this->objFolio->Id)
-                        $objListItem->Selected = true;
-                    $this->lstCensoGrupoFamiliarAsId->AddItem($objListItem);
-                }
-                // Because CensoGrupoFamiliar's CensoGrupoFamiliarAsId is not null, if a value is already selected, it cannot be changed.
-                if ($this->lstCensoGrupoFamiliarAsId->SelectedValue)
-                    $this->lstCensoGrupoFamiliarAsId->Enabled = false;
-            return $this->lstCensoGrupoFamiliarAsId;
-        }
-
-        /**
-         * Create and setup QLabel lblCensoGrupoFamiliarAsId
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblCensoGrupoFamiliarAsId_Create($strControlId = null) {
-            $this->lblCensoGrupoFamiliarAsId = new QLabel($this->objParentObject, $strControlId);
-            $this->lblCensoGrupoFamiliarAsId->Name = QApplication::Translate('CensoGrupoFamiliarAsId');
-            $this->lblCensoGrupoFamiliarAsId->Text = ($this->objFolio->CensoGrupoFamiliarAsId) ? $this->objFolio->CensoGrupoFamiliarAsId->__toString() : null;
-            return $this->lblCensoGrupoFamiliarAsId;
-        }
-
-        /**
          * Create and setup QListBox lstCondicionesSocioUrbanisticasAsId ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -1016,6 +978,60 @@
     }
 
 
+    public $lstHogarAsId;
+    /**
+     * Gets all associated HogaresAsId as an array of Hogar objects
+     * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+     * @return Hogar[]
+    */ 
+    public function lstHogarAsId_Create($strControlId = null) {
+
+        $strConfigArray = array();
+        $strConfigArray['strEntity'] = 'Hogar';
+        $strConfigArray['strRefreshMethod'] = 'HogarAsIdArray';
+        $strConfigArray['strParentPrimaryKeyProperty'] = 'IdFolio';
+        $strConfigArray['strPrimaryKeyProperty'] = 'Id';
+        $strConfigArray['strAddMethod'] = 'AddHogarAsId';
+        $strConfigArray['strRemoveMethod'] = 'RemoveHogarAsId';
+        $strConfigArray['Columns'] = array();
+        $strConfigArray['Columns']['FechaAlta'] = QApplication::Translate('FechaAlta');
+        $strConfigArray['Columns']['Circ'] = QApplication::Translate('Circ');
+        $strConfigArray['Columns']['Secc'] = QApplication::Translate('Secc');
+        $strConfigArray['Columns']['Mz'] = QApplication::Translate('Mz');
+        $strConfigArray['Columns']['Pc'] = QApplication::Translate('Pc');
+        $strConfigArray['Columns']['Telefono'] = QApplication::Translate('Telefono');
+        $strConfigArray['Columns']['DeclaracionNoOcupacion'] = QApplication::Translate('DeclaracionNoOcupacion');
+        $strConfigArray['Columns']['TipoDocAdj'] = QApplication::Translate('TipoDocAdj');
+        $strConfigArray['Columns']['DocTerreno'] = QApplication::Translate('DocTerreno');
+        $strConfigArray['Columns']['TipoBeneficio'] = QApplication::Translate('TipoBeneficio');
+        $strConfigArray['Columns']['FormaOcupacion'] = QApplication::Translate('FormaOcupacion');
+        $strConfigArray['Columns']['FechaIngreso'] = QApplication::Translate('FechaIngreso');
+
+        $this->lstHogarAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
+        $this->lstHogarAsId->Name = Hogar::Noun();
+        $this->lstHogarAsId->SetNewMethod($this, "lstHogarAsId_New");
+        $this->lstHogarAsId->SetEditMethod($this, "lstHogarAsId_Edit");
+        return $this->lstHogarAsId;
+    }
+
+    public function lstHogarAsId_New() {
+        HogarModalPanel::$strControlsArray['lstIdFolioObject'] = false;
+        $strControlsArray = array_keys(HogarModalPanel::$strControlsArray, true);
+        $this->lstHogarAsId->ModalPanel = new HogarModalPanel($this->objParentObject->Modal,$strControlsArray);
+        $this->lstHogarAsId->ModalPanel->objCallerControl = $this->lstHogarAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+    public function lstHogarAsId_Edit($intKey) {
+        HogarModalPanel::$strControlsArray['lstIdFolioObject'] = false;
+        $strControlsArray = array_keys(HogarModalPanel::$strControlsArray, true);
+        $obj = $this->objFolio->HogarAsIdArray[$intKey];
+        $this->lstHogarAsId->ModalPanel = new HogarModalPanel($this->objParentObject->Modal,$strControlsArray, $obj);
+        $this->lstHogarAsId->ModalPanel->objCallerControl = $this->lstHogarAsId;
+        $this->objParentObject->Modal->ShowDialogBox();
+    }
+
+
     public $lstNomenclaturaAsId;
     /**
      * Gets all associated NomenclaturasAsId as an array of Nomenclatura objects
@@ -1158,24 +1174,6 @@
             if ($this->txtFolioOriginal) $this->txtFolioOriginal->Text = $this->objFolio->FolioOriginal;
             if ($this->lblFolioOriginal) $this->lblFolioOriginal->Text = $this->objFolio->FolioOriginal;
 
-            if ($this->lstCensoGrupoFamiliarAsId) {
-                $this->lstCensoGrupoFamiliarAsId->RemoveAllItems();
-                $this->lstCensoGrupoFamiliarAsId->AddItem(QApplication::Translate('- Select One -'), null);
-                $objCensoGrupoFamiliarArray = CensoGrupoFamiliar::LoadAll();
-                if ($objCensoGrupoFamiliarArray) foreach ($objCensoGrupoFamiliarArray as $objCensoGrupoFamiliar) {
-                    $objListItem = new QListItem($objCensoGrupoFamiliar->__toString(), $objCensoGrupoFamiliar->CensoGrupoFamiliarId);
-                    if ($objCensoGrupoFamiliar->IdFolio == $this->objFolio->Id)
-                        $objListItem->Selected = true;
-                    $this->lstCensoGrupoFamiliarAsId->AddItem($objListItem);
-                }
-                // Because CensoGrupoFamiliar's CensoGrupoFamiliarAsId is not null, if a value is already selected, it cannot be changed.
-                if ($this->lstCensoGrupoFamiliarAsId->SelectedValue)
-                    $this->lstCensoGrupoFamiliarAsId->Enabled = false;
-                else
-                    $this->lstCensoGrupoFamiliarAsId->Enabled = true;
-            }
-            if ($this->lblCensoGrupoFamiliarAsId) $this->lblCensoGrupoFamiliarAsId->Text = ($this->objFolio->CensoGrupoFamiliarAsId) ? $this->objFolio->CensoGrupoFamiliarAsId->__toString() : null;
-
             if ($this->lstCondicionesSocioUrbanisticasAsId) {
                 $this->lstCondicionesSocioUrbanisticasAsId->RemoveAllItems();
                 $this->lstCondicionesSocioUrbanisticasAsId->AddItem(QApplication::Translate('- Select One -'), null);
@@ -1278,7 +1276,6 @@
             try {
                 $this->Bind();
                 // Update any UniqueReverseReferences (if any) for controls that have been created for it
-                if ($this->lstCensoGrupoFamiliarAsId) $this->objFolio->CensoGrupoFamiliarAsId = CensoGrupoFamiliar::Load($this->lstCensoGrupoFamiliarAsId->SelectedValue);
                 if ($this->lstCondicionesSocioUrbanisticasAsId) $this->objFolio->CondicionesSocioUrbanisticasAsId = CondicionesSocioUrbanisticas::Load($this->lstCondicionesSocioUrbanisticasAsId->SelectedValue);
                 if ($this->lstRegularizacionAsId) $this->objFolio->RegularizacionAsId = Regularizacion::Load($this->lstRegularizacionAsId->SelectedValue);
                 if ($this->lstUsoInterno) $this->objFolio->UsoInterno = UsoInterno::Load($this->lstUsoInterno->SelectedValue);
@@ -1449,12 +1446,6 @@
                 case 'FolioOriginalLabel':
                     if (!$this->lblFolioOriginal) return $this->lblFolioOriginal_Create();
                     return $this->lblFolioOriginal;
-                case 'CensoGrupoFamiliarAsIdControl':
-                    if (!$this->lstCensoGrupoFamiliarAsId) return $this->lstCensoGrupoFamiliarAsId_Create();
-                    return $this->lstCensoGrupoFamiliarAsId;
-                case 'CensoGrupoFamiliarAsIdLabel':
-                    if (!$this->lblCensoGrupoFamiliarAsId) return $this->lblCensoGrupoFamiliarAsId_Create();
-                    return $this->lblCensoGrupoFamiliarAsId;
                 case 'CondicionesSocioUrbanisticasAsIdControl':
                     if (!$this->lstCondicionesSocioUrbanisticasAsId) return $this->lstCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lstCondicionesSocioUrbanisticasAsId;
@@ -1537,8 +1528,6 @@
                         return ($this->txtReparticion = QType::Cast($mixValue, 'QControl'));
                     case 'FolioOriginalControl':
                         return ($this->txtFolioOriginal = QType::Cast($mixValue, 'QControl'));
-                    case 'CensoGrupoFamiliarAsIdControl':
-                        return ($this->lstCensoGrupoFamiliarAsId = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':

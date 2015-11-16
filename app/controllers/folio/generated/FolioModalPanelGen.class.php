@@ -31,12 +31,12 @@ class FolioModalPanelGen extends EditPanelBase {
         'txtEncargado' => true,
         'txtReparticion' => true,
         'txtFolioOriginal' => true,
-        'lstCensoGrupoFamiliarAsId' => true,
         'lstCondicionesSocioUrbanisticasAsId' => true,
         'lstRegularizacionAsId' => true,
         'lstUsoInterno' => true,
         'lstComentariosAsId' => false,
         'lstEvolucionFolioAsId' => false,
+        'lstHogarAsId' => false,
         'lstNomenclaturaAsId' => false,
     );
     
@@ -110,8 +110,6 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtReparticion'] = $this->mctFolio->txtReparticion_Create();
         if (in_array('txtFolioOriginal',$strControlsArray)) 
             $this->objControlsArray['txtFolioOriginal'] = $this->mctFolio->txtFolioOriginal_Create();
-        if (in_array('lstCensoGrupoFamiliarAsId',$strControlsArray)) 
-            $this->objControlsArray['lstCensoGrupoFamiliarAsId'] = $this->mctFolio->lstCensoGrupoFamiliarAsId_Create();
         if (in_array('lstCondicionesSocioUrbanisticasAsId',$strControlsArray)) 
             $this->objControlsArray['lstCondicionesSocioUrbanisticasAsId'] = $this->mctFolio->lstCondicionesSocioUrbanisticasAsId_Create();
         if (in_array('lstRegularizacionAsId',$strControlsArray)) 
@@ -122,6 +120,8 @@ class FolioModalPanelGen extends EditPanelBase {
             $this->objControlsArray['lstComentariosAsId'] = $this->mctFolio->lstComentariosAsId_Create();
         if (in_array('lstEvolucionFolioAsId',$strControlsArray))
             $this->objControlsArray['lstEvolucionFolioAsId'] = $this->mctFolio->lstEvolucionFolioAsId_Create();
+        if (in_array('lstHogarAsId',$strControlsArray))
+            $this->objControlsArray['lstHogarAsId'] = $this->mctFolio->lstHogarAsId_Create();
         if (in_array('lstNomenclaturaAsId',$strControlsArray))
             $this->objControlsArray['lstNomenclaturaAsId'] = $this->mctFolio->lstNomenclaturaAsId_Create();
 
