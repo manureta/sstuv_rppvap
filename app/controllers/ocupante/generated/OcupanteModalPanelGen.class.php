@@ -40,6 +40,8 @@ class OcupanteModalPanelGen extends EditPanelBase {
             $objExc->IncrementOffset();
             throw $objExc;
         }
+        //$this->Template=__VIEW_DIR__."/censo/OcupanteEditPanel.tpl.php";
+        //$this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
         if (!$objOcupante)
             $objOcupante = new Ocupante();
@@ -92,7 +94,7 @@ class OcupanteModalPanelGen extends EditPanelBase {
         if (in_array('chkReferente',$strControlsArray)) 
             $this->objControlsArray['chkReferente'] = $this->mctOcupante->chkReferente_Create();
 
-        $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
     
     protected function buttons_Create($blnDelete = false) {

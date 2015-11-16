@@ -5,65 +5,97 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
   public $lstEstadoCivil;
   public $lstOcupacion;
 
+  public $mctOcupante;
+  public $objCallerControl;
+  protected $blnChangesMade = false;
+  
   //id variables for meta_create
-  protected $intId;
+    protected $intId;
 
-  //array de nombres de controles para omitir (poner en false antes de llamar al construct)
-  public static $strControlsArray = array(
-      'lblId' => false,
-      'lstIdHogarObject' => true,
-      'txtApellido' => true,
-      'txtNombres' => true,
-      'calFechaNacimiento' => true,
-      'txtEdad' => true,
-      'txtEstadoCivil' => true,
-      'txtDeOConQuien' => true,
-      'txtOcupacion' => true,
-      'txtIngreso' => true,
-      'txtTipoDoc' => true,
-      'txtDoc' => true,
-      'txtNacionalidad' => true,
-      'txtNyaMadre' => true,
-      'txtNyaPadre' => true,
-      'txtRelacionParentescoJefeHogar' => true,
-      'chkReferente' => true,
-  );
+    //array de nombres de controles para omitir (poner en false antes de llamar al construct)
+    public static $strControlsArray = array(
+        'lblId' => false,
+        'lstIdHogarObject' => true,
+        'txtApellido' => true,
+        'txtNombres' => true,
+        'calFechaNacimiento' => true,
+        'txtEdad' => true,
+        'txtEstadoCivil' => true,
+        'txtDeOConQuien' => true,
+        'txtOcupacion' => true,
+        'txtIngreso' => true,
+        'txtTipoDoc' => true,
+        'txtDoc' => true,
+        'txtNacionalidad' => true,
+        'txtNyaMadre' => true,
+        'txtNyaPadre' => true,
+        'txtRelacionParentescoJefeHogar' => true,
+        'chkReferente' => true,
+    );
 
   public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objOcupante = null, $strControlId = null) {
 
-      $strControlsArray = empty($strControlsArray) ? array_keys(OcupanteModalPanel::$strControlsArray, true) : $strControlsArray;
+        $strControlsArray = empty($strControlsArray) ? array_keys(OcupanteModalPanel::$strControlsArray, true) : $strControlsArray;
 
-      // Call the Parent
-      try {
-          parent::__construct($objParentObject, $strControlId);
-      } catch (QCallerException $objExc) {
-          $objExc->IncrementOffset();
-          throw $objExc;
-      }
+        // Call the Parent
+        try {
+            parent::__construct($objParentObject, $strControlId);
+        } catch (QCallerException $objExc) {
+            $objExc->IncrementOffset();
+            throw $objExc;
+        }
+        $this->Template=__VIEW_DIR__."/censo/OcupanteEditPanel.tpl.php";
+        
+
+        if (!$objOcupante)
+            $objOcupante = new Ocupante();
+        
+        $this->intId = $objOcupante->Id;
+        
+        //$this->pnlTabs = new QTabPanel($this);
+        //$this->pnlTabs->AddTab(Ocupante::Noun());
+        $this->metaControl_Create($strControlsArray, $objOcupante);
+        $this->buttons_Create(false);
+        $objParentObject->CloseMethod = array($this, 'Close');
+        $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+        
+
+        $this->lstOcupacion=new QListBox($this);
+        $this->lstOcupacion->AddItem('Empleado','empleado');
+        $this->lstOcupacion->AddItem('Plan','plan');
+        $this->lstOcupacion->AddItem('Jornal','jornal');
+        $this->lstOcupacion->AddItem('Ama de casa','ama_de_casa');
+        $this->lstOcupacion->AddItem('Desocupado','desocupado');
+        $this->lstOcupacion->AddItem('Cuentapropista','cuentapropista');
+        $this->lstOcupacion->AddItem('Jubilado','jubilado');
+        $this->lstOcupacion->AddItem('Pensionado','pensionado');
+        $this->lstOcupacion->Name="Ocupación";
+        $this->lstOcupacion->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstOcupacion_Change'));
 
 
-      //$this->Template=__VIEW_DIR__."/censo/OcupanteEditPanel.tpl.php";
-      //$this->Form->RemoveControl($this->pnlTabs->ControlId, true);
+        $this->lstTipoDocumento=new QListBox($this);
+        $this->lstTipoDocumento->AddItem(' DNI ', 'dni');
+        $this->lstTipoDocumento->AddItem(' LE ', 'le');
+        $this->lstTipoDocumento->AddItem(' LC ', 'lc');
+        $this->lstTipoDocumento->AddItem(' CF ', 'cf');
+        $this->lstTipoDocumento->Name="Tipo de documento";
 
-      $this->lstTipoDocumento=new QListBox($this);
-      $this->lstTipoDocumento->AddItem(' DNI ', 'dni');
-      $this->lstTipoDocumento->AddItem(' LE ', 'le');
-      $this->lstTipoDocumento->AddItem(' LC ', 'lc');
-      $this->lstTipoDocumento->AddItem(' CF ', 'cf');
-      $this->lstTipoDocumento->Name="Tipo de documento";
+        $this->lstEstadoCivil=new QListBox($this);
+        $this->lstEstadoCivil->AddItem('Soltero','soltero');
+        $this->lstEstadoCivil->AddItem('Casado','casado');
+        $this->lstEstadoCivil->AddItem('Viudo','viudo');
+        $this->lstEstadoCivil->AddItem('Divorciado','divorciado');
+        $this->lstEstadoCivil->AddItem('Separado','separado');
+        $this->lstEstadoCivil->AddItem('Unión de hecho','union_hecho');
+        $this->lstEstadoCivil->AddItem('Emancipado','emancipado');
 
-      $this->lstEstadoCivil=new QListBox($this);
-      $this->lstEstadoCivil->AddItem('Soltero','soltero');
-      $this->lstEstadoCivil->AddItem('Casado','casado');
-      $this->lstEstadoCivil->AddItem('Viudo','viudo');
-      $this->lstEstadoCivil->AddItem('Divorciado','divorciado');
-      $this->lstEstadoCivil->AddItem('Separado','separado');
-      $this->lstEstadoCivil->AddItem('Unión de hecho','union_hecho');
-      $this->lstEstadoCivil->AddItem('Emancipado','emancipado');
+        
+        $this->blnAutoRenderChildren = false;
+
+    }
 
 
 
-  }
 
   protected function metaControl_Create($strControlsArray, $objOcupante){
 
@@ -92,23 +124,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
 
       if (in_array('txtOcupacion',$strControlsArray))
           $this->objControlsArray['txtOcupacion'] = $this->mctOcupante->txtOcupacion_Create();
-
-          $this->lstOcupacion=new QListBox($this);
-          $this->lstOcupacion->AddItem($this->txtOcupacion->Text,$this->txtOcupacion->Text);
-          $this->lstOcupacion->AddItem('Empleado','empleado');
-          $this->lstOcupacion->AddItem('Plan','plan');
-          $this->lstOcupacion->AddItem('Jornal','jornal');
-          $this->lstOcupacion->AddItem('Ama de casa','ama_de_casa');
-          $this->lstOcupacion->AddItem('Desocupado','desocupado');
-          $this->lstOcupacion->AddItem('Cuentapropista','cuentapropista');
-          $this->lstOcupacion->AddItem('Jubilado','jubilado');
-          $this->lstOcupacion->AddItem('Pensionado','pensionado');
-          $this->lstOcupacion->Name="Ocupación";
-          $this->lstOcupacion->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstOcupacion_Change'));
-
-          //$this->objControlsArray['txtOcupacion']=$this->lstOcupacion;
-          // escondo el judicializado original
-          //$this->objControlsArray['txtOcupacion']->Visible=false;
+          $this->objControlsArray['txtOcupacion']->Visible=false;
 
       if (in_array('txtIngreso',$strControlsArray))
           $this->objControlsArray['txtIngreso'] = $this->mctOcupante->txtIngreso_Create();
@@ -132,8 +148,10 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
       if (in_array('chkReferente',$strControlsArray))
           $this->objControlsArray['chkReferente'] = $this->mctOcupante->chkReferente_Create();
 
-      $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+      //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
   }
+
+  
 
   public function lstOcupacion_Change($strFormId, $strControlId, $strParameter) {
       $this->txtOcupacion->Text=$this->lstOcupacion->SelectedValue;
