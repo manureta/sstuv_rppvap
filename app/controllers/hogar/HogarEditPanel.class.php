@@ -89,6 +89,11 @@ class HogarEditPanel extends HogarEditPanelGen {
         //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
 
+    public function btnCancel_Click($strFormId, $strControlId, $strParameter){
+
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/censo/folio/".QApplication::QueryString("id")) ; 
+    }
+
 
 }
 ?>

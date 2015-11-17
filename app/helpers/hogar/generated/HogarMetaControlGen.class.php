@@ -461,7 +461,7 @@
             $this->txtDocTerreno = new QTextBox($this->objParentObject, $strControlId);
             $this->txtDocTerreno->Name = QApplication::Translate('DocTerreno');
             $this->txtDocTerreno->Text = $this->objHogar->DocTerreno;
-            $this->txtDocTerreno->TextMode = QTextMode::MultiLine;
+            $this->txtDocTerreno->MaxLength = Hogar::DocTerrenoMaxLength;
             
             return $this->txtDocTerreno;
         }
@@ -487,7 +487,7 @@
             $this->txtTipoBeneficio = new QTextBox($this->objParentObject, $strControlId);
             $this->txtTipoBeneficio->Name = QApplication::Translate('TipoBeneficio');
             $this->txtTipoBeneficio->Text = $this->objHogar->TipoBeneficio;
-            $this->txtTipoBeneficio->TextMode = QTextMode::MultiLine;
+            $this->txtTipoBeneficio->MaxLength = Hogar::TipoBeneficioMaxLength;
             
             return $this->txtTipoBeneficio;
         }

@@ -8,7 +8,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
   public $mctOcupante;
   public $objCallerControl;
   protected $blnChangesMade = false;
-  
+
   //id variables for meta_create
     protected $intId;
 
@@ -45,22 +45,23 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
             throw $objExc;
         }
         $this->Template=__VIEW_DIR__."/censo/OcupanteEditPanel.tpl.php";
-        
+
 
         if (!$objOcupante)
             $objOcupante = new Ocupante();
-        
+
         $this->intId = $objOcupante->Id;
-        
+
         //$this->pnlTabs = new QTabPanel($this);
         //$this->pnlTabs->AddTab(Ocupante::Noun());
         $this->metaControl_Create($strControlsArray, $objOcupante);
         $this->buttons_Create(false);
         $objParentObject->CloseMethod = array($this, 'Close');
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
-        
+
 
         $this->lstOcupacion=new QListBox($this);
+        $this->lstOcupacion->AddItem($this->objControlsArray['txtOcupacion']->Text,$this->objControlsArray['txtOcupacion']->Text);
         $this->lstOcupacion->AddItem('Empleado','empleado');
         $this->lstOcupacion->AddItem('Plan','plan');
         $this->lstOcupacion->AddItem('Jornal','jornal');
@@ -74,13 +75,17 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
 
 
         $this->lstTipoDocumento=new QListBox($this);
+        $this->lstTipoDocumento->AddItem($this->objControlsArray['txtTipoDoc']->Text,$this->objControlsArray['txtTipoDoc']->Text);
         $this->lstTipoDocumento->AddItem(' DNI ', 'dni');
         $this->lstTipoDocumento->AddItem(' LE ', 'le');
         $this->lstTipoDocumento->AddItem(' LC ', 'lc');
         $this->lstTipoDocumento->AddItem(' CF ', 'cf');
         $this->lstTipoDocumento->Name="Tipo de documento";
+        $this->lstTipoDocumento->Required=true;
+        $this->lstTipoDocumento->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTipoDocumento_Change'));
 
         $this->lstEstadoCivil=new QListBox($this);
+        $this->lstEstadoCivil->AddItem($this->objControlsArray['txtEstadoCivil']->Text,$this->objControlsArray['txtEstadoCivil']->Text);
         $this->lstEstadoCivil->AddItem('Soltero','soltero');
         $this->lstEstadoCivil->AddItem('Casado','casado');
         $this->lstEstadoCivil->AddItem('Viudo','viudo');
@@ -88,8 +93,9 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
         $this->lstEstadoCivil->AddItem('Separado','separado');
         $this->lstEstadoCivil->AddItem('Unión de hecho','union_hecho');
         $this->lstEstadoCivil->AddItem('Emancipado','emancipado');
+        $this->lstEstadoCivil->Name="Estado civil";
+        $this->lstEstadoCivil->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstEstadoCivil_Change'));
 
-        
         $this->blnAutoRenderChildren = false;
 
     }
@@ -112,6 +118,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
           $this->objControlsArray['txtNombres'] = $this->mctOcupante->txtNombres_Create();
       if (in_array('calFechaNacimiento',$strControlsArray))
           $this->objControlsArray['calFechaNacimiento'] = $this->mctOcupante->calFechaNacimiento_Create();
+          $this->objControlsArray['calFechaNacimiento']->Name="Fecha nacimiento";
       if (in_array('txtEdad',$strControlsArray))
           $this->objControlsArray['txtEdad'] = $this->mctOcupante->txtEdad_Create();
       if (in_array('txtEstadoCivil',$strControlsArray))
@@ -119,8 +126,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
           $this->objControlsArray['txtEstadoCivil']->Name="Estado civil";
       if (in_array('txtDeOConQuien',$strControlsArray))
           $this->objControlsArray['txtDeOConQuien'] = $this->mctOcupante->txtDeOConQuien_Create();
-          $this->objControlsArray['txtDeOConQuien']->Name="Con quién o de quién";
-
+          $this->objControlsArray['txtDeOConQuien']->PlaceHolder="Con quién o de quién";
 
       if (in_array('txtOcupacion',$strControlsArray))
           $this->objControlsArray['txtOcupacion'] = $this->mctOcupante->txtOcupacion_Create();
@@ -128,6 +134,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
 
       if (in_array('txtIngreso',$strControlsArray))
           $this->objControlsArray['txtIngreso'] = $this->mctOcupante->txtIngreso_Create();
+          $this->objControlsArray['txtIngreso']->PlaceHolder="Ingreso";
       if (in_array('txtTipoDoc',$strControlsArray))
           $this->objControlsArray['txtTipoDoc'] = $this->mctOcupante->txtTipoDoc_Create();
 
@@ -151,11 +158,18 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
       //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
   }
 
-  
+
 
   public function lstOcupacion_Change($strFormId, $strControlId, $strParameter) {
       $this->txtOcupacion->Text=$this->lstOcupacion->SelectedValue;
   }
 
+  public function lstTipoDocumento_Change($strFormId, $strControlId, $strParameter) {
+      $this->txtTipoDoc->Text=$this->lstTipoDocumento->SelectedValue;
+  }
+
+  public function lstEstadoCivil_Change($strFormId, $strControlId, $strParameter) {
+      $this->txtEstadoCivil->Text=$this->lstEstadoCivil->SelectedValue;
+  }
 
 }

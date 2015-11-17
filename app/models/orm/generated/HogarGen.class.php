@@ -142,6 +142,7 @@ class HogarGen extends QBaseClass {
      * @var string strDocTerreno
      */
     protected $strDocTerreno;
+    const DocTerrenoMaxLength = 255;
     const DocTerrenoDefault = null;
 
 
@@ -150,6 +151,7 @@ class HogarGen extends QBaseClass {
      * @var string strTipoBeneficio
      */
     protected $strTipoBeneficio;
+    const TipoBeneficioMaxLength = 255;
     const TipoBeneficioDefault = null;
 
 
@@ -637,9 +639,9 @@ class HogarGen extends QBaseClass {
 			$strAliasName = array_key_exists($strAliasPrefix . 'tipo_doc_adj', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tipo_doc_adj'] : $strAliasPrefix . 'tipo_doc_adj';
 			$objToReturn->strTipoDocAdj = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'doc_terreno', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'doc_terreno'] : $strAliasPrefix . 'doc_terreno';
-			$objToReturn->strDocTerreno = $objDbRow->GetColumn($strAliasName, 'Blob');
+			$objToReturn->strDocTerreno = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'tipo_beneficio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tipo_beneficio'] : $strAliasPrefix . 'tipo_beneficio';
-			$objToReturn->strTipoBeneficio = $objDbRow->GetColumn($strAliasName, 'Blob');
+			$objToReturn->strTipoBeneficio = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'forma_ocupacion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'forma_ocupacion'] : $strAliasPrefix . 'forma_ocupacion';
 			$objToReturn->strFormaOcupacion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_ingreso', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_ingreso'] : $strAliasPrefix . 'fecha_ingreso';
