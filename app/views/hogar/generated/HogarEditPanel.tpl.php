@@ -12,8 +12,8 @@
 		<?php $_CONTROL->txtMz->RenderWithName(); ?>
 		<?php $_CONTROL->txtPc->RenderWithName(); ?>
 		<?php $_CONTROL->txtTelefono->RenderWithName(); ?>
+		<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
 		<?php $_CONTROL->chkDeclaracionNoOcupacion->RenderWithName(); ?>
-		<?php $_CONTROL->txtTipoDocAdj->RenderWithName(); ?>
 		<?php $_CONTROL->txtDocTerreno->RenderWithName(); ?>
 		<?php $_CONTROL->txtTipoBeneficio->RenderWithName(); ?>
 		<?php $_CONTROL->txtFormaOcupacion->RenderWithName(); ?>

@@ -32,10 +32,10 @@
      * property-read QLabel $PcLabel
      * property QTextBox $TelefonoControl
      * property-read QLabel $TelefonoLabel
+     * property QTextBox $DireccionControl
+     * property-read QLabel $DireccionLabel
      * property QCheckBox $DeclaracionNoOcupacionControl
      * property-read QLabel $DeclaracionNoOcupacionLabel
-     * property QTextBox $TipoDocAdjControl
-     * property-read QLabel $TipoDocAdjLabel
      * property QTextBox $DocTerrenoControl
      * property-read QLabel $DocTerrenoLabel
      * property QTextBox $TipoBeneficioControl
@@ -68,8 +68,8 @@
         protected $txtMz;
         protected $txtPc;
         protected $txtTelefono;
+        protected $txtDireccion;
         protected $chkDeclaracionNoOcupacion;
-        protected $txtTipoDocAdj;
         protected $txtDocTerreno;
         protected $txtTipoBeneficio;
         protected $txtFormaOcupacion;
@@ -83,8 +83,8 @@
         protected $lblMz;
         protected $lblPc;
         protected $lblTelefono;
+        protected $lblDireccion;
         protected $lblDeclaracionNoOcupacion;
-        protected $lblTipoDocAdj;
         protected $lblDocTerreno;
         protected $lblTipoBeneficio;
         protected $lblFormaOcupacion;
@@ -403,6 +403,32 @@
         }
 
         /**
+         * Create and setup QTextBox txtDireccion
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtDireccion_Create($strControlId = null) {
+            $this->txtDireccion = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtDireccion->Name = QApplication::Translate('Direccion');
+            $this->txtDireccion->Text = $this->objHogar->Direccion;
+            $this->txtDireccion->MaxLength = Hogar::DireccionMaxLength;
+            
+            return $this->txtDireccion;
+        }
+
+        /**
+         * Create and setup QLabel lblDireccion
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblDireccion_Create($strControlId = null) {
+            $this->lblDireccion = new QLabel($this->objParentObject, $strControlId);
+            $this->lblDireccion->Name = QApplication::Translate('Direccion');
+            $this->lblDireccion->Text = $this->objHogar->Direccion;
+            return $this->lblDireccion;
+        }
+
+        /**
          * Create and setup QCheckBox chkDeclaracionNoOcupacion
          * @param string $strControlId optional ControlId to use
          * @return QCheckBox
@@ -424,32 +450,6 @@
             $this->lblDeclaracionNoOcupacion->Name = QApplication::Translate('DeclaracionNoOcupacion');
             $this->lblDeclaracionNoOcupacion->Text = ($this->objHogar->DeclaracionNoOcupacion) ? QApplication::Translate('Yes') : QApplication::Translate('No');
             return $this->lblDeclaracionNoOcupacion;
-        }
-
-        /**
-         * Create and setup QTextBox txtTipoDocAdj
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtTipoDocAdj_Create($strControlId = null) {
-            $this->txtTipoDocAdj = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtTipoDocAdj->Name = QApplication::Translate('TipoDocAdj');
-            $this->txtTipoDocAdj->Text = $this->objHogar->TipoDocAdj;
-            $this->txtTipoDocAdj->MaxLength = Hogar::TipoDocAdjMaxLength;
-            
-            return $this->txtTipoDocAdj;
-        }
-
-        /**
-         * Create and setup QLabel lblTipoDocAdj
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblTipoDocAdj_Create($strControlId = null) {
-            $this->lblTipoDocAdj = new QLabel($this->objParentObject, $strControlId);
-            $this->lblTipoDocAdj->Name = QApplication::Translate('TipoDocAdj');
-            $this->lblTipoDocAdj->Text = $this->objHogar->TipoDocAdj;
-            return $this->lblTipoDocAdj;
         }
 
         /**
@@ -654,11 +654,11 @@
             if ($this->txtTelefono) $this->txtTelefono->Text = $this->objHogar->Telefono;
             if ($this->lblTelefono) $this->lblTelefono->Text = $this->objHogar->Telefono;
 
+            if ($this->txtDireccion) $this->txtDireccion->Text = $this->objHogar->Direccion;
+            if ($this->lblDireccion) $this->lblDireccion->Text = $this->objHogar->Direccion;
+
             if ($this->chkDeclaracionNoOcupacion) $this->chkDeclaracionNoOcupacion->Checked = $this->objHogar->DeclaracionNoOcupacion;
             if ($this->lblDeclaracionNoOcupacion) $this->lblDeclaracionNoOcupacion->Text = ($this->objHogar->DeclaracionNoOcupacion) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-
-            if ($this->txtTipoDocAdj) $this->txtTipoDocAdj->Text = $this->objHogar->TipoDocAdj;
-            if ($this->lblTipoDocAdj) $this->lblTipoDocAdj->Text = $this->objHogar->TipoDocAdj;
 
             if ($this->txtDocTerreno) $this->txtDocTerreno->Text = $this->objHogar->DocTerreno;
             if ($this->lblDocTerreno) $this->lblDocTerreno->Text = $this->objHogar->DocTerreno;
@@ -697,8 +697,8 @@
                 if ($this->txtMz) $this->objHogar->Mz = $this->txtMz->Text;
                 if ($this->txtPc) $this->objHogar->Pc = $this->txtPc->Text;
                 if ($this->txtTelefono) $this->objHogar->Telefono = $this->txtTelefono->Text;
+                if ($this->txtDireccion) $this->objHogar->Direccion = $this->txtDireccion->Text;
                 if ($this->chkDeclaracionNoOcupacion) $this->objHogar->DeclaracionNoOcupacion = $this->chkDeclaracionNoOcupacion->Checked;
-                if ($this->txtTipoDocAdj) $this->objHogar->TipoDocAdj = $this->txtTipoDocAdj->Text;
                 if ($this->txtDocTerreno) $this->objHogar->DocTerreno = $this->txtDocTerreno->Text;
                 if ($this->txtTipoBeneficio) $this->objHogar->TipoBeneficio = $this->txtTipoBeneficio->Text;
                 if ($this->txtFormaOcupacion) $this->objHogar->FormaOcupacion = $this->txtFormaOcupacion->Text;
@@ -807,18 +807,18 @@
                 case 'TelefonoLabel':
                     if (!$this->lblTelefono) return $this->lblTelefono_Create();
                     return $this->lblTelefono;
+                case 'DireccionControl':
+                    if (!$this->txtDireccion) return $this->txtDireccion_Create();
+                    return $this->txtDireccion;
+                case 'DireccionLabel':
+                    if (!$this->lblDireccion) return $this->lblDireccion_Create();
+                    return $this->lblDireccion;
                 case 'DeclaracionNoOcupacionControl':
                     if (!$this->chkDeclaracionNoOcupacion) return $this->chkDeclaracionNoOcupacion_Create();
                     return $this->chkDeclaracionNoOcupacion;
                 case 'DeclaracionNoOcupacionLabel':
                     if (!$this->lblDeclaracionNoOcupacion) return $this->lblDeclaracionNoOcupacion_Create();
                     return $this->lblDeclaracionNoOcupacion;
-                case 'TipoDocAdjControl':
-                    if (!$this->txtTipoDocAdj) return $this->txtTipoDocAdj_Create();
-                    return $this->txtTipoDocAdj;
-                case 'TipoDocAdjLabel':
-                    if (!$this->lblTipoDocAdj) return $this->lblTipoDocAdj_Create();
-                    return $this->lblTipoDocAdj;
                 case 'DocTerrenoControl':
                     if (!$this->txtDocTerreno) return $this->txtDocTerreno_Create();
                     return $this->txtDocTerreno;
@@ -881,10 +881,10 @@
                         return ($this->txtPc = QType::Cast($mixValue, 'QControl'));
                     case 'TelefonoControl':
                         return ($this->txtTelefono = QType::Cast($mixValue, 'QControl'));
+                    case 'DireccionControl':
+                        return ($this->txtDireccion = QType::Cast($mixValue, 'QControl'));
                     case 'DeclaracionNoOcupacionControl':
                         return ($this->chkDeclaracionNoOcupacion = QType::Cast($mixValue, 'QControl'));
-                    case 'TipoDocAdjControl':
-                        return ($this->txtTipoDocAdj = QType::Cast($mixValue, 'QControl'));
                     case 'DocTerrenoControl':
                         return ($this->txtDocTerreno = QType::Cast($mixValue, 'QControl'));
                     case 'TipoBeneficioControl':

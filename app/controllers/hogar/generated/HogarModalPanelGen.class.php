@@ -18,8 +18,8 @@ class HogarModalPanelGen extends EditPanelBase {
         'txtMz' => true,
         'txtPc' => true,
         'txtTelefono' => true,
+        'txtDireccion' => true,
         'chkDeclaracionNoOcupacion' => true,
-        'txtTipoDocAdj' => true,
         'txtDocTerreno' => true,
         'txtTipoBeneficio' => true,
         'txtFormaOcupacion' => true,
@@ -71,10 +71,10 @@ class HogarModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtPc'] = $this->mctHogar->txtPc_Create();
         if (in_array('txtTelefono',$strControlsArray)) 
             $this->objControlsArray['txtTelefono'] = $this->mctHogar->txtTelefono_Create();
+        if (in_array('txtDireccion',$strControlsArray)) 
+            $this->objControlsArray['txtDireccion'] = $this->mctHogar->txtDireccion_Create();
         if (in_array('chkDeclaracionNoOcupacion',$strControlsArray)) 
             $this->objControlsArray['chkDeclaracionNoOcupacion'] = $this->mctHogar->chkDeclaracionNoOcupacion_Create();
-        if (in_array('txtTipoDocAdj',$strControlsArray)) 
-            $this->objControlsArray['txtTipoDocAdj'] = $this->mctHogar->txtTipoDocAdj_Create();
         if (in_array('txtDocTerreno',$strControlsArray)) 
             $this->objControlsArray['txtDocTerreno'] = $this->mctHogar->txtDocTerreno_Create();
         if (in_array('txtTipoBeneficio',$strControlsArray)) 

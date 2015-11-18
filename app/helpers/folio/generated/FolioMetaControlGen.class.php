@@ -1000,8 +1000,8 @@
         $strConfigArray['Columns']['Mz'] = QApplication::Translate('Mz');
         $strConfigArray['Columns']['Pc'] = QApplication::Translate('Pc');
         $strConfigArray['Columns']['Telefono'] = QApplication::Translate('Telefono');
+        $strConfigArray['Columns']['Direccion'] = QApplication::Translate('Direccion');
         $strConfigArray['Columns']['DeclaracionNoOcupacion'] = QApplication::Translate('DeclaracionNoOcupacion');
-        $strConfigArray['Columns']['TipoDocAdj'] = QApplication::Translate('TipoDocAdj');
         $strConfigArray['Columns']['DocTerreno'] = QApplication::Translate('DocTerreno');
         $strConfigArray['Columns']['TipoBeneficio'] = QApplication::Translate('TipoBeneficio');
         $strConfigArray['Columns']['FormaOcupacion'] = QApplication::Translate('FormaOcupacion');

@@ -2,22 +2,22 @@
 class HogarEditPanel extends HogarEditPanelGen {
   public $objFolio;
   public static $strControlsArray = array(
-      'lblId' => false,
-      'lstIdFolioObject' => true,
-      'calFechaAlta' => true,
-      'txtCirc' => true,
-      'txtSecc' => true,
-      'txtMz' => true,
-      'txtPc' => true,
-      'txtTelefono' => true,
-      'chkDeclaracionNoOcupacion' => true,
-      'txtTipoDocAdj' => true,
-      'txtDocTerreno' => true,
-      'txtTipoBeneficio' => true,
-      'txtFormaOcupacion' => true,
-      'txtFechaIngreso' => true,
-      'lstOcupanteAsId' => true,
-  );
+        'lblId' => false,
+        'lstIdFolioObject' => true,
+        'calFechaAlta' => true,
+        'txtCirc' => true,
+        'txtSecc' => true,
+        'txtMz' => true,
+        'txtPc' => true,
+        'txtTelefono' => true,
+        'txtDireccion' => true,
+        'chkDeclaracionNoOcupacion' => true,
+        'txtDocTerreno' => true,
+        'txtTipoBeneficio' => true,
+        'txtFormaOcupacion' => true,
+        'txtFechaIngreso' => true,
+        'lstOcupanteAsId' => true,
+    );
     public function __construct($objParentObject, $strControlsArray = null, $intId = null, $strControlId = null) {
 
         // Call the Parent
@@ -40,15 +40,37 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->btnCreateNew->Enabled = false;
         }
 
-        $this->txtSecc->AddAction(new QKeyPressEvent(), new QAjaxControlAction($this,'txtSecc_Change'));
-
     }
 
-    public function txtSecc_Change($strFormId, $strControlId, $strParameter) {
-        error_log($this->txtSecc->Text);
-        if(preg_match('/[0-9]/', $this->txtSecc->Text)){
-            QApplication::DisplayAlert("El campo Sección no debe contener valores numéricos");
+    // Control AjaxAction Event Handlers
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+        
+        if($this->validar_campos()){
+          $this->mctHogar->Save();
+          foreach ($this->objModifiedChildsArray as $obj) {
+              $obj->Save();
+          }
+          $this->objModifiedChildsArray = array();
+          QApplication::DisplayNotification('Los datos se guardaron correctamente');  
         }
+        
+    }
+
+    public function validar_campos() {
+        $blnReturn=true;
+        
+        if(preg_match('/[0-9]/', $this->txtSecc->Text)){
+            $this->txtSecc->AddCssClass("has-error");
+            QApplication::DisplayNotification('No se aceptan valores numéricos en Sección','W');
+            $blnReturn=false;
+        }
+
+        if(preg_match('/[a-z]/', $this->txtCirc->Text)){
+            $this->txtCirc->AddCssClass("has-error");
+            QApplication::DisplayNotification('Solo se aceptan valores numéricos en Circ','W');
+            $blnReturn=false;
+        }
+        return $blnReturn;
 
     }
 
@@ -77,10 +99,7 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->objControlsArray['txtTelefono'] = $this->mctHogar->txtTelefono_Create();
         if (in_array('chkDeclaracionNoOcupacion',$strControlsArray))
             $this->objControlsArray['chkDeclaracionNoOcupacion'] = $this->mctHogar->chkDeclaracionNoOcupacion_Create();
-            $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Los ocupantes declaran que no son titulares de otro inmueble";
-        if (in_array('txtTipoDocAdj',$strControlsArray))
-            $this->objControlsArray['txtTipoDocAdj'] = $this->mctHogar->txtTipoDocAdj_Create();
-            $this->objControlsArray['txtTipoDocAdj']->Name="Tipo de documentación";
+            $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Los ocupantes declaran que no son titulares de otro inmueble";        
         if (in_array('txtDocTerreno',$strControlsArray))
             $this->objControlsArray['txtDocTerreno'] = $this->mctHogar->txtDocTerreno_Create();
             $this->objControlsArray['txtDocTerreno']->Name="Documentación del terreno";
@@ -95,8 +114,9 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->objControlsArray['txtFechaIngreso']->Name="Fecha de ingreso";
         if (in_array('lstOcupanteAsId',$strControlsArray))
             $this->objControlsArray['lstOcupanteAsId'] = $this->mctHogar->lstOcupanteAsId_Create();
-
-        //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
+        if (in_array('txtDireccion',$strControlsArray)) 
+            $this->objControlsArray['txtDireccion'] = $this->mctHogar->txtDireccion_Create();
+            $this->objControlsArray['txtDireccion']->Name="Dirección";
     }
 
     public function btnCancel_Click($strFormId, $strControlId, $strParameter){

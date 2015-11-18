@@ -23,10 +23,10 @@ class QQNodeHogar extends QQNode {
 					return new QQNode('pc', 'Pc', 'string', $this);
 				case 'Telefono':
 					return new QQNode('telefono', 'Telefono', 'string', $this);
+				case 'Direccion':
+					return new QQNode('direccion', 'Direccion', 'string', $this);
 				case 'DeclaracionNoOcupacion':
 					return new QQNode('declaracion_no_ocupacion', 'DeclaracionNoOcupacion', 'boolean', $this);
-				case 'TipoDocAdj':
-					return new QQNode('tipo_doc_adj', 'TipoDocAdj', 'string', $this);
 				case 'DocTerreno':
 					return new QQNode('doc_terreno', 'DocTerreno', 'string', $this);
 				case 'TipoBeneficio':

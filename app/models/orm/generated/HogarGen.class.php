@@ -23,8 +23,8 @@
 	 * @property string $Mz the value for strMz (Not Null)
 	 * @property string $Pc the value for strPc (Not Null)
 	 * @property string $Telefono the value for strTelefono 
+	 * @property string $Direccion the value for strDireccion 
 	 * @property boolean $DeclaracionNoOcupacion the value for blnDeclaracionNoOcupacion 
-	 * @property string $TipoDocAdj the value for strTipoDocAdj 
 	 * @property string $DocTerreno the value for strDocTerreno 
 	 * @property string $TipoBeneficio the value for strTipoBeneficio 
 	 * @property string $FormaOcupacion the value for strFormaOcupacion 
@@ -121,20 +121,20 @@ class HogarGen extends QBaseClass {
 
 
     /**
+     * Protected member variable that maps to the database column hogar.direccion
+     * @var string strDireccion
+     */
+    protected $strDireccion;
+    const DireccionMaxLength = 255;
+    const DireccionDefault = null;
+
+
+    /**
      * Protected member variable that maps to the database column hogar.declaracion_no_ocupacion
      * @var boolean blnDeclaracionNoOcupacion
      */
     protected $blnDeclaracionNoOcupacion;
     const DeclaracionNoOcupacionDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column hogar.tipo_doc_adj
-     * @var string strTipoDocAdj
-     */
-    protected $strTipoDocAdj;
-    const TipoDocAdjMaxLength = 255;
-    const TipoDocAdjDefault = null;
 
 
     /**
@@ -545,8 +545,8 @@ class HogarGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'mz', $strAliasPrefix . 'mz');
 			$objBuilder->AddSelectItem($strTableName, 'pc', $strAliasPrefix . 'pc');
 			$objBuilder->AddSelectItem($strTableName, 'telefono', $strAliasPrefix . 'telefono');
+			$objBuilder->AddSelectItem($strTableName, 'direccion', $strAliasPrefix . 'direccion');
 			$objBuilder->AddSelectItem($strTableName, 'declaracion_no_ocupacion', $strAliasPrefix . 'declaracion_no_ocupacion');
-			$objBuilder->AddSelectItem($strTableName, 'tipo_doc_adj', $strAliasPrefix . 'tipo_doc_adj');
 			$objBuilder->AddSelectItem($strTableName, 'doc_terreno', $strAliasPrefix . 'doc_terreno');
 			$objBuilder->AddSelectItem($strTableName, 'tipo_beneficio', $strAliasPrefix . 'tipo_beneficio');
 			$objBuilder->AddSelectItem($strTableName, 'forma_ocupacion', $strAliasPrefix . 'forma_ocupacion');
@@ -634,10 +634,10 @@ class HogarGen extends QBaseClass {
 			$objToReturn->strPc = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'telefono', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'telefono'] : $strAliasPrefix . 'telefono';
 			$objToReturn->strTelefono = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'direccion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'direccion'] : $strAliasPrefix . 'direccion';
+			$objToReturn->strDireccion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'declaracion_no_ocupacion', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'declaracion_no_ocupacion'] : $strAliasPrefix . 'declaracion_no_ocupacion';
 			$objToReturn->blnDeclaracionNoOcupacion = $objDbRow->GetColumn($strAliasName, 'Bit');
-			$strAliasName = array_key_exists($strAliasPrefix . 'tipo_doc_adj', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tipo_doc_adj'] : $strAliasPrefix . 'tipo_doc_adj';
-			$objToReturn->strTipoDocAdj = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'doc_terreno', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'doc_terreno'] : $strAliasPrefix . 'doc_terreno';
 			$objToReturn->strDocTerreno = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'tipo_beneficio', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'tipo_beneficio'] : $strAliasPrefix . 'tipo_beneficio';
@@ -844,8 +844,8 @@ class HogarGen extends QBaseClass {
                             "mz",
                             "pc",
                             "telefono",
+                            "direccion",
                             "declaracion_no_ocupacion",
-                            "tipo_doc_adj",
                             "doc_terreno",
                             "tipo_beneficio",
                             "forma_ocupacion",
@@ -858,8 +858,8 @@ class HogarGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strMz) . ',
                             ' . $objDatabase->SqlVariable($this->strPc) . ',
                             ' . $objDatabase->SqlVariable($this->strTelefono) . ',
+                            ' . $objDatabase->SqlVariable($this->strDireccion) . ',
                             ' . $objDatabase->SqlVariable($this->blnDeclaracionNoOcupacion) . ',
-                            ' . $objDatabase->SqlVariable($this->strTipoDocAdj) . ',
                             ' . $objDatabase->SqlVariable($this->strDocTerreno) . ',
                             ' . $objDatabase->SqlVariable($this->strTipoBeneficio) . ',
                             ' . $objDatabase->SqlVariable($this->strFormaOcupacion) . ',
@@ -886,8 +886,8 @@ class HogarGen extends QBaseClass {
                             "mz" = ' . $objDatabase->SqlVariable($this->strMz) . ',
                             "pc" = ' . $objDatabase->SqlVariable($this->strPc) . ',
                             "telefono" = ' . $objDatabase->SqlVariable($this->strTelefono) . ',
+                            "direccion" = ' . $objDatabase->SqlVariable($this->strDireccion) . ',
                             "declaracion_no_ocupacion" = ' . $objDatabase->SqlVariable($this->blnDeclaracionNoOcupacion) . ',
-                            "tipo_doc_adj" = ' . $objDatabase->SqlVariable($this->strTipoDocAdj) . ',
                             "doc_terreno" = ' . $objDatabase->SqlVariable($this->strDocTerreno) . ',
                             "tipo_beneficio" = ' . $objDatabase->SqlVariable($this->strTipoBeneficio) . ',
                             "forma_ocupacion" = ' . $objDatabase->SqlVariable($this->strFormaOcupacion) . ',
@@ -982,8 +982,8 @@ class HogarGen extends QBaseClass {
 			$this->strMz = $objReloaded->strMz;
 			$this->strPc = $objReloaded->strPc;
 			$this->strTelefono = $objReloaded->strTelefono;
+			$this->strDireccion = $objReloaded->strDireccion;
 			$this->blnDeclaracionNoOcupacion = $objReloaded->blnDeclaracionNoOcupacion;
-			$this->strTipoDocAdj = $objReloaded->strTipoDocAdj;
 			$this->strDocTerreno = $objReloaded->strDocTerreno;
 			$this->strTipoBeneficio = $objReloaded->strTipoBeneficio;
 			$this->strFormaOcupacion = $objReloaded->strFormaOcupacion;
@@ -1065,19 +1065,19 @@ class HogarGen extends QBaseClass {
                  */
                 return $this->strTelefono;
 
+            case 'Direccion':
+                /**
+                 * Gets the value for strDireccion 
+                 * @return string
+                 */
+                return $this->strDireccion;
+
             case 'DeclaracionNoOcupacion':
                 /**
                  * Gets the value for blnDeclaracionNoOcupacion 
                  * @return boolean
                  */
                 return $this->blnDeclaracionNoOcupacion;
-
-            case 'TipoDocAdj':
-                /**
-                 * Gets the value for strTipoDocAdj 
-                 * @return string
-                 */
-                return $this->strTipoDocAdj;
 
             case 'DocTerreno':
                 /**
@@ -1282,6 +1282,21 @@ class HogarGen extends QBaseClass {
 						throw $objExc;
 					}
 
+				case 'Direccion':
+					/**
+					 * Sets the value for strDireccion 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strDireccion = QType::Cast($mixValue, QType::String));
+                                                return ($this->strDireccion = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 				case 'DeclaracionNoOcupacion':
 					/**
 					 * Sets the value for blnDeclaracionNoOcupacion 
@@ -1292,21 +1307,6 @@ class HogarGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->blnDeclaracionNoOcupacion = QType::Cast($mixValue, QType::Boolean));
                                                 return ($this->blnDeclaracionNoOcupacion = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'TipoDocAdj':
-					/**
-					 * Sets the value for strTipoDocAdj 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strTipoDocAdj = QType::Cast($mixValue, QType::String));
-                                                return ($this->strTipoDocAdj = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1651,8 +1651,8 @@ class HogarGen extends QBaseClass {
 			$strToReturn .= '<element name="Mz" type="xsd:string"/>';
 			$strToReturn .= '<element name="Pc" type="xsd:string"/>';
 			$strToReturn .= '<element name="Telefono" type="xsd:string"/>';
+			$strToReturn .= '<element name="Direccion" type="xsd:string"/>';
 			$strToReturn .= '<element name="DeclaracionNoOcupacion" type="xsd:boolean"/>';
-			$strToReturn .= '<element name="TipoDocAdj" type="xsd:string"/>';
 			$strToReturn .= '<element name="DocTerreno" type="xsd:string"/>';
 			$strToReturn .= '<element name="TipoBeneficio" type="xsd:string"/>';
 			$strToReturn .= '<element name="FormaOcupacion" type="xsd:string"/>';
@@ -1705,11 +1705,11 @@ class HogarGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'Telefono')) {
 				$objToReturn->strTelefono = $objSoapObject->Telefono;
             }
+			if (property_exists($objSoapObject, 'Direccion')) {
+				$objToReturn->strDireccion = $objSoapObject->Direccion;
+            }
 			if (property_exists($objSoapObject, 'DeclaracionNoOcupacion')) {
 				$objToReturn->blnDeclaracionNoOcupacion = $objSoapObject->DeclaracionNoOcupacion;
-            }
-			if (property_exists($objSoapObject, 'TipoDocAdj')) {
-				$objToReturn->strTipoDocAdj = $objSoapObject->TipoDocAdj;
             }
 			if (property_exists($objSoapObject, 'DocTerreno')) {
 				$objToReturn->strDocTerreno = $objSoapObject->DocTerreno;

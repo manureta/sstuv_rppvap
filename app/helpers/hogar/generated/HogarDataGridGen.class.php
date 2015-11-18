@@ -28,8 +28,8 @@ class HogarDataGridGen extends QFilteredDataGrid {
         'Mz' => true,
         'Pc' => true,
         'Telefono' => true,
+        'Direccion' => true,
         'DeclaracionNoOcupacion' => true,
-        'TipoDocAdj' => true,
         'DocTerreno' => true,
         'TipoBeneficio' => true,
         'FormaOcupacion' => true,
@@ -74,8 +74,8 @@ class HogarDataGridGen extends QFilteredDataGrid {
         if (HogarDataGrid::$strColumnsArray['Mz']) $this->MetaAddColumn('Mz')->Title = QApplication::Translate('Mz');
         if (HogarDataGrid::$strColumnsArray['Pc']) $this->MetaAddColumn('Pc')->Title = QApplication::Translate('Pc');
         if (HogarDataGrid::$strColumnsArray['Telefono']) $this->MetaAddColumn('Telefono')->Title = QApplication::Translate('Telefono');
+        if (HogarDataGrid::$strColumnsArray['Direccion']) $this->MetaAddColumn('Direccion')->Title = QApplication::Translate('Direccion');
         if (HogarDataGrid::$strColumnsArray['DeclaracionNoOcupacion']) $this->MetaAddColumn('DeclaracionNoOcupacion')->Title = QApplication::Translate('DeclaracionNoOcupacion');
-        if (HogarDataGrid::$strColumnsArray['TipoDocAdj']) $this->MetaAddColumn('TipoDocAdj')->Title = QApplication::Translate('TipoDocAdj');
         if (HogarDataGrid::$strColumnsArray['DocTerreno']) $this->MetaAddColumn('DocTerreno')->Title = QApplication::Translate('DocTerreno');
         if (HogarDataGrid::$strColumnsArray['TipoBeneficio']) $this->MetaAddColumn('TipoBeneficio')->Title = QApplication::Translate('TipoBeneficio');
         if (HogarDataGrid::$strColumnsArray['FormaOcupacion']) $this->MetaAddColumn('FormaOcupacion')->Title = QApplication::Translate('FormaOcupacion');
@@ -235,8 +235,8 @@ class HogarDataGridGen extends QFilteredDataGrid {
 				case 'Mz': return QQN::Hogar()->Mz;
 				case 'Pc': return QQN::Hogar()->Pc;
 				case 'Telefono': return QQN::Hogar()->Telefono;
+				case 'Direccion': return QQN::Hogar()->Direccion;
 				case 'DeclaracionNoOcupacion': return QQN::Hogar()->DeclaracionNoOcupacion;
-				case 'TipoDocAdj': return QQN::Hogar()->TipoDocAdj;
 				case 'DocTerreno': return QQN::Hogar()->DocTerreno;
 				case 'TipoBeneficio': return QQN::Hogar()->TipoBeneficio;
 				case 'FormaOcupacion': return QQN::Hogar()->FormaOcupacion;
