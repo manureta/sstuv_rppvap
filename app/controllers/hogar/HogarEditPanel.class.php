@@ -40,6 +40,16 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->btnCreateNew->Enabled = false;
         }
 
+        $this->txtSecc->AddAction(new QKeyPressEvent(), new QAjaxControlAction($this,'txtSecc_Change'));
+
+    }
+
+    public function txtSecc_Change($strFormId, $strControlId, $strParameter) {
+        error_log($this->txtSecc->Text);
+        if(preg_match('/[0-9]/', $this->txtSecc->Text)){
+            QApplication::DisplayAlert("El campo Sección no debe contener valores numéricos");
+        }
+
     }
 
     protected function metaControl_Create($strControlsArray){
@@ -91,7 +101,7 @@ class HogarEditPanel extends HogarEditPanelGen {
 
     public function btnCancel_Click($strFormId, $strControlId, $strParameter){
 
-        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/censo/folio/".QApplication::QueryString("id")) ; 
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__."/censo/folio/".QApplication::QueryString("id")) ;
     }
 
 
