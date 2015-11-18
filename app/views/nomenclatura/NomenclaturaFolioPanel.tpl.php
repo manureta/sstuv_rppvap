@@ -22,10 +22,10 @@
                     Regularización e integración socio-urbana
                 </a>
             </li>
-            <?php if(Permission::PuedeEditarCenso()){ ?>
+            <?php if(Permission::PuedeVerCenso()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/censo/folio/<?=$folio;?>">
-                    Censo / Adjudicación
+                    Censo y Adjudicación
                 </a>
             </li>
             <?php } ?>

@@ -20,7 +20,10 @@ class CensoFolioPanel extends HogarIndexPanel {
             $objExc->IncrementOffset();
             throw $objExc;
         }
+        
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
+        $this->dtgHogares->AddCondition(QQ::Equal(QQN::Hogar()->IdFolio,QApplication::QueryString("id")));
+        $this->dtgHogares->ShowFilter=true;
         if(Permission::EsDuplicado($this->objFolio->Id)){
           $this->txtCodFolioOriginal=Folio::load($this->objFolio->FolioOriginal)->CodFolio;
         }
@@ -31,15 +34,15 @@ class CensoFolioPanel extends HogarIndexPanel {
         if (isset($this->pnlEditHogar))
             $this->Form->RemoveControl($this->pnlEditHogar->ControlId);
 
-        $this->pnlEditHogar = new HogarEditPanel($this, array(), $intId);
-        $this->pnlEditHogar->lstIdFolioObject->Value = $this->objFolio->Id;
+        $this->pnlEditHogar = new HogarEditPanel($this, array(), $intId);        
 
-        $this->pnlEditHogar->lstIdFolioObject->Text = $this->objFolio->__toString();
-        $this->pnlEditHogar->lstIdFolioObject->Enabled = false;
+        if(is_null($intId)){
+            $this->pnlEditHogar->lstIdFolioObject->Value = $this->objFolio->Id;
+            $this->pnlEditHogar->calFechaAlta->DateTime=QDateTime::Now();
+        }
+
         $this->pnlEditHogar->lstIdFolioObject->Visible = false;
-
-        $this->pnlEditHogar->calFechaAlta->DateTime=QDateTime::Now();
-
+    
         return $this->pnlEditHogar;
     }
 

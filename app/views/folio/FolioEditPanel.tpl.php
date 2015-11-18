@@ -41,10 +41,10 @@
                 </a>
             </li>
 
-            <?php if(Permission::PuedeEditarCenso()){ ?>
+            <?php if(Permission::PuedeVerCenso()){ ?>
             <li role="tab" class="done" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/censo/folio/<?=$folio;?>">
-                    Censo / Adjudicación
+                    Censo y Adjudicación
                 </a>
             </li>
             <?php } ?>
@@ -60,7 +60,7 @@
             <?php if(Permission::PuedeVerHoja5()){ ?>
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?=$link_interno;?>">
-                    <span class="number">6.</span> Uso Interno
+                    Uso Interno
                 </a>
             </li>
             <?php } ?>

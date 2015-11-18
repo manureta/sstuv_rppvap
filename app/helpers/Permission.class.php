@@ -220,6 +220,11 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeEditarCenso(){
       //EsUsoInterno tambien devuelve true si es admin
+      return (self::EsUsoInterno(array("uso_interno_social")) );
+    }
+
+    public static function PuedeVerCenso(){
+      //EsUsoInterno tambien devuelve true si es admin
       return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) );
     }
 

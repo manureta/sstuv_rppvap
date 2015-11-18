@@ -27,7 +27,7 @@
             </li>
              <li role="tab" class="current" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="#">
-                    Censo / Adjudicación
+                    Censo y Adjudicación
                 </a>
             </li>
           <?php if(Permission::PuedeVerComentarios()){ ?>

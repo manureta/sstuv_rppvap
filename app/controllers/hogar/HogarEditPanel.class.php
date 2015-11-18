@@ -97,6 +97,7 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->objControlsArray['txtPc'] = $this->mctHogar->txtPc_Create();
         if (in_array('txtTelefono',$strControlsArray))
             $this->objControlsArray['txtTelefono'] = $this->mctHogar->txtTelefono_Create();
+            $this->objControlsArray['txtTelefono']->Name="Teléfono";
         if (in_array('chkDeclaracionNoOcupacion',$strControlsArray))
             $this->objControlsArray['chkDeclaracionNoOcupacion'] = $this->mctHogar->chkDeclaracionNoOcupacion_Create();
             $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Los ocupantes declaran que no son titulares de otro inmueble";        
