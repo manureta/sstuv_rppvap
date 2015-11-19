@@ -100,7 +100,46 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
 
     }
 
+    public function dniValido(){
+      $blnReturn=true;
+      $dni=$this->objControlsArray['txtDoc']->Text;
+      if($dni >=99999999){
+        $this->objControlsArray['txtDoc']->AddCssClass("has-error");
+        QApplication::DisplayNotification("Ese número ingresado es inválido.","W");
+        $blnReturn=false;
+      }else{
+        $objOcupanteArray = Ocupante::QueryArray(
+          QQ::In(QQN::Ocupante()->Doc, array($dni))
+        );
+        if(count($objOcupanteArray)>0){
+            $this->objControlsArray['txtDoc']->AddCssClass("has-error");
+            QApplication::DisplayNotification("Ese número de documento ya figura en el sistema y no puede ser duplicado.","W");
+            $blnReturn=false;
+        }
+      }
 
+      return $blnReturn;
+
+    }
+
+    public function btnSave_Click($strFormId, $strControlId, $strParameter) {
+       if($this->dniValido()){
+          if (!$this->mctOcupante->objOcupante->__Restored)
+              $this->objParentControl->objParentControl->lstOcupanteAsId->objParent->AddOcupanteAsId($this->mctOcupante->objOcupante);
+          $this->mctOcupante->Bind();
+          $this->objCallerControl->MarkAsModified();
+          //Busco el EditPanel Padre
+          $objParentControl = $this->objCallerControl;
+          while (!$objParentControl instanceof EditPanelBase) {
+              if ($objParentControl instanceof QForm) return; // Si no soy hijo de un EditPanel (que no debiera) salgo
+              $objParentControl = $objParentControl->objParentControl;
+          }
+
+          $objParentControl->AddModifiedChild($this->mctOcupante->objOcupante);
+          $this->blnChangesMade = true;
+          $this->objParentControl->HideDialogBox();
+      }
+    }
 
 
   protected function metaControl_Create($strControlsArray, $objOcupante){

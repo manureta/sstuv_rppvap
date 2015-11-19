@@ -1,6 +1,8 @@
 <?php
 class HogarEditPanel extends HogarEditPanelGen {
   public $objFolio;
+  public $lstTipoBeneficio;
+
   public static $strControlsArray = array(
         'lblId' => false,
         'lstIdFolioObject' => true,
@@ -30,8 +32,33 @@ class HogarEditPanel extends HogarEditPanelGen {
 
         $this->Template=__VIEW_DIR__."/censo/CensoEditPanel.tpl.php";
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
-        //$this->objFolio=Folio::load(QApplication::QueryString("id"));
 
+        $objEncuandre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$this->lstIdFolioObject->Value));
+        $this->txtTipoBeneficio->Visible=false;
+        $this->lstTipoBeneficio=new QListBox($this);
+        $this->lstTipoBeneficio->Name="Tipo de beneficio";
+        $this->lstTipoBeneficio->AddItem($this->txtTipoBeneficio->Text,$this->txtTipoBeneficio->Text);
+
+        if($objEncuandre->Decreto222595){
+          $this->lstTipoBeneficio->AddItem('Decreto 2225/95','Decreto 2225/95');
+        }
+        if($objEncuandre->Ley24374){
+          $this->lstTipoBeneficio->AddItem('Ley 24374','Ley 24374');
+        }
+        if($objEncuandre->Decreto81588){
+          $this->lstTipoBeneficio->AddItem('Decreto 815/88','Decreto 815/88');
+        }
+        if($objEncuandre->Decreto468696){
+          $this->lstTipoBeneficio->AddItem('Decreto 4686/96','Decreto 4686/96');
+        }
+        if($objEncuandre->Ley14449){
+          $this->lstTipoBeneficio->AddItem('Ley 14.449','Ley 14.449');
+        }
+        if($objEncuandre->TieneExpropiacion){
+          $this->lstTipoBeneficio->AddItem('Expropiación-'.$objEncuandre->Expropiacion,'Expropiación-'.$objEncuandre->Expropiacion);
+        }
+
+        $this->lstTipoBeneficio->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTipoBeneficio_Change'));
 
        if(!Permission::PuedeEditarCenso()){
             foreach($this->objControlsArray as $objControl){
@@ -42,33 +69,44 @@ class HogarEditPanel extends HogarEditPanelGen {
 
     }
 
+
+    public function lstTipoBeneficio_Change($strFormId, $strControlId, $strParameter) {
+        $this->txtTipoBeneficio->Text=$this->lstTipoBeneficio->SelectedValue;
+    }
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-        
+
         if($this->validar_campos()){
           $this->mctHogar->Save();
           foreach ($this->objModifiedChildsArray as $obj) {
               $obj->Save();
           }
           $this->objModifiedChildsArray = array();
-          QApplication::DisplayNotification('Los datos se guardaron correctamente');  
+          QApplication::DisplayNotification('Los datos se guardaron correctamente');
+          $this->txtCirc->RemoveCssClass("has-error");
+
+          $this->lstOcupanteAsId->Refresh();
         }
-        
+
     }
 
     public function validar_campos() {
         $blnReturn=true;
-        
+
         if(preg_match('/[0-9]/', $this->txtSecc->Text)){
             $this->txtSecc->AddCssClass("has-error");
             QApplication::DisplayNotification('No se aceptan valores numéricos en Sección','W');
             $blnReturn=false;
+        }else {
+          $this->txtSecc->RemoveCssClass("has-error");
         }
 
         if(preg_match('/[a-z]/', $this->txtCirc->Text)){
             $this->txtCirc->AddCssClass("has-error");
             QApplication::DisplayNotification('Solo se aceptan valores numéricos en Circ','W');
             $blnReturn=false;
+        }else{
+          $this->txtCirc->RemoveCssClass("has-error");
         }
         return $blnReturn;
 
@@ -100,7 +138,7 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->objControlsArray['txtTelefono']->Name="Teléfono";
         if (in_array('chkDeclaracionNoOcupacion',$strControlsArray))
             $this->objControlsArray['chkDeclaracionNoOcupacion'] = $this->mctHogar->chkDeclaracionNoOcupacion_Create();
-            $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Los ocupantes declaran que no son titulares de otro inmueble";        
+            $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Los ocupantes declaran que no son titulares de otro inmueble";
         if (in_array('txtDocTerreno',$strControlsArray))
             $this->objControlsArray['txtDocTerreno'] = $this->mctHogar->txtDocTerreno_Create();
             $this->objControlsArray['txtDocTerreno']->Name="Documentación del terreno";
@@ -115,7 +153,7 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->objControlsArray['txtFechaIngreso']->Name="Fecha de ingreso";
         if (in_array('lstOcupanteAsId',$strControlsArray))
             $this->objControlsArray['lstOcupanteAsId'] = $this->mctHogar->lstOcupanteAsId_Create();
-        if (in_array('txtDireccion',$strControlsArray)) 
+        if (in_array('txtDireccion',$strControlsArray))
             $this->objControlsArray['txtDireccion'] = $this->mctHogar->txtDireccion_Create();
             $this->objControlsArray['txtDireccion']->Name="Dirección";
     }

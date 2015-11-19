@@ -7,7 +7,7 @@
 		<?php $_CONTROL->calFechaAlta->RenderWithName(); ?>
 	  	<?php $_CONTROL->txtTelefono->RenderWithName(); ?>
 	  	<?php $_CONTROL->txtDireccion->RenderWithName(); ?>
-	    <?php $_CONTROL->txtTipoBeneficio->RenderWithName(); ?>
+	    <?php $_CONTROL->lstTipoBeneficio->RenderWithName(); ?>
 
 	</div>
 
@@ -28,7 +28,7 @@
 		</div>
     	<?php $_CONTROL->txtFormaOcupacion->RenderWithName(); ?>
     	<?php $_CONTROL->txtFechaIngreso->RenderWithName(); ?>
-    	<?php $_CONTROL->txtDocTerreno->RenderWithName(); ?>		
+    	<?php $_CONTROL->txtDocTerreno->RenderWithName(); ?>
 		<?php $_CONTROL->chkDeclaracionNoOcupacion->RenderWithName(); ?>
 	</div>
 
@@ -41,6 +41,10 @@
           <label></label>
       </div>
       <?php $_CONTROL->lstOcupanteAsId->Render(); ?>
+      <div class="alert alert-danger" role="alert">
+         <span class="icon-exclamation-sign" aria-hidden="true"></span>
+         Los cambios de los ocupantes serán guardados cuando se guarden los cambios del "Grupo Familiar"
+      </div>
   </div>
 
 </div>
