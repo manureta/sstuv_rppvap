@@ -34,41 +34,50 @@ class HogarEditPanel extends HogarEditPanelGen {
         $this->Template=__VIEW_DIR__."/censo/CensoEditPanel.tpl.php";
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
-        $objEncuandre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$this->lstIdFolioObject->Value));
+        error_log(QApplication::QueryString("id"));
+
+        $objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));
 
         $opcionesBeneficio = array(
           'decreto_222595' => 'Decreto 2225/95',
           'ley_24374' =>'Ley 24374',
           'decreto_81588' =>'Decreto 815/88',
           'decreto_468696' =>'Decreto 4686/96',
-          'ley_14449' => 'Ley 14.449',
-          $objEncuandre->Expropiacion => $objEncuandre->Expropiacion
+          'ley_14449' => 'Ley 14.449'
          );
+
+         if($objEncuadre->TieneExpropiacion){
+           $opcionesBeneficio[$objEncuadre->Expropiacion]=$objEncuadre->Expropiacion;
+         }
 
         $this->txtTipoBeneficio->Visible=false;
         $this->lstTipoBeneficio=new QListBox($this);
         $this->lstTipoBeneficio->Name="Tipo de beneficio";
-        $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$this->txtTipoBeneficio->Text],$this->txtTipoBeneficio->Text);
+        if(!isset($opcionesBeneficio[$this->txtTipoBeneficio->Text])){
+          $this->lstTipoBeneficio->AddItem("","");
+        }else{
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$this->txtTipoBeneficio->Text],$this->txtTipoBeneficio->Text);
+        }
 
 
 
-        if($objEncuandre->Decreto222595){
+        if($objEncuadre->Decreto222595){
           $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_222595'],'decreto_222595');
         }
-        if($objEncuandre->Ley24374){
+        if($objEncuadre->Ley24374){
           $this->lstTipoBeneficio->AddItem($opcionesBeneficio['ley_24374'],'ley_24374');
         }
-        if($objEncuandre->Decreto81588){
+        if($objEncuadre->Decreto81588){
           $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_81588'],'decreto_81588');
         }
-        if($objEncuandre->Decreto468696){
+        if($objEncuadre->Decreto468696){
           $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_468696'],'decreto_468696');
         }
-        if($objEncuandre->Ley14449){
+        if($objEncuadre->Ley14449){
           $this->lstTipoBeneficio->AddItem($opcionesBeneficio['ley_14449'],'ley_14449');
         }
-        if($objEncuandre->TieneExpropiacion){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$objEncuandre->Expropiacion],$objEncuandre->Expropiacion);
+        if($objEncuadre->TieneExpropiacion){
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$objEncuadre->Expropiacion],$objEncuadre->Expropiacion);
         }
 
        $this->lstTipoBeneficio->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTipoBeneficio_Change'));

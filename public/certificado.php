@@ -14,7 +14,7 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
     $this->template="error/error.tpl.php";
     $this->error="";
     try{
-        if(isset($_GET['id'])){
+        if(isset($_GET['id']) && ($_GET['id'])>0){
           $this->objHogar=Hogar::load($_GET['id']);
           $arrOcupantes=Ocupante::QueryArray(QQ::Equal(QQN::Ocupante()->IdHogar,$this->objHogar->Id));
           if(count($arrOcupantes)>0){
@@ -31,6 +31,8 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
           }
 
 
+        }else{
+          $this->error="<p>El id del grupo familiar (lote) no es válido o es nulo</p><p>Este error seguramente se debe a que todavía no se guardaron los cambios del grupo familiar</p>";
         }
 
 
