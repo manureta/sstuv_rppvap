@@ -1,1 +1,5 @@
-<p>ESTA ES UNA PÁGINA DE ERROR</p>
+<p>Ha ocurrido un error</p>
+
+<p>
+  <?=$this->error;?>
+</p>

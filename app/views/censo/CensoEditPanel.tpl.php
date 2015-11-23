@@ -30,6 +30,7 @@
     	<?php $_CONTROL->txtFechaIngreso->RenderWithName(); ?>
     	<?php $_CONTROL->txtDocTerreno->RenderWithName(); ?>
 		<?php $_CONTROL->chkDeclaracionNoOcupacion->RenderWithName(); ?>
+    <?php $_CONTROL->btnCertificado->RenderWithName(); ?>
 	</div>
 
 <div class="well bs-component container">

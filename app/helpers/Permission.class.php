@@ -228,6 +228,12 @@ abstract class Permission extends PermissionBase {
       return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) );
     }
 
+    public static function PuedeImprimirCertificado(){
+      //EsUsoInterno tambien devuelve true si es admin
+      return (self::PuedeVerCenso() );
+    }
+
+
     public static function InscripcionProvisoria(Folio $objFolio){
           try {
             $id=$objFolio->Id;

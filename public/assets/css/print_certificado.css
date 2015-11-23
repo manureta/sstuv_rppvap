@@ -1,0 +1,27 @@
+
+page[size="A4"] {
+
+  width: 21cm;
+  height: 29.7cm;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1cm;
+  page-break-after: always;
+  background: #FFFFFF;
+
+}
+@media print {
+  body, page[size="A4"] {
+    margin: 20;
+    box-shadow: 0;
+  }
+}
+body{
+	font-family:arial;
+  
+	/*
+	width:780px;
+	padding-left: 250px;
+	margin: 20px;
+	*/
+}

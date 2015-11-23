@@ -165,7 +165,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
           $this->objControlsArray['txtEstadoCivil']->Name="Estado civil";
       if (in_array('txtDeOConQuien',$strControlsArray))
           $this->objControlsArray['txtDeOConQuien'] = $this->mctOcupante->txtDeOConQuien_Create();
-          $this->objControlsArray['txtDeOConQuien']->PlaceHolder="Con quién o de quién";
+          $this->objControlsArray['txtDeOConQuien']->PlaceHolder="Con quién / de quién";
 
       if (in_array('txtOcupacion',$strControlsArray))
           $this->objControlsArray['txtOcupacion'] = $this->mctOcupante->txtOcupacion_Create();
@@ -180,6 +180,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
       if (in_array('txtDoc',$strControlsArray))
           $this->objControlsArray['txtDoc'] = $this->mctOcupante->txtDoc_Create();
           $this->objControlsArray['txtDoc']->Name="Número de documento";
+          $this->objControlsArray['txtDoc']->PlaceHolder="sin puntos ni letras";
       if (in_array('txtNacionalidad',$strControlsArray))
           $this->objControlsArray['txtNacionalidad'] = $this->mctOcupante->txtNacionalidad_Create();
       if (in_array('txtNyaMadre',$strControlsArray))

@@ -2,6 +2,7 @@
 class HogarEditPanel extends HogarEditPanelGen {
   public $objFolio;
   public $lstTipoBeneficio;
+  public $btnCertificado;
 
   public static $strControlsArray = array(
         'lblId' => false,
@@ -34,31 +35,53 @@ class HogarEditPanel extends HogarEditPanelGen {
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
         $objEncuandre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,$this->lstIdFolioObject->Value));
+
+        $opcionesBeneficio = array(
+          'decreto_222595' => 'Decreto 2225/95',
+          'ley_24374' =>'Ley 24374',
+          'decreto_81588' =>'Decreto 815/88',
+          'decreto_468696' =>'Decreto 4686/96',
+          'ley_14449' => 'Ley 14.449',
+          $objEncuandre->Expropiacion => $objEncuandre->Expropiacion
+         );
+
         $this->txtTipoBeneficio->Visible=false;
         $this->lstTipoBeneficio=new QListBox($this);
         $this->lstTipoBeneficio->Name="Tipo de beneficio";
-        $this->lstTipoBeneficio->AddItem($this->txtTipoBeneficio->Text,$this->txtTipoBeneficio->Text);
+        $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$this->txtTipoBeneficio->Text],$this->txtTipoBeneficio->Text);
+
+
 
         if($objEncuandre->Decreto222595){
-          $this->lstTipoBeneficio->AddItem('Decreto 2225/95','Decreto 2225/95');
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_222595'],'decreto_222595');
         }
         if($objEncuandre->Ley24374){
-          $this->lstTipoBeneficio->AddItem('Ley 24374','Ley 24374');
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['ley_24374'],'ley_24374');
         }
         if($objEncuandre->Decreto81588){
-          $this->lstTipoBeneficio->AddItem('Decreto 815/88','Decreto 815/88');
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_81588'],'decreto_81588');
         }
         if($objEncuandre->Decreto468696){
-          $this->lstTipoBeneficio->AddItem('Decreto 4686/96','Decreto 4686/96');
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_468696'],'decreto_468696');
         }
         if($objEncuandre->Ley14449){
-          $this->lstTipoBeneficio->AddItem('Ley 14.449','Ley 14.449');
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['ley_14449'],'ley_14449');
         }
         if($objEncuandre->TieneExpropiacion){
-          $this->lstTipoBeneficio->AddItem('Expropiación-'.$objEncuandre->Expropiacion,'Expropiación-'.$objEncuandre->Expropiacion);
+          $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$objEncuandre->Expropiacion],$objEncuandre->Expropiacion);
         }
 
-        $this->lstTipoBeneficio->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTipoBeneficio_Change'));
+       $this->lstTipoBeneficio->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTipoBeneficio_Change'));
+
+       $this->btnCertificado = new QButton($this);
+       $this->btnCertificado->AddCssClass('btn-yellow btn ');
+       $this->btnCertificado->Text = $this->textoBtnCertificado();
+       $this->btnCertificado->Icon = 'print';
+       $this->btnCertificado->Enabled = true;
+       $this->btnCertificado->ToolTip = "imprimir boleta";
+       $this->btnCertificado->ActionParameter = $this->intId;
+       $this->btnCertificado->AddAction(new QClickEvent(), new QAjaxControlAction($this, "Certificado_Click"));
+
 
        if(!Permission::PuedeEditarCenso()){
             foreach($this->objControlsArray as $objControl){
@@ -69,9 +92,26 @@ class HogarEditPanel extends HogarEditPanelGen {
 
     }
 
+    public function textoBtnCertificado(){
+      switch ($this->txtTipoBeneficio->Text) {
+        case 'decreto_81588':
+          return 'Boleta Compraventa';
+          break;
+        default:
+          return 'No disponible';
+          break;
+      }
+    }
+
+    public function Certificado_Click($strFormId, $strControlId, $strParameter) {
+         $url=__VIRTUAL_DIRECTORY__."/certificado.php?id=$strParameter";
+         QApplication::ExecuteJavascript("window.open('$url');");
+
+     }
 
     public function lstTipoBeneficio_Change($strFormId, $strControlId, $strParameter) {
         $this->txtTipoBeneficio->Text=$this->lstTipoBeneficio->SelectedValue;
+        $this->btnCertificado->Text=$this->textoBtnCertificado();
     }
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
