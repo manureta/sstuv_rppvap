@@ -15,6 +15,10 @@
 
 	include $this->template;
 
+  if($this->notificacion){
+    include "notificacion.tpl.php";
+  }
+
 
 ?>
 

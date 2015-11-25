@@ -3,6 +3,9 @@ class HogarEditPanel extends HogarEditPanelGen {
   public $objFolio;
   public $lstTipoBeneficio;
   public $btnCertificado;
+  public $objEncuadre;
+  public $opcionesBeneficio;
+
 
   public static $strControlsArray = array(
       'lblId' => false,
@@ -37,11 +40,9 @@ class HogarEditPanel extends HogarEditPanelGen {
         $this->Template=__VIEW_DIR__."/censo/CensoEditPanel.tpl.php";
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
-        error_log(QApplication::QueryString("id"));
+        $this->objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));
 
-        $objEncuadre=EncuadreLegal::QuerySingle(QQ::Equal(QQN::EncuadreLegal()->IdFolio,QApplication::QueryString("id")));
-
-        $opcionesBeneficio = array(
+        $this->opcionesBeneficio = array(
           'decreto_222595' => 'Decreto 2225/95',
           'ley_24374' =>'Ley 24374',
           'decreto_81588' =>'Decreto 815/88',
@@ -49,38 +50,40 @@ class HogarEditPanel extends HogarEditPanelGen {
           'ley_14449' => 'Ley 14.449'
          );
 
-         if($objEncuadre->TieneExpropiacion){
-           $opcionesBeneficio[$objEncuadre->Expropiacion]=$objEncuadre->Expropiacion;
+         if($this->objEncuadre->TieneExpropiacion){
+           $this->opcionesBeneficio[$this->objEncuadre->Expropiacion]=$this->objEncuadre->Expropiacion;
          }
-
+         //ESCONDO TEXTO Y CREO LISTADO
         $this->txtTipoBeneficio->Visible=false;
         $this->lstTipoBeneficio=new QListBox($this);
         $this->lstTipoBeneficio->Name="Tipo de beneficio";
-        if(!isset($opcionesBeneficio[$this->txtTipoBeneficio->Text])){
+        //inicializo en vacio si todavia no existe
+        if(!isset($this->opcionesBeneficio[$this->txtTipoBeneficio->Text])){
           $this->lstTipoBeneficio->AddItem("","");
         }else{
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$this->txtTipoBeneficio->Text],$this->txtTipoBeneficio->Text);
+          //seteo el valor actual como primero en el listado
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio[$this->txtTipoBeneficio->Text],$this->txtTipoBeneficio->Text);
         }
 
 
 
-        if($objEncuadre->Decreto222595){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_222595'],'decreto_222595');
+        if($this->objEncuadre->Decreto222595){
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio['decreto_222595'],'decreto_222595');
         }
-        if($objEncuadre->Ley24374){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['ley_24374'],'ley_24374');
+        if($this->objEncuadre->Ley24374){
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio['ley_24374'],'ley_24374');
         }
-        if($objEncuadre->Decreto81588){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_81588'],'decreto_81588');
+        if($this->objEncuadre->Decreto81588){
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio['decreto_81588'],'decreto_81588');
         }
-        if($objEncuadre->Decreto468696){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['decreto_468696'],'decreto_468696');
+        if($this->objEncuadre->Decreto468696){
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio['decreto_468696'],'decreto_468696');
         }
-        if($objEncuadre->Ley14449){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio['ley_14449'],'ley_14449');
+        if($this->objEncuadre->Ley14449){
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio['ley_14449'],'ley_14449');
         }
-        if($objEncuadre->TieneExpropiacion){
-          $this->lstTipoBeneficio->AddItem($opcionesBeneficio[$objEncuadre->Expropiacion],$objEncuadre->Expropiacion);
+        if($this->objEncuadre->TieneExpropiacion){
+          $this->lstTipoBeneficio->AddItem($this->opcionesBeneficio[$this->objEncuadre->Expropiacion],$this->objEncuadre->Expropiacion);
         }
 
        $this->lstTipoBeneficio->AddAction(new QChangeEvent(), new QAjaxControlAction($this,'lstTipoBeneficio_Change'));
@@ -109,8 +112,17 @@ class HogarEditPanel extends HogarEditPanelGen {
         case 'decreto_81588':
           return 'Boleta Compraventa';
           break;
+        case 'decreto_222595':
+          return 'Certificado de adjudicación';
+          break;
         default:
-          return 'No disponible';
+          error_log($this->opcionesBeneficio[$this->objEncuadre->Expropiacion]);
+          error_log($this->txtTipoBeneficio->Text);
+          if(isset($this->opcionesBeneficio[$this->objEncuadre->Expropiacion]) && $this->opcionesBeneficio[$this->objEncuadre->Expropiacion]==$this->txtTipoBeneficio->Text){
+            return 'Certificado de adjudicación';
+          }else{
+              return 'No disponible';
+          }
           break;
       }
     }
