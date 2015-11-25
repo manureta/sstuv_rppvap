@@ -1,5 +1,9 @@
 <?php
 
+/*
+El valor que se muestra y el que se puede editar es el que está a la derecha de la coma
+NO TOCAR el de la iquierda
+*/
 
 define ('__ADMINISTRADOR_GENERAL_IVBA__', '{Esc. Pablo Sarlo}');
 
