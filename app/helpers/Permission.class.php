@@ -230,7 +230,7 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeImprimirCertificado(){
       //EsUsoInterno tambien devuelve true si es admin
-      return (self::PuedeVerCenso() );
+      return (self::PuedeVerCenso());
     }
 
 

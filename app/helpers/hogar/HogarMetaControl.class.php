@@ -18,7 +18,7 @@ class HogarMetaControl extends HogarMetaControlGen {
       $strConfigArray['Columns']['Edad'] = QApplication::Translate('Edad');
       $strConfigArray['Columns']['Doc'] = QApplication::Translate('DNI');
       $strConfigArray['Columns']['Nacionalidad'] = QApplication::Translate('Nacionalidad');
-      $strConfigArray['Columns']['Referente'] = QApplication::Translate('Referente');
+      $strConfigArray['Columns']['Activo'] = QApplication::Translate('Activo');
 
       $this->lstOcupanteAsId = new QListPanel($this->objParentObject, $this->objHogar, $strConfigArray, $strControlId);
       $this->lstOcupanteAsId->Name = Ocupante::Noun();

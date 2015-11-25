@@ -82,5 +82,6 @@ define ('__MIGRACIONES_DIR__', __MODEL_DIR__.'/migraciones');
 define ('__CUADROS_DIR__',__MODEL_DIR__.'/cuadros');
 if (!defined('__RESOURCES_DIR__')) define('__RESOURCES_DIR__',__PROJECT_DIR__.'/resources');
 
+include "variables_censo_impresion.inc.php";
 
 ?>

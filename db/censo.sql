@@ -14,8 +14,11 @@ CREATE TABLE hogar
   declaracion_no_ocupacion boolean,
   doc_terreno character varying(255),
   tipo_beneficio character varying(255),
-  forma_ocupacion character varying (255),
+  forma_ocupacion character varying(255),
   fecha_ingreso character varying(50),
+  valor_lote character varying(255),
+  cantidad_cuotas character varying(255),
+  valor_cuota character varying(255),
   CONSTRAINT hogar_pkey PRIMARY KEY (id),
   CONSTRAINT hogar_id_folio_fkey FOREIGN KEY (id_folio) REFERENCES folio (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 );
@@ -38,8 +41,7 @@ create table ocupante(
  nacionalidad character varying(255),
  nya_madre character varying(255),
  nya_padre character varying(255),
- relacion_parentesco_jefe_hogar character varying(255),
- referente boolean,
+ activo boolean,
  CONSTRAINT ocupante_pkey PRIMARY KEY (id),
   CONSTRAINT ocupante_hogar_fkey FOREIGN KEY (id_hogar)
       REFERENCES hogar (id) MATCH SIMPLE

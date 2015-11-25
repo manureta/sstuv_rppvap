@@ -20,7 +20,7 @@ class CensoFolioPanel extends HogarIndexPanel {
             $objExc->IncrementOffset();
             throw $objExc;
         }
-        
+
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         $this->dtgHogares->AddCondition(QQ::Equal(QQN::Hogar()->IdFolio,QApplication::QueryString("id")));
         $this->dtgHogares->ShowFilter=true;
@@ -34,15 +34,19 @@ class CensoFolioPanel extends HogarIndexPanel {
         if (isset($this->pnlEditHogar))
             $this->Form->RemoveControl($this->pnlEditHogar->ControlId);
 
-        $this->pnlEditHogar = new HogarEditPanel($this, array(), $intId);        
+        $this->pnlEditHogar = new HogarEditPanel($this, array(), $intId);
 
         if(is_null($intId)){
             $this->pnlEditHogar->lstIdFolioObject->Value = $this->objFolio->Id;
             $this->pnlEditHogar->calFechaAlta->DateTime=QDateTime::Now();
+
+            $this->pnlEditHogar->txtValorLote->Text=__VALOR_TERRENO__;
+            $this->pnlEditHogar->txtCantidadCuotas->Text=__CANTIDAD_CUOTAS__;
+            $this->pnlEditHogar->txtValorCuota->Text=__VALOR_CUOTA__;
         }
 
         $this->pnlEditHogar->lstIdFolioObject->Visible = false;
-    
+
         return $this->pnlEditHogar;
     }
 

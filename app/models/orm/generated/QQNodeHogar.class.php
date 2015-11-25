@@ -35,6 +35,12 @@ class QQNodeHogar extends QQNode {
 					return new QQNode('forma_ocupacion', 'FormaOcupacion', 'string', $this);
 				case 'FechaIngreso':
 					return new QQNode('fecha_ingreso', 'FechaIngreso', 'string', $this);
+				case 'ValorLote':
+					return new QQNode('valor_lote', 'ValorLote', 'string', $this);
+				case 'CantidadCuotas':
+					return new QQNode('cantidad_cuotas', 'CantidadCuotas', 'string', $this);
+				case 'ValorCuota':
+					return new QQNode('valor_cuota', 'ValorCuota', 'string', $this);
 				case 'OcupanteAsId':
 					return new QQReverseReferenceNodeOcupante($this, 'ocupanteasid', 'reverse_reference', 'id_hogar');
 

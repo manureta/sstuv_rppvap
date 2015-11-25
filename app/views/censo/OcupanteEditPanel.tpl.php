@@ -23,8 +23,7 @@
 <?php $_CONTROL->txtNacionalidad->RenderWithName(); ?>
 <?php $_CONTROL->txtNyaMadre->RenderWithName(); ?>
 <?php $_CONTROL->txtNyaPadre->RenderWithName(); ?>
-<?php $_CONTROL->txtRelacionParentescoJefeHogar->RenderWithName(); ?>
-<?php $_CONTROL->chkReferente->RenderWithName(); ?>
+<?php $_CONTROL->chkActivo->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->pnlButtons->Render(); ?>

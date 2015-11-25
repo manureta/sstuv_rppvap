@@ -37,10 +37,8 @@ class QQNodeOcupante extends QQNode {
 					return new QQNode('nya_madre', 'NyaMadre', 'string', $this);
 				case 'NyaPadre':
 					return new QQNode('nya_padre', 'NyaPadre', 'string', $this);
-				case 'RelacionParentescoJefeHogar':
-					return new QQNode('relacion_parentesco_jefe_hogar', 'RelacionParentescoJefeHogar', 'string', $this);
-				case 'Referente':
-					return new QQNode('referente', 'Referente', 'boolean', $this);
+				case 'Activo':
+					return new QQNode('activo', 'Activo', 'boolean', $this);
 
 				case '_PrimaryKeyNode':
 					return new QQNode('id', 'Id', 'integer', $this);

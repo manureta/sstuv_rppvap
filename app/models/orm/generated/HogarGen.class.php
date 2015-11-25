@@ -29,6 +29,9 @@
 	 * @property string $TipoBeneficio the value for strTipoBeneficio 
 	 * @property string $FormaOcupacion the value for strFormaOcupacion 
 	 * @property string $FechaIngreso the value for strFechaIngreso 
+	 * @property string $ValorLote the value for strValorLote 
+	 * @property string $CantidadCuotas the value for strCantidadCuotas 
+	 * @property string $ValorCuota the value for strValorCuota 
 	 * @property Folio $IdFolioObject the value for the Folio object referenced by intIdFolio (Not Null)
 	 * @property-read Ocupante $OcupanteAsId the value for the private _objOcupanteAsId (Read-Only) if set due to an expansion on the ocupante.id_hogar reverse relationship
 	 * @property-read Ocupante[] $OcupanteAsIdArray the value for the private _objOcupanteAsIdArray (Read-Only) if set due to an ExpandAsArray on the ocupante.id_hogar reverse relationship
@@ -171,6 +174,33 @@ class HogarGen extends QBaseClass {
     protected $strFechaIngreso;
     const FechaIngresoMaxLength = 50;
     const FechaIngresoDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column hogar.valor_lote
+     * @var string strValorLote
+     */
+    protected $strValorLote;
+    const ValorLoteMaxLength = 255;
+    const ValorLoteDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column hogar.cantidad_cuotas
+     * @var string strCantidadCuotas
+     */
+    protected $strCantidadCuotas;
+    const CantidadCuotasMaxLength = 255;
+    const CantidadCuotasDefault = null;
+
+
+    /**
+     * Protected member variable that maps to the database column hogar.valor_cuota
+     * @var string strValorCuota
+     */
+    protected $strValorCuota;
+    const ValorCuotaMaxLength = 255;
+    const ValorCuotaDefault = null;
 
 
     /**
@@ -551,6 +581,9 @@ class HogarGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'tipo_beneficio', $strAliasPrefix . 'tipo_beneficio');
 			$objBuilder->AddSelectItem($strTableName, 'forma_ocupacion', $strAliasPrefix . 'forma_ocupacion');
 			$objBuilder->AddSelectItem($strTableName, 'fecha_ingreso', $strAliasPrefix . 'fecha_ingreso');
+			$objBuilder->AddSelectItem($strTableName, 'valor_lote', $strAliasPrefix . 'valor_lote');
+			$objBuilder->AddSelectItem($strTableName, 'cantidad_cuotas', $strAliasPrefix . 'cantidad_cuotas');
+			$objBuilder->AddSelectItem($strTableName, 'valor_cuota', $strAliasPrefix . 'valor_cuota');
 		}
 
 //instantiation_methods
@@ -646,6 +679,12 @@ class HogarGen extends QBaseClass {
 			$objToReturn->strFormaOcupacion = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'fecha_ingreso', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'fecha_ingreso'] : $strAliasPrefix . 'fecha_ingreso';
 			$objToReturn->strFechaIngreso = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'valor_lote', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'valor_lote'] : $strAliasPrefix . 'valor_lote';
+			$objToReturn->strValorLote = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'cantidad_cuotas', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'cantidad_cuotas'] : $strAliasPrefix . 'cantidad_cuotas';
+			$objToReturn->strCantidadCuotas = $objDbRow->GetColumn($strAliasName, 'VarChar');
+			$strAliasName = array_key_exists($strAliasPrefix . 'valor_cuota', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'valor_cuota'] : $strAliasPrefix . 'valor_cuota';
+			$objToReturn->strValorCuota = $objDbRow->GetColumn($strAliasName, 'VarChar');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -849,7 +888,10 @@ class HogarGen extends QBaseClass {
                             "doc_terreno",
                             "tipo_beneficio",
                             "forma_ocupacion",
-                            "fecha_ingreso"
+                            "fecha_ingreso",
+                            "valor_lote",
+                            "cantidad_cuotas",
+                            "valor_cuota"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdFolio) . ',
                             ' . $objDatabase->SqlVariable($this->dttFechaAlta) . ',
@@ -863,7 +905,10 @@ class HogarGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strDocTerreno) . ',
                             ' . $objDatabase->SqlVariable($this->strTipoBeneficio) . ',
                             ' . $objDatabase->SqlVariable($this->strFormaOcupacion) . ',
-                            ' . $objDatabase->SqlVariable($this->strFechaIngreso) . '
+                            ' . $objDatabase->SqlVariable($this->strFechaIngreso) . ',
+                            ' . $objDatabase->SqlVariable($this->strValorLote) . ',
+                            ' . $objDatabase->SqlVariable($this->strCantidadCuotas) . ',
+                            ' . $objDatabase->SqlVariable($this->strValorCuota) . '
                         )
                     ');
 
@@ -891,7 +936,10 @@ class HogarGen extends QBaseClass {
                             "doc_terreno" = ' . $objDatabase->SqlVariable($this->strDocTerreno) . ',
                             "tipo_beneficio" = ' . $objDatabase->SqlVariable($this->strTipoBeneficio) . ',
                             "forma_ocupacion" = ' . $objDatabase->SqlVariable($this->strFormaOcupacion) . ',
-                            "fecha_ingreso" = ' . $objDatabase->SqlVariable($this->strFechaIngreso) . '
+                            "fecha_ingreso" = ' . $objDatabase->SqlVariable($this->strFechaIngreso) . ',
+                            "valor_lote" = ' . $objDatabase->SqlVariable($this->strValorLote) . ',
+                            "cantidad_cuotas" = ' . $objDatabase->SqlVariable($this->strCantidadCuotas) . ',
+                            "valor_cuota" = ' . $objDatabase->SqlVariable($this->strValorCuota) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -988,6 +1036,9 @@ class HogarGen extends QBaseClass {
 			$this->strTipoBeneficio = $objReloaded->strTipoBeneficio;
 			$this->strFormaOcupacion = $objReloaded->strFormaOcupacion;
 			$this->strFechaIngreso = $objReloaded->strFechaIngreso;
+			$this->strValorLote = $objReloaded->strValorLote;
+			$this->strCantidadCuotas = $objReloaded->strCantidadCuotas;
+			$this->strValorCuota = $objReloaded->strValorCuota;
 		}
 
 
@@ -1106,6 +1157,27 @@ class HogarGen extends QBaseClass {
                  * @return string
                  */
                 return $this->strFechaIngreso;
+
+            case 'ValorLote':
+                /**
+                 * Gets the value for strValorLote 
+                 * @return string
+                 */
+                return $this->strValorLote;
+
+            case 'CantidadCuotas':
+                /**
+                 * Gets the value for strCantidadCuotas 
+                 * @return string
+                 */
+                return $this->strCantidadCuotas;
+
+            case 'ValorCuota':
+                /**
+                 * Gets the value for strValorCuota 
+                 * @return string
+                 */
+                return $this->strValorCuota;
 
 
             ///////////////////
@@ -1367,6 +1439,51 @@ class HogarGen extends QBaseClass {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
                                                 //return ($this->strFechaIngreso = QType::Cast($mixValue, QType::String));
                                                 return ($this->strFechaIngreso = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'ValorLote':
+					/**
+					 * Sets the value for strValorLote 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strValorLote = QType::Cast($mixValue, QType::String));
+                                                return ($this->strValorLote = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'CantidadCuotas':
+					/**
+					 * Sets the value for strCantidadCuotas 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strCantidadCuotas = QType::Cast($mixValue, QType::String));
+                                                return ($this->strCantidadCuotas = $mixValue);
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'ValorCuota':
+					/**
+					 * Sets the value for strValorCuota 
+					 * @param string $mixValue
+					 * @return string
+					 */
+					try {
+						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
+                                                //return ($this->strValorCuota = QType::Cast($mixValue, QType::String));
+                                                return ($this->strValorCuota = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1657,6 +1774,9 @@ class HogarGen extends QBaseClass {
 			$strToReturn .= '<element name="TipoBeneficio" type="xsd:string"/>';
 			$strToReturn .= '<element name="FormaOcupacion" type="xsd:string"/>';
 			$strToReturn .= '<element name="FechaIngreso" type="xsd:string"/>';
+			$strToReturn .= '<element name="ValorLote" type="xsd:string"/>';
+			$strToReturn .= '<element name="CantidadCuotas" type="xsd:string"/>';
+			$strToReturn .= '<element name="ValorCuota" type="xsd:string"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1722,6 +1842,15 @@ class HogarGen extends QBaseClass {
             }
 			if (property_exists($objSoapObject, 'FechaIngreso')) {
 				$objToReturn->strFechaIngreso = $objSoapObject->FechaIngreso;
+            }
+			if (property_exists($objSoapObject, 'ValorLote')) {
+				$objToReturn->strValorLote = $objSoapObject->ValorLote;
+            }
+			if (property_exists($objSoapObject, 'CantidadCuotas')) {
+				$objToReturn->strCantidadCuotas = $objSoapObject->CantidadCuotas;
+            }
+			if (property_exists($objSoapObject, 'ValorCuota')) {
+				$objToReturn->strValorCuota = $objSoapObject->ValorCuota;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

@@ -35,8 +35,7 @@ class OcupanteDataGridGen extends QFilteredDataGrid {
         'Nacionalidad' => true,
         'NyaMadre' => true,
         'NyaPadre' => true,
-        'RelacionParentescoJefeHogar' => true,
-        'Referente' => true,
+        'Activo' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -84,8 +83,7 @@ class OcupanteDataGridGen extends QFilteredDataGrid {
         if (OcupanteDataGrid::$strColumnsArray['Nacionalidad']) $this->MetaAddColumn('Nacionalidad')->Title = QApplication::Translate('Nacionalidad');
         if (OcupanteDataGrid::$strColumnsArray['NyaMadre']) $this->MetaAddColumn('NyaMadre')->Title = QApplication::Translate('NyaMadre');
         if (OcupanteDataGrid::$strColumnsArray['NyaPadre']) $this->MetaAddColumn('NyaPadre')->Title = QApplication::Translate('NyaPadre');
-        if (OcupanteDataGrid::$strColumnsArray['RelacionParentescoJefeHogar']) $this->MetaAddColumn('RelacionParentescoJefeHogar')->Title = QApplication::Translate('RelacionParentescoJefeHogar');
-        if (OcupanteDataGrid::$strColumnsArray['Referente']) $this->MetaAddColumn('Referente')->Title = QApplication::Translate('Referente');
+        if (OcupanteDataGrid::$strColumnsArray['Activo']) $this->MetaAddColumn('Activo')->Title = QApplication::Translate('Activo');
     }
 
 /**
@@ -248,8 +246,7 @@ class OcupanteDataGridGen extends QFilteredDataGrid {
 				case 'Nacionalidad': return QQN::Ocupante()->Nacionalidad;
 				case 'NyaMadre': return QQN::Ocupante()->NyaMadre;
 				case 'NyaPadre': return QQN::Ocupante()->NyaPadre;
-				case 'RelacionParentescoJefeHogar': return QQN::Ocupante()->RelacionParentescoJefeHogar;
-				case 'Referente': return QQN::Ocupante()->Referente;
+				case 'Activo': return QQN::Ocupante()->Activo;
 				default: throw new QCallerException('Simple Property not found in OcupanteDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

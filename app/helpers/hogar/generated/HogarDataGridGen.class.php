@@ -34,6 +34,9 @@ class HogarDataGridGen extends QFilteredDataGrid {
         'TipoBeneficio' => true,
         'FormaOcupacion' => true,
         'FechaIngreso' => true,
+        'ValorLote' => true,
+        'CantidadCuotas' => true,
+        'ValorCuota' => true,
     );
     
     public function __construct($objParentObject, $strColumnsArray = null, $strControlId = null) {
@@ -80,6 +83,9 @@ class HogarDataGridGen extends QFilteredDataGrid {
         if (HogarDataGrid::$strColumnsArray['TipoBeneficio']) $this->MetaAddColumn('TipoBeneficio')->Title = QApplication::Translate('TipoBeneficio');
         if (HogarDataGrid::$strColumnsArray['FormaOcupacion']) $this->MetaAddColumn('FormaOcupacion')->Title = QApplication::Translate('FormaOcupacion');
         if (HogarDataGrid::$strColumnsArray['FechaIngreso']) $this->MetaAddColumn('FechaIngreso')->Title = QApplication::Translate('FechaIngreso');
+        if (HogarDataGrid::$strColumnsArray['ValorLote']) $this->MetaAddColumn('ValorLote')->Title = QApplication::Translate('ValorLote');
+        if (HogarDataGrid::$strColumnsArray['CantidadCuotas']) $this->MetaAddColumn('CantidadCuotas')->Title = QApplication::Translate('CantidadCuotas');
+        if (HogarDataGrid::$strColumnsArray['ValorCuota']) $this->MetaAddColumn('ValorCuota')->Title = QApplication::Translate('ValorCuota');
     }
 
 /**
@@ -241,6 +247,9 @@ class HogarDataGridGen extends QFilteredDataGrid {
 				case 'TipoBeneficio': return QQN::Hogar()->TipoBeneficio;
 				case 'FormaOcupacion': return QQN::Hogar()->FormaOcupacion;
 				case 'FechaIngreso': return QQN::Hogar()->FechaIngreso;
+				case 'ValorLote': return QQN::Hogar()->ValorLote;
+				case 'CantidadCuotas': return QQN::Hogar()->CantidadCuotas;
+				case 'ValorCuota': return QQN::Hogar()->ValorCuota;
 				default: throw new QCallerException('Simple Property not found in HogarDataGrid content: ' . $mixContent);
 			} else if ($mixContent instanceof QQAssociationNode)
 				throw new QCallerException('Content QQNode cannot go through any "To Many" association nodes.');

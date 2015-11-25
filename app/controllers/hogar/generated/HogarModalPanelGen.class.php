@@ -24,6 +24,9 @@ class HogarModalPanelGen extends EditPanelBase {
         'txtTipoBeneficio' => true,
         'txtFormaOcupacion' => true,
         'txtFechaIngreso' => true,
+        'txtValorLote' => true,
+        'txtCantidadCuotas' => true,
+        'txtValorCuota' => true,
         'lstOcupanteAsId' => false,
     );
     
@@ -83,6 +86,12 @@ class HogarModalPanelGen extends EditPanelBase {
             $this->objControlsArray['txtFormaOcupacion'] = $this->mctHogar->txtFormaOcupacion_Create();
         if (in_array('txtFechaIngreso',$strControlsArray)) 
             $this->objControlsArray['txtFechaIngreso'] = $this->mctHogar->txtFechaIngreso_Create();
+        if (in_array('txtValorLote',$strControlsArray)) 
+            $this->objControlsArray['txtValorLote'] = $this->mctHogar->txtValorLote_Create();
+        if (in_array('txtCantidadCuotas',$strControlsArray)) 
+            $this->objControlsArray['txtCantidadCuotas'] = $this->mctHogar->txtCantidadCuotas_Create();
+        if (in_array('txtValorCuota',$strControlsArray)) 
+            $this->objControlsArray['txtValorCuota'] = $this->mctHogar->txtValorCuota_Create();
         if (in_array('lstOcupanteAsId',$strControlsArray))
             $this->objControlsArray['lstOcupanteAsId'] = $this->mctHogar->lstOcupanteAsId_Create();
 

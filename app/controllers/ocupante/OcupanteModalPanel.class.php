@@ -29,8 +29,7 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
         'txtNacionalidad' => true,
         'txtNyaMadre' => true,
         'txtNyaPadre' => true,
-        'txtRelacionParentescoJefeHogar' => true,
-        'chkReferente' => true,
+        'chkActivo' => true,
     );
 
   public function __construct(QDialogBox $objParentObject, $strControlsArray = array(), $objOcupante = null, $strControlId = null) {
@@ -111,10 +110,17 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
         $objOcupanteArray = Ocupante::QueryArray(
           QQ::In(QQN::Ocupante()->Doc, array($dni))
         );
+
         if(count($objOcupanteArray)>0){
+          //ya esta el dni
+          if(count($objOcupanteArray)==1 && $objOcupanteArray[0]->Id==$this->intId){
+            //es el mismo registro actualizando
+          }else{
             $this->objControlsArray['txtDoc']->AddCssClass("has-error");
             QApplication::DisplayNotification("Ese número de documento ya figura en el sistema y no puede ser duplicado.","W");
             $blnReturn=false;
+          }
+
         }
       }
 
@@ -189,11 +195,9 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
       if (in_array('txtNyaPadre',$strControlsArray))
           $this->objControlsArray['txtNyaPadre'] = $this->mctOcupante->txtNyaPadre_Create();
           $this->objControlsArray['txtNyaPadre']->Name="Nombre y apellido del padre";
-      if (in_array('txtRelacionParentescoJefeHogar',$strControlsArray))
-          $this->objControlsArray['txtRelacionParentescoJefeHogar'] = $this->mctOcupante->txtRelacionParentescoJefeHogar_Create();
-          $this->objControlsArray['txtRelacionParentescoJefeHogar']->Name="Relación de parentesco con el/la referente";
-      if (in_array('chkReferente',$strControlsArray))
-          $this->objControlsArray['chkReferente'] = $this->mctOcupante->chkReferente_Create();
+
+      if (in_array('chkActivo',$strControlsArray))
+          $this->objControlsArray['chkActivo'] = $this->mctOcupante->chkActivo_Create();
 
       //$this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
   }

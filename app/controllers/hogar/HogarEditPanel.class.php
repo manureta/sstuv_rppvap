@@ -5,22 +5,25 @@ class HogarEditPanel extends HogarEditPanelGen {
   public $btnCertificado;
 
   public static $strControlsArray = array(
-        'lblId' => false,
-        'lstIdFolioObject' => true,
-        'calFechaAlta' => true,
-        'txtCirc' => true,
-        'txtSecc' => true,
-        'txtMz' => true,
-        'txtPc' => true,
-        'txtTelefono' => true,
-        'txtDireccion' => true,
-        'chkDeclaracionNoOcupacion' => true,
-        'txtDocTerreno' => true,
-        'txtTipoBeneficio' => true,
-        'txtFormaOcupacion' => true,
-        'txtFechaIngreso' => true,
-        'lstOcupanteAsId' => true,
-    );
+      'lblId' => false,
+      'lstIdFolioObject' => true,
+      'calFechaAlta' => true,
+      'txtCirc' => true,
+      'txtSecc' => true,
+      'txtMz' => true,
+      'txtPc' => true,
+      'txtTelefono' => true,
+      'txtDireccion' => true,
+      'chkDeclaracionNoOcupacion' => true,
+      'txtDocTerreno' => true,
+      'txtTipoBeneficio' => true,
+      'txtFormaOcupacion' => true,
+      'txtFechaIngreso' => true,
+      'txtValorLote' => true,
+      'txtCantidadCuotas' => true,
+      'txtValorCuota' => true,
+      'lstOcupanteAsId' => true,
+  );
     public function __construct($objParentObject, $strControlsArray = null, $intId = null, $strControlId = null) {
 
         // Call the Parent
@@ -205,6 +208,15 @@ class HogarEditPanel extends HogarEditPanelGen {
         if (in_array('txtDireccion',$strControlsArray))
             $this->objControlsArray['txtDireccion'] = $this->mctHogar->txtDireccion_Create();
             $this->objControlsArray['txtDireccion']->Name="Dirección";
+        if (in_array('txtValorLote',$strControlsArray))
+            $this->objControlsArray['txtValorLote'] = $this->mctHogar->txtValorLote_Create();
+            $this->objControlsArray['txtValorLote']->Name="Valor del lote";
+        if (in_array('txtCantidadCuotas',$strControlsArray))
+            $this->objControlsArray['txtCantidadCuotas'] = $this->mctHogar->txtCantidadCuotas_Create();
+            $this->objControlsArray['txtCantidadCuotas']->Name="Cantidad de cuotas";
+        if (in_array('txtValorCuota',$strControlsArray))
+            $this->objControlsArray['txtValorCuota'] = $this->mctHogar->txtValorCuota_Create();
+            $this->objControlsArray['txtValorCuota']->Name="Valor de la cuota";
     }
 
     public function btnCancel_Click($strFormId, $strControlId, $strParameter){

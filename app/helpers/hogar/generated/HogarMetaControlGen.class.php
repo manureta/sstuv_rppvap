@@ -44,6 +44,12 @@
      * property-read QLabel $FormaOcupacionLabel
      * property QTextBox $FechaIngresoControl
      * property-read QLabel $FechaIngresoLabel
+     * property QTextBox $ValorLoteControl
+     * property-read QLabel $ValorLoteLabel
+     * property QTextBox $CantidadCuotasControl
+     * property-read QLabel $CantidadCuotasLabel
+     * property QTextBox $ValorCuotaControl
+     * property-read QLabel $ValorCuotaLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -74,6 +80,9 @@
         protected $txtTipoBeneficio;
         protected $txtFormaOcupacion;
         protected $txtFechaIngreso;
+        protected $txtValorLote;
+        protected $txtCantidadCuotas;
+        protected $txtValorCuota;
 
         // Controls that allow the viewing of Hogar's individual data fields
         protected $lblIdFolio;
@@ -89,6 +98,9 @@
         protected $lblTipoBeneficio;
         protected $lblFormaOcupacion;
         protected $lblFechaIngreso;
+        protected $lblValorLote;
+        protected $lblCantidadCuotas;
+        protected $lblValorCuota;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -556,6 +568,84 @@
             return $this->lblFechaIngreso;
         }
 
+        /**
+         * Create and setup QTextBox txtValorLote
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtValorLote_Create($strControlId = null) {
+            $this->txtValorLote = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtValorLote->Name = QApplication::Translate('ValorLote');
+            $this->txtValorLote->Text = $this->objHogar->ValorLote;
+            $this->txtValorLote->MaxLength = Hogar::ValorLoteMaxLength;
+            
+            return $this->txtValorLote;
+        }
+
+        /**
+         * Create and setup QLabel lblValorLote
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblValorLote_Create($strControlId = null) {
+            $this->lblValorLote = new QLabel($this->objParentObject, $strControlId);
+            $this->lblValorLote->Name = QApplication::Translate('ValorLote');
+            $this->lblValorLote->Text = $this->objHogar->ValorLote;
+            return $this->lblValorLote;
+        }
+
+        /**
+         * Create and setup QTextBox txtCantidadCuotas
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtCantidadCuotas_Create($strControlId = null) {
+            $this->txtCantidadCuotas = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtCantidadCuotas->Name = QApplication::Translate('CantidadCuotas');
+            $this->txtCantidadCuotas->Text = $this->objHogar->CantidadCuotas;
+            $this->txtCantidadCuotas->MaxLength = Hogar::CantidadCuotasMaxLength;
+            
+            return $this->txtCantidadCuotas;
+        }
+
+        /**
+         * Create and setup QLabel lblCantidadCuotas
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblCantidadCuotas_Create($strControlId = null) {
+            $this->lblCantidadCuotas = new QLabel($this->objParentObject, $strControlId);
+            $this->lblCantidadCuotas->Name = QApplication::Translate('CantidadCuotas');
+            $this->lblCantidadCuotas->Text = $this->objHogar->CantidadCuotas;
+            return $this->lblCantidadCuotas;
+        }
+
+        /**
+         * Create and setup QTextBox txtValorCuota
+         * @param string $strControlId optional ControlId to use
+         * @return QTextBox
+         */
+        public function txtValorCuota_Create($strControlId = null) {
+            $this->txtValorCuota = new QTextBox($this->objParentObject, $strControlId);
+            $this->txtValorCuota->Name = QApplication::Translate('ValorCuota');
+            $this->txtValorCuota->Text = $this->objHogar->ValorCuota;
+            $this->txtValorCuota->MaxLength = Hogar::ValorCuotaMaxLength;
+            
+            return $this->txtValorCuota;
+        }
+
+        /**
+         * Create and setup QLabel lblValorCuota
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblValorCuota_Create($strControlId = null) {
+            $this->lblValorCuota = new QLabel($this->objParentObject, $strControlId);
+            $this->lblValorCuota->Name = QApplication::Translate('ValorCuota');
+            $this->lblValorCuota->Text = $this->objHogar->ValorCuota;
+            return $this->lblValorCuota;
+        }
+
 
 
     public $lstOcupanteAsId;
@@ -587,8 +677,7 @@
         $strConfigArray['Columns']['Nacionalidad'] = QApplication::Translate('Nacionalidad');
         $strConfigArray['Columns']['NyaMadre'] = QApplication::Translate('NyaMadre');
         $strConfigArray['Columns']['NyaPadre'] = QApplication::Translate('NyaPadre');
-        $strConfigArray['Columns']['RelacionParentescoJefeHogar'] = QApplication::Translate('RelacionParentescoJefeHogar');
-        $strConfigArray['Columns']['Referente'] = QApplication::Translate('Referente');
+        $strConfigArray['Columns']['Activo'] = QApplication::Translate('Activo');
 
         $this->lstOcupanteAsId = new QListPanel($this->objParentObject, $this->objHogar, $strConfigArray, $strControlId);
         $this->lstOcupanteAsId->Name = Ocupante::Noun();
@@ -672,6 +761,15 @@
             if ($this->txtFechaIngreso) $this->txtFechaIngreso->Text = $this->objHogar->FechaIngreso;
             if ($this->lblFechaIngreso) $this->lblFechaIngreso->Text = $this->objHogar->FechaIngreso;
 
+            if ($this->txtValorLote) $this->txtValorLote->Text = $this->objHogar->ValorLote;
+            if ($this->lblValorLote) $this->lblValorLote->Text = $this->objHogar->ValorLote;
+
+            if ($this->txtCantidadCuotas) $this->txtCantidadCuotas->Text = $this->objHogar->CantidadCuotas;
+            if ($this->lblCantidadCuotas) $this->lblCantidadCuotas->Text = $this->objHogar->CantidadCuotas;
+
+            if ($this->txtValorCuota) $this->txtValorCuota->Text = $this->objHogar->ValorCuota;
+            if ($this->lblValorCuota) $this->lblValorCuota->Text = $this->objHogar->ValorCuota;
+
         }
 
 
@@ -703,6 +801,9 @@
                 if ($this->txtTipoBeneficio) $this->objHogar->TipoBeneficio = $this->txtTipoBeneficio->Text;
                 if ($this->txtFormaOcupacion) $this->objHogar->FormaOcupacion = $this->txtFormaOcupacion->Text;
                 if ($this->txtFechaIngreso) $this->objHogar->FechaIngreso = $this->txtFechaIngreso->Text;
+                if ($this->txtValorLote) $this->objHogar->ValorLote = $this->txtValorLote->Text;
+                if ($this->txtCantidadCuotas) $this->objHogar->CantidadCuotas = $this->txtCantidadCuotas->Text;
+                if ($this->txtValorCuota) $this->objHogar->ValorCuota = $this->txtValorCuota->Text;
 
 
         }
@@ -843,6 +944,24 @@
                 case 'FechaIngresoLabel':
                     if (!$this->lblFechaIngreso) return $this->lblFechaIngreso_Create();
                     return $this->lblFechaIngreso;
+                case 'ValorLoteControl':
+                    if (!$this->txtValorLote) return $this->txtValorLote_Create();
+                    return $this->txtValorLote;
+                case 'ValorLoteLabel':
+                    if (!$this->lblValorLote) return $this->lblValorLote_Create();
+                    return $this->lblValorLote;
+                case 'CantidadCuotasControl':
+                    if (!$this->txtCantidadCuotas) return $this->txtCantidadCuotas_Create();
+                    return $this->txtCantidadCuotas;
+                case 'CantidadCuotasLabel':
+                    if (!$this->lblCantidadCuotas) return $this->lblCantidadCuotas_Create();
+                    return $this->lblCantidadCuotas;
+                case 'ValorCuotaControl':
+                    if (!$this->txtValorCuota) return $this->txtValorCuota_Create();
+                    return $this->txtValorCuota;
+                case 'ValorCuotaLabel':
+                    if (!$this->lblValorCuota) return $this->lblValorCuota_Create();
+                    return $this->lblValorCuota;
                 default:
                     try {
                         return parent::__get($strName);
@@ -893,6 +1012,12 @@
                         return ($this->txtFormaOcupacion = QType::Cast($mixValue, 'QControl'));
                     case 'FechaIngresoControl':
                         return ($this->txtFechaIngreso = QType::Cast($mixValue, 'QControl'));
+                    case 'ValorLoteControl':
+                        return ($this->txtValorLote = QType::Cast($mixValue, 'QControl'));
+                    case 'CantidadCuotasControl':
+                        return ($this->txtCantidadCuotas = QType::Cast($mixValue, 'QControl'));
+                    case 'ValorCuotaControl':
+                        return ($this->txtValorCuota = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

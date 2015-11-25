@@ -30,8 +30,7 @@
 	 * @property string $Nacionalidad the value for strNacionalidad 
 	 * @property string $NyaMadre the value for strNyaMadre 
 	 * @property string $NyaPadre the value for strNyaPadre 
-	 * @property string $RelacionParentescoJefeHogar the value for strRelacionParentescoJefeHogar 
-	 * @property boolean $Referente the value for blnReferente 
+	 * @property boolean $Activo the value for blnActivo 
 	 * @property Hogar $IdHogarObject the value for the Hogar object referenced by intIdHogar 
 	 * @property-read boolean $__Restored whether or not this object was restored from the database (as opposed to created new)
  */
@@ -183,20 +182,11 @@ class OcupanteGen extends QBaseClass {
 
 
     /**
-     * Protected member variable that maps to the database column ocupante.relacion_parentesco_jefe_hogar
-     * @var string strRelacionParentescoJefeHogar
+     * Protected member variable that maps to the database column ocupante.activo
+     * @var boolean blnActivo
      */
-    protected $strRelacionParentescoJefeHogar;
-    const RelacionParentescoJefeHogarMaxLength = 255;
-    const RelacionParentescoJefeHogarDefault = null;
-
-
-    /**
-     * Protected member variable that maps to the database column ocupante.referente
-     * @var boolean blnReferente
-     */
-    protected $blnReferente;
-    const ReferenteDefault = null;
+    protected $blnActivo;
+    const ActivoDefault = null;
 
 
     /**
@@ -563,8 +553,7 @@ class OcupanteGen extends QBaseClass {
 			$objBuilder->AddSelectItem($strTableName, 'nacionalidad', $strAliasPrefix . 'nacionalidad');
 			$objBuilder->AddSelectItem($strTableName, 'nya_madre', $strAliasPrefix . 'nya_madre');
 			$objBuilder->AddSelectItem($strTableName, 'nya_padre', $strAliasPrefix . 'nya_padre');
-			$objBuilder->AddSelectItem($strTableName, 'relacion_parentesco_jefe_hogar', $strAliasPrefix . 'relacion_parentesco_jefe_hogar');
-			$objBuilder->AddSelectItem($strTableName, 'referente', $strAliasPrefix . 'referente');
+			$objBuilder->AddSelectItem($strTableName, 'activo', $strAliasPrefix . 'activo');
 		}
 
 //instantiation_methods
@@ -624,10 +613,8 @@ class OcupanteGen extends QBaseClass {
 			$objToReturn->strNyaMadre = $objDbRow->GetColumn($strAliasName, 'VarChar');
 			$strAliasName = array_key_exists($strAliasPrefix . 'nya_padre', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'nya_padre'] : $strAliasPrefix . 'nya_padre';
 			$objToReturn->strNyaPadre = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'relacion_parentesco_jefe_hogar', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'relacion_parentesco_jefe_hogar'] : $strAliasPrefix . 'relacion_parentesco_jefe_hogar';
-			$objToReturn->strRelacionParentescoJefeHogar = $objDbRow->GetColumn($strAliasName, 'VarChar');
-			$strAliasName = array_key_exists($strAliasPrefix . 'referente', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'referente'] : $strAliasPrefix . 'referente';
-			$objToReturn->blnReferente = $objDbRow->GetColumn($strAliasName, 'Bit');
+			$strAliasName = array_key_exists($strAliasPrefix . 'activo', $strColumnAliasArray) ? $strColumnAliasArray[$strAliasPrefix . 'activo'] : $strAliasPrefix . 'activo';
+			$objToReturn->blnActivo = $objDbRow->GetColumn($strAliasName, 'Bit');
 
 			if (isset($arrPreviousItems) && is_array($arrPreviousItems)) {
 				foreach ($arrPreviousItems as $objPreviousItem) {
@@ -842,8 +829,7 @@ class OcupanteGen extends QBaseClass {
                             "nacionalidad",
                             "nya_madre",
                             "nya_padre",
-                            "relacion_parentesco_jefe_hogar",
-                            "referente"
+                            "activo"
                         ) VALUES (
                             ' . $objDatabase->SqlVariable($this->intIdHogar) . ',
                             ' . $objDatabase->SqlVariable($this->strApellido) . ',
@@ -859,8 +845,7 @@ class OcupanteGen extends QBaseClass {
                             ' . $objDatabase->SqlVariable($this->strNacionalidad) . ',
                             ' . $objDatabase->SqlVariable($this->strNyaMadre) . ',
                             ' . $objDatabase->SqlVariable($this->strNyaPadre) . ',
-                            ' . $objDatabase->SqlVariable($this->strRelacionParentescoJefeHogar) . ',
-                            ' . $objDatabase->SqlVariable($this->blnReferente) . '
+                            ' . $objDatabase->SqlVariable($this->blnActivo) . '
                         )
                     ');
 
@@ -890,8 +875,7 @@ class OcupanteGen extends QBaseClass {
                             "nacionalidad" = ' . $objDatabase->SqlVariable($this->strNacionalidad) . ',
                             "nya_madre" = ' . $objDatabase->SqlVariable($this->strNyaMadre) . ',
                             "nya_padre" = ' . $objDatabase->SqlVariable($this->strNyaPadre) . ',
-                            "relacion_parentesco_jefe_hogar" = ' . $objDatabase->SqlVariable($this->strRelacionParentescoJefeHogar) . ',
-                            "referente" = ' . $objDatabase->SqlVariable($this->blnReferente) . '
+                            "activo" = ' . $objDatabase->SqlVariable($this->blnActivo) . '
                         WHERE
                             "id" = ' . $objDatabase->SqlVariable($this->intId) . '
                     ');
@@ -989,8 +973,7 @@ class OcupanteGen extends QBaseClass {
 			$this->strNacionalidad = $objReloaded->strNacionalidad;
 			$this->strNyaMadre = $objReloaded->strNyaMadre;
 			$this->strNyaPadre = $objReloaded->strNyaPadre;
-			$this->strRelacionParentescoJefeHogar = $objReloaded->strRelacionParentescoJefeHogar;
-			$this->blnReferente = $objReloaded->blnReferente;
+			$this->blnActivo = $objReloaded->blnActivo;
 		}
 
 
@@ -1117,19 +1100,12 @@ class OcupanteGen extends QBaseClass {
                  */
                 return $this->strNyaPadre;
 
-            case 'RelacionParentescoJefeHogar':
+            case 'Activo':
                 /**
-                 * Gets the value for strRelacionParentescoJefeHogar 
-                 * @return string
-                 */
-                return $this->strRelacionParentescoJefeHogar;
-
-            case 'Referente':
-                /**
-                 * Gets the value for blnReferente 
+                 * Gets the value for blnActivo 
                  * @return boolean
                  */
-                return $this->blnReferente;
+                return $this->blnActivo;
 
 
             ///////////////////
@@ -1393,31 +1369,16 @@ class OcupanteGen extends QBaseClass {
 						throw $objExc;
 					}
 
-				case 'RelacionParentescoJefeHogar':
+				case 'Activo':
 					/**
-					 * Sets the value for strRelacionParentescoJefeHogar 
-					 * @param string $mixValue
-					 * @return string
-					 */
-					try {
-						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->strRelacionParentescoJefeHogar = QType::Cast($mixValue, QType::String));
-                                                return ($this->strRelacionParentescoJefeHogar = $mixValue);
-					} catch (QCallerException $objExc) {
-						$objExc->IncrementOffset();
-						throw $objExc;
-					}
-
-				case 'Referente':
-					/**
-					 * Sets the value for blnReferente 
+					 * Sets the value for blnActivo 
 					 * @param boolean $mixValue
 					 * @return boolean
 					 */
 					try {
 						//DEPRECATED: si es necesario incluir esta linea en el metodo __set de la subclase.
-                                                //return ($this->blnReferente = QType::Cast($mixValue, QType::Boolean));
-                                                return ($this->blnReferente = $mixValue);
+                                                //return ($this->blnActivo = QType::Cast($mixValue, QType::Boolean));
+                                                return ($this->blnActivo = $mixValue);
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -1514,8 +1475,7 @@ class OcupanteGen extends QBaseClass {
 			$strToReturn .= '<element name="Nacionalidad" type="xsd:string"/>';
 			$strToReturn .= '<element name="NyaMadre" type="xsd:string"/>';
 			$strToReturn .= '<element name="NyaPadre" type="xsd:string"/>';
-			$strToReturn .= '<element name="RelacionParentescoJefeHogar" type="xsd:string"/>';
-			$strToReturn .= '<element name="Referente" type="xsd:boolean"/>';
+			$strToReturn .= '<element name="Activo" type="xsd:boolean"/>';
 			//$strToReturn .= '<element name="__blnRestored" type="xsd:boolean"/>';
 			$strToReturn .= '</sequence></complexType>';
 			return $strToReturn;
@@ -1585,11 +1545,8 @@ class OcupanteGen extends QBaseClass {
 			if (property_exists($objSoapObject, 'NyaPadre')) {
 				$objToReturn->strNyaPadre = $objSoapObject->NyaPadre;
             }
-			if (property_exists($objSoapObject, 'RelacionParentescoJefeHogar')) {
-				$objToReturn->strRelacionParentescoJefeHogar = $objSoapObject->RelacionParentescoJefeHogar;
-            }
-			if (property_exists($objSoapObject, 'Referente')) {
-				$objToReturn->blnReferente = $objSoapObject->Referente;
+			if (property_exists($objSoapObject, 'Activo')) {
+				$objToReturn->blnActivo = $objSoapObject->Activo;
             }
 			if (property_exists($objSoapObject, '__blnRestored'))
 				$objToReturn->__blnRestored = $objSoapObject->__blnRestored;

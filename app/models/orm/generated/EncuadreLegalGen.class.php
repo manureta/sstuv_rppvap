@@ -756,38 +756,6 @@ class EncuadreLegalGen extends QBaseClass {
 			
 		/**
 		 * Load an array of EncuadreLegal objects,
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
-		 * @return EncuadreLegal[]
-		*/
-		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
-			// Call EncuadreLegal::QueryArray to perform the LoadArrayByIdFolio query
-			try {
-				return EncuadreLegal::QueryArray(
-					QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio),
-					$objOptionalClauses);
-			} catch (QCallerException $objExc) {
-				$objExc->IncrementOffset();
-				throw $objExc;
-			}
-		}
-
-		/**
-		 * Count EncuadreLegales
-		 * by IdFolio Index(es)
-		 * @param integer $intIdFolio
-		 * @return int
-		*/
-		public static function CountByIdFolio($intIdFolio) {
-			// Call EncuadreLegal::QueryCount to perform the CountByIdFolio query
-			return EncuadreLegal::QueryCount(
-				QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio)
-			);
-		}
-			
-		/**
-		 * Load an array of EncuadreLegal objects,
 		 * by EstadoProcesoExpropiacion Index(es)
 		 * @param integer $intEstadoProcesoExpropiacion
 		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
@@ -815,6 +783,38 @@ class EncuadreLegalGen extends QBaseClass {
 			// Call EncuadreLegal::QueryCount to perform the CountByEstadoProcesoExpropiacion query
 			return EncuadreLegal::QueryCount(
 				QQ::Equal(QQN::EncuadreLegal()->EstadoProcesoExpropiacion, $intEstadoProcesoExpropiacion)
+			);
+		}
+			
+		/**
+		 * Load an array of EncuadreLegal objects,
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return EncuadreLegal[]
+		*/
+		public static function LoadArrayByIdFolio($intIdFolio, $objOptionalClauses = null) {
+			// Call EncuadreLegal::QueryArray to perform the LoadArrayByIdFolio query
+			try {
+				return EncuadreLegal::QueryArray(
+					QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count EncuadreLegales
+		 * by IdFolio Index(es)
+		 * @param integer $intIdFolio
+		 * @return int
+		*/
+		public static function CountByIdFolio($intIdFolio) {
+			// Call EncuadreLegal::QueryCount to perform the CountByIdFolio query
+			return EncuadreLegal::QueryCount(
+				QQ::Equal(QQN::EncuadreLegal()->IdFolio, $intIdFolio)
 			);
 		}
 

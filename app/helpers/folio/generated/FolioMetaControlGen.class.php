@@ -1006,6 +1006,9 @@
         $strConfigArray['Columns']['TipoBeneficio'] = QApplication::Translate('TipoBeneficio');
         $strConfigArray['Columns']['FormaOcupacion'] = QApplication::Translate('FormaOcupacion');
         $strConfigArray['Columns']['FechaIngreso'] = QApplication::Translate('FechaIngreso');
+        $strConfigArray['Columns']['ValorLote'] = QApplication::Translate('ValorLote');
+        $strConfigArray['Columns']['CantidadCuotas'] = QApplication::Translate('CantidadCuotas');
+        $strConfigArray['Columns']['ValorCuota'] = QApplication::Translate('ValorCuota');
 
         $this->lstHogarAsId = new QListPanel($this->objParentObject, $this->objFolio, $strConfigArray, $strControlId);
         $this->lstHogarAsId->Name = Hogar::Noun();

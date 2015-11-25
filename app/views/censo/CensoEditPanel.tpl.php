@@ -23,6 +23,15 @@
 	</div>
 
   <div class="well bs-component container">
+    <div class="titulos">
+      <label><i class="icon-chevron-right"> </i>Valor del lote </label>
+    </div>
+    <?php $_CONTROL->txtValorLote->RenderWithName(); ?>
+    <?php $_CONTROL->txtCantidadCuotas->RenderWithName(); ?>
+    <?php $_CONTROL->txtValorCuota->RenderWithName(); ?>
+  </div>
+
+  <div class="well bs-component container">
 		<div class="titulos">
 			<label><i class="icon-chevron-right"> </i>Referencias del lote </label>
 		</div>

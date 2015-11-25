@@ -18,6 +18,9 @@
 		<?php $_CONTROL->txtTipoBeneficio->RenderWithName(); ?>
 		<?php $_CONTROL->txtFormaOcupacion->RenderWithName(); ?>
 		<?php $_CONTROL->txtFechaIngreso->RenderWithName(); ?>
+		<?php $_CONTROL->txtValorLote->RenderWithName(); ?>
+		<?php $_CONTROL->txtCantidadCuotas->RenderWithName(); ?>
+		<?php $_CONTROL->txtValorCuota->RenderWithName(); ?>
 
 <div class="botones-form">
 <?php $_CONTROL->btnSave->Render(); ?>

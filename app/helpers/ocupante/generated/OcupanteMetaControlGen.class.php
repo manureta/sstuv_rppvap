@@ -46,10 +46,8 @@
      * property-read QLabel $NyaMadreLabel
      * property QTextBox $NyaPadreControl
      * property-read QLabel $NyaPadreLabel
-     * property QTextBox $RelacionParentescoJefeHogarControl
-     * property-read QLabel $RelacionParentescoJefeHogarLabel
-     * property QCheckBox $ReferenteControl
-     * property-read QLabel $ReferenteLabel
+     * property QCheckBox $ActivoControl
+     * property-read QLabel $ActivoLabel
      * property-read string $TitleVerb a verb indicating whether or not this is being edited or created
      * property-read boolean $EditMode a boolean indicating whether or not this is being edited or created
      */
@@ -81,8 +79,7 @@
         protected $txtNacionalidad;
         protected $txtNyaMadre;
         protected $txtNyaPadre;
-        protected $txtRelacionParentescoJefeHogar;
-        protected $chkReferente;
+        protected $chkActivo;
 
         // Controls that allow the viewing of Ocupante's individual data fields
         protected $lblIdHogar;
@@ -99,8 +96,7 @@
         protected $lblNacionalidad;
         protected $lblNyaMadre;
         protected $lblNyaPadre;
-        protected $lblRelacionParentescoJefeHogar;
-        protected $lblReferente;
+        protected $lblActivo;
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
 
@@ -599,53 +595,27 @@
         }
 
         /**
-         * Create and setup QTextBox txtRelacionParentescoJefeHogar
-         * @param string $strControlId optional ControlId to use
-         * @return QTextBox
-         */
-        public function txtRelacionParentescoJefeHogar_Create($strControlId = null) {
-            $this->txtRelacionParentescoJefeHogar = new QTextBox($this->objParentObject, $strControlId);
-            $this->txtRelacionParentescoJefeHogar->Name = QApplication::Translate('RelacionParentescoJefeHogar');
-            $this->txtRelacionParentescoJefeHogar->Text = $this->objOcupante->RelacionParentescoJefeHogar;
-            $this->txtRelacionParentescoJefeHogar->MaxLength = Ocupante::RelacionParentescoJefeHogarMaxLength;
-            
-            return $this->txtRelacionParentescoJefeHogar;
-        }
-
-        /**
-         * Create and setup QLabel lblRelacionParentescoJefeHogar
-         * @param string $strControlId optional ControlId to use
-         * @return QLabel
-         */
-        public function lblRelacionParentescoJefeHogar_Create($strControlId = null) {
-            $this->lblRelacionParentescoJefeHogar = new QLabel($this->objParentObject, $strControlId);
-            $this->lblRelacionParentescoJefeHogar->Name = QApplication::Translate('RelacionParentescoJefeHogar');
-            $this->lblRelacionParentescoJefeHogar->Text = $this->objOcupante->RelacionParentescoJefeHogar;
-            return $this->lblRelacionParentescoJefeHogar;
-        }
-
-        /**
-         * Create and setup QCheckBox chkReferente
+         * Create and setup QCheckBox chkActivo
          * @param string $strControlId optional ControlId to use
          * @return QCheckBox
          */
-        public function chkReferente_Create($strControlId = null) {
-            $this->chkReferente = new QCheckBox($this->objParentObject, $strControlId);
-            $this->chkReferente->Name = QApplication::Translate('Referente');
-            $this->chkReferente->Checked = $this->objOcupante->Referente;
-                        return $this->chkReferente;
+        public function chkActivo_Create($strControlId = null) {
+            $this->chkActivo = new QCheckBox($this->objParentObject, $strControlId);
+            $this->chkActivo->Name = QApplication::Translate('Activo');
+            $this->chkActivo->Checked = $this->objOcupante->Activo;
+                        return $this->chkActivo;
         }
 
         /**
-         * Create and setup QLabel lblReferente
+         * Create and setup QLabel lblActivo
          * @param string $strControlId optional ControlId to use
          * @return QLabel
          */
-        public function lblReferente_Create($strControlId = null) {
-            $this->lblReferente = new QLabel($this->objParentObject, $strControlId);
-            $this->lblReferente->Name = QApplication::Translate('Referente');
-            $this->lblReferente->Text = ($this->objOcupante->Referente) ? QApplication::Translate('Yes') : QApplication::Translate('No');
-            return $this->lblReferente;
+        public function lblActivo_Create($strControlId = null) {
+            $this->lblActivo = new QLabel($this->objParentObject, $strControlId);
+            $this->lblActivo->Name = QApplication::Translate('Activo');
+            $this->lblActivo->Text = ($this->objOcupante->Activo) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            return $this->lblActivo;
         }
 
 
@@ -710,11 +680,8 @@
             if ($this->txtNyaPadre) $this->txtNyaPadre->Text = $this->objOcupante->NyaPadre;
             if ($this->lblNyaPadre) $this->lblNyaPadre->Text = $this->objOcupante->NyaPadre;
 
-            if ($this->txtRelacionParentescoJefeHogar) $this->txtRelacionParentescoJefeHogar->Text = $this->objOcupante->RelacionParentescoJefeHogar;
-            if ($this->lblRelacionParentescoJefeHogar) $this->lblRelacionParentescoJefeHogar->Text = $this->objOcupante->RelacionParentescoJefeHogar;
-
-            if ($this->chkReferente) $this->chkReferente->Checked = $this->objOcupante->Referente;
-            if ($this->lblReferente) $this->lblReferente->Text = ($this->objOcupante->Referente) ? QApplication::Translate('Yes') : QApplication::Translate('No');
+            if ($this->chkActivo) $this->chkActivo->Checked = $this->objOcupante->Activo;
+            if ($this->lblActivo) $this->lblActivo->Text = ($this->objOcupante->Activo) ? QApplication::Translate('Yes') : QApplication::Translate('No');
 
         }
 
@@ -748,8 +715,7 @@
                 if ($this->txtNacionalidad) $this->objOcupante->Nacionalidad = $this->txtNacionalidad->Text;
                 if ($this->txtNyaMadre) $this->objOcupante->NyaMadre = $this->txtNyaMadre->Text;
                 if ($this->txtNyaPadre) $this->objOcupante->NyaPadre = $this->txtNyaPadre->Text;
-                if ($this->txtRelacionParentescoJefeHogar) $this->objOcupante->RelacionParentescoJefeHogar = $this->txtRelacionParentescoJefeHogar->Text;
-                if ($this->chkReferente) $this->objOcupante->Referente = $this->chkReferente->Checked;
+                if ($this->chkActivo) $this->objOcupante->Activo = $this->chkActivo->Checked;
 
 
         }
@@ -896,18 +862,12 @@
                 case 'NyaPadreLabel':
                     if (!$this->lblNyaPadre) return $this->lblNyaPadre_Create();
                     return $this->lblNyaPadre;
-                case 'RelacionParentescoJefeHogarControl':
-                    if (!$this->txtRelacionParentescoJefeHogar) return $this->txtRelacionParentescoJefeHogar_Create();
-                    return $this->txtRelacionParentescoJefeHogar;
-                case 'RelacionParentescoJefeHogarLabel':
-                    if (!$this->lblRelacionParentescoJefeHogar) return $this->lblRelacionParentescoJefeHogar_Create();
-                    return $this->lblRelacionParentescoJefeHogar;
-                case 'ReferenteControl':
-                    if (!$this->chkReferente) return $this->chkReferente_Create();
-                    return $this->chkReferente;
-                case 'ReferenteLabel':
-                    if (!$this->lblReferente) return $this->lblReferente_Create();
-                    return $this->lblReferente;
+                case 'ActivoControl':
+                    if (!$this->chkActivo) return $this->chkActivo_Create();
+                    return $this->chkActivo;
+                case 'ActivoLabel':
+                    if (!$this->lblActivo) return $this->lblActivo_Create();
+                    return $this->lblActivo;
                 default:
                     try {
                         return parent::__get($strName);
@@ -960,10 +920,8 @@
                         return ($this->txtNyaMadre = QType::Cast($mixValue, 'QControl'));
                     case 'NyaPadreControl':
                         return ($this->txtNyaPadre = QType::Cast($mixValue, 'QControl'));
-                    case 'RelacionParentescoJefeHogarControl':
-                        return ($this->txtRelacionParentescoJefeHogar = QType::Cast($mixValue, 'QControl'));
-                    case 'ReferenteControl':
-                        return ($this->chkReferente = QType::Cast($mixValue, 'QControl'));
+                    case 'ActivoControl':
+                        return ($this->chkActivo = QType::Cast($mixValue, 'QControl'));
                     default:
                         return parent::__set($strName, $mixValue);
                 }

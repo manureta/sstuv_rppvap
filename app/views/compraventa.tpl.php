@@ -14,7 +14,7 @@
     <strong><?=strtoupper($this->objHogar->IdFolioObject->IdPartidoObject->Nombre);?></strong>
 </p>
 <p lang="es-ES">
-    Entre el Instituto de la Vivienda de la Provincia de Buenos Aires, representado en este acto por su Administrador General, Esc. Pablo Sarlo, con domicilio
+    Entre el Instituto de la Vivienda de la Provincia de Buenos Aires, representado en este acto por su Administrador General, <?=__ADMINISTRADOR_GENERAL_IVBA__?>, con domicilio
 legal en su sede, Avda. 7 N° 1267 de la ciudad de La Plata, en adelante “EL INSTITUTO” por una parte, y
 <strong><?=$this->ocupantes?></strong>
 con domicilio real y constituido en el inmueble identificado catastralmente como
@@ -24,10 +24,10 @@ CIRC. <strong><?=$this->objHogar->Circ;?></strong>,
   <strong>, </strong>PARC. <strong><?=$this->objHogar->Pc;?></strong>,
 del Partido de    <strong><?=strtoupper($this->objHogar->IdFolioObject->IdPartidoObject->Nombre);?></strong><strong> </strong> de la Provincia de Buenos Aires, parte a quien en adelante se lo identifica como “EL COMPRADOR” por
     la otra, y la Subsecretaría Social de Tierras Urbanismo y Vivienda del Ministerio de Infraestructura, representada en este acto por el Subsecretario Dr.
-    Fabián César STACHIOTTI, con domicilio legal en Diag. 73 N° 1568 de La Plata, en adelante “LA SUBSECRETARIA” se conviene en celebrar el presente BOLETO DE
+    <?=__SUBSECRETARIO_SSTUV__?>, con domicilio legal en Diag. 73 N° 1568 de La Plata, en adelante “LA SUBSECRETARIA” se conviene en celebrar el presente BOLETO DE
     COMPRA – VENTA que se ajustará a las normas para la venta de inmuebles incluidos en las urbanizaciones que ejecuta “EL INSTITUTO” para el desarrollo de “EL
     PROGRAMA PRO TIERRA” en todo el ámbito de la Provincia, de acuerdo al Decreto N° 815/88 y contenidas en el régimen instituido por Decreto N° 4930/88;
-Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES, N°    <strong>0792 </strong>de fecha 14 DE FEBRERO DE 2011, que “EL COMPRADOR”, declara conocer y aceptar y con sujeción a las cláusulas que a continuación se
+Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES, N°    <strong><?=__NRO_RESOLUCION__?> </strong>de fecha <?=__FECHA_RESOLUCION__?>, que “EL COMPRADOR”, declara conocer y aceptar y con sujeción a las cláusulas que a continuación se
     consignan:-------------------------------------------------------------------------
 </p>
 <p lang="es-ES">
@@ -48,8 +48,8 @@ Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la
 <page size="A4">
 <p lang="es-ES">
     <strong>SEGUNDA:</strong>
-Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO DE <strong>PESOS </strong>    <strong>UN MIL OCHOCIENTOS NOVENTA Y SIETE CON 30/100</strong> ($1.897,30) que “EL COMPRADOR” abonará en <strong>SESENTA</strong> (60) cuotas mensuales,
-    iguales y consecutivas de <strong>PESOS TREITA Y UNO CON 62/100 </strong>($31.62) cada una, salvo aquellos pagos anteriores debidamente acreditados por
+Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO DE <strong><?=$this->objHogar->ValorLote?></strong>  que “EL COMPRADOR” abonará en <strong><?=$this->objHogar->CantidadCuotas?></strong>,
+    iguales y consecutivas de <strong> <?=$this->objHogar->ValorCuota?> </strong> cada una, salvo aquellos pagos anteriores debidamente acreditados por
     ante la Autoridad de Aplicación--------------------------------------------------------------------
 </p>
 <p lang="es-ES">

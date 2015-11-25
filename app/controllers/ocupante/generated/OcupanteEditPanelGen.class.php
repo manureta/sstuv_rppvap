@@ -23,8 +23,7 @@ class OcupanteEditPanelGen extends EditPanelBase {
         'txtNacionalidad' => true,
         'txtNyaMadre' => true,
         'txtNyaPadre' => true,
-        'txtRelacionParentescoJefeHogar' => true,
-        'chkReferente' => true,
+        'chkActivo' => true,
     );
 
     public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
@@ -82,10 +81,8 @@ class OcupanteEditPanelGen extends EditPanelBase {
             $this->objControlsArray['txtNyaMadre'] = $this->mctOcupante->txtNyaMadre_Create();
         if (in_array('txtNyaPadre',$strControlsArray)) 
             $this->objControlsArray['txtNyaPadre'] = $this->mctOcupante->txtNyaPadre_Create();
-        if (in_array('txtRelacionParentescoJefeHogar',$strControlsArray)) 
-            $this->objControlsArray['txtRelacionParentescoJefeHogar'] = $this->mctOcupante->txtRelacionParentescoJefeHogar_Create();
-        if (in_array('chkReferente',$strControlsArray)) 
-            $this->objControlsArray['chkReferente'] = $this->mctOcupante->chkReferente_Create();
+        if (in_array('chkActivo',$strControlsArray)) 
+            $this->objControlsArray['chkActivo'] = $this->mctOcupante->chkActivo_Create();
 
         $this->pnlTabs->ActiveTab->AddControls($this->objControlsArray);
     }
