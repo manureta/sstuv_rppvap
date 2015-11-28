@@ -15,10 +15,14 @@ page[size="A4"] {
     margin: 20;
     box-shadow: 0;
   }
+  p {
+    margin-right: 2cm;
+    margin-left: 2cm;
+  }
 }
 body{
 	font-family:arial;
-  
+
 	/*
 	width:780px;
 	padding-left: 250px;

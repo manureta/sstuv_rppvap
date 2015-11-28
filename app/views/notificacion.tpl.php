@@ -12,7 +12,7 @@
       <strong>BARRIO <?=strtoupper($this->objHogar->IdFolioObject->NombreBarrioOficial);?> – <?=strtoupper($this->objHogar->IdFolioObject->IdPartidoObject->Nombre);?></strong>
 </p>
 </br>
-<p lang="es-ES" align="justify">
+<p align="justify">
     En la localidad de <?=$this->objHogar->IdFolioObject->NombreBarrioOficial;?> a los <?=__FECHA_NOTIFICACION__;?> me notifico de la Resolución N° <strong><?=__NRO_RESOLUCION__;?></strong> dictada por el
     Ministro de Infraestructura de la Provincia de Buenos Aires por la cual se adjudica el inmueble identificado catastralmente como Circ.
     <strong><?=$this->objHogar->Circ;?></strong>,
@@ -22,7 +22,7 @@
            según plano <strong><?=__NRO_PLANO__;?></strong> del barrio <?=$this->objHogar->IdFolioObject->NombreBarrioOficial;?> – Partido de
   <?=$this->objHogar->IdFolioObject->IdPartidoObject->Nombre;?> recibiendo copia de la misma.
 </p>
-<p lang="es-ES" align="justify">
+<p align="justify">
     Asimismo declaro conocer la situación del inmueble que se me adjudica. Para el supuesto de resultar sucesor a título individual o universal de un anterior
     adjudicatario, manifiesto exonerar a la Provincia de cualquier responsabilidad por evicción en los términos de los artículos 2098, 2100, 2101, 2106 y
     concordantes del Código Civil manteniendo a la Provincia indemne frente a cualquier acción de terceros que se funden en los boletos de compraventa
@@ -31,20 +31,35 @@
 
 <br/>
 <br/>
-<p align="center">
-<div style="float:left; margin-left:15%;">
-    BARRENECHEA, ANDREA LAURA </br>
-    DNI 26465215
-</div>
-<div style="float:right; margin-right:15%;">
-    NUÑEZ, HECTOR OSCAR </br>
-    DNI 27025129
-</div>
-</p>
-<br/>
-<br/>
-</br>
-</br>
+
+   <?php
+     $ind=0;
+    for ($i=1; $i <= ceil((count($this->firmas)/2)); $i++) {
+
+   ?>
+
+    <p align="center">
+    <div style="float:left; margin-left:15%;">
+        <?php
+          echo $this->firmas[$ind]["firma"];
+          $ind++;
+        ?>
+    </div>
+
+    <div style="float:right; margin-right:15%;">
+       <?php
+        echo $this->firmas[$ind]["firma"];
+        $ind++;
+       ?>
+     </div>
+
+    </p>
+  </br>
+  </br>
+  </br>
+  <?php } ?>
+
+
 <div id="sdfootnote1">
     <p lang="es-ES" align="justify">
         1

@@ -202,7 +202,7 @@ class HogarEditPanel extends HogarEditPanelGen {
             $this->objControlsArray['txtTelefono']->Name="Teléfono";
         if (in_array('chkDeclaracionNoOcupacion',$strControlsArray))
             $this->objControlsArray['chkDeclaracionNoOcupacion'] = $this->mctHogar->chkDeclaracionNoOcupacion_Create();
-            $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Los ocupantes declaran que no son titulares de otro inmueble";
+            $this->objControlsArray['chkDeclaracionNoOcupacion']->Name="Control de titularidad";
         if (in_array('txtDocTerreno',$strControlsArray))
             $this->objControlsArray['txtDocTerreno'] = $this->mctHogar->txtDocTerreno_Create();
             $this->objControlsArray['txtDocTerreno']->Name="Documentación del terreno";

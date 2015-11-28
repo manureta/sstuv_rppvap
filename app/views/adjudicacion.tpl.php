@@ -12,7 +12,7 @@
     <strong>BARRIO <?=strtoupper($this->objHogar->IdFolioObject->NombreBarrioOficial);?> – <?=strtoupper($this->objHogar->IdFolioObject->IdPartidoObject->Nombre);?></strong>
 </p>
 </br>
-<p lang="es-ES">
+<p align="justify">
     <a name="_GoBack"></a>
 La<strong> Subsecretaría Social de Tierras, Urbanismo y Vivienda</strong> del Ministerio de Infraestructura de la Provincia de Buenos Aires,
 <strong>CERTIFICA</strong> que mediante Resolución Nº <strong><?=__NRO_RESOLUCION__;?></strong> del Ministerio de Infraestructura, el inmueble identificado catastralmente
@@ -23,7 +23,7 @@ La<strong> Subsecretaría Social de Tierras, Urbanismo y Vivienda</strong> del M
        sito en el barrio <?=$this->objHogar->IdFolioObject->NombreBarrioOficial;?> del Partido
 de <?=$this->objHogar->IdFolioObject->IdPartidoObject->Nombre;?> ha sido adjudicado al Sr/Sra. <?=$this->ocupantes?> .
 </p>
-<p lang="es-ES">
+<p align="justify">
      <?=$this->tipo_adjudicacion;?> por lo cual los adjudicatarios deben cumplir con las obligaciones allí dispuestas bajo
     apercibimiento, en caso de incumplimiento, de dar de baja la adjudicación y readjudicar el inmueble a otros beneficiarios.
 </p>

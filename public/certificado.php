@@ -11,11 +11,13 @@ public $template;
 public $error;
 public $notificacion;
 public $tipo_adjudicacion;
+public $firmas;
 
 public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
     $this->template="error/error.tpl.php";
     $this->error="";
     $this->tipo_adjudicacion="";
+    $this->firmas=array();
     //variable para saber si se muestra el tpl de notificacion
     $this->notificacion=false;
     try{
@@ -44,7 +46,11 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
             if(count($arrOcupantes)>0){
               $tmp=array();
               foreach($arrOcupantes as $ocupante){
-                array_push($tmp,$ocupante->Apellido.", ".$ocupante->Nombres." con ".strtoupper($ocupante->TipoDoc)." ".$ocupante->Doc." ");
+                array_push($tmp," ".$ocupante->Apellido." ".$ocupante->Nombres." con ".strtoupper($ocupante->TipoDoc)." ".$ocupante->Doc);
+                //las firmas son solo para notificacion
+                $this->firmas[]=array(
+                  "firma"=>$ocupante->Apellido.", ".$ocupante->Nombres." </br>".strtoupper($ocupante->TipoDoc)." ".$ocupante->Doc
+                );                
               }
               //pongo un string con la lista de ocupantes separados por coma
               $this->ocupantes=implode(",", $tmp);
