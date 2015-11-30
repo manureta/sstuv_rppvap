@@ -16,6 +16,7 @@ class UploadHandler
     protected $options;
     protected $idFolio;
     protected $tipo;
+    protected $hogar;
 
     // PHP File Upload error message codes:
     // http://php.net/manual/en/features.file-upload.errors.php
@@ -42,13 +43,19 @@ class UploadHandler
 
     protected $image_objects = array();
 
-    function __construct($idFolio,$tipo,$options = null, $initialize = true, $error_messages = null) {
+    function __construct($idFolio,$tipo,$hogar=false,$options = null, $initialize = true, $error_messages = null) {
+
+        $upload_dir=($hogar)?dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$idFolio.'/'.$tipo.'/'.$hogar.'/' : dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$idFolio.'/'.$tipo.'/';
+        $base_dir=($hogar)?$this->get_full_url().'/upload.php?idfolio='.$idFolio.'&tipo='.$tipo.'&hogar='.$hogar.'' : $this->get_full_url().'/upload.php?idfolio='.$idFolio.'&tipo='.$tipo.'';
+        $upload_url=($hogar)?$this->get_full_url().'/files/'.$idFolio.'/'.$tipo.'/'.$hogar.'/' : $this->get_full_url().'/files/'.$idFolio.'/'.$tipo.'/';
+
+
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$idFolio.'/'.$tipo.'/',
-            'base_dir' =>$this->get_full_url().'/upload.php?idfolio='.$idFolio.'&tipo='.$tipo.'',
-            'upload_url' => $this->get_full_url().'/files/'.$idFolio.'/'.$tipo.'/',
+            'upload_dir' => $upload_dir,
+            'base_dir' =>$base_dir,
+            'upload_url' => $upload_url,
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -167,7 +174,7 @@ class UploadHandler
     }
 
     protected function initialize() {
-        error_log($this->options['upload_dir']);
+        //error_log($this->options['upload_dir']);
         switch ($this->get_server_var('REQUEST_METHOD')) {
             case 'OPTIONS':
             case 'HEAD':
@@ -178,7 +185,7 @@ class UploadHandler
                 break;
             case 'PATCH':
             case 'PUT':
-            case 'POST':
+            case 'POST':              
                 $this->post($this->options['print_response']);
                 break;
             case 'DELETE':
@@ -370,7 +377,9 @@ class UploadHandler
             $file->error = $this->get_error_message('post_max_size');
             return false;
         }
+        error_log($file->name);
         if (!preg_match($this->options['accept_file_types'], $file->name)) {
+            error_log("entro al error accept_file_types");
             $file->error = $this->get_error_message('accept_file_types');
             return false;
         }
@@ -508,6 +517,8 @@ class UploadHandler
 
     protected function get_file_name($file_path, $name, $size, $type, $error,
             $index, $content_range) {
+              error_log($file_path);
+              error_log($name);
         $name = $this->trim_file_name($file_path, $name, $size, $type, $error,
             $index, $content_range);
         return $this->get_unique_filename(
@@ -1044,6 +1055,7 @@ class UploadHandler
             $index, $content_range);
         $file->size = $this->fix_integer_overflow((int)$size);
         $file->type = $type;
+        error_log($file->name);
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
@@ -1109,7 +1121,7 @@ class UploadHandler
     protected function body($str) {
         echo $str;
     }
-    
+
     protected function header($str) {
         header($str);
     }

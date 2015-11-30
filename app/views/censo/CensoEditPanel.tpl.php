@@ -58,3 +58,35 @@
   </div>
 
 </div>
+
+<div class="well bs-component container">
+  <?php if(Permission::PuedeEditarCenso()){ ?>
+  <div class="well bs-component">
+      <div class="container">
+
+          <span class="btn btn-success fileinput-button">
+              <i class="icon-plus"></i>
+              <span>Adjuntar (No Funciona)...</span>
+              <!-- The file input field used as target for the file upload widget -->
+              <input id="fileupload_censo" type="file" name="files[]" multiple>
+          </span>
+          <br>
+          <br>
+          <!-- The global progress bar -->
+          <div id="progress" class="progress">
+              <div class="progress-bar progress-bar-success"></div>
+          </div>
+          <!-- The container for the uploaded files -->
+          <div id="files_censo" class="files"></div>
+          <br>
+      </div>
+  </div>
+  <?php } else {?>
+  <div class="titulos"><i class="icon-chevron-right"></i>Archivos Adjuntos</div>
+  <div>
+      <div class="well bs-component">
+          <div id="files_censo" class="files"></div>
+      </div>
+  </div>
+  <?php } ?>
+</div>

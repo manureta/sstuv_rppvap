@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-$upload_handler = new UploadHandler($this->intIdFolio,$this->strTipo); 
+$upload_handler = new UploadHandler($this->intIdFolio,$this->strTipo,$this->intHogar);
 exit();
 
 ?>

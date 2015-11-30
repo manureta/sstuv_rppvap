@@ -65,5 +65,7 @@
       					$_CONTROL->pnlEditHogar->Render();
       					}
       		?>
-        </div
+        </div>
 	</div>
+
+  

@@ -97,13 +97,19 @@ class HogarEditPanel extends HogarEditPanelGen {
        $this->btnCertificado->ActionParameter = $this->intId;
        $this->btnCertificado->AddAction(new QClickEvent(), new QAjaxControlAction($this, "Certificado_Click"));
 
+       //seteo upload manager
+       $url_upload_manager=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".QApplication::QueryString("id")."&tipo=censo&hogar=".$this->intId;
 
        if(!Permission::PuedeEditarCenso()){
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
             $this->btnCreateNew->Enabled = false;
+            QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager','#files_censo')");
+        }else{
+          QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload_censo','#files_censo')");
         }
+
 
     }
 
@@ -116,8 +122,6 @@ class HogarEditPanel extends HogarEditPanelGen {
           return 'Certificado de adjudicación';
           break;
         default:
-          error_log($this->opcionesBeneficio[$this->objEncuadre->Expropiacion]);
-          error_log($this->txtTipoBeneficio->Text);
           if(isset($this->opcionesBeneficio[$this->objEncuadre->Expropiacion]) && $this->opcionesBeneficio[$this->objEncuadre->Expropiacion]==$this->txtTipoBeneficio->Text){
             return 'Certificado de adjudicación';
           }else{

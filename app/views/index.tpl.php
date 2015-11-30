@@ -14,10 +14,10 @@
         <link href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/uncompressed/bootstrap.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/font-awesome.min.css" />
 
-      
+
 
         <!-- page specific plugin styles -->
-        <!-- fonts 
+        <!-- fonts
 
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/ace-fonts.css" />
 -->
@@ -63,7 +63,7 @@
                 <?php if (Session::Get('objUsuario')) { ?>
                 <div><span class="nombre-usuario">Bienvenido , <b><?php echo Session::GetObjUsuario()->Nombre;?></b></span></div>
                 <div class="pull-right">
-                    
+
                     <div id="menu-usuario" class="pull-right">
                         <?php $this->pnlUserMenu->Render(); ?>
                     </div>
@@ -109,7 +109,7 @@
                         <img src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/images/logo_derecha.png">
                     </div>
                 </div>
-                
+
             </nav>
             <br><br>
             <nav class="navbar navbar-default" role="navigation">
@@ -158,7 +158,7 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
             if ("ontouchend" in document)
                 document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
         </script>
-        <!--script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/jquery.watable.js"></script-->	
+        <!--script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/jquery.watable.js"></script-->
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/uncompressed/bootstrap.js"></script>
         <!--script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/uncompressed/typeahead.js"></script-->
         <!--script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/date-time/bootstrap-datepicker.js"></script-->
@@ -175,7 +175,7 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/mapa.js"></script>
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/terraformer.min.js"></script>
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/terraformer-wkt-parser.min.js"></script>
-       
+
 
         <div id="MapaModal" class="modal">
             <div class="modal-dialog">
@@ -201,17 +201,17 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                   <h4 class="modal-title">Si usted desea objetar este folio es necesario que describa la razón.</h4>
                 </div>
-                <div class="modal-body">                    
-                              
+                <div class="modal-body">
+
                       <div class="form-group">
                         <label for="objetar-comentario">Comentario:</label>
                         <textarea class="form-control" id="objetar-comentario"></textarea>
-                      </div> 
-                      
+                      </div>
+
                       <button type="button" id="objetar-folio-btn" class="btn btn-danger">Objetar</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>  
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
-                
+
               </div>
             </div>
         </div>
@@ -219,9 +219,9 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.css" />
         <link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.css" />
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.js"></script>
-        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>  
-        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/tile/Google.js"></script>      
-        <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/leaflet.draw.js"></script>
+        <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/leaflet/tile/Google.js"></script>
+        <script src="http://maps.google.com/maps/api/js?v=3"></script>
         <style>
         #map {
           min-height: 500px;
@@ -232,11 +232,11 @@ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+
         <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/vendor/jquery.ui.widget.js"></script>
         <!-- The Templates plugin is included to render the upload/download listings -->
-        
-       
+
+
         <!-- The basic File Upload plugin -->
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload/jquery.fileupload.js"></script>
-        
+
         <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/upload_manager.js"></script>
         <script type="text/javascript">
             $('#objetar-folio-btn').click(function(e){
