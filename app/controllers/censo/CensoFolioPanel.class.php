@@ -28,8 +28,6 @@ class CensoFolioPanel extends HogarIndexPanel {
           $this->txtCodFolioOriginal=Folio::load($this->objFolio->FolioOriginal)->CodFolio;
         }
 
-        $url_upload_manager=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".QApplication::QueryString("id")."&tipo=censo&hogar=1";
-        QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload_censo','#files_censo')");
 
     }
 

@@ -105,9 +105,13 @@ class HogarEditPanel extends HogarEditPanelGen {
                 $objControl->Enabled = false;
             }
             $this->btnCreateNew->Enabled = false;
-            QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager','#files_censo')");
+            if($this->intId)QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager','#files_censo')");
         }else{
-          QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload_censo','#files_censo')");
+          if($this->intId){
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload_censo','#files_censo')");
+          }else{
+            QApplication::ExecuteJavascript("$('.fileinput-button').attr('disabled','disabled')");
+          }
         }
 
 
@@ -146,6 +150,7 @@ class HogarEditPanel extends HogarEditPanelGen {
 
         if($this->validar_campos()){
           $this->mctHogar->Save();
+          //$('.fileinput-button').removeAttr("disabled");
           foreach ($this->objModifiedChildsArray as $obj) {
               $obj->Save();
           }
