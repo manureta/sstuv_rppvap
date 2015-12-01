@@ -1,4 +1,4 @@
-﻿drop table hogar cascade;
+﻿drop  table if exists hogar cascade;
 
 CREATE TABLE hogar
 (
@@ -23,7 +23,7 @@ CREATE TABLE hogar
   CONSTRAINT hogar_id_folio_fkey FOREIGN KEY (id_folio) REFERENCES folio (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-drop table ocupante cascade;
+drop table if exists ocupante cascade;
 
 create table ocupante(
  id serial not null,
