@@ -96,7 +96,8 @@
 
 					<div class="right">
 						<small>Fecha del informe</small>
-						<input style="width:70px;" value="<?=($this->objUsoInterno->RegularizacionFechaInicio)?$this->objUsoInterno->RegularizacionFechaInicio:'';?>"></br>
+						<input style="width:100px;" value="<?php echo $this->objUsoInterno->RegularizacionFechaInicio; ?>" >
+					</br>
 					</div>
 					</br>
 					</br>

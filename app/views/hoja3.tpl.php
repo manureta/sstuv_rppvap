@@ -18,7 +18,7 @@
 				<span>No consigna</span>
 				<input type="checkbox">
 			</form>
-			
+
 			</br>
 			<div class='left'>
 				<h3>&#9658; Equipamientos p&uacute;blicos o comunitarios</h3>
@@ -79,7 +79,7 @@
 			</table>
 			<textarea><?=$this->objEquip->Otro;?></textarea>
 			</br>
-			
+
 			<h3>&#9658; Transporte p&uacute;blico</h3>
 			</br>
 			<table>
@@ -112,7 +112,7 @@
 					<td><input type="checkbox" <?php echo (($this->objTransporte->RemisCombis==3)?'checked':'');?>></td>
 				</tr>
 			</table>
-			
+
 			<h3>&#9658; Infraestructura y servicios urbanos</h3>
 			</br>
 			<table>
@@ -195,35 +195,35 @@
 					<td><input type="checkbox" <?php echo (($this->objInfraestructura->RecoleccionResiduos==3)?'checked':'');?>></td>
 				</tr>
 			</table>
-			
+
 			<h3>&#9658; Presencia de organizaciones sociales, barriales, pol&iacute;tica, religiosa u otra</h3></br>
 			<textarea><?=$this->objCond->PresenciaOrgSociales; ?></textarea>
-			
+
 			<h3>&#9658; Contacto del referente</h3>
 			<textarea><?=$this->objCond->NombreRefernte; ?> / <?=$this->objCond->TelefonoReferente; ?></textarea>
-			
-			
+
+
 			<h3>&#9658; Situaci&oacute;n ambiental del barrio</h3>
 			<small>(Puede marcarse m&aacute;s de una opci&oacute;n)</small></br>
 			<form id="sit_amb">
 				<input type="checkbox" <?php echo (($this->objAmbiental->SinProblemas)?'checked':'');?>>
 				<small>Sin problemas ambientales</small>
-				
+
 				<input type="checkbox" <?php echo (($this->objAmbiental->Inundable)?'checked':'');?>>
 				<small>Inundable</small>
-				
+
 				<input type="checkbox" <?php echo (($this->objAmbiental->SobreCaminoSirga)?'checked':'');?>>
 				<small>Sobre camino de Sirga</small>
-				
+
 				<input type="checkbox" <?php echo (($this->objAmbiental->SobreSueloDegradado)?'checked':'');?>>
 				<small>Sobre suelo degradado</small>
 				</br>
 				<input type="checkbox" <?php echo (($this->objAmbiental->ReservaElectroducto)?'checked':'');?>>
 				<small>Reserva electroducto</small>
-				
+
 				<input type="checkbox" <?php echo (($this->objAmbiental->SobreTerraplenFerroviario)?'checked':'');?>>
 				<small>Sobre terraplen ferroviario</small>
-				
+
 				<input type="checkbox" <?php echo (($this->objAmbiental->ExpuestoContaminacionIndustrial)?'checked':'');?>>
 				<small>Expuesto a contaminaci&oacute;n industrial</small>
 				<input type="checkbox" <?php echo (($this->objAmbiental->Otro!='')?'checked':'');?>>
@@ -231,7 +231,7 @@
 			</form>
 			<small style="margin-left:40px;">Observaciones de otra situaci&oacute;n, cu&aacute;l?</small>
 			<textarea style="margin-bottom:0px;"><?php echo ($this->objAmbiental->Otro);?></textarea>
-			
+
 			<div id="uso_int">
 				</br>
 				<h3>Uso interno</h3>
@@ -244,12 +244,12 @@
 						<input type="checkbox" <?php echo (($this->objUsoInterno->InformeUrbanistico=='no')?'checked':'');?>>
 					</form>
 					<span style="margin-left:20px">Fecha del informe</span>
-					<input style="width:100px;" value=<?=($this->objUsoInterno->FechaInformeUrbanistico)?$this->objUsoInterno->FechaInformeUrbanistico:'';?>>
-					
-					
+					<input style="width:100px;" value="<?php echo $this->objUsoInterno->FechaInformeUrbanistico;?>">
+
+
 				</div>
 			</div>
 		</div>
-	
+
 
 </page>
