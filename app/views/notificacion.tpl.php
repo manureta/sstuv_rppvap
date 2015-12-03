@@ -37,7 +37,7 @@
     for ($i=1; $i <= ceil((count($this->firmas)/2)); $i++) {
 
    ?>
-
+   </br>
     <p align="center">
     <div style="float:left; margin-left:15%;">
         <?php

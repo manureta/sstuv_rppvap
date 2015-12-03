@@ -39,7 +39,7 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
               return;
             }
             if(!$this->objHogar->DeclaracionNoOcupacion){
-              $this->error="Para imprimir el certificado es necesario que esté tildado 'Los ocupantes declaran que no son titulares de otro inmueble'";
+              $this->error="Para imprimir el certificado es necesario que esté tildado 'Control de Titularidad'";
               return;
             }
 
@@ -50,7 +50,7 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
                 //las firmas son solo para notificacion
                 $this->firmas[]=array(
                   "firma"=>$ocupante->Apellido.", ".$ocupante->Nombres." </br>".strtoupper($ocupante->TipoDoc)." ".$ocupante->Doc
-                );                
+                );
               }
               //pongo un string con la lista de ocupantes separados por coma
               $this->ocupantes=implode(",", $tmp);

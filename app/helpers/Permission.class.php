@@ -162,7 +162,7 @@ abstract class Permission extends PermissionBase {
         return ((self::EsAdministrador() || (self::EsCarga() && ($objFolio->CreadorObject->IdPerfilObject->IdPerfil==1) ) ));
     }
     public static function PuedeVerHoja5(){
-        return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) || Permission::EsVisualizadorGeneral() || Permission::EsVisualizadorIntermedio());
+        return Permission::EsAdministrador();
     }
 
     public static function PuedeVerPanelAdministracion(){

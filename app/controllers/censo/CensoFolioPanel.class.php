@@ -24,9 +24,13 @@ class CensoFolioPanel extends HogarIndexPanel {
         $this->objFolio = Folio::Load(QApplication::QueryString("id"));
         $this->dtgHogares->AddCondition(QQ::Equal(QQN::Hogar()->IdFolio,QApplication::QueryString("id")));
         $this->dtgHogares->ShowFilter=true;
+        if(!Permission::PuedeEditarCenso()){
+             $this->btnCreateNew->Enabled = false;
+        }
         if(Permission::EsDuplicado($this->objFolio->Id)){
           $this->txtCodFolioOriginal=Folio::load($this->objFolio->FolioOriginal)->CodFolio;
         }
+
 
 
     }

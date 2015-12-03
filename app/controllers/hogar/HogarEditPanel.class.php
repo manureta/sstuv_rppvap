@@ -104,7 +104,7 @@ class HogarEditPanel extends HogarEditPanelGen {
             foreach($this->objControlsArray as $objControl){
                 $objControl->Enabled = false;
             }
-            $this->btnCreateNew->Enabled = false;
+            $this->lstTipoBeneficio->Enabled = false;
             if($this->intId)QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager','#files_censo')");
         }else{
           if($this->intId){
@@ -147,12 +147,18 @@ class HogarEditPanel extends HogarEditPanelGen {
     }
     // Control AjaxAction Event Handlers
     public function btnSave_Click($strFormId, $strControlId, $strParameter) {
-
+        $nuevo=is_null($this->intId);
         if($this->validar_campos()){
           $this->mctHogar->Save();
-          //$('.fileinput-button').removeAttr("disabled");
           foreach ($this->objModifiedChildsArray as $obj) {
               $obj->Save();
+          }
+          if($nuevo){
+            //habilito adjuntar
+            //$this->Refresh();
+            //error_log($this->Id);
+            //QApplication::ExecuteJavascript("$('.fileinput-button').removeAttr('disabled')");
+
           }
           $this->objModifiedChildsArray = array();
           QApplication::DisplayNotification('Los datos se guardaron correctamente');

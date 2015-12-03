@@ -97,6 +97,17 @@ class OcupanteModalPanel extends OcupanteModalPanelGen {
 
         $this->blnAutoRenderChildren = false;
 
+      
+
+        if(!Permission::PuedeEditarCenso()){
+             foreach($this->objControlsArray as $objControl){
+                 $objControl->Enabled = false;
+             }
+             $this->lstEstadoCivil->Enabled=false;
+             $this->lstTipoDocumento->Enabled=false;
+             $this->lstOcupacion->Enabled=false;
+         }
+
     }
 
     public function dniValido(){
