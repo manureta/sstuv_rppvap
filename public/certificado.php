@@ -52,8 +52,11 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
                   "firma"=>$ocupante->Apellido.", ".$ocupante->Nombres." </br>".strtoupper($ocupante->TipoDoc)." ".$ocupante->Doc
                 );
               }
-              //pongo un string con la lista de ocupantes separados por coma
-              $this->ocupantes=implode(",", $tmp);
+              //pongo un string con la lista de ocupantes separados por coma              
+              $ultimo  = array_slice($tmp, -1);
+              $primero = join(',', array_slice($tmp, 0, -1));
+              $ambos  = array_filter(array_merge(array($primero), $ultimo), 'strlen');
+              $this->ocupantes=join(' y ', $ambos);                           
               //ahora veo que template cargo
               if($this->objHogar->TipoBeneficio=="decreto_81588"){
                   $this->template="compraventa.tpl.php";

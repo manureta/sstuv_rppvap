@@ -93,7 +93,7 @@ class HogarEditPanel extends HogarEditPanelGen {
        $this->btnCertificado->Text = $this->textoBtnCertificado();
        $this->btnCertificado->Icon = 'print';
        $this->btnCertificado->Enabled = true;
-       $this->btnCertificado->ToolTip = "imprimir boleta";
+       $this->btnCertificado->ToolTip = "imprimir certificado";
        $this->btnCertificado->ActionParameter = $this->intId;
        $this->btnCertificado->AddAction(new QClickEvent(), new QAjaxControlAction($this, "Certificado_Click"));
 
@@ -120,7 +120,7 @@ class HogarEditPanel extends HogarEditPanelGen {
     public function textoBtnCertificado(){
       switch ($this->txtTipoBeneficio->Text) {
         case 'decreto_81588':
-          return 'Boleta Compraventa';
+          return 'Boleto Compraventa';
           break;
         case 'decreto_222595':
           return 'Certificado de adjudicación';

@@ -27,8 +27,8 @@ del Partido de    <strong><?=strtoupper($this->objHogar->IdFolioObject->IdPartid
     <?=__SUBSECRETARIO_SSTUV__?>, con domicilio legal en Diag. 73 N° 1568 de La Plata, en adelante “LA SUBSECRETARIA” se conviene en celebrar el presente BOLETO DE
     COMPRA – VENTA que se ajustará a las normas para la venta de inmuebles incluidos en las urbanizaciones que ejecuta “EL INSTITUTO” para el desarrollo de “EL
     PROGRAMA PRO TIERRA” en todo el ámbito de la Provincia, de acuerdo al Decreto N° 815/88 y contenidas en el régimen instituido por Decreto N° 4930/88;
-Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES, N°    <strong><?=__NRO_RESOLUCION__?> </strong>de fecha <?=__FECHA_RESOLUCION__?>, que “EL COMPRADOR”, declara conocer y aceptar y con sujeción a las cláusulas que a continuación se
-    consignan:-------------------------------------------------------------------------
+Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES, N°  <strong><?=__NRO_RESOLUCION__?> </strong>de fecha <?=__FECHA_RESOLUCION__?>, que “EL COMPRADOR”, declara conocer y aceptar y con sujeción a las cláusulas que a continuación se
+    consignan:------------------------------------------------------------------------------------------------------------------------------------------------------------
 </p>
 <p align="justify">
     <strong>PRIMERA</strong>
@@ -42,7 +42,7 @@ Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la
     inmueble de plena conformidad en este acto y exonerando de Responsabilidad al INSTITUTO o a la PROVINCIA por eventuales reclamos que pudieran hacer los
     terceros que funden sus derechos en anteriores Boletos otorgados y/o rescindidos, (arts. 2098, 2100,2101, 2.106 y concordantes del C.Civil).En tal sentido
     declaro conocer la situación del inmueble que se me adjudica y/o que resulto sucesor a titulo individual o universal del anterior adjudicatario, sirviendo
-    el presente de suficiente constancia.-----------------------
+    el presente de suficiente constancia.------------------------------------------------------------------------------------------
 </p>
 </page>
 <page size="A4">
@@ -50,24 +50,24 @@ Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la
     <strong>SEGUNDA:</strong>
 Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO DE <strong><?=$this->objHogar->ValorLote?></strong>  que “EL COMPRADOR” abonará en <strong><?=$this->objHogar->CantidadCuotas?></strong>,
     iguales y consecutivas de <strong> <?=$this->objHogar->ValorCuota?> </strong> cada una, salvo aquellos pagos anteriores debidamente acreditados por
-    ante la Autoridad de Aplicación--------------------------------------------------------------------
+    ante la Autoridad de Aplicación --------------------------------------------------------------------------------------------------------------------------
 </p>
 <p align="justify">
     <strong>TERCERA</strong>
     : Las partes convienen que tanto el importe de las cuotas como las actualizaciones por pago fuera de término fijados en el presente Boleto, serán
     calculados y liquidados conforme las normas legales vigentes en la
-    materia---------------------------------------------------------------------------------------
+    materia----------------------------------
 </p>
 <p align="justify">
     <strong>CUARTA</strong>
     : “LA SUBSECRETARIA” gestionará el cobro de las sumas debidas con motivo del presente boleto, las eventuales readjudicaciones que deban realizarse del
     inmueble, como así también las tareas conducentes al otorgamiento la escritura traslativa de dominio y/o en su caso, la constitución de derecho real de
-    hipoteca a favor de “EL INSTITUTO”.-------------------------------------------------------------
+    hipoteca a favor de “EL INSTITUTO”.-----------------------------------------------------------------------------------------------------
 </p>
 <p align="justify">
     <strong>QUINTA:</strong>
     A los efectos de cumplimentar los pagos mensuales “LA SUBSECRETARIA” emitirá las boletas de depósito o tarjetas en su caso. En estas boletas figurarán los
-    pagos y ajustes que correspondan, debiendo el comprador, retirar estas boletas en “LA SUBSECRETARIA”. --------------------
+    pagos y ajustes que correspondan, debiendo el comprador, retirar estas boletas en “LA SUBSECRETARIA”. -------------------------------------------------------------------------------------------
 </p>
 <p align="justify">
     <strong>SEXTA</strong>
@@ -86,7 +86,7 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
 <p align="justify">
     “LA SUBSECRETARIA” emitirá las boletas o gestionará la emisión de tarjetas para efectivizar el pago de los servicios de amortización. La falta de recepción
     de las mismas por parte de “EL COMPRADOR”, cualquiera fuera su causa, no relevará a éste de su obligación de abonar los servicios dentro de los términos
-    pactados.------------------------------------------------------------------------------------------------------
+    pactados.------------------------------
 </p>
 <p align="justify">
     <strong>SEPTIMA:</strong>
@@ -94,7 +94,7 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
     precio de venta del inmueble, determinará para el deudor moroso la obligación de cancelar igualmente los mismos al valor que figura en la boleta de
     depósito aunque haya tenido vencimiento la cuota correspondiente. En caso de producirse mora en los pagos, “LA SUBSECRETARIA” dispondrá las liquidaciones
     complementarias que correspondan. Estos ajustes serán liquidados automáticamente en la cuota siguiente que corresponda, según lo establece la cláusula
-    tercera.-------------------------------------------------------------------------------
+    tercera.-------------------------------------------------------------------------------------------------
 </p>
 <p lang=align="justify">
     <strong>OCTAVA:</strong>
@@ -125,7 +125,7 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
 </p>
 <p align="justify">
     Si la mora se produjera después de constituida la hipoteca, EL acreedor procederá a la ejecución del crédito con ajuste a las cláusulas de la
-    hipoteca.-------------------------------------------------------------------
+    hipoteca.------------------------------------
 </p>
 <p align="justify">
     <strong>NOVENA:</strong>
@@ -136,7 +136,7 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
 <p align="justify">
     El importe respectivo se pondrá a disposición de los interesados a requerimiento de estos. A su vez, el pago parcial anticipado implicará la automática
     suspensión de pagos posteriores, hasta la recepción de los nuevos elementos de pago que proveerá “LA
-    SUBSECRETARIA”--------------------------------------------
+    SUBSECRETARIA”---------------------------------------------------------------------------------------------
 </p>
 <p align="justify">
     <strong>DECIMA</strong>
@@ -147,26 +147,26 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
 <p align="justify">
     La perdida de los importes que hubiere abonado, será total para el comprador, los que quedarán a favor de “EL INSTITUTO”, en concepto de indemnización por
     el uso del inmueble, a cuyo fin se aplicará el procedimiento previsto en el artículo 8° segundo párrafo, sin perjuicio de perseguir el cobro de las sumas
-    que adeudare el comprador al momento de disponerse la rescisión.-----------------------------------
+    que adeudare el comprador al momento de disponerse la rescisión.----------------------------------------------------------------------
 </p>
 </page>
 <page size="A4">
 <p align="justify">
     <strong>DECIMO PRIMERA</strong>
     : En caso de contienda el comprador se somete con exclusividad a la jurisdicción administrativa en un todo de acuerdo a lo dispuesto por el Dec. Ley
-    7647/70 (T.O. Ley 13.262) atinente sobre la materia. ---------------------------------------------------------------------------------------------
+    7647/70 (T.O. Ley 13.262) atinente sobre la materia. -----------------------------------------------------------
 </p>
 <p align="justify">
     <strong>DECIMO SEGUNDA</strong>
     : Para todos los efectos legales, judiciales y/o extrajudiciales que pudieran suscitarse con motivo de este boleto, las partes fijan sus domicilios en los
     lugares indicados en el encabezamiento del presente boleto, sometiéndose a la jurisdicción de los tribunales del Departamento Judicial de La
-    Plata.----------------------------------------------------------------------------------------------------
+    Plata.-----------------------------
 </p>
 <p align="justify">
     <strong>DECIMO TERCERA</strong>
     : El comprador no podrá transmitir sus derechos hasta tanto dé cumplimiento a la obligación establecida en el artículo 17° de la ley N° 5.396, para lo cual
     deberá presentar plano municipal aprobado y final de obra municipal, salvo autorización de “LA SUBSECRETARIA” previa fundamentación por el requirente.
-    -----------------------------------------------------------------------------------
+    ---------------------------
 </p>
 <p align="justify">
     <strong>DECIMO CUARTA</strong>
@@ -176,7 +176,7 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
 <p align="justify">
     En uno u otro caso “EL COMPRADOR” no podrá oponerse a las inspecciones que “LA SUBSECRETARIA” o “EL INSTITUTO” estimen necesario realizar con el objeto de
     dar cumplimiento a las disposiciones que regulan la materia.
-    ------------------------------------------------------------------------------------------------------
+    ------------------------------------------
 </p>
 <p align="justify">
     <strong>DECIMO QUINTA</strong>
@@ -189,12 +189,12 @@ Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO
     <strong>DECIMO SEXTA</strong>
     : “EL COMPRADOR” y su grupo familiar deberán hacer efectiva ocupación del inmueble con destino a vivienda propia, salvo autorización expresa de “LA
     SUBSECRETARIA”, previa fundamentación del requirente. El incumplimiento de esta obligación será causal de rescisión la que se producirá de pleno derecho, y
-    sin necesidad de interpelación judicial. -----------------------------------------
+    sin necesidad de interpelación judicial. --------------------------------------------------------------------------------------
 </p>
 <p align="justify">
     <strong>DECIMO SEPTIMO</strong>
     : La escritura traslativa de dominio y la hipoteca, en caso de corresponder, una vez cumplidos todos los requisitos exigidos, será otorgada por la
-    Escribanía General de Gobierno. -------
+    Escribanía General de Gobierno. -------------------------------------------------------------------------
 </p>
 <p lang="es-ES" align="left">
     En prueba de conformidad se firman dos ejemplares del mismo tenor y a un solo efecto, en la ciudad de La Plata, con fecha
