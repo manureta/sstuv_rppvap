@@ -13,8 +13,8 @@
 <p align="center">
     <strong><?=strtoupper($this->objHogar->IdFolioObject->IdPartidoObject->Nombre);?></strong>
 </p>
-<p align="justify">
-    Entre el Instituto de la Vivienda de la Provincia de Buenos Aires, representado en este acto por su Administrador General, <?=__ADMINISTRADOR_GENERAL_IVBA__?>, con domicilio
+<div class="compraventa">
+  Entre el Instituto de la Vivienda de la Provincia de Buenos Aires, representado en este acto por su Administrador General, <?=__ADMINISTRADOR_GENERAL_IVBA__?>, con domicilio
 legal en su sede, Avda. 7 N° 1267 de la ciudad de La Plata, en adelante “EL INSTITUTO” por una parte, y
 <strong><?=$this->ocupantes?></strong>
 con domicilio real y constituido en el inmueble identificado catastralmente como
@@ -27,9 +27,12 @@ del Partido de    <strong><?=strtoupper($this->objHogar->IdFolioObject->IdPartid
     <?=__SUBSECRETARIO_SSTUV__?>, con domicilio legal en Diag. 73 N° 1568 de La Plata, en adelante “LA SUBSECRETARIA” se conviene en celebrar el presente BOLETO DE
     COMPRA – VENTA que se ajustará a las normas para la venta de inmuebles incluidos en las urbanizaciones que ejecuta “EL INSTITUTO” para el desarrollo de “EL
     PROGRAMA PRO TIERRA” en todo el ámbito de la Provincia, de acuerdo al Decreto N° 815/88 y contenidas en el régimen instituido por Decreto N° 4930/88;
-Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES, N°  <strong><?=__NRO_RESOLUCION__?> </strong>de fecha <?=__FECHA_RESOLUCION__?>, que “EL COMPRADOR”, declara conocer y aceptar y con sujeción a las cláusulas que a continuación se
-    consignan:------------------------------------------------------------------------------------------------------------------------------------------------------------
-</p>
+Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES,
+ N°  <strong><?=__NRO_RESOLUCION__?> </strong>de fecha <?=__FECHA_RESOLUCION__?>, que “EL COMPRADOR”, declara conocer y aceptar y
+con sujeción a las cláusulas que a continuación se
+    consignan: ------------------------------------
+</div>
+</br>
 <p align="justify">
     <strong>PRIMERA</strong>
     :”EL INSTITUTO” vende al “EL COMPRADOR” y este compra con ajuste a las disposiciones precedentemente mencionadas y en las condiciones que se pactan en el

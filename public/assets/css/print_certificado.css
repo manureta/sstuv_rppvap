@@ -10,6 +10,9 @@ page[size="A4"] {
   background: #FFFFFF;
 
 }
+
+
+
 @media print {
   body, page[size="A4"] {
     margin: 20;
@@ -19,6 +22,18 @@ page[size="A4"] {
     margin-right: 2cm;
     margin-left: 2cm;
   }
+
+  .compraventa{
+    margin-right: 2cm;
+    margin-left: 2cm;
+    display: inline-block;
+    text-align: justify;
+  }
+
+
+
+
+
 }
 body{
 	font-family:arial;
