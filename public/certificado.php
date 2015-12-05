@@ -12,7 +12,6 @@ public $error;
 public $notificacion;
 public $tipo_adjudicacion;
 public $firmas;
-public $linePunteada;
 
 public function __construct($objParentObject, $strControlsArray = array(), $intId = null, $strControlId = null) {
     $this->template="error/error.tpl.php";
@@ -60,17 +59,6 @@ public function __construct($objParentObject, $strControlsArray = array(), $intI
               $this->ocupantes=join(' y ', $ambos);
               //ahora veo que template cargo
               if($this->objHogar->TipoBeneficio=="decreto_81588"){
-                //me dijeron que es importante que la linea de puntos termine justo con el renglon, el primer parrafo trae problemas
-                /*
-                  $nuevos_caracteres=strlen($this->ocupantes) + strlen(__ADMINISTRADOR_GENERAL_IVBA__) + strlen(__SUBSECRETARIO_SSTUV__) + strlen(__NRO_RESOLUCION__) + strlen(__FECHA_RESOLUCION__);
-                  $linea=100; //cantidad aproximada de caracteres por linea
-                  $parrafo_vacio=1567; //cantidad de caracteres sin variables
-                  $total=$parrafo_vacio + $nuevos_caracteres;
-
-                  $guiones_faltantes=$linea - ($total % $linea);
-
-                  $this->linePunteada=str_pad("",  $guiones_faltantes, "-");
-                  */
                   $this->template="compraventa.tpl.php";
                   return;
               }

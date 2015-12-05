@@ -5,7 +5,7 @@
 		<title></title>
 		<!-- CSS -->
 		<link rel="stylesheet" href="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/css/print_certificado.css" />
-
+    <script src="<?php echo __VIRTUAL_DIRECTORY__;?>/assets/js/jquery-1.10.2.min.js"></script>
 
 	</head>
 
@@ -25,6 +25,17 @@
 <?php $this->RenderEnd(false); ?>
 <script type="text/javascript">
   function imprimir(){
+    if($(".compraventa")){
+
+      $(".compraventa").each(function(){
+        var div=$(this);
+        var w=div.find('.fin').offset().left - div.find('.inicio').offset().left;
+        div.find(".fin").css("width",w);
+        div.find(".fin").html("-----------------------------------------------------------------------------------------------------------------------------------------------------");
+
+      });
+
+    }
     window.print();
     setTimeout("window.close()",100);
   }

@@ -30,7 +30,7 @@ del Partido de    <strong><?=strtoupper($this->objHogar->IdFolioObject->IdPartid
 Decreto 3066/05, Decreto 2935/08, así como las disposiciones establecidas en la Resolución del INSTITUTO DE LA VIVIENDA DE LA PROVINCIA DE BUENOS AIRES,
  N°  <strong><?=__NRO_RESOLUCION__?> </strong>de fecha <?=__FECHA_RESOLUCION__?>, que “EL COMPRADOR”, declara conocer y aceptar y
 con sujeción a las cláusulas que a continuación se
-    consignan: ------------------------------------
+    consignan<span class="inicio">:</span> <span class="fin">-</span>
 </div>
 </br>
 <p align="justify">
@@ -49,12 +49,12 @@ con sujeción a las cláusulas que a continuación se
 </p>
 </page>
 <page size="A4">
-<p align="justify">
+<div class="compraventa">
     <strong>SEGUNDA:</strong>
 Las partes formalizan la presente operación sobre la base del PRECIO DEFINITIVO DE <strong><?=$this->objHogar->ValorLote?></strong>  que “EL COMPRADOR” abonará en <strong><?=$this->objHogar->CantidadCuotas?></strong>,
     iguales y consecutivas de <strong> <?=$this->objHogar->ValorCuota?> </strong> cada una, salvo aquellos pagos anteriores debidamente acreditados por
-    ante la Autoridad de Aplicación --------------------------------------------------------------------------------------------------------------------------
-</p>
+    ante la Autoridad de Aplicación<span class="inicio">-</span> <span class="fin">-</span>
+</div>
 <p align="justify">
     <strong>TERCERA</strong>
     : Las partes convienen que tanto el importe de las cuotas como las actualizaciones por pago fuera de término fijados en el presente Boleto, serán

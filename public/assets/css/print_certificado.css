@@ -11,7 +11,27 @@ page[size="A4"] {
 
 }
 
+p {
+  margin-right: 2cm;
+  margin-left: 2cm;
+}
 
+.compraventa{
+  margin-right: 2cm;
+  margin-left: 2cm;
+  display: inline-block;
+  text-align: justify;
+}
+
+.inicio{
+  
+}
+
+.fin{
+ float: right;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 @media print {
   body, page[size="A4"] {
@@ -30,8 +50,13 @@ page[size="A4"] {
     text-align: justify;
   }
 
+ .inicio{
 
+ }
 
+ .fin{
+   float: right;
+ }
 
 
 }
