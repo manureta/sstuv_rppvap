@@ -45,11 +45,12 @@ span.nombre-usuario {
 
 #menu-usuario{
     top:20px;
+    width: 45% !important;
 }
 
 #menu-usuario span{
-  padding:12px;
-  font-size: 15px;
+  padding:10px;
+  font-size: 14px;
 }
 
 .wizard > .steps > ul > li {
