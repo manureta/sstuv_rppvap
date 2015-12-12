@@ -46,49 +46,14 @@ class UserMenuPanel extends QPanel {
          $btnReportes->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnReportes_Click'));
         }
         
-        /*
-        if(Permission::EsSupervisor()){
-            $btnIncidente = new QButton($this);
-            $btnIncidente->Text = 'Desvinculación';
-            $btnIncidente->Icon = 'minus-sign';
-            $btnIncidente->AddCssClass('btn-grey');
-            $btnIncidente->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnDesvinculacion_Click'));
+        if(Permission::PuedeConsultarTripartito()){
+         $btnTripartito = new QLinkButton($this);
+         $btnTripartito->Text = 'Tripartito';
+         $btnTripartito->Icon = 'download';
+         $btnTripartito->AddCssClass('navbar-link');
+         $btnTripartito->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnTripartito_Click'));
         }
-        $btnCedula = new QButton($this);
-        
-        $btnCedula->Icon = 'edit';
-        $btnCedula->AddCssClass('btn-white');
-        */
-        //El operador, en vez de acceso a Cedula, tiene acceso a pantalla Reseteo de Contraseñas
-/*
-        if(Permission::EsOperador() || Permission::EsSupervisor()){
-            $btnInformacionGeneral = new QButton($this);
-            $btnInformacionGeneral->Text = 'Información Global';
-            $btnInformacionGeneral->Icon = 'book';
-            $btnInformacionGeneral->AddCssClass('btn-warning');
-            $btnInformacionGeneral->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnInformacionGlobal_Click'));
-            
-            $btnAdmNominas = new QButton($this);
-            $btnAdmNominas->Text = 'Adm. Nominas';
-            $btnAdmNominas->Icon = 'book';
-            $btnAdmNominas->AddCssClass('btn-white');
-            $btnAdmNominas->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnAdmNominas_Click'));
-        }
-        if(Permission::EsOperador() || Permission::EsSupervisor()){
-            $btnCedula->Text = 'Resetear Passwords';
-            $btnCedula->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnResetearPassword_Click'));
-        } else {
-            $btnCedula->Text = 'Folios';
-            $btnCedula->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnCedula_Click'));
-        }
-        
-        
-        $btnEditarPerfil = new QButton($this);
-        $btnEditarPerfil->Text = 'Editar Perfil';
-        $btnEditarPerfil->Icon = 'user';
-        $btnEditarPerfil->AddCssClass('btn-white');
-        $btnEditarPerfil->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnEditarPerfil_Click'));
-*/        
+   
         $btnCerrarSesion = new QLinkButton($this);
         $btnCerrarSesion->Text = 'Salir';
         $btnCerrarSesion->Icon = 'off';
@@ -142,5 +107,9 @@ class UserMenuPanel extends QPanel {
 
      public function btnReportes_Click() {
         QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/page/reportes');
+    }
+
+    public function btnTripartito_Click() {
+        QApplication::Redirect(__VIRTUAL_DIRECTORY__.'/page/tripartito');
     }
 }

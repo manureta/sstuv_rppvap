@@ -318,6 +318,10 @@ and u.estado_folio=6
         return true; // todos pueden
     }
 
+    public static function PuedeConsultarTripartito(){
+        return true;
+    }
+
 
     public static function Log($strMensaje){
         error_log($strMensaje);
