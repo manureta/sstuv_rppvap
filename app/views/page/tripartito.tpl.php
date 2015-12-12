@@ -1,12 +1,12 @@
 
 
-<div class="container">
 
-
-      <h1>Consultas Tripartito</h1>
-
-      <div id="nomenclatura" class="x-hidden">
-            <form METHOD=POST action="<?=__VIRTUAL_DIRECTORY__?>/page/tripartito">
+        <div class="container titulos">
+          <i class="icon-chevron-right"> </i>
+          Consultar al tripartito por nomenclatura catastral:
+        </div>
+          <div class="well bs-component container">
+            <form method="POST" action="<?=__VIRTUAL_DIRECTORY__?>/page/tripartito">
               <div>
                   <label>Partido:</label>
                   <input name="partidoN" type="text" tipo="numero" size="3"/>
@@ -31,17 +31,21 @@
               </div>
             </form>
          </div>
-          
 
-      <form id=consulta method="POST" action="<?=__VIRTUAL_DIRECTORY__?>/page/tripartito" target="resultado">
-            <label>Partido:</label><input name=partido type=text lenght=4 ></input>
-            <label>Partida:</label><input name=partida type=text lenght=40 ></input>
-            <input type=hidden name=type value="html" ></input>
-            <input type=submit value=Consultar></input>
-            <input type=button onclick="javascript:window.print();" value=Print />
-      </form>
+       <div class="container titulos">
+         <i class="icon-chevron-right"> </i>
+         Consultar al tripartito por partido-partida:
+       </div>
+      <div class="well bs-component container">
+        <form id=consulta method="POST" action="<?=__VIRTUAL_DIRECTORY__?>/page/tripartito">
+              <label>Partido:</label><input name=partido type=text lenght=4 ></input>
+              <label>Partida:</label><input name=partida type=text lenght=40 ></input>
+              <input type=hidden name=type value="html" ></input>
+              <input type=submit value=Consultar></input>
+              <input type=button onclick="javascript:window.print();" value=Print />
+        </form>
+      </div>
 
-      <?= $_CONTROL->contenido ;?>
-
-</div>
-      
+      <div class="container">
+        <?= $_CONTROL->contenido ;?>
+     </div>
