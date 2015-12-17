@@ -19,6 +19,12 @@
 			return new QQNodeCondicionesSocioUrbanisticas('condiciones_socio_urbanisticas', null, null);
 		}
 		/**
+		 * @return QQNodeConflictoHabitacional
+		 */
+		static public function ConflictoHabitacional() {
+			return new QQNodeConflictoHabitacional('conflicto_habitacional', null, null);
+		}
+		/**
 		 * @return QQNodeEncuadreLegal
 		 */
 		static public function EncuadreLegal() {

@@ -57,6 +57,8 @@ class QQNodeFolio extends QQNode {
 					return new QQReverseReferenceNodeComentarios($this, 'comentariosasid', 'reverse_reference', 'id_folio');
 				case 'CondicionesSocioUrbanisticasAsId':
 					return new QQReverseReferenceNodeCondicionesSocioUrbanisticas($this, 'condicionessociourbanisticasasid', 'reverse_reference', 'id_folio', 'CondicionesSocioUrbanisticasAsId');
+				case 'ConflictoHabitacionalAsId':
+					return new QQReverseReferenceNodeConflictoHabitacional($this, 'conflictohabitacionalasid', 'reverse_reference', 'id_folio', 'ConflictoHabitacionalAsId');
 				case 'EvolucionFolioAsId':
 					return new QQReverseReferenceNodeEvolucionFolio($this, 'evolucionfolioasid', 'reverse_reference', 'id_folio');
 				case 'HogarAsId':

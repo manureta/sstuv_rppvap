@@ -64,6 +64,27 @@
     QApplication::$ClassFile['qqreversereferencenodecondicionessociourbanisticas'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeCondicionesSocioUrbanisticas.class.php';
 
 
+    // ClassPaths for the ConflictoHabitacional class
+    QApplication::$ClassFile['conflictohabitacionalindexpanelgen'] = __CONTROLLER_DIR__.'/conflictohabitacional/generated/ConflictoHabitacionalIndexPanelGen.class.php';
+    QApplication::$ClassFile['conflictohabitacionaleditpanelgen'] = __CONTROLLER_DIR__.'/conflictohabitacional/generated/ConflictoHabitacionalEditPanelGen.class.php';
+
+    QApplication::$ClassFile['conflictohabitacionalindexpanel'] = __CONTROLLER_DIR__.'/conflictohabitacional/ConflictoHabitacionalIndexPanel.class.php';
+    QApplication::$ClassFile['conflictohabitacionaleditpanel'] = __CONTROLLER_DIR__.'/conflictohabitacional/ConflictoHabitacionalEditPanel.class.php';
+
+    QApplication::$ClassFile['conflictohabitacionalmodalpanel'] = __CONTROLLER_DIR__.'/conflictohabitacional/ConflictoHabitacionalModalPanel.class.php';
+    QApplication::$ClassFile['conflictohabitacionalmodalpanelgen'] = __CONTROLLER_DIR__.'/conflictohabitacional/generated/ConflictoHabitacionalModalPanelGen.class.php';
+
+    QApplication::$ClassFile['conflictohabitacionaldatagridgen'] = __HELPER_DIR__.'/conflictohabitacional/generated/ConflictoHabitacionalDataGridGen.class.php';
+    QApplication::$ClassFile['conflictohabitacionalmetacontrolgen'] = __HELPER_DIR__.'/conflictohabitacional/generated/ConflictoHabitacionalMetaControlGen.class.php';
+    QApplication::$ClassFile['conflictohabitacionaldatagrid'] = __HELPER_DIR__.'/conflictohabitacional/ConflictoHabitacionalDataGrid.class.php';
+    QApplication::$ClassFile['conflictohabitacionalmetacontrol'] = __HELPER_DIR__.'/conflictohabitacional/ConflictoHabitacionalMetaControl.class.php';
+
+    QApplication::$ClassFile['conflictohabitacionalgen'] = __MODEL_DIR__.'/orm/generated/ConflictoHabitacionalGen.class.php';
+    QApplication::$ClassFile['conflictohabitacional'] = __MODEL_DIR__.'/orm/ConflictoHabitacional.class.php';
+    QApplication::$ClassFile['qqnodeconflictohabitacional'] = __MODEL_DIR__.'/orm/generated/QQNodeConflictoHabitacional.class.php';
+    QApplication::$ClassFile['qqreversereferencenodeconflictohabitacional'] = __MODEL_DIR__.'/orm/generated/QQReverseReferenceNodeConflictoHabitacional.class.php';
+
+
     // ClassPaths for the EncuadreLegal class
     QApplication::$ClassFile['encuadrelegalindexpanelgen'] = __CONTROLLER_DIR__.'/encuadrelegal/generated/EncuadreLegalIndexPanelGen.class.php';
     QApplication::$ClassFile['encuadrelegaleditpanelgen'] = __CONTROLLER_DIR__.'/encuadrelegal/generated/EncuadreLegalEditPanelGen.class.php';

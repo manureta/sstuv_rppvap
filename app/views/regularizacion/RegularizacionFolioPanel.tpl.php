@@ -17,6 +17,15 @@
                     Condiciones Socio-Urbanisticas
                 </a>
             </li>
+
+            <?php if(Permission::PuedeVerConflictos()){ ?>
+            <li role="tab" class="done" aria-disabled="false" aria-selected="true">
+                <a aria-controls="wizard-p-2" href="<?php echo __VIRTUAL_DIRECTORY__;?>/conflictos/folio/<?=$folio;?>">
+                    Conflictos y Judicialización
+                </a>
+            </li>
+            <?php } ?>
+
             <li role="tab" class="current" aria-selected="true">
                 <a aria-controls="wizard-p-3" href="#" id="wizard-t-3">
                     Regularización e integración socio-urbana

@@ -118,7 +118,7 @@ abstract class Permission extends PermissionBase {
         }
         if(self::EsCargaExterna()) return self::EsCreador($objFolio);
         return !(self::EsVisualizador() ||
-            self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social"))||
+            self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social","uso_interno_conflictos"))||
             (self::EsCarga() && !in_array($objFolio->UsoInterno->EstadoFolio, array(EstadoFolio::CARGA,NULL))));
     }
 
@@ -171,7 +171,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeVerAdjuntadosHabitat(){
-        return (!self::EsUsoInterno(array("uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !self::EsVisualizadorIntermedio());
+        return (!self::EsUsoInterno(array("uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social","uso_interno_conflictos")) && !self::EsVisualizadorIntermedio());
     }
 
     public static function PuedeVerAdjuntosInformeUrbanistico(){
@@ -179,7 +179,7 @@ abstract class Permission extends PermissionBase {
     }
 
     public static function PuedeVerNoCorrespondeInscripcion(){
-        return (self::EsAdministrador() || self::EsVisualizadorGeneral() || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")));
+        return (self::EsAdministrador() || self::EsVisualizadorGeneral() || self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social","uso_interno_conflictos")));
     }
 
 
@@ -225,7 +225,12 @@ abstract class Permission extends PermissionBase {
 
     public static function PuedeVerCenso(){
       //EsUsoInterno tambien devuelve true si es admin
-      return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) );
+      return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social","uso_interno_conflictos")) );
+    }
+
+    public static function PuedeVerConflictos(){
+      //EsUsoInterno tambien devuelve true si es admin
+      return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social","uso_interno_conflictos")) );
     }
 
     public static function PuedeImprimirCertificado(){

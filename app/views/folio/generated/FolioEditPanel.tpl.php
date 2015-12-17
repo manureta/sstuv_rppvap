@@ -27,6 +27,8 @@
 		<?php $_CONTROL->txtFolioOriginal->RenderWithName(); ?>
 		<?php $_CONTROL->lstCondicionesSocioUrbanisticasAsId->RenderWithName(); ?>
 
+		<?php $_CONTROL->lstConflictoHabitacionalAsId->RenderWithName(); ?>
+
 		<?php $_CONTROL->lstRegularizacionAsId->RenderWithName(); ?>
 
 		<?php $_CONTROL->lstUsoInterno->RenderWithName(); ?>

@@ -6,6 +6,8 @@
         $link_condiciones=__VIRTUAL_DIRECTORY__."/condiciones/folio/$folio";
         $link_regularizacion=__VIRTUAL_DIRECTORY__."/regularizacion/folio/$folio";
         $link_interno=__VIRTUAL_DIRECTORY__."/interno/folio/$folio";
+        $link_conflictos=__VIRTUAL_DIRECTORY__."/conflictos/folio/$folio";
+        $link_censo=__VIRTUAL_DIRECTORY__."/censo/folio/$folio";
         $clase="done";
     }else{
 
@@ -35,6 +37,15 @@
                     Condiciones Socio-Urbanísticas
                 </a>
             </li>
+
+            <?php if(Permission::PuedeVerConflictos()){ ?>
+            <li role="tab" class="done" aria-disabled="false" aria-selected="true">
+                <a aria-controls="wizard-p-2" href="<?=$link_conflictos;?>">
+                    Conflictos y Judicialización
+                </a>
+            </li>
+            <?php } ?>
+
             <li role="tab" class="<?=$clase;?>" aria-disabled="true">
                 <a aria-controls="wizard-p-3" href="<?=$link_regularizacion;?>">
                     Regularización e integración socio-urbana
@@ -43,7 +54,7 @@
 
             <?php if(Permission::PuedeVerCenso()){ ?>
             <li role="tab" class="done" aria-disabled="true">
-                <a aria-controls="wizard-p-3" href="<?php echo __VIRTUAL_DIRECTORY__;?>/censo/folio/<?=$folio;?>">
+                <a aria-controls="wizard-p-3" href="<?php echo $link_censo;?>">
                     Censo y Adjudicación
                 </a>
             </li>

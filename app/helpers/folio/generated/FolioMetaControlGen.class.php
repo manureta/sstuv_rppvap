@@ -60,6 +60,8 @@
      * property-read QLabel $FolioOriginalLabel
      * property QListBox $CondicionesSocioUrbanisticasAsIdControl
      * property-read QLabel $CondicionesSocioUrbanisticasAsIdLabel
+     * property QListBox $ConflictoHabitacionalAsIdControl
+     * property-read QLabel $ConflictoHabitacionalAsIdLabel
      * property QListBox $RegularizacionAsIdControl
      * property-read QLabel $RegularizacionAsIdLabel
      * property QListBox $UsoInternoControl
@@ -126,11 +128,13 @@
 
         // QListBox Controls (if applicable) to edit Unique ReverseReferences and ManyToMany References
         protected $lstCondicionesSocioUrbanisticasAsId;
+        protected $lstConflictoHabitacionalAsId;
         protected $lstRegularizacionAsId;
         protected $lstUsoInterno;
 
         // QLabel Controls (if applicable) to view Unique ReverseReferences and ManyToMany References
         protected $lblCondicionesSocioUrbanisticasAsId;
+        protected $lblConflictoHabitacionalAsId;
         protected $lblRegularizacionAsId;
         protected $lblUsoInterno;
 
@@ -821,6 +825,40 @@
         }
 
         /**
+         * Create and setup QListBox lstConflictoHabitacionalAsId ES ACA?
+         * @param string $strControlId optional ControlId to use
+         * @return QListBox
+         */
+        public function lstConflictoHabitacionalAsId_Create($strControlId = null) {
+            $this->lstConflictoHabitacionalAsId = new QListBox($this->objParentObject, $strControlId);
+            $this->lstConflictoHabitacionalAsId->Name = QApplication::Translate('ConflictoHabitacionalAsId');
+                $this->lstConflictoHabitacionalAsId->AddItem(QApplication::Translate('- Select One -'), null);
+                $objConflictoHabitacionalArray = ConflictoHabitacional::LoadAll();
+                if ($objConflictoHabitacionalArray) foreach ($objConflictoHabitacionalArray as $objConflictoHabitacional) {
+                    $objListItem = new QListItem($objConflictoHabitacional->__toString(), $objConflictoHabitacional->Id);
+                    if ($objConflictoHabitacional->IdFolio == $this->objFolio->Id)
+                        $objListItem->Selected = true;
+                    $this->lstConflictoHabitacionalAsId->AddItem($objListItem);
+                }
+                // Because ConflictoHabitacional's ConflictoHabitacionalAsId is not null, if a value is already selected, it cannot be changed.
+                if ($this->lstConflictoHabitacionalAsId->SelectedValue)
+                    $this->lstConflictoHabitacionalAsId->Enabled = false;
+            return $this->lstConflictoHabitacionalAsId;
+        }
+
+        /**
+         * Create and setup QLabel lblConflictoHabitacionalAsId
+         * @param string $strControlId optional ControlId to use
+         * @return QLabel
+         */
+        public function lblConflictoHabitacionalAsId_Create($strControlId = null) {
+            $this->lblConflictoHabitacionalAsId = new QLabel($this->objParentObject, $strControlId);
+            $this->lblConflictoHabitacionalAsId->Name = QApplication::Translate('ConflictoHabitacionalAsId');
+            $this->lblConflictoHabitacionalAsId->Text = ($this->objFolio->ConflictoHabitacionalAsId) ? $this->objFolio->ConflictoHabitacionalAsId->__toString() : null;
+            return $this->lblConflictoHabitacionalAsId;
+        }
+
+        /**
          * Create and setup QListBox lstRegularizacionAsId ES ACA?
          * @param string $strControlId optional ControlId to use
          * @return QListBox
@@ -1195,6 +1233,24 @@
             }
             if ($this->lblCondicionesSocioUrbanisticasAsId) $this->lblCondicionesSocioUrbanisticasAsId->Text = ($this->objFolio->CondicionesSocioUrbanisticasAsId) ? $this->objFolio->CondicionesSocioUrbanisticasAsId->__toString() : null;
 
+            if ($this->lstConflictoHabitacionalAsId) {
+                $this->lstConflictoHabitacionalAsId->RemoveAllItems();
+                $this->lstConflictoHabitacionalAsId->AddItem(QApplication::Translate('- Select One -'), null);
+                $objConflictoHabitacionalArray = ConflictoHabitacional::LoadAll();
+                if ($objConflictoHabitacionalArray) foreach ($objConflictoHabitacionalArray as $objConflictoHabitacional) {
+                    $objListItem = new QListItem($objConflictoHabitacional->__toString(), $objConflictoHabitacional->Id);
+                    if ($objConflictoHabitacional->IdFolio == $this->objFolio->Id)
+                        $objListItem->Selected = true;
+                    $this->lstConflictoHabitacionalAsId->AddItem($objListItem);
+                }
+                // Because ConflictoHabitacional's ConflictoHabitacionalAsId is not null, if a value is already selected, it cannot be changed.
+                if ($this->lstConflictoHabitacionalAsId->SelectedValue)
+                    $this->lstConflictoHabitacionalAsId->Enabled = false;
+                else
+                    $this->lstConflictoHabitacionalAsId->Enabled = true;
+            }
+            if ($this->lblConflictoHabitacionalAsId) $this->lblConflictoHabitacionalAsId->Text = ($this->objFolio->ConflictoHabitacionalAsId) ? $this->objFolio->ConflictoHabitacionalAsId->__toString() : null;
+
             if ($this->lstRegularizacionAsId) {
                 $this->lstRegularizacionAsId->RemoveAllItems();
                 $this->lstRegularizacionAsId->AddItem(QApplication::Translate('- Select One -'), null);
@@ -1280,6 +1336,7 @@
                 $this->Bind();
                 // Update any UniqueReverseReferences (if any) for controls that have been created for it
                 if ($this->lstCondicionesSocioUrbanisticasAsId) $this->objFolio->CondicionesSocioUrbanisticasAsId = CondicionesSocioUrbanisticas::Load($this->lstCondicionesSocioUrbanisticasAsId->SelectedValue);
+                if ($this->lstConflictoHabitacionalAsId) $this->objFolio->ConflictoHabitacionalAsId = ConflictoHabitacional::Load($this->lstConflictoHabitacionalAsId->SelectedValue);
                 if ($this->lstRegularizacionAsId) $this->objFolio->RegularizacionAsId = Regularizacion::Load($this->lstRegularizacionAsId->SelectedValue);
                 if ($this->lstUsoInterno) $this->objFolio->UsoInterno = UsoInterno::Load($this->lstUsoInterno->SelectedValue);
 
@@ -1455,6 +1512,12 @@
                 case 'CondicionesSocioUrbanisticasAsIdLabel':
                     if (!$this->lblCondicionesSocioUrbanisticasAsId) return $this->lblCondicionesSocioUrbanisticasAsId_Create();
                     return $this->lblCondicionesSocioUrbanisticasAsId;
+                case 'ConflictoHabitacionalAsIdControl':
+                    if (!$this->lstConflictoHabitacionalAsId) return $this->lstConflictoHabitacionalAsId_Create();
+                    return $this->lstConflictoHabitacionalAsId;
+                case 'ConflictoHabitacionalAsIdLabel':
+                    if (!$this->lblConflictoHabitacionalAsId) return $this->lblConflictoHabitacionalAsId_Create();
+                    return $this->lblConflictoHabitacionalAsId;
                 case 'RegularizacionAsIdControl':
                     if (!$this->lstRegularizacionAsId) return $this->lstRegularizacionAsId_Create();
                     return $this->lstRegularizacionAsId;
@@ -1533,6 +1596,8 @@
                         return ($this->txtFolioOriginal = QType::Cast($mixValue, 'QControl'));
                     case 'CondicionesSocioUrbanisticasAsIdControl':
                         return ($this->lstCondicionesSocioUrbanisticasAsId = QType::Cast($mixValue, 'QControl'));
+                    case 'ConflictoHabitacionalAsIdControl':
+                        return ($this->lstConflictoHabitacionalAsId = QType::Cast($mixValue, 'QControl'));
                     case 'RegularizacionAsIdControl':
                         return ($this->lstRegularizacionAsId = QType::Cast($mixValue, 'QControl'));
                     case 'UsoInternoControl':

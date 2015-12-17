@@ -40,6 +40,7 @@
 	 * @property TipoBarrio $TipoBarrioObject the value for the TipoBarrio object referenced by intTipoBarrio (Not Null)
 	 * @property Usuario $CreadorObject the value for the Usuario object referenced by intCreador 
 	 * @property CondicionesSocioUrbanisticas $CondicionesSocioUrbanisticasAsId the value for the CondicionesSocioUrbanisticas object that uniquely references this Folio
+	 * @property ConflictoHabitacional $ConflictoHabitacionalAsId the value for the ConflictoHabitacional object that uniquely references this Folio
 	 * @property Regularizacion $RegularizacionAsId the value for the Regularizacion object that uniquely references this Folio
 	 * @property UsoInterno $UsoInterno the value for the UsoInterno object that uniquely references this Folio
 	 * @property-read Comentarios $ComentariosAsId the value for the private _objComentariosAsId (Read-Only) if set due to an expansion on the comentarios.id_folio reverse relationship
@@ -377,6 +378,24 @@ class FolioGen extends QBaseClass {
 		 * NOTE: Do not manually update this value 
 		 */
 		protected $blnDirtyCondicionesSocioUrbanisticasAsId;
+
+		/**
+		 * Protected member variable that contains the object which points to
+		 * this object by the reference in the unique database column conflicto_habitacional.id_folio.
+		 *
+		 * NOTE: Always use the ConflictoHabitacionalAsId property getter to correctly retrieve this ConflictoHabitacional object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var ConflictoHabitacional objConflictoHabitacionalAsId
+		 */
+		protected $objConflictoHabitacionalAsId;
+		
+		/**
+		 * Used internally to manage whether the adjoined ConflictoHabitacionalAsId object
+		 * needs to be updated on save.
+		 * 
+		 * NOTE: Do not manually update this value 
+		 */
+		protected $blnDirtyConflictoHabitacionalAsId;
 
 		/**
 		 * Protected member variable that contains the object which points to
@@ -925,6 +944,9 @@ class FolioGen extends QBaseClass {
 					if (array_diff($objPreviousItem->objCondicionesSocioUrbanisticasAsIdArray, $objToReturn->objCondicionesSocioUrbanisticasAsIdArray) != null) {
 						continue;
 					}
+					if (array_diff($objPreviousItem->objConflictoHabitacionalAsIdArray, $objToReturn->objConflictoHabitacionalAsIdArray) != null) {
+						continue;
+					}
 					if (array_diff($objPreviousItem->objEvolucionFolioAsIdArray, $objToReturn->objEvolucionFolioAsIdArray) != null) {
 						continue;
 					}
@@ -987,6 +1009,18 @@ class FolioGen extends QBaseClass {
 					// We ATTEMPTED to do an Early Bind but the Object Doesn't Exist
 					// Let's set to FALSE so that the object knows not to try and re-query again
 					$objToReturn->objCondicionesSocioUrbanisticasAsId = false;
+			}
+
+			// Check for ConflictoHabitacionalAsId Unique ReverseReference Binding
+			$strAlias = $strAliasPrefix . 'conflictohabitacionalasid__id';
+			$strAliasName = array_key_exists($strAlias, $strColumnAliasArray) ? $strColumnAliasArray[$strAlias] : $strAlias;
+			if ($objDbRow->ColumnExists($strAliasName)) {
+				if (!is_null($objDbRow->GetColumn($strAliasName)))
+					$objToReturn->objConflictoHabitacionalAsId = ConflictoHabitacional::InstantiateDbRow($objDbRow, $strAliasPrefix . 'conflictohabitacionalasid__', $strExpandAsArrayNodes, null, $strColumnAliasArray);
+				else
+					// We ATTEMPTED to do an Early Bind but the Object Doesn't Exist
+					// Let's set to FALSE so that the object knows not to try and re-query again
+					$objToReturn->objConflictoHabitacionalAsId = false;
 			}
 
 			// Check for RegularizacionAsId Unique ReverseReference Binding
@@ -1423,6 +1457,26 @@ class FolioGen extends QBaseClass {
                 }
         
         
+                // Update the adjoined ConflictoHabitacionalAsId object (if applicable)
+                // TODO: Make this into hard-coded SQL queries
+                if ($this->blnDirtyConflictoHabitacionalAsId) {
+                    // Unassociate the old one (if applicable)
+                    if ($objAssociated = ConflictoHabitacional::LoadByIdFolio($this->intId)) {
+                        $objAssociated->IdFolio = null;
+                        $objAssociated->Save();
+                    }
+
+                    // Associate the new one (if applicable)
+                    if ($this->objConflictoHabitacionalAsId) {
+                        $this->objConflictoHabitacionalAsId->IdFolio = $this->intId;
+                        $this->objConflictoHabitacionalAsId->Save();
+                    }
+
+                    // Reset the "Dirty" flag
+                    $this->blnDirtyConflictoHabitacionalAsId = false;
+                }
+        
+        
                 // Update the adjoined RegularizacionAsId object (if applicable)
                 // TODO: Make this into hard-coded SQL queries
                 if ($this->blnDirtyRegularizacionAsId) {
@@ -1497,6 +1551,15 @@ class FolioGen extends QBaseClass {
 			// Optional -- if you **KNOW** that you do not want to EVER run any level of business logic on the disassocation,
 			// you *could* override Delete() so that this step can be a single hard coded query to optimize performance.
 			if ($objAssociated = CondicionesSocioUrbanisticas::LoadByIdFolio($this->intId)) {
+				$objAssociated->Delete();
+			}
+			
+			
+			// Update the adjoined ConflictoHabitacionalAsId object (if applicable) and perform a delete
+
+			// Optional -- if you **KNOW** that you do not want to EVER run any level of business logic on the disassocation,
+			// you *could* override Delete() so that this step can be a single hard coded query to optimize performance.
+			if ($objAssociated = ConflictoHabitacional::LoadByIdFolio($this->intId)) {
 				$objAssociated->Delete();
 			}
 			
@@ -1816,6 +1879,26 @@ class FolioGen extends QBaseClass {
                     if (!$this->objCondicionesSocioUrbanisticasAsId)
                         $this->objCondicionesSocioUrbanisticasAsId = CondicionesSocioUrbanisticas::LoadByIdFolio($this->intId);
                     return $this->objCondicionesSocioUrbanisticasAsId;
+                } catch (QCallerException $objExc) {
+                    $objExc->IncrementOffset();
+                    throw $objExc;
+                }
+
+    
+    
+            case 'ConflictoHabitacionalAsId':
+                /**
+                 * Gets the value for the ConflictoHabitacional object that uniquely references this Folio
+                 * by objConflictoHabitacionalAsId (Unique)
+                 * @return ConflictoHabitacional
+                 */
+                try {
+                    if ($this->objConflictoHabitacionalAsId === false)
+                        // We've attempted early binding -- and the reverse reference object does not exist
+                        return null;
+                    if (!$this->objConflictoHabitacionalAsId)
+                        $this->objConflictoHabitacionalAsId = ConflictoHabitacional::LoadByIdFolio($this->intId);
+                    return $this->objConflictoHabitacionalAsId;
                 } catch (QCallerException $objExc) {
                     $objExc->IncrementOffset();
                     throw $objExc;
@@ -2402,6 +2485,45 @@ class FolioGen extends QBaseClass {
 
 							// Update Local Member Variable
 							$this->objCondicionesSocioUrbanisticasAsId = $mixValue;
+						} else {
+							// Nope -- therefore, make no changes
+						}
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
+				case 'ConflictoHabitacionalAsId':
+					/**
+					 * Sets the value for the ConflictoHabitacional object referenced by objConflictoHabitacionalAsId (Unique)
+					 * @param ConflictoHabitacional $mixValue
+					 * @return ConflictoHabitacional
+					 */
+					if (is_null($mixValue)) {
+						$this->objConflictoHabitacionalAsId = null;
+
+						// Make sure we update the adjoined ConflictoHabitacional object the next time we call Save()
+						$this->blnDirtyConflictoHabitacionalAsId = true;
+
+						return null;
+					} else {
+						// Make sure $mixValue actually is a ConflictoHabitacional object
+						try {
+							$mixValue = QType::Cast($mixValue, 'ConflictoHabitacional');
+						} catch (QInvalidCastException $objExc) {
+							$objExc->IncrementOffset();
+							throw $objExc;
+						}
+
+						// Are we setting objConflictoHabitacionalAsId to a DIFFERENT $mixValue?
+						if ((!$this->ConflictoHabitacionalAsId) || ($this->ConflictoHabitacionalAsId->Id != $mixValue->Id)) {
+							// Yes -- therefore, set the "Dirty" flag to true
+							// to make sure we update the adjoined ConflictoHabitacional object the next time we call Save()
+							$this->blnDirtyConflictoHabitacionalAsId = true;
+
+							// Update Local Member Variable
+							$this->objConflictoHabitacionalAsId = $mixValue;
 						} else {
 							// Nope -- therefore, make no changes
 						}
