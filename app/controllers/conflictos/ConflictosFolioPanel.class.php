@@ -2,7 +2,7 @@
 
 class ConflictosFolioPanel extends ConflictoHabitacionalEditPanel {
 
-    public $strTitulo = 'Condflictos Habitacionales';
+    public $strTitulo = 'Conflictos Habitacionales';
     public $strSubtitulo = '';
 
 
@@ -12,6 +12,7 @@ class ConflictosFolioPanel extends ConflictoHabitacionalEditPanel {
     public function __construct($objParentObject, $strColumnsArray = null, $strControlsArray = null, $strControlId = null) {
 
         try {
+            if(!Permission::PuedeVerConflictos()) QApplication::Redirect(__VIRTUAL_DIRECTORY__."/error/forbidden");
             $this->objConf=ConflictoHabitacional::QuerySingle(QQ::Equal(QQN::ConflictoHabitacional()->IdFolio,QApplication::QueryString("id")));
             $editar_o_nuevo=!is_null($this->objConf)? $this->objConf->Id : null;
             parent::__construct($objParentObject,$strControlsArray,$editar_o_nuevo,QApplication::QueryString("id"));

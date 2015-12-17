@@ -69,30 +69,87 @@
 <div class="titulos"><i class="icon-chevron-right"></i> Conflictos Habitacionales y Judicialización</div>
 <div>
     <div class="well bs-component">
-    		<?php $_CONTROL->lstIdFolioObject->RenderWithName(); ?>
+    		
+            <div class="renderWithName">
+                <div class="left">
+                    <label>Judicializado </label>
+                </div>
+                <div class="right">
+                 <label>
+                      <span>
+                      <input value="<?php echo strtoupper($_CONTROL->objFolio->Judicializado); ?>" class="form-control" disabled/>
+                      </span>
+                  </label>
+                </div>  
+            </div>
     		<?php $_CONTROL->chkIntervinoArea->RenderWithName(); ?>
     		<?php $_CONTROL->txtFueroInterviniente->RenderWithName(); ?>
     		<?php $_CONTROL->txtJuzgadoInterviniente->RenderWithName(); ?>
     		<?php $_CONTROL->txtCaratulaExpediente->RenderWithName(); ?>
-    		<?php $_CONTROL->chkMinisterioDesarrollo->RenderWithName(); ?>
-    		<?php $_CONTROL->txtMinisterioDesarrolloReferente->RenderWithName(); ?>
-    		<?php $_CONTROL->chkDefensorPueblo->RenderWithName(); ?>
-    		<?php $_CONTROL->txtDefensorPuebloReferente->RenderWithName(); ?>
-    		<?php $_CONTROL->chkSecretariaNacional->RenderWithName(); ?>
-    		<?php $_CONTROL->txtSecretariaNacionalReferente->RenderWithName(); ?>
-    		<?php $_CONTROL->chkMunicipalidad->RenderWithName(); ?>
-    		<?php $_CONTROL->txtMunicipalidadReferente->RenderWithName(); ?>
-    		<?php $_CONTROL->chkOrganizacionBarrial->RenderWithName(); ?>
-    		<?php $_CONTROL->txtOrganizacionBarrialReferente->RenderWithName(); ?>
-    		<?php $_CONTROL->txtOtrosOrganismos->RenderWithName(); ?>
-    		<?php $_CONTROL->chkOrdenDesalojo->RenderWithName(); ?>
-    		<?php $_CONTROL->txtFechaEjecucion->RenderWithName(); ?>
-    		<?php $_CONTROL->chkSuspensionHecho->RenderWithName(); ?>
-    		<?php $_CONTROL->chkSolicitudSuspension->RenderWithName(); ?>
-    		<?php $_CONTROL->txtFechaSuspension->RenderWithName(); ?>
-    		<?php $_CONTROL->txtDuracionSuspension->RenderWithName(); ?>
-    		<?php $_CONTROL->chkMesaGestion->RenderWithName(); ?>
-    		<?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
+    		
+            
+            <br>
+            <div class="titulos"><i class="icon-tag"></i> Organismos intervinientes</div>
+            <br>
+                <div class="well bs-component container">
+                    <div class="renderWithName">
+                        <div class="left">
+                            <label>Ministerio de Desarrollo </label>
+                        </div>
+                        <?php $_CONTROL->chkMinisterioDesarrollo->Render(); ?>
+                        <?php $_CONTROL->txtMinisterioDesarrolloReferente->Render(); ?>
+                    </div>
+                    
+                    <div class="renderWithName">
+                        <div class="left">
+                            <label>Defensor del pueblo </label>
+                        </div>
+                        <?php $_CONTROL->chkDefensorPueblo->Render(); ?>
+                        <?php $_CONTROL->txtDefensorPuebloReferente->Render(); ?>
+                    </div>
+
+                    <div class="renderWithName">
+                        <div class="left">
+                            <label>Secretaría Nacional de Acceso Justo al Habitat </label>
+                        </div>
+                        <?php $_CONTROL->chkSecretariaNacional->Render(); ?>
+                        <?php $_CONTROL->txtSecretariaNacionalReferente->Render(); ?>
+                    </div>
+
+                    <div class="renderWithName">
+                        <div class="left">
+                            <label> Municipalidad</label>
+                        </div>
+                        <?php $_CONTROL->chkMunicipalidad->Render(); ?>
+                        <?php $_CONTROL->txtMunicipalidadReferente->Render(); ?>
+                    </div>
+
+                    <div class="renderWithName">
+                        <div class="left">
+                            <label>Organización barrial </label>
+                        </div>
+                        <?php $_CONTROL->chkOrganizacionBarrial->Render(); ?>
+                        <?php $_CONTROL->txtOrganizacionBarrialReferente->Render(); ?>
+                    </div>
+                    
+                    <?php $_CONTROL->txtOtrosOrganismos->RenderWithName(); ?>
+                </div>       
+       
+            <br>
+            <div class="titulos"><i class="icon-tag"></i></div>
+            <br>
+                <div class="well bs-component container">
+		
+                    <?php $_CONTROL->chkOrdenDesalojo->RenderWithName(); ?>
+            		<?php $_CONTROL->txtFechaEjecucion->RenderWithName(); ?>
+            		<?php $_CONTROL->chkSuspensionHecho->RenderWithName(); ?>
+            		<?php $_CONTROL->chkSolicitudSuspension->RenderWithName(); ?>
+            		<?php $_CONTROL->txtFechaSuspension->RenderWithName(); ?>
+            		<?php $_CONTROL->txtDuracionSuspension->RenderWithName(); ?>
+            		<?php $_CONTROL->chkMesaGestion->RenderWithName(); ?>
+            		<?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
+                </div>
+                        
   </div>
 </div>
 
