@@ -39,20 +39,20 @@ class PageTripartitoPanel extends QPanel {
         //$params=array($partido,$partida);
         $where = " (t.partido = '$partido') AND (t.partida = '$partida') ";
     }else{
-	    $partido="'%".$params["partidoN"]."%'";
-	    $circunscripcion="'%".$params["circunscripcionN"]."%'";
-	    $seccion="'%".$params["seccionN"]."%'";
-	    $chacraNN="'%".$params["chacraNN"]."%'";
-	    $chacraTN="'%".$params["chacraTN"]."%'";
-	    $quintaNN="'%".$params["quintaNN"]."%'";
-	    $quintaTN="'%".$params["quintaTN"]."%'";
-	    $fraccionNN="'%".$params["fraccionNN"]."%'";
-	    $fraccionTN="'%".$params["fraccionTN"]."%'";
-	    $manzanaNN="'%".$params["manzanaNN"]."%'";
-	    $manzanaTN="'%".$params["manzanaTN"]."%'";
-	    $parcelaNN="'%".$params["parcelaNN"]."%'";
-	    $parcelaTN="'%".$params["parcelaTN"]."%'";
-	    $subparcelaN="'%".$params["subparcelaN"]."%'";
+	    $partido="'".$params["partidoN"]."'";
+	    $circunscripcion="'".$params["circunscripcionN"]."'";
+	    $seccion="'".$params["seccionN"]."'";
+	    $chacraNN="'".$params["chacraNN"]."'";
+	    $chacraTN="'".$params["chacraTN"]."'";
+	    $quintaNN="'".$params["quintaNN"]."'";
+	    $quintaTN="'".$params["quintaTN"]."'";
+	    $fraccionNN="'".$params["fraccionNN"]."'";
+	    $fraccionTN="'".$params["fraccionTN"]."'";
+	    $manzanaNN="'".$params["manzanaNN"]."'";
+	    $manzanaTN="'".$params["manzanaTN"]."'";
+	    $parcelaNN="'".$params["parcelaNN"]."'";
+	    $parcelaTN="'".$params["parcelaTN"]."'";
+	    $subparcelaN="'".$params["subparcelaN"]."'";
 
 
 
@@ -73,8 +73,8 @@ class PageTripartitoPanel extends QPanel {
 	    $parcelaTN OR
 	    $subparcelaN){
     	
-    	$where = " (t.partido like $partido) AND (t.circ like $circunscripcion) AND (t.seccion like $seccion) AND (t.chacra_numero like $chacraNN) AND (t.chacra_letra like $chacraTN) 
-    	AND (t.quinta_numero like $quintaNN) AND (t.quinta_letra like $quintaTN) AND (t.fraccion_numero like $fraccionNN) AND (t.fraccion_letra like $fraccionTN) AND (t.manzana_numero like $manzanaNN) AND (t.manzana_letra like $manzanaTN) AND (t.parcela_numero like $parcelaNN) AND (t.parcela_letra like $parcelaTN) AND (t.subparcela like $subparcelaN) ";
+    	$where = " (t.partido = $partido) AND (t.circ = $circunscripcion) AND (t.seccion = $seccion) AND (t.chacra_numero = $chacraNN) AND (t.chacra_letra = $chacraTN) 
+    	AND (t.quinta_numero = $quintaNN) AND (t.quinta_letra = $quintaTN) AND (t.fraccion_numero = $fraccionNN) AND (t.fraccion_letra = $fraccionTN) AND (t.manzana_numero = $manzanaNN) AND (t.manzana_letra = $manzanaTN) AND (t.parcela_numero = $parcelaNN) AND (t.parcela_letra = $parcelaTN) AND (t.subparcela = $subparcelaN) ";
       }
 
     }
@@ -121,6 +121,7 @@ class PageTripartitoPanel extends QPanel {
 	        $this->contenido.="<div id=consulta>"; 
 	        $this->contenido.="<div class='banner'><div id=logo width=50% bgcolor=#f58030><img src='http://190.188.234.6/registro/assets/images/logo_izquierda.png' height=50px width=145px></img></div><div id=titulo><h3>Consulta Sistema Tripartito</h3><p alt='Agencia de Recaudación de la provincia de Buenos Aires (2015)'> 
 	            Fuente: ARBA (2015)</p></div></div>";
+	        $this->contenido.="<div class='separator'></div>";
 	        $this->contenido.="<div class='container'>";
 	        $this->contenido.="<h2>DATOS CATASTRALES</h2><br />";
 	        foreach($arr[0] as $key => $value){
@@ -142,7 +143,7 @@ class PageTripartitoPanel extends QPanel {
             if ($cant_resultados>1){
                 $this->contenido="SE ENCONTRARON ** ".$cant_resultados." ** RESULTADOS, SE REQUIEREN PARÁMETROS DE BÚSQUEDA MÁS ESPECÍFICOS. Recuerde que las chacras, quintas, fracciones, manzanas y parcelas no sólo se componen de números sino también de letras";
             }
-            if($cant_resultados==0) echo "NO SE ENCONTRARON RESULTADOS"; 
+            if($cant_resultados==0) $this->contenido= "NO SE ENCONTRARON RESULTADOS"; 
             }
         else{
            echo '{"total":"' . $cant_resultados . '"}';
