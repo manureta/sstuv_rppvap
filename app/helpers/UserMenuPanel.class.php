@@ -23,7 +23,8 @@ class UserMenuPanel extends QPanel {
         $btnInicio->Text = 'Inicio';
         $btnInicio->Icon = 'home';
         $btnInicio->AddCssClass('navbar-link');
-        $btnInicio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnHome_Click'));
+        //$btnInicio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnHome_Click'));
+        $btnInicio->Link='';
 
         $btnMapa = new QLinkButtonTargetBlank($this);
         $btnMapa->Text = 'Mapa';
@@ -36,14 +37,16 @@ class UserMenuPanel extends QPanel {
         $btnFolio->Text = 'Folios';
         $btnFolio->Icon = 'edit';
         $btnFolio->AddCssClass('navbar-link');
-        $btnFolio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnFolio_Click'));
+        //$btnFolio->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnFolio_Click'));
+        $btnFolio->Link='folio';
 
         if(!Permission::EsVisualizadorBasico()){
          $btnReportes = new QLinkButton($this);
          $btnReportes->Text = 'Reportes';
          $btnReportes->Icon = 'download';
          $btnReportes->AddCssClass('navbar-link');
-         $btnReportes->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnReportes_Click'));
+         //$btnReportes->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnReportes_Click'));
+         $btnReportes->Link='page/reportes';
         }
 
         if(Permission::PuedeConsultarTripartito()){
@@ -51,7 +54,8 @@ class UserMenuPanel extends QPanel {
          $btnTripartito->Text = 'Tripartito';
          $btnTripartito->Icon = 'search';
          $btnTripartito->AddCssClass('navbar-link');
-         $btnTripartito->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnTripartito_Click'));
+         //$btnTripartito->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnTripartito_Click'));
+         $btnTripartito->Link='page/tripartito';
         }
 
         if(Permission::EsSuperAdministrador()){
@@ -59,7 +63,8 @@ class UserMenuPanel extends QPanel {
          $btnUsuarios->Text = 'Usuarios';
          $btnUsuarios->Icon = 'user';
          $btnUsuarios->AddCssClass('navbar-link');
-         $btnUsuarios->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnUsuarios_Click'));
+         //$btnUsuarios->AddAction(new QClickEvent(),  new QAjaxControlAction($this, 'btnUsuarios_Click'));
+         $btnUsuarios->Link='usuario';
         }
 
         $btnCerrarSesion = new QLinkButton($this);
