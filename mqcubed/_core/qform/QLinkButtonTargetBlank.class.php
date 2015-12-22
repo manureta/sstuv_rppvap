@@ -29,11 +29,11 @@ class QLinkButtonTargetBlank extends QActionControl {
         if ($this->strIcon) {
             $strIcon = sprintf('<i class="icon-%s"></i>', $this->strIcon);
         }
-        $strToReturn = sprintf('<a target="_blank" href="%s" id="%s" %s%s>%s%s</a>', 
-                $this->strLink, 
+        $strToReturn = sprintf('<a target="_blank" href="%s" id="%s" %s%s>%s%s</a>',
+                $this->strLink,
                 $this->strControlId,
-                $this->GetAttributes(), 
-                $strStyle, 
+                $this->GetAttributes(),
+                $strStyle,
                 $strIcon,
                 ($this->blnHtmlEntities) ? QApplication::HtmlEntities($this->strText) : $this->strText);
 
@@ -79,7 +79,7 @@ class QLinkButtonTargetBlank extends QActionControl {
             case "Link":
                 try {
                     $this->strLink = QType::Cast($mixValue, QType::String);
-                    $this->AddAction(new QClickEvent(), new QJavaScriptAction(sprintf("qc.redirect('%s/%s');",__VIRTUAL_DIRECTORY__,$mixValue)));
+                    //$this->AddAction(new QClickEvent(), new QJavaScriptAction(sprintf("qc.redirect('%s/%s');",__VIRTUAL_DIRECTORY__,$mixValue)));
                     break;
                 } catch (QInvalidCastException $objExc) {
                     $objExc->IncrementOffset();
