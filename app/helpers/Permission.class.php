@@ -233,6 +233,10 @@ abstract class Permission extends PermissionBase {
       return (self::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social","uso_interno_conflictos")) );
     }
 
+    public static function PuedeAdjuntarConflictos(){
+      return (self::EsUsoInterno(array("uso_interno_conflictos")));
+    }
+
     public static function PuedeImprimirCertificado(){
       //EsUsoInterno tambien devuelve true si es admin
       return (self::PuedeVerCenso());
