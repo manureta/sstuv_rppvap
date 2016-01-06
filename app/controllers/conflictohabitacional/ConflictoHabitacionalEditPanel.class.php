@@ -27,7 +27,14 @@ class ConflictoHabitacionalEditPanel extends ConflictoHabitacionalEditPanelGen {
         $this->blnAutoRenderChildrenWithName = false;
         $this->Form->RemoveControl($this->pnlTabs->ControlId, true);
 
+        //seteo upload manager
+        $url_upload_manager=__VIRTUAL_DIRECTORY__."/upload.php?idfolio=".$this->intIdFolio."&tipo=conflictos";
 
+        if( Permission::PuedeAdjuntarConflictos()) {
+            QApplication::ExecuteJavascript("uploadManager('$url_upload_manager','#fileupload_conflictos','#files')");
+        }else{
+                QApplication::ExecuteJavascript("verAdjuntados('$url_upload_manager','#files')");            
+        }
 
 
         if(!Permission::PuedeEditar1A4($this->objFolio) || (Permission::EsUsoInterno(array("uso_interno_expediente","uso_interno_nomencla","uso_interno_legal","uso_interno_tecnico","uso_interno_social")) && !Permission::EsAdministrador())) {
@@ -74,9 +81,9 @@ class ConflictoHabitacionalEditPanel extends ConflictoHabitacionalEditPanelGen {
         if (in_array('txtCaratulaExpediente',$strControlsArray))
             $this->objControlsArray['txtCaratulaExpediente'] = $this->mctConflictoHabitacional->txtCaratulaExpediente_Create();
             $this->objControlsArray['txtCaratulaExpediente']->Name="Caratula del expediente judicial";
-        
+
         if (in_array('chkMinisterioDesarrollo',$strControlsArray))
-            $this->objControlsArray['chkMinisterioDesarrollo'] = $this->mctConflictoHabitacional->chkMinisterioDesarrollo_Create();            
+            $this->objControlsArray['chkMinisterioDesarrollo'] = $this->mctConflictoHabitacional->chkMinisterioDesarrollo_Create();
         if (in_array('txtMinisterioDesarrolloReferente',$strControlsArray))
             $this->objControlsArray['txtMinisterioDesarrolloReferente'] = $this->mctConflictoHabitacional->txtMinisterioDesarrolloReferente_Create();
             $this->objControlsArray['txtMinisterioDesarrolloReferente']->SetCustomAttribute("placeholder", "Referente");

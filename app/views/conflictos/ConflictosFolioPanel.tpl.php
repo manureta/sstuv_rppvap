@@ -69,7 +69,7 @@
 <div class="titulos"><i class="icon-chevron-right"></i> Conflictos Habitacionales y Judicialización</div>
 <div>
     <div class="well bs-component">
-    		
+
             <div class="renderWithName">
                 <div class="left">
                     <label>Judicializado </label>
@@ -80,14 +80,14 @@
                       <input value="<?php echo strtoupper($_CONTROL->objFolio->Judicializado); ?>" class="form-control" disabled/>
                       </span>
                   </label>
-                </div>  
+                </div>
             </div>
     		<?php $_CONTROL->chkIntervinoArea->RenderWithName(); ?>
     		<?php $_CONTROL->txtFueroInterviniente->RenderWithName(); ?>
     		<?php $_CONTROL->txtJuzgadoInterviniente->RenderWithName(); ?>
     		<?php $_CONTROL->txtCaratulaExpediente->RenderWithName(); ?>
-    		
-            
+
+
             <br>
             <div class="titulos"><i class="icon-tag"></i> Organismos intervinientes</div>
             <br>
@@ -99,7 +99,7 @@
                         <?php $_CONTROL->chkMinisterioDesarrollo->Render(); ?>
                         <?php $_CONTROL->txtMinisterioDesarrolloReferente->Render(); ?>
                     </div>
-                    
+
                     <div class="renderWithName">
                         <div class="left">
                             <label>Defensor del pueblo </label>
@@ -131,15 +131,15 @@
                         <?php $_CONTROL->chkOrganizacionBarrial->Render(); ?>
                         <?php $_CONTROL->txtOrganizacionBarrialReferente->Render(); ?>
                     </div>
-                    
+
                     <?php $_CONTROL->txtOtrosOrganismos->RenderWithName(); ?>
-                </div>       
-       
+                </div>
+
             <br>
             <div class="titulos"><i class="icon-tag"></i></div>
             <br>
                 <div class="well bs-component container">
-		
+
                     <?php $_CONTROL->chkOrdenDesalojo->RenderWithName(); ?>
             		<?php $_CONTROL->txtFechaEjecucion->RenderWithName(); ?>
             		<?php $_CONTROL->chkSuspensionHecho->RenderWithName(); ?>
@@ -149,7 +149,37 @@
             		<?php $_CONTROL->chkMesaGestion->RenderWithName(); ?>
             		<?php $_CONTROL->txtObservaciones->RenderWithName(); ?>
                 </div>
-                        
+
+                <?php if(Permission::PuedeAdjuntarConflictos()){ ?>
+                <div class="well bs-component">
+                    <div class="container">
+
+                        <span class="btn btn-success fileinput-button">
+                            <i class="icon-plus"></i>
+                            <span>Adjuntar...</span>
+                            <!-- The file input field used as target for the file upload widget -->
+                            <input id="fileupload_conflictos" type="file" name="files[]" multiple>
+                        </span>
+                        <br>
+                        <br>
+                        <!-- The global progress bar -->
+                        <div id="progress" class="progress">
+                            <div class="progress-bar progress-bar-success"></div>
+                        </div>
+                        <!-- The container for the uploaded files -->
+                        <div id="files" class="files"></div>
+                        <br>
+                    </div>
+                </div>
+                <?php } else {?>
+                <div class="titulos"><i class="icon-chevron-right"></i>Archivos Adjuntos</div>
+                <div>
+                    <div class="well bs-component">
+                        <div id="files" class="files"></div>
+                    </div>
+                </div>
+                <?php } ?>
+
   </div>
 </div>
 
