@@ -67,7 +67,14 @@ function partido(v){
 	v=v.substr(-3,3);
 	return v;
 }
-function partida(v){
+function partido2(v){
+ 	v =v.replace(/\D/g,"");
+ 	v = completar_ceros(v,3); 
+	v=v.substr(-3,3);
+	return v;
+}
+
+function partida2(v){
  	v =v.replace(/\D/g,"");
  	v = completar_ceros(v,6); 
 	v=v.substr(-6,6);
@@ -206,8 +213,8 @@ jQuery(function($){
        </div>
       <div class="well bs-component container noprint">
         <form  method="POST" action="<?=__VIRTUAL_DIRECTORY__?>/page/tripartito" >
-              <label>Partido:</label><input name="partido" type="text" size="3" onkeypress="mascara(this,partido)" />
-              <label>Partida:</label><input name="partida" type="text" size="6" onkeypress="mascara(this,partida)" />
+              <label>Partido:</label><input name="partido" type="text" size="3" onkeypress="mascara(this,partido2)" />
+              <label>Partida:</label><input name="partida" type="text" size="6" onkeypress="mascara(this,partida2)" />
               <input type=hidden name=type value="html" />
               <input type=submit value=Consultar />
         </form>
