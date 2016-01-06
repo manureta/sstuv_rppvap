@@ -15,9 +15,7 @@ class PageTripartitoPanel extends QPanel {
                 //parent::Run('Tripartito','../app/views/page/tripartito.tpl.php');
             	parent::__construct($objParentObject, $strControlId);   
             }
-
         }
-	
 			
 		catch (QCallerException $objExc) {
 			$objExc->IncrementOffset();
@@ -29,7 +27,6 @@ class PageTripartitoPanel extends QPanel {
 
 
  public function Buscar($params){
-
 
     $partido = $params["partido"];
     $partida = $params["partida"];
@@ -54,35 +51,47 @@ class PageTripartitoPanel extends QPanel {
 	    $parcelaTN="'".$params["parcelaTN"]."'";
 	    $subparcelaN="'".$params["subparcelaN"]."'";
 
+	    if ($partido=="'000'") { $where .= " AND (t.partido = $partido OR t.partido = '   ')"; } else
+		    if ($partido!="''") { $where .= " AND (t.partido = $partido)"; }
+
+	    if ($circunscripcion=="'00'") { $where .= " AND (t.circ = $circunscripcion OR t.circ = '  ') "; } else
+		    if ($circunscripcion!="''") {  $where .= " AND (t.circ = $circunscripcion) "; }
 
 
+	    if ($seccion!="''") { $where .= " AND (t.seccion = $seccion) "; } 
 
-       if (
-	    $partido OR
-	    $circunscripcion OR
-	    $seccion OR 
-	    $chacraNN OR 
-	    $chacraTN OR 
-	    $quintaNN OR
-	    $quintaTN OR
-	    $fraccionNN OR 
-	    $fraccionTN OR 
-	    $manzanaNN OR
-	    $manzanaTN OR
-	    $parcelaNN OR
-	    $parcelaTN OR
-	    $subparcelaN){
+	    if ($chacraNN=="'0000'") { $where .= " AND (t.chacra_numero = $chacraNN OR t.chacra_numero = '    ') "; } else
+		    if ($chacraNN!="''") { $where .= " AND (t.chacra_numero  = $chacraNN) "; } 
+
+	    if ($chacraTN!="''") { $where .= " AND (t.chacra_letra  = $chacraTN)"; } 
+
+	    if ($quintaNN=="'0000'") { $where .= " AND (t.quinta_numero = $quintaNN OR t.quinta_numero = '    ')"; } else
+	    	if ($quintaNN!="''") { $where .= " AND (t.quinta_numero = $quintaNN) "; }
+
+	    if ($quintaTN!="''") { $where .= " AND (t.quinta_letra = $quintaTN) "; }
+
+	    if ($fraccionNN=="'0000'") { $where .= " AND (t.fraccion_numero = $fraccionNN OR t.fraccion_numero = '    ')"; } else
+		    if ($fraccionNN!="''") { $where .= " AND (t.fraccion_numero = $fraccionNN)"; } 
+	
+	    if ($fraccionTN!="''") { $where .= " AND (t.fraccion_letra = $fraccionTN)"; } 
+
+	    if ($manzanaNN=="'0000'") { $where .= " AND (t.manzana_numero = $manzanaNN OR t.manzana_numero = '    ')"; } else
+		    if ($manzanaNN!="''") { $where .= " AND (t.manzana_numero = $manzanaNN)"; }
+
+	    if ($manzanaTN!="''") { $where .= " AND (t.manzana_letra = $manzanaTN)"; }
+
+	    if ($parcelaNN=="'0000'") { $where .= " AND (t.parcela_numero = $parcelaNN OR t.parcela_numero = '    ')"; } else
+		    if ($parcelaNN!="''") { $where .= " AND (t.parcela_numero = $parcelaNN) "; }
+
+	    if ($parcelaTN!="''") { $where .= " AND (t.parcela_letra = $parcelaTN)"; }
+	    if ($subparcelaN!="''") { $where .= " AND (t.subparcela = $subparcelaN)"; }
     	
-    	$where = " (t.partido = $partido) AND (t.circ = $circunscripcion) AND (t.seccion = $seccion) AND (t.chacra_numero = $chacraNN) AND (t.chacra_letra = $chacraTN) 
-    	AND (t.quinta_numero = $quintaNN) AND (t.quinta_letra = $quintaTN) AND (t.fraccion_numero = $fraccionNN) AND (t.fraccion_letra = $fraccionTN) AND (t.manzana_numero = $manzanaNN) AND (t.manzana_letra = $manzanaTN) AND (t.parcela_numero = $parcelaNN) AND (t.parcela_letra = $parcelaTN) AND (t.subparcela = $subparcelaN) ";
-      }
-
+	    if ($where!=""): $where = substr($where,5); else: $where="true"; endif;
     }
 
     $sql_count = "SELECT count(*) ";
     $sql_count .= "FROM tripartito.tripartito_completo_27_10_15 t"; // JOIN carto_base.parce_nomencla p ON pa.catstro = p.partido ";
     $sql_count .= " WHERE ".$where;
-
 
     $objDatabase = QApplication::$Database[1];
     $objDbResult = $objDatabase->Query($sql_count);
@@ -116,10 +125,10 @@ class PageTripartitoPanel extends QPanel {
 	    $objDbResult = $objDatabase->Query($sql);
 	   
 	    $arr=$objDbResult->FetchAll();
-	    echo($params["type"]);
+
 	    if($params["type"]=="html"){ 
 	        $this->contenido.="<div id=consulta>"; 
-	        $this->contenido.="<div class='banner'><div id=logo width=50% bgcolor=#f58030><img src='http://190.188.234.6/registro/assets/images/logo_izquierda.png' height=50px width=145px></img></div><div id=titulo><h3>Consulta Sistema Tripartito</h3><p alt='Agencia de Recaudación de la provincia de Buenos Aires (2015)'> 
+	        $this->contenido.="<div class='banner'><div id=logo width=50% bgcolor=#f58030><img src='http://190.188.234.6/registro/assets/images/logo_izquierda.png' height=50px width=145px></img></div><div id=logo_impresion width=50% bgcolor=#f58030><img src='http://190.188.234.6/registro/assets/images/logo_izquierda.png' height=50px width=145px></img></div><div id=titulo><h3>Consulta Sistema Tripartito</h3><p alt='Agencia de Recaudación de la provincia de Buenos Aires (2015)'> 
 	            Fuente: ARBA (2015)</p></div></div>";
 	        $this->contenido.="<div class='separator'></div>";
 	        $this->contenido.="<div class='container'>";
@@ -141,7 +150,7 @@ class PageTripartitoPanel extends QPanel {
                 $this->contenido="Ocurrió un error inesperado";
             }
             if ($cant_resultados>1){
-                $this->contenido="SE ENCONTRARON ** ".$cant_resultados." ** RESULTADOS, SE REQUIEREN PARÁMETROS DE BÚSQUEDA MÁS ESPECÍFICOS. Recuerde que las chacras, quintas, fracciones, manzanas y parcelas no sólo se componen de números sino también de letras";
+                $this->contenido="SE ENCONTRARON ** ".$cant_resultados." ** RESULTADOS, SE REQUIEREN PARÁMETROS DE BÚSQUEDA MÁS ESPECÍFICOS.<br /> Recuerde que las chacras, quintas, fracciones, manzanas y parcelas no sólo se componen de números sino también de letras.";
             }
             if($cant_resultados==0) $this->contenido= "NO SE ENCONTRARON RESULTADOS"; 
             }
