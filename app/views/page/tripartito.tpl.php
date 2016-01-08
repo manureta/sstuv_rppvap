@@ -1,12 +1,17 @@
 <style media="print">
 body {font-size:12px}
-.noprint {display:none;}
+
+.noprint, hr {display:none;}
 .breadcrumbs {display:none;}
-#logo { background-image:url('img/logo_subse_byn.png')};
-#logo { //background-image:url('http://190.188.234.6/registro/assets/images/logo_izquierda.png');
+#logo_impresion { background-image:url('img/logo_subse_byn.png';
        background-color:#CCCCCC;width:150px;height:50px;backgound-repeat:none; -webkit-print-color-adjust: exact;}
 #logo{display:none}
 #logo_impresion {display:fixed}
+		.resultado{ background-color:#FeFeFe;min-height:380px;}
+		.header{background: none repeat scroll 0 0; margin-left:5px;}
+		.resultado div {border: none;float: left; margin: 0px;}
+		.dato {float:left; padding:5px; border: 1px blue;font-style: italic;line-height:22px;font-weight: bold;}
+		.dato .header {line-height:24px; font-weight:normal}
    
 </style>
 <style>
